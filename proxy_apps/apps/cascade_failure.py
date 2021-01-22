@@ -7,7 +7,7 @@ class HyperParameters():
         self.h2 = config['hl_2_dim']
         self.h3 = config['hl_3_dim']
         self.h4 = config['hl_4_dim']
-        # hp.h5 = config['hl_5_dim']
+        ## hp.h5 = config['hl_5_dim']
         self.ld = config['latent_dim']
         self.rf = config['reg_factor']
         self.dr = config['dropout_prob']
