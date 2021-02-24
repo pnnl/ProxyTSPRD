@@ -17,7 +17,7 @@ print("[INFO] Tensorflow version: ", tf.__version__)
 import sys
 sys.path.append('../../')
 print(sys.path)
-    
+
 from proxy_apps.data_handler import grid_network
 from proxy_apps.apps.timeseries_prediction import deepDMDwithTF
 from proxy_apps.plot_lib.simple_plots import eigen_plot, validation_plot, heatmap_matplotlib
@@ -71,9 +71,8 @@ class NpEncoder(json.JSONEncoder):
         else:
             return super(NpEncoder, self).default(obj)
 
-
 _N_EPOCHS = int(sys.argv[1])
-_SUFFIX = 'e' + str(_N_EPOCHS) + '_TFData'
+_SUFFIX = 'e' + str(_N_EPOCHS) + '_TFDataOpt'
 keepN = 1000
 
 config = file_reader.read_config()
@@ -99,8 +98,10 @@ with options({'constant_folding': True}):
     l_start = time.time()
     list_files = tf.data.Dataset.from_tensor_slices(dir_list)
 
-    original_scenarios = list_files.map(convert_to_tensor)
-    trimmed_scenarios = original_scenarios.map(lambda scenario: tf.data.Dataset.from_tensor_slices(scenario).take(keepN))
+    original_scenarios = list_files.map(convert_to_tensor,
+                                        num_parallel_calls=tf.data.experimental.AUTOTUNE)
+    trimmed_scenarios = original_scenarios.map(lambda scenario: tf.data.Dataset.from_tensor_slices(scenario).take(keepN),
+                                        num_parallel_calls=tf.data.experimental.AUTOTUNE)
     l_stop = time.time()
     print('[INFO]: Time taken for loading datasets:', l_stop - l_start, 'seconds')
     # print('[INFO]: Total number of scenarios loaded:', len(scenario_data))
@@ -117,12 +118,18 @@ with options({'constant_folding': True}):
     M = 2 # signifies number of time-shifts
     N = 3 # signifies number of time-shifts
 
-    Yp_data = trimmed_scenarios.map(lambda window: window.take(keepN-1))
-    Yf_data = trimmed_scenarios.map(lambda window: window.skip(1))
-    window_X_data = trimmed_scenarios.map(lambda window: window.take(keepN-N).window(window_size, shift=shift, stride=stride, drop_remainder=True))
-    window_Y_data = trimmed_scenarios.map(lambda window: window.skip(1).window(window_size, shift=shift, stride=stride, drop_remainder=True))
-    window_U_data = trimmed_scenarios.map(lambda window: window.skip(M).window(window_size, shift=shift, stride=stride, drop_remainder=True))
-    window_V_data = trimmed_scenarios.map(lambda window: window.skip(N).window(window_size, shift=shift, stride=stride, drop_remainder=True))
+    Yp_data = trimmed_scenarios.map(lambda window: window.take(keepN-1),
+                                    num_parallel_calls=tf.data.experimental.AUTOTUNE)
+    Yf_data = trimmed_scenarios.map(lambda window: window.skip(1),
+                                    num_parallel_calls=tf.data.experimental.AUTOTUNE)
+    window_X_data = trimmed_scenarios.map(lambda window: window.take(keepN-N).window(window_size, shift=shift, stride=stride, drop_remainder=True),
+                                    num_parallel_calls=tf.data.experimental.AUTOTUNE)
+    window_Y_data = trimmed_scenarios.map(lambda window: window.skip(1).window(window_size, shift=shift, stride=stride, drop_remainder=True),
+                                    num_parallel_calls=tf.data.experimental.AUTOTUNE)
+    window_U_data = trimmed_scenarios.map(lambda window: window.skip(M).window(window_size, shift=shift, stride=stride, drop_remainder=True),
+                                    num_parallel_calls=tf.data.experimental.AUTOTUNE)
+    window_V_data = trimmed_scenarios.map(lambda window: window.skip(N).window(window_size, shift=shift, stride=stride, drop_remainder=True),
+                                    num_parallel_calls=tf.data.experimental.AUTOTUNE)
 
     for a in window_X_data.take(1): n_windows = a.cardinality().numpy()
     n_datapoints = len(dir_list) * n_windows * window_size
@@ -150,17 +157,23 @@ with options({'constant_folding': True}):
     flat_V_data = window_V_data.flat_map(lambda window: window.flat_map(lambda time_step: time_step))
     if normalization:
         flat_Yp_data = flat_Yp_data.map(lambda x: tf.concat([tf.math.multiply(tf.math.subtract(x[:68], 60), scale_factor), \
-                                                             tf.math.multiply(tf.math.subtract(x[68:], 1), 10)], axis=0))
+                                                             tf.math.multiply(tf.math.subtract(x[68:], 1), 10)], axis=0),
+                                        num_parallel_calls=tf.data.experimental.AUTOTUNE)
         flat_Yf_data = flat_Yf_data.map(lambda x: tf.concat([tf.math.multiply(tf.math.subtract(x[:68], 60), scale_factor), \
-                                                             tf.math.multiply(tf.math.subtract(x[68:], 1), 10)], axis=0))
+                                                             tf.math.multiply(tf.math.subtract(x[68:], 1), 10)], axis=0),
+                                        num_parallel_calls=tf.data.experimental.AUTOTUNE)
         flat_X_data = flat_X_data.map(lambda x: tf.concat([tf.math.multiply(tf.math.subtract(x[:68], 60), scale_factor), \
-                                                           tf.math.multiply(tf.math.subtract(x[68:], 1), 10)], axis=0))
+                                                           tf.math.multiply(tf.math.subtract(x[68:], 1), 10)], axis=0),
+                                        num_parallel_calls=tf.data.experimental.AUTOTUNE)
         flat_Y_data = flat_Y_data.map(lambda x: tf.concat([tf.math.multiply(tf.math.subtract(x[:68], 60), scale_factor), \
-                                                           tf.math.multiply(tf.math.subtract(x[68:], 1), 10)], axis=0))
+                                                           tf.math.multiply(tf.math.subtract(x[68:], 1), 10)], axis=0),
+                                        num_parallel_calls=tf.data.experimental.AUTOTUNE)
         flat_U_data = flat_U_data.map(lambda x: tf.concat([tf.math.multiply(tf.math.subtract(x[:68], 60), scale_factor), \
-                                                           tf.math.multiply(tf.math.subtract(x[68:], 1), 10)], axis=0))
+                                                           tf.math.multiply(tf.math.subtract(x[68:], 1), 10)], axis=0),
+                                        num_parallel_calls=tf.data.experimental.AUTOTUNE)
         flat_V_data = flat_V_data.map(lambda x: tf.concat([tf.math.multiply(tf.math.subtract(x[:68], 60), scale_factor), \
-                                                           tf.math.multiply(tf.math.subtract(x[68:], 1), 10)], axis=0))    
+                                                           tf.math.multiply(tf.math.subtract(x[68:], 1), 10)], axis=0),
+                                        num_parallel_calls=tf.data.experimental.AUTOTUNE)    
             
     n_stop = time.time()
     print('[INFO]: Time taken for normalization:', n_stop - n_start, 'seconds')
@@ -189,7 +202,7 @@ with options({'constant_folding': True}):
 
     # Stopping criteria if the training loss doesn't go down by 1e-3
     early_stop_cb = tf.keras.callbacks.EarlyStopping(
-        monitor='loss', min_delta = 1e-3, verbose = 1, mode='min', patience = 3, 
+        monitor='loss', min_delta=1e-3, verbose=1, mode='min', patience=3, 
         baseline=None, restore_best_weights=True)
 
     # Create a TensorBoard Profiler
@@ -204,8 +217,16 @@ with options({'constant_folding': True}):
     n_batches_training = int((1-hp.vs) * n_batches)
 
     zip_data = tf.data.Dataset.zip((flat_X_data, flat_Y_data)).batch(hp.bs)
+
     training_dataset = zip_data.take(n_batches_training)
+    training_dataset = training_dataset.cache()
+    training_dataset = training_dataset.shuffle(buffer_size=n_batches_training)
+    training_dataset = training_dataset.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
+
     val_dataset = zip_data.skip(n_batches_training)
+    val_dataset = val_dataset.cache()
+    val_dataset = val_dataset.shuffle(buffer_size=n_batches-n_batches_training)
+    val_dataset = val_dataset.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
 
     performance_dict["n_epochs"] = hp.ep
     performance_dict["batch_size"] = hp.bs
@@ -230,6 +251,9 @@ with options({'constant_folding': True}):
     # performance_dict['validation_loss'] = history.history['val_loss']
 
     test_data = tf.data.Dataset.zip((flat_Yp_data, flat_Yf_data)).batch(29970, drop_remainder=True)
+    test_data = test_data.cache()
+    test_data = test_data.shuffle(buffer_size=29970)
+    test_data = test_data.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
 
     inf_time_start = time.time()
 
