@@ -19,14 +19,20 @@ sys.path.append('../../')
 from proxy_apps.data_handler import grid_network
 from proxy_apps.apps.timeseries_prediction import deepDMD
 from proxy_apps.plot_lib.simple_plots import eigen_plot, validation_plot, heatmap_matplotlib
+from proxy_apps.utils import file_reader, path_handler
 
 N_EPOCHS = int(sys.argv[1])
+_SUFFIX = 'n' + str(_N_EPOCHS) + '_' + sys.argv[2]
+config = file_reader.read_config()
 
 timing_dict = dict()
 
 tic = time.time()
 
-scenario_dir = '../../../../data/TrainingDataIEEE68bus'
+# current directory
+curr_dir = os.path.dirname(os.path.realpath(__file__))
+output_dir = path_handler.get_absolute_path(curr_dir, config["info"]["output_dir"])
+scenario_dir = path_handler.get_absolute_path(curr_dir, config["info"]["input_dir"])
 print('[INFO]: Loading the datasets from the directory:', scenario_dir)
 dir_list = os.listdir(scenario_dir)
 # Indicate the scenario range
@@ -159,6 +165,7 @@ hyper_param_dict['learning_rate']      = 5e-4 # learning rate for optimizer
 hyper_param_dict['validation_split']   = 0.25
 hyper_param_dict['batch_size']         = 32
 
+# Timing callback to measure the timings
 class TimingCallback(tf.keras.callbacks.Callback):
     def __init__(self, logs={}):
         self.logs=[]
@@ -167,26 +174,35 @@ class TimingCallback(tf.keras.callbacks.Callback):
     def on_epoch_end(self, epoch, logs={}):
         self.logs.append(timer()-self.starttime)
 
-cb = TimingCallback()
-
-# Initialize Hyperparameters - we can keep it as a dict instead of creating a separate class
-m_start = time.time()
-hp = deepDMD.HyperParameters(hyper_param_dict)
+timing_cb = TimingCallback()
 
 # Stopping criteria if the training loss doesn't go down by 1e-3
 CallBack = tf.keras.callbacks.EarlyStopping(
     monitor='val_loss', min_delta = 1e-3, verbose = 1, mode='min', patience = 3, 
     baseline=None, restore_best_weights=True)
+
+# Create a TensorBoard Profiler
+# logs = "logs/" + datetime.now().strftime("%Y%m%d-%H%M%S")
+# tb_callback = tf.keras.callbacks.TensorBoard(log_dir=logs, profile_batch='20, 40')
+
+# Initialize Hyperparameters - we can keep it as a dict instead of creating a separate class
+m_start = time.time()
+hp = deepDMD.HyperParameters(hyper_param_dict)
+
+# Initialize, build, and fit the model
 K_model = deepDMD.NeuralNetworkModel(hp)
 K_model.compile(optimizer=tf.optimizers.Adagrad(hp.lr))
 history = K_model.fit([X_array, Y_array], validation_split = hp.vs, batch_size = hp.bs, 
-                   epochs=hp.ep, callbacks=[CallBack, cb], shuffle = True)
+                   epochs=hp.ep, callbacks=[CallBack, timing_cb], shuffle = True)
 m_stop = time.time()
+
+# print info
 print('[INFO]: Time taken for model training (time module):', m_stop - m_start, 'seconds')
-print('[INFO]: Time taken for model training (Keras):', sum(cb.logs), 'seconds')
+print('[INFO]: Time taken for model training (Keras):', sum(timing_cb.logs), 'seconds')
 
 timing_dict['model_training_time_module'] = (m_stop - m_start)/60
-timing_dict['model_training_time_keras'] = sum(cb.logs)/60
+timing_dict['model_training_time_keras'] = sum(timing_cb.logs)/60
+timing_dict['model_training_time_per_epoch'] = timing_cb.logs
 
-with open('../../../../data/timing.json', 'w') as fp:
+with open(path_handler.get_absolute_path(output_dir, "timing_" + _SUFFIX + ".json"), 'w') as fp:
     json.dump(timing_dict, fp)

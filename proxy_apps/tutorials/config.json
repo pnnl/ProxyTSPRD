@@ -1,0 +1,7 @@
+{
+	"info": {
+		"name": "deepDMD",
+		"input_dir": "../../../../data/TrainingDataIEEE68bus/",
+		"output_dir": "../../../../data/deepDMD/"
+	}
+}

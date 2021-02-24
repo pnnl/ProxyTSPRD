@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 def eigen_plot(e_real, e_imag, x_lim=(-1.2, 1.2), y_lim=(-1.2, 1.2), figsize=(6, 4), title="Eigenvalues", x_label="Real Part", y_label="Imaginary Part"):
 	fig, ax = plt.subplots(figsize=figsize)
 
-	ax.plot(e_real, e_real, '*')
+	ax.plot(e_real, e_imag, '*')
 	circle_plot = plt.Circle((0,0), 1, alpha=0.15, color='r', fill=True)
 	
 	ax.set_xlim(x_lim)
