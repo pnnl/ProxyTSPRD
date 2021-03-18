@@ -1,6 +1,7 @@
 # Standard Libraries
 import os
 import json
+import datetime
 import numpy as np
 import tensorflow as tf
 
@@ -10,34 +11,61 @@ from timeit import default_timer as timer
 tf.keras.backend.clear_session()
 tf.keras.backend.set_floatx('float64')
 print("[INFO] Tensorflow version: ", tf.__version__)
-print("[INFO] Eager mode: ", tf.executing_eagerly()) # For easy reset of notebook state.
+# print("[INFO] Eager mode: ", tf.executing_eagerly()) # For easy reset of notebook state.
 
 # Custom Library
 import sys
 sys.path.append('../../')
-
+print(sys.path)
+    
 from proxy_apps.data_handler import grid_network
 from proxy_apps.apps.timeseries_prediction import deepDMD
 from proxy_apps.plot_lib.simple_plots import eigen_plot, validation_plot, heatmap_matplotlib
 from proxy_apps.utils import file_reader, path_handler
 
-N_EPOCHS = int(sys.argv[1])
-_SUFFIX = 'n' + str(_N_EPOCHS) + '_' + sys.argv[2]
+# Timing callback to measure the timings
+class TimingCallback(tf.keras.callbacks.Callback):
+    def __init__(self, logs={}):
+        self.logs=[]
+    def on_epoch_begin(self, epoch, logs={}):
+        self.starttime = timer()
+    def on_epoch_end(self, epoch, logs={}):
+        self.logs.append(timer()-self.starttime)
+
+class NpEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        elif isinstance(obj, np.floating):
+            return float(obj)
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        else:
+            return super(NpEncoder, self).default(obj)
+
+_N_EPOCHS = int(sys.argv[1])
+_SUFFIX = 'e' + str(_N_EPOCHS) + '_Act'
 config = file_reader.read_config()
 
-timing_dict = dict()
+performance_dict = dict()
 
 tic = time.time()
 
 # current directory
 curr_dir = os.path.dirname(os.path.realpath(__file__))
-output_dir = path_handler.get_absolute_path(curr_dir, config["info"]["output_dir"])
+
+# input directory
 scenario_dir = path_handler.get_absolute_path(curr_dir, config["info"]["input_dir"])
 print('[INFO]: Loading the datasets from the directory:', scenario_dir)
 dir_list = os.listdir(scenario_dir)
 # Indicate the scenario range
 Dataset = dict()
 print('[INFO]: Loading data for %d scenarios ...' % len(dir_list))
+
+# output directory
+output_dir = path_handler.get_absolute_path(curr_dir, config["info"]["output_dir"])
+if not os.path.exists(output_dir): os.makedirs(output_dir)
+    
 l_start = time.time()
 scenario_data = []
 count = 0
@@ -57,7 +85,7 @@ print('[INFO]: Shape of each scenario original: ', original_shape)
 print('[INFO]: Shape of each scenario loaded: ', scenario_data[0].shape)
 print('[INFO]: Done ...')
 
-timing_dict['load_data'] = (l_stop - l_start)/60
+performance_dict['data_loading_time'] = (l_stop - l_start)
 
 i_start = time.time()
 X_data = [] # Original data
@@ -107,7 +135,7 @@ print('[INFO]: Chosen dataset size:', window_size)
 print('[INFO]: Length of X_data: ', len(X_data))
 print('[INFO]: Length of each window after down sampling: ', X_data[0].shape)
 
-timing_dict['create_data'] = (i_stop - i_start)/60
+performance_dict['data_processing_time'] = (i_stop - i_start)
 
 n_start = time.time()
 Normalization = 1
@@ -145,7 +173,7 @@ if Normalization:
 n_stop = time.time()
 print('[INFO]: Time taken for normalization:', n_stop - n_start, 'seconds')
 
-timing_dict['data_normalization'] = (n_stop - n_start)/60
+performance_dict['data_normalization_time'] = (n_stop - n_start)
 
 # Hyperparameters
 hyper_param_dict = dict()
@@ -156,53 +184,79 @@ hyper_param_dict['hl_3_dim']           = 64   # Hidden layer dimension
 hyper_param_dict['hl_4_dim']           = 64   # Hidden layer dimension
 # hyper_param_dict['hl_5_dim']           = 64   # Hidden layer dimension
 hyper_param_dict['latent_dim']         = 64 # Latent space dimension 
-hyper_param_dict['reg_factor']         = 0 # regularization weight for Koopman
+hyper_param_dict['reg_factor']         = 0.01 # regularization weight for Koopman
 hyper_param_dict['dropout_prob']       = 0.005  # dropout rate [regularization between hidden layers]
 hyper_param_dict['weight_regularizer'] = 0.001  # [L1] regularization weight for dense layer weights 
 hyper_param_dict['bias_regularizer']   = 0    # [L1] regularization bias for dense layer biases
-hyper_param_dict['num_epochs']         = N_EPOCHS  # Number of epochs 
+hyper_param_dict['num_epochs']         = _N_EPOCHS  # Number of epochs 
 hyper_param_dict['learning_rate']      = 5e-4 # learning rate for optimizer 
 hyper_param_dict['validation_split']   = 0.25
 hyper_param_dict['batch_size']         = 32
 
-# Timing callback to measure the timings
-class TimingCallback(tf.keras.callbacks.Callback):
-    def __init__(self, logs={}):
-        self.logs=[]
-    def on_epoch_begin(self, epoch, logs={}):
-        self.starttime = timer()
-    def on_epoch_end(self, epoch, logs={}):
-        self.logs.append(timer()-self.starttime)
-
 timing_cb = TimingCallback()
 
 # Stopping criteria if the training loss doesn't go down by 1e-3
-CallBack = tf.keras.callbacks.EarlyStopping(
-    monitor='val_loss', min_delta = 1e-3, verbose = 1, mode='min', patience = 3, 
+early_stop_cb = tf.keras.callbacks.EarlyStopping(
+    monitor='loss', min_delta = 1e-3, verbose = 1, mode='min', patience = 3, 
     baseline=None, restore_best_weights=True)
 
 # Create a TensorBoard Profiler
-# logs = "logs/" + datetime.now().strftime("%Y%m%d-%H%M%S")
-# tb_callback = tf.keras.callbacks.TensorBoard(log_dir=logs, profile_batch='20, 40')
+logs = path_handler.get_absolute_path(curr_dir, "../../../../logs/fit_v1/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
+tb_callback = tf.keras.callbacks.TensorBoard(log_dir=logs)
 
 # Initialize Hyperparameters - we can keep it as a dict instead of creating a separate class
-m_start = time.time()
 hp = deepDMD.HyperParameters(hyper_param_dict)
 
+performance_dict["n_epochs"] = hp.ep
+performance_dict["batch_size"] = hp.bs
+performance_dict["n_training_batches"] = 1 - hp.vs
+performance_dict["n_val_batches"] = hp.vs
+
 # Initialize, build, and fit the model
+m_start = time.time()
 K_model = deepDMD.NeuralNetworkModel(hp)
 K_model.compile(optimizer=tf.optimizers.Adagrad(hp.lr))
-history = K_model.fit([X_array, Y_array], validation_split = hp.vs, batch_size = hp.bs, 
-                   epochs=hp.ep, callbacks=[CallBack, timing_cb], shuffle = True)
+history = K_model.fit([X_array, Y_array], batch_size=hp.bs, 
+                   epochs=hp.ep, callbacks=[early_stop_cb, timing_cb, tb_callback], shuffle=True)
 m_stop = time.time()
 
 # print info
 print('[INFO]: Time taken for model training (time module):', m_stop - m_start, 'seconds')
 print('[INFO]: Time taken for model training (Keras):', sum(timing_cb.logs), 'seconds')
 
-timing_dict['model_training_time_module'] = (m_stop - m_start)/60
-timing_dict['model_training_time_keras'] = sum(timing_cb.logs)/60
-timing_dict['model_training_time_per_epoch'] = timing_cb.logs
+performance_dict['training_time_module'] = (m_stop - m_start)
+performance_dict['training_time_epoch_wise'] = timing_cb.logs
+performance_dict['training_loss'] = history.history['loss']
+# performance_dict['validation_loss'] = history.history['val_loss']
 
-with open(path_handler.get_absolute_path(output_dir, "timing_" + _SUFFIX + ".json"), 'w') as fp:
-    json.dump(timing_dict, fp)
+inf_time_start = time.time()
+
+Psi_X, PSI_X, Psi_Y, PSI_Y, Kloss = K_model([Yp_array, Yf_array], training=False)
+
+inf_time_stop = time.time()
+performance_dict["inference_size"] = 29970
+performance_dict["inference_time"] = inf_time_stop - inf_time_start
+performance_dict["test_Kloss_model"] = Kloss.numpy()
+
+print("Koopman loss: %.4f" %Kloss)
+
+print('Psi_X shape:', Psi_X.shape)
+print('Psi_Y shape:', Psi_Y.shape)
+print('PSI_X shape:', PSI_X.shape)
+print('PSI_X shape:', PSI_Y.shape)
+
+K_deepDMD = K_model.KO.numpy()
+
+print('[INFO]: Shape of Koopman operator', K_deepDMD.shape)
+print('[INFO]: Norm of Koopman operator', np.linalg.norm(K_deepDMD))
+print('[INFO]: Trace of K_deepDMD:',np.trace(K_deepDMD))
+print('[INFO]: One time-step error with K_deepDMD:', np.linalg.norm(PSI_Y - np.matmul(PSI_X, K_deepDMD), ord = 'fro'))
+
+[eigenvaluesK, eigenvectorsK] = np.linalg.eig(K_deepDMD)
+
+performance_dict["test_Kloss_calc"] = np.linalg.norm(PSI_Y - np.matmul(PSI_X, K_deepDMD), ord = 'fro')
+performance_dict["eigen_real"] = list(eigenvaluesK.real)
+performance_dict["eigen_imag"] = list(eigenvaluesK.imag)
+
+with open(path_handler.get_absolute_path(output_dir, "performance_" + _SUFFIX + ".json"), 'w') as fp:
+    json.dump(performance_dict, fp, cls=NpEncoder)

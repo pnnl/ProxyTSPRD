@@ -26,8 +26,7 @@ class NeuralNetworkModel(tf.keras.Model):
         self.loss_tracker = tf.keras.metrics.Mean(name="loss")
         
         # Define and randomly initialize the Koopman operator
-        self.KO = tf.Variable(tf.random.normal(shape = (hp.ld+hp.od, hp.ld+hp.od), mean=0.0, stddev=0.05, 
-                                                    dtype=tf.dtypes.float64, seed=123321, name='KoopmanOperator'),
+        self.KO = tf.Variable(tf.random.normal(shape = (hp.ld+hp.od, hp.ld+hp.od), dtype='float32', mean=0.0, stddev=0.05, seed=123321, name='KoopmanOperator'),
                                                     trainable=True)
         self.rf = hp.rf 
         
@@ -49,7 +48,7 @@ class NeuralNetworkModel(tf.keras.Model):
             K_loss   = tf.norm(PSI_Y - K_PSI_X, axis = [0,1], ord = 'fro')
 
             # Regularization loss on Koopman operator:
-            Reg_loss= tf.cast(tf.math.scalar_mul(self.rf, tf.norm(self.KO, axis = [0,1], ord = 'fro')), dtype = 'float64')        
+            Reg_loss= tf.math.scalar_mul(self.rf, tf.norm(self.KO, axis = [0,1], ord = 'fro'))        
         
             # Total loss:
             loss = K_loss + Reg_loss
@@ -95,7 +94,7 @@ class NeuralNetworkModel(tf.keras.Model):
         K_loss   = tf.norm(PSI_Y - K_PSI_X, axis = [0,1], ord = 'fro')
 
         # Regularization loss on Koopman operator:
-        Reg_loss= tf.cast(tf.math.scalar_mul(self.rf, tf.norm(self.KO, axis = [0,1], ord = 'fro')), dtype = 'float64')        
+        Reg_loss= tf.math.scalar_mul(self.rf, tf.norm(self.KO, axis = [0,1], ord = 'fro'))        
 
         # Total loss:
         loss = K_loss + Reg_loss
@@ -125,13 +124,13 @@ class NeuralNetworkModel(tf.keras.Model):
         K_loss   = tf.norm(PSI_Y - K_PSI_X, axis = [0,1], ord = 'fro')
         
         # Regularization loss on Koopman operator:
-        Reg_loss= tf.cast(tf.math.scalar_mul(self.rf, tf.norm(self.KO, axis = [0,1], ord = 'fro')), dtype = 'float64')        
+        Reg_loss= tf.math.scalar_mul(self.rf, tf.norm(self.KO, axis = [0,1], ord = 'fro'))        
 
         return Psi_X, PSI_X, Psi_Y, PSI_Y, K_loss
 
 class Encoder(tf.keras.Model):
     def __init__(self, hps):
-        super(Encoder, self).__init__(dtype = 'float64', name = 'Encoder')
+        super(Encoder, self).__init__(name = 'Encoder')
         self.input_layer   = DenseLayer(hps.h1, 0.0, 0.0)
         self.hidden_layer1 = DenseLayer(hps.h2, hps.wr, hps.br)
         self.dropout_laye1 = tf.keras.layers.Dropout(hps.dr)
@@ -157,12 +156,12 @@ class Encoder(tf.keras.Model):
 #         fx = self.hidden_layer4(fx)
 #         if training:
 #             fx = self.dropout_laye4(fx)
-        return self.output_layer(fx)    
+        return tf.cast(self.output_layer(fx), dtype='float32')    
 
 class LinearLayer(tf.keras.layers.Layer):
 
     def __init__(self, units, weights_regularizer, bias_regularizer):
-        super(LinearLayer, self).__init__(dtype = 'float64')
+        super(LinearLayer, self).__init__()
         self.units = units
         self.weights_regularizer = weights_regularizer
         self.bias_regularizer = bias_regularizer
@@ -171,8 +170,8 @@ class LinearLayer(tf.keras.layers.Layer):
         input_dim = input_shape[-1]
         self.w = self.add_weight(shape = (input_dim, self.units), 
                                 initializer = tf.keras.initializers.RandomUniform(
-                                minval=-tf.cast(tf.math.sqrt(6/(input_dim+self.units)), dtype = 'float64'), 
-                                maxval=tf.cast(tf.math.sqrt(6/(input_dim+self.units)), dtype = 'float64'), 
+                                minval=-tf.math.sqrt(6/(input_dim+self.units)), 
+                                maxval=tf.math.sqrt(6/(input_dim+self.units)), 
                                 seed=16751),                                                                   
 #                               regularizer = tf.keras.regularizers.l1(self.weights_regularizer), 
                                 trainable = True)
@@ -187,7 +186,7 @@ class LinearLayer(tf.keras.layers.Layer):
 class DenseLayer(tf.keras.layers.Layer):
 
     def __init__(self, units, weights_regularizer, bias_regularizer):
-        super(DenseLayer, self).__init__(dtype = 'float64')
+        super(DenseLayer, self).__init__()
         self.units = units
         self.weights_regularizer = weights_regularizer
         self.bias_regularizer = bias_regularizer
@@ -196,8 +195,8 @@ class DenseLayer(tf.keras.layers.Layer):
         input_dim = input_shape[-1]
         self.w = self.add_weight(shape = (input_dim, self.units), 
                                  initializer = tf.keras.initializers.RandomUniform(
-                                     minval=-tf.cast(tf.math.sqrt(6.0/(input_dim+self.units)), dtype = 'float64'),  
-                                     maxval=tf.cast(tf.math.sqrt(6.0/(input_dim+self.units)) , dtype = 'float64'),  
+                                     minval=-tf.math.sqrt(6.0/(input_dim+self.units)),  
+                                     maxval=tf.math.sqrt(6.0/(input_dim+self.units)),  
                                      seed=16751), 
                                  regularizer = tf.keras.regularizers.l1(self.weights_regularizer), 
                                  trainable = True)

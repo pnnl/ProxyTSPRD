@@ -1,0 +1,136 @@
+Now you should run one of the following depending on your shell
+source /share/apps/python/anaconda3.2019.3/etc/profile.d/conda.sh
+source /share/apps/python/anaconda3.2019.3/etc/profile.d/conda.csh
+2021-03-18 01:24:30.819911: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-03-18 01:24:38.983011: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-03-18 01:24:38.984107: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcuda.so.1
+2021-03-18 01:24:39.154623: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:a3:00.0 name: A100-PCIE-40GB computeCapability: 8.0
+coreClock: 1.41GHz coreCount: 108 deviceMemorySize: 39.59GiB deviceMemoryBandwidth: 1.41TiB/s
+2021-03-18 01:24:39.156937: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 1 with properties: 
+pciBusID: 0000:a4:00.0 name: A100-PCIE-40GB computeCapability: 8.0
+coreClock: 1.41GHz coreCount: 108 deviceMemorySize: 39.59GiB deviceMemoryBandwidth: 1.41TiB/s
+2021-03-18 01:24:39.156969: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-03-18 01:24:39.166552: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-03-18 01:24:39.166584: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-03-18 01:24:39.170343: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-03-18 01:24:39.171985: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-03-18 01:24:39.175531: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-03-18 01:24:39.179309: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-03-18 01:24:39.183629: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-03-18 01:24:39.192288: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0, 1
+2021-03-18 01:24:39.192707: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-03-18 01:24:39.195002: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-03-18 01:24:39.203688: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-03-18 01:24:39.208321: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-03-18 01:24:39.386699: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:a3:00.0 name: A100-PCIE-40GB computeCapability: 8.0
+coreClock: 1.41GHz coreCount: 108 deviceMemorySize: 39.59GiB deviceMemoryBandwidth: 1.41TiB/s
+2021-03-18 01:24:39.388813: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 1 with properties: 
+pciBusID: 0000:a4:00.0 name: A100-PCIE-40GB computeCapability: 8.0
+coreClock: 1.41GHz coreCount: 108 deviceMemorySize: 39.59GiB deviceMemoryBandwidth: 1.41TiB/s
+2021-03-18 01:24:39.388857: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-03-18 01:24:39.388886: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-03-18 01:24:39.388896: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-03-18 01:24:39.388911: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-03-18 01:24:39.388921: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-03-18 01:24:39.388929: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-03-18 01:24:39.388937: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-03-18 01:24:39.388947: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-03-18 01:24:39.397445: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0, 1
+2021-03-18 01:24:39.397534: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-03-18 01:24:40.088414: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-03-18 01:24:40.088491: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      0 1 
+2021-03-18 01:24:40.088500: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 0:   N Y 
+2021-03-18 01:24:40.088504: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 1:   Y N 
+2021-03-18 01:24:40.098225: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 37571 MB memory) -> physical GPU (device: 0, name: A100-PCIE-40GB, pci bus id: 0000:a3:00.0, compute capability: 8.0)
+2021-03-18 01:24:40.102934: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:1 with 37571 MB memory) -> physical GPU (device: 1, name: A100-PCIE-40GB, pci bus id: 0000:a4:00.0, compute capability: 8.0)
+2021-03-18 01:24:43.449703: I tensorflow/core/profiler/lib/profiler_session.cc:136] Profiler session initializing.
+2021-03-18 01:24:43.449762: I tensorflow/core/profiler/lib/profiler_session.cc:155] Profiler session started.
+2021-03-18 01:24:43.449797: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1365] Profiler found 2 GPUs
+2021-03-18 01:24:43.452407: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcupti.so.11.0'; dlerror: libcupti.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /share/apps/cuda/11.0/lib:/share/apps/cuda/11.0/lib64:/usr/lib64/:/share/apps/python/anaconda3.2019.3/lib:/share/apps/cuda/11.0/lib64/stubs
+2021-03-18 01:24:43.455200: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcupti.so
+2021-03-18 01:24:43.709748: I tensorflow/core/profiler/lib/profiler_session.cc:172] Profiler session tear down.
+2021-03-18 01:24:43.709948: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1487] CUPTI activity buffer flushed
+2021-03-18 01:24:46.495018: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
+2021-03-18 01:24:46.496134: I tensorflow/core/platform/profile_utils/cpu_utils.cc:112] CPU Frequency: 2500035000 Hz
+2021-03-18 01:24:55.491817: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-03-18 01:24:56.035330: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-03-18 01:24:56.596426: I tensorflow/stream_executor/cuda/cuda_blas.cc:1838] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2021-03-18 01:24:56.821283: I tensorflow/core/profiler/lib/profiler_session.cc:136] Profiler session initializing.
+2021-03-18 01:24:56.821326: I tensorflow/core/profiler/lib/profiler_session.cc:155] Profiler session started.
+2021-03-18 01:24:57.238353: I tensorflow/core/profiler/lib/profiler_session.cc:71] Profiler session collecting data.
+2021-03-18 01:24:57.239788: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1487] CUPTI activity buffer flushed
+2021-03-18 01:24:57.357567: I tensorflow/core/profiler/internal/gpu/cupti_collector.cc:228]  GpuTracer has collected 592 callback api events and 584 activity events. 
+2021-03-18 01:24:57.377366: I tensorflow/core/profiler/lib/profiler_session.cc:172] Profiler session tear down.
+2021-03-18 01:24:57.405870: I tensorflow/core/profiler/rpc/client/save_profile.cc:137] Creating directory: /qfs/people/jain432/pacer/logs/fit_v3/20210318-012443/train/plugins/profile/2021_03_18_01_24_57
+2021-03-18 01:24:57.426743: I tensorflow/core/profiler/rpc/client/save_profile.cc:143] Dumped gzipped tool data for trace.json.gz to /qfs/people/jain432/pacer/logs/fit_v3/20210318-012443/train/plugins/profile/2021_03_18_01_24_57/a100-05.trace.json.gz
+2021-03-18 01:24:57.450766: I tensorflow/core/profiler/rpc/client/save_profile.cc:137] Creating directory: /qfs/people/jain432/pacer/logs/fit_v3/20210318-012443/train/plugins/profile/2021_03_18_01_24_57
+2021-03-18 01:24:57.462530: I tensorflow/core/profiler/rpc/client/save_profile.cc:143] Dumped gzipped tool data for memory_profile.json.gz to /qfs/people/jain432/pacer/logs/fit_v3/20210318-012443/train/plugins/profile/2021_03_18_01_24_57/a100-05.memory_profile.json.gz
+2021-03-18 01:24:57.501660: I tensorflow/core/profiler/rpc/client/capture_profile.cc:251] Creating directory: /qfs/people/jain432/pacer/logs/fit_v3/20210318-012443/train/plugins/profile/2021_03_18_01_24_57Dumped tool data for xplane.pb to /qfs/people/jain432/pacer/logs/fit_v3/20210318-012443/train/plugins/profile/2021_03_18_01_24_57/a100-05.xplane.pb
+Dumped tool data for overview_page.pb to /qfs/people/jain432/pacer/logs/fit_v3/20210318-012443/train/plugins/profile/2021_03_18_01_24_57/a100-05.overview_page.pb
+Dumped tool data for input_pipeline.pb to /qfs/people/jain432/pacer/logs/fit_v3/20210318-012443/train/plugins/profile/2021_03_18_01_24_57/a100-05.input_pipeline.pb
+Dumped tool data for tensorflow_stats.pb to /qfs/people/jain432/pacer/logs/fit_v3/20210318-012443/train/plugins/profile/2021_03_18_01_24_57/a100-05.tensorflow_stats.pb
+Dumped tool data for kernel_stats.pb to /qfs/people/jain432/pacer/logs/fit_v3/20210318-012443/train/plugins/profile/2021_03_18_01_24_57/a100-05.kernel_stats.pb
+
+WARNING:tensorflow:Callback method `on_train_batch_begin` is slow compared to the batch time (batch time: 0.0059s vs `on_train_batch_begin` time: 0.0676s). Check your callbacks.
+WARNING:tensorflow:Callback method `on_train_batch_end` is slow compared to the batch time (batch time: 0.0059s vs `on_train_batch_end` time: 0.0535s). Check your callbacks.
+Traceback (most recent call last):
+  File "./TimeSeriesPrediction_GenMPMGPU.py", line 273, in <module>
+    Psi_X, PSI_X, Psi_Y, PSI_Y, Kloss = K_model.predict(test_generator)
+  File "/people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/keras/engine/training.py", line 1629, in predict
+    tmp_batch_outputs = self.predict_function(iterator)
+  File "/people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/eager/def_function.py", line 828, in __call__
+    result = self._call(*args, **kwds)
+  File "/people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/eager/def_function.py", line 871, in _call
+    self._initialize(args, kwds, add_initializers_to=initializers)
+  File "/people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/eager/def_function.py", line 726, in _initialize
+    *args, **kwds))
+  File "/people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/eager/function.py", line 2969, in _get_concrete_function_internal_garbage_collected
+    graph_function, _ = self._maybe_define_function(args, kwargs)
+  File "/people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/eager/function.py", line 3361, in _maybe_define_function
+    graph_function = self._create_graph_function(args, kwargs)
+  File "/people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/eager/function.py", line 3206, in _create_graph_function
+    capture_by_value=self._capture_by_value),
+  File "/people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/framework/func_graph.py", line 990, in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+  File "/people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/eager/def_function.py", line 634, in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+  File "/people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/framework/func_graph.py", line 977, in wrapper
+    raise e.ag_error_metadata.to_exception(e)
+ValueError: in user code:
+
+    /people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/keras/engine/training.py:1478 predict_function  *
+        return step_function(self, iterator)
+    /people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/keras/engine/training.py:1470 step_function  **
+        outputs, self.distribute_strategy, reduction='concat')
+    /people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/keras/engine/training.py:2707 reduce_per_replica
+        return nest.map_structure(_reduce, values)
+    /people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/util/nest.py:659 map_structure
+        structure[0], [func(*x) for x in entries],
+    /people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/util/nest.py:659 <listcomp>
+        structure[0], [func(*x) for x in entries],
+    /people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/keras/engine/training.py:2703 _reduce
+        return concat(strategy.unwrap(v))
+    /people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/keras/engine/training.py:2716 concat
+        return array_ops.concat(tensors, axis=axis)
+    /people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/util/dispatch.py:201 wrapper
+        return target(*args, **kwargs)
+    /people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/ops/array_ops.py:1677 concat
+        return gen_array_ops.concat_v2(values=values, axis=axis, name=name)
+    /people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/ops/gen_array_ops.py:1208 concat_v2
+        "ConcatV2", values=values, axis=axis, name=name)
+    /people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:750 _apply_op_helper
+        attrs=attr_protos, op_def=op_def)
+    /people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/framework/func_graph.py:592 _create_op_internal
+        compute_device)
+    /people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/framework/ops.py:3536 _create_op_internal
+        op_def=op_def)
+    /people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/framework/ops.py:2016 __init__
+        control_input_ops, op_def)
+    /people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/tensorflow/python/framework/ops.py:1856 _create_c_op
+        raise ValueError(str(e))
+
+    ValueError: Can't concatenate scalars (use tf.stack instead) for '{{node concat_6}} = ConcatV2[N=2, T=DT_FLOAT, Tidx=DT_INT32](norm/Squeeze, replica_1/norm/Squeeze, concat_6/axis)' with input shapes: [], [], [].
+
