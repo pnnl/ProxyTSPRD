@@ -140,11 +140,8 @@ with options({'constant_folding': True}):
 
     i_stop = time.time()
     print('[INFO]: Time taken for creating X datasets:', i_stop - i_start, 'seconds')
-    # print('[INFO]: Original dataset size:', dataset_size)
     print('[INFO]: Chosen dataset size:', window_size)
-    # print('[INFO]: Length of X_data: ', len(X_data))
-    # print('[INFO]: Length of each window after down sampling: ', X_data[0].shape)
-
+    
     performance_dict['data_processing_time'] = (i_stop - i_start)
 
     n_start = time.time()

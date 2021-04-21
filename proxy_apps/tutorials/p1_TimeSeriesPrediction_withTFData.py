@@ -72,7 +72,6 @@ class NpEncoder(json.JSONEncoder):
         else:
             return super(NpEncoder, self).default(obj)
 
-
 _N_EPOCHS = int(sys.argv[1])
 _SUFFIX = 'e' + str(_N_EPOCHS) + '_TFData'
 keepN = 1000
@@ -107,9 +106,6 @@ with options({'constant_folding': True}):
     trimmed_scenarios = original_scenarios.map(lambda scenario: tf.data.Dataset.from_tensor_slices(scenario).take(keepN))
     l_stop = time.time()
     print('[INFO]: Time taken for loading datasets:', l_stop - l_start, 'seconds')
-    # print('[INFO]: Total number of scenarios loaded:', len(scenario_data))
-    # print('[INFO]: Shape of each scenario original: ', original_shape)
-    # print('[INFO]: Shape of each scenario loaded: ', scenario_data[0].shape)
     print('[INFO]: Done ...')
 
     performance_dict['data_loading_time'] = (l_stop - l_start)
@@ -133,11 +129,8 @@ with options({'constant_folding': True}):
 
     i_stop = time.time()
     print('[INFO]: Time taken for creating X datasets:', i_stop - i_start, 'seconds')
-    # print('[INFO]: Original dataset size:', dataset_size)
     print('[INFO]: Chosen dataset size:', window_size)
-    # print('[INFO]: Length of X_data: ', len(X_data))
-    # print('[INFO]: Length of each window after down sampling: ', X_data[0].shape)
-
+    
     performance_dict['data_processing_time'] = (i_stop - i_start)
 
     n_start = time.time()
