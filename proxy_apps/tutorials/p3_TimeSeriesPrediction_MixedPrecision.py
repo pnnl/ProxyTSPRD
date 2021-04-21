@@ -1,3 +1,5 @@
+# ------------------------------- IMPORT MODULES & SETUP ------------------------------------------------
+
 # Standard Libraries
 import os
 import json
@@ -27,6 +29,7 @@ from proxy_apps.utils import file_reader, path_handler
 policy = tf.keras.mixed_precision.Policy('mixed_float16')
 tf.keras.mixed_precision.set_global_policy(policy)
 
+# ------------------------------- CUSTOM FUNCTIONS ------------------------------------------------
 def get_data(t: tf.string):
     # fetch directory name
     s_dir = t.numpy().decode('utf-8')
@@ -75,6 +78,7 @@ class NpEncoder(json.JSONEncoder):
         else:
             return super(NpEncoder, self).default(obj)
 
+# ------------------------------- PATH & LOGGER SETUP ------------------------------------------------
 _N_EPOCHS = int(sys.argv[1])
 _SUFFIX = 'e' + str(_N_EPOCHS) + '_TFDataOptMP'
 keepN = 1000
@@ -102,6 +106,7 @@ output_dir = path_handler.get_absolute_path(curr_dir, config["info"]["output_dir
 if not os.path.exists(output_dir): os.makedirs(output_dir)
 
 with options({'constant_folding': True}):
+    # ------------------------------- DATA LOADING ------------------------------------------------
     l_start = time.time()
     list_files = tf.data.Dataset.from_tensor_slices(dir_list)
 
@@ -115,6 +120,7 @@ with options({'constant_folding': True}):
 
     performance_dict['data_loading_time'] = (l_stop - l_start)
 
+    # ------------------------------- DATA PREPROCESSING ------------------------------------------------
     i_start = time.time()
     window_size = 800
     shift = 10
@@ -144,6 +150,7 @@ with options({'constant_folding': True}):
     
     performance_dict['data_processing_time'] = (i_stop - i_start)
 
+    # ------------------------------- DATA NORMALIZATION ------------------------------------------------
     n_start = time.time()
     scale_factor = 2 * np.pi 
     normalization = 1
@@ -181,6 +188,7 @@ with options({'constant_folding': True}):
 
     performance_dict['data_normalization_time'] = (n_stop - n_start)
 
+    # ------------------------------- MODEL SETUP ------------------------------------------------
     # Hyperparameters
     hyper_param_dict = dict()
     hyper_param_dict['original_dim']       = 136   # input data dimension
@@ -234,6 +242,7 @@ with options({'constant_folding': True}):
     performance_dict["n_training_batches"] = n_batches_training
     performance_dict["n_val_batches"] = n_batches - n_batches_training
 
+    # ------------------------------- MODEL TRAINING ------------------------------------------------
     # Initialize, build, and fit the model
     m_start = time.time()
     K_model = deepDMDwithTF.NeuralNetworkModel(hp)
@@ -250,40 +259,6 @@ with options({'constant_folding': True}):
     performance_dict['training_time_epoch_wise'] = timing_cb.logs
     performance_dict['training_loss'] = history.history['loss']
     # performance_dict['validation_loss'] = history.history['val_loss']
-
-    test_data = tf.data.Dataset.zip((flat_Yp_data, flat_Yf_data)).batch(29970, drop_remainder=True)
-    test_data = test_data.cache()
-    test_data = test_data.shuffle(buffer_size=29970)
-    test_data = test_data.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
-
-    inf_time_start = time.time()
-
-    Psi_X, PSI_X, Psi_Y, PSI_Y, Kloss = K_model.predict(test_data)
-
-    inf_time_stop = time.time()
-    performance_dict["inference_size"] = 29970
-    performance_dict["inference_time"] = inf_time_stop - inf_time_start
-    performance_dict["test_Kloss_model"] = Kloss
-
-print("Koopman loss: %.4f" %Kloss)
-
-print('Psi_X shape:', Psi_X.shape)
-print('Psi_Y shape:', Psi_Y.shape)
-print('PSI_X shape:', PSI_X.shape)
-print('PSI_X shape:', PSI_Y.shape)
-
-K_deepDMD = K_model.KO.numpy()
-
-print('[INFO]: Shape of Koopman operator', K_deepDMD.shape)
-print('[INFO]: Norm of Koopman operator', np.linalg.norm(K_deepDMD))
-print('[INFO]: Trace of K_deepDMD:',np.trace(K_deepDMD))
-print('[INFO]: One time-step error with K_deepDMD:', np.linalg.norm(PSI_Y - np.matmul(PSI_X, K_deepDMD), ord = 'fro'))
-
-[eigenvaluesK, eigenvectorsK] = np.linalg.eig(K_deepDMD)
-
-performance_dict["test_Kloss_calc"] = np.linalg.norm(PSI_Y - np.matmul(PSI_X, K_deepDMD), ord = 'fro')
-performance_dict["eigen_real"] = list(eigenvaluesK.real)
-performance_dict["eigen_imag"] = list(eigenvaluesK.imag)
 
 with open(path_handler.get_absolute_path(output_dir, "performance_" + _SUFFIX + ".json"), 'w') as fp:
     json.dump(performance_dict, fp, cls=NpEncoder)

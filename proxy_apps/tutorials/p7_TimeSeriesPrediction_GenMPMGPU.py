@@ -1,3 +1,5 @@
+# ------------------------------- IMPORT MODULES & SETUP ------------------------------------------------
+
 # Standard Libraries
 import os
 import json
@@ -26,6 +28,7 @@ from proxy_apps.utils import file_reader, path_handler
 policy = tf.keras.mixed_precision.Policy('mixed_float16')
 tf.keras.mixed_precision.set_global_policy(policy)
 
+# ------------------------------- CUSTOM FUNCTIONS ------------------------------------------------
 # Timing callback to measure the timings
 class TimingCallback(tf.keras.callbacks.Callback):
     def __init__(self, logs={}):
@@ -69,6 +72,7 @@ class DatasetGeneratorV2(tf.data.Dataset):
             args=(X, Y, scale_factor, norm,)
         )
 
+# ------------------------------- PATH & LOGGER SETUP ------------------------------------------------
 _N_EPOCHS = int(sys.argv[1])
 _SUFFIX = 'e' + str(_N_EPOCHS) + '_TFDataGen_MP_MGPU'
 keepN = 1000
@@ -107,7 +111,7 @@ mirrored_strategy = tf.distribute.MirroredStrategy()
 options = tf.data.Options()
 options.experimental_distribute.auto_shard_policy = tf.data.experimental.AutoShardPolicy.DATA
 
-# ------------------------------- LOAD DATA ------------------------------------------------
+# ------------------------------- DATA LOADING ------------------------------------------------
 l_start = time.time()
 scenario_data = []
 count = 0
@@ -129,7 +133,7 @@ print('[INFO]: Done ...')
 
 performance_dict['data_loading_time'] = (l_stop - l_start)
 
-# ------------------------------- CREATE DATA WINDOWS ------------------------------------------------
+# ------------------------------- DATA PREPROCESSING ------------------------------------------------
 i_start = time.time()
 X_data = [] # Original data
 Y_data = [] # 1 time-shifted data
@@ -175,8 +179,7 @@ print('[INFO]: Length of each window after down sampling: ', X_data[0].shape)
 performance_dict['data_processing_time'] = (i_stop - i_start)
 
 
-# ------------------------------- DATA PREPROCESSING ------------------------------------------------
-
+# ------------------------------- DATA NORMALIZATION ------------------------------------------------
 X_array = np.asarray(X_data).transpose(2,0,1).reshape(dataset.shape[1],-1).transpose()
 Y_array = np.asarray(Y_data).transpose(2,0,1).reshape(dataset.shape[1],-1).transpose()
 U_array = np.asarray(U_data).transpose(2,0,1).reshape(dataset.shape[1],-1).transpose()
@@ -192,7 +195,7 @@ print('[INFO]: Y_array shape: ', Y_array.shape)
 print('[INFO]: U_array shape: ', U_array.shape)
 print('[INFO]: V_array shape: ', V_array.shape)
 
-
+# ------------------------------- MODEL SETUP ------------------------------------------------
 # Hyperparameters
 hyper_param_dict = dict()
 hyper_param_dict['original_dim']       = 136   # input data dimension
@@ -246,6 +249,7 @@ performance_dict["batch_size"] = hp.bs
 performance_dict["n_training_batches"] = n_batches_training
 performance_dict["n_val_batches"] = n_batches - n_batches_training
 
+# ------------------------------- MODEL TRAINING ------------------------------------------------
 # Initialize, build, and fit the model
 m_start = time.time()
 with mirrored_strategy.scope():
@@ -264,38 +268,6 @@ performance_dict['training_time_module'] = (m_stop - m_start)
 performance_dict['training_time_epoch_wise'] = timing_cb.logs
 performance_dict['training_loss'] = history.history['loss']
 # performance_dict['validation_loss'] = history.history['val_loss']
-
-test_generator = DatasetGeneratorV2(Yp_array, Yf_array, scale_factor=SCALE_FACTOR, norm=NORM)
-test_generator = test_generator.with_options(options).batch(29970, drop_remainder=True).cache().prefetch(tf.data.AUTOTUNE)
-
-inf_time_start = time.time()
-
-Psi_X, PSI_X, Psi_Y, PSI_Y, Kloss = K_model.predict(test_generator)
-
-inf_time_stop = time.time()
-performance_dict["inference_size"] = 29970
-performance_dict["inference_time"] = inf_time_stop - inf_time_start
-performance_dict["test_Kloss_model"] = Kloss
-
-print("Koopman loss: %.4f" %Kloss)
-
-print('Psi_X shape:', Psi_X.shape)
-print('Psi_Y shape:', Psi_Y.shape)
-print('PSI_X shape:', PSI_X.shape)
-print('PSI_X shape:', PSI_Y.shape)
-
-K_deepDMD = K_model.KO.numpy()
-
-print('[INFO]: Shape of Koopman operator', K_deepDMD.shape)
-print('[INFO]: Norm of Koopman operator', np.linalg.norm(K_deepDMD))
-print('[INFO]: Trace of K_deepDMD:',np.trace(K_deepDMD))
-print('[INFO]: One time-step error with K_deepDMD:', np.linalg.norm(PSI_Y - np.matmul(PSI_X, K_deepDMD), ord = 'fro'))
-
-[eigenvaluesK, eigenvectorsK] = np.linalg.eig(K_deepDMD)
-
-performance_dict["test_Kloss_calc"] = np.linalg.norm(PSI_Y - np.matmul(PSI_X, K_deepDMD), ord = 'fro')
-performance_dict["eigen_real"] = list(eigenvaluesK.real)
-performance_dict["eigen_imag"] = list(eigenvaluesK.imag)
 
 with open(path_handler.get_absolute_path(output_dir, "performance_" + _SUFFIX + ".json"), 'w') as fp:
     json.dump(performance_dict, fp, cls=NpEncoder)

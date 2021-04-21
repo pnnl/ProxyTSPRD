@@ -1,3 +1,5 @@
+# ------------------------------- IMPORT MODULES & SETUP ------------------------------------------------
+
 # Standard Libraries
 import os
 import json
@@ -23,6 +25,7 @@ from proxy_apps.apps.timeseries_prediction import deepDMD
 from proxy_apps.plot_lib.simple_plots import eigen_plot, validation_plot, heatmap_matplotlib
 from proxy_apps.utils import file_reader, path_handler
 
+# ------------------------------- CUSTOM FUNCTIONS ------------------------------------------------
 # Timing callback to measure the timings
 class TimingCallback(tf.keras.callbacks.Callback):
     def __init__(self, logs={}):
@@ -43,6 +46,7 @@ class NpEncoder(json.JSONEncoder):
         else:
             return super(NpEncoder, self).default(obj)
 
+# ------------------------------- PATH & LOGGER SETUP ------------------------------------------------
 _N_EPOCHS = int(sys.argv[1])
 _SUFFIX = 'e' + str(_N_EPOCHS) + '_Act'
 config = file_reader.read_config()
@@ -65,7 +69,8 @@ print('[INFO]: Loading data for %d scenarios ...' % len(dir_list))
 # output directory
 output_dir = path_handler.get_absolute_path(curr_dir, config["info"]["output_dir"])
 if not os.path.exists(output_dir): os.makedirs(output_dir)
-    
+
+# ------------------------------- DATA LOADING ------------------------------------------------    
 l_start = time.time()
 scenario_data = []
 count = 0
@@ -87,6 +92,7 @@ print('[INFO]: Done ...')
 
 performance_dict['data_loading_time'] = (l_stop - l_start)
 
+# ------------------------------- DATA PREPROCESSING ------------------------------------------------
 i_start = time.time()
 X_data = [] # Original data
 Y_data = [] # 1 time-shifted data
@@ -137,6 +143,7 @@ print('[INFO]: Length of each window after down sampling: ', X_data[0].shape)
 
 performance_dict['data_processing_time'] = (i_stop - i_start)
 
+# ------------------------------- DATA NORMALIZATION ------------------------------------------------
 n_start = time.time()
 Normalization = 1
 scale_factor = 2*np.pi 
@@ -175,6 +182,7 @@ print('[INFO]: Time taken for normalization:', n_stop - n_start, 'seconds')
 
 performance_dict['data_normalization_time'] = (n_stop - n_start)
 
+# ------------------------------- MODEL SETUP ------------------------------------------------
 # Hyperparameters
 hyper_param_dict = dict()
 hyper_param_dict['original_dim']       = 136   # input data dimension
@@ -212,6 +220,7 @@ performance_dict["batch_size"] = hp.bs
 performance_dict["n_training_batches"] = 1 - hp.vs
 performance_dict["n_val_batches"] = hp.vs
 
+# ------------------------------- MODEL TRAINING ------------------------------------------------
 # Initialize, build, and fit the model
 m_start = time.time()
 K_model = deepDMD.NeuralNetworkModel(hp)
@@ -229,34 +238,6 @@ performance_dict['training_time_epoch_wise'] = timing_cb.logs
 performance_dict['training_loss'] = history.history['loss']
 # performance_dict['validation_loss'] = history.history['val_loss']
 
-inf_time_start = time.time()
-
-Psi_X, PSI_X, Psi_Y, PSI_Y, Kloss = K_model([Yp_array, Yf_array], training=False)
-
-inf_time_stop = time.time()
-performance_dict["inference_size"] = 29970
-performance_dict["inference_time"] = inf_time_stop - inf_time_start
-performance_dict["test_Kloss_model"] = Kloss.numpy()
-
-print("Koopman loss: %.4f" %Kloss)
-
-print('Psi_X shape:', Psi_X.shape)
-print('Psi_Y shape:', Psi_Y.shape)
-print('PSI_X shape:', PSI_X.shape)
-print('PSI_X shape:', PSI_Y.shape)
-
-K_deepDMD = K_model.KO.numpy()
-
-print('[INFO]: Shape of Koopman operator', K_deepDMD.shape)
-print('[INFO]: Norm of Koopman operator', np.linalg.norm(K_deepDMD))
-print('[INFO]: Trace of K_deepDMD:',np.trace(K_deepDMD))
-print('[INFO]: One time-step error with K_deepDMD:', np.linalg.norm(PSI_Y - np.matmul(PSI_X, K_deepDMD), ord = 'fro'))
-
-[eigenvaluesK, eigenvectorsK] = np.linalg.eig(K_deepDMD)
-
-performance_dict["test_Kloss_calc"] = np.linalg.norm(PSI_Y - np.matmul(PSI_X, K_deepDMD), ord = 'fro')
-performance_dict["eigen_real"] = list(eigenvaluesK.real)
-performance_dict["eigen_imag"] = list(eigenvaluesK.imag)
-
+# ------------------------------- SAVE PERFORMANCE DICT ------------------------------------------------
 with open(path_handler.get_absolute_path(output_dir, "performance_" + _SUFFIX + ".json"), 'w') as fp:
     json.dump(performance_dict, fp, cls=NpEncoder)
