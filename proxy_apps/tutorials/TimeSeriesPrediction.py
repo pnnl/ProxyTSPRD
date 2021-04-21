@@ -1,6 +1,7 @@
 # Standard Libraries
 import os
 import json
+import datetime
 import numpy as np
 import tensorflow as tf
 
@@ -16,7 +17,7 @@ print("[INFO] Tensorflow version: ", tf.__version__)
 import sys
 sys.path.append('../../')
 print(sys.path)
-
+    
 from proxy_apps.data_handler import grid_network
 from proxy_apps.apps.timeseries_prediction import deepDMD
 from proxy_apps.plot_lib.simple_plots import eigen_plot, validation_plot, heatmap_matplotlib
@@ -52,13 +53,19 @@ tic = time.time()
 
 # current directory
 curr_dir = os.path.dirname(os.path.realpath(__file__))
-output_dir = path_handler.get_absolute_path(curr_dir, config["info"]["output_dir"])
+
+# input directory
 scenario_dir = path_handler.get_absolute_path(curr_dir, config["info"]["input_dir"])
 print('[INFO]: Loading the datasets from the directory:', scenario_dir)
 dir_list = os.listdir(scenario_dir)
 # Indicate the scenario range
 Dataset = dict()
 print('[INFO]: Loading data for %d scenarios ...' % len(dir_list))
+
+# output directory
+output_dir = path_handler.get_absolute_path(curr_dir, config["info"]["output_dir"])
+if not os.path.exists(output_dir): os.makedirs(output_dir)
+    
 l_start = time.time()
 scenario_data = []
 count = 0
@@ -194,8 +201,8 @@ early_stop_cb = tf.keras.callbacks.EarlyStopping(
     baseline=None, restore_best_weights=True)
 
 # Create a TensorBoard Profiler
-# logs = "logs/" + datetime.now().strftime("%Y%m%d-%H%M%S")
-# tb_callback = tf.keras.callbacks.TensorBoard(log_dir=logs, profile_batch='20, 40')
+logs = path_handler.get_absolute_path(curr_dir, "../../../../logs/fit_v1/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
+tb_callback = tf.keras.callbacks.TensorBoard(log_dir=logs)
 
 # Initialize Hyperparameters - we can keep it as a dict instead of creating a separate class
 hp = deepDMD.HyperParameters(hyper_param_dict)
@@ -210,7 +217,7 @@ m_start = time.time()
 K_model = deepDMD.NeuralNetworkModel(hp)
 K_model.compile(optimizer=tf.optimizers.Adagrad(hp.lr))
 history = K_model.fit([X_array, Y_array], batch_size=hp.bs, 
-                   epochs=hp.ep, callbacks=[early_stop_cb, timing_cb], shuffle=True)
+                   epochs=hp.ep, callbacks=[early_stop_cb, timing_cb, tb_callback], shuffle=True)
 m_stop = time.time()
 
 # print info

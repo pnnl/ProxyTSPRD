@@ -1,6 +1,7 @@
 # Standard Libraries
 import os
 import json
+import datetime
 import contextlib
 import numpy as np
 import tensorflow as tf
@@ -9,7 +10,7 @@ import time
 from timeit import default_timer as timer
 
 tf.keras.backend.clear_session()
-tf.keras.backend.set_floatx('float64')
+tf.keras.backend.set_floatx('float32')
 print("[INFO] Tensorflow version: ", tf.__version__)
 # print("[INFO] Eager mode: ", tf.executing_eagerly()) # For easy reset of notebook state.
 
@@ -38,7 +39,7 @@ def get_data(t: tf.string):
 
 @tf.function
 def convert_to_tensor(i):
-    d = tf.py_function(func=get_data, inp=[i], Tout=tf.float64)
+    d = tf.py_function(func=get_data, inp=[i], Tout=tf.float32)
     d.set_shape(tf.TensorShape([1400, 136]))
     return d
 
@@ -86,7 +87,6 @@ tic = time.time()
 curr_dir = os.path.dirname(os.path.realpath(__file__))
 
 # load data and print list of files
-output_dir = path_handler.get_absolute_path(curr_dir, config["info"]["output_dir"])
 scenario_dir = path_handler.get_absolute_path(curr_dir, config["info"]["input_dir"])
 print('[INFO]: Loading the datasets from the directory:', scenario_dir)
 dir_list = os.listdir(scenario_dir)
@@ -94,6 +94,10 @@ dir_list = os.listdir(scenario_dir)
 # Indicate the scenario range
 Dataset = dict()
 print('[INFO]: Loading data for %d scenarios ...' % len(dir_list))
+
+# output directory
+output_dir = path_handler.get_absolute_path(curr_dir, config["info"]["output_dir"])
+if not os.path.exists(output_dir): os.makedirs(output_dir)
 
 with options({'constant_folding': True}):
     l_start = time.time()
@@ -193,8 +197,8 @@ with options({'constant_folding': True}):
         baseline=None, restore_best_weights=True)
 
     # Create a TensorBoard Profiler
-    # logs = path_handler.init_directory(config["info"]["output_dir"], "logs_" + _SUFFIX)
-    # tb_callback = tf.keras.callbacks.TensorBoard(log_dir=logs, histogram_freq=1)
+    logs = path_handler.get_absolute_path(curr_dir, "../../../../logs/fit_v2/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
+    tb_callback = tf.keras.callbacks.TensorBoard(log_dir=logs)
 
     # Initialize Hyperparameters - we can keep it as a dict instead of creating a separate class
     hp = deepDMDwithTF.HyperParameters(hyper_param_dict)
@@ -217,7 +221,7 @@ with options({'constant_folding': True}):
     K_model = deepDMDwithTF.NeuralNetworkModel(hp)
     K_model.compile(optimizer=tf.optimizers.Adagrad(hp.lr))
     history = K_model.fit(training_dataset, 
-                       epochs=hp.ep, callbacks=[early_stop_cb, timing_cb], shuffle=True)
+                       epochs=hp.ep, callbacks=[early_stop_cb, timing_cb, tb_callback], shuffle=True)
     m_stop = time.time()
 
     # print info
