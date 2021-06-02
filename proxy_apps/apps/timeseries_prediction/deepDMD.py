@@ -89,14 +89,16 @@ class LinearLayer(tf.keras.layers.Layer):
 
     def __init__(self, units, input_dim, weights_regularizer, bias_regularizer):
         super(LinearLayer, self).__init__(dtype = 'float64')
-        self.w = self.add_weight(shape = (input_dim, units), 
+        self.w = self.add_weight(name='w_linear',
+                                shape = (input_dim, units), 
                                 initializer = tf.keras.initializers.RandomUniform(
                                 minval=-tf.cast(tf.math.sqrt(6/(input_dim+units)), dtype = 'float64'), 
                                 maxval=tf.cast(tf.math.sqrt(6/(input_dim+units)), dtype = 'float64'), 
                                 seed=16751),                                                                   
 #                               regularizer = tf.keras.regularizers.l1(weights_regularizer), 
                                 trainable = True)
-        self.b = self.add_weight(shape = (units,),    
+        self.b = self.add_weight(name='b_linear',
+                                 shape = (units,),    
                                  initializer = tf.zeros_initializer(),
                                  regularizer = tf.keras.regularizers.l1(bias_regularizer),
                                  trainable = True)
@@ -108,14 +110,16 @@ class DenseLayer(tf.keras.layers.Layer):
 
     def __init__(self, units, input_dim, weights_regularizer, bias_regularizer):
         super(DenseLayer, self).__init__(dtype = 'float64')
-        self.w = self.add_weight(shape = (input_dim, units), 
+        self.w = self.add_weight(name='w_dense',
+                                 shape = (input_dim, units), 
                                  initializer = tf.keras.initializers.RandomUniform(
                                      minval=-tf.cast(tf.math.sqrt(6.0/(input_dim+units)), dtype = 'float64'),  
                                      maxval=tf.cast(tf.math.sqrt(6.0/(input_dim+units)) , dtype = 'float64'),  
                                      seed=16751), 
                                  regularizer = tf.keras.regularizers.l1(weights_regularizer), 
                                  trainable = True)
-        self.b = self.add_weight(shape = (units,),    
+        self.b = self.add_weight(name='b_dense',
+                                 shape = (units,),    
                                  initializer = tf.zeros_initializer(),
                                  regularizer = tf.keras.regularizers.l1(bias_regularizer),
                                  trainable = True)
