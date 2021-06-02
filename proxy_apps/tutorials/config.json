@@ -2,6 +2,25 @@
 	"info": {
 		"name": "deepDMD",
 		"input_dir": "../../../../data/TrainingDataIEEE68bus/",
-		"output_dir": "../../../../data/deepDMD/v3/"
+		"output_dir": "../../../../data/deepDMD/v3/",
+		"tb_log_dir": "../../../../logs/fit_v1/"
+	}, 
+	"model": {
+		"hyperparameters": {
+			"original_dim"		 : 136,
+			"hl_1_dim"           : 128,
+			"hl_2_dim"           : 128,
+			"hl_3_dim"           : 64,
+			"hl_4_dim"           : 64,
+			"latent_dim"         : 64, 
+			"reg_factor"         : 0.01,
+			"dropout_prob"       : 0.005,
+			"weight_regularizer" : 0.001, 
+			"bias_regularizer"   : 0,
+			"num_epochs"         : 50, 
+			"learning_rate"      : 5e-4, 
+			"validation_split"   : 0.25,
+			"batch_size"         : 32
+		}
 	}
 }
