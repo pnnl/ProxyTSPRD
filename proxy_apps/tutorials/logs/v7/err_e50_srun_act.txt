@@ -1,0 +1,67 @@
+Now you should run one of the following depending on your shell
+source /share/apps/python/anaconda3.2019.3/etc/profile.d/conda.sh
+source /share/apps/python/anaconda3.2019.3/etc/profile.d/conda.csh
+2021-05-13 00:28:35.724321: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-05-13 00:28:47.449139: I tensorflow/core/profiler/lib/profiler_session.cc:136] Profiler session initializing.
+2021-05-13 00:28:47.450059: I tensorflow/core/profiler/lib/profiler_session.cc:155] Profiler session started.
+2021-05-13 00:28:47.451339: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcuda.so.1
+2021-05-13 00:28:47.606101: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1365] Profiler found 1 GPUs
+2021-05-13 00:28:47.611871: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcupti.so.11.0'; dlerror: libcupti.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /share/apps/cuda/11.0/lib:/share/apps/cuda/11.0/lib64:/usr/lib64/:/share/apps/python/anaconda3.2019.3/lib:/share/apps/cuda/11.0/lib64/stubs
+2021-05-13 00:28:47.614361: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcupti.so
+2021-05-13 00:28:47.615129: I tensorflow/core/profiler/lib/profiler_session.cc:172] Profiler session tear down.
+2021-05-13 00:28:47.615189: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1487] CUPTI activity buffer flushed
+2021-05-13 00:28:47.724421: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-05-13 00:28:47.726856: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:07:00.0 name: A100-SXM4-40GB computeCapability: 8.0
+coreClock: 1.41GHz coreCount: 108 deviceMemorySize: 39.59GiB deviceMemoryBandwidth: 1.41TiB/s
+2021-05-13 00:28:47.726876: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-05-13 00:28:47.740948: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-05-13 00:28:47.740975: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-05-13 00:28:47.744497: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-05-13 00:28:47.746008: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-05-13 00:28:47.748593: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-05-13 00:28:47.756089: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-05-13 00:28:47.763051: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-05-13 00:28:47.767529: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-05-13 00:28:47.768170: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-05-13 00:28:47.782588: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-05-13 00:28:47.784837: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:07:00.0 name: A100-SXM4-40GB computeCapability: 8.0
+coreClock: 1.41GHz coreCount: 108 deviceMemorySize: 39.59GiB deviceMemoryBandwidth: 1.41TiB/s
+2021-05-13 00:28:47.784860: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-05-13 00:28:47.784882: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-05-13 00:28:47.784900: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-05-13 00:28:47.784909: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-05-13 00:28:47.784918: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-05-13 00:28:47.784926: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-05-13 00:28:47.784934: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-05-13 00:28:47.784942: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-05-13 00:28:47.789193: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-05-13 00:28:47.789220: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-05-13 00:28:48.312477: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-05-13 00:28:48.312530: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      0 
+2021-05-13 00:28:48.312538: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 0:   N 
+2021-05-13 00:28:48.319099: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 37571 MB memory) -> physical GPU (device: 0, name: A100-SXM4-40GB, pci bus id: 0000:07:00.0, compute capability: 8.0)
+2021-05-13 00:28:49.051624: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
+2021-05-13 00:28:49.052188: I tensorflow/core/platform/profile_utils/cpu_utils.cc:112] CPU Frequency: 2245805000 Hz
+2021-05-13 00:28:49.856787: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-05-13 00:28:50.495988: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-05-13 00:28:50.531800: I tensorflow/core/profiler/lib/profiler_session.cc:136] Profiler session initializing.
+2021-05-13 00:28:50.531838: I tensorflow/core/profiler/lib/profiler_session.cc:155] Profiler session started.
+WARNING:tensorflow:Callback method `on_train_batch_begin` is slow compared to the batch time (batch time: 0.0031s vs `on_train_batch_begin` time: 0.0490s). Check your callbacks.
+WARNING:tensorflow:Callback method `on_train_batch_end` is slow compared to the batch time (batch time: 0.0031s vs `on_train_batch_end` time: 0.0035s). Check your callbacks.
+2021-05-13 00:28:50.869557: I tensorflow/core/profiler/lib/profiler_session.cc:71] Profiler session collecting data.
+2021-05-13 00:28:50.874695: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1487] CUPTI activity buffer flushed
+2021-05-13 00:28:50.993159: I tensorflow/core/profiler/internal/gpu/cupti_collector.cc:228]  GpuTracer has collected 2405 callback api events and 2357 activity events. 
+2021-05-13 00:28:51.059882: I tensorflow/core/profiler/lib/profiler_session.cc:172] Profiler session tear down.
+2021-05-13 00:28:51.127530: I tensorflow/core/profiler/rpc/client/save_profile.cc:137] Creating directory: /qfs/people/jain432/pacer/logs/fit_v7/e50_Act_20210513-002842/train/plugins/profile/2021_05_13_00_28_51
+2021-05-13 00:28:51.185877: I tensorflow/core/profiler/rpc/client/save_profile.cc:143] Dumped gzipped tool data for trace.json.gz to /qfs/people/jain432/pacer/logs/fit_v7/e50_Act_20210513-002842/train/plugins/profile/2021_05_13_00_28_51/a100-01.trace.json.gz
+2021-05-13 00:28:51.227164: I tensorflow/core/profiler/rpc/client/save_profile.cc:137] Creating directory: /qfs/people/jain432/pacer/logs/fit_v7/e50_Act_20210513-002842/train/plugins/profile/2021_05_13_00_28_51
+2021-05-13 00:28:51.241322: I tensorflow/core/profiler/rpc/client/save_profile.cc:143] Dumped gzipped tool data for memory_profile.json.gz to /qfs/people/jain432/pacer/logs/fit_v7/e50_Act_20210513-002842/train/plugins/profile/2021_05_13_00_28_51/a100-01.memory_profile.json.gz
+2021-05-13 00:28:51.297130: I tensorflow/core/profiler/rpc/client/capture_profile.cc:251] Creating directory: /qfs/people/jain432/pacer/logs/fit_v7/e50_Act_20210513-002842/train/plugins/profile/2021_05_13_00_28_51Dumped tool data for xplane.pb to /qfs/people/jain432/pacer/logs/fit_v7/e50_Act_20210513-002842/train/plugins/profile/2021_05_13_00_28_51/a100-01.xplane.pb
+Dumped tool data for overview_page.pb to /qfs/people/jain432/pacer/logs/fit_v7/e50_Act_20210513-002842/train/plugins/profile/2021_05_13_00_28_51/a100-01.overview_page.pb
+Dumped tool data for input_pipeline.pb to /qfs/people/jain432/pacer/logs/fit_v7/e50_Act_20210513-002842/train/plugins/profile/2021_05_13_00_28_51/a100-01.input_pipeline.pb
+Dumped tool data for tensorflow_stats.pb to /qfs/people/jain432/pacer/logs/fit_v7/e50_Act_20210513-002842/train/plugins/profile/2021_05_13_00_28_51/a100-01.tensorflow_stats.pb
+Dumped tool data for kernel_stats.pb to /qfs/people/jain432/pacer/logs/fit_v7/e50_Act_20210513-002842/train/plugins/profile/2021_05_13_00_28_51/a100-01.kernel_stats.pb
+
