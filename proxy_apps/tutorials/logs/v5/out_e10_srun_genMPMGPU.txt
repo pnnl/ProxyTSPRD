@@ -1,24 +1,0 @@
-[INFO] Tensorflow version:  2.4.1
-['/qfs/people/jain432/pacer/code/src/proxy_apps/tutorials', '/people/jain432/.conda/envs/pacer_ml_grid/lib/python37.zip', '/people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7', '/people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/lib-dynload', '/people/jain432/.local/lib/python3.7/site-packages', '/people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages', '/people/jain432/.conda/envs/pacer_ml_grid/lib/python3.7/site-packages/locket-0.2.1-py3.7.egg', '../../']
-[INFO]: Loading the datasets from the directory: /qfs/people/jain432/pacer/data/TrainingDataIEEE68bus
-[INFO]: Loading data for 30 scenarios ...
-[INFO]: Time taken for loading datasets: 2.862844467163086 seconds
-[INFO]: Total number of scenarios loaded: 30
-[INFO]: Shape of each scenario original:  (1400, 136)
-[INFO]: Shape of each scenario loaded:  (1000, 136)
-[INFO]: Done ...
-[INFO]: Time taken for creating X datasets: 0.7873601913452148 seconds
-[INFO]: Original dataset size: 1000
-[INFO]: Chosen dataset size: 800
-[INFO]: Length of X_data:  600
-[INFO]: Length of each window after down sampling:  (800, 136)
-[INFO]: whole_data_array shape: (30000, 136)
-[INFO]: Yp_array shape:  (29970, 136)
-[INFO]: Yf_array shape:  (29970, 136)
-[INFO]: X_array shape:  (480000, 136)
-[INFO]: Y_array shape:  (480000, 136)
-[INFO]: U_array shape:  (480000, 136)
-[INFO]: V_array shape:  (480000, 136)
-[INFO]: Time taken for normalization and creating a data generator: 0.1567065715789795 seconds
-Epoch 1/20
-      1/Unknown - 26s 26s/step - loss: 11.3434      2/Unknown - 27s 242ms/step - loss: 10.8865      5/Unknown - 30s 1s/step - loss: 10.1039         8/Unknown - 31s 587ms/step - loss: 9.6885     11/Unknown - 31s 417ms/step - loss: 9.4102     14/Unknown - 31s 326ms/step - loss: 9.1900
