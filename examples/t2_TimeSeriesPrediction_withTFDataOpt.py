@@ -9,6 +9,7 @@ import numpy as np
 import tensorflow as tf
 
 import time
+import nvtx
 
 tf.keras.backend.clear_session()
 tf.keras.backend.set_floatx('float32')
@@ -42,15 +43,19 @@ os.environ["TF_GPU_THREAD_MODE"] = "gpu_private"
 
 config = file_reader.read_config()
 
+_PLATFORM = config["model"]["platform"]
 _N_EPOCHS = int(config["model"]["n_epochs"])
 _BATCH_SIZE = int(config["model"]["batch_size"])
 _VERSION = config["model"]["version"]
 _NROWS = int(config["data"]["n_rows"])
 _NCOLS = int(config["data"]["n_cols"])
-_REPEAT = int(config["data"]["repeat"])
+_REPEAT_COLS = int(config["data"]["repeat_cols"])
 
 _LABEL = '_TFDataOpt'
-_SUFFIX = 'e' + str(_N_EPOCHS) + _LABEL + "_" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+_SUFFIX = _PLATFORM + '_' + \
+            'e' + str(_N_EPOCHS) + '_' + \
+            'b' + str(_BATCH_SIZE) + '_' + \
+            'r' + str(_REPEAT_COLS) + _LABEL
 
 performance_dict = dict()
 
@@ -60,7 +65,7 @@ tic = time.time()
 curr_dir = os.path.dirname(os.path.realpath(__file__))
 
 # output directory
-output_dir = path_handler.get_absolute_path(curr_dir, config["info"]["output_dir"] + '/' + _VERSION + '/')
+output_dir = path_handler.get_absolute_path(curr_dir, config["info"]["output_dir"])
 if not os.path.exists(output_dir): os.makedirs(output_dir)
 
 with options({'constant_folding': True}):
@@ -139,6 +144,40 @@ with options({'constant_folding': True}):
     performance_dict['training_time_epoch_wise'] = timing_cb.logs
     performance_dict['training_loss'] = history.history['loss']
     # performance_dict['validation_loss'] = history.history['val_loss']
+    
+    test_data = tf.data.Dataset.zip((flat_Yp_data, flat_Yf_data)).batch(29970, drop_remainder=True)
+    test_data = test_data.cache()
+    test_data = test_data.shuffle(buffer_size=29970)
+    test_data = test_data.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
+
+    inf_time_start = time.time()
+
+    Psi_X, PSI_X, Psi_Y, PSI_Y, Kloss = K_model.predict(test_data)
+
+    inf_time_stop = time.time()
+    performance_dict["inference_size"] = 29970
+    performance_dict["inference_time"] = inf_time_stop - inf_time_start
+    performance_dict["test_Kloss_model"] = Kloss
+
+print("Koopman loss: %.4f" %Kloss)
+
+print('Psi_X shape:', Psi_X.shape)
+print('Psi_Y shape:', Psi_Y.shape)
+print('PSI_X shape:', PSI_X.shape)
+print('PSI_X shape:', PSI_Y.shape)
+
+K_deepDMD = K_model.KO.numpy()
+
+print('[INFO]: Shape of Koopman operator', K_deepDMD.shape)
+print('[INFO]: Norm of Koopman operator', np.linalg.norm(K_deepDMD))
+print('[INFO]: Trace of K_deepDMD:',np.trace(K_deepDMD))
+print('[INFO]: One time-step error with K_deepDMD:', np.linalg.norm(PSI_Y - np.matmul(PSI_X, K_deepDMD), ord = 'fro'))
+
+[eigenvaluesK, eigenvectorsK] = np.linalg.eig(K_deepDMD)
+
+performance_dict["test_Kloss_calc"] = np.linalg.norm(PSI_Y - np.matmul(PSI_X, K_deepDMD), ord = 'fro')
+performance_dict["eigen_real"] = list(eigenvaluesK.real)
+performance_dict["eigen_imag"] = list(eigenvaluesK.imag)
 
 with open(path_handler.get_absolute_path(output_dir, "performance_" + _SUFFIX + ".json"), 'w') as fp:
     json.dump(performance_dict, fp, cls=NpEncoder)
