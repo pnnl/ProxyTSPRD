@@ -1,3 +1,4 @@
+import pdb
 import tensorflow as tf
 
 class HyperParameters():
@@ -33,7 +34,9 @@ class NeuralNetworkModel(tf.keras.Model):
         
     def call(self, inputs):       
         X        = inputs[0]
-        Y        = inputs[1]                  
+        Y        = inputs[1] 
+        # tf.print(tf.shape(X), tf.shape(Y))
+        # pdb.set_trace()               
         
         Psi_X    = self.encoder(X)
         Psi_Y    = self.encoder(Y)        
@@ -52,6 +55,8 @@ class NeuralNetworkModel(tf.keras.Model):
         
         # Total loss:
         loss = K_loss + Reg_loss 
+        # tf.print("K Loss: ", K_loss, "Reg Loss: ", Reg_loss, "Total Loss: ", loss)
+        
         self.add_loss(loss)
         return Psi_X, PSI_X, Psi_Y, PSI_Y, K_loss
 

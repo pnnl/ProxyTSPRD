@@ -322,12 +322,12 @@ class GridNetworkDataHandler():
     def scale_data(self, X_data, Y_data, U_data, V_data, Yp, Yf, scale_factor=2*np.pi, norm=True):
     	n_start = time.time()
 
-    	X_array = np.asarray(X_data).transpose(2,0,1).reshape(self.n_cols,-1).transpose()
-    	Y_array = np.asarray(Y_data).transpose(2,0,1).reshape(self.n_cols,-1).transpose()
-    	U_array = np.asarray(U_data).transpose(2,0,1).reshape(self.n_cols,-1).transpose()
-    	V_array = np.asarray(V_data).transpose(2,0,1).reshape(self.n_cols,-1).transpose()
-    	Yp_array = np.asarray(Yp).transpose(2,0,1).reshape(self.n_cols,-1).transpose()
-    	Yf_array = np.asarray(Yf).transpose(2,0,1).reshape(self.n_cols,-1).transpose()
+    	X_array = np.asarray(X_data).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
+    	Y_array = np.asarray(Y_data).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
+    	U_array = np.asarray(U_data).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
+    	V_array = np.asarray(V_data).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
+    	Yp_array = np.asarray(Yp).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
+    	Yf_array = np.asarray(Yf).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
     	print('[INFO]: Yp_array shape: ', Yp_array.shape)
     	print('[INFO]: Yf_array shape: ', Yf_array.shape)
     	print('[INFO]: X_array shape: ', X_array.shape)
@@ -342,12 +342,12 @@ class GridNetworkDataHandler():
     	    V_array_old  = V_array
     	    Yp_array_old = Yp_array
     	    Yf_array_old = Yf_array
-    	    X_array      = np.concatenate((scale_factor*(X_array_old[:,:int(self.n_cols/2)] - 60), 10*(X_array_old[:,int(self.n_cols/2):] - 1)), axis = 1) 
-    	    Y_array      = np.concatenate((scale_factor*(Y_array_old[:,:int(self.n_cols/2)] - 60), 10*(Y_array_old[:,int(self.n_cols/2):] - 1)), axis = 1) 
-    	    U_array      = np.concatenate((scale_factor*(U_array_old[:,:int(self.n_cols/2)] - 60), 10*(U_array_old[:,int(self.n_cols/2):] - 1)), axis = 1) 
-    	    V_array      = np.concatenate((scale_factor*(V_array_old[:,:int(self.n_cols/2)] - 60), 10*(V_array_old[:,int(self.n_cols/2):] - 1)), axis = 1) 
-    	    Yp_array     = np.concatenate((scale_factor*(Yp_array_old[:,:int(self.n_cols/2)] - 60), 10*(Yp_array_old[:,int(self.n_cols/2):] - 1)), axis = 1)
-    	    Yf_array     = np.concatenate((scale_factor*(Yf_array_old[:,:int(self.n_cols/2)] - 60), 10*(Yf_array_old[:,int(self.n_cols/2):] - 1)), axis = 1)    
+    	    X_array      = np.concatenate((scale_factor*(X_array_old[:,:self.repeat_cols*int(self.n_cols/2)] - 60), 10*(X_array_old[:,self.repeat_cols*int(self.n_cols/2):] - 1)), axis = 1) 
+    	    Y_array      = np.concatenate((scale_factor*(Y_array_old[:,:self.repeat_cols*int(self.n_cols/2)] - 60), 10*(Y_array_old[:,self.repeat_cols*int(self.n_cols/2):] - 1)), axis = 1) 
+    	    U_array      = np.concatenate((scale_factor*(U_array_old[:,:self.repeat_cols*int(self.n_cols/2)] - 60), 10*(U_array_old[:,self.repeat_cols*int(self.n_cols/2):] - 1)), axis = 1) 
+    	    V_array      = np.concatenate((scale_factor*(V_array_old[:,:self.repeat_cols*int(self.n_cols/2)] - 60), 10*(V_array_old[:,self.repeat_cols*int(self.n_cols/2):] - 1)), axis = 1) 
+    	    Yp_array     = np.concatenate((scale_factor*(Yp_array_old[:,:self.repeat_cols*int(self.n_cols/2)] - 60), 10*(Yp_array_old[:,self.repeat_cols*int(self.n_cols/2):] - 1)), axis = 1)
+    	    Yf_array     = np.concatenate((scale_factor*(Yf_array_old[:,:self.repeat_cols*int(self.n_cols/2)] - 60), 10*(Yf_array_old[:,self.repeat_cols*int(self.n_cols/2):] - 1)), axis = 1)    
     	        
     	n_stop = time.time()
     	print('[INFO]: Time taken for normalization:', n_stop - n_start, 'seconds')
@@ -355,12 +355,13 @@ class GridNetworkDataHandler():
     	return X_array, Y_array, U_array, V_array, Yp_array, Yf_array, n_stop-n_start
 
 class GridNetworkTFDataHandler():
-    def __init__(self, scenario_dir, n_rows=1000, n_cols=136, repeat_cols=1, n_scenarios=50):
+    def __init__(self, scenario_dir, dtype, n_rows=1000, n_cols=136, repeat_cols=1, n_scenarios=50):
         self.scenario_dir = scenario_dir
         self.n_rows = n_rows 
         self.n_cols = n_cols
         self.repeat_cols = repeat_cols 
         self.n_scenarios = n_scenarios
+        self.dtype = dtype
 
 
     def get_data(self, t: tf.string):
@@ -374,18 +375,16 @@ class GridNetworkTFDataHandler():
         raw_data = np.concatenate([dataset.F for i in range(self.repeat_cols)] +  
                                   [dataset.Vm for i in range(self.repeat_cols)], axis=1)
         
-        self.n_cols = dataset.F.shape[1]
-
         # return data
         return raw_data
 
     @tf.function
     def convert_to_tensor(self, i):
-        d = tf.py_function(func=self.get_data, inp=[i], Tout=tf.float32)
+        d = tf.py_function(func=self.get_data, inp=[i], Tout=self.dtype)
         d.set_shape(tf.TensorShape([self.n_rows, self.repeat_cols * self.n_cols]))
         return d
 
-    def load_grid_data(self, num_parallel_calls=None):
+    def load_grid_data(self, num_parallel_calls=tf.data.experimental.AUTOTUNE):
         l_start = time.time()
         
         # load data and print list of files
@@ -409,7 +408,7 @@ class GridNetworkTFDataHandler():
 
         return trimmed_scenarios, l_stop - l_start
 
-    def create_windows(self, trimmed_scenarios, stride=1, M=2, N=3, window_size=800, shift_size=10, num_parallel_calls=None):
+    def create_windows(self, trimmed_scenarios, stride=1, M=2, N=3, window_size=800, shift_size=10, num_parallel_calls=tf.data.experimental.AUTOTUNE):
         i_start = time.time()
         
         Yp_data = trimmed_scenarios.map(lambda window: window.take(self.n_rows-1), num_parallel_calls=num_parallel_calls)
@@ -431,7 +430,7 @@ class GridNetworkTFDataHandler():
 
         return window_X_data, window_Y_data, window_U_data, window_V_data, Yp_data, Yf_data, i_stop - i_start
 
-    def scale_data(self, window_X_data, window_Y_data, window_U_data, window_V_data, Yp_data, Yf_data, scale_factor=2*np.pi, norm=True, num_parallel_calls=None):
+    def scale_data(self, window_X_data, window_Y_data, window_U_data, window_V_data, Yp_data, Yf_data, scale_factor=2*np.pi, norm=True, num_parallel_calls=tf.data.experimental.AUTOTUNE):
         n_start = time.time()
         
         flat_Yp_data = Yp_data.flat_map(lambda time_step: time_step)
@@ -441,6 +440,7 @@ class GridNetworkTFDataHandler():
         flat_Y_data = window_Y_data.flat_map(lambda window: window.flat_map(lambda time_step: time_step))
         flat_U_data = window_U_data.flat_map(lambda window: window.flat_map(lambda time_step: time_step))
         flat_V_data = window_V_data.flat_map(lambda window: window.flat_map(lambda time_step: time_step))
+
         if norm:
             flat_Yp_data = flat_Yp_data.map(lambda x: tf.concat([tf.math.multiply(tf.math.subtract(x[:self.repeat_cols*int(self.n_cols/2)], 60), scale_factor), \
                                                                  tf.math.multiply(tf.math.subtract(x[self.repeat_cols*int(self.n_cols/2):], 1), 10)], axis=0), num_parallel_calls=num_parallel_calls)

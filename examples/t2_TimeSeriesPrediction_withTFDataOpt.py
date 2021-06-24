@@ -145,7 +145,7 @@ with options({'constant_folding': True}):
     performance_dict['training_loss'] = history.history['loss']
     # performance_dict['validation_loss'] = history.history['val_loss']
     
-    test_data = tf.data.Dataset.zip((flat_Yp_data, flat_Yf_data)).batch(29970, drop_remainder=True)
+    test_data = tf.data.Dataset.zip((Yp_array, Yf_data)).batch(29970, drop_remainder=True)
     test_data = test_data.cache()
     test_data = test_data.shuffle(buffer_size=29970)
     test_data = test_data.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)

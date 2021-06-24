@@ -12,6 +12,8 @@ import tensorflow as tf
 import time
 import nvtx
 
+import argparse
+
 tf.keras.backend.clear_session()
 tf.keras.backend.set_floatx('float64')
 print("[INFO] Tensorflow version: ", tf.__version__)
@@ -32,7 +34,15 @@ from proxy_apps.utils.data.grid import GridNetworkDataHandler
 
 
 # ------------------------------- PATH & LOGGER SETUP ------------------------------------------------
-os.environ["TF_GPU_THREAD_MODE"] = "gpu_private"
+
+parser = argparse.ArgumentParser(description='Run Time Series Prediction')
+parser.add_argument("--label", "_Apt", help="which implementation to run", required=True)
+parser.add_argument("--disable_gpu", action='store_true', help="write out uncompressed csv file")
+
+args = parser.parse_args()
+
+if args.disable_gpu: os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+else: os.environ["TF_GPU_THREAD_MODE"] = "gpu_private"
 
 config = file_reader.read_config()
 
@@ -44,7 +54,7 @@ _NROWS = int(config["data"]["n_rows"])
 _NCOLS = int(config["data"]["n_cols"])
 _REPEAT_COLS = int(config["data"]["repeat_cols"])
 
-_LABEL = '_Apt'
+_LABEL = args.label
 _SUFFIX = _PLATFORM + '_' + \
             'e' + str(_N_EPOCHS) + '_' + \
             'b' + str(_BATCH_SIZE) + '_' + \
