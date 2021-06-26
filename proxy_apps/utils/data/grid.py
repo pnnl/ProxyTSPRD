@@ -418,8 +418,8 @@ class GridNetworkTFDataHandler():
         window_U_data = trimmed_scenarios.map(lambda window: window.skip(M).window(window_size, shift=shift_size, stride=stride, drop_remainder=True), num_parallel_calls=num_parallel_calls)
         window_V_data = trimmed_scenarios.map(lambda window: window.skip(N).window(window_size, shift=shift_size, stride=stride, drop_remainder=True), num_parallel_calls=num_parallel_calls)
 
-        for a in window_X_data.take(1): n_windows = a.cardinality().numpy()
-        self.n_datapoints = len(self.dir_list) * n_windows * window_size
+        # for a in window_X_data.take(1): n_windows = a.cardinality().numpy()
+        # self.n_datapoints = len(self.dir_list) * n_windows * window_size
 
         i_stop = time.time()
         print('[INFO]: Time taken for creating X datasets:', i_stop - i_start, 'seconds')

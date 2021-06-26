@@ -7,11 +7,11 @@
 	"data": {
 		"n_rows": 1400,
 		"n_cols": 136,
-		"repeat_cols": 5
+		"repeat_cols": 2
 	},
 	"model": {
 		"platform": "cpu",
-		"n_epochs": 10,
+		"n_epochs": 3,
 		"batch_size": 8192,
 		"dtype": "float64",
 		"version": "power_systems/scenarios_30/",

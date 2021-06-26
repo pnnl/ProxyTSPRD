@@ -38,8 +38,8 @@ class NeuralNetworkModel(tf.keras.Model):
         # tf.print(tf.shape(X), tf.shape(Y))
         # pdb.set_trace()               
         
-        Psi_X    = self.encoder(X)
-        Psi_Y    = self.encoder(Y)        
+        Psi_X    = self.encoder(X, training=True)
+        Psi_Y    = self.encoder(Y, training=False)        
         
         PSI_X    = tf.concat([X, Psi_X], 1)
         PSI_Y    = tf.concat([Y, Psi_Y], 1) 

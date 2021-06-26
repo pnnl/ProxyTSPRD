@@ -22,8 +22,17 @@ class HyperParameters():
 # Neural Network
 class NeuralNetworkModel(tf.keras.Model): 
     def __init__(self, hp):
-        super(NeuralNetworkModel, self).__init__()
-        self.encoder = Encoder(hp) 
+        super(NeuralNetworkModel, self).__init__(name = 'Encoder')
+        self.input_layer   = DenseLayer(hp.h1, 0.0, 0.0, hp.d_type)
+        self.hidden_layer1 = DenseLayer(hp.h2, hp.wr, hp.br, hp.d_type)
+        self.dropout_laye1 = tf.keras.layers.Dropout(hp.dr)
+        self.hidden_layer2 = DenseLayer(hp.h3, hp.wr, hp.br, hp.d_type)        
+        self.dropout_laye2 = tf.keras.layers.Dropout(hp.dr)
+        self.hidden_layer3 = DenseLayer(hp.h4, hp.wr, hp.br, hp.d_type)
+        self.dropout_laye3 = tf.keras.layers.Dropout(hp.dr)           
+#         self.hidden_layer4 = DenseLayer(hp.h5, hp.wr, hp.br)
+#         self.dropout_laye4 = layers.Dropout(hp.dr)             
+        self.output_layer  = LinearLayer(hp.ld, hp.wr, hp.br, hp.d_type)
 
         # loss tracker
         self.loss_tracker = tf.keras.metrics.Mean(name="loss")
@@ -37,6 +46,22 @@ class NeuralNetworkModel(tf.keras.Model):
         self.rf = hp.rf 
         self.d_type = hp.d_type
         
+    def call(self, input_data, training):
+        fx = self.input_layer(input_data)        
+        fx = self.hidden_layer1(fx)
+        if training:
+            fx = self.dropout_laye1(fx)     
+        fx = self.hidden_layer2(fx)
+        if training:
+            fx = self.dropout_laye2(fx) 
+        fx = self.hidden_layer3(fx)
+        if training:
+            fx = self.dropout_laye3(fx) 
+#         fx = self.hidden_layer4(fx)
+#         if training:
+#             fx = self.dropout_laye4(fx)
+        return self.output_layer(fx)
+
     @property
     def metrics(self):
         # We list our `Metric` objects here so that `reset_states()` can be
@@ -46,15 +71,14 @@ class NeuralNetworkModel(tf.keras.Model):
         # `reset_states()` yourself at the time of your choosing.
         return [self.loss_tracker]
 
-    @tf.function
     def train_step(self, inputs):       
         X, Y        = inputs
         # tf.print(X, Y)
         # tf.print(tf.shape(X), tf.shape(Y))
         
         with tf.GradientTape() as tape:
-            Psi_X    = self.encoder(X, training=True)
-            Psi_Y    = self.encoder(Y, training=False)    
+            Psi_X    = self.call(X, training=True)
+            Psi_Y    = self.call(Y, training=True)    
 
             PSI_X    = tf.concat([X, Psi_X], 1)
             PSI_Y    = tf.concat([Y, Psi_Y], 1) 
@@ -87,13 +111,12 @@ class NeuralNetworkModel(tf.keras.Model):
         # Note that it will include the loss (tracked in self.metrics).
         return {"loss": self.loss_tracker.result()}
         
-    @tf.function
     def test_step(self, inputs):       
         X = inputs[0]
         Y = inputs[1] 
 
-        Psi_X    = self.encoder(X, training=False)
-        Psi_Y    = self.encoder(Y, training=False)    
+        Psi_X    = self.call(X, training=False)
+        Psi_Y    = self.call(Y, training=False)    
 
         PSI_X    = tf.concat([X, Psi_X], 1)
         PSI_Y    = tf.concat([Y, Psi_Y], 1) 
@@ -118,13 +141,12 @@ class NeuralNetworkModel(tf.keras.Model):
         # Note that it will include the loss (tracked in self.metrics).
         return {"loss": self.loss_tracker.result()}
         
-    @tf.function
     def predict_step(self, inputs):       
         X = inputs[0]
         Y = inputs[1] 
         
-        Psi_X    = self.encoder(X, training=False)
-        Psi_Y    = self.encoder(Y, training=False)    
+        Psi_X    = self.call(X, training=False)
+        Psi_Y    = self.call(Y, training=False)    
 
         PSI_X    = tf.concat([X, Psi_X], 1)
         PSI_Y    = tf.concat([Y, Psi_Y], 1) 
@@ -140,36 +162,6 @@ class NeuralNetworkModel(tf.keras.Model):
 
         return Psi_X, PSI_X, Psi_Y, PSI_Y, K_loss
 
-class Encoder(tf.keras.Model):
-    def __init__(self, hps):
-        super(Encoder, self).__init__(name = 'Encoder')
-        self.input_layer   = DenseLayer(hps.h1, 0.0, 0.0, hps.d_type)
-        self.hidden_layer1 = DenseLayer(hps.h2, hps.wr, hps.br, hps.d_type)
-        self.dropout_laye1 = tf.keras.layers.Dropout(hps.dr)
-        self.hidden_layer2 = DenseLayer(hps.h3, hps.wr, hps.br, hps.d_type)        
-        self.dropout_laye2 = tf.keras.layers.Dropout(hps.dr)
-        self.hidden_layer3 = DenseLayer(hps.h4, hps.wr, hps.br, hps.d_type)
-        self.dropout_laye3 = tf.keras.layers.Dropout(hps.dr)           
-#         self.hidden_layer4 = DenseLayer(hps.h5, hps.wr, hps.br)
-#         self.dropout_laye4 = layers.Dropout(hps.dr)             
-        self.output_layer  = LinearLayer(hps.ld, hps.wr, hps.br, hps.d_type)
-        
-    def call(self, input_data, training):
-        fx = self.input_layer(input_data)        
-        fx = self.hidden_layer1(fx)
-        if training:
-            fx = self.dropout_laye1(fx)     
-        fx = self.hidden_layer2(fx)
-        if training:
-            fx = self.dropout_laye2(fx) 
-        fx = self.hidden_layer3(fx)
-        if training:
-            fx = self.dropout_laye3(fx) 
-#         fx = self.hidden_layer4(fx)
-#         if training:
-#             fx = self.dropout_laye4(fx)
-        return self.output_layer(fx)
-
 class LinearLayer(tf.keras.layers.Layer):
 
     def __init__(self, units, weights_regularizer, bias_regularizer, d_type):
@@ -184,10 +176,10 @@ class LinearLayer(tf.keras.layers.Layer):
         self.w = self.add_weight(name='w_linear',
                                 shape = (input_dim, self.units), 
                                 initializer = tf.keras.initializers.RandomUniform(
-                                minval=-tf.cast(tf.math.sqrt(6/(input_dim+self.units)), dtype = self.d_type), 
-                                maxval=tf.cast(tf.math.sqrt(6/(input_dim+self.units)), dtype = self.d_type), 
-                                seed=16751),                                                                   
-#                               regularizer = tf.keras.regularizers.l1(self.weights_regularizer), 
+                                    minval=-tf.cast(tf.math.sqrt(6/(input_dim+self.units)), dtype = self.d_type), 
+                                    maxval=tf.cast(tf.math.sqrt(6/(input_dim+self.units)), dtype = self.d_type), 
+                                    seed=16751),                                                                   
+                                # regularizer = tf.keras.regularizers.l1(self.weights_regularizer), 
                                 trainable = True)
         self.b = self.add_weight(name='b_linear',
                                  shape = (self.units,),    

@@ -43,8 +43,9 @@ def fit_np_model(K_model, X_array, Y_array, **kwargs):
     return history
 
 @nvtx.annotate(color="blue")
-def fit_tf_model(K_model, training_dataset, **kwargs):
-    history = K_model.fit(training_dataset, **kwargs)
+def fit_tf_model(K_model, training_dataset, epochs, callbacks, shuffle):
+    tf.print(training_dataset)
+    history = K_model.fit(training_dataset, epochs=epochs, callbacks=callbacks, shuffle=shuffle)
     return history
 
 # ------------------------------- PATH & LOGGER SETUP ------------------------------------------------
@@ -54,6 +55,7 @@ parser = argparse.ArgumentParser(description='Run Time Series Prediction')
 parser.add_argument("--label", choices=["Baseline", "TFDataOpt", "TFDataOptMP", "TFDataOptMGPU", "TFDataOptMGPUMP"],
     help="which implementation to run", required=True)
 parser.add_argument("--disable_gpu", action='store_true', help="write out uncompressed csv file")
+parser.add_argument("--execute_eagerly", action='store_true', help="write out uncompressed csv file")
 
 args = parser.parse_args()
 
@@ -87,11 +89,20 @@ output_dir = path_handler.get_absolute_path(curr_dir, config["info"]["output_dir
 if not os.path.exists(output_dir): os.makedirs(output_dir)
 
 # TensorFlow Setup
+print("[INFO] Tensorflow version: ", tf.__version__)
+
+if args.execute_eagerly: tf.compat.v1.enable_eager_execution()
+else: tf.compat.v1.disable_eager_execution()
+
+print("[INFO] Eager mode: ", tf.executing_eagerly()) # For easy reset of notebook state.
+
 tf.keras.backend.clear_session()
 if args.label in ["Baseline"]: tf.keras.backend.set_floatx('float64')
 elif args.label in ["TFDataOpt", "TFDataOptMP", "TFDataOptMGPU", "TFDataOptMGPUMP"]: tf.keras.backend.set_floatx(_DTYPE)
-print("[INFO] Tensorflow version: ", tf.__version__)
-# print("[INFO] Eager mode: ", tf.executing_eagerly()) # For easy reset of notebook state.
+elif args.label in ["TFDataOptMP", "TFDataOptMGPUMP"]:
+    policy = tf.keras.mixed_precision.Policy('mixed_float16')
+    tf.keras.mixed_precision.set_global_policy(policy)
+
 
 # CUDA Setup
 if args.disable_gpu: os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
@@ -198,14 +209,14 @@ with ExitStack() as stack:
         hp = proxyDeepDMD.HyperParameters(hyper_param_dict)
         
         # Split the data
-        n_batches = data_handler.n_datapoints // hp.bs
-        n_batches_training = n_batches # int((1-hp.vs) * n_batches)
+        # n_batches = data_handler.n_datapoints // hp.bs
+        # n_batches_training = n_batches # int((1-hp.vs) * n_batches)
         
         zip_data = tf.data.Dataset.zip((X_array, Y_array)).batch(hp.bs)
 
-        training_dataset = zip_data.take(n_batches_training)
+        training_dataset = zip_data# .take(n_batches_training)
         training_dataset = training_dataset.cache()
-        training_dataset = training_dataset.shuffle(buffer_size=n_batches_training)
+        training_dataset = training_dataset.shuffle(buffer_size=hp.bs)
         training_dataset = training_dataset.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
 
         # val_dataset = zip_data.skip(n_batches_training)
@@ -215,8 +226,8 @@ with ExitStack() as stack:
 
         performance_dict["n_epochs"] = hp.ep
         performance_dict["batch_size"] = hp.bs
-        performance_dict["n_training_batches"] = n_batches_training
-        performance_dict["n_val_batches"] = n_batches - n_batches_training
+        # performance_dict["n_training_batches"] = n_batches_training
+        # performance_dict["n_val_batches"] = n_batches - n_batches_training
 
         # ------------------------------- MODEL TRAINING ------------------------------------------------
         # Initialize, build, and fit the model
