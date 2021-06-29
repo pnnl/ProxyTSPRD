@@ -35,7 +35,6 @@ class NeuralNetworkModel(tf.keras.Model):
     def call(self, inputs):       
         X        = inputs[0]
         Y        = inputs[1] 
-        # tf.print(tf.shape(X), tf.shape(Y))
         # pdb.set_trace()               
         
         Psi_X    = self.encoder(X, training=True)

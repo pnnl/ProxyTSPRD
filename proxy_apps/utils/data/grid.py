@@ -233,12 +233,13 @@ class SystemData:
 # ---------------------------------------------------------------
 
 class GridNetworkDataHandler():
-    def __init__(self, scenario_dir, n_rows=1000, n_cols=136, repeat_cols=1, n_scenarios=50):
+    def __init__(self, scenario_dir, dtype, n_rows=1000, n_cols=136, repeat_cols=1, n_scenarios=50):
         self.scenario_dir = scenario_dir
         self.n_rows = n_rows 
         self.n_cols = n_cols
         self.repeat_cols = repeat_cols 
         self.n_scenarios = n_scenarios
+        self.dtype = dtype
 
     def load_grid_data(self):
         # input directory
@@ -249,25 +250,22 @@ class GridNetworkDataHandler():
         Dataset = dict()
         print('[INFO]: Loading data for %d scenarios ...' % len(dir_list))
 
-        l_start = time.time()
         scenario_data = []
         count = 0
         for s_dir in dir_list:
             if s_dir.find('scenario') == -1: continue
             dataset = TransientDataset('%s/%s/' % (self.scenario_dir, s_dir))
             scenario_data.append(np.concatenate([dataset.F[:self.n_rows,:] for i in range(self.repeat_cols)] +  
-                                            [dataset.Vm[:self.n_rows,:] for i in range(self.repeat_cols)], axis=1))
+                                            [dataset.Vm[:self.n_rows,:] for i in range(self.repeat_cols)], axis=1).astype(self.dtype))
             
             count += 1
             if count == self.n_scenarios: print('[INFO]: Loaded %d/%d scenarios ...' % (count, len(dir_list)))
 
-        l_stop = time.time()
-        print('[INFO]: Time taken for loading datasets:', l_stop - l_start, 'seconds')
         print('[INFO]: Total number of scenarios loaded:', len(scenario_data))
         print('[INFO]: Shape of each scenario loaded: ', scenario_data[0].shape)
         print('[INFO]: Done ...')
 
-        return scenario_data, l_stop-l_start
+        return scenario_data
 
     def create_windows(self, scenario_data, stride=1, M=2, N=3, window_size=800, shift_size=10):
     	'''
@@ -275,7 +273,6 @@ class GridNetworkDataHandler():
     		window_size: Length of moving window
     		shift_size: Separation between two moving windows
     	'''
-    	i_start = time.time()
     	X_data = [] # Original data
     	Y_data = [] # 1 time-shifted data
     	U_data = [] # 2 time-shifted data
@@ -310,18 +307,14 @@ class GridNetworkDataHandler():
     	        U_data.append(dataset[U_indices])
     	        V_data.append(dataset[V_indices])
 
-    	i_stop = time.time()
-    	print('[INFO]: Time taken for creating X datasets:', i_stop - i_start, 'seconds')
     	print('[INFO]: Original dataset size:', dataset_size)
     	print('[INFO]: Chosen dataset size:', window_size)
     	print('[INFO]: Length of X_data: ', len(X_data))
     	print('[INFO]: Length of each window after down sampling: ', X_data[0].shape)
 
-    	return X_data, Y_data, U_data, V_data, Yp, Yf, i_stop - i_start
+    	return X_data, Y_data, U_data, V_data, Yp, Yf
 
     def scale_data(self, X_data, Y_data, U_data, V_data, Yp, Yf, scale_factor=2*np.pi, norm=True):
-    	n_start = time.time()
-
     	X_array = np.asarray(X_data).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
     	Y_array = np.asarray(Y_data).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
     	U_array = np.asarray(U_data).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
@@ -349,10 +342,7 @@ class GridNetworkDataHandler():
     	    Yp_array     = np.concatenate((scale_factor*(Yp_array_old[:,:self.repeat_cols*int(self.n_cols/2)] - 60), 10*(Yp_array_old[:,self.repeat_cols*int(self.n_cols/2):] - 1)), axis = 1)
     	    Yf_array     = np.concatenate((scale_factor*(Yf_array_old[:,:self.repeat_cols*int(self.n_cols/2)] - 60), 10*(Yf_array_old[:,self.repeat_cols*int(self.n_cols/2):] - 1)), axis = 1)    
     	        
-    	n_stop = time.time()
-    	print('[INFO]: Time taken for normalization:', n_stop - n_start, 'seconds')
-
-    	return X_array, Y_array, U_array, V_array, Yp_array, Yf_array, n_stop-n_start
+    	return X_array, Y_array, U_array, V_array, Yp_array, Yf_array
 
 class GridNetworkTFDataHandler():
     def __init__(self, scenario_dir, dtype, n_rows=1000, n_cols=136, repeat_cols=1, n_scenarios=50):
@@ -362,7 +352,6 @@ class GridNetworkTFDataHandler():
         self.repeat_cols = repeat_cols 
         self.n_scenarios = n_scenarios
         self.dtype = dtype
-
 
     def get_data(self, t: tf.string):
         # fetch directory name
@@ -378,61 +367,54 @@ class GridNetworkTFDataHandler():
         # return data
         return raw_data
 
-    @tf.function
+    @tf.function # (input_signature=(tf.TensorSpec(shape=(), dtype=tf.string),))
     def convert_to_tensor(self, i):
         d = tf.py_function(func=self.get_data, inp=[i], Tout=self.dtype)
         d.set_shape(tf.TensorShape([self.n_rows, self.repeat_cols * self.n_cols]))
         return d
 
-    def load_grid_data(self, num_parallel_calls=tf.data.experimental.AUTOTUNE):
-        l_start = time.time()
-        
+    # @tf.function
+    def load_grid_data(self):
         # load data and print list of files
-        print('[INFO]: Loading the datasets from the directory:', self.scenario_dir)
+        # print('[INFO]: Loading the datasets from the directory:', self.scenario_dir)
         self.dir_list = os.listdir(self.scenario_dir)
 
         # Indicate the scenario range
         Dataset = dict()
-        print('[INFO]: Loading data for %d scenarios ...' % len(self.dir_list))
+        # print('[INFO]: Loading data for %d scenarios ...' % len(self.dir_list))
 
         list_files = tf.data.Dataset.from_tensor_slices(self.dir_list)
 
-        original_scenarios = list_files.map(self.convert_to_tensor, num_parallel_calls=num_parallel_calls)
-        trimmed_scenarios = original_scenarios.map(lambda scenario: tf.data.Dataset.from_tensor_slices(scenario).take(self.n_rows), num_parallel_calls=num_parallel_calls)
-        l_stop = time.time()
-        print('[INFO]: Time taken for loading datasets:', l_stop - l_start, 'seconds')
+        original_scenarios = list_files.map(self.convert_to_tensor, num_parallel_calls=tf.data.experimental.AUTOTUNE)
+        trimmed_scenarios = original_scenarios.map(lambda scenario: tf.data.Dataset.from_tensor_slices(scenario).take(self.n_rows), num_parallel_calls=tf.data.experimental.AUTOTUNE)
         # print('[INFO]: Total number of scenarios loaded:', len(scenario_data))
         # print('[INFO]: Shape of each scenario original: ', original_shape)
         # print('[INFO]: Shape of each scenario loaded: ', scenario_data[0].shape)
-        print('[INFO]: Done ...')
+        # print('[INFO]: Done ...')
 
-        return trimmed_scenarios, l_stop - l_start
+        return trimmed_scenarios
 
-    def create_windows(self, trimmed_scenarios, stride=1, M=2, N=3, window_size=800, shift_size=10, num_parallel_calls=tf.data.experimental.AUTOTUNE):
-        i_start = time.time()
-        
-        Yp_data = trimmed_scenarios.map(lambda window: window.take(self.n_rows-1), num_parallel_calls=num_parallel_calls)
-        Yf_data = trimmed_scenarios.map(lambda window: window.skip(1), num_parallel_calls=num_parallel_calls)
-        window_X_data = trimmed_scenarios.map(lambda window: window.take(self.n_rows-N).window(window_size, shift=shift_size, stride=stride, drop_remainder=True), num_parallel_calls=num_parallel_calls)
-        window_Y_data = trimmed_scenarios.map(lambda window: window.skip(1).window(window_size, shift=shift_size, stride=stride, drop_remainder=True), num_parallel_calls=num_parallel_calls)
-        window_U_data = trimmed_scenarios.map(lambda window: window.skip(M).window(window_size, shift=shift_size, stride=stride, drop_remainder=True), num_parallel_calls=num_parallel_calls)
-        window_V_data = trimmed_scenarios.map(lambda window: window.skip(N).window(window_size, shift=shift_size, stride=stride, drop_remainder=True), num_parallel_calls=num_parallel_calls)
+    # @tf.function
+    def create_windows(self, trimmed_scenarios, stride=1, M=2, N=3, window_size=800, shift_size=10):
+        Yp_data = trimmed_scenarios.map(lambda window: window.take(self.n_rows-1), num_parallel_calls=tf.data.experimental.AUTOTUNE)
+        Yf_data = trimmed_scenarios.map(lambda window: window.skip(1), num_parallel_calls=tf.data.experimental.AUTOTUNE)
+        window_X_data = trimmed_scenarios.map(lambda window: window.take(self.n_rows-N).window(window_size, shift=shift_size, stride=stride, drop_remainder=True), num_parallel_calls=tf.data.experimental.AUTOTUNE)
+        window_Y_data = trimmed_scenarios.map(lambda window: window.skip(1).window(window_size, shift=shift_size, stride=stride, drop_remainder=True), num_parallel_calls=tf.data.experimental.AUTOTUNE)
+        window_U_data = trimmed_scenarios.map(lambda window: window.skip(M).window(window_size, shift=shift_size, stride=stride, drop_remainder=True), num_parallel_calls=tf.data.experimental.AUTOTUNE)
+        window_V_data = trimmed_scenarios.map(lambda window: window.skip(N).window(window_size, shift=shift_size, stride=stride, drop_remainder=True), num_parallel_calls=tf.data.experimental.AUTOTUNE)
 
-        # for a in window_X_data.take(1): n_windows = a.cardinality().numpy()
-        # self.n_datapoints = len(self.dir_list) * n_windows * window_size
+#         for a in window_X_data.take(1): n_windows = a.cardinality().numpy()
+#         self.n_datapoints = len(self.dir_list) * n_windows * window_size
 
-        i_stop = time.time()
-        print('[INFO]: Time taken for creating X datasets:', i_stop - i_start, 'seconds')
         # print('[INFO]: Original dataset size:', dataset_size)
-        print('[INFO]: Chosen dataset size:', window_size)
+        # print('[INFO]: Chosen dataset size:', window_size)
         # print('[INFO]: Length of X_data: ', len(X_data))
         # print('[INFO]: Length of each window after down sampling: ', X_data[0].shape)
 
-        return window_X_data, window_Y_data, window_U_data, window_V_data, Yp_data, Yf_data, i_stop - i_start
+        return window_X_data, window_Y_data, window_U_data, window_V_data, Yp_data, Yf_data
 
-    def scale_data(self, window_X_data, window_Y_data, window_U_data, window_V_data, Yp_data, Yf_data, scale_factor=2*np.pi, norm=True, num_parallel_calls=tf.data.experimental.AUTOTUNE):
-        n_start = time.time()
-        
+    # @tf.function
+    def scale_data(self, window_X_data, window_Y_data, window_U_data, window_V_data, Yp_data, Yf_data, scale_factor=2*np.pi, norm=True):
         flat_Yp_data = Yp_data.flat_map(lambda time_step: time_step)
         flat_Yf_data = Yf_data.flat_map(lambda time_step: time_step)
 
@@ -443,22 +425,19 @@ class GridNetworkTFDataHandler():
 
         if norm:
             flat_Yp_data = flat_Yp_data.map(lambda x: tf.concat([tf.math.multiply(tf.math.subtract(x[:self.repeat_cols*int(self.n_cols/2)], 60), scale_factor), \
-                                                                 tf.math.multiply(tf.math.subtract(x[self.repeat_cols*int(self.n_cols/2):], 1), 10)], axis=0), num_parallel_calls=num_parallel_calls)
+                                                                 tf.math.multiply(tf.math.subtract(x[self.repeat_cols*int(self.n_cols/2):], 1), 10)], axis=0), num_parallel_calls=tf.data.experimental.AUTOTUNE)
             flat_Yf_data = flat_Yf_data.map(lambda x: tf.concat([tf.math.multiply(tf.math.subtract(x[:self.repeat_cols*int(self.n_cols/2)], 60), scale_factor), \
-                                                                 tf.math.multiply(tf.math.subtract(x[self.repeat_cols*int(self.n_cols/2):], 1), 10)], axis=0), num_parallel_calls=num_parallel_calls)
+                                                                 tf.math.multiply(tf.math.subtract(x[self.repeat_cols*int(self.n_cols/2):], 1), 10)], axis=0), num_parallel_calls=tf.data.experimental.AUTOTUNE)
             flat_X_data = flat_X_data.map(lambda x: tf.concat([tf.math.multiply(tf.math.subtract(x[:self.repeat_cols*int(self.n_cols/2)], 60), scale_factor), \
-                                                               tf.math.multiply(tf.math.subtract(x[self.repeat_cols*int(self.n_cols/2):], 1), 10)], axis=0), num_parallel_calls=num_parallel_calls)
+                                                               tf.math.multiply(tf.math.subtract(x[self.repeat_cols*int(self.n_cols/2):], 1), 10)], axis=0), num_parallel_calls=tf.data.experimental.AUTOTUNE)
             flat_Y_data = flat_Y_data.map(lambda x: tf.concat([tf.math.multiply(tf.math.subtract(x[:self.repeat_cols*int(self.n_cols/2)], 60), scale_factor), \
-                                                               tf.math.multiply(tf.math.subtract(x[self.repeat_cols*int(self.n_cols/2):], 1), 10)], axis=0), num_parallel_calls=num_parallel_calls)
+                                                               tf.math.multiply(tf.math.subtract(x[self.repeat_cols*int(self.n_cols/2):], 1), 10)], axis=0), num_parallel_calls=tf.data.experimental.AUTOTUNE)
             flat_U_data = flat_U_data.map(lambda x: tf.concat([tf.math.multiply(tf.math.subtract(x[:self.repeat_cols*int(self.n_cols/2)], 60), scale_factor), \
-                                                               tf.math.multiply(tf.math.subtract(x[self.repeat_cols*int(self.n_cols/2):], 1), 10)], axis=0), num_parallel_calls=num_parallel_calls)
+                                                               tf.math.multiply(tf.math.subtract(x[self.repeat_cols*int(self.n_cols/2):], 1), 10)], axis=0), num_parallel_calls=tf.data.experimental.AUTOTUNE)
             flat_V_data = flat_V_data.map(lambda x: tf.concat([tf.math.multiply(tf.math.subtract(x[:self.repeat_cols*int(self.n_cols/2)], 60), scale_factor), \
-                                                               tf.math.multiply(tf.math.subtract(x[self.repeat_cols*int(self.n_cols/2):], 1), 10)], axis=0), num_parallel_calls=num_parallel_calls)    
+                                                               tf.math.multiply(tf.math.subtract(x[self.repeat_cols*int(self.n_cols/2):], 1), 10)], axis=0), num_parallel_calls=tf.data.experimental.AUTOTUNE)    
                 
-        n_stop = time.time()
-        print('[INFO]: Time taken for normalization:', n_stop - n_start, 'seconds')
-
-        return flat_X_data, flat_Y_data, flat_U_data, flat_V_data, flat_Yp_data, flat_Yf_data, n_stop-n_start
+        return flat_X_data, flat_Y_data, flat_U_data, flat_V_data, flat_Yp_data, flat_Yf_data
 
 
 

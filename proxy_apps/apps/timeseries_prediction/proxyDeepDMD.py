@@ -1,4 +1,5 @@
 import tensorflow as tf
+# import nvtx.plugins.tf as nvtx_tf
 
 class HyperParameters():
     def __init__(self, config):
@@ -36,6 +37,7 @@ class NeuralNetworkModel(tf.keras.Model):
                                                     trainable=True)
         self.rf = hp.rf 
         self.d_type = hp.d_type
+        self.model_name = hp.model_name
         
     @property
     def metrics(self):
@@ -47,6 +49,12 @@ class NeuralNetworkModel(tf.keras.Model):
         return [self.loss_tracker]
 
     @tf.function
+    def distributed_train_step(dist_inputs):
+        per_replica_losses = mirrored_strategy.run(train_step, args=(dist_inputs,))
+        return mirrored_strategy.reduce(tf.distribute.ReduceOp.SUM, per_replica_losses,
+                             axis=None)
+
+    @tf.function(experimental_compile=True) # (input_signature=(tf.TensorSpec(shape=[None], dtype=tf.float64),))
     def train_step(self, inputs):       
         X, Y        = inputs
         # tf.print(X, Y)
@@ -56,8 +64,8 @@ class NeuralNetworkModel(tf.keras.Model):
             Psi_X    = self.encoder(X, training=True)
             Psi_Y    = self.encoder(Y, training=False)    
 
-            PSI_X    = tf.concat([X, Psi_X], 1)
-            PSI_Y    = tf.concat([Y, Psi_Y], 1) 
+            PSI_X    = tf.concat([X, tf.cast(Psi_X, self.d_type)], 1)
+            PSI_Y    = tf.concat([Y, tf.cast(Psi_Y, self.d_type)], 1) 
 
             # 1-time step evolution on observable space:
             K_PSI_X  = tf.matmul(PSI_X, self.KO) 
@@ -70,12 +78,17 @@ class NeuralNetworkModel(tf.keras.Model):
         
             # Total loss:
             loss = K_loss + Reg_loss
+            if self.model_name in ["TFDataOptMP", "TFDataOptMGPUMP"]:
+                loss = self.optimizer.get_scaled_loss(loss)
+            
             # tf.print("K Loss: ", K_loss, "Reg Loss: ", Reg_loss, "Total Loss: ", loss)
             # loss += sum(self.encoder.losses)
             
         # Compute gradients
         trainable_vars = self.trainable_variables
         gradients = tape.gradient(loss, trainable_vars)
+        if self.model_name in ["TFDataOptMP", "TFDataOptMGPUMP"]:
+            gradients = self.optimizer.get_unscaled_gradients(gradients)
 
         # Update weights
         self.optimizer.apply_gradients(zip(gradients, trainable_vars))
@@ -87,7 +100,7 @@ class NeuralNetworkModel(tf.keras.Model):
         # Note that it will include the loss (tracked in self.metrics).
         return {"loss": self.loss_tracker.result()}
         
-    @tf.function
+    @tf.function(experimental_compile=True)
     def test_step(self, inputs):       
         X = inputs[0]
         Y = inputs[1] 
@@ -95,9 +108,9 @@ class NeuralNetworkModel(tf.keras.Model):
         Psi_X    = self.encoder(X, training=False)
         Psi_Y    = self.encoder(Y, training=False)    
 
-        PSI_X    = tf.concat([X, Psi_X], 1)
-        PSI_Y    = tf.concat([Y, Psi_Y], 1) 
-
+        PSI_X    = tf.concat([X, tf.cast(Psi_X, self.d_type)], 1)
+        PSI_Y    = tf.concat([Y, tf.cast(Psi_Y, self.d_type)], 1) 
+            
         # 1-time step evolution on observable space:
         K_PSI_X  = tf.matmul(PSI_X, self.KO) 
 
@@ -109,6 +122,8 @@ class NeuralNetworkModel(tf.keras.Model):
 
         # Total loss:
         loss = K_loss + Reg_loss
+        if self.model_name in ["TFDataOptMP", "TFDataOptMGPUMP"]:
+            loss = self.optimizer.get_scaled_loss(loss)
         # loss += sum(self.encoder.losses)
             
         # Compute our own metrics
@@ -118,7 +133,7 @@ class NeuralNetworkModel(tf.keras.Model):
         # Note that it will include the loss (tracked in self.metrics).
         return {"loss": self.loss_tracker.result()}
         
-    @tf.function
+    @tf.function(experimental_compile=True)
     def predict_step(self, inputs):       
         X = inputs[0]
         Y = inputs[1] 
@@ -126,8 +141,8 @@ class NeuralNetworkModel(tf.keras.Model):
         Psi_X    = self.encoder(X, training=False)
         Psi_Y    = self.encoder(Y, training=False)    
 
-        PSI_X    = tf.concat([X, Psi_X], 1)
-        PSI_Y    = tf.concat([Y, Psi_Y], 1) 
+        PSI_X    = tf.concat([X, tf.cast(Psi_X, self.d_type)], 1)
+        PSI_Y    = tf.concat([Y, tf.cast(Psi_Y, self.d_type)], 1) 
 
         # 1-time step evolution on observable space:
         K_PSI_X  = tf.matmul(PSI_X, self.KO) 
@@ -143,6 +158,11 @@ class NeuralNetworkModel(tf.keras.Model):
 class Encoder(tf.keras.Model):
     def __init__(self, hps):
         super(Encoder, self).__init__(name = 'Encoder')
+        self.KO = tf.Variable(tf.random.normal(shape = (hps.ld+hps.od, hps.ld+hps.od), 
+            dtype=hps.d_type, 
+            mean=0.0, stddev=0.05, 
+            seed=123321, name='KoopmanOperator'),
+                                                    trainable=True)
         self.input_layer   = DenseLayer(hps.h1, 0.0, 0.0, hps.d_type)
         self.hidden_layer1 = DenseLayer(hps.h2, hps.wr, hps.br, hps.d_type)
         self.dropout_laye1 = tf.keras.layers.Dropout(hps.dr)
@@ -154,6 +174,8 @@ class Encoder(tf.keras.Model):
 #         self.dropout_laye4 = layers.Dropout(hps.dr)             
         self.output_layer  = LinearLayer(hps.ld, hps.wr, hps.br, hps.d_type)
         
+#     @nvtx_tf.ops.trace(message='Dense Block', domain_name='Forward',
+#                    grad_domain_name='Gradient')
     def call(self, input_data, training):
         fx = self.input_layer(input_data)        
         fx = self.hidden_layer1(fx)

@@ -2,19 +2,17 @@
 	"info": {
 		"name": "deepDMD",
 		"input_dir": "../../../data/TrainingDataIEEE68bus/",
-		"output_dir": "../../../data/deepDMD/power_systems/scenarios_30/"
+		"output_dir": "../../../data/deepDMD/",
+		"app_name": "power_systems/scenarios_30/"
 	}, 
 	"data": {
 		"n_rows": 1400,
 		"n_cols": 136,
-		"repeat_cols": 2
+		"repeat_cols": 1
 	},
 	"model": {
-		"platform": "cpu",
-		"n_epochs": 3,
-		"batch_size": 8192,
 		"dtype": "float64",
-		"version": "power_systems/scenarios_30/",
+		"app_name": "power_systems/scenarios_30/",
 		"tb_log_dir": "../../../logs/",
 		"hyperparameters": {
 			"hl_1_dim"           : 128,

@@ -8,6 +8,10 @@
 #SBATCH -o logs/v10/out_e50_srun_act.txt
 #SBATCH -e logs/v10/err_e50_srun_act.txt
 
+if [ -d "/share/apps/cuda/11.0/extras/CUPTI/lib64/" ] && [[ ":$LD_LIBRARY_PATH:" != *":/share/apps/cuda/11.0/extras/CUPTI/lib64/:"* ]]; then
+    LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+"$LD_LIBRARY_PATH:"}/share/apps/cuda/11.0/extras/CUPTI/lib64/"
+fi
+
 module purge
 module load python/anaconda3.2019.3
 source /share/apps/python/anaconda3.2019.3/etc/profile.d/conda.sh

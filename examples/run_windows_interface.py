@@ -30,12 +30,12 @@ from proxy_apps.utils.data.grid import GridNetworkDataHandler, GridNetworkTFData
 
 @contextlib.contextmanager
 def options(options):
-  old_opts = tf.config.optimizer.get_experimental_options()
-  tf.config.optimizer.set_experimental_options(options)
-  try:
-    yield
-  finally:
-    tf.config.optimizer.set_experimental_options(old_opts)
+    old_opts = tf.config.optimizer.get_experimental_options()
+    tf.config.optimizer.set_experimental_options(options)
+    try:
+        yield
+    finally:
+        tf.config.optimizer.set_experimental_options(old_opts)
 
 @nvtx.annotate(color="blue")
 def fit_np_model(K_model, X_array, Y_array, **kwargs):
