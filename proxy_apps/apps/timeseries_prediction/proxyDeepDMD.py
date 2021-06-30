@@ -48,12 +48,6 @@ class NeuralNetworkModel(tf.keras.Model):
         # `reset_states()` yourself at the time of your choosing.
         return [self.loss_tracker]
 
-    @tf.function
-    def distributed_train_step(dist_inputs):
-        per_replica_losses = mirrored_strategy.run(train_step, args=(dist_inputs,))
-        return mirrored_strategy.reduce(tf.distribute.ReduceOp.SUM, per_replica_losses,
-                             axis=None)
-
     @tf.function(experimental_compile=True) # (input_signature=(tf.TensorSpec(shape=[None], dtype=tf.float64),))
     def train_step(self, inputs):       
         X, Y        = inputs
@@ -78,8 +72,6 @@ class NeuralNetworkModel(tf.keras.Model):
         
             # Total loss:
             loss = K_loss + Reg_loss
-            if self.model_name in ["TFDataOptMP", "TFDataOptMGPUMP"]:
-                loss = self.optimizer.get_scaled_loss(loss)
             
             # tf.print("K Loss: ", K_loss, "Reg Loss: ", Reg_loss, "Total Loss: ", loss)
             # loss += sum(self.encoder.losses)
@@ -87,9 +79,7 @@ class NeuralNetworkModel(tf.keras.Model):
         # Compute gradients
         trainable_vars = self.trainable_variables
         gradients = tape.gradient(loss, trainable_vars)
-        if self.model_name in ["TFDataOptMP", "TFDataOptMGPUMP"]:
-            gradients = self.optimizer.get_unscaled_gradients(gradients)
-
+        
         # Update weights
         self.optimizer.apply_gradients(zip(gradients, trainable_vars))
 
@@ -122,9 +112,6 @@ class NeuralNetworkModel(tf.keras.Model):
 
         # Total loss:
         loss = K_loss + Reg_loss
-        if self.model_name in ["TFDataOptMP", "TFDataOptMGPUMP"]:
-            loss = self.optimizer.get_scaled_loss(loss)
-        # loss += sum(self.encoder.losses)
             
         # Compute our own metrics
         self.loss_tracker.update_state(loss)
@@ -158,11 +145,6 @@ class NeuralNetworkModel(tf.keras.Model):
 class Encoder(tf.keras.Model):
     def __init__(self, hps):
         super(Encoder, self).__init__(name = 'Encoder')
-        self.KO = tf.Variable(tf.random.normal(shape = (hps.ld+hps.od, hps.ld+hps.od), 
-            dtype=hps.d_type, 
-            mean=0.0, stddev=0.05, 
-            seed=123321, name='KoopmanOperator'),
-                                                    trainable=True)
         self.input_layer   = DenseLayer(hps.h1, 0.0, 0.0, hps.d_type)
         self.hidden_layer1 = DenseLayer(hps.h2, hps.wr, hps.br, hps.d_type)
         self.dropout_laye1 = tf.keras.layers.Dropout(hps.dr)
@@ -170,12 +152,8 @@ class Encoder(tf.keras.Model):
         self.dropout_laye2 = tf.keras.layers.Dropout(hps.dr)
         self.hidden_layer3 = DenseLayer(hps.h4, hps.wr, hps.br, hps.d_type)
         self.dropout_laye3 = tf.keras.layers.Dropout(hps.dr)           
-#         self.hidden_layer4 = DenseLayer(hps.h5, hps.wr, hps.br)
-#         self.dropout_laye4 = layers.Dropout(hps.dr)             
         self.output_layer  = LinearLayer(hps.ld, hps.wr, hps.br, hps.d_type)
         
-#     @nvtx_tf.ops.trace(message='Dense Block', domain_name='Forward',
-#                    grad_domain_name='Gradient')
     def call(self, input_data, training):
         fx = self.input_layer(input_data)        
         fx = self.hidden_layer1(fx)
@@ -187,9 +165,6 @@ class Encoder(tf.keras.Model):
         fx = self.hidden_layer3(fx)
         if training:
             fx = self.dropout_laye3(fx) 
-#         fx = self.hidden_layer4(fx)
-#         if training:
-#             fx = self.dropout_laye4(fx)
         return self.output_layer(fx)
 
 class LinearLayer(tf.keras.layers.Layer):
@@ -209,7 +184,6 @@ class LinearLayer(tf.keras.layers.Layer):
                                 minval=-tf.cast(tf.math.sqrt(6/(input_dim+self.units)), dtype = self.d_type), 
                                 maxval=tf.cast(tf.math.sqrt(6/(input_dim+self.units)), dtype = self.d_type), 
                                 seed=16751),                                                                   
-#                               regularizer = tf.keras.regularizers.l1(self.weights_regularizer), 
                                 trainable = True)
         self.b = self.add_weight(name='b_linear',
                                  shape = (self.units,),    

@@ -15,6 +15,7 @@
 
 # Standard Libraries
 import os
+import math
 import json
 import datetime
 import numpy as np
@@ -30,7 +31,7 @@ import argparse
 import sys
 sys.path.append('../')
     
-from proxy_apps.apps.timeseries_prediction import deepDMD, proxyDeepDMD
+from proxy_apps.apps.timeseries_prediction import deepDMD, proxyDeepDMD, proxyDeepDMDMGPU
 
 from proxy_apps.utils.tf import TimingCallback
 from proxy_apps.utils.data.main import NpEncoder
@@ -45,14 +46,14 @@ def fit_np_model(K_model, X_array, Y_array, **kwargs):
 @nvtx.annotate(color="blue")
 def fit_tf_model(K_model, training_dataset, epochs, callbacks):
     # tf.print(training_dataset)
-    history = K_model.fit(training_dataset, epochs=epochs, callbacks=callbacks)
+    history = K_model.fit(training_dataset, epochs=epochs, callbacks=callbacks, workers=16, use_multiprocessing=True)
     return history
 
 # ------------------------------- PATH & LOGGER SETUP ------------------------------------------------
 
 # Parse Arguments
 parser = argparse.ArgumentParser(description='Run Time Series Prediction')
-parser.add_argument("--model_name", choices=["Baseline", "TFDataOpt", "TFDataOptMP", "TFDataOptMGPU", "TFDataOptMGPUMP"], type=str,
+parser.add_argument("--model_name", choices=["Baseline", "TFDataOpt", "TFDataOptMGPU"], type=str,
     help="which implementation to run", required=True)
 parser.add_argument("--platform", choices=["gpu", "cpu"], type=str, help="name of the platform (cpu/gpu)", required=True)
 parser.add_argument("--machine_name", type=str, help="name of the machine", required=True)
@@ -60,11 +61,7 @@ parser.add_argument("--n_gpus", type=int, help="number of GPUs", default=0)
 parser.add_argument("--n_cpus", type=int, help="number of CPUs", default=1)
 parser.add_argument("--n_epochs", type=int, help="number of epochs", default=10)
 parser.add_argument("--batch_size", type=int, help="batch size", default=1024)
-# parser.add_argument("--label", choices=["Baseline", "TFDataOpt", "TFDataOptMP", "TFDataOptMGPU", "TFDataOptMGPUMP"],
-#     help="which implementation to run", required=True)
-# parser.add_argument("--disable_gpu", action='store_true', help="write out uncompressed csv file")
-# parser.add_argument("--execute_eagerly", action='store_true', help="write out uncompressed csv file")
-# python run_linux_interface.py --model_name Baseline --platform gpu --machine_name a100_shared --n_gpus 1 --n_epochs 20 --batch_size 64000
+parser.add_argument("--tensorboard", type=int, choices=[0, 1], help="whether to store tensorboard output")
 
 args = parser.parse_args()
 
@@ -99,35 +96,35 @@ curr_dir = os.path.dirname(os.path.realpath(__file__))
 output_dir = path_handler.get_absolute_path(curr_dir, config["info"]["output_dir"] + config["info"]["name"] + "/" + config["info"]["app_name"] + "/" + _DTYPE + "/R" + str(_REPEAT_COLS) + "/")
 if not os.path.exists(output_dir): os.makedirs(output_dir)
 
+# ------------------------------- TensorFlow SETUP ------------------------------------------------
+
 # TensorFlow Setup
 print("[INFO] Tensorflow version: ", tf.__version__)
 gpus = tf.config.experimental.list_physical_devices('GPU')
 for gpu in gpus:
     print("Name:", gpu.name, "  Type:", gpu.device_type)
     
-# if args.execute_eagerly: tf.compat.v1.enable_eager_execution()
-# else: tf.compat.v1.disable_eager_execution()
-
+logical_gpus = tf.config.experimental.list_logical_devices('GPU')
+for gpu in logical_gpus:
+    print("Name:", gpu.name, "  Type:", gpu.device_type)
+    
 print("[INFO] Eager mode: ", tf.executing_eagerly()) # For easy reset of notebook state.
 
 # Setup TensorFlow
 tf.keras.backend.clear_session()
-tf.config.optimizer.set_jit(True) # Enable XLA.
 
-if args.model_name in ["Baseline"]: tf.keras.backend.set_floatx('float64')
+# Setup Precision
+if args.model_name in ["Baseline"]: 
+    tf.keras.backend.set_floatx('float64')
 elif args.model_name in ["TFDataOpt", "TFDataOptMGPU"]:
+    tf.config.optimizer.set_jit(True) # Enable XLA.
     tf.keras.backend.set_floatx(_DTYPE)
-elif args.model_name in ["TFDataOptMP", "TFDataOptMGPUMP"]:
-    _DTYPE = "float32"
-    policy = tf.keras.mixed_precision.Policy('mixed_float16')
-    tf.keras.mixed_precision.set_global_policy(policy)
-    # tf.config.optimizer.set_experimental_options({"auto_mixed_precision": True})
 
-if args.model_name in ["TFDataOpt", "TFDataOptMP", "TFDataOptMGPU", "TFDataOptMGPUMP"]:
+# Mirror Strategy for MGPUs
+if args.model_name in ["TFDataOptMGPU"]:
     mirrored_strategy = tf.distribute.MirroredStrategy()
-# CUDA Setup
-# if args.disable_gpu: os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
-# else: 
+
+# To avoid GPU Congestion
 os.environ["TF_GPU_THREAD_MODE"] = "gpu_private"
 
 # ------------------------------- DATA LOADING ------------------------------------------------   
@@ -177,12 +174,16 @@ early_stop_cb = tf.keras.callbacks.EarlyStopping(
     monitor='loss', min_delta = 1e-3, verbose = 1, mode='min', patience = 3, 
     baseline=None, restore_best_weights=True)
 
-# Create a TensorBoard Profiler
-logs = path_handler.get_absolute_path(curr_dir, config["model"]["tb_log_dir"] + _APP_NAME + "/" + _DTYPE + "/R" + str(_REPEAT_COLS) + "/tensorboard/" + _SUFFIX)
-# tb_callback = tf.keras.callbacks.TensorBoard(log_dir=logs, histogram_freq=1, embeddings_freq=1, profile_batch=(5,15))
-
 # all callbacks
-callbacks=[early_stop_cb, timing_cb]#, tb_callback]
+callbacks=[]# [early_stop_cb, timing_cb]
+if args.model_name in ["Baseline", "TFDataOpt"]: 
+    callbacks.append(timing_cb)
+if args.tensorboard==1: 
+    # Create a TensorBoard Profiler
+    logs = path_handler.get_absolute_path(curr_dir, config["model"]["tb_log_dir"] + _APP_NAME + "/" + _DTYPE + "/R" + str(_REPEAT_COLS) + "/tensorboard/" + _SUFFIX)
+    tb_callback = tf.keras.callbacks.TensorBoard(log_dir=logs, histogram_freq=1, embeddings_freq=1, profile_batch=(5,15))
+
+    callbacks.append(tb_callback)
 
 # Initialize Hyperparameters - we can keep it as a dict instead of creating a separate class
 hyper_param_dict = config["model"]["hyperparameters"]
@@ -196,20 +197,18 @@ if args.model_name == "Baseline":
 
     performance_dict["n_epochs"] = hp.ep
     performance_dict["batch_size"] = hp.bs
-    performance_dict["n_training_batches"] = 1 - hp.vs
-    performance_dict["n_val_batches"] = hp.vs
 
     # ------------------------------- MODEL TRAINING ------------------------------------------------
     # Initialize, build, and fit the model
-    m_start = time.time()
     K_model = deepDMD.NeuralNetworkModel(hp)
     K_model.compile(optimizer=tf.optimizers.Adagrad(hp.lr))
 
+    # training
+    m_start = time.time()
     history = fit_np_model(K_model, X_array, Y_array, batch_size=hp.bs, 
                       epochs=hp.ep, 
                       callbacks=callbacks, 
                       shuffle=True)
-
     m_stop = time.time()
 
     # print info
@@ -219,27 +218,27 @@ if args.model_name == "Baseline":
     performance_dict['training_time_module'] = (m_stop - m_start)
     performance_dict['training_time_epoch_wise'] = timing_cb.logs
     performance_dict['training_loss'] = history.history['loss']
-    # performance_dict['validation_loss'] = history.history['val_loss']
-
+    
+    # inference
     inf_time_start = time.time()
-
     Psi_X, PSI_X, Psi_Y, PSI_Y, Kloss = K_model([Yp_array, Yf_array], training=False)
-
     inf_time_stop = time.time()
+    
     performance_dict["inference_size"] = Yp_array.shape[0]
     performance_dict["inference_time"] = inf_time_stop - inf_time_start
     performance_dict["test_Kloss_model"] = Kloss.numpy()
 
-elif args.model_name in ["TFDataOpt", "TFDataOptMP", "TFDataOptMGPU", "TFDataOptMGPUMP"]:
+elif args.model_name in ["TFDataOpt", "TFDataOptMGPU"]:
 
+    # convert to dataset
     test_size = Yp_array.shape[0]
 
-    X_array = tf.data.Dataset.from_tensor_slices(X_array)
-    Y_array = tf.data.Dataset.from_tensor_slices(Y_array)
-    U_array = tf.data.Dataset.from_tensor_slices(U_array)
-    V_array = tf.data.Dataset.from_tensor_slices(V_array)
-    Yp_array = tf.data.Dataset.from_tensor_slices(Yp_array)
-    Yf_array = tf.data.Dataset.from_tensor_slices(Yf_array)
+    Xd_array = tf.data.Dataset.from_tensor_slices(X_array)
+    Yd_array = tf.data.Dataset.from_tensor_slices(Y_array)
+    Ud_array = tf.data.Dataset.from_tensor_slices(U_array)
+    Vd_array = tf.data.Dataset.from_tensor_slices(V_array)
+    Ydp_array = tf.data.Dataset.from_tensor_slices(Yp_array)
+    Ydf_array = tf.data.Dataset.from_tensor_slices(Yf_array)
 
     hyper_param_dict['dtype']         = _DTYPE
     hp = proxyDeepDMD.HyperParameters(hyper_param_dict)
@@ -247,40 +246,42 @@ elif args.model_name in ["TFDataOpt", "TFDataOptMP", "TFDataOptMGPU", "TFDataOpt
 
     performance_dict["n_epochs"] = hp.ep
     performance_dict["batch_size"] = hp.bs
-    # performance_dict["n_training_batches"] = n_batches_training
-    # performance_dict["n_val_batches"] = n_batches - n_batches_training
-
+    
     # ------------------------------- MODEL TRAINING ------------------------------------------------
     # Initialize, build, and fit the model
-    m_start = time.time()
-    with mirrored_strategy.scope():
+    if args.model_name in ["TFDataOptMGPU"]:
+        with mirrored_strategy.scope():
+            K_model = proxyDeepDMDMGPU.Encoder(hp)
+            optimizer = tf.optimizers.Adagrad(hp.lr)
+    else:
         K_model = proxyDeepDMD.NeuralNetworkModel(hp)
         optimizer = tf.optimizers.Adagrad(hp.lr)
     
-    # Split the data
-    # n_batches = data_handler.n_datapoints // hp.bs
-    # n_batches_training = n_batches # int((1-hp.vs) * n_batches)
-
-    BATCH_SIZE = hp.bs * mirrored_strategy.num_replicas_in_sync
-    zip_data = tf.data.Dataset.zip((X_array, Y_array)).batch(BATCH_SIZE)
-
-    # options = tf.data.Options()
-    # options.experimental_threading.max_intra_op_parallelism = 1
-    # dataset = dataset
-    training_dataset = mirrored_strategy.experimental_distribute_dataset(zip_data)#.cache()#.with_options(options)# .take(n_batches_training)
-    # training_dataset = training_dataset.shuffle(buffer_size=hp.bs)
+    if args.model_name in ["TFDataOptMGPU"]:
+        hp.bs = hp.bs * mirrored_strategy.num_replicas_in_sync
+        print(mirrored_strategy.num_replicas_in_sync)
+        
+    # generate dataset
+    data_options = tf.data.Options()
+    data_options.experimental_distribute.auto_shard_policy = tf.data.experimental.AutoShardPolicy.DATA
+    zip_data = tf.data.Dataset.zip((Xd_array, Yd_array)).with_options(data_options).batch(hp.bs)
+    
+    training_dataset = zip_data.cache()
+    training_dataset = training_dataset.shuffle(buffer_size=X_array.shape[0]//hp.bs)
     training_dataset = training_dataset.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
-
-    # val_dataset = zip_data.skip(n_batches_training)
-    # val_dataset = val_dataset.cache()
-    # val_dataset = val_dataset.shuffle(buffer_size=n_batches-n_batches_training)
-    # val_dataset = val_dataset.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
-
-    if args.model_name in ["TFDataOptMP", "TFDataOptMGPUMP"]:
-        optimizer = tf.keras.mixed_precision.LossScaleOptimizer(optimizer)
+    
+    if args.model_name in ["TFDataOptMGPU"]:
+        training_dataset = mirrored_strategy.experimental_distribute_dataset(training_dataset)
+    
+    # compile and fit model
     K_model.compile(optimizer=optimizer)
-    history = fit_tf_model(K_model, training_dataset, 
-                       epochs=hp.ep, callbacks=callbacks)
+    m_start = time.time()
+    if args.model_name in ["TFDataOptMGPU"]:
+        trainer = proxyDeepDMDMGPU.NeuralNetworkModel(hp, K_model)
+        all_loss = trainer.fit(training_dataset, n_epochs=hp.ep, batch_size=hp.bs, steps_per_epoch=math.ceil(X_array.shape[0]//hp.bs))
+    else:
+        history = fit_tf_model(K_model, training_dataset, epochs=hp.ep, callbacks=callbacks)
+        all_loss = history.history['loss']    
     m_stop = time.time()
 
     # print info
@@ -289,17 +290,22 @@ elif args.model_name in ["TFDataOpt", "TFDataOptMP", "TFDataOptMGPU", "TFDataOpt
 
     performance_dict['training_time_module'] = (m_stop - m_start)
     performance_dict['training_time_epoch_wise'] = timing_cb.logs
-    performance_dict['training_loss'] = history.history['loss']
-    # performance_dict['validation_loss'] = history.history['val_loss']
-
-    test_data = tf.data.Dataset.zip((Yp_array, Yf_array)).batch(test_size, drop_remainder=True)
+    performance_dict['training_loss'] = all_loss
+    
+    # inference
+    test_data = tf.data.Dataset.zip((Ydp_array, Ydf_array)).batch(test_size, drop_remainder=True)
     test_data = test_data.cache()
-    test_data = test_data.shuffle(buffer_size=test_size)
+    test_data = test_data.shuffle(buffer_size=1)
     test_data = test_data.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
 
     inf_time_start = time.time()
-
-    Psi_X, PSI_X, Psi_Y, PSI_Y, Kloss = K_model.predict(test_data)
+    
+    if args.model_name in ["TFDataOptMGPU"]:
+        for t in test_data.take(1):
+            Psi_X, PSI_X, Psi_Y, PSI_Y, Kloss = trainer.predict_step(t)
+            Kloss = Kloss.numpy()
+    else:
+        Psi_X, PSI_X, Psi_Y, PSI_Y, Kloss = K_model.predict(test_data)
 
     inf_time_stop = time.time()
     performance_dict["inference_size"] = test_size
@@ -325,7 +331,7 @@ print('[INFO]: One time-step error with K_deepDMD:', np.linalg.norm(PSI_Y - np.m
 performance_dict["test_Kloss_calc"] = np.linalg.norm(PSI_Y - np.matmul(PSI_X, K_deepDMD), ord = 'fro')
 performance_dict["eigen_real"] = list(eigenvaluesK.real)
 performance_dict["eigen_imag"] = list(eigenvaluesK.imag)
-print(performance_dict)
+# print(performance_dict)
 
 # ------------------------------- SAVE PERFORMANCE DICT ------------------------------------------------
 with open(path_handler.get_absolute_path(output_dir, "performance_" + _SUFFIX + ".json"), 'w') as fp:
