@@ -164,12 +164,12 @@ class TransientDataset:
         # If the current code and data files are not in the same directory
         # current_file_path         = 'Repositories/GridSTAGE/code'
 
-        mat_file_path =  root + 'PMUData.mat'
+        mat_file_path =  root + '/PMUData.mat'
         mat_file_contents = sio.loadmat(mat_file_path)
         pmu_locations = mat_file_contents['fmeas_con'][:, 1].astype(int)
 
         num_time_steps, num_bus = mat_file_contents['PMU']['f'][0][0].shape
-        scenario_description = pd.read_csv(root + 'ScenarioDescription.csv')
+        scenario_description = pd.read_csv(root + '/ScenarioDescription.csv')
         load_changes_start_times = scenario_description['Start time(s) for load changes'][0]
 
 #        frequency_data = mat_file_contents['PMU']['f'][0][0][load_changes_start_times * 50 + 25: num_time_steps, pmu_locations - 1]
@@ -367,13 +367,13 @@ class GridNetworkTFDataHandler():
         # return data
         return raw_data
 
-    @tf.function # (input_signature=(tf.TensorSpec(shape=(), dtype=tf.string),))
+    @tf.function#(experimental_compile=True) # (input_signature=(tf.TensorSpec(shape=(), dtype=tf.string),))
     def convert_to_tensor(self, i):
         d = tf.py_function(func=self.get_data, inp=[i], Tout=self.dtype)
         d.set_shape(tf.TensorShape([self.n_rows, self.repeat_cols * self.n_cols]))
         return d
 
-    # @tf.function
+    #@tf.function(experimental_compile=True)
     def load_grid_data(self):
         # load data and print list of files
         # print('[INFO]: Loading the datasets from the directory:', self.scenario_dir)
@@ -394,7 +394,7 @@ class GridNetworkTFDataHandler():
 
         return trimmed_scenarios
 
-    # @tf.function
+    # @tf.function#(experimental_compile=True)
     def create_windows(self, trimmed_scenarios, stride=1, M=2, N=3, window_size=800, shift_size=10):
         Yp_data = trimmed_scenarios.map(lambda window: window.take(self.n_rows-1), num_parallel_calls=tf.data.experimental.AUTOTUNE)
         Yf_data = trimmed_scenarios.map(lambda window: window.skip(1), num_parallel_calls=tf.data.experimental.AUTOTUNE)
@@ -413,7 +413,7 @@ class GridNetworkTFDataHandler():
 
         return window_X_data, window_Y_data, window_U_data, window_V_data, Yp_data, Yf_data
 
-    # @tf.function
+    # @tf.function#(experimental_compile=True)
     def scale_data(self, window_X_data, window_Y_data, window_U_data, window_V_data, Yp_data, Yf_data, scale_factor=2*np.pi, norm=True):
         flat_Yp_data = Yp_data.flat_map(lambda time_step: time_step)
         flat_Yf_data = Yf_data.flat_map(lambda time_step: time_step)
@@ -438,6 +438,140 @@ class GridNetworkTFDataHandler():
                                                                tf.math.multiply(tf.math.subtract(x[self.repeat_cols*int(self.n_cols/2):], 1), 10)], axis=0), num_parallel_calls=tf.data.experimental.AUTOTUNE)    
                 
         return flat_X_data, flat_Y_data, flat_U_data, flat_V_data, flat_Yp_data, flat_Yf_data
+    
+class ReadFileAsDataset(tf.data.Dataset):
+    def _generator(file_name, n_rows, n_cols, n_repeat, indexer, norm, scale_factor):
+        # Opening the file
+        dataset = TransientDataset(file_name.decode('utf-8'))
+        raw_data = np.repeat(np.concatenate([dataset.F, dataset.Vm], axis=1), n_repeat, axis=1)[:n_rows, :]
+        split_index = (n_cols * n_repeat) // 2
+        
+        flat_data = raw_data[indexer].reshape(-1, n_cols)
+        if norm:
+            flat_data[:, :split_index] = scale_factor*(flat_data[:, :split_index] - 60)
+            flat_data[:, split_index:] = 10*(flat_data[:, :split_index] - 1)
+        
+        yield flat_data
+
+    def __new__(cls, file_name, n_rows, flat_n_rows, n_cols, n_repeat, indexer, d_type, norm=True, scale_factor=2*np.pi):
+        return tf.data.Dataset.from_generator(
+            cls._generator,
+            output_signature = tf.TensorSpec(shape=(flat_n_rows, n_cols*n_repeat), dtype=d_type),
+            args=(file_name, n_rows, n_cols, n_repeat, indexer, norm, scale_factor,)
+        )
+    
+class TrainingDataGenerator(tf.data.Dataset):
+    def _generator(samples, n_cols, n_repeat, x_end, y_start, window_size, shift, stride, norm, scale_factor, drop_remainder):
+        X_data = tf.data.Dataset.from_tensor_slices(samples[:x_end, :]).window(window_size, shift=shift, stride=stride, drop_remainder=drop_remainder)
+        Y_data = tf.data.Dataset.from_tensor_slices(samples[y_start:, :]).window(window_size, shift=shift, stride=stride, drop_remainder=drop_remainder)
+        split_index = (n_cols * n_repeat) // 2
+        for rows in tf.data.Dataset.zip((X_data, Y_data)):
+            for x, y in tf.data.Dataset.zip(rows):
+                if norm:
+                    x_norm = np.concatenate([scale_factor*(x[:split_index] - 60), 10*(x[split_index:] - 1)]) 
+                    y_norm = np.concatenate([scale_factor*(y[:split_index] - 60), 10*(y[split_index:] - 1)]) 
+                    yield x_norm, y_norm
+                else:
+                    yield x, y
+
+    def __new__(cls, samples, n_cols, n_repeat, d_type, x_end, y_start, window_size, shift, stride, norm=True, scale_factor=2*np.pi, drop_remainder=True):
+        return tf.data.Dataset.from_generator(
+            cls._generator,
+            output_signature = (tf.TensorSpec(shape=(n_cols*n_repeat,), dtype=d_type),
+                                tf.TensorSpec(shape=(n_cols*n_repeat,), dtype=d_type)),
+            args=(samples, n_cols, n_repeat, x_end, y_start, window_size, shift, stride, norm, scale_factor, drop_remainder,)
+        )
+    
+class GridNetworkNewGen():
+    def __init__(self, scenario_dir, n_rows, n_cols, d_type, repeat_cols=1):
+        self.scenario_dir = scenario_dir
+        self.n_rows = n_rows 
+        self.n_cols = n_cols
+        self.repeat_cols = repeat_cols 
+        self.d_type = d_type
+
+    #@tf.function(experimental_compile=True)
+    def load_grid_data(self):
+        # load data and print list of files
+        # print('[INFO]: Loading the datasets from the directory:', self.scenario_dir)
+        self.dir_list = [self.scenario_dir + "/" + f + "/" for f in os.listdir(self.scenario_dir)]
+        
+        list_files = tf.data.Dataset.from_tensor_slices(self.dir_list)
+        trimmed_scenarios = list_files.interleave(lambda x: ReadFileAsDataset(x, self.n_rows, 
+                                                                              self.n_cols, 
+                                                                              self.repeat_cols, 
+                                                                              self.d_type).prefetch(tf.data.AUTOTUNE),
+                                                  num_parallel_calls=tf.data.AUTOTUNE).cache()
+        return trimmed_scenarios
+    
+    def get_training_data(self, trimmed_scenarios, window_size, shift_size, stride, N, y_start):
+        training_data = trimmed_scenarios.interleave(lambda x: TrainingDataGenerator(x, 
+                                                                                     self.n_cols, 
+                                                                                     self.repeat_cols, 
+                                                                                     self.d_type,
+                                                                                     self.n_rows-N, 
+                                                                                     y_start, 
+                                                                                     window_size, 
+                                                                                     shift_size, 
+                                                                                     stride), num_parallel_calls=tf.data.AUTOTUNE)
+        return training_data
+
+    
+class SequentialGenerator(tf.keras.utils.Sequence):
+    def __init__(self, fnames, n_rows, repeat_cols):
+        self.fnames = fnames
+        self.n_rows = n_rows
+        self.on_epoch_end()
+        self.repeat_cols = repeat_cols
+        
+    def __len__(self):
+        return len(self.fnames)
+    
+    def __getitem__(self, idx):
+        dataset = TransientDataset(self.fnames[idx])
+        raw_data = np.repeat(np.concatenate([dataset.F, dataset.Vm], axis=1), self.repeat_cols, axis=1)
+        
+        return raw_data[:self.n_rows, :]
+    
+class GridNetworkSequentialGen():
+    def __init__(self, scenario_dir, n_rows, n_cols, d_type, repeat_cols=1):
+        self.scenario_dir = scenario_dir
+        self.n_rows = n_rows 
+        self.n_cols = n_cols
+        self.repeat_cols = repeat_cols 
+        self.d_type = d_type
+
+    #@tf.function(experimental_compile=True)
+    def load_grid_data(self):
+        # load data and print list of files
+        # print('[INFO]: Loading the datasets from the directory:', self.scenario_dir)
+        self.dir_list = [self.scenario_dir + "/" + f + "/" for f in os.listdir(self.scenario_dir)]
+        
+        gen = SequentialGenerator(self.dir_list, self.n_rows, self.repeat_cols)
+        dataset_gen = tf.data.Dataset.from_generator(
+            lambda: gen,
+            output_types=self.d_type,
+            output_shapes=(self.n_rows, self.n_cols*self.repeat_cols)
+        ).prefetch(tf.data.AUTOTUNE)
+        
+        trimmed_scenarios = tf.data.Dataset.range(1).interleave(
+            lambda x: dataset_gen,
+            num_parallel_calls=tf.data.AUTOTUNE).cache()
+        
+        return trimmed_scenarios
+    
+    def get_training_data(self, trimmed_scenarios, window_size, shift_size, stride, N, y_start):
+        training_data = trimmed_scenarios.interleave(lambda x: TrainingDataGenerator(x, 
+                                                                                     self.n_cols, 
+                                                                                     self.repeat_cols, 
+                                                                                     self.d_type,
+                                                                                     self.n_rows-N, 
+                                                                                     y_start, 
+                                                                                     window_size, 
+                                                                                     shift_size, 
+                                                                                     stride), num_parallel_calls=tf.data.AUTOTUNE)
+        return training_data
+
 
 
 

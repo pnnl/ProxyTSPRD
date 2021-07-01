@@ -181,7 +181,7 @@ if args.model_name in ["Baseline", "TFDataOpt"]:
 if args.tensorboard==1: 
     # Create a TensorBoard Profiler
     logs = path_handler.get_absolute_path(curr_dir, config["model"]["tb_log_dir"] + _APP_NAME + "/" + _DTYPE + "/R" + str(_REPEAT_COLS) + "/tensorboard/" + _SUFFIX)
-    tb_callback = tf.keras.callbacks.TensorBoard(log_dir=logs, histogram_freq=1, embeddings_freq=1, profile_batch=(5,15))
+    tb_callback = tf.keras.callbacks.TensorBoard(log_dir=logs, histogram_freq=1, embeddings_freq=1, profile_batch=(1,20))
 
     callbacks.append(tb_callback)
 

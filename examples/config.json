@@ -11,7 +11,7 @@
 		"repeat_cols": 1
 	},
 	"model": {
-		"dtype": "float64",
+		"dtype": "float32",
 		"app_name": "power_systems/scenarios_30/",
 		"tb_log_dir": "../../../logs/",
 		"hyperparameters": {
