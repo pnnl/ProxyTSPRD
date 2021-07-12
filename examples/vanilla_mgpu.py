@@ -1,6 +1,7 @@
 # Standard Libraries
 import os
 import json
+import logging
 import datetime
 import numpy as np
 import tensorflow as tf
@@ -25,6 +26,8 @@ from proxy_apps.utils.data.main import NpEncoder
 from proxy_apps.utils import file_reader, path_handler
 from proxy_apps.utils.data.grid import GridNetworkDataHandler, GridNetworkTFDataHandler, GridNetworkNewGen
 
+logger = tf.get_logger()
+
 parser = argparse.ArgumentParser(description='Run Time Series Prediction')
 parser.add_argument("--model_name", choices=["Baseline", "TFDataOpt", "TFDataOptPrev"], type=str,
     help="which implementation to run", required=True)
@@ -41,7 +44,7 @@ _BATCH_SIZE = args.batch_size
 _APP_NAME = config["info"]["app_name"]
 _NROWS = int(config["data"]["n_rows"])
 _NCOLS = int(config["data"]["n_cols"])
-_REPEAT_COLS = int(config["data"]["repeat_cols"])
+_REPEAT_COLS = 10 # int(config["data"]["repeat_cols"])
 _WINDOW_SIZE = int(config["data"]["window_size"])
 _SHIFT_SIZE = int(config["data"]["shift_size"])
 _STRIDE = int(config["data"]["stride"])
@@ -50,7 +53,6 @@ _N_SIGNALS = int(config["data"]["n_signals"])
 _DTYPE = config["model"]["dtype"]
 
 _LABEL = args.model_name
-print(args)
 
 tic = time.time()
 
@@ -58,33 +60,24 @@ tic = time.time()
 curr_dir = os.path.dirname(os.path.realpath(__file__))
 
 # TensorFlow Setup
-print("[INFO] Tensorflow version: ", tf.__version__)
+logger.info(" [Training Script]: Tensorflow version: %s", tf.__version__)
 gpus = tf.config.experimental.list_physical_devices('GPU')
 for gpu in gpus:
-    print("Name:", gpu.name, "  Type:", gpu.device_type)
-    
-# tf.compat.v1.disable_eager_execution()
-print("[INFO] Eager mode: ", tf.executing_eagerly()) # For easy reset of notebook state.
+    logger.info("Name:", gpu.name, "  Type:", gpu.device_type)
 
-def benchmark(dataset, num_epochs=2, steps=10):
-    start_time = time.perf_counter()
-    for epoch_num in range(num_epochs):
-        for s, sample in enumerate(dataset):
-            # Performing a training step
-            time.sleep(0.01)
-            if s == steps - 1:
-                break
-            
-    print("Execution time:", time.perf_counter() - start_time)
+# tf.compat.v1.disable_eager_execution()
+logger.info("Eager mode: %s", tf.executing_eagerly()) # For easy reset of notebook state.
+
+tf.keras.backend.clear_session()
+tf.keras.backend.set_floatx(_DTYPE)
+
+strategy = tf.distribute.MirroredStrategy()
+print('Number of devices: {}'.format(strategy.num_replicas_in_sync))
 
 @tf.function(experimental_compile=True)
 def get_indexer(n_rows, window_size, shift_size, start_point, leave_last):
     return np.arange(window_size)[None, :] + start_point + shift_size*np.arange(((n_rows - window_size - leave_last - start_point) // shift_size) + 1)[:, None]
-
-tf.keras.backend.clear_session()
-tf.keras.backend.set_floatx(_DTYPE)
-tf.config.optimizer.set_jit(True)
-
+    
 # ------------------------------- DATA LOADING ------------------------------------------------   
 l_start = time.time()
 if _LABEL == "Baseline":
@@ -115,66 +108,84 @@ elif _LABEL == "TFDataOpt":
 
     x_indexer = get_indexer(_NROWS, _WINDOW_SIZE, _SHIFT_SIZE, 0, _N_SIGNALS)
     y_indexer = get_indexer(_NROWS, _WINDOW_SIZE, _SHIFT_SIZE, 1, 0)
-    
+
     scenario_data = data_handler.get_training_data(x_indexer, y_indexer)
 
 l_stop = time.time()
-print('[INFO]: Time taken for loading datasets:', l_stop - l_start, 'seconds')
+logger.info(' [Training Script]: Time taken for loading datasets: %f seconds', l_stop - l_start)
 
 if _LABEL in ["Baseline", "TFDataOptPrev"]:
     # ------------------------------- DATA PREPROCESSING ------------------------------------------------
     i_start = time.time()
     X_data, Y_data, U_data, V_data, Yp, Yf = data_handler.create_windows(scenario_data)
     i_stop = time.time()
-    print('[INFO]: Time taken for creating X datasets:', i_stop - i_start, 'seconds')
-
+    logger.info(' [Training Script]: Time taken for creating datasets: %f seconds', i_stop - i_start)
+    
     # ------------------------------- DATA NORMALIZATION ------------------------------------------------
     n_start = time.time()
     X_array, Y_array, U_array, V_array, Yp_array, Yf_array = data_handler.scale_data(X_data, Y_data, U_data, V_data, Yp, Yf)
     n_stop = time.time()
-    print('[INFO]: Time taken for normalization:', n_stop - n_start, 'seconds')
+    logger.info(' [Training Script]: Time taken for normalization: %f seconds', n_stop - n_start)
+    
+hyper_param_dict = config["model"]["hyperparameters"]
+hyper_param_dict['original_dim']       = _REPEAT_COLS * _NCOLS   # input data dimension
+hyper_param_dict['num_epochs']         = _N_EPOCHS  # Number of epochs  
+hyper_param_dict['batch_size']         = _BATCH_SIZE
+
+hyper_param_dict['dtype']         = _DTYPE
+hp = proxyDeepDMDMGPU.HyperParameters(hyper_param_dict)
+hp.model_name         = _LABEL
+hp.bs = hp.bs * strategy.num_replicas_in_sync
+
+# ------------------------------- MODEL TRAINING ------------------------------------------------
+with strategy.scope():
+    model = proxyDeepDMDMGPU.Encoder(hp)
+    optimizer = tf.optimizers.Adagrad(hp.lr)
+
+    # compile and fit model
+    model.compile(optimizer=optimizer)
+
+    trainer = proxyDeepDMDMGPU.NeuralNetworkModel(hp, model)
 
 # timing callback
 timing_cb = TimingCallback()
 
-model = tf.keras.Sequential([
-    tf.keras.layers.Dense(128),
-    tf.keras.layers.Dense(128),
-    tf.keras.layers.Dense(64),
-    tf.keras.layers.Dense(1)
-])
-
-model.compile(optimizer='adam', loss='mse')
-model.build(input_shape=(None,136))
-model.summary()
-
 if _LABEL == "Baseline":
     m_start = time.time()
-    model.fit(X_array, Y_array, epochs=_N_EPOCHS, batch_size=_BATCH_SIZE, callbacks=[timing_cb])
+    trainer.fit([X_array, Y_array], n_epochs=2, batch_size=_BATCH_SIZE, steps_per_epoch=22)
     m_stop = time.time()
 elif _LABEL == "TFDataOptPrev":
     # tensorflow dataset conversion
     tf_conv_start = time.time()
-    training_dataset = tf.data.Dataset.zip((X_array, Y_array)).batch(_BATCH_SIZE)
+    training_dataset = tf.data.Dataset.zip((X_array, Y_array)).batch(hp.bs)
     training_dataset = training_dataset.cache()
-    training_dataset = training_dataset.shuffle(buffer_size=22)
-    training_dataset = training_dataset.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
+    training_dataset = training_dataset.shuffle(buffer_size=6)
+    training_dataset = strategy.experimental_distribute_dataset(training_dataset.prefetch(buffer_size=tf.data.experimental.AUTOTUNE))
     tf_conv_stop = time.time()
-    print('[INFO]: Tensorflow Conversion Time:', tf_conv_stop - tf_conv_start, 'seconds')
+    logger.info('[INFO]: Tensorflow Conversion Time: %f seconds', tf_conv_stop - tf_conv_start)
     
     m_start = time.time()
-    model.fit(training_dataset, epochs=_N_EPOCHS, callbacks=[timing_cb])
+    trainer.fit(training_dataset, n_epochs=_N_EPOCHS, batch_size=_BATCH_SIZE, steps_per_epoch=22)
     m_stop = time.time()
 elif _LABEL == "TFDataOpt":
-    training_dataset = scenario_data.batch(_BATCH_SIZE)
+    data_options = tf.data.Options()
+    data_options.experimental_distribute.auto_shard_policy = tf.data.experimental.AutoShardPolicy.DATA
+    # training_dataset = scenario_data.with_options(data_options).repeat(strategy.num_replicas_in_sync).batch(hp.bs)
+    training_dataset = scenario_data.with_options(data_options).batch(hp.bs)
+
     training_dataset = training_dataset.cache()
-    # training_dataset = training_dataset.shuffle(buffer_size=32)#x_indexer.shape[0]*x_indexer.shape[1]*len(data_handler.dir_list)//_BATCH_SIZE)
+    # shuffle_buffer_size = x_indexer.shape[0]*x_indexer.shape[1]*len(data_handler.dir_list)*strategy.num_replicas_in_sync // hp.bs
+    # print(shuffle_buffer_size)
+    shuffle_buffer_size = x_indexer.shape[0]*x_indexer.shape[1]*len(data_handler.dir_list) // hp.bs
+    print(shuffle_buffer_size)
+    training_dataset = training_dataset.shuffle(buffer_size=shuffle_buffer_size)
     training_dataset = training_dataset.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
-    
+    training_dataset_distributed = strategy.experimental_distribute_dataset(training_dataset)
     m_start = time.time()
-    model.fit(training_dataset, epochs=_N_EPOCHS, callbacks=[timing_cb], workers=64, use_multiprocessing=True)
+    all_loss, e_time, b_time = trainer.fit(training_dataset_distributed, n_epochs=_N_EPOCHS, batch_size=_BATCH_SIZE, steps_per_epoch=shuffle_buffer_size)
     m_stop = time.time()
     
 # print info
-print('[INFO]: Time taken for model training (time module):', m_stop - m_start, 'seconds')
-print('[INFO]: Time taken for model training (Keras):', sum(timing_cb.logs), 'seconds')
+print(all_loss, e_time, b_time)
+print('[INFO]: Time taken for model training (time module): %f seconds', m_stop - m_start)
+logger.info('[INFO]: Time taken for model training (Keras): %f seconds', sum(timing_cb.logs))

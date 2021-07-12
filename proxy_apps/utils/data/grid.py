@@ -34,6 +34,8 @@ num_edge_feats -- number of features (states) associates with each edge in the n
 import scipy.io as sio
 import os
 import time
+import torch
+import functools
 import numpy as np
 import pandas as pd
 
@@ -438,50 +440,35 @@ class GridNetworkTFDataHandler():
                                                                tf.math.multiply(tf.math.subtract(x[self.repeat_cols*int(self.n_cols/2):], 1), 10)], axis=0), num_parallel_calls=tf.data.experimental.AUTOTUNE)    
                 
         return flat_X_data, flat_Y_data, flat_U_data, flat_V_data, flat_Yp_data, flat_Yf_data
-    
-class ReadFileAsDataset(tf.data.Dataset):
-    def _generator(file_name, n_rows, n_cols, n_repeat, indexer, norm, scale_factor):
+
+class TrainingDataGenerator(tf.data.Dataset):
+    def _generator(file_name, n_rows, n_cols, n_repeat, x_indexer, y_indexer, norm, scale_factor):
         # Opening the file
         dataset = TransientDataset(file_name.decode('utf-8'))
         raw_data = np.repeat(np.concatenate([dataset.F, dataset.Vm], axis=1), n_repeat, axis=1)[:n_rows, :]
-        split_index = (n_cols * n_repeat) // 2
         
-        flat_data = raw_data[indexer].reshape(-1, n_cols)
+        split_index = (n_cols * n_repeat) // 2
+        flat_X_data = raw_data[x_indexer].reshape(-1, n_cols*n_repeat)
+        flat_Y_data = raw_data[y_indexer].reshape(-1, n_cols*n_repeat)
+        # print(flat_X_data.shape, flat_Y_data.shape)
+        
         if norm:
-            flat_data[:, :split_index] = scale_factor*(flat_data[:, :split_index] - 60)
-            flat_data[:, split_index:] = 10*(flat_data[:, :split_index] - 1)
-        
-        yield flat_data
+            flat_X_data[:, :split_index] = scale_factor*(flat_X_data[:, :split_index] - 60)
+            flat_X_data[:, split_index:] = 10*(flat_X_data[:, split_index:] - 1)
+            
+            flat_Y_data[:, :split_index] = scale_factor*(flat_Y_data[:, :split_index] - 60)
+            flat_Y_data[:, split_index:] = 10*(flat_Y_data[:, split_index:] - 1)
+            
+        yield (flat_X_data, flat_Y_data)
 
-    def __new__(cls, file_name, n_rows, flat_n_rows, n_cols, n_repeat, indexer, d_type, norm=True, scale_factor=2*np.pi):
+    def __new__(cls, file_name, n_rows, flat_n_rows, n_cols, n_repeat, x_indexer, y_indexer, d_type, norm=True, scale_factor=2*np.pi):
         return tf.data.Dataset.from_generator(
             cls._generator,
-            output_signature = tf.TensorSpec(shape=(flat_n_rows, n_cols*n_repeat), dtype=d_type),
-            args=(file_name, n_rows, n_cols, n_repeat, indexer, norm, scale_factor,)
+            output_signature = (tf.TensorSpec(shape=(flat_n_rows, n_cols*n_repeat), dtype=d_type),
+                                tf.TensorSpec(shape=(flat_n_rows, n_cols*n_repeat), dtype=d_type)),
+            args=(file_name, n_rows, n_cols, n_repeat, x_indexer, y_indexer, norm, scale_factor,)
         )
-    
-class TrainingDataGenerator(tf.data.Dataset):
-    def _generator(samples, n_cols, n_repeat, x_end, y_start, window_size, shift, stride, norm, scale_factor, drop_remainder):
-        X_data = tf.data.Dataset.from_tensor_slices(samples[:x_end, :]).window(window_size, shift=shift, stride=stride, drop_remainder=drop_remainder)
-        Y_data = tf.data.Dataset.from_tensor_slices(samples[y_start:, :]).window(window_size, shift=shift, stride=stride, drop_remainder=drop_remainder)
-        split_index = (n_cols * n_repeat) // 2
-        for rows in tf.data.Dataset.zip((X_data, Y_data)):
-            for x, y in tf.data.Dataset.zip(rows):
-                if norm:
-                    x_norm = np.concatenate([scale_factor*(x[:split_index] - 60), 10*(x[split_index:] - 1)]) 
-                    y_norm = np.concatenate([scale_factor*(y[:split_index] - 60), 10*(y[split_index:] - 1)]) 
-                    yield x_norm, y_norm
-                else:
-                    yield x, y
 
-    def __new__(cls, samples, n_cols, n_repeat, d_type, x_end, y_start, window_size, shift, stride, norm=True, scale_factor=2*np.pi, drop_remainder=True):
-        return tf.data.Dataset.from_generator(
-            cls._generator,
-            output_signature = (tf.TensorSpec(shape=(n_cols*n_repeat,), dtype=d_type),
-                                tf.TensorSpec(shape=(n_cols*n_repeat,), dtype=d_type)),
-            args=(samples, n_cols, n_repeat, x_end, y_start, window_size, shift, stride, norm, scale_factor, drop_remainder,)
-        )
-    
 class GridNetworkNewGen():
     def __init__(self, scenario_dir, n_rows, n_cols, d_type, repeat_cols=1):
         self.scenario_dir = scenario_dir
@@ -490,32 +477,28 @@ class GridNetworkNewGen():
         self.repeat_cols = repeat_cols 
         self.d_type = d_type
 
-    #@tf.function(experimental_compile=True)
-    def load_grid_data(self):
+    # @tf.function #(experimental_compile=True)
+    def get_training_data(self, x_indexer, y_indexer):
         # load data and print list of files
         # print('[INFO]: Loading the datasets from the directory:', self.scenario_dir)
         self.dir_list = [self.scenario_dir + "/" + f + "/" for f in os.listdir(self.scenario_dir)]
         
         list_files = tf.data.Dataset.from_tensor_slices(self.dir_list)
-        trimmed_scenarios = list_files.interleave(lambda x: ReadFileAsDataset(x, self.n_rows, 
-                                                                              self.n_cols, 
-                                                                              self.repeat_cols, 
-                                                                              self.d_type).prefetch(tf.data.AUTOTUNE),
-                                                  num_parallel_calls=tf.data.AUTOTUNE).cache()
-        return trimmed_scenarios
-    
-    def get_training_data(self, trimmed_scenarios, window_size, shift_size, stride, N, y_start):
-        training_data = trimmed_scenarios.interleave(lambda x: TrainingDataGenerator(x, 
-                                                                                     self.n_cols, 
-                                                                                     self.repeat_cols, 
-                                                                                     self.d_type,
-                                                                                     self.n_rows-N, 
-                                                                                     y_start, 
-                                                                                     window_size, 
-                                                                                     shift_size, 
-                                                                                     stride), num_parallel_calls=tf.data.AUTOTUNE)
-        return training_data
-
+        trimmed_scenarios = list_files.interleave(lambda x: TrainingDataGenerator(x, self.n_rows, 
+                                                                              x_indexer.shape[0] * x_indexer.shape[1], 
+                                                                      self.n_cols, self.repeat_cols, 
+                                                                      x_indexer, y_indexer,
+                                                                      self.d_type
+                                                                     ).prefetch(tf.data.AUTOTUNE),
+                                          num_parallel_calls=tf.data.AUTOTUNE,
+                                          #cycle_length=len(self.dir_list), 
+                                          #block_length=1,
+                                          deterministic=False
+                                         )
+        
+        flat_data = trimmed_scenarios.flat_map(lambda x, y: tf.data.Dataset.from_tensor_slices((x, y)))
+        
+        return flat_data
     
 class SequentialGenerator(tf.keras.utils.Sequence):
     def __init__(self, fnames, n_rows, repeat_cols):
@@ -571,6 +554,58 @@ class GridNetworkSequentialGen():
                                                                                      shift_size, 
                                                                                      stride), num_parallel_calls=tf.data.AUTOTUNE)
         return training_data
+    
+    
+class GridDataGenPyTorch(torch.utils.data.Dataset):
+    'Characterizes a dataset for PyTorch'
+    def __init__(self, dir_list, n_rows, n_cols, n_repeat, x_indexer, y_indexer, scale_factor=2, norm=True):
+        'Initialization'
+        self.list_of_directories = dir_list
+        self.n_rows = n_rows
+        self.n_cols = n_cols
+        self.n_repeat = n_repeat
+        self.x_indexer = x_indexer
+        self.y_indexer = y_indexer
+        self.scale_factor = scale_factor
+        self.norm = norm
+        
+        complete_data = list(map(functools.partial(self.get_data, 
+                           n_rows=self.n_rows, n_cols=self.n_cols, n_repeat=self.n_repeat, 
+                           x_indexer=self.x_indexer, y_indexer=self.y_indexer,
+                           scale_factor=self.scale_factor, norm=self.norm,
+                          ), dir_list))
+        
+        stacked_array = np.hstack(complete_data).astype(np.float32)
+        self.X = stacked_array[0, :, :]
+        self.y = stacked_array[1, :, :]
+        
+        assert self.X.shape[0]==self.y.shape[0]
+        
+    def get_data(self, dir_path, n_rows, n_cols, n_repeat, x_indexer, y_indexer, scale_factor, norm):
+        dataset = TransientDataset(dir_path)
+        raw_data = np.repeat(np.concatenate([dataset.F, dataset.Vm], axis=1), n_repeat, axis=1)[:n_rows, :]
+
+        split_index = (n_cols * n_repeat) // 2
+        flat_X_data = raw_data[x_indexer].reshape(-1, n_cols*n_repeat)
+        flat_Y_data = raw_data[y_indexer].reshape(-1, n_cols*n_repeat)
+        # print(flat_X_data.shape, flat_Y_data.shape)
+
+        if norm:
+            flat_X_data[:, :split_index] = scale_factor*(flat_X_data[:, :split_index] - 60)
+            flat_X_data[:, split_index:] = 10*(flat_X_data[:, split_index:] - 1)
+
+            flat_Y_data[:, :split_index] = scale_factor*(flat_Y_data[:, :split_index] - 60)
+            flat_Y_data[:, split_index:] = 10*(flat_Y_data[:, split_index:] - 1)
+
+        return flat_X_data, flat_Y_data
+
+    def __len__(self):
+        'Denotes the total number of samples'
+        return self.X.shape[0]
+    
+    def __getitem__(self, index):
+        'Generates one sample of data'
+        return self.X[index, :], self.y[index, :]
 
 
 

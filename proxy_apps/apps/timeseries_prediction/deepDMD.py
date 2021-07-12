@@ -1,23 +1,4 @@
-import pdb
 import tensorflow as tf
-
-class HyperParameters():
-    def __init__(self, config):
-        self.od = config['original_dim']
-        self.h1 = config['hl_1_dim']
-        self.h2 = config['hl_2_dim']
-        self.h3 = config['hl_3_dim']
-        self.h4 = config['hl_4_dim']
-        ## hp.h5 = config['hl_5_dim']
-        self.ld = config['latent_dim']
-        self.rf = config['reg_factor']
-        self.dr = config['dropout_prob']
-        self.wr = config['weight_regularizer']
-        self.br = config['bias_regularizer']
-        self.ep = config['num_epochs']
-        self.lr = config['learning_rate']
-        self.bs = config['batch_size']
-        self.vs = config['validation_split']
 
 # Neural Network
 class NeuralNetworkModel(tf.keras.Model): 
@@ -54,7 +35,7 @@ class NeuralNetworkModel(tf.keras.Model):
         
         # Total loss:
         loss = K_loss + Reg_loss 
-        # tf.print("K Loss: ", K_loss, "Reg Loss: ", Reg_loss, "Total Loss: ", loss)
+        # tf.print("\n\nK Loss: ", K_loss, "Reg Loss: ", Reg_loss, "Total Loss: ", loss, "Model Losses: ", self.encoder.losses)
         
         self.add_loss(loss)
         return Psi_X, PSI_X, Psi_Y, PSI_Y, K_loss

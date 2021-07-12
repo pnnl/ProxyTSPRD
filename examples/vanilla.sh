@@ -4,7 +4,7 @@
 #SBATCH -N 1
 #SBATCH -p a100_shared
 #SBATCH -c 64
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:8
 #SBATCH -J vanilla
 #SBATCH -o ../../../logs/power_systems/scenarios_30/vanilla/out.txt
 #SBATCH -e ../../../logs/power_systems/scenarios_30/vanilla/err.txt
@@ -25,4 +25,4 @@ if [ -d "/share/apps/cuda/11.0/extras/CUPTI/lib64/" ] && [[ ":$LD_LIBRARY_PATH:"
 fi
 echo $LD_LIBRARY_PATH
 
-python ./vanilla_model.py --model_name ${1} --n_epochs ${2} --batch_size ${3}
+python ./vanilla_mgpu.py --model_name ${1} --n_epochs ${2} --batch_size ${3}
