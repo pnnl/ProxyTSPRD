@@ -1,14 +1,14 @@
 {
 	"info": {
 		"name": "deepDMD",
-		"input_dir": "../../../data/TrainingDataIEEE68bus/",
+		"input_dir": "../../../data/NewTestScenarios/",
 		"data_dir": "../../../data/",
-		"app_name": "power_systems/scenarios_30/"
+		"app_name": "power_systems/scenarios_100/"
 	}, 
 	"data": {
 		"n_rows": 1400,
 		"n_cols": 136,
-		"repeat_cols": 10,
+		"repeat_cols": 20,
                 "window_size": 800,
                 "shift_size": 10,
                 "stride": 1,
@@ -16,7 +16,7 @@
 	},
 	"model": {
 		"dtype": "float64",
-		"app_name": "power_systems/scenarios_30/",
+		"app_name": "power_systems/scenarios_100/",
 		"tb_log_dir": "../../../logs/",
 		"model_dir": "../../../models/",
 		"hyperparameters": {

@@ -3,7 +3,7 @@ import tensorflow as tf
 
 # Neural Network
 class NeuralNetworkModel(tf.keras.Model): 
-    def __init__(self, hp):
+    def __init__(self, hp, mixed_precision=False):
         super(NeuralNetworkModel, self).__init__()
         self.encoder = Encoder(hp) 
 
@@ -13,6 +13,7 @@ class NeuralNetworkModel(tf.keras.Model):
         self.rf = hp.rf 
         self.d_type = hp.d_type
         self.model_name = hp.model_name
+        self.mixed_precision = mixed_precision
         
     @property
     def metrics(self):
@@ -45,11 +46,17 @@ class NeuralNetworkModel(tf.keras.Model):
             # Total loss:
             loss = K_loss + Reg_loss
             loss += sum(self.encoder.losses)
+            
             # tf.print("K Loss: ", K_loss, "Reg Loss: ", Reg_loss, "Total Loss: ", loss)
+            if self.mixed_precision: scaled_loss = self.optimizer.get_scaled_loss(loss)
+            # tf.print("K Loss: ", K_loss, "Reg Loss: ", Reg_loss, "Total Loss: ", loss, "Scaled Loss: ", scaled_loss)
             
         # Compute gradients
         trainable_vars = self.trainable_variables
-        gradients = tape.gradient(loss, trainable_vars)
+        if self.mixed_precision: 
+            scaled_gradients = tape.gradient(scaled_loss, trainable_vars)
+            gradients = self.optimizer.get_unscaled_gradients(scaled_gradients)
+        else: gradients = tape.gradient(loss, trainable_vars)
         
         # Update weights
         self.optimizer.apply_gradients(zip(gradients, trainable_vars))
@@ -92,8 +99,9 @@ class NeuralNetworkModel(tf.keras.Model):
         return {"loss": self.loss_tracker.result()}
         
     @tf.function(experimental_compile=True)
-    def predict_step(self, inputs):       
-        X, Y        = inputs
+    def predict_step(self, inputs):      
+        X           = inputs[0][0]
+        Y           = inputs[0][1]
         
         Psi_X    = self.encoder(X, training=False)
         Psi_Y    = self.encoder(Y, training=False)    
@@ -143,7 +151,7 @@ class Encoder(tf.keras.Model):
 class LinearLayer(tf.keras.layers.Layer):
 
     def __init__(self, units, input_dim, weights_regularizer, bias_regularizer, d_type):
-        super(LinearLayer, self).__init__()
+        super(LinearLayer, self).__init__(dtype=d_type)
         self.w = self.add_weight(name='w_linear',
                                 shape = (input_dim, units), 
                                 initializer = tf.keras.initializers.RandomUniform(
@@ -181,4 +189,4 @@ class DenseLayer(tf.keras.layers.Layer):
 
     def call(self, inputs):
         x = tf.matmul(inputs, self.w) + self.b
-        return tf.nn.elu(x)
+        return tf.keras.activations.elu(x)

@@ -171,8 +171,8 @@ class TransientDataset:
         pmu_locations = mat_file_contents['fmeas_con'][:, 1].astype(int)
 
         num_time_steps, num_bus = mat_file_contents['PMU']['f'][0][0].shape
-        scenario_description = pd.read_csv(root + '/ScenarioDescription.csv')
-        load_changes_start_times = scenario_description['Start time(s) for load changes'][0]
+        # scenario_description = pd.read_csv(root + '/ScenarioDescription.csv')
+        load_changes_start_times = 1 # scenario_description['Start time(s) for load changes'][0]
 
 #        frequency_data = mat_file_contents['PMU']['f'][0][0][load_changes_start_times * 50 + 25: num_time_steps, pmu_locations - 1]
 #        voltage_data = mat_file_contents['PMU']['Vm'][0][0][load_changes_start_times * 50 + 25: num_time_steps, pmu_locations - 1]
@@ -200,7 +200,7 @@ class TransientDataset:
                 edge_attr_ia = mat_file_contents['PMU']['Ia'][0][0][0][i]
                 edge_attr_id = mat_file_contents['PMU']['Id'][0][0][0][i]
 
-        self.scen_desc = scenario_description
+        # self.scen_desc = scenario_description
 
         self.edge_attr_Im = edge_attr_im.T
         self.edge_attr_Ia = edge_attr_ia.T
@@ -235,19 +235,18 @@ class SystemData:
 # ---------------------------------------------------------------
 
 class GridNetworkDataHandler():
-    def __init__(self, scenario_dir, dtype, n_rows=1000, n_cols=136, repeat_cols=1, n_scenarios=50):
+    def __init__(self, scenario_dir, dtype, n_rows=1000, n_cols=136, repeat_cols=1):
         self.scenario_dir = scenario_dir
         self.n_rows = n_rows 
         self.n_cols = n_cols
         self.repeat_cols = repeat_cols 
-        self.n_scenarios = n_scenarios
         self.dtype = dtype
 
     def load_grid_data(self):
         # input directory
         print('[INFO]: Loading the datasets from the directory:', self.scenario_dir)
         dir_list = os.listdir(self.scenario_dir)
-
+        
         # Indicate the scenario range
         Dataset = dict()
         print('[INFO]: Loading data for %d scenarios ...' % len(dir_list))
@@ -261,8 +260,8 @@ class GridNetworkDataHandler():
                                             [dataset.Vm[:self.n_rows,:] for i in range(self.repeat_cols)], axis=1).astype(self.dtype))
             
             count += 1
-            if count == self.n_scenarios: print('[INFO]: Loaded %d/%d scenarios ...' % (count, len(dir_list)))
-
+        
+        print('[INFO]: Loaded %d/%d scenarios ...' % (count, len(dir_list)))
         print('[INFO]: Total number of scenarios loaded:', len(scenario_data))
         print('[INFO]: Shape of each scenario loaded: ', scenario_data[0].shape)
         print('[INFO]: Done ...')
@@ -270,89 +269,104 @@ class GridNetworkDataHandler():
         return scenario_data
 
     def create_windows(self, scenario_data, stride=1, M=2, N=3, window_size=800, shift_size=10):
-    	'''
-    		M, N: number of time shifts
-    		window_size: Length of moving window
-    		shift_size: Separation between two moving windows
-    	'''
-    	X_data = [] # Original data
-    	Y_data = [] # 1 time-shifted data
-    	U_data = [] # 2 time-shifted data
-    	V_data = [] # 3 time-shifted data
-    	Yp = [] # For analytical calculations
-    	Yf = [] # For analytical calculations
-    	count  = 0
-    	
-    	for dataset in scenario_data:    
-    	    dataset_size = dataset.shape[0]
-    	    Yp.append(dataset[:-1,:])
-    	    Yf.append(dataset[1:,:])
-    	    count += 1
-    	    if count == self.n_scenarios:
-    	        print('Done processing %d/%d datasets ...' % (count, len(scenario_data)))
-    	    
-    	    i = 0
-    	    while (i*shift_size+window_size+M+N) <= dataset_size:
-    	        X_indices = range(i*shift_size, i*shift_size + window_size,stride)        
-    	        Y_indices = range(i*shift_size+1, i*shift_size + window_size+1,stride)               
-    	        U_indices = range(i*shift_size+M, i*shift_size + window_size+M,stride)               
-    	        V_indices = range(i*shift_size+N, i*shift_size + window_size+N,stride)   
-    	        if count < 0:
-    	            print(X_indices)
-    	            print(Y_indices)
-    	            print(U_indices)
-    	            print(V_indices)        
+        '''
+            M, N: number of time shifts
+            window_size: Length of moving window
+            shift_size: Separation between two moving windows
+        '''
+        X_data = [] # Original data
+        Y_data = [] # 1 time-shifted data
+        count  = 0
 
-    	        i = i + 1
-    	        X_data.append(dataset[X_indices])
-    	        Y_data.append(dataset[Y_indices])
-    	        U_data.append(dataset[U_indices])
-    	        V_data.append(dataset[V_indices])
+        for dataset in scenario_data:    
+            dataset_size = dataset.shape[0]
+            count += 1
 
-    	print('[INFO]: Original dataset size:', dataset_size)
-    	print('[INFO]: Chosen dataset size:', window_size)
-    	print('[INFO]: Length of X_data: ', len(X_data))
-    	print('[INFO]: Length of each window after down sampling: ', X_data[0].shape)
+            i = 0
+            while (i*shift_size+window_size+M+N) <= dataset_size:
+                X_indices = range(i*shift_size, i*shift_size + window_size,stride)        
+                Y_indices = range(i*shift_size+1, i*shift_size + window_size+1,stride)               
+                if count < 0:
+                    print(X_indices)
+                    print(Y_indices)
+        
+                i = i + 1
+                X_data.append(dataset[X_indices])
+                Y_data.append(dataset[Y_indices])
+        
+        print('Done processing %d/%d datasets ...' % (count, len(scenario_data)))
+        print('[INFO]: Original dataset size:', dataset_size)
+        print('[INFO]: Chosen dataset size:', window_size)
+        print('[INFO]: Length of X_data: ', len(X_data))
+        print('[INFO]: Length of each window after down sampling: ', X_data[0].shape)
 
-    	return X_data, Y_data, U_data, V_data, Yp, Yf
+        return X_data, Y_data
 
-    def scale_data(self, X_data, Y_data, U_data, V_data, Yp, Yf, scale_factor=2*np.pi, norm=True):
-    	X_array = np.asarray(X_data).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
-    	Y_array = np.asarray(Y_data).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
-    	U_array = np.asarray(U_data).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
-    	V_array = np.asarray(V_data).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
-    	Yp_array = np.asarray(Yp).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
-    	Yf_array = np.asarray(Yf).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
-    	print('[INFO]: Yp_array shape: ', Yp_array.shape)
-    	print('[INFO]: Yf_array shape: ', Yf_array.shape)
-    	print('[INFO]: X_array shape: ', X_array.shape)
-    	print('[INFO]: Y_array shape: ', Y_array.shape)
-    	print('[INFO]: U_array shape: ', U_array.shape)
-    	print('[INFO]: V_array shape: ', V_array.shape)
+    def scale_data(self, X_data, Y_data, scale_factor=2*np.pi, norm=True):
+        X_array = np.asarray(X_data).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
+        Y_array = np.asarray(Y_data).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
+        print('[INFO]: X_array shape: ', X_array.shape)
+        print('[INFO]: Y_array shape: ', Y_array.shape)
+        
+        split_index = (self.repeat_cols * self.n_cols) // 2
+        print(split_index)
+        if norm:  
+            # X_array      = np.concatenate((scale_factor*(X_array[:,:self.repeat_cols*int(self.n_cols/2)] - 60), 10*(X_array[:,self.repeat_cols*int(self.n_cols/2):] - 1)), axis = 1) 
+            # Y_array      = np.concatenate((scale_factor*(Y_array[:,:self.repeat_cols*int(self.n_cols/2)] - 60), 10*(Y_array[:,self.repeat_cols*int(self.n_cols/2):] - 1)), axis = 1)
+            X_array[:, :split_index] = scale_factor*(X_array[:, :split_index] - 60)
+            X_array[:, split_index:] = 10*(X_array[:, split_index:] - 1)
+            
+            Y_array[:, :split_index] = scale_factor*(Y_array[:, :split_index] - 60)
+            Y_array[:, split_index:] = 10*(Y_array[:, split_index:] - 1)
+        
+        return X_array, Y_array
+    
+    def create_inference_windows(self, scenario_data, stride=1, M=2, N=3, window_size=800, shift_size=10):
+        '''
+            M, N: number of time shifts
+            window_size: Length of moving window
+            shift_size: Separation between two moving windows
+        '''
+        Yp = [] # For analytical calculations
+        Yf = [] # For analytical calculations
+        count  = 0
 
-    	if norm:  
-    	    X_array_old  = X_array
-    	    Y_array_old  = Y_array
-    	    U_array_old  = U_array
-    	    V_array_old  = V_array
-    	    Yp_array_old = Yp_array
-    	    Yf_array_old = Yf_array
-    	    X_array      = np.concatenate((scale_factor*(X_array_old[:,:self.repeat_cols*int(self.n_cols/2)] - 60), 10*(X_array_old[:,self.repeat_cols*int(self.n_cols/2):] - 1)), axis = 1) 
-    	    Y_array      = np.concatenate((scale_factor*(Y_array_old[:,:self.repeat_cols*int(self.n_cols/2)] - 60), 10*(Y_array_old[:,self.repeat_cols*int(self.n_cols/2):] - 1)), axis = 1) 
-    	    U_array      = np.concatenate((scale_factor*(U_array_old[:,:self.repeat_cols*int(self.n_cols/2)] - 60), 10*(U_array_old[:,self.repeat_cols*int(self.n_cols/2):] - 1)), axis = 1) 
-    	    V_array      = np.concatenate((scale_factor*(V_array_old[:,:self.repeat_cols*int(self.n_cols/2)] - 60), 10*(V_array_old[:,self.repeat_cols*int(self.n_cols/2):] - 1)), axis = 1) 
-    	    Yp_array     = np.concatenate((scale_factor*(Yp_array_old[:,:self.repeat_cols*int(self.n_cols/2)] - 60), 10*(Yp_array_old[:,self.repeat_cols*int(self.n_cols/2):] - 1)), axis = 1)
-    	    Yf_array     = np.concatenate((scale_factor*(Yf_array_old[:,:self.repeat_cols*int(self.n_cols/2)] - 60), 10*(Yf_array_old[:,self.repeat_cols*int(self.n_cols/2):] - 1)), axis = 1)    
-    	        
-    	return X_array, Y_array, U_array, V_array, Yp_array, Yf_array
+        for dataset in scenario_data:    
+            dataset_size = dataset.shape[0]
+            Yp.append(dataset[:-1,:])
+            Yf.append(dataset[1:,:])
+            count += 1
+            
+        print('Done processing %d/%d datasets ...' % (count, len(scenario_data)))
+        print('[INFO]: Original dataset size:', dataset_size)
+        print('[INFO]: Chosen dataset size:', window_size)
+        print('[INFO]: Length of X_data: ', len(Yp))
+        print('[INFO]: Length of each window after down sampling: ', Yp[0].shape)
+
+        return Yp, Yf
+        
+    # @tf.function#(experimental_compile=True)
+    def scale_inference_data(self, Yp, Yf, scale_factor=2*np.pi, norm=True):
+        Yp_array = np.asarray(Yp).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
+        Yf_array = np.asarray(Yf).transpose(2,0,1).reshape(self.repeat_cols*self.n_cols,-1).transpose()
+        print('[INFO]: Yp_array shape: ', Yp_array.shape)
+        print('[INFO]: Yf_array shape: ', Yf_array.shape)
+
+        if norm:  
+            Yp_array_old = Yp_array
+            Yf_array_old = Yf_array
+            Yp_array     = np.concatenate((scale_factor*(Yp_array_old[:,:self.repeat_cols*int(self.n_cols/2)] - 60), 10*(Yp_array_old[:,self.repeat_cols*int(self.n_cols/2):] - 1)), axis = 1)
+            Yf_array     = np.concatenate((scale_factor*(Yf_array_old[:,:self.repeat_cols*int(self.n_cols/2)] - 60), 10*(Yf_array_old[:,self.repeat_cols*int(self.n_cols/2):] - 1)), axis = 1)    
+
+        return Yp_array, Yf_array
+
 
 class GridNetworkTFDataHandler():
-    def __init__(self, scenario_dir, dtype, n_rows=1000, n_cols=136, repeat_cols=1, n_scenarios=50):
+    def __init__(self, scenario_dir, dtype, n_rows=1000, n_cols=136, repeat_cols=1):
         self.scenario_dir = scenario_dir
         self.n_rows = n_rows 
         self.n_cols = n_cols
         self.repeat_cols = repeat_cols 
-        self.n_scenarios = n_scenarios
         self.dtype = dtype
 
     def get_data(self, t: tf.string):
@@ -478,7 +492,7 @@ class GridNetworkNewGen():
         self.d_type = d_type
 
     # @tf.function #(experimental_compile=True)
-    def get_training_data(self, x_indexer, y_indexer):
+    def get_training_data(self, x_indexer, y_indexer, deterministic=False):
         # load data and print list of files
         # print('[INFO]: Loading the datasets from the directory:', self.scenario_dir)
         self.dir_list = [self.scenario_dir + "/" + f + "/" for f in os.listdir(self.scenario_dir)]
@@ -493,7 +507,7 @@ class GridNetworkNewGen():
                                           num_parallel_calls=tf.data.AUTOTUNE,
                                           #cycle_length=len(self.dir_list), 
                                           #block_length=1,
-                                          deterministic=False
+                                          deterministic=deterministic
                                          )
         
         flat_data = trimmed_scenarios.flat_map(lambda x, y: tf.data.Dataset.from_tensor_slices((x, y)))
@@ -558,7 +572,7 @@ class GridNetworkSequentialGen():
     
 class GridDataGenPyTorch(torch.utils.data.Dataset):
     'Characterizes a dataset for PyTorch'
-    def __init__(self, dir_list, n_rows, n_cols, n_repeat, x_indexer, y_indexer, scale_factor=2, norm=True):
+    def __init__(self, dir_list, n_rows, n_cols, n_repeat, x_indexer, y_indexer, scale_factor=2, norm=True, d_type="float64"):
         'Initialization'
         self.list_of_directories = dir_list
         self.n_rows = n_rows
@@ -573,9 +587,9 @@ class GridDataGenPyTorch(torch.utils.data.Dataset):
                            n_rows=self.n_rows, n_cols=self.n_cols, n_repeat=self.n_repeat, 
                            x_indexer=self.x_indexer, y_indexer=self.y_indexer,
                            scale_factor=self.scale_factor, norm=self.norm,
-                          ), dir_list))
+                          ), self.list_of_directories))
         
-        stacked_array = np.hstack(complete_data).astype(np.float32)
+        stacked_array = np.hstack(complete_data).astype(d_type)
         self.X = stacked_array[0, :, :]
         self.y = stacked_array[1, :, :]
         

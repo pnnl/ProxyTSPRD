@@ -9,13 +9,14 @@ logger = tf.get_logger()
 
 # Neural Network
 class NeuralNetworkModel(): 
-    def __init__(self, hp, model):
+    def __init__(self, hp, model, mixed_precision=False):
         self.encoder = model
 
         # other parameters
         self.rf = hp.rf 
         self.d_type = hp.d_type
         self.model_name = hp.model_name
+        self.mixed_precision = mixed_precision
         
     # @tf.function
     def distributed_train_epoch(self, training_dataset, batch_size, steps_per_epoch):
@@ -28,7 +29,7 @@ class NeuralNetworkModel():
             num_batches += 1
         
         return total_loss, num_batches
-        
+
     def fit(self, training_dataset, n_epochs, batch_size, steps_per_epoch):
         all_loss = []
         epoch_time = []
@@ -48,6 +49,10 @@ class NeuralNetworkModel():
             
         return all_loss, epoch_time, avg_batch_time
         
+    def predict(self, test_dataset):
+        for inp_data in test_dataset: total_loss += self.distributed_test_step(inp_data)
+        
+    
     @tf.function#(experimental_compile=True)
     def distributed_test_step(self, dist_inputs):
         return self.encoder.distribute_strategy.run(self.test_step, args=(dist_inputs,))
@@ -80,16 +85,16 @@ class NeuralNetworkModel():
             # Total loss:
             loss = K_loss + Reg_loss
             loss += sum(self.encoder.losses)
-            if self.model_name in ["TFDataOptMP", "TFDataOptMGPUMP"]:
-                loss = self.optimizer.get_scaled_loss(loss)
+            if self.mixed_precision: scaled_loss = self.encoder.optimizer.get_scaled_loss(loss)
             
             # tf.print("K Loss: ", K_loss, "Reg Loss: ", Reg_loss, "Total Loss: ", loss) 
             
         # Compute gradients
         trainable_vars = self.encoder.trainable_variables
-        gradients = tape.gradient(loss, trainable_vars)
-        if self.model_name in ["TFDataOptMP", "TFDataOptMGPUMP"]:
-            gradients = self.encoder.optimizer.get_unscaled_gradients(gradients)
+        if self.mixed_precision: 
+            scaled_gradients = tape.gradient(scaled_loss, trainable_vars)
+            gradients = self.encoder.optimizer.get_unscaled_gradients(scaled_gradients)
+        else: gradients = tape.gradient(loss, trainable_vars)
 
         # Update weights
         self.encoder.optimizer.apply_gradients(zip(gradients, trainable_vars))
@@ -99,7 +104,8 @@ class NeuralNetworkModel():
         return loss
         
     # @tf.function#(experimental_compile=True)
-    def test_step(self, inputs):       
+    def test_step(self, inputs): 
+        print(inputs)
         X, Y        = inputs
 
         Psi_X    = self.encoder(X, training=False)
@@ -120,12 +126,11 @@ class NeuralNetworkModel():
         # Total loss:
         loss = K_loss + Reg_loss
         loss += sum(self.encoder.losses)
-        if self.model_name in ["TFDataOptMP", "TFDataOptMGPUMP"]:
-            loss = self.optimizer.get_scaled_loss(loss)
             
         # Return a dict mapping metric names to current value.
         # Note that it will include the loss (tracked in self.metrics).
-        return loss
+        return Psi_X, PSI_X, Psi_Y, PSI_Y, K_loss
+        # return loss
         
     @tf.function#(experimental_compile=True)
     def predict_step(self, inputs):  
@@ -209,6 +214,7 @@ class DenseLayer(tf.keras.layers.Layer):
         self.weights_regularizer = weights_regularizer
         self.bias_regularizer = bias_regularizer
         self.d_type = d_type
+        self.alpha = 1
         
     def build(self, input_shape):
         input_dim = input_shape[-1]
@@ -228,4 +234,6 @@ class DenseLayer(tf.keras.layers.Layer):
 
     def call(self, inputs):
         x = tf.matmul(inputs, self.w) + self.b
-        return tf.nn.elu(x)
+        cond = tf.keras.backend.greater(x, 0)
+        return tf.keras.backend.switch(cond, x, tf.keras.backend.exp(tf.keras.backend.minimum(x, 0.)) - 1)
+        # return tf.keras.activations.elu(x)

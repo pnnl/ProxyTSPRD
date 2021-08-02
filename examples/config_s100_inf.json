@@ -1,9 +1,9 @@
 {
 	"info": {
 		"name": "deepDMD",
-		"input_dir": "../../../data/TrainingDataIEEE68bus/",
+		"input_dir": "../../../data/NewTestScenarios/",
 		"data_dir": "../../../data/",
-		"app_name": "power_systems/scenarios_30/"
+		"app_name": "power_systems/scenarios_100/"
 	}, 
 	"data": {
 		"n_rows": 1400,
