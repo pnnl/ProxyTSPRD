@@ -1,0 +1,15 @@
+{
+    'info': {
+        'app_name': 'resnet50'
+    },
+    'data': {
+        'type': 'images',
+        'input_file_format': 'npz',
+        
+        'training_dir': '../../../data/lr_imagenet/train/',
+        'validation_dir': '../../../data/lr_imagenet/validation/'
+    }
+    'model': {
+        'model_dir': '../../../models/'
+    }
+}

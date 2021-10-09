@@ -41,7 +41,7 @@ parser.add_argument("--mixed_precision", type=int, choices=[0, 1], help="whether
 args = parser.parse_args()
 
 # System Setup
-config = file_reader.read_config('config_s100.json')
+config = file_reader.read_config('config.json')
 
 _N_EPOCHS = args.n_epochs
 _BATCH_SIZE = args.batch_size
@@ -70,8 +70,6 @@ _SUFFIX =  args.platform + '_' + \
             'mp' + str(args.mixed_precision) + '_' + _LABEL
 
 performance_dict = dict()
-
-tic = time.time()
 
 # current directory
 curr_dir = os.path.dirname(os.path.realpath(__file__))
@@ -157,7 +155,6 @@ else:
 
 
 # ------------------------------- CREATE DATA HANDLER ------------------------------------------------   
-
 data_handler_nvtx = nvtx.start_range("Create Data Handler")
 dh_start = time.time()    
 if _LABEL in ["Baseline", "TFDataOpt"]:
@@ -171,11 +168,9 @@ if _LABEL in ["Baseline", "TFDataOpt"]:
     scenario_data = data_handler.load_grid_data()
 
     # ------------------------------- DATA PREPROCESSING ------------------------------------------------
-
     X_data, Y_data = data_handler.create_windows(scenario_data)
 
     # ------------------------------- DATA NORMALIZATION ------------------------------------------------
-
     X_array, Y_array = data_handler.scale_data(X_data, Y_data)
 
 elif _LABEL in ["TFDataGen", "TFDataOptMGPU", "TFDataOptMGPUAcc"]:
