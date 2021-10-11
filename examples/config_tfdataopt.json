@@ -1,24 +1,27 @@
 {
 	"info": {
-		"name": "deepDMD",
-		"input_dir": "../../../data/TrainingDataIEEE68bus/",
-		"data_dir": "../../../data/",
-		"app_name": "power_systems/scenarios_30/"
-	}, 
-	"data": {
+		"app_name": "TFDataOpt",
+		"framework": "TF"
+	},
+	"data_params": {
+		"training_data_dir": "../../../data/TrainingDataIEEE68bus/",
+		"input_file_format": "mat",
+		"data_generator": "GridNetworkNewGen",
+		"dtype": "float64",
 		"n_rows": 1400,
 		"n_cols": 136,
-		"repeat_cols": 10,
-                "window_size": 800,
-                "shift_size": 10,
-                "stride": 1,
-                "n_signals": 3
+		"repeat_cols": 1,
+		"window_size": 800,
+		"shift_size": 10,
+		"stride": 1,
+		"n_signals": 3
 	},
-	"model": {
-		"dtype": "float64",
-		"app_name": "power_systems/scenarios_30/",
-		"tb_log_dir": "../../../logs/",
+	"model_info": {
+		"model_name": "TFOptimized",
 		"model_dir": "../../../models/",
+		"tb_log_dir": "../../../logs/",
+		"floatx": "float64",
+		"fill_data": "False",
 		"hyperparameters": {
 			"hl_1_dim"           : 128,
 			"hl_2_dim"           : 128,

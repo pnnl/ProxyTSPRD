@@ -1,0 +1,2 @@
+from .timeseries_prediction.deepDMD import DeepDMDReferenceImplementation
+from .timeseries_prediction.proxyDeepDMD import TFOptimized

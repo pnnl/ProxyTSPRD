@@ -1,12 +1,21 @@
 import os
+import numpy as np
+import tensorflow as tf
+
+import torch
+from .grid import TransientDataset
 
 class GridNetworkDataHandler():
-    def __init__(self, scenario_dir, dtype, n_rows=1000, n_cols=136, repeat_cols=1):
-        self.scenario_dir = scenario_dir
-        self.n_rows = n_rows 
-        self.n_cols = n_cols
-        self.repeat_cols = repeat_cols 
-        self.dtype = dtype
+    def __init__(self, handler_params):# scenario_dir, dtype, n_rows=1000, n_cols=136, repeat_cols=1):
+        self.scenario_dir = handler_params["training_data_dir"]
+        self.n_rows = handler_params["n_rows"]
+        self.n_cols = handler_params["n_cols"]
+        self.repeat_cols = handler_params["repeat_cols"]
+        self.window_size = handler_params["window_size"]
+        self.shift_size = handler_params["shift_size"]
+        self.stride = handler_params["stride"]
+        self.n_signals = handler_params["n_signals"]
+        self.dtype = handler_params["dtype"]
 
     def load_grid_data(self):
         # input directory
@@ -250,12 +259,16 @@ class TrainingDataGenerator(tf.data.Dataset):
         )
 
 class GridNetworkNewGen():
-    def __init__(self, scenario_dir, n_rows, n_cols, d_type, repeat_cols=1):
-        self.scenario_dir = scenario_dir
-        self.n_rows = n_rows 
-        self.n_cols = n_cols
-        self.repeat_cols = repeat_cols 
-        self.d_type = d_type
+    def __init__(self, handler_params):#scenario_dir, n_rows, n_cols, dtype, repeat_cols=1):
+        self.scenario_dir = handler_params["training_data_dir"]
+        self.n_rows = handler_params["n_rows"]
+        self.n_cols = handler_params["n_cols"]
+        self.repeat_cols = handler_params["repeat_cols"]
+        self.window_size = handler_params["window_size"]
+        self.shift_size = handler_params["shift_size"]
+        self.stride = handler_params["stride"]
+        self.n_signals = handler_params["n_signals"]
+        self.dtype = handler_params["dtype"]
 
     # @tf.function #(experimental_compile=True)
     def get_training_data(self, x_indexer, y_indexer, deterministic=False):
@@ -268,7 +281,7 @@ class GridNetworkNewGen():
                                                                               x_indexer.shape[0] * x_indexer.shape[1], 
                                                                       self.n_cols, self.repeat_cols, 
                                                                       x_indexer, y_indexer,
-                                                                      self.d_type
+                                                                      self.dtype
                                                                      ).prefetch(tf.data.AUTOTUNE),
                                           num_parallel_calls=tf.data.AUTOTUNE,
                                           #cycle_length=len(self.dir_list), 

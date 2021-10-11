@@ -1,9 +1,9 @@
 import tensorflow as tf
 
 # Neural Network
-class NeuralNetworkModel(tf.keras.Model): 
+class DeepDMDReferenceImplementation(tf.keras.Model):
     def __init__(self, hp):
-        super(NeuralNetworkModel, self).__init__()
+        super(DeepDMDReferenceImplementation, self).__init__()
         
         self.encoder = Encoder(hp)        
         

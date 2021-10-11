@@ -41,7 +41,7 @@ parser.add_argument("--mixed_precision", type=int, choices=[0, 1], help="whether
 args = parser.parse_args()
 
 # System Setup
-config = file_reader.read_config('config.json')
+config = file_reader.read_config('config_baseline.json')
 
 _N_EPOCHS = args.n_epochs
 _BATCH_SIZE = args.batch_size

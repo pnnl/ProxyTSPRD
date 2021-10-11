@@ -1,6 +1,6 @@
 import json
 
-def read_config(config_file="config.json"):
+def read_config(config_file="config_baseline.json"):
 	'''
 	Add error handling:
 		- if no such json file found

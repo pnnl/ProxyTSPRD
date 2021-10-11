@@ -2,17 +2,16 @@ import tensorflow as tf
 # import nvtx.plugins.tf as nvtx_tf
 
 # Neural Network
-class NeuralNetworkModel(tf.keras.Model): 
+class TFOptimized(tf.keras.Model):
     def __init__(self, hp, mixed_precision=False):
-        super(NeuralNetworkModel, self).__init__()
+        super(TFOptimized, self).__init__()
         self.encoder = Encoder(hp) 
 
         # loss tracker
         self.loss_tracker = tf.keras.metrics.Mean(name="loss")
         
         self.rf = hp.rf 
-        self.d_type = hp.d_type
-        self.model_name = hp.model_name
+        self.d_type = hp.floatx
         self.mixed_precision = mixed_precision
         
     @property
@@ -32,7 +31,7 @@ class NeuralNetworkModel(tf.keras.Model):
             Psi_Y    = self.encoder(Y, training=False)    
 
             PSI_X    = tf.concat([X, tf.cast(Psi_X, self.d_type)], 1)
-            PSI_Y    = tf.concat([Y, tf.cast(Psi_Y, self.d_type)], 1) 
+            PSI_Y    = tf.concat([Y, tf.cast(Psi_Y, self.d_type)], 1)
 
             # 1-time step evolution on observable space:
             K_PSI_X  = tf.matmul(PSI_X, self.encoder.KO) 
@@ -125,18 +124,18 @@ class Encoder(tf.keras.Model):
         super(Encoder, self).__init__(name = 'Encoder')
         # Define and randomly initialize the Koopman operator
         self.KO = tf.Variable(tf.random.normal(shape = (hps.ld+hps.od, hps.ld+hps.od), 
-            dtype=hps.d_type, 
+            dtype=hps.floatx,
             mean=0.0, stddev=0.05, 
             seed=123321, name='KoopmanOperator'), trainable=True)
         
-        self.input_layer   = DenseLayer(hps.h1, hps.od, 0.0, 0.0, hps.d_type)
-        self.hidden_layer1 = DenseLayer(hps.h2, hps.h1, hps.wr, hps.br, hps.d_type)
+        self.input_layer   = DenseLayer(hps.h1, hps.od, 0.0, 0.0, hps.floatx)
+        self.hidden_layer1 = DenseLayer(hps.h2, hps.h1, hps.wr, hps.br, hps.floatx)
         self.dropout_laye1 = tf.keras.layers.Dropout(hps.dr)
-        self.hidden_layer2 = DenseLayer(hps.h3, hps.h2, hps.wr, hps.br, hps.d_type)        
+        self.hidden_layer2 = DenseLayer(hps.h3, hps.h2, hps.wr, hps.br, hps.floatx)
         self.dropout_laye2 = tf.keras.layers.Dropout(hps.dr)
-        self.hidden_layer3 = DenseLayer(hps.h4, hps.h3, hps.wr, hps.br, hps.d_type)
+        self.hidden_layer3 = DenseLayer(hps.h4, hps.h3, hps.wr, hps.br, hps.floatx)
         self.dropout_laye3 = tf.keras.layers.Dropout(hps.dr)           
-        self.output_layer  = LinearLayer(hps.ld, hps.h4, hps.wr, hps.br, hps.d_type)
+        self.output_layer  = LinearLayer(hps.ld, hps.h4, hps.wr, hps.br, hps.floatx)
         
     def call(self, input_data, training):
         fx = self.input_layer(input_data)        

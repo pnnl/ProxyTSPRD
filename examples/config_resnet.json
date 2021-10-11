@@ -1,0 +1,34 @@
+{
+    "info": {
+        "app_name": "image_classification",
+        "framework": "TF"
+    },
+    "data": {
+        "training_dir": "../../../data/lr_imagenet/train/",
+        "validation_dir": "../../../data/lr_imagenet/validation/",
+        "input_file_format": "npz",
+
+		"params": {
+			"data_generator": "ImageDataHandler",
+			"dtype": "int64"
+		}
+    },
+    "model": {
+		"model_name": "ResNet50",
+        "model_dir": "../../../models/",
+        "tb_log_dir": "../../../logs/",
+		"params": {
+			"hl_1_dim"           : 128,
+			"hl_2_dim"           : 128,
+			"hl_3_dim"           : 64,
+			"hl_4_dim"           : 64,
+			"latent_dim"         : 64,
+			"reg_factor"         : 0,
+			"dropout_prob"       : 0.005,
+			"weight_regularizer" : 0.001,
+			"bias_regularizer"   : 0,
+			"learning_rate"      : 5e-4,
+			"validation_split"   : 0.25
+		}
+    }
+}
