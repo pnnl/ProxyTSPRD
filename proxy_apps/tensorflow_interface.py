@@ -70,7 +70,8 @@ class TFInterface:
         # if self._LABEL not in ["Baseline"]: tf.config.optimizer.set_jit(True) # Enable XLA.
 
         ## Set Backend floatx - if required
-        tf.keras.backend.set_floatx(data_type)
+        if "float" in data_type:
+            tf.keras.backend.set_floatx(data_type)
 
         ## Mixed Precision
         if self._MIXED_PRECISION:
@@ -115,33 +116,47 @@ class TFInterface:
 
         # all callbacks
         self.callbacks = []  # [early_stop_cb, timing_cb]
-        if self._MODEL_NAME == "DeepDMDReferenceImplementation":
+        if self._MODEL_NAME in ["DeepDMDReferenceImplementation", "ResNet50"]:
             self.callbacks = [timing_cb, early_stop_cb, tb_callback]
 
     def train_model(self, data_dict):
         # hyper parameters
-        self._HYPERPARAMETER_DICT['original_dim'] = data_dict["input_dim"]  # input data dimension
-        hp = hyperparameters.HyperParameters(self._HYPERPARAMETER_DICT)
+        if self._MODEL_NAME in ["DeepDMDReferenceImplementation", "TFOptimized"]:
+            self._HYPERPARAMETER_DICT['original_dim'] = data_dict["input_dim"]  # input data dimension
+            hp = hyperparameters.HyperParameters(self._HYPERPARAMETER_DICT)
+
         print("Hyperparameters: ", self._HYPERPARAMETER_DICT)
 
         # within multi-gpu context
         with self.mgpu_context:
             # initialize and build the model
+            print("Model Name: ", self._MODEL_NAME)
             if self._MODEL_NAME == "DeepDMDReferenceImplementation":
                 model = DeepDMDReferenceImplementation(hp)
             elif self._MODEL_NAME == "TFOptimized":
                 model = TFOptimizedEncoder(hp)
+            elif self._MODEL_NAME == "ResNet50":
+                # initialize the model
+                model = tf.keras.applications.resnet50.ResNet50(include_top=False, input_shape=(32, 32, 3), weights=None, classes=1000)
 
             # select the optimizer
-            optimizer = tf.optimizers.Adagrad(hp.lr)
+            if self._MODEL_NAME in ["DeepDMDReferenceImplementation", "TFOptimized"]:
+                optimizer = tf.optimizers.Adagrad(hp.lr)
+            elif self._MODEL_NAME == "ResNet50":
+                optimizer = tf.keras.optimizers.SGD(self._HYPERPARAMETER_DICT["learning_rate"] * self._N_GPUS)
+
+            # mixed precision optimizer
             if self._MIXED_PRECISION: optimizer = tf.keras.mixed_precision.LossScaleOptimizer(optimizer)
 
             # compile the model
-            model.compile(optimizer=optimizer)
+            if self._MODEL_NAME in ["DeepDMDReferenceImplementation", "TFOptimized"]:
+                model.compile(optimizer=optimizer)
+            elif self._MODEL_NAME == "ResNet50":
+                model.compile(loss='sparse_categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
 
-        training_dataset = data_dict["data"]
         if data_dict['training_data_format'] == "data_generator":
             # generate dataset
+            training_dataset = data_dict["data"]
             data_options = tf.data.Options()
 
             # if multigpu strategy
@@ -166,6 +181,39 @@ class TFInterface:
             if self._MGPU_STRATEGY is not None:
                 training_dataset = self.mgpu_strategy.experimental_distribute_dataset(training_dataset)
 
+        elif data_dict['training_data_format'] == "split_array":
+            training_dataset = data_dict["data"]
+
+        elif data_dict['training_data_format'] == "image_data_generator":
+            # data options
+            data_options = tf.data.Options()
+
+            # if multigpu strategy
+            if self._MGPU_STRATEGY is not None:
+                self._HYPERPARAMETER_DICT["batch_size"] = self._HYPERPARAMETER_DICT["batch_size"] * self.mgpu_strategy.num_replicas_in_sync
+                print("Number of Replicas: ", self.mgpu_strategy.num_replicas_in_sync)
+
+                data_options.experimental_distribute.auto_shard_policy = tf.data.experimental.AutoShardPolicy.DATA
+
+            # compute steps per epoch
+            # steps_per_epoch = (data_dict['n_windows'] * data_dict['window_size'] * data_dict['n_scenarios']) // hp.bs
+            # print("Steps per epoch: ", steps_per_epoch)
+            #
+            # # fill data - if asked
+            # if self._FILL_DATA:
+            #     steps_per_epoch = self.mgpu_strategy.num_replicas_in_sync * steps_per_epoch
+            #     training_dataset = training_dataset.repeat(self.mgpu_strategy.num_replicas_in_sync)
+
+            train_dataset = data_dict['training_data']
+            train_dataset = train_dataset.batch(self._HYPERPARAMETER_DICT['batch_size'])
+            train_dataset = train_dataset.prefetch(tf.data.AUTOTUNE)
+            train_dataset = train_dataset.with_options(data_options)
+
+            val_dataset = data_dict['val_data']
+            val_dataset = val_dataset.batch(self._HYPERPARAMETER_DICT['batch_size'])
+            val_dataset = val_dataset.prefetch(tf.data.AUTOTUNE)
+            val_dataset = val_dataset.with_options(data_options)
+
         # training
         m_start = time.time()
         if self._MODEL_NAME == "DeepDMDReferenceImplementation":
@@ -179,6 +227,15 @@ class TFInterface:
         elif self._MODEL_NAME == "TFOptimized":
             trainer = TFOptimizedModelTrainer(hp, model, mixed_precision=self._MIXED_PRECISION)
             all_loss, epoch_time, avg_batch_time = trainer.fit(training_dataset, n_epochs=hp.ep, batch_size=hp.bs, steps_per_epoch=steps_per_epoch)
+        elif self._MODEL_NAME == "ResNet50":
+            history = model.fit(train_dataset.take(10),
+                                epochs=self._N_EPOCHS,
+                                verbose=1,
+                                validation_steps=10,
+                                callbacks=self.callbacks)
+            epoch_time = self.callbacks[0].logs
+            all_loss = history.history['loss']
+
         m_stop = time.time()
 
         # # save model
@@ -187,6 +244,54 @@ class TFInterface:
 
         return model, m_start, m_stop, all_loss, epoch_time
 
+    def train_image_model(self, data_dict):
+        # hyper parameters
+        hp = hyperparameters.HyperParameters(self._HYPERPARAMETER_DICT)
+        print("Hyperparameters: ", self._HYPERPARAMETER_DICT)
+
+        # within multi-gpu context
+        with self.mgpu_context:
+            # initialize the model
+            model = tf.keras.applications.resnet50.ResNet50(include_top=False, input_shape=(32, 32, 3), weights=None, classes=1000)
+
+            # initialize the optimizer
+            optimizer = tf.keras.optimizers.SGD(0.01 * n_gpus)
+            if self._MIXED_PRECISION: optimizer = tf.keras.mixed_precision.LossScaleOptimizer(optimizer)
+
+            # compile the model
+            model.compile(loss='sparse_categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+
+        # data options
+        data_options = tf.data.Options()
+
+        # if multigpu strategy
+        if self._MGPU_STRATEGY is not None:
+            hp.bs = hp.bs * self.mgpu_strategy.num_replicas_in_sync
+            print("Number of Replicas: ", self.mgpu_strategy.num_replicas_in_sync)
+
+            data_options.experimental_distribute.auto_shard_policy = tf.data.experimental.AutoShardPolicy.DATA
+
+        training_dataset = training_dataset.with_options(data_options).batch(hp.bs)
+        print(training_dataset)
+        print(e1)
+        # compute steps per epoch
+        steps_per_epoch = (data_dict['n_windows'] * data_dict['window_size'] * data_dict['n_scenarios']) // hp.bs
+        print("Steps per epoch: ", steps_per_epoch)
+
+        # fill data - if asked
+        if self._FILL_DATA:
+            steps_per_epoch = self.mgpu_strategy.num_replicas_in_sync * steps_per_epoch
+            training_dataset = training_dataset.repeat(self.mgpu_strategy.num_replicas_in_sync)
+
+        train_dataset = data_dict['training_data']
+        train_dataset = train_dataset.batch(self._HYPERPARAMETER_DICT['batch_size'])
+        train_dataset = train_dataset.prefetch(tf.data.AUTOTUNE)
+        train_dataset = train_dataset.with_options(data_options)
+
+        val_dataset = data_dict['val_data']
+        val_dataset = val_dataset.batch(self._HYPERPARAMETER_DICT['batch_size'])
+        val_dataset = val_dataset.prefetch(tf.data.AUTOTUNE)
+        val_dataset = val_dataset.with_options(data_options)
 
 class ConditionalScope(object):
     def __init__(self, condition, contextmanager):

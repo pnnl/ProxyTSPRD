@@ -16,19 +16,8 @@ class TFOptimizedModelTrainer():
         self.rf = hp.rf
         self.data_type = hp.data_type
         self.mixed_precision = mixed_precision
-        
-    # @tf.function
-    def distributed_train_epoch(self, training_dataset, batch_size, steps_per_epoch):
-        total_loss = 0.0
-        num_batches = 0
 
-        # Iterate over the batches of the dataset.
-        for inp_data in training_dataset:
-            total_loss += self.distributed_train_step(inp_data)
-            num_batches += 1
-        
-        return total_loss, num_batches
-
+    # @tf.function(experimental_compile=True)
     def fit(self, training_dataset, n_epochs, batch_size, steps_per_epoch):
         all_loss = []
         epoch_time = []
@@ -47,51 +36,51 @@ class TFOptimizedModelTrainer():
             avg_batch_time.append((epoch_stop_time-epoch_start_time)/num_batches)
             
         return all_loss, epoch_time, avg_batch_time
-        
-    def predict(self, test_dataset):
-        for inp_data in test_dataset: total_loss += self.distributed_test_step(inp_data)
-        
-    
-    @tf.function#(experimental_compile=True)
-    def distributed_test_step(self, dist_inputs):
-        return self.encoder.distribute_strategy.run(self.test_step, args=(dist_inputs,))
 
     @tf.function#(experimental_compile=True)
-    def distributed_train_step(self, dist_inputs):
-        per_replica_losses = self.encoder.distribute_strategy.run(self.train_step, args=(dist_inputs,))
-        return self.encoder.distribute_strategy.reduce(tf.distribute.ReduceOp.SUM, per_replica_losses, axis=None)
+    def distributed_train_epoch(self, training_dataset, batch_size, steps_per_epoch):
+        total_loss = tf.cast(0.0, self.data_type)
+        num_batches = tf.cast(0, self.data_type)
 
-    # @tf.function(experimental_compile=True) # (input_signature=(tf.TensorSpec(shape=[None], dtype=tf.float64),))
-    def train_step(self, inputs):       
-        X, Y        = inputs
+        # Iterate over the batches of the dataset.
+        for inp_data in training_dataset:
+            total_loss += self.distributed_train_step(inp_data)
+            num_batches += tf.cast(1, self.data_type)
+
+        return total_loss, num_batches
+
+    @tf.function#(experimental_compile=True)  # (input_signature=(tf.TensorSpec(shape=[None], dtype=tf.float64),))
+    def train_step(self, inputs):
+        X, Y = inputs
         with tf.GradientTape() as tape:
-            Psi_X    = self.encoder(X, training=True)
-            Psi_Y    = self.encoder(Y, training=False)    
+            Psi_X = self.encoder(X, training=True)
+            Psi_Y = self.encoder(Y, training=False)
 
-            PSI_X    = tf.concat([X, tf.cast(Psi_X, self.data_type)], 1)
-            PSI_Y    = tf.concat([Y, tf.cast(Psi_Y, self.data_type)], 1)
+            PSI_X = tf.concat([X, tf.cast(Psi_X, self.data_type)], 1)
+            PSI_Y = tf.concat([Y, tf.cast(Psi_Y, self.data_type)], 1)
 
             # 1-time step evolution on observable space:
-            K_PSI_X  = tf.matmul(PSI_X, self.encoder.KO) 
-            
-            # 1-step Koopman loss on observable space:        
-            K_loss   = tf.norm(PSI_Y - K_PSI_X, axis = [0,1], ord = 'fro')
+            K_PSI_X = tf.matmul(PSI_X, self.encoder.KO)
+
+            # 1-step Koopman loss on observable space:
+            K_loss = tf.norm(PSI_Y - K_PSI_X, axis=[0, 1], ord='fro')
 
             # Regularization loss on Koopman operator:
-            Reg_loss= tf.math.scalar_mul(self.rf, tf.norm(self.encoder.KO, axis = [0,1], ord = 'fro'))      
-        
+            Reg_loss = tf.math.scalar_mul(self.rf, tf.norm(self.encoder.KO, axis=[0, 1], ord='fro'))
+
             # Total loss:
             loss = K_loss + Reg_loss
             loss += sum(self.encoder.losses)
             if self.mixed_precision: scaled_loss = self.encoder.optimizer.get_scaled_loss(loss)
             # tf.print("K Loss: ", K_loss, "Reg Loss: ", Reg_loss, "Total Loss: ", loss, "Scaled Loss: ", scaled_loss)
-            
+
         # Compute gradients
         trainable_vars = self.encoder.trainable_variables
-        if self.mixed_precision: 
+        if self.mixed_precision:
             scaled_gradients = tape.gradient(scaled_loss, trainable_vars)
             gradients = self.encoder.optimizer.get_unscaled_gradients(scaled_gradients)
-        else: gradients = tape.gradient(loss, trainable_vars)
+        else:
+            gradients = tape.gradient(loss, trainable_vars)
 
         # Update weights
         self.encoder.optimizer.apply_gradients(zip(gradients, trainable_vars))
@@ -99,8 +88,21 @@ class TFOptimizedModelTrainer():
         # Return a dict mapping metric names to current value.
         # Note that it will include the loss (tracked in self.metrics).
         return loss
-        
-    # @tf.function#(experimental_compile=True)
+
+    @tf.function#(experimental_compile=True)
+    def distributed_train_step(self, dist_inputs):
+        per_replica_losses = self.encoder.distribute_strategy.run(self.train_step, args=(dist_inputs,))
+        return self.encoder.distribute_strategy.reduce(tf.distribute.ReduceOp.SUM, per_replica_losses, axis=None)
+
+    @tf.function(experimental_compile=True)
+    def predict(self, test_dataset):
+        for inp_data in test_dataset: total_loss += self.distributed_test_step(inp_data)
+
+    @tf.function(experimental_compile=True)
+    def distributed_test_step(self, dist_inputs):
+        return self.encoder.distribute_strategy.run(self.test_step, args=(dist_inputs,))
+
+    @tf.function(experimental_compile=True)
     def test_step(self, inputs): 
         X, Y        = inputs
 
@@ -127,7 +129,7 @@ class TFOptimizedModelTrainer():
         # Note that it will include the loss (tracked in self.metrics).
         return Psi_X, PSI_X, Psi_Y, PSI_Y, K_loss
         
-    @tf.function#(experimental_compile=True)
+    @tf.function(experimental_compile=True)
     def predict_step(self, inputs):  
         X, Y        = inputs
 
@@ -232,4 +234,3 @@ class DenseLayer(tf.keras.layers.Layer):
         x = tf.matmul(inputs, self.w) + self.b
         cond = tf.keras.backend.greater(x, 0)
         return tf.keras.backend.switch(cond, x, tf.keras.backend.exp(tf.keras.backend.minimum(x, 0.)) - 1)
-        # return tf.keras.activations.elu(x)
