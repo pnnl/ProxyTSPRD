@@ -8,6 +8,7 @@ from .grid import TransientDataset
 class GridNetworkDataHandler():
     def __init__(self, handler_params):# scenario_dir, dtype, n_rows=1000, n_cols=136, repeat_cols=1):
         self.scenario_dir = handler_params["training_data_dir"]
+        self.n_scenarios = handler_params["n_scenarios"]
         self.n_rows = handler_params["n_rows"]
         self.n_cols = handler_params["n_cols"]
         self.repeat_cols = handler_params["repeat_cols"]
@@ -15,12 +16,12 @@ class GridNetworkDataHandler():
         self.shift_size = handler_params["shift_size"]
         self.stride = handler_params["stride"]
         self.n_signals = handler_params["n_signals"]
-        self.dtype = handler_params["dtype"]
+        self.data_type = handler_params["data_type"]
 
     def load_grid_data(self):
         # input directory
         print('[INFO]: Loading the datasets from the directory:', self.scenario_dir)
-        dir_list = os.listdir(self.scenario_dir)
+        dir_list = os.listdir(self.scenario_dir)[:self.n_scenarios]
         
         # Indicate the scenario range
         Dataset = dict()
@@ -32,7 +33,7 @@ class GridNetworkDataHandler():
             if s_dir.find('scenario') == -1: continue
             dataset = TransientDataset('%s/%s/' % (self.scenario_dir, s_dir))
             scenario_data.append(np.concatenate([dataset.F[:self.n_rows,:] for i in range(self.repeat_cols)] +  
-                                            [dataset.Vm[:self.n_rows,:] for i in range(self.repeat_cols)], axis=1).astype(self.dtype))
+                                            [dataset.Vm[:self.n_rows,:] for i in range(self.repeat_cols)], axis=1).astype(self.data_type))
             
             count += 1
         
@@ -261,6 +262,7 @@ class TrainingDataGenerator(tf.data.Dataset):
 class GridNetworkNewGen():
     def __init__(self, handler_params):#scenario_dir, n_rows, n_cols, dtype, repeat_cols=1):
         self.scenario_dir = handler_params["training_data_dir"]
+        self.n_scenarios = handler_params["n_scenarios"]
         self.n_rows = handler_params["n_rows"]
         self.n_cols = handler_params["n_cols"]
         self.repeat_cols = handler_params["repeat_cols"]
@@ -268,20 +270,20 @@ class GridNetworkNewGen():
         self.shift_size = handler_params["shift_size"]
         self.stride = handler_params["stride"]
         self.n_signals = handler_params["n_signals"]
-        self.dtype = handler_params["dtype"]
+        self.data_type = handler_params["data_type"]
 
     # @tf.function #(experimental_compile=True)
     def get_training_data(self, x_indexer, y_indexer, deterministic=False):
         # load data and print list of files
         # print('[INFO]: Loading the datasets from the directory:', self.scenario_dir)
-        self.dir_list = [self.scenario_dir + "/" + f + "/" for f in os.listdir(self.scenario_dir)]
+        self.dir_list = [self.scenario_dir + "/" + f + "/" for f in os.listdir(self.scenario_dir)[:self.n_scenarios]]
         
         list_files = tf.data.Dataset.from_tensor_slices(self.dir_list)
         trimmed_scenarios = list_files.interleave(lambda x: TrainingDataGenerator(x, self.n_rows, 
                                                                               x_indexer.shape[0] * x_indexer.shape[1], 
                                                                       self.n_cols, self.repeat_cols, 
                                                                       x_indexer, y_indexer,
-                                                                      self.dtype
+                                                                      self.data_type
                                                                      ).prefetch(tf.data.AUTOTUNE),
                                           num_parallel_calls=tf.data.AUTOTUNE,
                                           #cycle_length=len(self.dir_list), 

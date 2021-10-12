@@ -15,7 +15,7 @@ class DataHandler():
     def load_data(self):
         data_dict = {}
         data_dict["input_dim"] = self.data_handler.n_cols * self.data_handler.repeat_cols
-        data_dict["floatx"] = self.data_handler.dtype
+        data_dict["data_type"] = self.data_handler.data_type
 
         if self.handler_name == "GridNetworkDataHandler":
             scenario_data = self.data_handler.load_grid_data()
@@ -23,11 +23,15 @@ class DataHandler():
             # ------------------------------- DATA PREPROCESSING ------------------------------------------------
             X_data, Y_data = self.data_handler.create_windows(scenario_data)
 
+
             # ------------------------------- DATA NORMALIZATION ------------------------------------------------
             X_array, Y_array = self.data_handler.scale_data(X_data, Y_data)
 
             # output
-            data_dict["data_type"] = "split_array"
+            data_dict["training_data_format"] = "split_array"
+            data_dict["n_windows"] = len(X_data)
+            data_dict["window_size"] = self.data_handler.window_size
+            data_dict["n_scenarios"] = self.data_handler.n_scenarios
             data_dict["data"] = [X_array, Y_array]
 
         elif self.handler_name == "GridNetworkNewGen":
@@ -44,10 +48,14 @@ class DataHandler():
                                          0
                                          )
 
+            print(x_indexer.shape)
             scenario_data = self.data_handler.get_training_data(x_indexer, y_indexer)
 
             # output
-            data_dict["data_type"] = "data_generator"
+            data_dict["training_data_format"] = "data_generator"
+            data_dict["n_windows"] = x_indexer.shape[0]
+            data_dict["window_size"] = self.data_handler.window_size
+            data_dict["n_scenarios"] = self.data_handler.n_scenarios
             data_dict["data"] = scenario_data
 
         return data_dict

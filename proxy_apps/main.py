@@ -10,10 +10,12 @@ from .utils.data.main import DataHandler
 from .apps.timeseries_prediction import hyperparameters
 
 class ProxyTSPRD:
-    def __init__(self, app_name, framework, reference_dir):
+    def __init__(self, app_name, framework, reference_dir, mixed_precision):
+        # initialize
         self._APP_NAME = app_name
         self._FRAMEWORK = framework
         self._REF_DIR = reference_dir
+        self._MIXED_PRECISION = mixed_precision
 
         # output
         self.performance_dict = dict()
@@ -27,6 +29,9 @@ class ProxyTSPRD:
         if "val_data_dir" in data_params:
             data_params["val_data_dir"] = path_handler.get_absolute_path(self._REF_DIR, data_params["val_data_dir"])
             print("Validation Data Directory:", data_params["training_data_dir"])
+            
+        if self._MIXED_PRECISION:
+            data_params["data_type"] = "float32"
 
         # load data
         dh_start = time.time()
@@ -34,13 +39,15 @@ class ProxyTSPRD:
         data_dict = data_handler.load_data()
         dh_stop = time.time()
 
+        # update dict
         self.performance_dict['data_loading_time'] = dh_stop-dh_start
 
+        # return data dict
         return data_dict
         
     def train_model(self, model_info, data_dict, n_epochs, batch_size,
                     machine_name, n_gpus, n_cpus,
-                    mixed_precision=False, mgpu_strategy=None):
+                    mgpu_strategy=None):
 
         # model save path
         model_info["model_dir"] = path_handler.get_absolute_path(self._REF_DIR, model_info["model_dir"])
@@ -58,7 +65,8 @@ class ProxyTSPRD:
                                    machine_name,
                                    n_gpus,
                                    n_cpus,
-                                   mixed_precision,
+                                   data_dict["data_type"],
+                                   self._MIXED_PRECISION,
                                    mgpu_strategy
                             )
         elif self._FRAMEWORK == "PyTorch":
@@ -74,8 +82,9 @@ class ProxyTSPRD:
         print('[INFO]: Time taken for model training (Keras):', sum(epoch_time), 'seconds')
         print("Loss Values:", all_loss)
 
-        self.performance_dict["n_epochs"] = hp.ep
-        self.performance_dict["batch_size"] = hp.bs
+        # update dict
+        self.performance_dict["n_epochs"] = n_epochs
+        self.performance_dict["batch_size"] = batch_size
 
         self.performance_dict['training_time_module'] = (m_stop - m_start)
         self.performance_dict['training_time_epoch_wise'] = epoch_time

@@ -15,4 +15,4 @@ class HyperParameters():
         self.lr = config['learning_rate']
         self.bs = config['batch_size']
         self.vs = config['validation_split']
-        self.floatx = config['floatx']
+        self.data_type = config['data_type']

@@ -1,2 +1,3 @@
 from .timeseries_prediction.deepDMD import DeepDMDReferenceImplementation
-from .timeseries_prediction.proxyDeepDMD import TFOptimized
+from .timeseries_prediction.proxyDeepDMD import TFOptimizedSGPU
+from .timeseries_prediction.proxyDeepDMDMGPU import TFOptimizedEncoder, TFOptimizedModelTrainer

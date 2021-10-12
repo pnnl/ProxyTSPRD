@@ -8,14 +8,13 @@ import tensorflow as tf
 logger = tf.get_logger()
 
 # Neural Network
-class NeuralNetworkModel(): 
+class TFOptimizedModelTrainer():
     def __init__(self, hp, model, mixed_precision=False):
         self.encoder = model
 
         # other parameters
-        self.rf = hp.rf 
-        self.d_type = hp.d_type
-        self.model_name = hp.model_name
+        self.rf = hp.rf
+        self.data_type = hp.data_type
         self.mixed_precision = mixed_precision
         
     # @tf.function
@@ -65,13 +64,12 @@ class NeuralNetworkModel():
     # @tf.function(experimental_compile=True) # (input_signature=(tf.TensorSpec(shape=[None], dtype=tf.float64),))
     def train_step(self, inputs):       
         X, Y        = inputs
-        
         with tf.GradientTape() as tape:
             Psi_X    = self.encoder(X, training=True)
             Psi_Y    = self.encoder(Y, training=False)    
 
-            PSI_X    = tf.concat([X, tf.cast(Psi_X, self.d_type)], 1)
-            PSI_Y    = tf.concat([Y, tf.cast(Psi_Y, self.d_type)], 1) 
+            PSI_X    = tf.concat([X, tf.cast(Psi_X, self.data_type)], 1)
+            PSI_Y    = tf.concat([Y, tf.cast(Psi_Y, self.data_type)], 1)
 
             # 1-time step evolution on observable space:
             K_PSI_X  = tf.matmul(PSI_X, self.encoder.KO) 
@@ -86,8 +84,7 @@ class NeuralNetworkModel():
             loss = K_loss + Reg_loss
             loss += sum(self.encoder.losses)
             if self.mixed_precision: scaled_loss = self.encoder.optimizer.get_scaled_loss(loss)
-            
-            # tf.print("K Loss: ", K_loss, "Reg Loss: ", Reg_loss, "Total Loss: ", loss) 
+            # tf.print("K Loss: ", K_loss, "Reg Loss: ", Reg_loss, "Total Loss: ", loss, "Scaled Loss: ", scaled_loss)
             
         # Compute gradients
         trainable_vars = self.encoder.trainable_variables
@@ -105,14 +102,13 @@ class NeuralNetworkModel():
         
     # @tf.function#(experimental_compile=True)
     def test_step(self, inputs): 
-        print(inputs)
         X, Y        = inputs
 
         Psi_X    = self.encoder(X, training=False)
         Psi_Y    = self.encoder(Y, training=False)    
 
-        PSI_X    = tf.concat([X, tf.cast(Psi_X, self.d_type)], 1)
-        PSI_Y    = tf.concat([Y, tf.cast(Psi_Y, self.d_type)], 1) 
+        PSI_X    = tf.concat([X, tf.cast(Psi_X, self.data_type)], 1)
+        PSI_Y    = tf.concat([Y, tf.cast(Psi_Y, self.data_type)], 1)
             
         # 1-time step evolution on observable space:
         K_PSI_X  = tf.matmul(PSI_X, self.encoder.KO) 
@@ -130,7 +126,6 @@ class NeuralNetworkModel():
         # Return a dict mapping metric names to current value.
         # Note that it will include the loss (tracked in self.metrics).
         return Psi_X, PSI_X, Psi_Y, PSI_Y, K_loss
-        # return loss
         
     @tf.function#(experimental_compile=True)
     def predict_step(self, inputs):  
@@ -139,8 +134,8 @@ class NeuralNetworkModel():
         Psi_X    = self.encoder(X, training=False)
         Psi_Y    = self.encoder(Y, training=False)    
 
-        PSI_X    = tf.concat([X, tf.cast(Psi_X, self.d_type)], 1)
-        PSI_Y    = tf.concat([Y, tf.cast(Psi_Y, self.d_type)], 1) 
+        PSI_X    = tf.concat([X, tf.cast(Psi_X, self.data_type)], 1)
+        PSI_Y    = tf.concat([Y, tf.cast(Psi_Y, self.data_type)], 1)
 
         # 1-time step evolution on observable space:
         K_PSI_X  = tf.matmul(PSI_X, self.encoder.KO) 
@@ -153,33 +148,34 @@ class NeuralNetworkModel():
 
         return Psi_X, PSI_X, Psi_Y, PSI_Y, K_loss
 
-class Encoder(tf.keras.Model):
+class TFOptimizedEncoder(tf.keras.Model):
     def __init__(self, hps):
-        super(Encoder, self).__init__(name = 'Encoder')
-        self.KO = tf.Variable(tf.random.normal(shape = (hps.ld+hps.od, hps.ld+hps.od), 
-            dtype=hps.d_type, 
-            mean=0.0, stddev=0.05, 
-            seed=123321, name='KoopmanOperator'),
-                                                    trainable=True)
-        self.input_layer   = DenseLayer(hps.h1, 0.0, 0.0, hps.d_type)
-        self.hidden_layer1 = DenseLayer(hps.h2, hps.wr, hps.br, hps.d_type)
+        super(TFOptimizedEncoder, self).__init__(name = 'Encoder')
+        # Define and randomly initialize the Koopman operator
+        self.KO = tf.Variable(tf.random.normal(shape = (hps.ld+hps.od, hps.ld+hps.od),
+            dtype=hps.data_type,
+            mean=0.0, stddev=0.05,
+            seed=123321, name='KoopmanOperator'), trainable=True)
+
+        self.input_layer   = DenseLayer(hps.h1, 0.0, 0.0, hps.data_type)
+        self.hidden_layer1 = DenseLayer(hps.h2, hps.wr, hps.br, hps.data_type)
         self.dropout_laye1 = tf.keras.layers.Dropout(hps.dr)
-        self.hidden_layer2 = DenseLayer(hps.h3, hps.wr, hps.br, hps.d_type)        
+        self.hidden_layer2 = DenseLayer(hps.h3, hps.wr, hps.br, hps.data_type)
         self.dropout_laye2 = tf.keras.layers.Dropout(hps.dr)
-        self.hidden_layer3 = DenseLayer(hps.h4, hps.wr, hps.br, hps.d_type)
-        self.dropout_laye3 = tf.keras.layers.Dropout(hps.dr)           
-        self.output_layer  = LinearLayer(hps.ld, hps.wr, hps.br, hps.d_type)
-        
+        self.hidden_layer3 = DenseLayer(hps.h4, hps.wr, hps.br, hps.data_type)
+        self.dropout_laye3 = tf.keras.layers.Dropout(hps.dr)
+        self.output_layer  = LinearLayer(hps.ld, hps.wr, hps.br, hps.data_type)
+
     def call(self, input_data, training):
-        fx = self.input_layer(input_data)        
+        fx = self.input_layer(input_data)
         fx = self.hidden_layer1(fx)
-        fx = self.dropout_laye1(fx, training=training)     
+        fx = self.dropout_laye1(fx, training=training)
         fx = self.hidden_layer2(fx)
-        fx = self.dropout_laye2(fx, training=training) 
+        fx = self.dropout_laye2(fx, training=training)
         fx = self.hidden_layer3(fx)
-        fx = self.dropout_laye3(fx, training=training) 
+        fx = self.dropout_laye3(fx, training=training)
         return self.output_layer(fx)
-    
+
 class LinearLayer(tf.keras.layers.Layer):
     def __init__(self, units, weights_regularizer, bias_regularizer, d_type):
         super(LinearLayer, self).__init__()
@@ -191,17 +187,17 @@ class LinearLayer(tf.keras.layers.Layer):
     def build(self, input_shape):
         input_dim = input_shape[-1]
         self.w = self.add_weight(name='w_linear',
-                                shape = (input_dim, self.units), 
-                                initializer = tf.keras.initializers.RandomUniform(
-                                minval=-tf.cast(tf.math.sqrt(6/(input_dim+self.units)), dtype = self.d_type), 
-                                maxval=tf.cast(tf.math.sqrt(6/(input_dim+self.units)), dtype = self.d_type), 
-                                seed=16751),                                                                   
-                                trainable = True)
+                                shape=(input_dim, self.units),
+                                initializer=tf.keras.initializers.RandomUniform(
+                                minval=-tf.cast(tf.math.sqrt(6/(input_dim+self.units)), dtype=self.d_type),
+                                maxval=tf.cast(tf.math.sqrt(6/(input_dim+self.units)), dtype=self.d_type),
+                                seed=16751),
+                                trainable=True)
         self.b = self.add_weight(name='b_linear',
-                                 shape = (self.units,),    
-                                 initializer = tf.zeros_initializer(),
-                                 regularizer = tf.keras.regularizers.l1(self.bias_regularizer),
-                                 trainable = True)
+                                 shape=(self.units,),
+                                 initializer=tf.zeros_initializer(),
+                                 regularizer=tf.keras.regularizers.l1(self.bias_regularizer),
+                                 trainable=True)
 
     def call(self, inputs):
         return tf.matmul(inputs, self.w) + self.b
@@ -219,18 +215,18 @@ class DenseLayer(tf.keras.layers.Layer):
     def build(self, input_shape):
         input_dim = input_shape[-1]
         self.w = self.add_weight(name='w_dense',
-                                 shape = (input_dim, self.units), 
-                                 initializer = tf.keras.initializers.RandomUniform(
-                                     minval=-tf.cast(tf.math.sqrt(6.0/(input_dim+self.units)), dtype = self.d_type),  
-                                     maxval=tf.cast(tf.math.sqrt(6.0/(input_dim+self.units)), dtype = self.d_type),  
-                                     seed=16751), 
-                                 regularizer = tf.keras.regularizers.l1(self.weights_regularizer), 
-                                 trainable = True)
+                                 shape=(input_dim, self.units),
+                                 initializer=tf.keras.initializers.RandomUniform(
+                                     minval=-tf.cast(tf.math.sqrt(6.0/(input_dim+self.units)), dtype=self.d_type),
+                                     maxval=tf.cast(tf.math.sqrt(6.0/(input_dim+self.units)), dtype=self.d_type),
+                                     seed=16751),
+                                 regularizer=tf.keras.regularizers.l1(self.weights_regularizer),
+                                 trainable=True)
         self.b = self.add_weight(name='b_dense',
-                                 shape = (self.units,),    
-                                 initializer = tf.zeros_initializer(),
-                                 regularizer = tf.keras.regularizers.l1(self.bias_regularizer),
-                                 trainable = True)
+                                 shape=(self.units,),
+                                 initializer=tf.zeros_initializer(),
+                                 regularizer=tf.keras.regularizers.l1(self.bias_regularizer),
+                                 trainable=True)
 
     def call(self, inputs):
         x = tf.matmul(inputs, self.w) + self.b

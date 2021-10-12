@@ -7,7 +7,8 @@
 		"training_data_dir": "../../../data/TrainingDataIEEE68bus/",
 		"input_file_format": "mat",
 		"data_generator": "GridNetworkDataHandler",
-		"dtype": "float64",
+		"data_type": "float64",
+		"n_scenarios": 10,
 		"n_rows": 1400,
 		"n_cols": 136,
 		"repeat_cols": 1,
@@ -20,7 +21,6 @@
 		"model_name": "DeepDMDReferenceImplementation",
 		"model_dir": "../../../models/",
 		"tb_log_dir": "../../../logs/",
-		"floatx": "float64",
 		"fill_data": "False",
 		"hyperparameters": {
 			"hl_1_dim"           : 128,
