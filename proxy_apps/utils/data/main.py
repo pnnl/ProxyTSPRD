@@ -1,5 +1,6 @@
 import numpy as np
 import json
+import tensorflow as tf
 
 from .timeseries import GridNetworkDataHandler, GridNetworkNewGen
 from .image import ImageDataHandler
@@ -72,7 +73,7 @@ class DataHandler():
 
         return data_dict
 
-    # @tf.function(experimental_compile=True)
+    @tf.function(experimental_compile=True)
     def get_indexer(self, n_rows, window_size, shift_size, start_point, leave_last):
         return np.arange(window_size)[None, :] + start_point + shift_size * np.arange(
             ((n_rows - window_size - leave_last - start_point) // shift_size) + 1)[:, None]

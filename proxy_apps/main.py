@@ -28,7 +28,7 @@ class ProxyTSPRD:
         # validation data - if any
         if "val_data_dir" in data_params:
             data_params["val_data_dir"] = path_handler.get_absolute_path(self._REF_DIR, data_params["val_data_dir"])
-            print("Validation Data Directory:", data_params["training_data_dir"])
+            print("Validation Data Directory:", data_params["val_data_dir"])
             
         if self._MIXED_PRECISION:
             data_params["data_type"] = "float32"
@@ -46,7 +46,7 @@ class ProxyTSPRD:
         return data_dict
         
     def train_model(self, model_info, data_dict, n_epochs, batch_size,
-                    machine_name, n_gpus, n_cpus,
+                    machine_name, n_gpus,
                     mgpu_strategy=None):
 
         # model save path
@@ -64,7 +64,6 @@ class ProxyTSPRD:
                                    batch_size,
                                    machine_name,
                                    n_gpus,
-                                   n_cpus,
                                    data_dict["data_type"],
                                    self._MIXED_PRECISION,
                                    mgpu_strategy
@@ -75,6 +74,7 @@ class ProxyTSPRD:
             print("Invalid Environment")
 
         # train model
+        self.env.build_model(data_dict)
         model, m_start, m_stop, all_loss, epoch_time = self.env.train_model(data_dict)
         
         # print info
