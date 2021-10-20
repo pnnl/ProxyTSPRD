@@ -5,10 +5,10 @@
 # ------------------------------- IMPORT MODULES & SETUP ------------------------------------------------
 # Standard Libraries
 import os
+import time
 import math
 import json
 import datetime
-import numpy as np
 import time
 import argparse
 
@@ -42,22 +42,30 @@ _CONFIG_FILE = args.config_file
 config = file_reader.read_config(_REF_DIR + _CONFIG_FILE)
 
 # initialize the interface
-_FRAMEWORK = args.framework
 _MIXED_PRECISION = args.mixed_precision
-_APP_NAME = config['info']['app_name']
-interface = ProxyTSPRD(_APP_NAME, _FRAMEWORK, _REF_DIR, _MIXED_PRECISION)
-
-# load data
-training_data_dict = interface.load_data(config['data_params'])
-training_data_dict
-
-# train the network
-_N_EPOCHS = args.n_epochs
-_BATCH_SIZE = args.batch_size
 
 _MACHINE_NAME = args.machine_name
 _N_GPUS = args.n_gpus
 
 _MGPU_STRATEGY = args.mgpu_strategy
 if _MGPU_STRATEGY == "None": _MGPU_STRATEGY = None
-interface.train_model(config['model_info'], training_data_dict, _N_EPOCHS, _BATCH_SIZE, _MACHINE_NAME, _N_GPUS, _MGPU_STRATEGY)
+
+start_time = time.perf_counter()
+interface = ProxyTSPRD(config["info"], _REF_DIR, _MIXED_PRECISION, _MACHINE_NAME, _N_GPUS, _MGPU_STRATEGY)
+end_time = time.perf_counter()
+print("====> Initialization Time: ", end_time-start_time)
+
+# load data
+start_time = time.perf_counter()
+training_data_dict = interface.load_data(config['data_params'])
+end_time = time.perf_counter()
+print("====> Data Loading Time: ", end_time-start_time)
+
+# train the network
+_N_EPOCHS = args.n_epochs
+_BATCH_SIZE = args.batch_size
+
+start_time = time.perf_counter()
+interface.train_model(config['model_info'], training_data_dict, _N_EPOCHS, _BATCH_SIZE)
+end_time = time.perf_counter()
+print("====> Model Training Time: ", end_time-start_time)

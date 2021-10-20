@@ -1,7 +1,9 @@
 {
 	"info": {
 		"app_name": "Baseline",
-		"framework": "TF"
+		"framework": "TF",
+        "mgpu_support": "False",
+        "mixed_precision_support": "False"
 	},
 	"data_params": {
 		"training_data_dir": "../../../data/TrainingDataIEEE68bus/",

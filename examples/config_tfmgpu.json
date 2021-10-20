@@ -1,9 +1,9 @@
 {
 	"info": {
-		"app_name": "TFOptimizedSGPU",
+		"app_name": "TFOptimizedMGPU",
         "framework": "TF",
         "mixed_precision_support": "True",
-        "mgpu_support": "False"
+        "mgpu_support": "True"
 	},
 	"data_params": {
 		"training_data_dir": "../../../data/TrainingDataIEEE68bus/",
@@ -20,7 +20,7 @@
 		"n_signals": 3
 	},
 	"model_info": {
-		"model_name": "TFOptimizedSGPU",
+		"model_name": "TFOptimizedMGPU",
 		"model_dir": "../../../models/",
 		"tb_log_dir": "../../../logs/",
 		"fill_data": "False",

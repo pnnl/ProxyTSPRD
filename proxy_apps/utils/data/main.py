@@ -2,6 +2,9 @@ import numpy as np
 import json
 import tensorflow as tf
 
+from numba import jit
+from numba.experimental import jitclass
+
 from .timeseries import GridNetworkDataHandler, GridNetworkNewGen
 from .image import ImageDataHandler
 
@@ -75,8 +78,9 @@ class DataHandler():
 
     @tf.function(experimental_compile=True)
     def get_indexer(self, n_rows, window_size, shift_size, start_point, leave_last):
-        return np.arange(window_size)[None, :] + start_point + shift_size * np.arange(
+        window = np.arange(window_size)[None, :] + start_point + shift_size * np.arange(
             ((n_rows - window_size - leave_last - start_point) // shift_size) + 1)[:, None]
+        return window
 
 
 class NpEncoder(json.JSONEncoder):

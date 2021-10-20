@@ -20,6 +20,7 @@ class TFOptimizedSGPU(tf.keras.Model):
         self.rf = hp.rf
         self.data_type = hp.data_type
         self.mixed_precision = mixed_precision
+        self.shape = 1360
         
     @property
     def metrics(self):
@@ -30,9 +31,14 @@ class TFOptimizedSGPU(tf.keras.Model):
         # `reset_states()` yourself at the time of your choosing.
         return [self.loss_tracker]
 
-    @tf.function(experimental_compile=True) # (input_signature=(tf.TensorSpec(shape=[None], dtype=tf.float64),))
-    def train_step(self, inputs):       
+    @tf.function(experimental_compile=True)
+    def train_step(self, inputs):    
+        # start_time = time.perf_counter()
         X, Y        = inputs
+        # end_time = time.perf_counter()
+        # print("================> Get Data: ", end_time-start_time)
+        
+        # start_time = time.perf_counter()
         with tf.GradientTape() as tape:
             Psi_X    = self.encoder(X, training=True)
             Psi_Y    = self.encoder(Y, training=False)    
@@ -54,8 +60,12 @@ class TFOptimizedSGPU(tf.keras.Model):
             loss += sum(self.encoder.losses)
             if self.mixed_precision: scaled_loss = self.optimizer.get_scaled_loss(loss)
             # tf.print("K Loss: ", K_loss, "Reg Loss: ", Reg_loss, "Total Loss: ", loss, "Scaled Loss: ", scaled_loss)
+        
+        # end_time = time.perf_counter()
+        # print("================> Forward Pass: ", end_time-start_time)
             
         # Compute gradients
+        # start_time = time.perf_counter()
         trainable_vars = self.trainable_variables
         if self.mixed_precision: 
             scaled_gradients = tape.gradient(scaled_loss, trainable_vars)
@@ -64,6 +74,8 @@ class TFOptimizedSGPU(tf.keras.Model):
         
         # Update weights
         self.optimizer.apply_gradients(zip(gradients, trainable_vars))
+        # end_time = time.perf_counter()
+        # print("================> Backward Pass: ", end_time-start_time)
 
         # Compute our own metrics
         self.loss_tracker.update_state(loss)

@@ -252,6 +252,7 @@ class TrainingDataGenerator(tf.data.Dataset):
         yield (flat_X_data, flat_Y_data)
 
     def __new__(cls, file_name, n_rows, flat_n_rows, n_cols, n_repeat, x_indexer, y_indexer, d_type, norm=True, scale_factor=2*np.pi):
+        # print("Enter")
         return tf.data.Dataset.from_generator(
             cls._generator,
             output_signature = (tf.TensorSpec(shape=(flat_n_rows, n_cols*n_repeat), dtype=d_type),
@@ -272,7 +273,7 @@ class GridNetworkNewGen():
         self.n_signals = handler_params["n_signals"]
         self.data_type = handler_params["data_type"]
 
-    # @tf.function #(experimental_compile=True)
+    # @tf.function(experimental_compile=True)
     def get_training_data(self, x_indexer, y_indexer, deterministic=False):
         # load data and print list of files
         # print('[INFO]: Loading the datasets from the directory:', self.scenario_dir)
