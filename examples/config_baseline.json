@@ -1,17 +1,19 @@
 {
 	"info": {
 		"app_name": "Baseline",
-		"framework": "TF"
+		"framework": "TF",
+        "mgpu_support": "False",
+        "mixed_precision_support": "False"
 	},
 	"data_params": {
 		"training_data_dir": "../../../data/TrainingDataIEEE68bus/",
 		"input_file_format": "mat",
 		"data_generator": "GridNetworkDataHandler",
 		"data_type": "float64",
-		"n_scenarios": 10,
+		"n_scenarios": 30,
 		"n_rows": 1400,
 		"n_cols": 136,
-		"repeat_cols": 1,
+		"repeat_cols": 10,
 		"window_size": 800,
 		"shift_size": 10,
 		"stride": 1,
