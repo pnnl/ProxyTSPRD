@@ -1,0 +1,22 @@
+{
+    "info": {
+        "app_name": "ResNet50",
+        "framework": "TF"
+    },
+    "data_params": {
+        "training_data_dir": "../../../data/ImageNet/numpy/",
+        "val_data_dir": "../../../data/ImageNet/numpy/",
+        "input_file_format": "npz",
+		"data_generator": "ImageDataHandler",
+		"data_type": "int64"
+    },
+    "model_info": {
+		"model_name": "ResNet50",
+        "model_dir": "../../../models/",
+        "tb_log_dir": "../../../logs/",
+		"fill_data": "False",
+		"hyperparameters": {
+			"learning_rate"      : 0.01
+		}
+	}
+}

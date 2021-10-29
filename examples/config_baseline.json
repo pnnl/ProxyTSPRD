@@ -1,0 +1,39 @@
+{
+	"info": {
+		"app_name": "Baseline",
+		"framework": "TF"
+	},
+	"data_params": {
+		"training_data_dir": "../../../data/TrainingDataIEEE68bus/",
+		"input_file_format": "mat",
+		"data_generator": "GridNetworkDataHandler",
+		"data_type": "float64",
+		"n_scenarios": 10,
+		"n_rows": 1400,
+		"n_cols": 136,
+		"repeat_cols": 1,
+		"window_size": 800,
+		"shift_size": 10,
+		"stride": 1,
+		"n_signals": 3
+	},
+	"model_info": {
+		"model_name": "DeepDMDReferenceImplementation",
+		"model_dir": "../../../models/",
+		"tb_log_dir": "../../../logs/",
+		"fill_data": "False",
+		"hyperparameters": {
+			"hl_1_dim"           : 128,
+			"hl_2_dim"           : 128,
+			"hl_3_dim"           : 64,
+			"hl_4_dim"           : 64,
+			"latent_dim"         : 64, 
+			"reg_factor"         : 0,
+			"dropout_prob"       : 0.005,
+			"weight_regularizer" : 0.001, 
+			"bias_regularizer"   : 0,
+			"learning_rate"      : 5e-4, 
+			"validation_split"   : 0.25
+		}
+	}
+}
