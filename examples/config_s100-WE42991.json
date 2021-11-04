@@ -1,0 +1,36 @@
+{
+	"info": {
+		"name": "deepDMD",
+		"input_dir": "../../../data/NewTestScenarios/",
+		"data_dir": "../../../data/",
+		"app_name": "power_systems/scenarios_100/"
+	}, 
+	"data": {
+		"n_rows": 1400,
+		"n_cols": 136,
+		"repeat_cols": 30,
+                "window_size": 800,
+                "shift_size": 10,
+                "stride": 1,
+                "n_signals": 3
+	},
+	"model": {
+		"dtype": "float64",
+		"app_name": "power_systems/scenarios_100/",
+		"tb_log_dir": "../../../logs/",
+		"model_dir": "../../../models/",
+		"hyperparameters": {
+			"hl_1_dim"           : 128,
+			"hl_2_dim"           : 128,
+			"hl_3_dim"           : 64,
+			"hl_4_dim"           : 64,
+			"latent_dim"         : 64, 
+			"reg_factor"         : 0,
+			"dropout_prob"       : 0.005,
+			"weight_regularizer" : 0.001, 
+			"bias_regularizer"   : 0,
+			"learning_rate"      : 5e-4, 
+			"validation_split"   : 0.25
+		}
+	}
+}
