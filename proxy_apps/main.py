@@ -18,14 +18,17 @@ class ProxyTSPRD:
         
         self._APP_NAME = app_info["app_name"]
         self._FRAMEWORK = app_info["framework"]
+        self._DTYPE = app_info["data_type"]
         
         # mixed precision
         self._MIXED_PRECISION_SUPPORT = app_info["mixed_precision_support"]
         self._MIXED_PRECISION = mixed_precision
         if self._MIXED_PRECISION:
             if self._MIXED_PRECISION_SUPPORT == "False": 
-                print("[WARNING] Mixed precision was enabled, however, the model (%s) does not support mixed precision. Therefore, disabling mixed precision for this run." %(self._APP_NAME))
+                print("[WARNING - Mixed Precision] Mixed precision was enabled, however, the model (%s) does not support mixed precision. Therefore, disabling mixed precision for this run." %(self._APP_NAME))
                 self._MIXED_PRECISION = 0
+            else:
+                self._DTYPE = "float32"
         
         # multiple gpu
         self._MGPU_SUPPORT = app_info["mgpu_support"]
@@ -34,7 +37,7 @@ class ProxyTSPRD:
         self._MGPU_STRATEGY = mgpu_strategy
         
         if self._MGPU_SUPPORT == "False":
-            print("[WARNING] %s was enabled and the execution is using %d GPUs, however, the model (%s) does not support distributed training. Therefore, using only one GPU without distributed training." %(self._MGPU_STRATEGY, self._N_GPUS, self._APP_NAME))
+            print("[WARNING - Mixed Precision] %s was enabled and the execution is using %d GPUs, however, the model (%s) does not support distributed training. Therefore, using only one GPU without distributed training." %(self._MGPU_STRATEGY, self._N_GPUS, self._APP_NAME))
             self._N_GPUS = 1
             self._MGPU_STRATEGY = None
             os.environ['CUDA_VISIBLE_DEVICES'] = "0"
@@ -43,14 +46,18 @@ class ProxyTSPRD:
                 if self._N_GPUS > 1:
                     print("[WARNING] The execution is using %d GPUs, however, no distributed training strategy was specified." %(self._N_GPUS))
                         
-        # set environment variables
+        # initialize environment
         if self._FRAMEWORK == "TF":
-            os.environ['TF_XLA_FLAGS']="--tf_xla_auto_jit=2 --tf_xla_cpu_global_jit"
-            os.environ['XLA_FLAGS']="--xla_gpu_cuda_data_dir=/share/apps/cuda/11.0/"
-            os.environ["TF_GPU_THREAD_MODE"] = "gpu_private"  # to avoid gpu contention
-            # os.environ['TF_CUDNN_DETERMINISTIC']='1'
-        
-        os.environ['CUDA_DEVICE_ORDER'] = "PCI_BUS_ID"
+            self.env = TFInterface(self._MACHINE_NAME,
+                                   self._N_GPUS,
+                                   self._DTYPE,
+                                   self._MIXED_PRECISION,
+                                   self._MGPU_STRATEGY
+                            )
+        elif self._FRAMEWORK == "PyTorch":
+            self.env = PyTorchInterface(self._DTYPE, self._MIXED_PRECISION)
+        else:
+            print("Invalid Environment")
         
         # output
         self.performance_dict = dict()
@@ -65,12 +72,9 @@ class ProxyTSPRD:
             data_params["val_data_dir"] = path_handler.get_absolute_path(self._REF_DIR, data_params["val_data_dir"])
             print("Validation Data Directory:", data_params["val_data_dir"])
             
-        if self._MIXED_PRECISION:
-            data_params["data_type"] = "float32"
-
         # load data
         dh_start = time.time()
-        data_handler = DataHandler(data_params)
+        data_handler = DataHandler(data_params, self._DTYPE)
         data_dict = data_handler.load_data()
         dh_stop = time.time()
 
@@ -91,33 +95,17 @@ class ProxyTSPRD:
             model_info["tb_log_dir"] = path_handler.get_absolute_path(self._REF_DIR, model_info["tb_log_dir"])
         print("TensorBoard Log Directory Path: ", model_info["tb_log_dir"])
 
-        # initialize environment
-        if self._FRAMEWORK == "TF":
-            self.env = TFInterface(model_info,
-                                   n_epochs,
-                                   batch_size,
-                                   self._MACHINE_NAME,
-                                   self._N_GPUS,
-                                   data_dict["data_type"],
-                                   self._MIXED_PRECISION,
-                                   self._MGPU_STRATEGY
-                            )
-        elif self._FRAMEWORK == "PyTorch":
-            self.env = PyTorchInterface(self._DTYPE, self._MIXED_PRECISION)
-        else:
-            print("Invalid Environment")
-        
         end_time = time.perf_counter()
         print("========> Initialize Interface: ", end_time-start_time)
 
         # train model
         start_time = time.perf_counter()
-        self.env.build_model(data_dict)
+        self.env.build_model(model_info, data_dict, n_epochs, batch_size)
         end_time = time.perf_counter()
         print("========> Build Model: ", end_time-start_time)
         
         start_time = time.perf_counter()
-        model, m_start, m_stop, all_loss, epoch_time = self.env.train_model(data_dict)
+        model, m_start, m_stop, all_loss, epoch_time = self.env.train_model(model_info, data_dict)
         end_time = time.perf_counter()
         print("========> Train Model: ", end_time-start_time)
         

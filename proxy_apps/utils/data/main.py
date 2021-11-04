@@ -5,20 +5,22 @@ import tensorflow as tf
 from numba import jit
 from numba.experimental import jitclass
 
-from .timeseries import GridNetworkDataHandler, GridNetworkNewGen
+from .timeseries import GridNetworkDataHandler, GridNetworkNewGen, GridNetworkWindowDataGenerator
 from .image import ImageDataHandler
 
 class DataHandler():
-    def __init__(self, handler_params):
+    def __init__(self, handler_params, dtype):
         self.handler_name = handler_params["data_generator"]
 
         # data handler for timeseries data
         if self.handler_name == "GridNetworkDataHandler": # ["Baseline", "TFDataOpt"]:
-            self.data_handler = GridNetworkDataHandler(handler_params)
+            self.data_handler = GridNetworkDataHandler(handler_params, dtype)
         elif self.handler_name == "GridNetworkNewGen": # ["TFDataGen", "TFDataOptMGPU", "TFDataOptMGPUAcc", "LSTM"]:
-            self.data_handler = GridNetworkNewGen(handler_params)
+            self.data_handler = GridNetworkNewGen(handler_params, dtype)
+        elif self.handler_name == "GridNetworkWindowDataGenerator": # ["TFDataGen", "TFDataOptMGPU", "TFDataOptMGPUAcc", "LSTM"]:
+            self.data_handler = GridNetworkWindowDataGenerator(handler_params, dtype)
         elif self.handler_name == "ImageDataHandler":
-            self.data_handler = ImageDataHandler(handler_params)
+            self.data_handler = ImageDataHandler(handler_params, dtype)
 
     def load_data(self):
         data_dict = {}
@@ -35,7 +37,6 @@ class DataHandler():
 
             # output
             data_dict["input_dim"] = self.data_handler.n_cols * self.data_handler.repeat_cols
-            data_dict["data_type"] = self.data_handler.data_type
             data_dict["training_data_format"] = "split_array"
             data_dict["n_windows"] = len(X_data)
             data_dict["window_size"] = self.data_handler.window_size
@@ -60,18 +61,43 @@ class DataHandler():
 
             # output
             data_dict["input_dim"] = self.data_handler.n_cols * self.data_handler.repeat_cols
-            data_dict["data_type"] = self.data_handler.data_type
             data_dict["training_data_format"] = "data_generator"
             data_dict["n_windows"] = x_indexer.shape[0]
             data_dict["window_size"] = self.data_handler.window_size
             data_dict["n_scenarios"] = self.data_handler.n_scenarios
+            data_dict["n_points"] = data_dict["n_scenarios"] * data_dict["n_windows"] * data_dict["window_size"]
+            data_dict["data"] = scenario_data
+
+        elif self.handler_name == "GridNetworkWindowDataGenerator":
+            x_indexer = self.get_indexer(self.data_handler.n_rows,
+                                         self.data_handler.look_back,
+                                         self.data_handler.shift_size,
+                                         0,
+                                         self.data_handler.n_signals+self.data_handler.look_forward
+                                         )
+            y_indexer = self.get_indexer(self.data_handler.n_rows,
+                                         self.data_handler.look_forward,
+                                         self.data_handler.shift_size,
+                                         self.data_handler.look_back,
+                                         self.data_handler.n_signals
+                                         )
+            print(x_indexer, y_indexer)
+            scenario_data = self.data_handler.get_training_data(x_indexer, y_indexer)
+
+            # output
+            data_dict["input_dim"] = self.data_handler.n_cols * self.data_handler.repeat_cols
+            data_dict["training_data_format"] = "data_generator"
+            data_dict["n_windows"] = x_indexer.shape[0]
+            data_dict["look_back"] = self.data_handler.look_back
+            data_dict["look_forward"] = self.data_handler.look_forward
+            data_dict["n_scenarios"] = self.data_handler.n_scenarios
+            data_dict["n_points"] = data_dict["n_scenarios"] * data_dict["n_windows"]
             data_dict["data"] = scenario_data
 
         elif self.handler_name == "ImageDataHandler":
             train_dataset, val_dataset = self.data_handler.load_data()
             data_dict["training_data"] = train_dataset
             data_dict["val_data"] = val_dataset
-            data_dict["data_type"] = self.data_handler.data_type
             data_dict['training_data_format'] = "image_data_generator"
 
         return data_dict

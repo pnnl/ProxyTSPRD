@@ -1,4 +1,72 @@
-[1,0]<stdout>:I am rank 0 of 4
-[1,1]<stdout>:I am rank 1 of 4
-[1,3]<stdout>:I am rank 3 of 4
-[1,2]<stdout>:I am rank 2 of 4
+[1,3]<stdout>:I am rank 3 of 8
+[1,5]<stdout>:I am rank 5 of 8
+[1,6]<stdout>:I am rank 6 of 8
+[1,7]<stdout>:I am rank 7 of 8
+[1,0]<stdout>:I am rank 0 of 8
+[1,1]<stdout>:I am rank 1 of 8
+[1,4]<stdout>:I am rank 4 of 8
+[1,2]<stdout>:I am rank 2 of 8
+[1,3]<stdout>:Name: /physical_device:GPU:0   Type: GPU
+[1,3]<stdout>:Name: /physical_device:GPU:1   Type: GPU
+[1,3]<stdout>:Name: /physical_device:GPU:2   Type: GPU
+[1,3]<stdout>:Name: /physical_device:GPU:3   Type: GPU
+[1,3]<stdout>:Name: /physical_device:GPU:4   Type: GPU
+[1,3]<stdout>:Name: /physical_device:GPU:5   Type: GPU
+[1,3]<stdout>:Name: /physical_device:GPU:6   Type: GPU
+[1,3]<stdout>:Name: /physical_device:GPU:7   Type: GPU
+[1,0]<stdout>:Name: /physical_device:GPU:0   Type: GPU
+[1,0]<stdout>:Name: /physical_device:GPU:1   Type: GPU
+[1,0]<stdout>:Name: /physical_device:GPU:2   Type: GPU
+[1,0]<stdout>:Name: /physical_device:GPU:3   Type: GPU
+[1,0]<stdout>:Name: /physical_device:GPU:4   Type: GPU
+[1,0]<stdout>:Name: /physical_device:GPU:5   Type: GPU
+[1,0]<stdout>:Name: /physical_device:GPU:6   Type: GPU
+[1,0]<stdout>:Name: /physical_device:GPU:7   Type: GPU
+[1,2]<stdout>:Name: /physical_device:GPU:0   Type: GPU
+[1,2]<stdout>:Name: /physical_device:GPU:1   Type: GPU
+[1,2]<stdout>:Name: /physical_device:GPU:2   Type: GPU
+[1,2]<stdout>:Name: /physical_device:GPU:3   Type: GPU
+[1,2]<stdout>:Name: /physical_device:GPU:4   Type: GPU
+[1,2]<stdout>:Name: /physical_device:GPU:5   Type: GPU
+[1,2]<stdout>:Name: /physical_device:GPU:6   Type: GPU
+[1,2]<stdout>:Name: /physical_device:GPU:7   Type: GPU
+[1,4]<stdout>:Name: /physical_device:GPU:0   Type: GPU
+[1,4]<stdout>:Name: /physical_device:GPU:1   Type: GPU
+[1,4]<stdout>:Name: /physical_device:GPU:2   Type: GPU
+[1,4]<stdout>:Name: /physical_device:GPU:3   Type: GPU
+[1,4]<stdout>:Name: /physical_device:GPU:4   Type: GPU
+[1,4]<stdout>:Name: /physical_device:GPU:5   Type: GPU
+[1,4]<stdout>:Name: /physical_device:GPU:6   Type: GPU
+[1,4]<stdout>:Name: /physical_device:GPU:7   Type: GPU
+[1,5]<stdout>:Name: /physical_device:GPU:0   Type: GPU
+[1,5]<stdout>:Name: /physical_device:GPU:1   Type: GPU
+[1,5]<stdout>:Name: /physical_device:GPU:2   Type: GPU
+[1,5]<stdout>:Name: /physical_device:GPU:3   Type: GPU
+[1,5]<stdout>:Name: /physical_device:GPU:4   Type: GPU
+[1,5]<stdout>:Name: /physical_device:GPU:5   Type: GPU
+[1,5]<stdout>:Name: /physical_device:GPU:6   Type: GPU
+[1,5]<stdout>:Name: /physical_device:GPU:7   Type: GPU
+[1,6]<stdout>:Name: /physical_device:GPU:0   Type: GPU
+[1,6]<stdout>:Name: /physical_device:GPU:1   Type: GPU
+[1,6]<stdout>:Name: /physical_device:GPU:2   Type: GPU
+[1,6]<stdout>:Name: /physical_device:GPU:3   Type: GPU
+[1,6]<stdout>:Name: /physical_device:GPU:4   Type: GPU
+[1,6]<stdout>:Name: /physical_device:GPU:5   Type: GPU
+[1,6]<stdout>:Name: /physical_device:GPU:6   Type: GPU
+[1,6]<stdout>:Name: /physical_device:GPU:7   Type: GPU
+[1,1]<stdout>:Name: /physical_device:GPU:0   Type: GPU
+[1,1]<stdout>:Name: /physical_device:GPU:1   Type: GPU
+[1,1]<stdout>:Name: /physical_device:GPU:2   Type: GPU
+[1,1]<stdout>:Name: /physical_device:GPU:3   Type: GPU
+[1,1]<stdout>:Name: /physical_device:GPU:4   Type: GPU
+[1,1]<stdout>:Name: /physical_device:GPU:5   Type: GPU
+[1,1]<stdout>:Name: /physical_device:GPU:6   Type: GPU
+[1,1]<stdout>:Name: /physical_device:GPU:7   Type: GPU
+[1,7]<stdout>:Name: /physical_device:GPU:0   Type: GPU
+[1,7]<stdout>:Name: /physical_device:GPU:1   Type: GPU
+[1,7]<stdout>:Name: /physical_device:GPU:2   Type: GPU
+[1,7]<stdout>:Name: /physical_device:GPU:3   Type: GPU
+[1,7]<stdout>:Name: /physical_device:GPU:4   Type: GPU
+[1,7]<stdout>:Name: /physical_device:GPU:5   Type: GPU
+[1,7]<stdout>:Name: /physical_device:GPU:6   Type: GPU
+[1,7]<stdout>:Name: /physical_device:GPU:7   Type: GPU
