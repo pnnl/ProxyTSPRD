@@ -1,28 +1,37 @@
+import os
 import numpy as np
 import json
+import torch
 import tensorflow as tf
 
 from numba import jit
 from numba.experimental import jitclass
 
-from .timeseries import GridNetworkDataHandler, GridNetworkNewGen, GridNetworkWindowDataGenerator
+from .timeseries import GridNetworkDataHandler, GridNetworkNewGen, GridNetworkWindowDataGenerator, GridDataGenPyTorch
 from .image import ImageDataHandler
 
 class DataHandler():
-    def __init__(self, handler_params, dtype):
+    def __init__(self, handler_params, dtype, dir_list=None):
         self.handler_name = handler_params["data_generator"]
-
+        self.n_scenarios = handler_params["n_scenarios"]
+        if dir_list is not None: 
+            self.n_scenarios = len(dir_list)
+        
         # data handler for timeseries data
         if self.handler_name == "GridNetworkDataHandler": # ["Baseline", "TFDataOpt"]:
             self.data_handler = GridNetworkDataHandler(handler_params, dtype)
         elif self.handler_name == "GridNetworkNewGen": # ["TFDataGen", "TFDataOptMGPU", "TFDataOptMGPUAcc", "LSTM"]:
             self.data_handler = GridNetworkNewGen(handler_params, dtype)
         elif self.handler_name == "GridNetworkWindowDataGenerator": # ["TFDataGen", "TFDataOptMGPU", "TFDataOptMGPUAcc", "LSTM"]:
-            self.data_handler = GridNetworkWindowDataGenerator(handler_params, dtype)
+            print("[INFO] TensorFlow Grid Network Data Generator")
+            self.data_handler = GridNetworkWindowDataGenerator(dir_list, handler_params, dtype)
+        elif self.handler_name == "GridDataGenPyTorch": # ["TFDataGen", "TFDataOptMGPU", "TFDataOptMGPUAcc", "LSTM"]:
+            print("[INFO] PyTorch Data Generator")
+            self.data_handler = GridDataGenPyTorch(dir_list, handler_params, dtype)
         elif self.handler_name == "ImageDataHandler":
             self.data_handler = ImageDataHandler(handler_params, dtype)
 
-    def load_data(self):
+    def load_data(self, x_indexer, y_indexer):
         data_dict = {}
 
         if self.handler_name == "GridNetworkDataHandler":
@@ -69,19 +78,6 @@ class DataHandler():
             data_dict["data"] = scenario_data
 
         elif self.handler_name == "GridNetworkWindowDataGenerator":
-            x_indexer = self.get_indexer(self.data_handler.n_rows,
-                                         self.data_handler.look_back,
-                                         self.data_handler.shift_size,
-                                         0,
-                                         self.data_handler.n_signals+self.data_handler.look_forward
-                                         )
-            y_indexer = self.get_indexer(self.data_handler.n_rows,
-                                         self.data_handler.look_forward,
-                                         self.data_handler.shift_size,
-                                         self.data_handler.look_back,
-                                         self.data_handler.n_signals
-                                         )
-            print(x_indexer, y_indexer)
             scenario_data = self.data_handler.get_training_data(x_indexer, y_indexer)
 
             # output
@@ -90,7 +86,22 @@ class DataHandler():
             data_dict["n_windows"] = x_indexer.shape[0]
             data_dict["look_back"] = self.data_handler.look_back
             data_dict["look_forward"] = self.data_handler.look_forward
-            data_dict["n_scenarios"] = self.data_handler.n_scenarios
+            data_dict["n_scenarios"] = self.n_scenarios
+            data_dict["n_points"] = data_dict["n_scenarios"] * data_dict["n_windows"]
+            data_dict["data"] = scenario_data
+
+        elif self.handler_name == "GridDataGenPyTorch":
+            self.data_handler.get_training_data(x_indexer, y_indexer)
+            scenario_data = self.data_handler
+            # torch.utils.data.DataLoader(self.data_handler, batch_size=batch_size, pin_memory=True, num_workers=int(self.n_cpus))
+
+            # output
+            data_dict["input_dim"] = self.data_handler.n_cols * self.data_handler.repeat_cols
+            data_dict["training_data_format"] = "data_generator"
+            data_dict["n_windows"] = x_indexer.shape[0]
+            data_dict["look_back"] = self.data_handler.look_back
+            data_dict["look_forward"] = self.data_handler.look_forward
+            data_dict["n_scenarios"] = self.n_scenarios
             data_dict["n_points"] = data_dict["n_scenarios"] * data_dict["n_windows"]
             data_dict["data"] = scenario_data
 
@@ -102,11 +113,11 @@ class DataHandler():
 
         return data_dict
 
-    @tf.function(experimental_compile=True)
-    def get_indexer(self, n_rows, window_size, shift_size, start_point, leave_last):
-        window = np.arange(window_size)[None, :] + start_point + shift_size * np.arange(
-            ((n_rows - window_size - leave_last - start_point) // shift_size) + 1)[:, None]
-        return window
+    # @tf.function(experimental_compile=True)
+    # def get_indexer(self, n_rows, window_size, shift_size, start_point, leave_last):
+    #     window = np.arange(window_size)[None, :] + start_point + shift_size * np.arange(
+    #         ((n_rows - window_size - leave_last - start_point) // shift_size) + 1)[:, None]
+    #     return window
 
 
 class NpEncoder(json.JSONEncoder):

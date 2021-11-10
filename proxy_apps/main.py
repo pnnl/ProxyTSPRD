@@ -7,19 +7,21 @@ from .tensorflow_interface import TFInterface
 from .pytorch_interface import PyTorchInterface
 
 from .utils import file_reader, path_handler
-from .utils.data.main import DataHandler
 
 from .apps.timeseries_prediction import hyperparameters
 
 class ProxyTSPRD:
-    def __init__(self, app_info, reference_dir, mixed_precision, machine_name, n_gpus, mgpu_strategy=None):
+    def __init__(self, app_info, framework, reference_dir, mixed_precision, machine_name, n_gpus, n_cpus, n_epochs, batch_size, mgpu_strategy=None):
         # initialize
         self._REF_DIR = reference_dir
+        self._FRAMEWORK = framework
         
         self._APP_NAME = app_info["app_name"]
-        self._FRAMEWORK = app_info["framework"]
         self._DTYPE = app_info["data_type"]
         
+        self._N_EPOCHS = n_epochs
+        self._BATCH_SIZE = batch_size
+
         # mixed precision
         self._MIXED_PRECISION_SUPPORT = app_info["mixed_precision_support"]
         self._MIXED_PRECISION = mixed_precision
@@ -34,6 +36,7 @@ class ProxyTSPRD:
         self._MGPU_SUPPORT = app_info["mgpu_support"]
         self._MACHINE_NAME = machine_name
         self._N_GPUS = n_gpus
+        self._N_CPUS = n_cpus
         self._MGPU_STRATEGY = mgpu_strategy
         
         if self._MGPU_SUPPORT == "False":
@@ -48,14 +51,26 @@ class ProxyTSPRD:
                         
         # initialize environment
         if self._FRAMEWORK == "TF":
+            print("[INFO] Enabling TensorFlow Interface")
             self.env = TFInterface(self._MACHINE_NAME,
                                    self._N_GPUS,
+                                   self._N_CPUS,
                                    self._DTYPE,
+                                   self._N_EPOCHS,
+                                   self._BATCH_SIZE,
                                    self._MIXED_PRECISION,
                                    self._MGPU_STRATEGY
                             )
-        elif self._FRAMEWORK == "PyTorch":
-            self.env = PyTorchInterface(self._DTYPE, self._MIXED_PRECISION)
+        elif self._FRAMEWORK == "PT":
+            print("[INFO] Enabling PyTorch Interface")
+            self.env = PyTorchInterface(self._MACHINE_NAME,
+                                   self._N_GPUS,
+                                   self._N_CPUS,
+                                   self._DTYPE,
+                                   self._N_EPOCHS,
+                                   self._BATCH_SIZE,
+                                   self._MIXED_PRECISION,
+                                   self._MGPU_STRATEGY)
         else:
             print("Invalid Environment")
         
@@ -63,28 +78,15 @@ class ProxyTSPRD:
         self.performance_dict = dict()
             
     def load_data(self, data_params):
-        # training data
-        data_params["training_data_dir"] = path_handler.get_absolute_path(self._REF_DIR, data_params["training_data_dir"])
-        print("Training Data Directory:", data_params["training_data_dir"])
-
-        # validation data - if any
-        if "val_data_dir" in data_params:
-            data_params["val_data_dir"] = path_handler.get_absolute_path(self._REF_DIR, data_params["val_data_dir"])
-            print("Validation Data Directory:", data_params["val_data_dir"])
-            
         # load data
-        dh_start = time.time()
-        data_handler = DataHandler(data_params, self._DTYPE)
-        data_dict = data_handler.load_data()
-        dh_stop = time.time()
-
+        dh_time, data_dict = self.env.load_data(self._REF_DIR, data_params)
+        
         # update dict
-        self.performance_dict['data_loading_time'] = dh_stop-dh_start
-
-        # return data dict
+        self.performance_dict['data_loading_time'] = dh_time
+        
         return data_dict
         
-    def train_model(self, model_info, data_dict, n_epochs, batch_size):
+    def train_model(self, model_info, data_dict):
 
         start_time = time.perf_counter()
         # model save path
@@ -100,7 +102,7 @@ class ProxyTSPRD:
 
         # train model
         start_time = time.perf_counter()
-        self.env.build_model(model_info, data_dict, n_epochs, batch_size)
+        self.env.build_model(model_info, data_dict)
         end_time = time.perf_counter()
         print("========> Build Model: ", end_time-start_time)
         
@@ -115,8 +117,8 @@ class ProxyTSPRD:
         print("Loss Values:", all_loss)
 
         # update dict
-        self.performance_dict["n_epochs"] = n_epochs
-        self.performance_dict["batch_size"] = batch_size
+        self.performance_dict["n_epochs"] = self._N_EPOCHS
+        self.performance_dict["batch_size"] = self._BATCH_SIZE
 
         self.performance_dict['training_time_module'] = (m_stop - m_start)
         self.performance_dict['training_time_epoch_wise'] = epoch_time

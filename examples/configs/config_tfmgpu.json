@@ -1,7 +1,6 @@
 {
 	"info": {
 		"app_name": "TFOptimizedMGPU",
-        "framework": "TF",
         "mixed_precision_support": "True",
         "mgpu_support": "True"
 	},

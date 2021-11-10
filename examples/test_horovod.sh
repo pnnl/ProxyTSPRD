@@ -2,11 +2,11 @@
 #SBATCH -A pacer
 #SBATCH -t 01:00:00
 #SBATCH -N 1
-#SBATCH -p a100
-#SBATCH --ntasks-per-node=8
-#SBATCH --gres=gpu:8
-#SBATCH --exclusive
-#SBATCH --constraint=nvlink
+#SBATCH -p a100_shared
+#SBATCH --ntasks-per-node=2
+#SBATCH --gres=gpu:2
+##SBATCH --exclusive
+##SBATCH --constraint=nvlink
 #SBATCH -J horovod
 #SBATCH -o out.txt
 #SBATCH -e err.txt
@@ -24,6 +24,6 @@ export HOROVOD_NCCL_LIB="~/.conda/envs/horovod/lib/"
 module load cuda/11.0
 conda activate horovod
 
-horovodrun -np 8 python test_horovod.py
+horovodrun -np 2 python test_horovod.py --framework ${1} --mgpu_strategy ${2}
 # srun --nodes=1 --ntasks=1 python test_horovod.py
 # python test_horovod.py
