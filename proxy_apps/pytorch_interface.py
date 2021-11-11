@@ -3,9 +3,6 @@ import time
 import torch
 import numpy as np
 
-import horovod.torch as hvd
-
-
 from .utils import path_handler
 from .utils.data.main import DataHandler
 from .apps.timeseries_prediction import hyperparameters
@@ -36,11 +33,13 @@ class PyTorchInterface:
             
         if self._MGPU_STRATEGY == "HVD":
             print("[INFO] Initializing Horovod")
-            hvd.init()
-            print("I am rank %s of %s" %(hvd.rank(), hvd.size()))
+            import horovod.torch as hvd_torch
+            self.hvd_torch = hvd_torch
+            self.hvd_torch.init()
+            print("[INFO] Rank %s of %s" %(self.hvd_torch.rank(), self.hvd_torch.size()))
             
             print("[INFO] Setting devices")
-            torch.cuda.set_device(hvd.local_rank())
+            torch.cuda.set_device(self.hvd_torch.local_rank())
 
             # Horovod: limit # of CPU threads to be used per worker.
             torch.set_num_threads(1)
@@ -52,6 +51,7 @@ class PyTorchInterface:
             # set floatx
             self._DTYPE = "float32"
             torch.set_default_dtype(torch.float32)
+            self.scaler = torch.cuda.amp.GradScaler(enabled=self._MIXED_PRECISION)
 
     def get_indexer(self, n_rows, window_size, shift_size, start_point, leave_last):
         return np.arange(window_size)[None, :] + start_point + shift_size*np.arange(((n_rows - window_size - leave_last - start_point) // shift_size) + 1)[:, None]
@@ -77,9 +77,9 @@ class PyTorchInterface:
         
         if self._MGPU_STRATEGY == "HVD":
             print("[INFO] Sharding data files for Horovod")
-            splitter = n_files // hvd.size()
-            print(n_files, splitter, splitter*hvd.rank(), splitter*(hvd.rank()+1))
-            dir_list = dir_list[splitter*hvd.rank():splitter*(hvd.rank()+1)]
+            splitter = n_files // self.hvd_torch.size()
+            print(n_files, splitter, splitter*self.hvd_torch.rank(), splitter*(self.hvd_torch.rank()+1))
+            dir_list = dir_list[splitter*self.hvd_torch.rank():splitter*(self.hvd_torch.rank()+1)]
             n_files = len(dir_list)
         
         print("[INFO] Number of files:", n_files)
@@ -101,7 +101,7 @@ class PyTorchInterface:
                                      )
         # print("Indices....................", x_indexer, y_indexer)
 
-        data_params["data_generator"] = "GridDataGenPyTorch"
+        data_params["data_generator"] = data_params["data_generator"] + "_PT"
         data_handler = DataHandler(data_params, self._DTYPE, dir_list)
         data_dict = data_handler.load_data(x_indexer, y_indexer)
         dh_stop = time.time()
@@ -147,19 +147,19 @@ class PyTorchInterface:
             self.model = PTLSTM(data_dict["look_back"], data_dict["look_forward"], data_dict["input_dim"], self._DEVICE)
         
         # self.model = torch.nn.DataParallel(self.model)
-        lr_scaler = 1
         if self._MGPU_STRATEGY == "HVD":
-            lr_scaler = hvd.local_size()
+            self._HYPERPARAMETER_DICT["learning_rate"] = self._HYPERPARAMETER_DICT["learning_rate"] * self.hvd_torch.local_size()
         
         self.model.to(self._DEVICE)
-        self.optimizer = torch.optim.Adagrad(self.model.parameters(), lr=self._HYPERPARAMETER_DICT["learning_rate"]*lr_scaler)
+        print("[INFO] Learning Rate: ", self._HYPERPARAMETER_DICT["learning_rate"])
+        self.optimizer = torch.optim.Adagrad(self.model.parameters(), lr=self._HYPERPARAMETER_DICT["learning_rate"])
         self.criterion = torch.nn.MSELoss()#.to(self._DEVICE)
         
         if self._MGPU_STRATEGY == "HVD":
-            hvd.broadcast_parameters(self.model.state_dict(), root_rank=0)
-            hvd.broadcast_optimizer_state(self.optimizer, root_rank=0)
+            self.hvd_torch.broadcast_parameters(self.model.state_dict(), root_rank=0)
+            self.hvd_torch.broadcast_optimizer_state(self.optimizer, root_rank=0)
             
-            self.optimizer = hvd.DistributedOptimizer(self.optimizer, named_parameters=self.model.named_parameters())
+            self.optimizer = self.hvd_torch.DistributedOptimizer(self.optimizer, named_parameters=self.model.named_parameters())
         
         
         print("[INFO] Model Parameters: \n")
@@ -172,7 +172,7 @@ class PyTorchInterface:
         data_generator = data_dict["data"]
         train_sampler = None
         # if self._MGPU_STRATEGY == "HVD":
-        #     train_sampler = torch.utils.data.distributed.DistributedSampler(data_generator, num_replicas=hvd.size(), rank=hvd.rank())
+        #     train_sampler = torch.utils.data.distributed.DistributedSampler(data_generator, num_replicas=self.hvd_torch.size(), rank=self.hvd_torch.rank())
         
         training_dataset = torch.utils.data.DataLoader(data_generator, 
                                                        batch_size=self._BATCH_SIZE, 
@@ -206,18 +206,34 @@ class PyTorchInterface:
                 # clear the gradients
                 self.optimizer.zero_grad()#set_to_none=True)
                 
-                # compute the model output
-                yhat = self.model(inputs)
+                with torch.cuda.amp.autocast(enabled=self._MIXED_PRECISION):
+                    # compute the model output
+                    yhat = self.model(inputs)
+                    
+                    # calculate loss
+                    # print(yhat.is_cuda, targets.is_cuda, targets)
+                    loss = self.criterion(yhat, targets)
                 
-                # calculate loss
-                # print(yhat.is_cuda, targets.is_cuda, targets)
-                loss = self.criterion(yhat, targets)
+                if self._MIXED_PRECISION:
+                    # credit assignment
+                    self.scaler.scale(loss).backward()
                 
-                # credit assignment
-                loss.backward()
+                    # Make sure all async allreduces are done
+                    self.optimizer.synchronize()
+                    
+                    # In-place unscaling of all gradients before weights update
+                    scaler.unscale_(self.optimizer)
+                    with optimizer.skip_synchronize():
+                        scaler.step(self.optimizer)
+                    
+                    # Update scaler in case of overflow/underflow
+                    scaler.update()
+                else:
+                    # credit assignment
+                    loss.backward()
                 
-                # update model weights
-                self.optimizer.step()
+                    # update model weights
+                    self.optimizer.step()
                 
                 # updating the loss
                 total_loss += loss

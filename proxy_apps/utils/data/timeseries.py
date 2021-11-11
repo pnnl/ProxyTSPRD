@@ -6,6 +6,183 @@ import tensorflow as tf
 import torch
 from .grid import TransientDataset
 
+class ProcessDataFile(tf.data.Dataset):
+    def _generator(file_name, n_rows, n_cols, n_repeat, x_indexer, y_indexer, norm, scale_factor):
+        # Opening the file
+        dataset = TransientDataset(file_name.decode('utf-8'))
+        raw_data = np.repeat(np.concatenate([dataset.F, dataset.Vm], axis=1), n_repeat, axis=1)[:n_rows, :]
+        
+        split_index = (n_cols * n_repeat) // 2
+        flat_X_data = raw_data[x_indexer]
+        flat_Y_data = raw_data[y_indexer]
+        
+        if norm:
+            # normalization specific to grid strategy only
+            flat_X_data[:, :, :split_index] = scale_factor*(flat_X_data[:, :, :split_index] - 60)
+            flat_X_data[:, :, split_index:] = 10*(flat_X_data[:, :, split_index:] - 1)
+            
+            flat_Y_data[:, :, :split_index] = scale_factor*(flat_Y_data[:, :, :split_index] - 60)
+            flat_Y_data[:, :, split_index:] = 10*(flat_Y_data[:, :, split_index:] - 1)
+            
+        yield (flat_X_data, flat_Y_data)
+
+    def __new__(cls, file_name, n_rows, flat_n_rows, n_cols, n_repeat, x_indexer, y_indexer, d_type, norm=True, scale_factor=2*np.pi):
+        # print("Enter")
+        return tf.data.Dataset.from_generator(
+            cls._generator,
+            output_signature = (tf.TensorSpec(shape=(x_indexer.shape[0], x_indexer.shape[1], n_cols*n_repeat), dtype=d_type),
+                                tf.TensorSpec(shape=(y_indexer.shape[0], y_indexer.shape[1], n_cols*n_repeat), dtype=d_type)),
+            args=(file_name, n_rows, n_cols, n_repeat, x_indexer, y_indexer, norm, scale_factor,)
+        )
+
+class GridNetworkWindowDataGenerator():
+    def __init__(self, dir_list, handler_params, dtype):#scenario_dir, n_rows, n_cols, dtype, repeat_cols=1):
+        self.dir_list = dir_list
+        self.n_rows = handler_params["n_rows"]
+        self.n_cols = handler_params["n_cols"]
+        self.repeat_cols = handler_params["repeat_cols"]
+        self.look_back = handler_params["look_back"]
+        self.look_forward = handler_params["look_forward"]
+        self.shift_size = handler_params["shift_size"]
+        self.stride = handler_params["stride"]
+        self.n_signals = handler_params["n_signals"]
+        self.data_type = dtype
+
+    # @tf.function(experimental_compile=True)
+    def get_training_data(self, x_indexer, y_indexer, deterministic=False):
+        # load data and print list of files
+        # print('[INFO]: Loading the datasets from the directory:', self.scenario_dir)
+        # self.dir_list = [self.scenario_dir + "/" + f + "/" for f in os.listdir(self.scenario_dir)[:self.n_scenarios]]
+        
+        list_files = tf.data.Dataset.from_tensor_slices(self.dir_list)
+        trimmed_scenarios = list_files.interleave(lambda x: ProcessDataFile(x, self.n_rows, 
+                                                                              x_indexer.shape[0] * x_indexer.shape[1], 
+                                                                      self.n_cols, self.repeat_cols, 
+                                                                      x_indexer, y_indexer,
+                                                                      self.data_type
+                                                                     ).prefetch(tf.data.AUTOTUNE),
+                                          num_parallel_calls=tf.data.AUTOTUNE,
+                                          #cycle_length=len(self.dir_list), 
+                                          #block_length=1,
+                                          deterministic=deterministic
+                                         )
+        
+        flat_data = trimmed_scenarios.flat_map(lambda x, y: tf.data.Dataset.from_tensor_slices((x, y)))
+        
+        return flat_data
+
+class GridNetworkSequentialDataGenerator_TF(tf.keras.utils.Sequence):
+    'Characterizes a dataset for TensorFlow'
+    def __init__(self, dir_list, handler_params, dtype, scale_factor=2*np.pi, norm=True):#, n_rows, n_cols, n_repeat, x_indexer, y_indexer, scale_factor=2, norm=True, d_type="float64"):
+        'Initialization'
+        self.list_of_directories = dir_list
+        self.n_rows = handler_params["n_rows"]
+        self.n_cols = handler_params["n_cols"]
+        self.repeat_cols = handler_params["repeat_cols"]
+        self.scale_factor = scale_factor # handler_params["scale_factor"]
+        self.norm = norm # handler_params["norm"]
+        self.look_back = handler_params["look_back"]
+        self.look_forward = handler_params["look_forward"]
+        self.shift_size = handler_params["shift_size"]
+        self.stride = handler_params["stride"]
+        self.n_signals = handler_params["n_signals"]
+        self.d_type = dtype
+        
+    def get_training_data(self, x_indexer, y_indexer):
+        self.x_indexer = x_indexer
+        self.y_indexer = y_indexer
+        
+        complete_data = list(map(functools.partial(self.get_data), self.list_of_directories))
+        self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :]
+        self.y = np.vstack([arr[1] for arr in complete_data]) # stacked_array[1, :, :]
+        
+        assert self.X.shape[0]==self.y.shape[0]
+        
+    def get_data(self, dir_path): # , n_rows, n_cols, n_repeat, x_indexer, y_indexer, scale_factor, norm, d_type
+        dataset = TransientDataset(dir_path)
+        raw_data = np.repeat(np.concatenate([dataset.F, dataset.Vm], axis=1), self.repeat_cols, axis=1)[:self.n_rows, :].astype(self.d_type)
+
+        split_index = (self.n_cols * self.repeat_cols) // 2
+        flat_X_data = raw_data[self.x_indexer]#.reshape(-1, self.n_cols*self.n_repeat)
+        flat_Y_data = raw_data[self.y_indexer]#.reshape(-1, self.n_cols*self.n_repeat)
+        # print(flat_X_data.shape, flat_Y_data.shape)
+
+        if self.norm:
+            flat_X_data[:, :, :split_index] = self.scale_factor*(flat_X_data[:, :, :split_index] - 60)
+            flat_X_data[:, :, split_index:] = 10*(flat_X_data[:, :, split_index:] - 1)
+
+            flat_Y_data[:, :, :split_index] = self.scale_factor*(flat_Y_data[:, :, :split_index] - 60)
+            flat_Y_data[:, :, split_index:] = 10*(flat_Y_data[:, :, split_index:] - 1)
+
+        return flat_X_data, flat_Y_data
+
+    def __len__(self):
+        'Denotes the total number of samples'
+        return self.X.shape[0]
+    
+    def __getitem__(self, index):
+        'Generates one sample of data'
+        # print(self.X[index, :].shape, self.y[index, :].shape)
+        return self.X[index, :], self.y[index, :]
+    
+    def __call__(self):
+        for i in range(self.X.shape[0]):
+            yield self.__getitem__(i)
+    
+class GridNetworkSequentialDataGenerator_PT(torch.utils.data.Dataset):
+    'Characterizes a dataset for PyTorch'
+    def __init__(self, dir_list, handler_params, dtype, scale_factor=2*np.pi, norm=True):#, n_rows, n_cols, n_repeat, x_indexer, y_indexer, scale_factor=2, norm=True, d_type="float64"):
+        'Initialization'
+        self.list_of_directories = dir_list
+        self.n_rows = handler_params["n_rows"]
+        self.n_cols = handler_params["n_cols"]
+        self.repeat_cols = handler_params["repeat_cols"]
+        self.scale_factor = scale_factor # handler_params["scale_factor"]
+        self.norm = norm # handler_params["norm"]
+        self.look_back = handler_params["look_back"]
+        self.look_forward = handler_params["look_forward"]
+        self.shift_size = handler_params["shift_size"]
+        self.stride = handler_params["stride"]
+        self.n_signals = handler_params["n_signals"]
+        self.d_type = dtype
+        
+    def get_training_data(self, x_indexer, y_indexer):
+        self.x_indexer = x_indexer
+        self.y_indexer = y_indexer
+        
+        complete_data = list(map(functools.partial(self.get_data), self.list_of_directories))
+        self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :]
+        self.y = np.vstack([arr[1] for arr in complete_data]) # stacked_array[1, :, :]
+        
+        assert self.X.shape[0]==self.y.shape[0]
+        
+    def get_data(self, dir_path): # , n_rows, n_cols, n_repeat, x_indexer, y_indexer, scale_factor, norm, d_type
+        dataset = TransientDataset(dir_path)
+        raw_data = np.repeat(np.concatenate([dataset.F, dataset.Vm], axis=1), self.repeat_cols, axis=1)[:self.n_rows, :].astype(self.d_type)
+
+        split_index = (self.n_cols * self.repeat_cols) // 2
+        flat_X_data = raw_data[self.x_indexer]#.reshape(-1, self.n_cols*self.n_repeat)
+        flat_Y_data = raw_data[self.y_indexer]#.reshape(-1, self.n_cols*self.n_repeat)
+        # print(flat_X_data.shape, flat_Y_data.shape)
+
+        if self.norm:
+            flat_X_data[:, :, :split_index] = self.scale_factor*(flat_X_data[:, :, :split_index] - 60)
+            flat_X_data[:, :, split_index:] = 10*(flat_X_data[:, :, split_index:] - 1)
+
+            flat_Y_data[:, :, :split_index] = self.scale_factor*(flat_Y_data[:, :, :split_index] - 60)
+            flat_Y_data[:, :, split_index:] = 10*(flat_Y_data[:, :, split_index:] - 1)
+
+        return flat_X_data, flat_Y_data
+
+    def __len__(self):
+        'Denotes the total number of samples'
+        return self.X.shape[0]
+    
+    def __getitem__(self, index):
+        'Generates one sample of data'
+        return self.X[index, :], self.y[index, :]
+    
+## Deprecated    
 class GridNetworkDataHandler():
     def __init__(self, handler_params, dtype):# scenario_dir, dtype, n_rows=1000, n_cols=136, repeat_cols=1):
         self.scenario_dir = handler_params["training_data_dir"]
@@ -296,70 +473,6 @@ class GridNetworkNewGen():
         flat_data = trimmed_scenarios.flat_map(lambda x, y: tf.data.Dataset.from_tensor_slices((x, y)))
         
         return flat_data
-    
-class ProcessDataFile(tf.data.Dataset):
-    def _generator(file_name, n_rows, n_cols, n_repeat, x_indexer, y_indexer, norm, scale_factor):
-        # Opening the file
-        dataset = TransientDataset(file_name.decode('utf-8'))
-        raw_data = np.repeat(np.concatenate([dataset.F, dataset.Vm], axis=1), n_repeat, axis=1)[:n_rows, :]
-        
-        split_index = (n_cols * n_repeat) // 2
-        flat_X_data = raw_data[x_indexer]
-        flat_Y_data = raw_data[y_indexer]
-        
-        if norm:
-            flat_X_data[:, :, :split_index] = scale_factor*(flat_X_data[:, :, :split_index] - 60)
-            flat_X_data[:, :, split_index:] = 10*(flat_X_data[:, :, split_index:] - 1)
-            
-            flat_Y_data[:, :, :split_index] = scale_factor*(flat_Y_data[:, :, :split_index] - 60)
-            flat_Y_data[:, :, split_index:] = 10*(flat_Y_data[:, :, split_index:] - 1)
-            
-        yield (flat_X_data, flat_Y_data)
-
-    def __new__(cls, file_name, n_rows, flat_n_rows, n_cols, n_repeat, x_indexer, y_indexer, d_type, norm=True, scale_factor=2*np.pi):
-        # print("Enter")
-        return tf.data.Dataset.from_generator(
-            cls._generator,
-            output_signature = (tf.TensorSpec(shape=(x_indexer.shape[0], x_indexer.shape[1], n_cols*n_repeat), dtype=d_type),
-                                tf.TensorSpec(shape=(y_indexer.shape[0], y_indexer.shape[1], n_cols*n_repeat), dtype=d_type)),
-            args=(file_name, n_rows, n_cols, n_repeat, x_indexer, y_indexer, norm, scale_factor,)
-        )
-
-class GridNetworkWindowDataGenerator():
-    def __init__(self, dir_list, handler_params, dtype):#scenario_dir, n_rows, n_cols, dtype, repeat_cols=1):
-        self.dir_list = dir_list
-        self.n_rows = handler_params["n_rows"]
-        self.n_cols = handler_params["n_cols"]
-        self.repeat_cols = handler_params["repeat_cols"]
-        self.look_back = handler_params["look_back"]
-        self.look_forward = handler_params["look_forward"]
-        self.shift_size = handler_params["shift_size"]
-        self.stride = handler_params["stride"]
-        self.n_signals = handler_params["n_signals"]
-        self.data_type = dtype
-
-    # @tf.function(experimental_compile=True)
-    def get_training_data(self, x_indexer, y_indexer, deterministic=False):
-        # load data and print list of files
-        # print('[INFO]: Loading the datasets from the directory:', self.scenario_dir)
-        # self.dir_list = [self.scenario_dir + "/" + f + "/" for f in os.listdir(self.scenario_dir)[:self.n_scenarios]]
-        
-        list_files = tf.data.Dataset.from_tensor_slices(self.dir_list)
-        trimmed_scenarios = list_files.interleave(lambda x: ProcessDataFile(x, self.n_rows, 
-                                                                              x_indexer.shape[0] * x_indexer.shape[1], 
-                                                                      self.n_cols, self.repeat_cols, 
-                                                                      x_indexer, y_indexer,
-                                                                      self.data_type
-                                                                     ).prefetch(tf.data.AUTOTUNE),
-                                          num_parallel_calls=tf.data.AUTOTUNE,
-                                          #cycle_length=len(self.dir_list), 
-                                          #block_length=1,
-                                          deterministic=deterministic
-                                         )
-        
-        flat_data = trimmed_scenarios.flat_map(lambda x, y: tf.data.Dataset.from_tensor_slices((x, y)))
-        
-        return flat_data
 
 class SequentialGenerator(tf.keras.utils.Sequence):
     def __init__(self, fnames, n_rows, repeat_cols):
@@ -417,55 +530,4 @@ class GridNetworkSequentialGen():
         return training_data
     
     
-class GridDataGenPyTorch(torch.utils.data.Dataset):
-    'Characterizes a dataset for PyTorch'
-    def __init__(self, dir_list, handler_params, dtype, scale_factor=2*np.pi, norm=True):#, n_rows, n_cols, n_repeat, x_indexer, y_indexer, scale_factor=2, norm=True, d_type="float64"):
-        'Initialization'
-        self.list_of_directories = dir_list
-        self.n_rows = handler_params["n_rows"]
-        self.n_cols = handler_params["n_cols"]
-        self.repeat_cols = handler_params["repeat_cols"]
-        self.scale_factor = scale_factor # handler_params["scale_factor"]
-        self.norm = norm # handler_params["norm"]
-        self.look_back = handler_params["look_back"]
-        self.look_forward = handler_params["look_forward"]
-        self.shift_size = handler_params["shift_size"]
-        self.stride = handler_params["stride"]
-        self.n_signals = handler_params["n_signals"]
-        self.d_type = dtype
-        
-    def get_training_data(self, x_indexer, y_indexer):
-        self.x_indexer = x_indexer
-        self.y_indexer = y_indexer
-        
-        complete_data = list(map(functools.partial(self.get_data), self.list_of_directories))
-        self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :]
-        self.y = np.vstack([arr[1] for arr in complete_data]) # stacked_array[1, :, :]
-        
-        assert self.X.shape[0]==self.y.shape[0]
-        
-    def get_data(self, dir_path): # , n_rows, n_cols, n_repeat, x_indexer, y_indexer, scale_factor, norm, d_type
-        dataset = TransientDataset(dir_path)
-        raw_data = np.repeat(np.concatenate([dataset.F, dataset.Vm], axis=1), self.repeat_cols, axis=1)[:self.n_rows, :].astype(self.d_type)
 
-        split_index = (self.n_cols * self.repeat_cols) // 2
-        flat_X_data = raw_data[self.x_indexer]#.reshape(-1, self.n_cols*self.n_repeat)
-        flat_Y_data = raw_data[self.y_indexer]#.reshape(-1, self.n_cols*self.n_repeat)
-        # print(flat_X_data.shape, flat_Y_data.shape)
-
-        if self.norm:
-            flat_X_data[:, :, :split_index] = self.scale_factor*(flat_X_data[:, :, :split_index] - 60)
-            flat_X_data[:, :, split_index:] = 10*(flat_X_data[:, :, split_index:] - 1)
-
-            flat_Y_data[:, :, :split_index] = self.scale_factor*(flat_Y_data[:, :, :split_index] - 60)
-            flat_Y_data[:, :, split_index:] = 10*(flat_Y_data[:, :, split_index:] - 1)
-
-        return flat_X_data, flat_Y_data
-
-    def __len__(self):
-        'Denotes the total number of samples'
-        return self.X.shape[0]
-    
-    def __getitem__(self, index):
-        'Generates one sample of data'
-        return self.X[index, :], self.y[index, :]

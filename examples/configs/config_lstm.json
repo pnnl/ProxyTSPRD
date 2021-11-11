@@ -8,7 +8,7 @@
 	"data_params": {
 		"training_data_dir": "../../../data/NewTestScenarios/",
 		"input_file_format": "mat",
-		"data_generator": "GridNetworkWindowDataGenerator",
+		"data_generator": "GridNetworkSequentialDataGenerator",
 		"n_scenarios": 180,
 		"n_rows": 1400,
 		"n_cols": 136,

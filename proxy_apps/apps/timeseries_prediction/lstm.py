@@ -24,14 +24,18 @@ class RNNModel():
 class TFLSTM(tf.keras.Model):
     def __init__(self, bw_size, fw_size, n_features):
         super(TFLSTM, self).__init__(name = 'TFLSTM')
-        self.lstm1_layer   = tf.keras.layers.LSTM(512, input_shape=(bw_size, n_features), return_sequences=True)
-        self.lstm2_layer   = tf.keras.layers.LSTM(256, return_sequences=True)
-        self.lstm3_layer   = tf.keras.layers.LSTM(128, return_sequences=True)
-        self.lstm4_layer   = tf.keras.layers.LSTM(64)
+        self.lstm1_layer   = tf.keras.layers.LSTM(512, input_shape=(bw_size, n_features), return_sequences=True, 
+                                                  kernel_initializer='zeros', recurrent_initializer='zeros')
+        self.lstm2_layer   = tf.keras.layers.LSTM(256, return_sequences=True, 
+                                                  kernel_initializer='zeros', recurrent_initializer='zeros')
+        self.lstm3_layer   = tf.keras.layers.LSTM(128, return_sequences=True, 
+                                                  kernel_initializer='zeros', recurrent_initializer='zeros')
+        self.lstm4_layer   = tf.keras.layers.LSTM(64, 
+                                                  kernel_initializer='zeros', recurrent_initializer='zeros')
         self.dense_layer   = tf.keras.layers.Dense(fw_size * n_features)
         self.output_layer  = tf.keras.layers.Reshape((fw_size, n_features))
         
-    def call(self, input_data, training):
+    def call(self, input_data):
         # print(input_data)
         fx = self.lstm1_layer(input_data)        
         fx = self.lstm2_layer(fx)        

@@ -8,7 +8,8 @@ import numpy as np
 import sys
 sys.path.append('../')
 
-from proxy_apps.utils.data.timeseries import TrainingDataGenerator
+# from proxy_apps.utils.data.timeseries import TrainingDataGenerator
+from proxy_apps import ProxyTSPRD
 import argparse
 
 parser = argparse.ArgumentParser(description='Horovod Testing')
@@ -24,35 +25,101 @@ list_of_files.sort()
 n_files = len(list_of_files)
 dir_list = [scenario_dir + "/" + f + "/" for f in list_of_files]
 
+import tensorflow as tf
+import horovod.tensorflow.keras as hvd_keras
 
-    
 # tensorflow
 if args.framework == "TF":
-    import tensorflow as tf
     if args.mgpu_strategy == "MirroredStrategy":
         mgpu_strategy = tf.distribute.MirroredStrategy()
         # self.mgpu_context = self.mgpu_strategy.scope()        
     elif args.mgpu_strategy == "HVD":
-        import horovod.tensorflow as hvd
+        import horovod.tensorflow.keras as hvd
         # Horovod: initialize Horovod.
         hvd.init()
         print("I am rank %s of %s" %(hvd.rank(), hvd.size()))
     else:
         print("Invalid Multi-GPU Strategy:", args.mgpu_strategy, "for TensorFlow")
-        
+    
     # physical gpus
     gpus = tf.config.experimental.list_physical_devices('GPU')
     for gpu in gpus:
-        print("Name:", gpu.name, "  Type:", gpu.device_type)
+       print("Name:", gpu.name, "  Type:", gpu.device_type)
         
     # pin gpu to each worker
     if gpus and (args.mgpu_strategy == "HVD"):
         tf.config.experimental.set_memory_growth(gpus[hvd.local_rank()], True)
-        tf.config.experimental.set_visible_devices(gpus[hvd.local_rank()], 'GPU')
+        for gpu in gpus:
+            tf.config.experimental.set_memory_growth(gpu, True)
+        tf.config.experimental.set_visible_devices(gpus[hvd_keras.local_rank()], 'GPU')
+
+    splitter = n_files // hvd.size()
+    print(n_files, splitter, splitter*hvd.rank(), splitter*(hvd.rank()+1))
+    dir_list=dir_list[splitter*hvd.rank():splitter*(hvd.rank()+1)]
         
-        splitter = n_files // hvd.size()
-        print(n_files, splitter, splitter*hvd.rank(), splitter*(hvd.rank()+1))
-        dir_list=dir_list[splitter*hvd.rank():splitter*(hvd.rank()+1)]
+    (mnist_images, mnist_labels), _ = tf.keras.datasets.mnist.load_data(path='mnist-%d.npz' % hvd_keras.rank())
+
+    dataset = tf.data.Dataset.from_tensor_slices(
+        (tf.cast(mnist_images[..., tf.newaxis] / 255.0, tf.float32),
+                 tf.cast(mnist_labels, tf.int64))
+    )
+    dataset = dataset.repeat().shuffle(10000).batch(128)
+
+    mnist_model = tf.keras.Sequential([
+        tf.keras.layers.Conv2D(32, [3, 3], activation='relu'),
+        tf.keras.layers.Conv2D(64, [3, 3], activation='relu'),
+        tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+        tf.keras.layers.Dropout(0.25),
+        tf.keras.layers.Flatten(),
+        tf.keras.layers.Dense(128, activation='relu'),
+        tf.keras.layers.Dropout(0.5),
+        tf.keras.layers.Dense(10, activation='softmax')
+    ])
+    
+    # Horovod: adjust learning rate based on number of GPUs.
+    scaled_lr = 0.001 * hvd_keras.size()
+    opt = tf.optimizers.Adam(scaled_lr)
+
+    # Horovod: add Horovod DistributedOptimizer.
+    opt = hvd_keras.DistributedOptimizer(
+        opt, backward_passes_per_step=1, average_aggregated_gradients=True)
+
+    # Horovod: Specify `experimental_run_tf_function=False` to ensure TensorFlow
+    # uses hvd.DistributedOptimizer() to compute gradients.
+    mnist_model.compile(loss=tf.losses.SparseCategoricalCrossentropy(),
+                        optimizer=opt,
+                        metrics=['accuracy'],
+                        experimental_run_tf_function=False)
+
+    callbacks = [
+        # Horovod: broadcast initial variable states from rank 0 to all other processes.
+        # This is necessary to ensure consistent initialization of all workers when
+        # training is started with random weights or restored from a checkpoint.
+        hvd_keras.callbacks.BroadcastGlobalVariablesCallback(0),
+
+        # Horovod: average metrics among workers at the end of every epoch.
+        #
+        # Note: This callback must be in the list before the ReduceLROnPlateau,
+        # TensorBoard or other metrics-based callbacks.
+        hvd_keras.callbacks.MetricAverageCallback(),
+
+        # Horovod: using `lr = 1.0 * hvd.size()` from the very beginning leads to worse final
+        # accuracy. Scale the learning rate `lr = 1.0` ---> `lr = 1.0 * hvd.size()` during
+        # the first three epochs. See https://arxiv.org/abs/1706.02677 for details.
+        hvd_keras.callbacks.LearningRateWarmupCallback(initial_lr=scaled_lr, warmup_epochs=3, verbose=1),
+    ]
+
+    # Horovod: save checkpoints only on worker 0 to prevent other workers from corrupting them.
+    if hvd_keras.rank() == 0:
+        callbacks.append(tf.keras.callbacks.ModelCheckpoint('./checkpoint-{epoch}.h5'))
+
+    # Horovod: write logs on worker 0.
+    verbose = 1 if hvd_keras.rank() == 0 else 0
+
+    # Train the model.
+    # Horovod: adjust number of steps based on number of GPUs.
+    mnist_model.fit(dataset, steps_per_epoch=500 // hvd_keras.size(), callbacks=callbacks, epochs=24, verbose=verbose)
+
 
 # pytorch
 elif args.framework == "PT":

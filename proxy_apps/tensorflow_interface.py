@@ -5,8 +5,6 @@ import numpy as np
 import tensorflow as tf
 from timeit import default_timer as timer
 
-import horovod.tensorflow.keras as hvd
-
 from .apps import DeepDMDReferenceImplementation, TFLSTM, TFOptimizedSGPU, TFOptimizedEncoder, TFOptimizedModelTrainer
 from .apps.timeseries_prediction import hyperparameters
 from .utils import path_handler
@@ -52,8 +50,10 @@ class TFInterface:
             # self.mgpu_context = self.mgpu_strategy.scope()
         elif self._MGPU_STRATEGY == "HVD":
             print("[INFO] Initializing Horovod")
-            hvd.init()
-            print("I am rank %s of %s" %(hvd.rank(), hvd.size()))
+            import horovod.tensorflow.keras as hvd_keras
+            self.hvd_keras = hvd_keras
+            self.hvd_keras.init()
+            print("[INFO] Rank %s of %s" %(self.hvd_keras.rank(), self.hvd_keras.size()))
             self.mgpu_strategy = tf.distribute.get_strategy()
         elif self._MGPU_STRATEGY is None:
             print("[INFO] No Multi-GPU Strategy Found! Running on Single GPU")
@@ -65,8 +65,8 @@ class TFInterface:
             print("[INFO] Name:", gpu.name, "  Type:", gpu.device_type)
 
         if gpus and (self._MGPU_STRATEGY == "HVD"):
-            tf.config.experimental.set_memory_growth(gpus[hvd.local_rank()], True)
-            tf.config.experimental.set_visible_devices(gpus[hvd.local_rank()], 'GPU')
+            tf.config.experimental.set_memory_growth(gpus[self.hvd_keras.local_rank()], True)
+            tf.config.experimental.set_visible_devices(gpus[self.hvd_keras.local_rank()], 'GPU')
             
         # eager mode
         # tf.compat.v1.disable_eager_execution()
@@ -115,22 +115,22 @@ class TFInterface:
         
         if self._MGPU_STRATEGY == "HVD":
             print("[INFO] Sharding data files for Horovod")
-            splitter = n_files // hvd.size()
-            print(n_files, splitter, splitter*hvd.rank(), splitter*(hvd.rank()+1))
-            dir_list = dir_list[splitter*hvd.rank():splitter*(hvd.rank()+1)]
+            splitter = n_files // self.hvd_keras.size()
+            print(n_files, splitter, splitter*self.hvd_keras.rank(), splitter*(self.hvd_keras.rank()+1))
+            dir_list = dir_list[splitter*self.hvd_keras.rank():splitter*(self.hvd_keras.rank()+1)]
             n_files = len(dir_list)
         
         print("[INFO] Number of files:", n_files)
         
         # load data
         dh_start = time.time()
-        x_indexer = self.get_indexer(data_params["n_rows"],
+        self.x_indexer = self.get_indexer(data_params["n_rows"],
                                      data_params["look_back"],
                                      data_params["shift_size"],
                                      0,
                                      data_params["n_signals"]+data_params["look_forward"]
                                      )
-        y_indexer = self.get_indexer(data_params["n_rows"],
+        self.y_indexer = self.get_indexer(data_params["n_rows"],
                                      data_params["look_forward"],
                                      data_params["shift_size"],
                                      data_params["look_back"],
@@ -138,8 +138,9 @@ class TFInterface:
                                      )
         # print("Indices....................", x_indexer, y_indexer)
         
-        data_handler = DataHandler(data_params, self._DTYPE, dir_list, self._N_CPUS)
-        data_dict = data_handler.load_data(x_indexer, y_indexer, self._BATCH_SIZE)
+        data_params["data_generator"] = data_params["data_generator"] + "_TF"
+        data_handler = DataHandler(data_params, self._DTYPE, dir_list)
+        data_dict = data_handler.load_data(self.x_indexer, self.y_indexer)
         dh_stop = time.time()
 
         # return data dict
@@ -194,17 +195,20 @@ class TFInterface:
 
             # if horovod - update the learning rate
             if self._MGPU_STRATEGY == "HVD":
-                self._HYPERPARAMETER_DICT["learning_rate"] = self._HYPERPARAMETER_DICT["learning_rate"] * self._N_GPUS
+                self._HYPERPARAMETER_DICT["learning_rate"] = self._HYPERPARAMETER_DICT["learning_rate"] * self.hvd_keras.size()
 
             # initialize the optimizer
             if self._MODEL_NAME in ["DeepDMDReferenceImplementation", "LSTM", "TFOptimizedSGPU", "TFOptimizedMGPU"]:
-                optimizer = tf.optimizers.Adagrad(self._HYPERPARAMETER_DICT["learning_rate"])
+                print("[INFO] Learning Rate: ", self._HYPERPARAMETER_DICT["learning_rate"])
+                optimizer = tf.optimizers.Adagrad(self._HYPERPARAMETER_DICT["learning_rate"], 
+                                                  initial_accumulator_value=0, 
+                                                  epsilon=1e-10)
             elif self._MODEL_NAME == "ResNet50":
                 optimizer = tf.keras.optimizers.SGD(self._HYPERPARAMETER_DICT["learning_rate"] * self._N_GPUS)
 
             # if horovod - distributed optimizer
             if self._MGPU_STRATEGY == "HVD":
-                optimizer = hvd.DistributedOptimizer(optimizer)
+                optimizer = self.hvd_keras.DistributedOptimizer(optimizer)
 
             # mixed precision optimizer
             if self._MIXED_PRECISION and (self.model in ["TFOptimizedSGPU", "TFOptimizedMGPU"]): 
@@ -216,8 +220,8 @@ class TFInterface:
             elif self._MODEL_NAME == "LSTM":
                 self.model.compile(loss=tf.losses.MeanSquaredError(),
                                    optimizer=optimizer,
-                                   metrics=[tf.metrics.MeanSquaredError()]#,
-                                   #experimental_run_tf_function=False
+                                   metrics=[tf.metrics.MeanSquaredError()],
+                                   experimental_run_tf_function=False
                                   )
             elif self._MODEL_NAME == "ResNet50":
                 self.model.compile(loss='sparse_categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
@@ -242,9 +246,10 @@ class TFInterface:
             self.callbacks = [timing_cb]
             
         if self._MGPU_STRATEGY == "HVD":
-            self.callbacks.append(hvd.callbacks.BroadcastGlobalVariablesCallback(0))
-            self.callbacks.append(hvd.callbacks.MetricAverageCallback())
-            # if hvd.rank() == 0:
+            self.callbacks.append(self.hvd_keras.callbacks.BroadcastGlobalVariablesCallback(0))
+            # self.callbacks.append(self.hvd_keras.callbacks.MetricAverageCallback())
+            # self.callbacks.append(self.hvd_keras.callbacks.LearningRateWarmupCallback(initial_lr=self._HYPERPARAMETER_DICT["learning_rate"], warmup_epochs=3, verbose=1))
+            # if self.hvd_keras.rank() == 0:
             #     self.callbacks.append(tf.keras.callbacks.ModelCheckpoint('./checkpoints/keras_mnist-{epoch}.h5'))
                 
         # update data
@@ -263,14 +268,16 @@ class TFInterface:
                 data_options.experimental_distribute.auto_shard_policy = tf.data.experimental.AutoShardPolicy.DATA
 
             training_dataset = training_dataset.with_options(data_options).batch(self._HYPERPARAMETER_DICT['batch_size'])
-            training_dataset = training_dataset.cache()
+            # for t in training_dataset.take(2):
+            #    print(t)
+            # training_dataset = training_dataset.cache()
             
             # compute steps per epoch
             steps_per_epoch = data_dict["n_points"] // self._HYPERPARAMETER_DICT['batch_size']
             # if multigpu strategy
             verbose = 1
             if self._MGPU_STRATEGY in ["HVD"]:
-                verbose = 1 if hvd.rank() == 0 else 0
+                verbose = 1 if self.hvd_keras.rank() == 0 else 0
             
             print("[INFO] Steps per epoch: ", steps_per_epoch)
 
@@ -332,10 +339,10 @@ class TFInterface:
             
             history = self.model.fit(training_dataset,
                                      # steps_per_epoch=steps_per_epoch,
-                                     epochs=self._N_EPOCHS, 
+                                     epochs=self._N_EPOCHS,
+                                     callbacks=self.callbacks, 
                                      # workers=16,
                                      # use_multiprocessing=True,
-#                                      experimental_run_tf_function=False,
                                      verbose=verbose
                                     )
             epoch_time = self.callbacks[0].logs
@@ -369,7 +376,7 @@ class TFInterface:
         print("Model Path: ", self._MODEL_PATH)
 
         if self._MGPU_STRATEGY == "HVD":
-            if hvd.rank() == 0:
+            if self.hvd_keras.rank() == 0:
                 self.model.save(self._MODEL_PATH)
         else:
             if self._MODEL_NAME in ["TFOptimizedMGPU"]: trainer.encoder.save(self._MODEL_PATH)
