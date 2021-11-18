@@ -15,6 +15,7 @@ class DataHandler():
     def __init__(self, handler_params, dtype, dir_list=None):
         self.handler_name = handler_params["data_generator"]
         self.n_scenarios = handler_params["n_scenarios"]
+        # print("Directory list: ", dir_list)
         if dir_list is not None: 
             self.n_scenarios = len(dir_list)
         
@@ -56,6 +57,7 @@ class DataHandler():
 
             # output
             data_dict["input_dim"] = self.data_handler.n_cols * self.data_handler.repeat_cols
+            data_dict["repeat_cols"] = self.data_handler.repeat_cols
             data_dict["training_data_format"] = "data_generator"
             data_dict["n_windows"] = x_indexer.shape[0]
             data_dict["look_back"] = self.data_handler.look_back

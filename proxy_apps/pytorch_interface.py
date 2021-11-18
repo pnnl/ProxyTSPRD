@@ -1,6 +1,7 @@
 import os
 import time
 import torch
+import functools
 import numpy as np
 
 from .utils import path_handler
@@ -9,7 +10,7 @@ from .apps.timeseries_prediction import hyperparameters
 from .apps import PTLSTM
         
 class PyTorchInterface:
-    def __init__(self, machine_name, n_gpus, n_cpus, data_type, n_epochs, batch_size, mixed_precision=0, mgpu_strategy=None):
+    def __init__(self, machine_name, n_gpus, n_cpus, data_type, n_epochs, batch_size, mixed_precision=0, mgpu_strategy=None, profiling=0):
         self._MACHINE_NAME = machine_name
         self._N_GPUS = n_gpus
         self._N_CPUS = n_cpus
@@ -20,6 +21,8 @@ class PyTorchInterface:
 
         self._MIXED_PRECISION = bool(mixed_precision)
         self._MGPU_STRATEGY = mgpu_strategy
+        
+        self._PROFILING = profiling
 
         ## PyTorch Setup
         print("[INFO] PyTorch version: ", torch.__version__)
@@ -106,19 +109,27 @@ class PyTorchInterface:
         data_dict = data_handler.load_data(x_indexer, y_indexer)
         dh_stop = time.time()
 
+        # loading time
+        data_loading_time = dh_stop-dh_start
+        if self._MGPU_STRATEGY == "HVD":
+            avg_data_loading_time = self.hvd_torch.allreduce(torch.tensor(data_loading_time), average=True)
+        else:
+            avg_data_loading_time = data_loading_time
+        
         # return data dict
-        return dh_stop-dh_start, data_dict
+        return avg_data_loading_time, data_dict
     
     def build_model(self, model_info, data_dict):
         # name of the model
         self._MODEL_NAME = model_info["model_name"]
         
-        self._SUFFIX = self._MACHINE_NAME + '_' + \
+        self._SUFFIX = 'PT_' + self._MACHINE_NAME + '_' + \
                        'ng' + str(self._N_GPUS) + '_' + \
                        'e' + str(self._N_EPOCHS) + '_' + \
                        'b' + str(self._BATCH_SIZE) + '_' + \
                        'mp' + str(int(self._MIXED_PRECISION)) + '_' + \
-                       'mgpu' + str(self._MGPU_STRATEGY)  # + '_' + self._LABEL
+                       'mgpu' + str(self._MGPU_STRATEGY) + '_' + \
+                       'prof' + str(self._PROFILING)  # + '_' + self._LABEL
         print("[INFO] Suffix: ", self._SUFFIX)
 
         # fill data in multiple GPUs
@@ -167,7 +178,7 @@ class PyTorchInterface:
             if param.requires_grad:
                 print(name, param.shape)
         
-    def train_model(self, model_info, data_dict):
+    def train_model(self, model_info, data_dict, output_dir):
         # training data
         data_generator = data_dict["data"]
         train_sampler = None
@@ -218,16 +229,19 @@ class PyTorchInterface:
                     # credit assignment
                     self.scaler.scale(loss).backward()
                 
-                    # Make sure all async allreduces are done
-                    self.optimizer.synchronize()
-                    
-                    # In-place unscaling of all gradients before weights update
-                    scaler.unscale_(self.optimizer)
-                    with optimizer.skip_synchronize():
-                        scaler.step(self.optimizer)
-                    
+                    if self._MGPU_STRATEGY == "HVD":
+                        # Make sure all async allreduces are done
+                        self.optimizer.synchronize()
+
+                        # In-place unscaling of all gradients before weights update
+                        self.scaler.unscale_(self.optimizer)
+                        with self.optimizer.skip_synchronize():
+                            self.scaler.step(self.optimizer)
+                    else:
+                        self.scaler.step(self.optimizer)
+                        
                     # Update scaler in case of overflow/underflow
-                    scaler.update()
+                    self.scaler.update()
                 else:
                     # credit assignment
                     loss.backward()
@@ -248,6 +262,46 @@ class PyTorchInterface:
                 
         m_stop = time.time()
         
-        return self.model, m_start, m_stop, all_loss, epoch_time
+        model_training_time = m_stop - m_start
+        print("============> Model Fitting: ", model_training_time)
+        
+        if self._MGPU_STRATEGY == "HVD":
+            avg_model_training_time = self.hvd_torch.allreduce(torch.tensor(model_training_time), average=True).cpu().numpy()
+            avg_all_loss = [self.hvd_torch.allreduce(l, average=True).detach().cpu().item() for l in all_loss]
+            avg_epoch_time = [self.hvd_torch.allreduce(e, average=True).cpu().item() for e in epoch_time]
+        else:
+            avg_model_training_time = model_training_time
+            avg_all_loss = all_loss
+            avg_epoch_time = epoch_time
+        
+        # # save model
+        self._MODEL_DIR = path_handler.get_absolute_path(model_info["model_dir"], self._MODEL_NAME + "/R" + str(data_dict["repeat_cols"]))
+        self._MODEL_PATH = path_handler.get_absolute_path(self._MODEL_DIR, self._SUFFIX)
+        print("Model Path: ", self._MODEL_PATH)
+        
+        self._DATA_DIR = path_handler.get_absolute_path(output_dir, self._MODEL_NAME + "/R" + str(data_dict["repeat_cols"]))
+        self._DATA_FILE = path_handler.get_absolute_path(self._DATA_DIR, "tp_" + self._SUFFIX + ".json")
+        print("Data Path: ", self._DATA_FILE)
+        
+        if self._MGPU_STRATEGY == "HVD":
+            if self.hvd_torch.rank() == 0:
+                if not os.path.exists(self._MODEL_DIR):
+                    os.makedirs(self._MODEL_DIR)
+                # self.model.save(self._MODEL_PATH)
+                torch.save(self.model, self._MODEL_PATH)
+
+                if not os.path.exists(self._DATA_DIR):
+                    os.makedirs(self._DATA_DIR)
+        else:
+            if not os.path.exists(self._MODEL_DIR):
+                os.makedirs(self._MODEL_DIR)
+            if not os.path.exists(self._DATA_DIR):
+                os.makedirs(self._DATA_DIR)
+
+        
+
+        self.hvd_torch.shutdown()
+        time.sleep(5)
+        return avg_model_training_time, avg_all_loss, avg_epoch_time
 
 

@@ -1,5 +1,6 @@
 import os
 import time
+import functools
 import contextlib
 import numpy as np
 import tensorflow as tf
@@ -20,7 +21,7 @@ class TimingCallback(tf.keras.callbacks.Callback):
         self.logs.append(timer()-self.starttime)
 
 class TFInterface:
-    def __init__(self, machine_name, n_gpus, n_cpus, data_type, n_epochs, batch_size, mixed_precision=0, mgpu_strategy=None):
+    def __init__(self, machine_name, n_gpus, n_cpus, data_type, n_epochs, batch_size, mixed_precision=0, mgpu_strategy=None, profiling=0):
         # os.environ['TF_XLA_FLAGS']="--tf_xla_auto_jit=2 --tf_xla_cpu_global_jit"
         # os.environ['XLA_FLAGS']="--xla_gpu_cuda_data_dir=/share/apps/cuda/11.0/"
         os.environ["TF_GPU_THREAD_MODE"] = "gpu_private"  # to avoid gpu contention
@@ -39,6 +40,8 @@ class TFInterface:
 
         self._MIXED_PRECISION = bool(mixed_precision)
         self._MGPU_STRATEGY = mgpu_strategy
+        
+        self._PROFILING = profiling
 
         ## TensorFlow Setup
         print("[INFO] Tensorflow version: ", tf.__version__)
@@ -137,25 +140,35 @@ class TFInterface:
                                      data_params["n_signals"]
                                      )
         # print("Indices....................", x_indexer, y_indexer)
-        
+        # print("----------------- I'm here!! -----------------------------")
         data_params["data_generator"] = data_params["data_generator"] + "_TF"
         data_handler = DataHandler(data_params, self._DTYPE, dir_list)
         data_dict = data_handler.load_data(self.x_indexer, self.y_indexer)
         dh_stop = time.time()
-
+        
+        # print("----------------- I should be here as well!! -----------------------------")
+        # loading time
+        data_loading_time = dh_stop-dh_start
+        if self._MGPU_STRATEGY == "HVD":
+            avg_data_loading_time = self.hvd_keras.allreduce(data_loading_time, average=True)
+        else:
+            avg_data_loading_time = data_loading_time
+        
+        # print("----------------- Can you still see me? -----------------------------")
         # return data dict
-        return dh_stop-dh_start, data_dict
+        return avg_data_loading_time, data_dict
         
     def build_model(self, model_info, data_dict):
         # name of the model
         self._MODEL_NAME = model_info["model_name"]
         
-        self._SUFFIX = self._MACHINE_NAME + '_' + \
+        self._SUFFIX = 'TF_' + self._MACHINE_NAME + '_' + \
                        'ng' + str(self._N_GPUS) + '_' + \
                        'e' + str(self._N_EPOCHS) + '_' + \
                        'b' + str(self._BATCH_SIZE) + '_' + \
                        'mp' + str(int(self._MIXED_PRECISION)) + '_' + \
-                       'mgpu' + str(self._MGPU_STRATEGY)  # + '_' + self._LABEL
+                       'mgpu' + str(self._MGPU_STRATEGY) + '_' + \
+                       'prof' + str(self._PROFILING)  # + '_' + self._LABEL
         print("[INFO] Suffix: ", self._SUFFIX)
 
         # fill data in multiple GPUs
@@ -226,7 +239,7 @@ class TFInterface:
             elif self._MODEL_NAME == "ResNet50":
                 self.model.compile(loss='sparse_categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
         
-    def train_model(self, model_info, data_dict):
+    def train_model(self, model_info, data_dict, output_dir):
         ## Callbacks
         # timing callback
         timing_cb = TimingCallback()
@@ -237,8 +250,8 @@ class TFInterface:
         #     baseline=None, restore_best_weights=True)
 
         # Create a TensorBoard Profiler
-        log_dir = path_handler.get_absolute_path(model_info["tb_log_dir"], "tensorboard/" + self._SUFFIX)
-        tb_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1, embeddings_freq=1, profile_batch=(1, 20))
+        # log_dir = path_handler.get_absolute_path(model_info["tb_log_dir"], "tensorboard/" + self._SUFFIX)
+        # tb_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1, embeddings_freq=1, profile_batch=(1, 20))
 
         # all callbacks
         self.callbacks = []  # [early_stop_cb, timing_cb]
@@ -369,21 +382,50 @@ class TFInterface:
             all_loss = history.history['loss']
 
         m_stop = time.time()
-        print("============> Model Fitting: ", m_stop-m_start)
-
-        # # save model
-        self._MODEL_PATH = path_handler.get_absolute_path(model_info["model_dir"], self._SUFFIX)
+        model_training_time = m_stop - m_start
+        print("============> Model Fitting: ", model_training_time)
+        
+        if self._MGPU_STRATEGY == "HVD":
+            avg_model_training_time = self.hvd_keras.allreduce(model_training_time, average=True).numpy()
+            avg_all_loss = [self.hvd_keras.allreduce(l, average=True).numpy() for l in all_loss]
+            # list(map(functools.partial(self.hvd_keras.allreduce, average=True), all_loss))
+            avg_epoch_time = [self.hvd_keras.allreduce(e, average=True).numpy() for e in epoch_time]
+            # list(map(functools.partial(self.hvd_keras.allreduce, average=True), epoch_time))
+        else:
+            avg_model_training_time = model_training_time
+            avg_all_loss = all_loss
+            avg_epoch_time = epoch_time
+        
+        # # save model and data
+        self._MODEL_DIR = path_handler.get_absolute_path(model_info["model_dir"], self._MODEL_NAME + "/R" + str(data_dict["repeat_cols"]))
+        self._MODEL_PATH = path_handler.get_absolute_path(self._MODEL_DIR, self._SUFFIX) + "/"
         print("Model Path: ", self._MODEL_PATH)
 
+        self._DATA_DIR = path_handler.get_absolute_path(output_dir, self._MODEL_NAME + "/R" + str(data_dict["repeat_cols"]))
+        self._DATA_FILE = path_handler.get_absolute_path(self._DATA_DIR, "tp_" + self._SUFFIX + ".json")
+        print("Data Path: ", self._DATA_FILE)
+        
         if self._MGPU_STRATEGY == "HVD":
             if self.hvd_keras.rank() == 0:
+                if not os.path.exists(self._MODEL_DIR):
+                    os.makedirs(self._MODEL_DIR)
                 self.model.save(self._MODEL_PATH)
+                
+                if not os.path.exists(self._DATA_DIR):
+                    os.makedirs(self._DATA_DIR)
         else:
+            if not os.path.exists(self._MODEL_DIR):
+                os.makedirs(self._MODEL_DIR)
             if self._MODEL_NAME in ["TFOptimizedMGPU"]: trainer.encoder.save(self._MODEL_PATH)
             elif self._MODEL_NAME in ["TFOptimizedSGPU"]: self.model.encoder.save(self._MODEL_PATH)
             else: self.model.save(self._MODEL_PATH)
 
-        return self.model, m_start, m_stop, all_loss, epoch_time
+            if not os.path.exists(self._DATA_DIR):
+                os.makedirs(self._DATA_DIR)
+
+        self.hvd_keras.shutdown()
+        time.sleep(5)
+        return avg_model_training_time, avg_all_loss, avg_epoch_time
 
 class ConditionalScope(object):
     def __init__(self, condition, contextmanager):

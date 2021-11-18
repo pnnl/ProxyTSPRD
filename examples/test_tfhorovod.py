@@ -17,6 +17,7 @@ import tensorflow as tf
 import horovod.tensorflow.keras as hvd
 
 import sys
+import time
 sys.path.append('../')
 
 # from proxy_apps.utils.data.timeseries import TrainingDataGenerator
@@ -92,12 +93,27 @@ if args.framework == "TF":
     ]
 
     # Horovod: save checkpoints only on worker 0 to prevent other workers from corrupting them.
-    if hvd.rank() == 0:
-        callbacks.append(tf.keras.callbacks.ModelCheckpoint('./checkpoint-{epoch}.h5'))
+    # if hvd.rank() == 0:
+    #     callbacks.append(tf.keras.callbacks.ModelCheckpoint('./checkpoint-{epoch}.h5'))
 
     # Horovod: write logs on worker 0.
     verbose = 1 if hvd.rank() == 0 else 0
 
     # Train the model.
     # Horovod: adjust number of steps based on number of GPUs.
-    mnist_model.fit(dataset, steps_per_epoch=500 // hvd.size(), callbacks=callbacks, epochs=24, verbose=verbose)
+    start_time = time.time()
+    history = mnist_model.fit(dataset, steps_per_epoch=500 // hvd.size(), callbacks=callbacks, epochs=2, verbose=verbose)
+    end_time = time.time()
+    
+    training_time = end_time - start_time
+    print("Training Time: ", training_time)
+    print("Average Training Time: ", hvd.allreduce(training_time, average=True))
+    
+    all_loss = history.history['loss']
+    
+    import functools
+    print("Epoch Loss: ", all_loss)
+    print("Average Loss: ", list(map(functools.partial(hvd.allreduce, average=True), all_loss)))
+          
+    
+    

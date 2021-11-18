@@ -1,5 +1,8 @@
+## Cancel pacer jobs: squeue -u jain432 | awk '$3 e_lstm {print $1}' | tail -n+2 | xargs scancel
+
 import os
 import time
+import json
 
 from numba import jit
 
@@ -7,11 +10,13 @@ from .tensorflow_interface import TFInterface
 from .pytorch_interface import PyTorchInterface
 
 from .utils import file_reader, path_handler
+from .utils.data.main import NpEncoder
 
 from .apps.timeseries_prediction import hyperparameters
 
 class ProxyTSPRD:
-    def __init__(self, app_info, framework, reference_dir, mixed_precision, machine_name, n_gpus, n_cpus, n_epochs, batch_size, mgpu_strategy=None):
+    def __init__(self, app_info, framework, reference_dir, mixed_precision, machine_name, 
+                 n_gpus, n_cpus, n_epochs, batch_size, mgpu_strategy=None, profiling=0):
         # initialize
         self._REF_DIR = reference_dir
         self._FRAMEWORK = framework
@@ -39,6 +44,8 @@ class ProxyTSPRD:
         self._N_CPUS = n_cpus
         self._MGPU_STRATEGY = mgpu_strategy
         
+        self._PROFILING = profiling
+        
         if self._MGPU_SUPPORT == "False":
             print("[WARNING - Mixed Precision] %s was enabled and the execution is using %d GPUs, however, the model (%s) does not support distributed training. Therefore, using only one GPU without distributed training." %(self._MGPU_STRATEGY, self._N_GPUS, self._APP_NAME))
             self._N_GPUS = 1
@@ -59,7 +66,8 @@ class ProxyTSPRD:
                                    self._N_EPOCHS,
                                    self._BATCH_SIZE,
                                    self._MIXED_PRECISION,
-                                   self._MGPU_STRATEGY
+                                   self._MGPU_STRATEGY,
+                                   self._PROFILING
                             )
         elif self._FRAMEWORK == "PT":
             print("[INFO] Enabling PyTorch Interface")
@@ -70,11 +78,14 @@ class ProxyTSPRD:
                                    self._N_EPOCHS,
                                    self._BATCH_SIZE,
                                    self._MIXED_PRECISION,
-                                   self._MGPU_STRATEGY)
+                                   self._MGPU_STRATEGY,
+                                   self._PROFILING
+                                )
         else:
             print("Invalid Environment")
         
         # output
+        self._OUTPUT_DIR = path_handler.get_absolute_path(self._REF_DIR, app_info["output_dir"])
         self.performance_dict = dict()
             
     def load_data(self, data_params):
@@ -82,7 +93,7 @@ class ProxyTSPRD:
         dh_time, data_dict = self.env.load_data(self._REF_DIR, data_params)
         
         # update dict
-        self.performance_dict['data_loading_time'] = dh_time
+        self.performance_dict['data_loading_time'] = dh_time.numpy()
         
         return data_dict
         
@@ -107,22 +118,28 @@ class ProxyTSPRD:
         print("========> Build Model: ", end_time-start_time)
         
         start_time = time.perf_counter()
-        model, m_start, m_stop, all_loss, epoch_time = self.env.train_model(model_info, data_dict)
+        model_training_time, all_loss, epoch_time = self.env.train_model(model_info, data_dict, self._OUTPUT_DIR)
         end_time = time.perf_counter()
         print("========> Train Model: ", end_time-start_time)
         
         # print info
-        print('[INFO]: Time taken for model training (time module):', m_stop - m_start, 'seconds')
-        print('[INFO]: Time taken for model training (Keras):', sum(epoch_time), 'seconds')
-        print("Loss Values:", all_loss)
+        print('[INFO] Time taken for model training (time module):', model_training_time, 'seconds')
+        print('[INFO] Time taken for model training (Keras):', sum(epoch_time), 'seconds')
+        print("[INFO] Loss Values:", all_loss)
 
         # update dict
         self.performance_dict["n_epochs"] = self._N_EPOCHS
         self.performance_dict["batch_size"] = self._BATCH_SIZE
 
-        self.performance_dict['training_time_module'] = (m_stop - m_start)
+        self.performance_dict['training_time_module'] = model_training_time
         self.performance_dict['training_time_epoch_wise'] = epoch_time
         self.performance_dict['training_loss'] = all_loss
+        
+        print(self.performance_dict)
+        
+        # ------------------------------- SAVE PERFORMANCE DICT ------------------------------------------------
+        with open(self.env._DATA_FILE, 'w') as fp:
+            json.dump(self.performance_dict, fp, cls=NpEncoder)
 
         
         

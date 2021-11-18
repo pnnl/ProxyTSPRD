@@ -3,7 +3,8 @@
 		"app_name": "LSTM",
         "mixed_precision_support": "True",
         "mgpu_support": "True",
-		"data_type": "float64"
+		"data_type": "float64",
+        "output_dir": "../../../data/ProxyTSPRD_IPDPS/"
 	},
 	"data_params": {
 		"training_data_dir": "../../../data/NewTestScenarios/",
@@ -21,7 +22,7 @@
 	},
 	"model_info": {
 		"model_name": "LSTM",
-		"model_dir": "../../../models/",
+		"model_dir": "../../../models/ProxyTSPRD_IPDPS/",
 		"tb_log_dir": "../../../logs/",
 		"fill_data": "False",
 		"hyperparameters": {
