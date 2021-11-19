@@ -6,7 +6,7 @@ import numpy as np
 import tensorflow as tf
 from timeit import default_timer as timer
 
-from .apps import DeepDMDReferenceImplementation, TFLSTM, TFOptimizedSGPU, TFOptimizedEncoder, TFOptimizedModelTrainer
+from .apps import TFLSTM, TFOptimizedSGPU, TFOptimizedEncoder, TFOptimizedModelTrainer
 from .apps.timeseries_prediction import hyperparameters
 from .utils import path_handler
 from .utils.data.main import DataHandler
@@ -185,7 +185,7 @@ class TFInterface:
         self._HYPERPARAMETER_DICT['data_type'] = self._DTYPE
 
         # hyper parameters
-        if self._MODEL_NAME in ["DeepDMDReferenceImplementation", "LSTM", "TFOptimizedSGPU", "TFOptimizedMGPU"]:
+        if self._MODEL_NAME in ["LSTM", "TFOptimizedSGPU", "TFOptimizedMGPU"]:
             self._HYPERPARAMETER_DICT['original_dim'] = data_dict["input_dim"]  # input data dimension
             self.hp = hyperparameters.HyperParameters(self._HYPERPARAMETER_DICT)
 
@@ -195,9 +195,7 @@ class TFInterface:
         with self.mgpu_strategy.scope():
             # initialize and build the model
             print("Model Name: ", self._MODEL_NAME)
-            if self._MODEL_NAME == "DeepDMDReferenceImplementation":
-                self.model = DeepDMDReferenceImplementation(self.hp)
-            elif self._MODEL_NAME == "LSTM":
+            if self._MODEL_NAME == "LSTM":
                 self.model = TFLSTM(data_dict["look_back"], data_dict["look_forward"], data_dict["input_dim"])
             elif self._MODEL_NAME == "TFOptimizedSGPU":
                 self.model = TFOptimizedSGPU(self.hp, mixed_precision=self._MIXED_PRECISION)
@@ -212,7 +210,7 @@ class TFInterface:
                 self._HYPERPARAMETER_DICT["learning_rate"] = self._HYPERPARAMETER_DICT["learning_rate"] * self.hvd_keras.size()
 
             # initialize the optimizer
-            if self._MODEL_NAME in ["DeepDMDReferenceImplementation", "LSTM", "TFOptimizedSGPU", "TFOptimizedMGPU"]:
+            if self._MODEL_NAME in ["LSTM", "TFOptimizedSGPU", "TFOptimizedMGPU"]:
                 print("[INFO] Learning Rate: ", self._HYPERPARAMETER_DICT["learning_rate"])
                 optimizer = tf.optimizers.Adagrad(self._HYPERPARAMETER_DICT["learning_rate"], 
                                                   initial_accumulator_value=0, 
@@ -231,7 +229,7 @@ class TFInterface:
                 optimizer = tf.keras.mixed_precision.LossScaleOptimizer(optimizer)
 
             # compile the model
-            if self._MODEL_NAME in ["DeepDMDReferenceImplementation", "TFOptimizedSGPU", "TFOptimizedMGPU"]:
+            if self._MODEL_NAME in ["TFOptimizedSGPU", "TFOptimizedMGPU"]:
                 self.model.compile(optimizer=optimizer)
             elif self._MODEL_NAME == "LSTM":
                 self.model.compile(loss=tf.losses.MeanSquaredError(),
@@ -265,7 +263,7 @@ class TFInterface:
             # if self.hvd_keras.rank() == 0:
             #     self.callbacks.append(tf.keras.callbacks.ModelCheckpoint('./checkpoints/keras_mnist-{epoch}.h5'))
                 
-        if self._MODEL_NAME in ["DeepDMDReferenceImplementation", "LSTM", "TFOptimizedSGPU", "ResNet50"]:
+        if self._MODEL_NAME in ["LSTM", "TFOptimizedSGPU", "ResNet50"]:
             self.callbacks.append(timing_cb)
             
         # update data
@@ -340,15 +338,7 @@ class TFInterface:
         
         # model training
         m_start = time.time()
-        if self._MODEL_NAME == "DeepDMDReferenceImplementation":
-            history = self.model.fit(training_dataset,
-                                batch_size=self._BATCH_SIZE,
-                                epochs=self._N_EPOCHS,
-                                callbacks=self.callbacks,
-                                shuffle=True)
-            epoch_time = self.callbacks[-1].logs
-            all_loss = history.history['loss']
-        elif self._MODEL_NAME == "LSTM":
+        if self._MODEL_NAME == "LSTM":
             print("[INFO] Data Dictionary:\n", data_dict)
             self.model.build(input_shape=(self._BATCH_SIZE, data_dict["look_back"], data_dict["input_dim"])) 
             print("[INFO] Model Summary:\n", self.model.summary())

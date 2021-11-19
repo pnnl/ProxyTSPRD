@@ -8,8 +8,8 @@
 #SBATCH --exclusive
 #SBATCH --constraint=nvlink
 #SBATCH -J horovod
-#SBATCH -o test_logs/out.txt
-#SBATCH -e test_logs/err.txt
+#SBATCH -o logs/out.txt
+#SBATCH -e logs/err.txt
 
 module purge
 module load python/miniconda3.9
