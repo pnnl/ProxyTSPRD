@@ -131,4 +131,4 @@ dmypy.json
 
 # Project directories
 logs/
-examples/logs/
+**/logs/
