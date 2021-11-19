@@ -24,8 +24,8 @@ class TFInterface:
     def __init__(self, machine_name, n_gpus, n_cpus, data_type, n_epochs, batch_size, mixed_precision=0, mgpu_strategy=None, profiling=0):
         # os.environ['TF_XLA_FLAGS']="--tf_xla_auto_jit=2 --tf_xla_cpu_global_jit"
         # os.environ['XLA_FLAGS']="--xla_gpu_cuda_data_dir=/share/apps/cuda/11.0/"
-        # os.environ["TF_GPU_THREAD_MODE"] = "gpu_private"  # to avoid gpu contention
-        # os.environ['TF_CUDNN_DETERMINISTIC']='1'
+        os.environ["TF_GPU_THREAD_MODE"] = "gpu_private"  # to avoid gpu contention
+        os.environ['TF_CUDNN_DETERMINISTIC']='1'
         print("[INFO] Global variables set")
         
         # os.environ['CUDA_DEVICE_ORDER'] = "PCI_BUS_ID"

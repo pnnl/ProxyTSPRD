@@ -1,5 +1,3 @@
-## Cancel pacer jobs: squeue -u jain432 | awk '$3 e_lstm {print $1}' | tail -n+2 | xargs scancel
-
 import os
 import time
 import json
@@ -117,8 +115,6 @@ class ProxyTSPRD:
         end_time = time.perf_counter()
         print("========> Build Model: ", end_time-start_time)
         
-        print(l11)
-
         start_time = time.perf_counter()
         model_training_time, all_loss, epoch_time = self.env.train_model(model_info, data_dict, self._OUTPUT_DIR)
         end_time = time.perf_counter()
