@@ -1,6 +1,6 @@
 GPUS=( "a100" "tonga" ) # which gpu
 FRAMEWORK=( "TF" "PT" )
-PROF=( 0 1 ) # with and without profiler
+PROF=( 0 ) # with and without profiler
 MP=( 0 1 ) # with or without mixed precision
 
 ## For single GPU

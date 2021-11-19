@@ -112,7 +112,8 @@ class PyTorchInterface:
         # loading time
         data_loading_time = dh_stop-dh_start
         if self._MGPU_STRATEGY == "HVD":
-            avg_data_loading_time = self.hvd_torch.allreduce(torch.tensor(data_loading_time), average=True)
+            avg_data_loading_time = avg_data_loading_time = data_loading_time
+            # self.hvd_torch.allreduce(torch.tensor(data_loading_time), average=True).numpy()
         else:
             avg_data_loading_time = data_loading_time
         
@@ -167,11 +168,10 @@ class PyTorchInterface:
         self.criterion = torch.nn.MSELoss()#.to(self._DEVICE)
         
         if self._MGPU_STRATEGY == "HVD":
+            self.optimizer = self.hvd_torch.DistributedOptimizer(self.optimizer, named_parameters=self.model.named_parameters())
+            
             self.hvd_torch.broadcast_parameters(self.model.state_dict(), root_rank=0)
             self.hvd_torch.broadcast_optimizer_state(self.optimizer, root_rank=0)
-            
-            self.optimizer = self.hvd_torch.DistributedOptimizer(self.optimizer, named_parameters=self.model.named_parameters())
-        
         
         print("[INFO] Model Parameters: \n")
         for name, param in self.model.named_parameters():
@@ -271,8 +271,8 @@ class PyTorchInterface:
             avg_epoch_time = [self.hvd_torch.allreduce(e, average=True).cpu().item() for e in epoch_time]
         else:
             avg_model_training_time = model_training_time
-            avg_all_loss = all_loss
-            avg_epoch_time = epoch_time
+            avg_all_loss = [l.detach().cpu().item() for l in all_loss]
+            avg_epoch_time = [e.cpu().item() for e in epoch_time]
         
         # # save model
         self._MODEL_DIR = path_handler.get_absolute_path(model_info["model_dir"], self._MODEL_NAME + "/R" + str(data_dict["repeat_cols"]))
@@ -292,16 +292,16 @@ class PyTorchInterface:
 
                 if not os.path.exists(self._DATA_DIR):
                     os.makedirs(self._DATA_DIR)
+                    
+            self.hvd_torch.shutdown()
+            time.sleep(5)
+        
         else:
             if not os.path.exists(self._MODEL_DIR):
                 os.makedirs(self._MODEL_DIR)
             if not os.path.exists(self._DATA_DIR):
                 os.makedirs(self._DATA_DIR)
 
-        
-
-        self.hvd_torch.shutdown()
-        time.sleep(5)
         return avg_model_training_time, avg_all_loss, avg_epoch_time
 
 

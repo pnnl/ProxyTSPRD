@@ -37,7 +37,7 @@ parser.add_argument("--n_epochs", type=int, help="number of epochs", default=10)
 parser.add_argument("--batch_size", type=int, help="batch size", default=1024)
 parser.add_argument("--mixed_precision", type=int, choices=[0, 1], help="whether to turn on mixed precision or not", default=0)
 parser.add_argument("--mgpu_strategy", choices=["None", "MirroredStrategy", "DDP", "HVD"], help="which multi-gpu strategy to use", default="None")
-parser.add_argument("--profiling", choices=[0, 1], help="whether to use nsys profiling", default=0)
+parser.add_argument("--profiling", type=int, choices=[0, 1], help="whether to use nsys profiling", default=0)
 
 args = parser.parse_args()
 print("[INFO] Read parser arguments")
@@ -78,7 +78,6 @@ interface = ProxyTSPRD(config["info"],
                        _MGPU_STRATEGY,
                        _PROFILING
                       )
-
 end_time = time.perf_counter()
 print("====> Initialization Time: ", end_time-start_time)
 

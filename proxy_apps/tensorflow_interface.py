@@ -24,8 +24,8 @@ class TFInterface:
     def __init__(self, machine_name, n_gpus, n_cpus, data_type, n_epochs, batch_size, mixed_precision=0, mgpu_strategy=None, profiling=0):
         # os.environ['TF_XLA_FLAGS']="--tf_xla_auto_jit=2 --tf_xla_cpu_global_jit"
         # os.environ['XLA_FLAGS']="--xla_gpu_cuda_data_dir=/share/apps/cuda/11.0/"
-        os.environ["TF_GPU_THREAD_MODE"] = "gpu_private"  # to avoid gpu contention
-        os.environ['TF_CUDNN_DETERMINISTIC']='1'
+        # os.environ["TF_GPU_THREAD_MODE"] = "gpu_private"  # to avoid gpu contention
+        # os.environ['TF_CUDNN_DETERMINISTIC']='1'
         print("[INFO] Global variables set")
         
         # os.environ['CUDA_DEVICE_ORDER'] = "PCI_BUS_ID"
@@ -66,9 +66,9 @@ class TFInterface:
         gpus = tf.config.experimental.list_physical_devices('GPU')
         for gpu in gpus:
             print("[INFO] Name:", gpu.name, "  Type:", gpu.device_type)
+            tf.config.experimental.set_memory_growth(gpu, True)
 
         if gpus and (self._MGPU_STRATEGY == "HVD"):
-            tf.config.experimental.set_memory_growth(gpus[self.hvd_keras.local_rank()], True)
             tf.config.experimental.set_visible_devices(gpus[self.hvd_keras.local_rank()], 'GPU')
             
         # eager mode
@@ -150,7 +150,8 @@ class TFInterface:
         # loading time
         data_loading_time = dh_stop-dh_start
         if self._MGPU_STRATEGY == "HVD":
-            avg_data_loading_time = self.hvd_keras.allreduce(data_loading_time, average=True)
+            avg_data_loading_time = data_loading_time
+            # avg_data_loading_time = self.hvd_keras.allreduce(data_loading_time, average=True).numpy()
         else:
             avg_data_loading_time = data_loading_time
         
@@ -221,7 +222,9 @@ class TFInterface:
 
             # if horovod - distributed optimizer
             if self._MGPU_STRATEGY == "HVD":
-                optimizer = self.hvd_keras.DistributedOptimizer(optimizer)
+                optimizer = self.hvd_keras.DistributedOptimizer(optimizer, 
+                                                                backward_passes_per_step=1, 
+                                                                average_aggregated_gradients=True)
 
             # mixed precision optimizer
             if self._MIXED_PRECISION and (self.model in ["TFOptimizedSGPU", "TFOptimizedMGPU"]): 
@@ -255,16 +258,16 @@ class TFInterface:
 
         # all callbacks
         self.callbacks = []  # [early_stop_cb, timing_cb]
-        if self._MODEL_NAME in ["DeepDMDReferenceImplementation", "LSTM", "TFOptimizedSGPU", "ResNet50"]:
-            self.callbacks = [timing_cb]
-            
         if self._MGPU_STRATEGY == "HVD":
             self.callbacks.append(self.hvd_keras.callbacks.BroadcastGlobalVariablesCallback(0))
-            # self.callbacks.append(self.hvd_keras.callbacks.MetricAverageCallback())
+            self.callbacks.append(self.hvd_keras.callbacks.MetricAverageCallback())
             # self.callbacks.append(self.hvd_keras.callbacks.LearningRateWarmupCallback(initial_lr=self._HYPERPARAMETER_DICT["learning_rate"], warmup_epochs=3, verbose=1))
             # if self.hvd_keras.rank() == 0:
             #     self.callbacks.append(tf.keras.callbacks.ModelCheckpoint('./checkpoints/keras_mnist-{epoch}.h5'))
                 
+        if self._MODEL_NAME in ["DeepDMDReferenceImplementation", "LSTM", "TFOptimizedSGPU", "ResNet50"]:
+            self.callbacks.append(timing_cb)
+            
         # update data
         start_time = time.perf_counter()
         if data_dict['training_data_format'] == "data_generator":
@@ -343,7 +346,7 @@ class TFInterface:
                                 epochs=self._N_EPOCHS,
                                 callbacks=self.callbacks,
                                 shuffle=True)
-            epoch_time = self.callbacks[0].logs
+            epoch_time = self.callbacks[-1].logs
             all_loss = history.history['loss']
         elif self._MODEL_NAME == "LSTM":
             print("[INFO] Data Dictionary:\n", data_dict)
@@ -358,7 +361,7 @@ class TFInterface:
                                      # use_multiprocessing=True,
                                      verbose=verbose
                                     )
-            epoch_time = self.callbacks[0].logs
+            epoch_time = self.callbacks[-1].logs
             all_loss = history.history['loss']
         elif self._MODEL_NAME == "TFOptimizedSGPU":
             self.model.encoder.build(input_shape=(None, data_dict["input_dim"]))   
@@ -367,7 +370,7 @@ class TFInterface:
                                      epochs=self._N_EPOCHS, 
                                      workers=64, 
                                      use_multiprocessing=True)
-            epoch_time = self.callbacks[0].logs
+            epoch_time = self.callbacks[-1].logs
             all_loss = history.history['loss']
         elif self._MODEL_NAME == "TFOptimizedMGPU":
             trainer = TFOptimizedModelTrainer(self.hp, self.model, mixed_precision=self._MIXED_PRECISION)
@@ -378,7 +381,7 @@ class TFInterface:
                                 verbose=1,
                                 validation_steps=10,
                                 callbacks=self.callbacks)
-            epoch_time = self.callbacks[0].logs
+            epoch_time = self.callbacks[-1].logs
             all_loss = history.history['loss']
 
         m_stop = time.time()
@@ -413,6 +416,9 @@ class TFInterface:
                 
                 if not os.path.exists(self._DATA_DIR):
                     os.makedirs(self._DATA_DIR)
+                    
+            self.hvd_keras.shutdown()
+            time.sleep(5)
         else:
             if not os.path.exists(self._MODEL_DIR):
                 os.makedirs(self._MODEL_DIR)
@@ -423,8 +429,6 @@ class TFInterface:
             if not os.path.exists(self._DATA_DIR):
                 os.makedirs(self._DATA_DIR)
 
-        self.hvd_keras.shutdown()
-        time.sleep(5)
         return avg_model_training_time, avg_all_loss, avg_epoch_time
 
 class ConditionalScope(object):

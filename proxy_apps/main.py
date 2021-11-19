@@ -93,7 +93,7 @@ class ProxyTSPRD:
         dh_time, data_dict = self.env.load_data(self._REF_DIR, data_params)
         
         # update dict
-        self.performance_dict['data_loading_time'] = dh_time.numpy()
+        self.performance_dict['data_loading_time'] = dh_time
         
         return data_dict
         
@@ -117,6 +117,8 @@ class ProxyTSPRD:
         end_time = time.perf_counter()
         print("========> Build Model: ", end_time-start_time)
         
+        print(l11)
+
         start_time = time.perf_counter()
         model_training_time, all_loss, epoch_time = self.env.train_model(model_info, data_dict, self._OUTPUT_DIR)
         end_time = time.perf_counter()
