@@ -19,7 +19,7 @@ python app.py --config_file ${1}
 		--profiling ${10}
 ```
 <b>Example:</b> 
-> python app.py --config_file lstm --framework TF --machine_name a100 --n_gpus 4 --n_cpus 1 --n_epochs 20 -batch_size 2048 --mixed_precision 1 --mgpu_strategy HVD --profiling 1
+> python app.py --config_file lstm --framework TF --machine_name a100 --n_gpus 4 --n_cpus 1 --n_epochs 20 --batch_size 2048 --mixed_precision 1 --mgpu_strategy HVD --profiling 1
 
 ```
 Following is the list of arguments:
@@ -54,7 +54,7 @@ sh run_sbatch.sh <model>
 
 #### Submit All Scripts (without Horovod):
 ```
-sh submit_all_mgpu.sh
+sh submit_all_sgpu.sh
 ```
 
 #### Submit All Scripts (with Horovod): 

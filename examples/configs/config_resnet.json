@@ -1,7 +1,10 @@
 {
     "info": {
         "app_name": "ResNet50",
-        "framework": "TF"
+        "mixed_precision_support": "True",
+        "mgpu_support": "True",
+		"data_type": "int64",
+        "output_dir": "../../../data/ProxyTSPRD_IPDPS/"
     },
     "data_params": {
         "training_data_dir": "../../../data/ImageNet/numpy/",
@@ -12,7 +15,7 @@
     },
     "model_info": {
 		"model_name": "ResNet50",
-        "model_dir": "../../../models/",
+        "model_dir": "../../../models/ProxyTSPRD_IPDPS/",
         "tb_log_dir": "../../../logs/",
 		"fill_data": "False",
 		"hyperparameters": {

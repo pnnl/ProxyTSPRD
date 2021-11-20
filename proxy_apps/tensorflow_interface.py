@@ -6,7 +6,7 @@ import numpy as np
 import tensorflow as tf
 from timeit import default_timer as timer
 
-from .apps import TFLSTM, TFOptimizedSGPU, TFOptimizedEncoder, TFOptimizedModelTrainer
+from .apps import TFLSTM, TFConvLSTM, TFOptimizedSGPU, TFOptimizedEncoder, TFOptimizedModelTrainer
 from .apps.timeseries_prediction import hyperparameters
 from .utils import path_handler
 from .utils.data.main import DataHandler
@@ -185,7 +185,7 @@ class TFInterface:
         self._HYPERPARAMETER_DICT['data_type'] = self._DTYPE
 
         # hyper parameters
-        if self._MODEL_NAME in ["LSTM", "TFOptimizedSGPU", "TFOptimizedMGPU"]:
+        if self._MODEL_NAME in ["LSTM", "ConvLSTM", "TFOptimizedSGPU", "TFOptimizedMGPU"]:
             self._HYPERPARAMETER_DICT['original_dim'] = data_dict["input_dim"]  # input data dimension
             self.hp = hyperparameters.HyperParameters(self._HYPERPARAMETER_DICT)
 
@@ -197,6 +197,8 @@ class TFInterface:
             print("Model Name: ", self._MODEL_NAME)
             if self._MODEL_NAME == "LSTM":
                 self.model = TFLSTM(data_dict["look_back"], data_dict["look_forward"], data_dict["input_dim"])
+            elif self._MODEL_NAME == "ConvLSTM":
+                self.model = TFConvLSTM(data_dict["look_back"], data_dict["look_forward"], data_dict["input_dim"])
             elif self._MODEL_NAME == "TFOptimizedSGPU":
                 self.model = TFOptimizedSGPU(self.hp, mixed_precision=self._MIXED_PRECISION)
             elif self._MODEL_NAME == "TFOptimizedMGPU":
@@ -210,7 +212,7 @@ class TFInterface:
                 self._HYPERPARAMETER_DICT["learning_rate"] = self._HYPERPARAMETER_DICT["learning_rate"] * self.hvd_keras.size()
 
             # initialize the optimizer
-            if self._MODEL_NAME in ["LSTM", "TFOptimizedSGPU", "TFOptimizedMGPU"]:
+            if self._MODEL_NAME in ["LSTM", "ConvLSTM", "TFOptimizedSGPU", "TFOptimizedMGPU"]:
                 print("[INFO] Learning Rate: ", self._HYPERPARAMETER_DICT["learning_rate"])
                 optimizer = tf.optimizers.Adagrad(self._HYPERPARAMETER_DICT["learning_rate"], 
                                                   initial_accumulator_value=0, 
@@ -231,7 +233,7 @@ class TFInterface:
             # compile the model
             if self._MODEL_NAME in ["TFOptimizedSGPU", "TFOptimizedMGPU"]:
                 self.model.compile(optimizer=optimizer)
-            elif self._MODEL_NAME == "LSTM":
+            elif self._MODEL_NAME in ["LSTM", "ConvLSTM"]:
                 self.model.compile(loss=tf.losses.MeanSquaredError(),
                                    optimizer=optimizer,
                                    metrics=[tf.metrics.MeanSquaredError()],
@@ -263,7 +265,7 @@ class TFInterface:
             # if self.hvd_keras.rank() == 0:
             #     self.callbacks.append(tf.keras.callbacks.ModelCheckpoint('./checkpoints/keras_mnist-{epoch}.h5'))
                 
-        if self._MODEL_NAME in ["LSTM", "TFOptimizedSGPU", "ResNet50"]:
+        if self._MODEL_NAME in ["LSTM", "ConvLSTM", "TFOptimizedSGPU", "ResNet50"]:
             self.callbacks.append(timing_cb)
             
         # update data
@@ -338,7 +340,7 @@ class TFInterface:
         
         # model training
         m_start = time.time()
-        if self._MODEL_NAME == "LSTM":
+        if self._MODEL_NAME in ["LSTM", "ConvLSTM"]:
             print("[INFO] Data Dictionary:\n", data_dict)
             self.model.build(input_shape=(self._BATCH_SIZE, data_dict["look_back"], data_dict["input_dim"])) 
             print("[INFO] Model Summary:\n", self.model.summary())

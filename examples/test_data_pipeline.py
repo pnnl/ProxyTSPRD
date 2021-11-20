@@ -1,5 +1,7 @@
+import os
 import numpy as np
 import pandas as pd
+import torch
 import tensorflow as tf
 
 # Custom Library
@@ -188,16 +190,19 @@ class GridNetworkSequentialDataGenerator_PT(torch.utils.data.Dataset):
 if __name__=="__main__":
     ## ProxyTSPRD
     # get configuration file
+    _REF_DIR = "./"
     _CONFIG_FILE = "./configs/config_lstm.json"
     config = file_reader.read_config(_REF_DIR + _CONFIG_FILE)
     
+    data_params = config["data_params"]
+    
     # training data
-    data_params["training_data_dir"] = path_handler.get_absolute_path(ref_dir, data_params["training_data_dir"])
+    data_params["training_data_dir"] = path_handler.get_absolute_path(_REF_DIR, data_params["training_data_dir"])
     print("[INFO] Training Data Directory:", data_params["training_data_dir"])
 
     # validation data - if any
     if "val_data_dir" in data_params:
-        data_params["val_data_dir"] = path_handler.get_absolute_path(ref_dir, data_params["val_data_dir"])
+        data_params["val_data_dir"] = path_handler.get_absolute_path(_REF_DIR, data_params["val_data_dir"])
         print("[INFO] Validation Data Directory:", data_params["val_data_dir"])
 
     dir_list = [data_params["training_data_dir"] + "/" + f + "/" for f in os.listdir(data_params["training_data_dir"])]
@@ -208,28 +213,40 @@ if __name__=="__main__":
         n_files = data_params["n_scenarios"]
         dir_list = dir_list[:n_files]
 
-    if self._MGPU_STRATEGY == "HVD":
-        print("[INFO] Sharding data files for Horovod")
-        splitter = n_files // hvd.size()
-        print(n_files, splitter, splitter*hvd.rank(), splitter*(hvd.rank()+1))
-        dir_list = dir_list[splitter*hvd.rank():splitter*(hvd.rank()+1)]
-        n_files = len(dir_list)
+    import horovod.tensorflow.keras as hvd
+
+    # Initialize Horovod
+    hvd.init()
+
+    # Pin GPU to be used to process local rank (one GPU per process)
+    gpus = tf.config.experimental.list_physical_devices('GPU')
+    for gpu in gpus:
+        tf.config.experimental.set_memory_growth(gpu, True)
+    if gpus:
+        tf.config.experimental.set_visible_devices(gpus[hvd.local_rank()], 'GPU')
+
+    # if self._MGPU_STRATEGY == "HVD":
+    print("[INFO] Sharding data files for Horovod")
+    splitter = n_files // hvd.size()
+    print(n_files, splitter, splitter*hvd.rank(), splitter*(hvd.rank()+1))
+    dir_list = dir_list[splitter*hvd.rank():splitter*(hvd.rank()+1)]
+    n_files = len(dir_list)
 
     print("[INFO] Number of files (per GPU):", n_files)
 
-    data_handler = GridNetworkWindowDataGenerator(dir_list, config['data_params'], 'float64')
-    x_indexer = self.get_indexer(self.data_handler.n_rows,
-                                 self.data_handler.window_size,
-                                 self.data_handler.shift_size,
-                                 0,
-                                 self.data_handler.n_signals
-                                 )
-    y_indexer = self.get_indexer(self.data_handler.n_rows,
-                                 self.data_handler.window_size,
-                                 self.data_handler.shift_size,
-                                 1,
-                                 0
-                                 )
+#     data_handler = GridNetworkWindowDataGenerator(dir_list, config['data_params'], 'float64')
+#     x_indexer = self.get_indexer(self.data_handler.n_rows,
+#                                  self.data_handler.window_size,
+#                                  self.data_handler.shift_size,
+#                                  0,
+#                                  self.data_handler.n_signals
+#                                  )
+#     y_indexer = self.get_indexer(self.data_handler.n_rows,
+#                                  self.data_handler.window_size,
+#                                  self.data_handler.shift_size,
+#                                  1,
+#                                  0
+#                                  )
 
-    scenario_data = data_handler.get_training_data(x_indexer, y_indexer)
+#     scenario_data = data_handler.get_training_data(x_indexer, y_indexer)
 

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-
+import os
 import tensorflow as tf
 import horovod.tensorflow.keras as hvd
 
@@ -27,6 +27,8 @@ parser = argparse.ArgumentParser(description='Horovod Testing')
 parser.add_argument("--framework", choices=["TF", "PT"], help="which multi-gpu strategy to use", default="None")
 
 args = parser.parse_args()
+# os.environ['OMP_NUM_THREADS'] = "24"
+os.environ['HOROVOD_TIMELINE'] = "DYNAMIC"
 
 if args.framework == "TF":
     # Horovod: initialize Horovod.

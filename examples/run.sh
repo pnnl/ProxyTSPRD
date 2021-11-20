@@ -13,7 +13,7 @@ if [ ${10} == 1 ]; then
         export HOROVOD_GPU_OPERATIONS="NCCL"
         export HOROVOD_NCCL_INCLUDE="~/.conda/envs/horovod/include/"
         export HOROVOD_NCCL_LIB="~/.conda/envs/horovod/lib/"
-        export HOROVOD_LOG_LEVEL=TRACE
+        # export HOROVOD_LOG_LEVEL=TRACE
         
         echo "--------- Running with Horovod (with Profiler) -------------------"
         echo "Job Configuration File: ${1}"
@@ -28,6 +28,7 @@ if [ ${10} == 1 ]; then
         echo "Profiling: ${10}"
 
         module load cuda/11.0
+        ulimit -u 16000
         if [ -d "/share/apps/cuda/11.0/extras/CUPTI/lib64/" ] && [[ ":$LD_LIBRARY_PATH:" != *":/share/apps/cuda/11.0/extras/CUPTI/lib64/:"* ]]; then
             LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+"$LD_LIBRARY_PATH:"}/share/apps/cuda/11.0/extras/CUPTI/lib64/"
         fi
@@ -45,7 +46,8 @@ if [ ${10} == 1 ]; then
         export CUDA_VISIBLE_DEVICES=$fs
         echo $CUDA_VISIBLE_DEVICES
 
-        mpirun --bind-to none -n ${4} -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH nsys profile --kill=none -t cuda,osrt,cudnn,cublas -o ../../../logs/ProxyTSPRD_IPDPS/scenarios_30/float64/R10/nsys/qdrep_report_${1}_${2}_${3}_ng${4}_nc${5}_e${6}_b${7}_mp${8}_mgpu${9}_prof${10}_%p -w true --force-overwrite=true python app.py --config_file ${1} --framework ${2} --machine_name ${3} --n_gpus ${4} --n_cpus ${5} --n_epochs ${6} --batch_size ${7} --mixed_precision ${8} --mgpu_strategy ${9} --profiling ${10} 
+        # mpirun -n ${4} --bind-to none -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH 
+        horovodrun -np ${4} nsys profile --kill=none -t cuda,osrt,cudnn,cublas -o ../../../logs/ProxyTSPRD_IPDPS/scenarios_30/float64/R10/nsys/qdrep_report_${1}_${2}_${3}_ng${4}_nc${5}_e${6}_b${7}_mp${8}_mgpu${9}_prof${10}_%p -w true --force-overwrite=true python app.py --config_file ${1} --framework ${2} --machine_name ${3} --n_gpus ${4} --n_cpus ${5} --n_epochs ${6} --batch_size ${7} --mixed_precision ${8} --mgpu_strategy ${9} --profiling ${10} 
     else
         echo "--------- Running without Horovod (with Profiler) -------------------"
         echo "Job Configuration File: ${1}"
@@ -60,6 +62,7 @@ if [ ${10} == 1 ]; then
         echo "Profiling: ${10}"
 
         module load cuda/11.0
+        ulimit -u 16000
         if [ -d "/share/apps/cuda/11.0/extras/CUPTI/lib64/" ] && [[ ":$LD_LIBRARY_PATH:" != *":/share/apps/cuda/11.0/extras/CUPTI/lib64/:"* ]]; then
             LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+"$LD_LIBRARY_PATH:"}/share/apps/cuda/11.0/extras/CUPTI/lib64/"
         fi
@@ -86,7 +89,7 @@ else
         export HOROVOD_GPU_OPERATIONS="NCCL"
         export HOROVOD_NCCL_INCLUDE="~/.conda/envs/horovod/include/"
         export HOROVOD_NCCL_LIB="~/.conda/envs/horovod/lib/"
-        export HOROVOD_LOG_LEVEL=TRACE
+        # export HOROVOD_LOG_LEVEL=TRACE
         
 
         echo "--------- Running with Horovod -------------------"
@@ -102,6 +105,7 @@ else
         echo "Profiling: ${10}"
 
         module load cuda/11.0
+        ulimit -u 16000
         if [ -d "/share/apps/cuda/11.0/extras/CUPTI/lib64/" ] && [[ ":$LD_LIBRARY_PATH:" != *":/share/apps/cuda/11.0/extras/CUPTI/lib64/:"* ]]; then
             LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+"$LD_LIBRARY_PATH:"}/share/apps/cuda/11.0/extras/CUPTI/lib64/"
         fi
@@ -120,7 +124,8 @@ else
         echo $CUDA_VISIBLE_DEVICES
 
         # horovodrun -np ${4} python app.py --config_file ${1} --framework ${2} --machine_name ${3} --n_gpus ${4} --n_cpus ${5} --n_epochs ${6} --batch_size ${7} --mixed_precision ${8} --mgpu_strategy ${9}
-        mpirun --bind-to none -n ${4} -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH python app.py --config_file ${1} --framework ${2} --machine_name ${3} --n_gpus ${4} --n_cpus ${5} --n_epochs ${6} --batch_size ${7} --mixed_precision ${8} --mgpu_strategy ${9} --profiling ${10} 
+        # mpirun --bind-to none -n ${4} -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH 
+        horovodrun -np ${4} python app.py --config_file ${1} --framework ${2} --machine_name ${3} --n_gpus ${4} --n_cpus ${5} --n_epochs ${6} --batch_size ${7} --mixed_precision ${8} --mgpu_strategy ${9} --profiling ${10} 
     else
         echo "--------- Running without Horovod -------------------"
         echo "Job Configuration File: ${1}"
@@ -135,6 +140,7 @@ else
         echo "Profiling: ${10}"
 
         module load cuda/11.0
+        ulimit -u 16000
         if [ -d "/share/apps/cuda/11.0/extras/CUPTI/lib64/" ] && [[ ":$LD_LIBRARY_PATH:" != *":/share/apps/cuda/11.0/extras/CUPTI/lib64/:"* ]]; then
             LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+"$LD_LIBRARY_PATH:"}/share/apps/cuda/11.0/extras/CUPTI/lib64/"
         fi

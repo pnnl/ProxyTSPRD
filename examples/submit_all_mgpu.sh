@@ -1,7 +1,7 @@
-GPUS=( "a100" "tonga" ) # which gpu
+GPUS=( "tonga" ) # which gpu
 N_GPUS=( 1 2 4 8 )
-FRAMEWORK=( "TF" "PT" )
-PROF=( 0 ) # with and without profiler
+FRAMEWORK=( "TF" )
+PROF=( 0 1 ) # with and without profiler
 MP=( 0 1 ) # with or without mixed precision
 
 ## For single GPU
@@ -15,11 +15,11 @@ for gpu in ${GPUS[@]}; do
                 for mp in ${MP[@]}; do
                     echo -n "GPU: $gpu; N_GPUs: $n; Framework: $f; Profiler: $p; MP: $mp"
                     echo ""
-                        sh run_sbatch.sh "lstm" $f $gpu $n 1 20 2048 $mp "HVD" $p 
+                        sh run_sbatch.sh "convlstm" $f $gpu $n 1 20 2048 $mp "HVD" $p 
                 done
             done
         done
     done
 done
 
-sh run_sbatch.sh lstm TF a100 2 1 20 2048 0 HVD 1
+# sh run_sbatch.sh lstm TF a100 2 1 20 2048 0 HVD 1

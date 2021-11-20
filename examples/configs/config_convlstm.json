@@ -1,0 +1,42 @@
+{
+	"info": {
+		"app_name": "ConvLSTM",
+        "mixed_precision_support": "True",
+        "mgpu_support": "True",
+		"data_type": "float64",
+        "output_dir": "../../../data/ProxyTSPRD_IPDPS/"
+	},
+	"data_params": {
+		"training_data_dir": "../../../data/NewTestScenarios/",
+		"input_file_format": "mat",
+		"data_generator": "GridNetworkSequentialDataGenerator",
+		"n_scenarios": 180,
+		"n_rows": 1400,
+		"n_cols": 136,
+		"repeat_cols": 1,
+		"look_back": 60,
+        "look_forward": 30,
+		"shift_size": 1,
+		"stride": 1,
+		"n_signals": 3
+	},
+	"model_info": {
+		"model_name": "ConvLSTM",
+		"model_dir": "../../../models/ProxyTSPRD_IPDPS/",
+		"tb_log_dir": "../../../logs/",
+		"fill_data": "False",
+		"hyperparameters": {
+			"hl_1_dim"           : 128,
+			"hl_2_dim"           : 128,
+			"hl_3_dim"           : 64,
+			"hl_4_dim"           : 64,
+			"latent_dim"         : 64, 
+			"reg_factor"         : 0,
+			"dropout_prob"       : 0.005,
+			"weight_regularizer" : 0.001, 
+			"bias_regularizer"   : 0,
+			"learning_rate"      : 5e-4, 
+			"validation_split"   : 0.25
+		}
+	}
+}

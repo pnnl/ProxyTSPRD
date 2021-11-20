@@ -7,7 +7,7 @@ import numpy as np
 from .utils import path_handler
 from .utils.data.main import DataHandler
 from .apps.timeseries_prediction import hyperparameters
-from .apps import PTLSTM
+from .apps import PTLSTM, PTConvLSTM
         
 class PyTorchInterface:
     def __init__(self, machine_name, n_gpus, n_cpus, data_type, n_epochs, batch_size, mixed_precision=0, mgpu_strategy=None, profiling=0):
@@ -146,7 +146,7 @@ class PyTorchInterface:
         self._HYPERPARAMETER_DICT['data_type'] = self._DTYPE
 
         # hyper parameters
-        if self._MODEL_NAME in ["LSTM"]:
+        if self._MODEL_NAME in ["LSTM", "ConvLSTM"]:
             self._HYPERPARAMETER_DICT['original_dim'] = data_dict["input_dim"]  # input data dimension
             self.hp = hyperparameters.HyperParameters(self._HYPERPARAMETER_DICT)
 
@@ -157,6 +157,9 @@ class PyTorchInterface:
         if self._MODEL_NAME in ["LSTM"]:
             # initialize model
             self.model = PTLSTM(data_dict["look_back"], data_dict["look_forward"], data_dict["input_dim"], self._DEVICE)
+        elif self._MODEL_NAME in ["ConvLSTM"]:
+            # initialize model
+            self.model = PTConvLSTM(data_dict["look_back"], data_dict["look_forward"], data_dict["input_dim"], self._DEVICE)
         
         # self.model = torch.nn.DataParallel(self.model)
         if self._MGPU_STRATEGY == "HVD":

@@ -9,7 +9,7 @@ echo "Mixed Precision: ${8}"
 echo "Multi-GPU Strategy: ${9}"
 echo "Profiling: ${10}"
 
-ulimit -s unlimited
+# ulimit -s unlimited
 
 if [ ${3} == "a100" ]; then
     echo "Launching on A100....."
