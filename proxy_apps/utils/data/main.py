@@ -9,18 +9,19 @@ import tensorflow as tf
 #from numba.experimental import jitclass
 
 from .timeseries import GridNetworkSequentialDataGenerator_PT, GridNetworkSequentialDataGenerator_TF # GridNetworkDataHandler, GridNetworkNewGen, GridNetworkWindowDataGenerator, GridDataGenPyTorch
-from .image import ImageDataHandler
+from .image import ImageDataHandler_TF, ImageDataSequentialDataGenerator_TF, ImageDataSequentialDataGenerator_PT
 
 class DataHandler():
-    def __init__(self, handler_params, dtype, dir_list=None):
-        self.handler_name = handler_params["data_generator"]
-        self.n_scenarios = handler_params["n_scenarios"]
-        # print("Directory list: ", dir_list)
-        if dir_list is not None: 
-            self.n_scenarios = len(dir_list)
-        
+    def __init__(self, handler_params, dtype, training_files, validation_files=None):
         # data handler for timeseries data
-        self.data_handler = getattr(sys.modules[__name__], self.handler_name)(dir_list, handler_params, dtype)
+        self.handler_name = handler_params["data_generator"]
+        self.data_handler = getattr(sys.modules[__name__], self.handler_name)(training_files, handler_params, dtype, validation_files=validation_files)
+        
+        # self.n_scenarios = handler_params["n_scenarios"]
+        # print("Directory list: ", dir_list)
+        # if training_data is not None: 
+        #    self.n_scenarios = len(training_data)
+        
         # if self.handler_name == "GridNetworkDataHandler": # ["Baseline", "TFDataOpt"]:
         #     self.data_handler = GridNetworkDataHandler(handler_params, dtype)
         # elif self.handler_name == "GridNetworkNewGen": # ["TFDataGen", "TFDataOptMGPU", "TFDataOptMGPUAcc", "LSTM"]:
@@ -34,7 +35,7 @@ class DataHandler():
         # elif self.handler_name == "ImageDataHandler":
         #     self.data_handler = ImageDataHandler(handler_params, dtype)
 
-    def load_data(self, x_indexer, y_indexer):
+    def load_data(self, x_indexer=None, y_indexer=None):
         data_dict = {}
 
         if self.handler_name.split('_')[0] == "GridNetworkSequentialDataGenerator":
@@ -43,7 +44,7 @@ class DataHandler():
             if self.handler_name.split('_')[1] == "TF":
                 # print(X.shape, y.shape)
                 # scenario_data = tf.data.Dataset.from_tensor_slices((X, y))
-                self.data_handler.get_training_data(x_indexer, y_indexer)
+                # self.data_handler.get_training_data(x_indexer, y_indexer)
                 scenario_data = tf.data.Dataset.from_generator(self.data_handler,
                                                               output_signature = (tf.TensorSpec(shape=(x_indexer.shape[1], 
                                                                                                        self.data_handler.n_cols * self.data_handler.repeat_cols), 
@@ -52,7 +53,7 @@ class DataHandler():
                                                                                                        self.data_handler.n_cols * self.data_handler.repeat_cols), 
                                                                                                 dtype=self.data_handler.d_type)))
             elif self.handler_name.split('_')[1] == "PT":
-                self.data_handler.get_training_data(x_indexer, y_indexer)
+                # self.data_handler.get_training_data(x_indexer, y_indexer)
                 scenario_data = self.data_handler
 
             # output
@@ -62,11 +63,22 @@ class DataHandler():
             data_dict["n_windows"] = x_indexer.shape[0]
             data_dict["look_back"] = self.data_handler.look_back
             data_dict["look_forward"] = self.data_handler.look_forward
-            data_dict["n_scenarios"] = self.n_scenarios
+            data_dict["n_scenarios"] = self.data_handler.n_scenarios
             data_dict["n_points"] = data_dict["n_scenarios"] * data_dict["n_windows"]
             data_dict["data"] = scenario_data
         
-        elif self.handler_name == "ImageDataHandler":
+        elif self.handler_name.split('_')[0] == "ImageDataSequentialDataGenerator":
+            self.data_handler.get_training_data()
+            if self.handler_name.split('_')[1] == "TF":
+                data_dict["data"] = tf.data.Dataset.from_generator(self.data_handler,
+                                                              output_signature = (tf.TensorSpec(shape=(32, 32, 3), dtype=tf.float32),
+                                                                                  tf.TensorSpec(shape=(1), dtype=tf.int64)))
+            elif self.handler_name.split('_')[1] == "PT":
+                data_dict["data"] = self.data_handler
+                
+            data_dict['training_data_format'] = "image_data_generator"
+
+        elif self.handler_name.split('_')[0] == "ImageDataHandler":
             train_dataset, val_dataset = self.data_handler.load_data()
             data_dict["training_data"] = train_dataset
             data_dict["val_data"] = val_dataset

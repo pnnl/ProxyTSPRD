@@ -1,9 +1,11 @@
 #!/bin/bash
 
 #SBATCH -A pacer
-#SBATCH -t 12:00:00
+#SBATCH -t 48:00:00
 #SBATCH --gres=gpu:0
-#SBATCH -J process_qdrep
+#SBATCH -J process_qdrep_conv
+#SBATCH -o oconv.txt
+#SBATCH -e econv.txt
 #SBATCH -p dl_shared
 
 module load cuda/11.0

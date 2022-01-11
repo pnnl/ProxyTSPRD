@@ -1,6 +1,9 @@
 import os
 import time
+import glob
 import torch
+import torchvision
+from torchsummary import summary
 import functools
 import numpy as np
 
@@ -70,43 +73,68 @@ class PyTorchInterface:
             data_params["val_data_dir"] = path_handler.get_absolute_path(ref_dir, data_params["val_data_dir"])
             print("[INFO] Validation Data Directory:", data_params["val_data_dir"])
             
-        dir_list = [data_params["training_data_dir"] + "/" + f + "/" for f in os.listdir(data_params["training_data_dir"])]
-        n_files = len(dir_list)
+        if data_params["input_file_format"] == "npz":
+            print(data_params["training_data_dir"] + "/*." + data_params["input_file_format"])
+            training_files = glob.glob(data_params["training_data_dir"] + "/*." + data_params["input_file_format"])
+            n_files = len(training_files)
+        else:
+            training_files = [data_params["training_data_dir"] + "/" + f + "/" for f in os.listdir(data_params["training_data_dir"])]
+            n_files = len(training_files)
         
         # subset files
-        if data_params["n_scenarios"]:
+        if "n_scenarios" in data_params:
             n_files = data_params["n_scenarios"]
-            dir_list = dir_list[:n_files]
+            training_files = training_data[:n_files]
+        else:
+            print(training_files)
         
         if self._MGPU_STRATEGY == "HVD":
             print("[INFO] Sharding data files for Horovod")
             splitter = n_files // self.hvd_torch.size()
             print(n_files, splitter, splitter*self.hvd_torch.rank(), splitter*(self.hvd_torch.rank()+1))
-            dir_list = dir_list[splitter*self.hvd_torch.rank():splitter*(self.hvd_torch.rank()+1)]
-            n_files = len(dir_list)
+            training_files = training_files[splitter*self.hvd_torch.rank():splitter*(self.hvd_torch.rank()+1)]
+            n_files = len(training_files)
         
         print("[INFO] Number of files:", n_files)
         
+        # validation data - if any
+        if "val_data_dir" in data_params:
+            data_params["val_data_dir"] = path_handler.get_absolute_path(ref_dir, data_params["val_data_dir"])
+            print("[INFO] Validation Data Directory:", data_params["val_data_dir"])
+        
+            if data_params["input_file_format"] == "npz":
+                print(data_params["val_data_dir"] + "/*." + data_params["input_file_format"])
+                validation_files = glob.glob(data_params["val_data_dir"] + "/*." + data_params["input_file_format"])
+                n_val_files = len(validation_files)
+            else:
+                validation_files = [data_params["val_data_dir"] + "/" + f + "/" for f in os.listdir(data_params["val_data_dir"])]
+                n_val_files = len(validation_files)
+        else:
+            validation_files = None
+        
         # load data
         dh_start = time.time()
-        
-        x_indexer = self.get_indexer(data_params["n_rows"],
-                                     data_params["look_back"],
-                                     data_params["shift_size"],
-                                     0,
-                                     data_params["n_signals"]+data_params["look_forward"]
-                                     )
-        y_indexer = self.get_indexer(data_params["n_rows"],
-                                     data_params["look_forward"],
-                                     data_params["shift_size"],
-                                     data_params["look_back"],
-                                     data_params["n_signals"]
-                                     )
-        # print("Indices....................", x_indexer, y_indexer)
-
         data_params["data_generator"] = data_params["data_generator"] + "_PT"
-        data_handler = DataHandler(data_params, self._DTYPE, dir_list)
-        data_dict = data_handler.load_data(x_indexer, y_indexer)
+        data_handler = DataHandler(data_params, self._DTYPE, training_files, validation_files)
+        
+        if data_params["input_file_format"] == "npz":
+            data_dict = data_handler.load_data()
+        else:
+            x_indexer = self.get_indexer(data_params["n_rows"],
+                                         data_params["look_back"],
+                                         data_params["shift_size"],
+                                         0,
+                                         data_params["n_signals"]+data_params["look_forward"]
+                                         )
+            y_indexer = self.get_indexer(data_params["n_rows"],
+                                         data_params["look_forward"],
+                                         data_params["shift_size"],
+                                         data_params["look_back"],
+                                         data_params["n_signals"]
+                                         )
+            # print("Indices....................", x_indexer, y_indexer)
+
+            data_dict = data_handler.load_data(x_indexer, y_indexer)
         dh_stop = time.time()
 
         # loading time
@@ -160,6 +188,11 @@ class PyTorchInterface:
         elif self._MODEL_NAME in ["ConvLSTM"]:
             # initialize model
             self.model = PTConvLSTM(data_dict["look_back"], data_dict["look_forward"], data_dict["input_dim"], self._DEVICE)
+        elif self._MODEL_NAME == "ResNet50":
+            # initialize the model
+            self.model = torchvision.models.resnet50(pretrained=False, num_classes=1000)
+            num_ftrs = self.model.fc.in_features
+            self.model.fc = torch.nn.Linear(num_ftrs, 1000)
         
         # self.model = torch.nn.DataParallel(self.model)
         if self._MGPU_STRATEGY == "HVD":
@@ -167,8 +200,12 @@ class PyTorchInterface:
         
         self.model.to(self._DEVICE)
         print("[INFO] Learning Rate: ", self._HYPERPARAMETER_DICT["learning_rate"])
-        self.optimizer = torch.optim.Adagrad(self.model.parameters(), lr=self._HYPERPARAMETER_DICT["learning_rate"])
-        self.criterion = torch.nn.MSELoss()#.to(self._DEVICE)
+        if self._MODEL_NAME in ["LSTM", "ConvLSTM"]:
+            self.optimizer = torch.optim.Adagrad(self.model.parameters(), lr=self._HYPERPARAMETER_DICT["learning_rate"])
+            self.criterion = torch.nn.MSELoss()#.to(self._DEVICE)
+        elif self._MODEL_NAME in ["ResNet50"]:
+            self.optimizer = torch.optim.SGD(self.model.parameters(), lr=self._HYPERPARAMETER_DICT["learning_rate"])
+            self.criterion = torch.nn.CrossEntropyLoss()#.to(self._DEVICE)
         
         if self._MGPU_STRATEGY == "HVD":
             self.optimizer = self.hvd_torch.DistributedOptimizer(self.optimizer, named_parameters=self.model.named_parameters())
@@ -180,6 +217,9 @@ class PyTorchInterface:
         for name, param in self.model.named_parameters():
             if param.requires_grad:
                 print(name, param.shape)
+                
+        summary(self.model, (3, 32, 32))
+        # print(f123)
         
     def train_model(self, model_info, data_dict, output_dir):
         # training data
@@ -195,11 +235,8 @@ class PyTorchInterface:
                                                        sampler=train_sampler
                                                       )
         
-        # for t in training_dataset:
-        #     print(t[0].shape, t[1].shape)
-        
-        m_start = time.time()
         print("[INFO] Data Type:", self._DTYPE)
+        m_start = time.time()
         
         # iterate through all the epoch
         all_loss = torch.zeros(self._N_EPOCHS, device=self._DEVICE) # []
@@ -214,6 +251,7 @@ class PyTorchInterface:
             epoch_start_time = time.time()
             # go through all the batches generated by dataloader
             for i, (inputs, targets) in enumerate(training_dataset):
+                # if i > 100: break
                 # move data to GPU
                 inputs, targets        = inputs.to(self._DEVICE), targets.to(self._DEVICE)
                 
@@ -277,12 +315,16 @@ class PyTorchInterface:
             avg_all_loss = [l.detach().cpu().item() for l in all_loss]
             avg_epoch_time = [e.cpu().item() for e in epoch_time]
         
+        self._MODEL_SUBDIR = self._MODEL_NAME
+        if self._MODEL_NAME in ["LSTM", "ConvLSTM"]:
+            self._MODEL_SUBDIR = self._MODEL_SUBDIR + "/R" + str(data_dict["repeat_cols"])
+        
         # # save model
-        self._MODEL_DIR = path_handler.get_absolute_path(model_info["model_dir"], self._MODEL_NAME + "/R" + str(data_dict["repeat_cols"]))
+        self._MODEL_DIR = path_handler.get_absolute_path(model_info["model_dir"], self._MODEL_SUBDIR)
         self._MODEL_PATH = path_handler.get_absolute_path(self._MODEL_DIR, self._SUFFIX)
         print("Model Path: ", self._MODEL_PATH)
         
-        self._DATA_DIR = path_handler.get_absolute_path(output_dir, self._MODEL_NAME + "/R" + str(data_dict["repeat_cols"]))
+        self._DATA_DIR = path_handler.get_absolute_path(output_dir, self._MODEL_SUBDIR)
         self._DATA_FILE = path_handler.get_absolute_path(self._DATA_DIR, "tp_" + self._SUFFIX + ".json")
         print("Data Path: ", self._DATA_FILE)
         

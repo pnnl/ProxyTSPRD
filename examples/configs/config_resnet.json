@@ -7,10 +7,10 @@
         "output_dir": "../../../data/ProxyTSPRD_IPDPS/"
     },
     "data_params": {
-        "training_data_dir": "../../../data/ImageNet/numpy/",
-        "val_data_dir": "../../../data/ImageNet/numpy/",
+        "training_data_dir": "../../../data/ImageNet/train/",
+        "val_data_dir": "../../../data/ImageNet/val/",
         "input_file_format": "npz",
-		"data_generator": "ImageDataHandler",
+		"data_generator": "ImageDataSequentialDataGenerator",
 		"data_type": "int64"
     },
     "model_info": {

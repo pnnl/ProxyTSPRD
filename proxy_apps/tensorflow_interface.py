@@ -1,4 +1,5 @@
 import os
+import glob
 import time
 import functools
 import contextlib
@@ -103,47 +104,68 @@ class TFInterface:
         data_params["training_data_dir"] = path_handler.get_absolute_path(ref_dir, data_params["training_data_dir"])
         print("[INFO] Training Data Directory:", data_params["training_data_dir"])
 
-        # validation data - if any
-        if "val_data_dir" in data_params:
-            data_params["val_data_dir"] = path_handler.get_absolute_path(ref_dir, data_params["val_data_dir"])
-            print("[INFO] Validation Data Directory:", data_params["val_data_dir"])
-            
-        dir_list = [data_params["training_data_dir"] + "/" + f + "/" for f in os.listdir(data_params["training_data_dir"])]
-        n_files = len(dir_list)
+        if data_params["input_file_format"] == "npz":
+            print(data_params["training_data_dir"] + "/*." + data_params["input_file_format"])
+            training_files = glob.glob(data_params["training_data_dir"] + "/*." + data_params["input_file_format"])
+            n_files = len(training_files)
+        else:
+            training_files = [data_params["training_data_dir"] + "/" + f + "/" for f in os.listdir(data_params["training_data_dir"])]
+            n_files = len(training_files)
         
         # subset files
-        if data_params["n_scenarios"]:
+        if "n_scenarios" in data_params:
             n_files = data_params["n_scenarios"]
-            dir_list = dir_list[:n_files]
+            training_files = training_files[:n_files]
+        else:
+            print(training_files)
         
         if self._MGPU_STRATEGY == "HVD":
             print("[INFO] Sharding data files for Horovod")
             splitter = n_files // self.hvd_keras.size()
             print(n_files, splitter, splitter*self.hvd_keras.rank(), splitter*(self.hvd_keras.rank()+1))
-            dir_list = dir_list[splitter*self.hvd_keras.rank():splitter*(self.hvd_keras.rank()+1)]
-            n_files = len(dir_list)
+            training_files = training_files[splitter*self.hvd_keras.rank():splitter*(self.hvd_keras.rank()+1)]
+            n_files = len(training_files)
         
         print("[INFO] Number of files:", n_files)
         
+        # validation data - if any
+        if "val_data_dir" in data_params:
+            data_params["val_data_dir"] = path_handler.get_absolute_path(ref_dir, data_params["val_data_dir"])
+            print("[INFO] Validation Data Directory:", data_params["val_data_dir"])
+        
+            if data_params["input_file_format"] == "npz":
+                print(data_params["val_data_dir"] + "/*." + data_params["input_file_format"])
+                validation_files = glob.glob(data_params["val_data_dir"] + "/*." + data_params["input_file_format"])
+                n_val_files = len(validation_files)
+            else:
+                validation_files = [data_params["val_data_dir"] + "/" + f + "/" for f in os.listdir(data_params["val_data_dir"])]
+                n_val_files = len(validation_files)
+        else:
+            validation_files = None
+        
         # load data
         dh_start = time.time()
-        self.x_indexer = self.get_indexer(data_params["n_rows"],
-                                     data_params["look_back"],
-                                     data_params["shift_size"],
-                                     0,
-                                     data_params["n_signals"]+data_params["look_forward"]
-                                     )
-        self.y_indexer = self.get_indexer(data_params["n_rows"],
-                                     data_params["look_forward"],
-                                     data_params["shift_size"],
-                                     data_params["look_back"],
-                                     data_params["n_signals"]
-                                     )
-        # print("Indices....................", x_indexer, y_indexer)
-        # print("----------------- I'm here!! -----------------------------")
         data_params["data_generator"] = data_params["data_generator"] + "_TF"
-        data_handler = DataHandler(data_params, self._DTYPE, dir_list)
-        data_dict = data_handler.load_data(self.x_indexer, self.y_indexer)
+        data_handler = DataHandler(data_params, self._DTYPE, training_files, validation_files)
+        
+        if data_params["input_file_format"] == "npz":
+            data_dict = data_handler.load_data()
+        else:
+            self.x_indexer = self.get_indexer(data_params["n_rows"],
+                                         data_params["look_back"],
+                                         data_params["shift_size"],
+                                         0,
+                                         data_params["n_signals"]+data_params["look_forward"]
+                                         )
+            self.y_indexer = self.get_indexer(data_params["n_rows"],
+                                         data_params["look_forward"],
+                                         data_params["shift_size"],
+                                         data_params["look_back"],
+                                         data_params["n_signals"]
+                                         )
+            # print("Indices....................", x_indexer, y_indexer)
+            # print("----------------- I'm here!! -----------------------------")
+            data_dict = data_handler.load_data(self.x_indexer, self.y_indexer)
         dh_stop = time.time()
         
         # print("----------------- I should be here as well!! -----------------------------")
@@ -205,7 +227,21 @@ class TFInterface:
                 self.model = TFOptimizedEncoder(self.hp)
             elif self._MODEL_NAME == "ResNet50":
                 # initialize the model
-                self.model = tf.keras.applications.resnet50.ResNet50(include_top=False, input_shape=(32, 32, 3), weights=None, classes=1000)
+                # self.model = tf.keras.applications.resnet50.ResNet50(include_top=False, input_shape=(32, 32, 3), weights=None, classes=1000)
+                resnet_model = tf.keras.applications.resnet50.ResNet50(include_top=False, input_shape=(32, 32, 3), weights=None)
+                inputs = tf.keras.Input(shape=(32, 32, 3))
+                x = resnet_model(inputs)
+                
+                # pooling layer
+                global_average_layer = tf.keras.layers.GlobalAveragePooling2D()
+                x = global_average_layer(x)
+                
+                # prediction layer
+                prediction_layer = tf.keras.layers.Dense(1000)
+                outputs = prediction_layer(x)
+                
+                self.model = tf.keras.Model(inputs, outputs)
+                
 
             # if horovod - update the learning rate
             if self._MGPU_STRATEGY == "HVD":
@@ -218,7 +254,7 @@ class TFInterface:
                                                   initial_accumulator_value=0, 
                                                   epsilon=1e-10)
             elif self._MODEL_NAME == "ResNet50":
-                optimizer = tf.keras.optimizers.SGD(self._HYPERPARAMETER_DICT["learning_rate"] * self._N_GPUS)
+                optimizer = tf.keras.optimizers.SGD(self._HYPERPARAMETER_DICT["learning_rate"])
 
             # if horovod - distributed optimizer
             if self._MGPU_STRATEGY == "HVD":
@@ -324,15 +360,21 @@ class TFInterface:
 
                 data_options.experimental_distribute.auto_shard_policy = tf.data.experimental.AutoShardPolicy.DATA
 
-            train_dataset = data_dict['training_data']
-            train_dataset = train_dataset.batch(self._HYPERPARAMETER_DICT['batch_size'])
+            train_dataset = data_dict['data']
+            train_dataset = train_dataset.with_options(data_options).batch(self._HYPERPARAMETER_DICT['batch_size'])
             train_dataset = train_dataset.prefetch(tf.data.AUTOTUNE)
-            train_dataset = train_dataset.with_options(data_options)
 
-            val_dataset = data_dict['val_data']
-            val_dataset = val_dataset.batch(self._HYPERPARAMETER_DICT['batch_size'])
-            val_dataset = val_dataset.prefetch(tf.data.AUTOTUNE)
-            val_dataset = val_dataset.with_options(data_options)
+            # val_dataset = data_dict['val_data']
+            # val_dataset = val_dataset.batch(self._HYPERPARAMETER_DICT['batch_size'])
+            # val_dataset = val_dataset.prefetch(tf.data.AUTOTUNE)
+            # val_dataset = val_dataset.with_options(data_options)
+            
+            # if multigpu strategy
+            verbose = 1
+            if self._MGPU_STRATEGY in ["HVD"]:
+                verbose = 1 if self.hvd_keras.rank() == 0 else 0
+            
+            # print("[INFO] Steps per epoch: ", steps_per_epoch)
         
         end_time = time.perf_counter()
         print("============> Prepare Dataset: ", end_time-start_time)
@@ -355,6 +397,7 @@ class TFInterface:
                                     )
             epoch_time = self.callbacks[-1].logs
             all_loss = history.history['loss']
+            self._MODEL_SUBDIR = self._MODEL_NAME + "/R" + str(data_dict["repeat_cols"])
         elif self._MODEL_NAME == "TFOptimizedSGPU":
             self.model.encoder.build(input_shape=(None, data_dict["input_dim"]))   
             history = self.model.fit(training_dataset,
@@ -364,17 +407,21 @@ class TFInterface:
                                      use_multiprocessing=True)
             epoch_time = self.callbacks[-1].logs
             all_loss = history.history['loss']
+            self._MODEL_SUBDIR = self._MODEL_NAME + "/R" + str(data_dict["repeat_cols"])
         elif self._MODEL_NAME == "TFOptimizedMGPU":
             trainer = TFOptimizedModelTrainer(self.hp, self.model, mixed_precision=self._MIXED_PRECISION)
             all_loss, epoch_time, avg_batch_time = trainer.fit(training_dataset, n_epochs=self._N_EPOCHS, batch_size=self._BATCH_SIZE, steps_per_epoch=steps_per_epoch)
+            self._MODEL_SUBDIR = self._MODEL_NAME + "/R" + str(data_dict["repeat_cols"])
         elif self._MODEL_NAME == "ResNet50":
-            history = self.model.fit(train_dataset.take(4),
+            print("[INFO] Model Summary:\n", self.model.summary())
+            # print(f123)
+            history = self.model.fit(train_dataset,
                                 epochs=self._N_EPOCHS,
                                 verbose=1,
-                                validation_steps=10,
                                 callbacks=self.callbacks)
             epoch_time = self.callbacks[-1].logs
             all_loss = history.history['loss']
+            self._MODEL_SUBDIR = self._MODEL_NAME
 
         m_stop = time.time()
         model_training_time = m_stop - m_start
@@ -392,11 +439,11 @@ class TFInterface:
             avg_epoch_time = epoch_time
         
         # # save model and data
-        self._MODEL_DIR = path_handler.get_absolute_path(model_info["model_dir"], self._MODEL_NAME + "/R" + str(data_dict["repeat_cols"]))
+        self._MODEL_DIR = path_handler.get_absolute_path(model_info["model_dir"], self._MODEL_SUBDIR)
         self._MODEL_PATH = path_handler.get_absolute_path(self._MODEL_DIR, self._SUFFIX) + "/"
         print("Model Path: ", self._MODEL_PATH)
 
-        self._DATA_DIR = path_handler.get_absolute_path(output_dir, self._MODEL_NAME + "/R" + str(data_dict["repeat_cols"]))
+        self._DATA_DIR = path_handler.get_absolute_path(output_dir, self._MODEL_SUBDIR)
         self._DATA_FILE = path_handler.get_absolute_path(self._DATA_DIR, "tp_" + self._SUFFIX + ".json")
         print("Data Path: ", self._DATA_FILE)
         

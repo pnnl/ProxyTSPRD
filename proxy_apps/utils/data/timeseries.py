@@ -38,6 +38,7 @@ class ProcessDataFile(tf.data.Dataset):
 class GridNetworkWindowDataGenerator():
     def __init__(self, dir_list, handler_params, dtype):#scenario_dir, n_rows, n_cols, dtype, repeat_cols=1):
         self.dir_list = dir_list
+        self.n_scenarios = len(self.dir_list)
         self.n_rows = handler_params["n_rows"]
         self.n_cols = handler_params["n_cols"]
         self.repeat_cols = handler_params["repeat_cols"]
@@ -73,9 +74,10 @@ class GridNetworkWindowDataGenerator():
 
 class GridNetworkSequentialDataGenerator_TF(tf.keras.utils.Sequence):
     'Characterizes a dataset for TensorFlow'
-    def __init__(self, dir_list, handler_params, dtype, scale_factor=2*np.pi, norm=True):#, n_rows, n_cols, n_repeat, x_indexer, y_indexer, scale_factor=2, norm=True, d_type="float64"):
+    def __init__(self, dir_list, handler_params, dtype, scale_factor=2*np.pi, norm=True, validation_files=None):#, n_rows, n_cols, n_repeat, x_indexer, y_indexer, scale_factor=2, norm=True, d_type="float64"):
         'Initialization'
         self.list_of_directories = dir_list
+        self.n_scenarios = len(self.list_of_directories)
         self.n_rows = handler_params["n_rows"]
         self.n_cols = handler_params["n_cols"]
         self.repeat_cols = handler_params["repeat_cols"]
@@ -105,7 +107,7 @@ class GridNetworkSequentialDataGenerator_TF(tf.keras.utils.Sequence):
         split_index = (self.n_cols * self.repeat_cols) // 2
         flat_X_data = raw_data[self.x_indexer]#.reshape(-1, self.n_cols*self.n_repeat)
         flat_Y_data = raw_data[self.y_indexer]#.reshape(-1, self.n_cols*self.n_repeat)
-        # print(flat_X_data.shape, flat_Y_data.shape)
+        print(flat_X_data.shape, flat_Y_data.shape)
 
         if self.norm:
             flat_X_data[:, :, :split_index] = self.scale_factor*(flat_X_data[:, :, :split_index] - 60)
@@ -131,9 +133,10 @@ class GridNetworkSequentialDataGenerator_TF(tf.keras.utils.Sequence):
     
 class GridNetworkSequentialDataGenerator_PT(torch.utils.data.Dataset):
     'Characterizes a dataset for PyTorch'
-    def __init__(self, dir_list, handler_params, dtype, scale_factor=2*np.pi, norm=True):#, n_rows, n_cols, n_repeat, x_indexer, y_indexer, scale_factor=2, norm=True, d_type="float64"):
+    def __init__(self, dir_list, handler_params, dtype, scale_factor=2*np.pi, norm=True, validation_files=None):#, n_rows, n_cols, n_repeat, x_indexer, y_indexer, scale_factor=2, norm=True, d_type="float64"):
         'Initialization'
         self.list_of_directories = dir_list
+        self.n_scenarios = len(self.list_of_directories)
         self.n_rows = handler_params["n_rows"]
         self.n_cols = handler_params["n_cols"]
         self.repeat_cols = handler_params["repeat_cols"]

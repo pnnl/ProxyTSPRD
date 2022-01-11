@@ -4,7 +4,7 @@ module purge
 module load python/miniconda3.9
 source /share/apps/python/miniconda3.9/etc/profile.d/conda.sh
 
-export TMPDIR=/scratch/
+export TMPDIR=/qfs/projects/pacer/milan/scratch/
 
 if [ ${10} == 1 ]; then
     if [ ${9} == "HVD" ]; then
