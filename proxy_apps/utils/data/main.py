@@ -70,9 +70,11 @@ class DataHandler():
         elif self.handler_name.split('_')[0] == "ImageDataSequentialDataGenerator":
             self.data_handler.get_training_data()
             if self.handler_name.split('_')[1] == "TF":
+                # print("I am here!")
                 data_dict["data"] = tf.data.Dataset.from_generator(self.data_handler,
                                                               output_signature = (tf.TensorSpec(shape=(32, 32, 3), dtype=tf.float32),
-                                                                                  tf.TensorSpec(shape=(1), dtype=tf.int64)))
+                                                                                  tf.TensorSpec(shape=(1), dtype=tf.uint8)))
+                # print(f123)
             elif self.handler_name.split('_')[1] == "PT":
                 data_dict["data"] = self.data_handler
                 

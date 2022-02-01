@@ -2,15 +2,9 @@ import os
 import time
 import json
 
-from numba import jit
-
-from .tensorflow_interface import TFInterface
-from .pytorch_interface import PyTorchInterface
-
-from .utils import file_reader, path_handler
+# from numba import jit
+from .utils import path_handler
 from .utils.data.main import NpEncoder
-
-from .apps.timeseries_prediction import hyperparameters
 
 class ProxyTSPRD:
     def __init__(self, app_info, framework, reference_dir, mixed_precision, machine_name, 
@@ -57,6 +51,7 @@ class ProxyTSPRD:
         # initialize environment
         if self._FRAMEWORK == "TF":
             print("[INFO] Enabling TensorFlow Interface")
+            from .tensorflow_interface import TFInterface
             self.env = TFInterface(self._MACHINE_NAME,
                                    self._N_GPUS,
                                    self._N_CPUS,
@@ -69,6 +64,7 @@ class ProxyTSPRD:
                             )
         elif self._FRAMEWORK == "PT":
             print("[INFO] Enabling PyTorch Interface")
+            from .pytorch_interface import PyTorchInterface
             self.env = PyTorchInterface(self._MACHINE_NAME,
                                    self._N_GPUS,
                                    self._N_CPUS,
@@ -138,8 +134,21 @@ class ProxyTSPRD:
         # ------------------------------- SAVE PERFORMANCE DICT ------------------------------------------------
         with open(self.env._DATA_FILE, 'w') as fp:
             json.dump(self.performance_dict, fp, cls=NpEncoder)
+            
+    def eval_model(self, model_info, data_dict):
+        # train model
+        start_time = time.perf_counter()
+        loss, acc, inf_time = self.env.eval_model(model_info, data_dict, self._OUTPUT_DIR)
+        end_time = time.perf_counter()
+        print("========> Model Evaluation: ", end_time-start_time)
+        
+        self.performance_dict["n_epochs"] = self._N_EPOCHS
+        self.performance_dict["batch_size"] = self._BATCH_SIZE
 
+        self.performance_dict['inference_time'] = inf_time
+        self.performance_dict['inference_accuracy'] = acc
+        self.performance_dict['inference_loss'] = loss
         
-        
-        
-
+        # ------------------------------- SAVE PERFORMANCE DICT ------------------------------------------------
+        with open(self.env._DATA_FILE, 'w') as fp:
+            json.dump(self.performance_dict, fp, cls=NpEncoder)

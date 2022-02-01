@@ -32,9 +32,9 @@ class ImageDataSequentialDataGenerator_TF(tf.keras.utils.Sequence):
         complete_data = list(map(functools.partial(self.get_data), self.training_files))
         self.X = np.concatenate([arr[0] for arr in complete_data], axis=0) # stacked_array[0, :, :]
         self.y = np.reshape(np.concatenate([arr[1] for arr in complete_data], axis=0), (-1, 1)) # stacked_array[1, :, :]
-        self.y = self.y - 1
-        print(self.X.shape, self.y.shape)
-        print(self.X[0].shape)
+        # self.y = self.y - 1
+        # print(self.X.shape, self.y.shape)
+        # print(self.X[0].shape)
         
         assert self.X.shape[0]==self.y.shape[0]
         
@@ -89,8 +89,8 @@ class ImageDataSequentialDataGenerator_PT(torch.utils.data.Dataset):
         # for t in self.X:
         #     t =
         # 
-        print(self.X.shape, self.y)
-        print(self.X[0].shape)
+        # print(self.X.shape, self.y)
+        # print(self.X[0].shape)
         
         assert self.X.shape[0]==self.y.shape[0]
         

@@ -7,6 +7,8 @@ import numpy as np
 import tensorflow as tf
 from timeit import default_timer as timer
 
+import horovod.tensorflow.keras as hvd_keras
+
 from .apps import TFLSTM, TFConvLSTM, TFOptimizedSGPU, TFOptimizedEncoder, TFOptimizedModelTrainer
 from .apps.timeseries_prediction import hyperparameters
 from .utils import path_handler
@@ -51,10 +53,8 @@ class TFInterface:
         if self._MGPU_STRATEGY == "MirroredStrategy":
             print("[INFO] Initializing Mirrored Strategy")
             self.mgpu_strategy = tf.distribute.MirroredStrategy()
-            # self.mgpu_context = self.mgpu_strategy.scope()
         elif self._MGPU_STRATEGY == "HVD":
             print("[INFO] Initializing Horovod")
-            import horovod.tensorflow.keras as hvd_keras
             self.hvd_keras = hvd_keras
             self.hvd_keras.init()
             print("[INFO] Rank %s of %s" %(self.hvd_keras.rank(), self.hvd_keras.size()))
@@ -108,6 +108,11 @@ class TFInterface:
             print(data_params["training_data_dir"] + "/*." + data_params["input_file_format"])
             training_files = glob.glob(data_params["training_data_dir"] + "/*." + data_params["input_file_format"])
             n_files = len(training_files)
+            if self._MGPU_STRATEGY == "HVD":
+                if n_files < self.hvd_keras.size():
+                    training_files = training_files + training_files[:self.hvd_keras.size()-n_files]
+                    n_files = len(training_files)
+                    print("Number of files: ", n_files, training_files)
         else:
             training_files = [data_params["training_data_dir"] + "/" + f + "/" for f in os.listdir(data_params["training_data_dir"])]
             n_files = len(training_files)
@@ -237,8 +242,13 @@ class TFInterface:
                 x = global_average_layer(x)
                 
                 # prediction layer
-                prediction_layer = tf.keras.layers.Dense(1000)
-                outputs = prediction_layer(x)
+                # prediction_layer = tf.keras.layers.Dense(1000)
+                prediction_layer = tf.keras.layers.Dense(1000, name='dense_logits')
+                x = prediction_layer(x)
+                
+                # output layer
+                output_layer = tf.keras.layers.Activation('softmax', dtype='float32', name='predictions')
+                outputs = output_layer(x)
                 
                 self.model = tf.keras.Model(inputs, outputs)
                 
@@ -276,7 +286,10 @@ class TFInterface:
                                    experimental_run_tf_function=False
                                   )
             elif self._MODEL_NAME == "ResNet50":
-                self.model.compile(loss='sparse_categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+                self.model.compile(loss='sparse_categorical_crossentropy', 
+                                   optimizer=optimizer, 
+                                   metrics=['accuracy'],
+                                   experimental_run_tf_function=False)
         
     def train_model(self, model_info, data_dict, output_dir):
         ## Callbacks
@@ -417,7 +430,7 @@ class TFInterface:
             # print(f123)
             history = self.model.fit(train_dataset,
                                 epochs=self._N_EPOCHS,
-                                verbose=1,
+                                verbose=verbose,
                                 callbacks=self.callbacks)
             epoch_time = self.callbacks[-1].logs
             all_loss = history.history['loss']
@@ -469,6 +482,98 @@ class TFInterface:
                 os.makedirs(self._DATA_DIR)
 
         return avg_model_training_time, avg_all_loss, avg_epoch_time
+    
+    def eval_model(self, model_info, data_dict, output_dir):
+        # name of the model
+        self._MODEL_NAME = model_info["model_name"]
+        
+        self._SUFFIX = 'TF_' + self._MACHINE_NAME + '_' + \
+                       'ng' + str(self._N_GPUS) + '_' + \
+                       'e' + str(self._N_EPOCHS) + '_' + \
+                       'b' + str(self._BATCH_SIZE) + '_' + \
+                       'mp' + str(int(self._MIXED_PRECISION)) + '_' + \
+                       'mgpu' + str(self._MGPU_STRATEGY) + '_' + \
+                       'prof' + str(self._PROFILING)  # + '_' + self._LABEL
+        print("[INFO] Suffix: ", self._SUFFIX)
+
+        # unsupported models for evaluation
+        if self._MODEL_NAME in ["TFOptimizedSGPU", "TFOptimizedMGPU"]:
+            print("[INFO] Models %s not supported for evaluation" %(self._MODEL_NAME))
+            
+        # model subdir
+        self._MODEL_SUBDIR = self._MODEL_NAME
+        if self._MODEL_NAME in ["LSTM", "ConvLSTM"]:
+            self._MODEL_SUBDIR = self._MODEL_SUBDIR + "/R" + str(data_dict["repeat_cols"])
+        
+        # get model name
+        self._MODEL_DIR = path_handler.get_absolute_path(model_info["model_dir"], self._MODEL_SUBDIR)
+        self._MODEL_PATH = path_handler.get_absolute_path(self._MODEL_DIR, self._SUFFIX) + "/"
+        print("Model Path: ", self._MODEL_PATH)
+
+        # data directory
+        self._DATA_DIR = path_handler.get_absolute_path(output_dir, self._MODEL_SUBDIR)
+        self._DATA_FILE = path_handler.get_absolute_path(self._DATA_DIR, "inf_" + self._SUFFIX + ".json")
+        print("Data Path: ", self._DATA_FILE)
+
+        # if self._MGPU_STRATEGY == "HVD":
+        #     if self.hvd_keras.rank() == 0:
+        #         self.model = tf.keras.models.load_model(self._MODEL_PATH)
+        # else:
+        
+        self.model = tf.keras.models.load_model(self._MODEL_PATH)
+        print(self.model.summary())
+        
+        ## Prepare dataset
+        start_time = time.perf_counter()
+        if data_dict['training_data_format'] == "data_generator":
+            print("[INFO] Input data type: %s" %(data_dict['training_data_format']))
+            # generate dataset
+            test_dataset = data_dict["data"]
+            data_options = tf.data.Options()
+
+            test_dataset = test_dataset.with_options(data_options).batch(self._BATCH_SIZE)            
+            test_dataset = test_dataset.prefetch(buffer_size=tf.data.AUTOTUNE)
+            
+        elif data_dict['training_data_format'] == "split_array":
+            test_dataset = data_dict["data"]
+
+        elif data_dict['training_data_format'] == "image_data_generator":
+            # data options
+            test_dataset = data_dict['data']
+            data_options = tf.data.Options()
+
+            test_dataset = test_dataset.with_options(data_options).batch(self._BATCH_SIZE)
+            test_dataset = test_dataset.prefetch(buffer_size=tf.data.AUTOTUNE)
+
+        # if multigpu strategy
+        verbose = 1
+        if self._MGPU_STRATEGY in ["HVD"]:
+            verbose = 1 if self.hvd_keras.rank() == 0 else 0
+            
+        end_time = time.perf_counter()
+        print("============> Prepare Dataset: ", end_time-start_time)
+        
+        start_time = time.perf_counter()
+        loss, acc = self.model.evaluate(test_dataset, verbose=verbose)
+        end_time = time.perf_counter()
+        inf_time = end_time - start_time
+        print("============> Inference Time: ", inf_time)
+        
+        if self._MGPU_STRATEGY == "HVD":
+            avg_inference_time = self.hvd_keras.allreduce(inf_time, average=True).numpy()
+            avg_loss = self.hvd_keras.allreduce(loss, average=True).numpy()
+            avg_accuracy = self.hvd_keras.allreduce(acc, average=True).numpy()
+        else:
+            avg_inference_time = inf_time
+            avg_loss = loss
+            avg_accuracy = acc
+        
+        if self._MGPU_STRATEGY == "HVD":
+            self.hvd_keras.shutdown()
+            time.sleep(5)
+            
+        print("Loss: ", avg_loss, "Accuracy: ", avg_accuracy, "Inference Time: ", avg_inference_time)
+        return avg_loss, avg_accuracy, avg_inference_time
 
 class ConditionalScope(object):
     def __init__(self, condition, contextmanager):

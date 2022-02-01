@@ -7,6 +7,8 @@ from torchsummary import summary
 import functools
 import numpy as np
 
+import horovod.torch as hvd_torch
+            
 from .utils import path_handler
 from .utils.data.main import DataHandler
 from .apps.timeseries_prediction import hyperparameters
@@ -39,7 +41,6 @@ class PyTorchInterface:
             
         if self._MGPU_STRATEGY == "HVD":
             print("[INFO] Initializing Horovod")
-            import horovod.torch as hvd_torch
             self.hvd_torch = hvd_torch
             self.hvd_torch.init()
             print("[INFO] Rank %s of %s" %(self.hvd_torch.rank(), self.hvd_torch.size()))
@@ -77,6 +78,11 @@ class PyTorchInterface:
             print(data_params["training_data_dir"] + "/*." + data_params["input_file_format"])
             training_files = glob.glob(data_params["training_data_dir"] + "/*." + data_params["input_file_format"])
             n_files = len(training_files)
+            if self._MGPU_STRATEGY == "HVD":
+                if n_files < self.hvd_torch.size():
+                    training_files = training_files + training_files[:self.hvd_torch.size()-n_files]
+                    n_files = len(training_files)
+                    print("Number of files: ", n_files, training_files)
         else:
             training_files = [data_params["training_data_dir"] + "/" + f + "/" for f in os.listdir(data_params["training_data_dir"])]
             n_files = len(training_files)
@@ -84,7 +90,7 @@ class PyTorchInterface:
         # subset files
         if "n_scenarios" in data_params:
             n_files = data_params["n_scenarios"]
-            training_files = training_data[:n_files]
+            training_files = training_files[:n_files]
         else:
             print(training_files)
         
@@ -218,7 +224,8 @@ class PyTorchInterface:
             if param.requires_grad:
                 print(name, param.shape)
                 
-        summary(self.model, (3, 32, 32))
+        if self._MODEL_NAME == "ResNet50":
+            summary(self.model, (3, 32, 32))
         # print(f123)
         
     def train_model(self, model_info, data_dict, output_dir):
@@ -344,9 +351,143 @@ class PyTorchInterface:
         else:
             if not os.path.exists(self._MODEL_DIR):
                 os.makedirs(self._MODEL_DIR)
+            torch.save(self.model, self._MODEL_PATH)
+            
             if not os.path.exists(self._DATA_DIR):
                 os.makedirs(self._DATA_DIR)
 
         return avg_model_training_time, avg_all_loss, avg_epoch_time
+    
+    def eval_model(self, model_info, data_dict, output_dir):
+        # name of the model
+        self._MODEL_NAME = model_info["model_name"]
+        
+        self._SUFFIX = 'PT_' + self._MACHINE_NAME + '_' + \
+                       'ng' + str(self._N_GPUS) + '_' + \
+                       'e' + str(self._N_EPOCHS) + '_' + \
+                       'b' + str(self._BATCH_SIZE) + '_' + \
+                       'mp' + str(int(self._MIXED_PRECISION)) + '_' + \
+                       'mgpu' + str(self._MGPU_STRATEGY) + '_' + \
+                       'prof' + str(self._PROFILING)  # + '_' + self._LABEL
+        print("[INFO] Suffix: ", self._SUFFIX)
+
+        # unsupported models for evaluation
+        if self._MODEL_NAME in ["TFOptimizedSGPU", "TFOptimizedMGPU"]:
+            print("[INFO] Models %s not supported for evaluation" %(self._MODEL_NAME))
+            
+        # model subdir
+        self._MODEL_SUBDIR = self._MODEL_NAME
+        if self._MODEL_NAME in ["LSTM", "ConvLSTM"]:
+            self._MODEL_SUBDIR = self._MODEL_SUBDIR + "/R" + str(data_dict["repeat_cols"])
+        
+        # get model name
+        self._MODEL_DIR = path_handler.get_absolute_path(model_info["model_dir"], self._MODEL_SUBDIR)
+        self._MODEL_PATH = path_handler.get_absolute_path(self._MODEL_DIR, self._SUFFIX)
+        print("Model Path: ", self._MODEL_PATH)
+
+        # data directory
+        self._DATA_DIR = path_handler.get_absolute_path(output_dir, self._MODEL_SUBDIR)
+        self._DATA_FILE = path_handler.get_absolute_path(self._DATA_DIR, "inf_" + self._SUFFIX + ".json")
+        print("Data Path: ", self._DATA_FILE)
+
+        # load model
+        self.model = torch.load(self._MODEL_PATH)
+        self.model.to(self._DEVICE)
+        
+        # loss criterion
+        if self._MODEL_NAME in ["LSTM", "ConvLSTM"]:
+            # self.optimizer = torch.optim.Adagrad(self.model.parameters(), lr=self._HYPERPARAMETER_DICT["learning_rate"])
+            self.criterion = torch.nn.MSELoss()#.to(self._DEVICE)
+        elif self._MODEL_NAME in ["ResNet50"]:
+            # self.optimizer = torch.optim.SGD(self.model.parameters(), lr=self._HYPERPARAMETER_DICT["learning_rate"])
+            self.criterion = torch.nn.CrossEntropyLoss()#.to(self._DEVICE)
+        
+        # broadcast parameters
+        if self._MGPU_STRATEGY == "HVD":
+            self.hvd_torch.broadcast_parameters(self.model.state_dict(), root_rank=0)
+        
+        # eval mode
+        self.model.eval()
+        
+        for name, param in self.model.named_parameters():
+            if param.requires_grad:
+                print(name, param.shape)
+        
+        ## Prepare dataset
+        start_time = time.perf_counter()
+        
+        data_generator = data_dict["data"]
+        test_sampler = None
+        
+        test_dataset = torch.utils.data.DataLoader(data_generator, 
+                                                       batch_size=self._BATCH_SIZE, 
+                                                       pin_memory=True, 
+                                                       num_workers=int(self._N_CPUS),
+                                                       sampler=test_sampler
+                                                      )
+            
+        end_time = time.perf_counter()
+        print("============> Prepare Dataset: ", end_time-start_time)
+        
+        start_time = time.perf_counter()
+        
+        # loss and accuracy
+        num_samples = 0
+        test_loss = 0.
+        test_accuracy = 0.
+        
+        # go through all the batches generated by dataloader
+        for inputs, target in test_dataset:
+            # move data to GPU
+            inputs, target        = inputs.to(self._DEVICE), target.to(self._DEVICE)
+
+            # compute output and loss
+            with torch.cuda.amp.autocast(enabled=self._MIXED_PRECISION):
+                # compute the model output
+                yhat = self.model(inputs)
+
+                # calculate loss
+                # print(yhat.is_cuda, targets.is_cuda, targets)
+                # loss = self.criterion(yhat, targets)
+                # sum up batch loss
+                test_loss += self.criterion(yhat, target).item() # torch.nn.functional.nll_loss(yhat, target, size_average=False).item()
+                pred = yhat.data.max(1, keepdim=True)[1]
+                if self._MODEL_NAME in ["ResNet50"]: 
+                    test_accuracy += (pred.eq(target.data.view_as(pred)).cpu().float().sum() / self._BATCH_SIZE)
+
+            # calculate the number of samples
+            num_samples += 1
+        
+        end_time = time.perf_counter()
+        inf_time = end_time - start_time
+        print("============> Inference Time: ", inf_time)
+        
+        test_loss /= num_samples
+        if self._MODEL_NAME in ["ResNet50"]: 
+            test_accuracy /= num_samples
+        
+        print("Loss: ", test_loss, "Accuracy: ", test_accuracy, "Inference Time: ", inf_time)
+        if self._MGPU_STRATEGY == "HVD":
+            avg_inference_time = self.hvd_torch.allreduce(torch.tensor(inf_time), average=True).cpu().numpy()
+            avg_loss = self.hvd_torch.allreduce(torch.tensor(test_loss), average=True).cpu().numpy()
+            if self._MODEL_NAME in ["LSTM", "ConvLSTM"]:
+                avg_accuracy = avg_loss
+            elif self._MODEL_NAME in ["ResNet50"]: 
+                avg_accuracy = self.hvd_torch.allreduce(test_accuracy, average=True).cpu().numpy()
+            
+        else:
+            avg_inference_time = inf_time
+            avg_loss = test_loss#.detach().cpu().item()
+            if self._MODEL_NAME in ["LSTM", "ConvLSTM"]:
+                avg_accuracy = avg_loss
+            elif self._MODEL_NAME in ["ResNet50"]: 
+                avg_accuracy = test_accuracy.numpy()#.cpu().item()
+        
+        if self._MGPU_STRATEGY == "HVD":
+            # self.hvd_torch.shutdown()
+            time.sleep(5)
+            
+        print("Loss: ", avg_loss, "Accuracy: ", avg_accuracy, "Inference Time: ", avg_inference_time)
+        return avg_loss, avg_accuracy, avg_inference_time
 
 

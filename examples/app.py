@@ -21,7 +21,7 @@ import sys
 sys.path.append('../')
 
 from proxy_apps import ProxyTSPRD
-from proxy_apps.utils import file_reader, path_handler
+from proxy_apps.utils import file_reader
 
 # ------------------------------- PATH & LOGGER SETUP ------------------------------------------------
 _REF_DIR = './'
@@ -38,6 +38,7 @@ parser.add_argument("--batch_size", type=int, help="batch size", default=1024)
 parser.add_argument("--mixed_precision", type=int, choices=[0, 1], help="whether to turn on mixed precision or not", default=0)
 parser.add_argument("--mgpu_strategy", choices=["None", "MirroredStrategy", "DDP", "HVD"], help="which multi-gpu strategy to use", default="None")
 parser.add_argument("--profiling", type=int, choices=[0, 1], help="whether to use nsys profiling", default=0)
+parser.add_argument("--run_type", choices=["train", "eval"], help="whether to train the model or do inference from the trained model", default="train")
 
 args = parser.parse_args()
 print("[INFO] Read parser arguments")
@@ -92,12 +93,21 @@ training_data_dict = interface.load_data(
 end_time = time.perf_counter()
 print("====> Data Loading Time: ", end_time-start_time)
 
-start_time = time.perf_counter()
-
-interface.train_model(
-    config['model_info'], 
-    training_data_dict
-)
-
-end_time = time.perf_counter()
-print("====> Model Training Time: ", end_time-start_time)
+if args.run_type == "train":
+    # model training
+    start_time = time.perf_counter()
+    interface.train_model(
+        config['model_info'], 
+        training_data_dict
+    )
+    end_time = time.perf_counter()
+    print("====> Model Training Time: ", end_time-start_time)
+else:
+    # inference
+    start_time = time.perf_counter()
+    interface.eval_model(
+        config['model_info'], 
+        training_data_dict
+    )
+    end_time = time.perf_counter()
+    print("====> Model Training Time: ", end_time-start_time)

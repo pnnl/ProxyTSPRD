@@ -166,7 +166,7 @@ class GridNetworkSequentialDataGenerator_PT(torch.utils.data.Dataset):
         split_index = (self.n_cols * self.repeat_cols) // 2
         flat_X_data = raw_data[self.x_indexer]#.reshape(-1, self.n_cols*self.n_repeat)
         flat_Y_data = raw_data[self.y_indexer]#.reshape(-1, self.n_cols*self.n_repeat)
-        # print(flat_X_data.shape, flat_Y_data.shape)
+        print(flat_X_data.shape, flat_Y_data.shape)
 
         if self.norm:
             flat_X_data[:, :, :split_index] = self.scale_factor*(flat_X_data[:, :, :split_index] - 60)

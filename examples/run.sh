@@ -4,7 +4,10 @@ module purge
 module load python/miniconda3.9
 source /share/apps/python/miniconda3.9/etc/profile.d/conda.sh
 
-export TMPDIR=/qfs/projects/pacer/milan/scratch/
+export TEMP=/qfs/projects/pacer/milan/scratch/temp/
+export TMP=/qfs/projects/pacer/milan/scratch/tmp/
+export TEMPDIR=/qfs/projects/pacer/milan/scratch/tempdir/
+export TMPDIR=/qfs/projects/pacer/milan/scratch/tmpdir/
 
 if [ ${10} == 1 ]; then
     if [ ${9} == "HVD" ]; then
@@ -26,6 +29,7 @@ if [ ${10} == 1 ]; then
         echo "Mixed Precision: ${8}"
         echo "Multi-GPU Strategy: ${9}"
         echo "Profiling: ${10}"
+        echo "Run Type: ${11}"
 
         module load cuda/11.0
         ulimit -u 16000
@@ -47,8 +51,9 @@ if [ ${10} == 1 ]; then
         echo $CUDA_VISIBLE_DEVICES
 
         # mpirun -n ${4} --bind-to none -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH 
-        horovodrun -np ${4} nsys profile --kill=none -t cuda,osrt,cudnn,cublas -o ../../../logs/ProxyTSPRD_IPDPS/scenarios_30/float64/R10/nsys/qdrep_report_${1}_${2}_${3}_ng${4}_nc${5}_e${6}_b${7}_mp${8}_mgpu${9}_prof${10}_%p -w true --force-overwrite=true python app.py --config_file ${1} --framework ${2} --machine_name ${3} --n_gpus ${4} --n_cpus ${5} --n_epochs ${6} --batch_size ${7} --mixed_precision ${8} --mgpu_strategy ${9} --profiling ${10} 
+        horovodrun -np ${4} nsys profile --kill=none -t cuda,osrt,cudnn,cublas -o ../../../logs/ProxyTSPRD_IPDPS/scenarios_30/float64/R10/nsys/qdrep_report_${1}_${2}_${3}_ng${4}_nc${5}_e${6}_b${7}_mp${8}_mgpu${9}_prof${10}_${11}_%p -w true --force-overwrite=true python app.py --config_file ${1} --framework ${2} --machine_name ${3} --n_gpus ${4} --n_cpus ${5} --n_epochs ${6} --batch_size ${7} --mixed_precision ${8} --mgpu_strategy ${9} --profiling ${10} --run_type ${11} 
     else
+        module load gcc/5.2.0 
         echo "--------- Running without Horovod (with Profiler) -------------------"
         echo "Job Configuration File: ${1}"
         echo "Framework: ${2}"
@@ -60,6 +65,7 @@ if [ ${10} == 1 ]; then
         echo "Mixed Precision: ${8}"
         echo "Multi-GPU Strategy: ${9}"
         echo "Profiling: ${10}"
+        echo "Run Type: ${11}"
 
         module load cuda/11.0
         ulimit -u 16000
@@ -80,7 +86,7 @@ if [ ${10} == 1 ]; then
         export CUDA_VISIBLE_DEVICES=$fs
         echo $CUDA_VISIBLE_DEVICES
 
-        nsys profile --kill=none -t cuda,osrt,cudnn,cublas -o ../../../logs/ProxyTSPRD_IPDPS/scenarios_30/float64/R10/nsys/qdrep_report_${1}_${2}_${3}_ng${4}_nc${5}_e${6}_b${7}_mp${8}_mgpu${9}_prof${10} -w true --force-overwrite=true python app.py --config_file ${1} --config_file ${1} --framework ${2} --machine_name ${3} --n_gpus ${4} --n_cpus ${5} --n_epochs ${6} --batch_size ${7} --mixed_precision ${8} --mgpu_strategy ${9} --profiling ${10} 
+        nsys profile --kill=none -t cuda,osrt,cudnn,cublas -o ../../../logs/ProxyTSPRD_IPDPS/scenarios_30/float64/R10/nsys/qdrep_report_${1}_${2}_${3}_ng${4}_nc${5}_e${6}_b${7}_mp${8}_mgpu${9}_prof${10}_${11} -w true --force-overwrite=true python app.py --config_file ${1} --config_file ${1} --framework ${2} --machine_name ${3} --n_gpus ${4} --n_cpus ${5} --n_epochs ${6} --batch_size ${7} --mixed_precision ${8} --mgpu_strategy ${9} --profiling ${10} --run_type ${11} 
     fi
 else
     if [ ${9} == "HVD" ]; then
@@ -103,6 +109,7 @@ else
         echo "Mixed Precision: ${8}"
         echo "Multi-GPU Strategy: ${9}"
         echo "Profiling: ${10}"
+        echo "Run Type: ${11}"
 
         module load cuda/11.0
         ulimit -u 16000
@@ -125,8 +132,9 @@ else
 
         # horovodrun -np ${4} python app.py --config_file ${1} --framework ${2} --machine_name ${3} --n_gpus ${4} --n_cpus ${5} --n_epochs ${6} --batch_size ${7} --mixed_precision ${8} --mgpu_strategy ${9}
         # mpirun --bind-to none -n ${4} -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH 
-        horovodrun -np ${4} python app.py --config_file ${1} --framework ${2} --machine_name ${3} --n_gpus ${4} --n_cpus ${5} --n_epochs ${6} --batch_size ${7} --mixed_precision ${8} --mgpu_strategy ${9} --profiling ${10} 
+        horovodrun -np ${4} python app.py --config_file ${1} --framework ${2} --machine_name ${3} --n_gpus ${4} --n_cpus ${5} --n_epochs ${6} --batch_size ${7} --mixed_precision ${8} --mgpu_strategy ${9} --profiling ${10} --run_type ${11}
     else
+        module load gcc/5.2.0 
         echo "--------- Running without Horovod -------------------"
         echo "Job Configuration File: ${1}"
         echo "Framework: ${2}"
@@ -138,6 +146,7 @@ else
         echo "Mixed Precision: ${8}"
         echo "Multi-GPU Strategy: ${9}"
         echo "Profiling: ${10}"
+        echo "Run Type: ${11}"
 
         module load cuda/11.0
         ulimit -u 16000
@@ -158,6 +167,6 @@ else
         export CUDA_VISIBLE_DEVICES=$fs
         echo $CUDA_VISIBLE_DEVICES
 
-        python app.py --config_file ${1} --framework ${2} --machine_name ${3} --n_gpus ${4} --n_cpus ${5} --n_epochs ${6} --batch_size ${7} --mixed_precision ${8} --mgpu_strategy ${9} --profiling ${10} 
+        python app.py --config_file ${1} --framework ${2} --machine_name ${3} --n_gpus ${4} --n_cpus ${5} --n_epochs ${6} --batch_size ${7} --mixed_precision ${8} --mgpu_strategy ${9} --profiling ${10} --run_type ${11}
     fi
 fi
