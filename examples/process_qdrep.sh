@@ -6,7 +6,7 @@
 #SBATCH -J process_qdrep_resnet_train
 #SBATCH -o oresnet_train.txt
 #SBATCH -e eresnet_train.txt
-#SBATCH -p dl_shared
+#SBATCH -p slurm
 
 module load cuda/11.0
 
