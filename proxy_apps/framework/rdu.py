@@ -1,3 +1,4 @@
+from .main import Framework
 import torch.distributed as dist
 import sambaflow.samba.utils as utils
 from sambaflow import samba
@@ -6,9 +7,28 @@ from sambaflow.samba.utils.benchmark_acc import AccuracyReport
 from sambaflow.samba.utils.dataset.mnist import dataset_transform
 from sambaflow.samba.utils.pef_utils import get_pefmeta
 
-from ..import PyTorch
+from .import PyTorchInterface
 
-class PyTorchSN(PyTorch):
+class RDU(Framework):
+    def __init__(
+        self, 
+        machine_name, 
+        config_file, 
+        n_epochs, 
+        batch_size
+    ) -> None:
+        super().__init__(machine_name, config_file, n_epochs, batch_size)
+
+    def use_pytorch(self):
+        super().use_pytorch()
+        self.interface = PyTorchInterfaceSN()
+    
+    def load_data(self, path):
+        self.dataloader = self.interface.init_dataloader()
+        self.interface.load_data()
+
+
+class PyTorchInterfaceSN(PyTorchInterface):
     def __init__(
         self, 
         machine_name, 
@@ -157,16 +177,3 @@ class PyTorchSN(PyTorch):
                                     batch_size=args.batch_size,
                                     num_iterations=args.num_epochs * total_step)
             report.save(args.json)
-
-        
-
-
-
-
-    
-
-        
-
-        
-
-    

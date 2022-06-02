@@ -1,2 +1,2 @@
-from .pytorch import PyTorch
-from .tensorflow import TensorFlow
+from .pytorch import PyTorchInterface
+from .tensorflow import TensorFlowInterface

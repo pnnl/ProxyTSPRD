@@ -1,3 +1,3 @@
 from .main import Interface
-class TensorFlow(Interface):
+class TensorFlowInterface(Interface):
     pass

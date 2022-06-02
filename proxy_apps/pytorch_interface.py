@@ -11,7 +11,7 @@ import horovod.torch as hvd_torch
             
 from .utils import path_handler
 from .utils.data.main import DataHandler
-from .apps.timeseries_prediction import hyperparameters
+from .apps.grid_prediction import hyperparameters
 from .apps import PTLSTM, PTConvLSTM
         
 class PyTorchInterface:

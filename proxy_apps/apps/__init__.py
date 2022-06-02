@@ -1,3 +1,5 @@
-from .timeseries_prediction.proxyDeepDMD import TFOptimizedSGPU
-from .timeseries_prediction.proxyDeepDMDMGPU import TFOptimizedEncoder, TFOptimizedModelTrainer
-from .timeseries_prediction.lstm import TFLSTM, PTLSTM, TFConvLSTM, PTConvLSTM
+# from .grid_prediction.proxyDeepDMD import TFOptimizedSGPU
+# from .grid_prediction.proxyDeepDMDMGPU import TFOptimizedEncoder, TFOptimizedModelTrainer
+# from .grid_prediction.lstm import TFLSTM, PTLSTM, TFConvLSTM, PTConvLSTM
+from .grid_prediction.lstm import LSTMProxyApp
+from .grid_prediction.cnn import CNNProxyApp
