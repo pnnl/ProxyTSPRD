@@ -32,10 +32,10 @@ class DataManager:
 
         # select subset files
         self._SEL_FILES = self._N_FILES
-        if n_training_files > 0:
+        if ((n_training_files > 0) & (n_training_files < self._N_FILES)):
             self._SEL_FILES = n_training_files
             self._TRAINING_FILES = self._TRAINING_FILES[:self._SEL_FILES]
-            print("[INFO] Using %d/%d `%s` files" %(self._SEL_FILES, self._N_FILES, self._FILE_FORMAT))
+        print("[INFO] Using %d/%d `%s` files" %(self._SEL_FILES, self._N_FILES, self._FILE_FORMAT))
             
         # validation data - if any
         if val_data_dir is not None:
@@ -55,8 +55,8 @@ class DataManager:
             self._VALIDATION_FILES = None
             self._N_VAL_FILES = -1
 
-    def load_training_data(self):
-        pass
+    def load_training_data(self, batch_size):
+        self._BATCH_SIZE = batch_size
 
 
 class TimeSeriesDataManager(DataManager):
@@ -76,8 +76,8 @@ class TimeSeriesDataManager(DataManager):
             val_data_dir=val_data_dir
         )
 
-    def load_training_data(self):
-        super().load_training_data()
+    def load_training_data(self, batch_size):
+        super().load_training_data(batch_size)
 
 
         

@@ -66,15 +66,16 @@ class PyTorchInterface(Interface):
         pin_memory=False,
         train_sampler=None
     ):
-        super().load_training_data(data_params)
+        super().load_training_data(data_params, batch_size)
 
         if data_params["data_generator"] == "torch.utils.data.Dataset":
-            training_dataset = torch.utils.data.DataLoader(self.data_manager.training_data, 
-                                                       batch_size=batch_size, 
-                                                       pin_memory=pin_memory, 
-                                                       num_workers=num_workers,
-                                                       sampler=train_sampler
-                                                      )
+            training_dataset = torch.utils.data.DataLoader(
+                self.data_manager.training_data, 
+                batch_size=self.data_manager._BATCH_SIZE, 
+                pin_memory=pin_memory, 
+                num_workers=num_workers,
+                sampler=train_sampler
+            )
 
         return training_dataset
 

@@ -14,9 +14,6 @@ class GPU(Framework):
         n_cpus,
         mgpu_strategy=None,
         mixed_precision=False
-        # config_file, 
-        # n_epochs, 
-        # batch_size
     ) -> None:
         # machine name
         super().__init__(machine_name)#, config_file, n_epochs, batch_size)
@@ -39,10 +36,6 @@ class GPU(Framework):
         )
 
         return interface
-    
-    # def load_data(self, path):
-    #     self.dataloader = self.interface.init_dataloader()
-    #     self.interface.load_data()
 
 class PyTorchInterfaceGPU(PyTorchInterface):
     def __init__(
@@ -51,10 +44,6 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         n_cpus,
         mgpu_strategy,
         mixed_precision,
-        # machine_name, 
-        # data_type, 
-        # n_epochs, 
-        # batch_size,
         # profiling
     ) -> None:
         super().__init__()#machine_name, data_type, n_epochs, batch_size)
@@ -199,7 +188,17 @@ class PyTorchInterfaceGPU(PyTorchInterface):
             criterion_params=criterion_params
         )
         self.model.to(self._DEVICE)
-        self.optimizer = self.app_manager.get_opt(opt_params=opt_params)
+        self.opt_name = self.app_manager.get_opt()
+        if self.opt_name == "SGD":
+            self.optimizer = torch.optim.SGD(
+                self.model.parameters(), 
+                lr=opt_params["learning_rate"]
+            )
+        else:
+            self.optimizer = torch.optim.Adagrad(
+                self.model.parameters(), 
+                lr=opt_params["learning_rate"]
+            )
 
         if self._MGPU_STRATEGY == "HVD":
             self.optimizer = self.hvd_torch.DistributedOptimizer(self.optimizer, named_parameters=self.model.named_parameters())
@@ -212,6 +211,8 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         training_data,
         n_epochs
     ):
+        super().train()
+
         self._N_EPOCHS = n_epochs
         m_start = time.time()
         

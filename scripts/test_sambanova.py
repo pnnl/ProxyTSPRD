@@ -14,14 +14,8 @@ import argparse
 # Custom Library
 import sys
 sys.path.append('../')
-from proxy_apps.framework import RDU
-    
-# from proxy_apps.apps.timeseries_prediction import deepDMD, proxyDeepDMD, proxyDeepDMDMGPU, proxyDeepDMDPyTorch, proxyDeepDMDPyTorchJIT, hyperparameters
-
-# from proxy_apps.utils.tf import TimingCallback
-# from proxy_apps.utils.data.main import NpEncoder
-# from proxy_apps.utils import file_reader, path_handler
-# from proxy_apps.utils.data.grid import GridNetworkDataHandler, GridNetworkTFDataHandler, GridNetworkNewGen, GridDataGenPyTorch
+from proxy_apps.framework.rdu import RDU
+from proxy_apps.apps import LSTMProxyApp, CNNProxyApp
 
 # ------------------------------- PATH & LOGGER SETUP ------------------------------------------------
 
@@ -29,37 +23,99 @@ from proxy_apps.framework import RDU
 parser = argparse.ArgumentParser(description='Run Time Series Prediction')
 # parser.add_argument("--model_name", choices=["Baseline", "TFDataGen", "TFDataOptMGPU", "TFDataOptMGPUAcc", "PyTorch", "PyTorchOpt"], type=str,
 #     help="which implementation to run", required=True)
-parser.add_argument("--config_file", type=str,
-    help="configuration file for model training", required=True)
-parser.add_argument("--platform", choices=["gpu", "cpu", "rdu"], type=str, help="name of the platform (cpu/gpu)", required=True)
-parser.add_argument("--machine_name", type=str, help="name of the machine", required=True)
-parser.add_argument("--n_epochs", type=int, help="number of epochs", default=10)
-parser.add_argument("--batch_size", type=int, help="batch size", default=1024)
+parser.add_argument(
+    "--config_file", 
+    type=str,
+    help="configuration file for model training", 
+    required=True
+)
+parser.add_argument(
+    "--platform", 
+    choices=["gpu", "cpu", "rdu"], 
+    type=str, 
+    help="name of the platform (cpu/gpu/rdu)", 
+    required=True
+)
+parser.add_argument(
+    "--machine_name", 
+    type=str, 
+    help="name of the machine", 
+    required=True
+)
+parser.add_argument(
+    "--n_epochs", 
+    type=int, 
+    help="number of epochs", 
+    default=10
+)
+parser.add_argument(
+    "--batch_size", 
+    type=int, 
+    help="batch size", 
+    default=1024
+)
+parser.add_argument(
+    "--refresh_pef_file", 
+    action='store_true', 
+    help="Whether to recreate the PEF file"
+)
 
 if __name__ == "__main__":
     # read the arguments
     args = parser.parse_args()
 
+    # configuration file
+    _CONFIG_FILE = args.config_file
+    # check if configuration file exists
+    assert os.path.exists(_CONFIG_FILE), "Configuration file not found: %s" %(_CONFIG_FILE)
+    # read configuration file
+    with open(_CONFIG_FILE) as fp:
+        _CONFIG = json.load(fp)
+
     # initialize the framework
     framework = RDU(
         machine_name=args.machine_name,
-        config_file=args.config_file,
-        n_epochs=args.n_epochs,
-        batch_size=args.batch_size
     )
 
     # select the interface
-    framework.use_pytorch()
-
-    # load data 
-    train_data = framework.load_data()
-
-    # compile model
-    model = framework.init_model()
-    framework.compile(model, train_data)
-
+    interface = framework.use_pytorch()
+    # init app
+    cnn_app = CNNProxyApp()
+    # init app manager
+    interface.init_app_manager(
+        app=cnn_app,
+        app_name=_CONFIG["info"]["app_name"],
+        output_dir=_CONFIG["info"]["output_dir"],
+        mixed_precision_support=_CONFIG["info"]["mixed_precision_support"]
+    )
+    
+    # initialize data manager
+    interface.init_data_manager(
+        training_data_dir=_CONFIG["data_params"]["training_data_dir"],
+        input_file_format=_CONFIG["data_params"]["input_file_format"],
+        data_type=_CONFIG["info"]["data_type"],
+        dtype=_CONFIG["info"]["dtype"],
+        n_training_files=_CONFIG["data_params"]["num_files"]
+    )
+    # load training and validation data
+    training_data = interface.load_training_data(
+        data_params=_CONFIG["data_params"],
+        batch_size=args.batch_size,
+        train_sampler=None
+    )
+    
     # train model
-    framework.train(model, train_data)
+    interface.init_training_engine(
+        model_name=_CONFIG["model_info"]["model_name"],
+        model_parameters=_CONFIG["model_info"]["model_parameters"],
+        opt_params=_CONFIG["model_info"]["opt_parameters"],
+        criterion_params=None,
+        refresh_pef_file=args.refresh_pef_file
+    )
+    interface.train(
+        train_loader=training_data,
+        n_epochs=args.n_epochs
+    )
 
 #     # read configuration file
 #     # 'config_baseline.json'

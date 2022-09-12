@@ -62,7 +62,8 @@ class Interface:
 
     def load_training_data(
         self,
-        data_params
+        data_params,
+        batch_size
     ):
         # get data reader
         self.data_manager.training_data = self.app_manager.get_training_data(
@@ -70,7 +71,7 @@ class Interface:
             data_params=data_params,
             dtype=self.data_manager._DTYPE
         )
-        self.data_manager.load_training_data()
+        self.data_manager.load_training_data(batch_size)
         # print(type(self.data_manager.data_reader))
 
     def load_data(self):
@@ -82,5 +83,7 @@ class Interface:
         model_parameters,
         criterion_params
     ):
-        self.model = self.app_manager.get_model(model_name, model_parameters)
+        self.model_params = model_parameters
         self.criterion = self.app_manager.get_criterion(criterion_params=criterion_params)
+        self.model = self.app_manager.get_model(model_name, model_parameters, self.criterion)
+        
