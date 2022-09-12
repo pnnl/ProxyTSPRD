@@ -16,7 +16,7 @@ import argparse
 import sys
 sys.path.append('../')
     
-from proxy_apps.apps.timeseries_prediction import deepDMD, proxyDeepDMD, proxyDeepDMDMGPU, proxyDeepDMDPyTorch, proxyDeepDMDPyTorchJIT, hyperparameters
+from proxy_apps.apps.grid_prediction import deepDMD, proxyDeepDMD, proxyDeepDMDMGPU, proxyDeepDMDPyTorch, proxyDeepDMDPyTorchJIT, hyperparameters
 
 from proxy_apps.utils.tf import TimingCallback
 from proxy_apps.utils.data.main import NpEncoder

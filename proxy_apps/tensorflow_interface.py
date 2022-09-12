@@ -10,7 +10,7 @@ from timeit import default_timer as timer
 import horovod.tensorflow.keras as hvd_keras
 
 from .apps import TFLSTM, TFConvLSTM, TFOptimizedSGPU, TFOptimizedEncoder, TFOptimizedModelTrainer
-from .apps.timeseries_prediction import hyperparameters
+from .apps.grid_prediction import hyperparameters
 from .utils import path_handler
 from .utils.data.main import DataHandler
 
