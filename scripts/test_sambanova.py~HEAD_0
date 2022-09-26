@@ -25,7 +25,7 @@ parser = argparse.ArgumentParser(description='Run Time Series Prediction')
 #     help="which implementation to run", required=True)
 parser.add_argument("--config_file", type=str,
     help="configuration file for model training", required=True)
-parser.add_argument("--platform", choices=["gpu", "cpu", "rdu"], type=str, help="name of the platform (cpu/gpu/rdu)", required=True)
+parser.add_argument("--platform", choices=["gpu", "cpu", "rdu"], type=str, help="name of the platform (cpu/gpu)", required=True)
 parser.add_argument("--machine_name", type=str, help="name of the machine", required=True)
 parser.add_argument("--n_gpus", type=int, help="number of GPUs", default=1)
 parser.add_argument("--n_cpus", type=int, help="number of CPUs", default=1)
@@ -104,6 +104,3 @@ if __name__ == "__main__":
 
     # # train model
     # framework.train(model, train_data)
-
-
-    

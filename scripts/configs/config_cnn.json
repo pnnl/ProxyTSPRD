@@ -1,6 +1,6 @@
 {
 	"info": {
-		"app_name": "LSTM",
+		"app_name": "CNN",
         "mixed_precision_support": "True",
         "mgpu_support": "True",
 		"data_type": "TimeSeries",
@@ -31,7 +31,7 @@
 		}
 	},
 	"model_info": {
-		"model_name": "LSTM",
+		"model_name": "CNN",
 		"model_dir": "../../../models/ProxyTSPRD_IPDPS/",
 		"tb_log_dir": "../../../logs/",
 		"fill_data": "False",
@@ -41,7 +41,9 @@
 			"n_features": 136
 		},
 		"opt_parameters": {
-			"lr"      : 5e-4	
+			"lr"      		: 0.0015,
+			"momentum"      : 0.0,
+			"weight_decay"  : 3e-4
 		},
 		"hyperparameters": {
 			"hl_1_dim"           : 128,

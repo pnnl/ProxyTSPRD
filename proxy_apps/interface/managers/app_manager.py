@@ -44,19 +44,26 @@ class AppManager:
                 validation_files=validation_files
             )
 
-    def get_model(self, model_name, model_parameters):
+    def get_model(
+        self, 
+        model_name, 
+        model_parameters, 
+        criterion
+    ):
         if self._ML_FRAMEWORK == "PyTorch":
-            return self._APP.get_pt_model(model_name, model_parameters)
+            return self._APP.get_pt_model(model_name, model_parameters, criterion)
         elif self._ML_FRAMEWORK == "TensorFlow":
-            return self._APP.get_tf_model(model_name, model_parameters)
+            return self._APP.get_tf_model(model_name, model_parameters, criterion)
 
-    def get_opt(self, opt_params):
-        if self._ML_FRAMEWORK == "PyTorch":
-            return self._APP.get_pt_opt(opt_params)
-        elif self._ML_FRAMEWORK == "TensorFlow":
-            return self._APP.get_tf_opt(opt_params)
-
-    def get_criterion(self, criterion_params):
+    def get_opt(
+        self
+    ):
+        return self._APP.get_opt()
+    
+    def get_criterion(
+        self, 
+        criterion_params
+    ):
         if self._ML_FRAMEWORK == "PyTorch":
             return self._APP.get_pt_criterion(criterion_params)
         elif self._ML_FRAMEWORK == "TensorFlow":
