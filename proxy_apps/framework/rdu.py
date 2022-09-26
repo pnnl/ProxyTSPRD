@@ -181,7 +181,7 @@ class PyTorchInterfaceSN(PyTorchInterface):
         self,
         train_loader,
         n_epochs,
-        mapping="section",
+        mapping="spatial",
         num_spatial_batches=1
     ):
         inputs = self._create_rand_arr("iwindow", "owindow")
@@ -190,10 +190,10 @@ class PyTorchInterfaceSN(PyTorchInterface):
         if mapping == "spatial":
             # print(inputs[0].shape, inputs[1].shape)
             inputs = (samba.SambaTensor(samba.to_torch(inputs[0]).repeat(num_spatial_batches, 1),
-                                        name='inp_window',
+                                        name='iwindow',
                                         batch_dim=0),
                       samba.SambaTensor(samba.to_torch(inputs[1]).repeat(num_spatial_batches),
-                                        name='out_window',
+                                        name='owindow',
                                         batch_dim=0))
 
         # Trace the compiled graph to initialize the model weights and input/output tensors
@@ -202,6 +202,7 @@ class PyTorchInterfaceSN(PyTorchInterface):
         # Mapping refers to how the model layers are arranged in a pipeline for execution.
         # Valid options: 'spatial' or 'section'
         print("--------------------- Hello --------------------------------")
+        print(self.PEF_FILE)
         traced_outputs = utils.trace_graph(self.model,
                                            inputs,
                                            self.optimizer,

@@ -2,12 +2,7 @@
 # Standard Libraries
 import os
 # os.environ['OMP_NUM_THREADS'] = '48'
-import math
 import json
-import datetime
-import numpy as np
-import time
-
 import argparse
 
 # ------------------------------- CUSTOM FUNCTIONS ------------------------------------------------

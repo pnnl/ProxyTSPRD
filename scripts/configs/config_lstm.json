@@ -41,7 +41,7 @@
 			"n_features": 136
 		},
 		"opt_parameters": {
-			"learning_rate"      : 5e-4	
+			"lr"      : 5e-4	
 		},
 		"hyperparameters": {
 			"hl_1_dim"           : 128,
