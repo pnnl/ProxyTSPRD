@@ -66,3 +66,10 @@ sh submit_all_mgpu.sh
 ```
 squeue -u <username> | awk '$3 e_lstm {print $1}' | tail -n+2 | xargs scancel
 ```
+
+# Sambanova
+```
+
+1. (Activate the Environment) source /opt/sambaflow/apps/starters/logreg/venv/bin/activate
+2. (Run CNN Example) python test_sambanova.py --config_file="./configs/config_cnn.json" --platform="rdu" --machine_name="sambanova"
+```
