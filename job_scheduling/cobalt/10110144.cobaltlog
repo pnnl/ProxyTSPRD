@@ -22,3 +22,4 @@ Thu Oct 13 17:17:36 2022 +0000 (UTC) Info: stdin received from /dev/null
 Thu Oct 13 17:17:36 2022 +0000 (UTC) Info: stdout sent to /home/milanjain91/ProxyTSPRD/job_scheduling/cobalt/./logs/lstm_DDP_8_out
 Thu Oct 13 17:17:36 2022 +0000 (UTC) Info: stderr sent to /home/milanjain91/ProxyTSPRD/job_scheduling/cobalt/./logs/lstm_DDP_8_err
 Thu Oct 13 17:17:36 2022 +0000 (UTC) 
+Thu Oct 13 17:22:40 2022 +0000 (UTC) Info: task completed normally with an exit code of 134; initiating job cleanup and removal
