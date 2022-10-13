@@ -1,14 +1,14 @@
 {
 	"info": {
-		"app_name": "LSTM",
+		"app_name": "LSTMProxyApp",
         "mixed_precision_support": "True",
         "mgpu_support": "True",
 		"data_type": "TimeSeries",
         "dtype": "float64",
-        "output_dir": "../../../data/ProxyTSPRD_IPDPS/"
+        "output_dir": "/home/milanjain91/output/ProxyTSPRD_IPDPS/"
 	},
 	"data_params": {
-		"training_data_dir": "../../../data/NewTestScenarios/",
+		"training_data_dir": "/home/milanjain91/data/power_system/test/",
 		"input_file_format": "mat",
 		"data_generator": "torch.utils.data.Dataset",
 		"num_files": 180,
@@ -32,8 +32,8 @@
 	},
 	"model_info": {
 		"model_name": "LSTM",
-		"model_dir": "../../../models/ProxyTSPRD_IPDPS/",
-		"tb_log_dir": "../../../logs/",
+		"model_dir": "/home/milanjain91/output/ProxyTSPRD_IPDPS/models/",
+		"tb_log_dir": "/home/milanjain91/output/ProxyTSPRD_IPDPS/logs/",
 		"fill_data": "False",
 		"model_parameters": {
 			"bw_size": 60,
@@ -41,7 +41,7 @@
 			"n_features": 136
 		},
 		"opt_parameters": {
-			"lr"      : 5e-4	
+			"learning_rate"      : 5e-4	
 		},
 		"hyperparameters": {
 			"hl_1_dim"           : 128,

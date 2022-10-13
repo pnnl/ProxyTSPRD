@@ -13,7 +13,8 @@ class PyTorchInterface(Interface):
         self._ML_FRAMEWORK = "PyTorch"
 
         ## PyTorch Setup
-        print("[INFO] PyTorch version: ", torch.__version__)
+        if self._GLOBAL_RANK == "0":
+            print("[INFO] PyTorch version: ", torch.__version__)
 
     def init_app_manager(
         self, 
@@ -31,7 +32,8 @@ class PyTorchInterface(Interface):
         
         # mixed precision support
         self.app_manager._MIXED_PRECISION_SUPPORT = mixed_precision_support
-        print("[INFO] App Supports Mixed Precision: %s" %(self.app_manager._MIXED_PRECISION_SUPPORT))
+        if self._GLOBAL_RANK == "0":
+            print("[INFO] App Supports Mixed Precision: %s" %(self.app_manager._MIXED_PRECISION_SUPPORT))
 
     def init_data_manager(
         self,
@@ -54,7 +56,8 @@ class PyTorchInterface(Interface):
         # keep track of framework
         self.data_manager._ML_FRAMEWORK = self._ML_FRAMEWORK
 
-        print("[INFO] Default Data Type: %s" %(self.data_manager._DTYPE))
+        if self._GLOBAL_RANK == "0":
+            print("[INFO] Default Data Type: %s" %(self.data_manager._DTYPE))
         if self.data_manager._DTYPE == "float64": torch.set_default_dtype(torch.float64)
         else: torch.set_default_dtype(torch.float32)
     
@@ -87,18 +90,24 @@ class PyTorchInterface(Interface):
         self,
         model_name,
         model_parameters,
-        criterion_params
+        criterion_params,
+        device
     ):
         super().init_training_engine(
             model_name=model_name,
             model_parameters=model_parameters,
-            criterion_params=criterion_params
+            criterion_params=criterion_params,
+            device=device
         )
 
-        print("[INFO] Model Parameters: \n")
-        for name, param in self.model.named_parameters():
-            if param.requires_grad:
-                print(name, param.shape)
+        if self._GLOBAL_RANK == "0":
+            print("[INFO] Model Parameters: \n")
+            for name, param in self.model.named_parameters():
+                if param.requires_grad:
+                    print(name, param.shape)
+
+    def train(self):
+        pass
 
 
     

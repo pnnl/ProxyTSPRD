@@ -19,7 +19,7 @@ class Interface:
         # self._DTYPE = data_type
         # self._N_EPOCHS = n_epochs
         # self._BATCH_SIZE = batch_size
-        pass
+        self._GLOBAL_RANK = 0
 
     def init_app_manager(
         self, 
@@ -32,7 +32,8 @@ class Interface:
             app=app,
             app_name=app_name,
             output_dir=output_dir,
-            ml_framework=ml_framework
+            ml_framework=ml_framework,
+            print_rank=int(self._GLOBAL_RANK)
         )
         
     def init_data_manager(
@@ -51,7 +52,8 @@ class Interface:
                 input_file_format=input_file_format,
                 dtype=dtype,
                 n_training_files=n_training_files,
-                val_data_dir=val_data_dir
+                val_data_dir=val_data_dir,
+                print_rank=int(self._GLOBAL_RANK)
             )
 
     def init_training_engine(self):
@@ -81,9 +83,10 @@ class Interface:
         self,
         model_name,
         model_parameters,
-        criterion_params
+        criterion_params,
+        device=None
     ):
         self.model_params = model_parameters
         self.criterion = self.app_manager.get_criterion(criterion_params=criterion_params)
-        self.model = self.app_manager.get_model(model_name, model_parameters, self.criterion)
+        self.model = self.app_manager.get_model(model_name, model_parameters, device=device)
         

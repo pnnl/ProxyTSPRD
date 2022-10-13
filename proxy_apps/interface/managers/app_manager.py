@@ -6,18 +6,22 @@ class AppManager:
         app,
         app_name,
         output_dir,
-        ml_framework
+        ml_framework,
+        print_rank=0
     ) -> None:
         # app
         self._APP = app
+        self._PRINT_RANK = print_rank
         
         # app name
         self._APP_NAME = app_name
-        print("[INFO] Selected App: %s" %(self._APP_NAME))
+        if self._PRINT_RANK == 0:
+            print("[INFO] Selected App: %s" %(self._APP_NAME))
         
         # output data directory
         self._OUTPUT_DIR = os.path.abspath(output_dir)
-        print("[INFO] Output Data Directory: %s" %(self._OUTPUT_DIR))
+        if self._PRINT_RANK == 0:
+            print("[INFO] Output Data Directory: %s" %(self._OUTPUT_DIR))
 
         self._ML_FRAMEWORK = ml_framework
         assert self._ML_FRAMEWORK in ["PyTorch", "TensorFlow"], "[ERROR] %s is not supported, choose between [PyTorch, TensorFlow] %(ml_framework)"
@@ -47,13 +51,13 @@ class AppManager:
     def get_model(
         self, 
         model_name, 
-        model_parameters, 
-        criterion
+        model_parameters,
+        device=None
     ):
         if self._ML_FRAMEWORK == "PyTorch":
-            return self._APP.get_pt_model(model_name, model_parameters, criterion)
+            return self._APP.get_pt_model(model_name, model_parameters, device=device)
         elif self._ML_FRAMEWORK == "TensorFlow":
-            return self._APP.get_tf_model(model_name, model_parameters, criterion)
+            return self._APP.get_tf_model(model_name, model_parameters)
 
     def get_opt(
         self
