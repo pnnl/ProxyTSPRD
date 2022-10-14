@@ -1,0 +1,25 @@
+Jobid: 10110144
+qsub -n 8 -t 0:20:00 -A GRACE -q full-node --attrs filesystems=home -o ./logs/lstm_DDP_8_out -e ./logs/lstm_DDP_8_err ddp_job.qsub DDP lstm
+Thu Oct 13 17:17:16 2022 +0000 (UTC) submitted with cwd set to: /home/milanjain91/ProxyTSPRD/job_scheduling/cobalt
+jobid 10110144 submitted from terminal /dev/pts/5
+Thu Oct 13 17:17:36 2022 +0000 (UTC) 
+Thu Oct 13 17:17:36 2022 +0000 (UTC) Command: '/usr/bin/ssh' 'thetagpu19' '/usr/bin/cobalt-launcher.py' '--nf' '/var/tmp/cobalt.10110144' '--jobid' '10110144' '--cwd' '/home/milanjain91/ProxyTSPRD/job_scheduling/cobalt' '--env' 'COBALT_JOBID=10110144' '/home/milanjain91/ProxyTSPRD/job_scheduling/cobalt/ddp_job.qsub' 'DDP' 'lstm'
+Thu Oct 13 17:17:36 2022 +0000 (UTC) 
+Thu Oct 13 17:17:36 2022 +0000 (UTC) Environment:
+Thu Oct 13 17:17:36 2022 +0000 (UTC) SHELL=/bin/bash
+Thu Oct 13 17:17:36 2022 +0000 (UTC) COBALT_NODEFILE=/tmp/tmpexOtIV
+Thu Oct 13 17:17:36 2022 +0000 (UTC) COBALT_PARTNAME=thetagpu19
+Thu Oct 13 17:17:36 2022 +0000 (UTC) COBALT_JOBID=10110144
+Thu Oct 13 17:17:36 2022 +0000 (UTC) COBALT_STARTTIME=1665681444
+Thu Oct 13 17:17:36 2022 +0000 (UTC) LOGNAME=milanjain91
+Thu Oct 13 17:17:36 2022 +0000 (UTC) USER=milanjain91
+Thu Oct 13 17:17:36 2022 +0000 (UTC) COBALT_ENDTIME=1665682644
+Thu Oct 13 17:17:36 2022 +0000 (UTC) COBALT_PARTSIZE=8
+Thu Oct 13 17:17:36 2022 +0000 (UTC) HOME=/home/milanjain91
+Thu Oct 13 17:17:36 2022 +0000 (UTC) COBALT_JOBSIZE=8
+Thu Oct 13 17:17:36 2022 +0000 (UTC) 
+Thu Oct 13 17:17:36 2022 +0000 (UTC) Info: stdin received from /dev/null
+Thu Oct 13 17:17:36 2022 +0000 (UTC) Info: stdout sent to /home/milanjain91/ProxyTSPRD/job_scheduling/cobalt/./logs/lstm_DDP_8_out
+Thu Oct 13 17:17:36 2022 +0000 (UTC) Info: stderr sent to /home/milanjain91/ProxyTSPRD/job_scheduling/cobalt/./logs/lstm_DDP_8_err
+Thu Oct 13 17:17:36 2022 +0000 (UTC) 
+Thu Oct 13 17:22:40 2022 +0000 (UTC) Info: task completed normally with an exit code of 134; initiating job cleanup and removal

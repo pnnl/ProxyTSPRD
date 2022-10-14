@@ -9,26 +9,82 @@ import tensorflow as tf
 logger = tf.get_logger()
 
 from ..main import ProxyApp
+from .data_readers import GridNetworkSequentialDataGenerator_PT, GridNetworkSequentialDataGenerator_TF, get_indexer
 
 class LSTMProxyApp(ProxyApp):
     def __init__(self) -> None:
         super().__init__()
 
-    def get_pt_data_reader(self):
-        super().get_pt_data_reader()
-        pass
+    def get_pt_training_data(
+        self,
+        training_files,
+        data_params,
+        dtype,
+        validation_files=None
+    ):
+        super().get_pt_training_data(
+            training_files=training_files,
+            validation_files=validation_files,
+            data_params=data_params,
+            dtype=dtype
+        )
+        self.data_reader = GridNetworkSequentialDataGenerator_PT(
+            dir_list=training_files,
+            handler_params=data_params,
+            dtype=dtype
+        )
 
-    def get_pt_model(self):
+        x_indexer = get_indexer(
+            n_rows=self.data_reader.n_rows,
+            window_size=self.data_reader.iw_params["window_size"],
+            shift_size=self.data_reader.iw_params["shift_size"],
+            start_point=self.data_reader.iw_params["start_at"],
+            leave_last=self.data_reader.iw_params["leave_last"]
+        )
+        y_indexer = get_indexer(
+            n_rows=self.data_reader.n_rows,
+            window_size=self.data_reader.ow_params["window_size"],
+            shift_size=self.data_reader.ow_params["shift_size"],
+            start_point=self.data_reader.ow_params["start_at"],
+            leave_last=self.data_reader.ow_params["leave_last"]
+        )
+
+        self.data_reader.get_training_data(
+            x_indexer, 
+            y_indexer
+        )
+        return self.data_reader
+        # pass
+
+    def get_pt_model(
+        self,
+        model_name,
+        model_parameters,
+        device
+    ):
         super().get_pt_model()
-        pass
+        self.model = PTLSTM(model_name, model_parameters, device)
+        return self.model
 
-    def get_tf_data_reader(self):
-        super().get_tf_data_reader()
+    def get_opt(
+        self
+    ):
+        return "SGD"
+
+    def get_pt_criterion(
+        self,
+        criterion_params
+    ):
+        criterion = torch.nn.MSELoss()
+        return criterion
+
+    def get_tf_training_data(self):
+        super().get_tf_training_data()
         pass
 
     def get_tf_model(self):
         super().get_tf_model()
-        pass    
+        pass  
 
 class TFLSTM(tf.keras.Model):
     def __init__(self, bw_size, fw_size, n_features):
@@ -54,11 +110,11 @@ class TFLSTM(tf.keras.Model):
         return self.output_layer(fx)
     
 class PTLSTM(torch.nn.Module):
-    def __init__(self, bw_size, fw_size, n_features, device):
+    def __init__(self, model_name, model_parameters, device):
         super(PTLSTM, self).__init__()
-        self.bw_size = bw_size # size of the backward window
-        self.fw_size = fw_size # size of the backward window
-        self.n_features = n_features # size of the backward window
+        self.bw_size = model_parameters["bw_size"] # size of the backward window
+        self.fw_size = model_parameters["fw_size"] # size of the backward window
+        self.n_features = model_parameters["n_features"] # size of the backward window
         self.device = device
         
         self.hidden_size1 = 512
@@ -69,7 +125,7 @@ class PTLSTM(torch.nn.Module):
         self.lstm3_layer   = torch.nn.LSTM(hidden_size=self.hidden_size3, input_size=self.hidden_size2, batch_first=True)
         self.hidden_size4 = 64
         self.lstm4_layer   = torch.nn.LSTM(hidden_size=self.hidden_size4, input_size=self.hidden_size3, batch_first=True)
-        self.dense_layer   = torch.nn.Linear(in_features=self.hidden_size4, out_features=fw_size * n_features)
+        self.dense_layer   = torch.nn.Linear(in_features=self.hidden_size4, out_features=self.fw_size * self.n_features)
         # self.output_layer  = tf.keras.layers.Reshape((fw_size, n_features))
     
     def forward(self,x):

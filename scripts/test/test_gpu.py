@@ -13,7 +13,7 @@ import argparse
 # ------------------------------- CUSTOM FUNCTIONS ------------------------------------------------
 # Custom Library
 import sys
-sys.path.append('../')
+sys.path.append('../../')
 from proxy_apps.framework.gpu import GPU
 from proxy_apps.apps import LSTMProxyApp, CNNProxyApp
 
@@ -27,8 +27,10 @@ parser.add_argument("--config_file", type=str,
     help="configuration file for model training", required=True)
 parser.add_argument("--platform", choices=["gpu", "cpu", "rdu"], type=str, help="name of the platform (cpu/gpu/rdu)", required=True)
 parser.add_argument("--machine_name", type=str, help="name of the machine", required=True)
+parser.add_argument("--framework", choices=["TF", "PT"], type=str, help="framework", default="PT")
 parser.add_argument("--n_gpus", type=int, help="number of GPUs", default=1)
 parser.add_argument("--n_cpus", type=int, help="number of CPUs", default=1)
+parser.add_argument("--mpgu_strategy", choices=["HVD", "DDP"], type=str, help="MGPU strategy", default=None)
 parser.add_argument("--n_epochs", type=int, help="number of epochs", default=10)
 parser.add_argument("--batch_size", type=int, help="batch size", default=1024)
 
@@ -49,16 +51,26 @@ if __name__ == "__main__":
         machine_name=args.machine_name,
         n_gpus=args.n_gpus,
         n_cpus=args.n_cpus,
-        mgpu_strategy="HVD"
+        mgpu_strategy=args.mpgu_strategy
     )
     
     # select the interface
-    interface = framework.use_pytorch()
+    if args.framework == "TF":
+        interface = framework.use_tensorflow()
+    else:
+        interface = framework.use_pytorch()
+
     # init app
-    cnn_app = CNNProxyApp()
+    if _CONFIG["info"]["app_name"] == "LSTMProxyApp":
+        app = LSTMProxyApp()
+    elif _CONFIG["info"]["app_name"] == "CNNProxyApp":
+        app = CNNProxyApp()
+    else:
+        sys.exit("[ERROR] Invalid App")
+    
     # init app manager
     interface.init_app_manager(
-        app=cnn_app,
+        app=app,
         app_name=_CONFIG["info"]["app_name"],
         output_dir=_CONFIG["info"]["output_dir"],
         mixed_precision_support=_CONFIG["info"]["mixed_precision_support"],

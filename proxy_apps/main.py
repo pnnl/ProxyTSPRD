@@ -4,7 +4,7 @@ import json
 
 # from numba import jit
 from .utils import path_handler
-from .utils.data.main import NpEncoder
+from .data.main import NpEncoder
 
 class ProxyTSPRD:
     def __init__(self, app_info, framework, reference_dir, mixed_precision, machine_name, 

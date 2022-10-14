@@ -1,0 +1,12 @@
+#!/bin/bash -l
+#COBALT -t 01:00:00 
+#COBALT -n 1
+#COBALT -q bigmem --attrs mcdram=cache:numa=quad
+#COBALT -A GRACE 
+
+module load conda/2021-09-22
+module load nccl/nccl-v2.12.12-1_CUDA11.4
+echo "$1"
+echo "$2"
+conda activate graphchallenge
+python -u /home/milanjain91/grace/GraphChallengePNNL/reference_implementation/SparseDNN/python/cu$

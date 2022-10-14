@@ -1,10 +1,17 @@
+import os
 import time
+import socket
+import datetime
+import numpy as np
+
 import torch
 import torch.distributed as dist
 
 from .import PyTorchInterface
 from .import DataHandler
 from .main import Framework
+
+from mpi4py import MPI
 
 class GPU(Framework):
     def __init__(
@@ -59,10 +66,12 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         else: 
             self._DEVICE_STR = 'cpu'
         self._DEVICE = torch.device(self._DEVICE_STR)
-        print("[INFO] Device Type: %s" %(self._DEVICE))
+        if self._GLOBAL_RANK == 0:
+            print("[INFO] Device Type: %s" %(self._DEVICE))
 
         if self._DEVICE_STR=='cpu': 
-            print("[WARNING] No GPUs found, falling back to CPUs")
+            if self._GLOBAL_RANK == 0:
+                print("[WARNING] No GPUs found, falling back to CPUs")
         elif self._DEVICE_STR=='cuda':
             # gpus found - using multi gpu strategy
             self._MGPU_STRATEGY = mgpu_strategy
@@ -70,15 +79,123 @@ class PyTorchInterfaceGPU(PyTorchInterface):
             self._TOTAL_GPUs = torch.cuda.device_count()
             # do we have the number of GPUs we are asking for
             if self._N_GPUS > self._TOTAL_GPUs:
-                print("[WARNING] Selected %d GPUs but only %d GPUs found. Using max #GPUs available: %d" %(self._N_GPUS, self._TOTAL_GPUs, self._TOTAL_GPUs))
+                if self._GLOBAL_RANK == 0:
+                    print("[WARNING] Selected %d GPUs but only %d GPUs found. Using max #GPUs available: %d" %(self._N_GPUS, self._TOTAL_GPUs, self._TOTAL_GPUs))
             else:
-                print("[INFO] Using %d/%d GPUs" %(self._N_GPUS, self._TOTAL_GPUs))
+                if self._GLOBAL_RANK == 0:
+                    print("[INFO] Using %d/%d GPUs" %(self._N_GPUS, self._TOTAL_GPUs))
 
         # # mixed precision - could be moved to Interface because it is required for both GPU and RDU; and for both TF and PT
         self._MIXED_PRECISION = mixed_precision
 
         # # enable profiling - could be moved to Interface because it is required for both GPU and RDU; and for both TF and PT
         # self._PROFILING = profiling
+
+    def _discover_local_rank(self, verbose=False):
+        '''
+        This function written by Corey Adams, ALCF
+        Feel free to modify or use the code below as you need.
+        '''
+
+        # Get the global communicator:
+        COMM_WORLD = MPI.COMM_WORLD
+
+
+        # The strategy here is to split into sub communicators
+        # Each sub communicator will be just on a single host,
+        # And that communicator will assign ranks that can be interpretted
+        # as local ranks.
+
+        # To subdivide, each host will need to use a unique key.
+        # We'll rely on the hostname and order them all.
+
+        hostname = socket.gethostname()
+        # host_key = host_key %
+        all_hostnames = COMM_WORLD.gather(hostname, root=0)
+
+        if COMM_WORLD.Get_rank() == 0:
+            # Order all the hostnames, and find unique ones
+            unique_hosts = np.unique(all_hostnames)
+            # Numpy automatically sorts them.
+        else:
+            unique_hosts = None
+
+        # Broadcast the list of hostnames:
+        unique_hosts = COMM_WORLD.bcast(unique_hosts, root=0)
+
+        # Find the integer for this host in the list of hosts:
+        i = int(np.where(unique_hosts == hostname)[0])
+        # print(f"{hostname} found itself at index {i}")
+
+        new_comm = COMM_WORLD.Split(color=i)
+        if verbose:
+            print("[INFO (DDP)] Global rank {} of {} mapped to local rank {} of {} on host {}".format(COMM_WORLD.Get_rank(), COMM_WORLD.Get_size(), new_comm.Get_rank(), new_comm.Get_size(), hostname))
+
+        # The rank in the new communicator - which is host-local only - IS the local rank:
+        return new_comm.Get_rank()
+
+
+    def _setup_ddp(self):
+
+        size = MPI.COMM_WORLD.Get_size()
+        rank = MPI.COMM_WORLD.Get_rank()
+
+        local_rank_key_options = [
+                'OMPI_COMM_WORLD_LOCAL_RANK',
+                'MV2_COMM_WORLD_LOCAL_RANK',
+                'MPI_LOCALRANKID',
+                'PMI_LOCAL_RANK',
+                ]
+
+        # testable default value:
+        local_rank = None
+        for key in local_rank_key_options:
+            if key in os.environ:
+                local_rank = os.environ[key]
+                print("[INFO (DDP)] Determined local rank through environment variable {}".format(key))
+                break
+        if local_rank is None:
+            # Try the last-ditch effort of home-brewed local rank deterimination
+            # This needs to be a collective call!
+            try:
+                local_rank = self._discover_local_rank()
+            except:
+                # logger.error("Can not determine local rank for DDP")
+                raise Exception("[INFO (DDP)] DDP failed to initialize due to local rank issue")
+
+
+        os.environ["RANK"] = str(rank)
+        os.environ["WORLD_SIZE"] = str(size)
+
+        # It will want the master address too, which we'll broadcast:
+        if rank == 0:
+            master_addr = socket.gethostname()
+            sock = socket.socket()
+            sock.bind(('',0))
+            master_port  = sock.getsockname()[1]
+            master_port  = 2345
+        else:
+            master_addr = None
+            master_port = None
+        # logger.info(f"DDP Using master IP {master_addr}")
+        master_addr = MPI.COMM_WORLD.bcast(master_addr, root=0)
+        master_port = MPI.COMM_WORLD.bcast(master_port, root=0)
+        os.environ["MASTER_ADDR"] = master_addr
+        os.environ["MASTER_PORT"] = str(master_port)
+
+        backend = 'nccl'
+        init_method = 'env://'
+
+        dist.init_process_group(
+            backend     = backend,
+            init_method = init_method,
+            world_size  = size,
+            rank        = rank,
+            timeout     = datetime.timedelta(seconds=120)
+        )
+
+        return local_rank, rank, size
+
 
     def init_app_manager(
         self, 
@@ -97,23 +214,37 @@ class PyTorchInterfaceGPU(PyTorchInterface):
 
         # multi gpu support
         self.app_manager._MGPU_SUPPORT = mgpu_support
-        print("[INFO] App Supports MGPUs (using %s): %s" %(self._MGPU_STRATEGY, self.app_manager._MGPU_SUPPORT))
+        if self._GLOBAL_RANK == 0:
+            print("[INFO] App Supports MGPUs (using %s): %s" %(self._MGPU_STRATEGY, self.app_manager._MGPU_SUPPORT))
 
         # if multiple GPUs are supported by the app
         if self.app_manager._MGPU_SUPPORT:
             # if horovod
             if self._MGPU_STRATEGY == "HVD":
-                print("[INFO] Initializing Horovod")
+                if self._GLOBAL_RANK == 0:
+                    print("[INFO (HVD)] Initializing Horovod")
                 import horovod.torch as hvd_torch
                 self.hvd_torch = hvd_torch
                 self.hvd_torch.init()
-                print("[INFO] Rank %s of %s" %(self.hvd_torch.rank(), self.hvd_torch.size()))
+                self._MGPU_SIZE = self.hvd_torch.size()
+                self._LOCAL_RANK = self.hvd_torch.local_rank()
+                self._GLOBAL_RANK = self.hvd_torch.rank()
                 
-                print("[INFO] Setting devices")
-                torch.cuda.set_device(self.hvd_torch.local_rank())
+                if self._GLOBAL_RANK == 0:
+                    print("[INFO (HVD)] Rank %s of %s" %(self._GLOBAL_RANK, self._MGPU_SIZE))
+                    print("[INFO (HVD)] Setting devices")
+                torch.cuda.set_device(self._LOCAL_RANK)
 
                 # Horovod: limit # of CPU threads to be used per worker.
                 torch.set_num_threads(1)
+
+            elif self._MGPU_STRATEGY == "DDP":
+                # On each node, discover the rank/size/local_rank with MPI:
+                self._LOCAL_RANK, self._GLOBAL_RANK, self._MGPU_SIZE = self._setup_ddp()
+                print("[INFO (DDP)] Running basic DDP example on local rank {}, rank {} of {}.".format(self._LOCAL_RANK, self._GLOBAL_RANK, self._MGPU_SIZE))
+                print("[INFO (DDP)] Rank {} setup complete".format(self._GLOBAL_RANK))
+
+            print(type(self._GLOBAL_RANK))
         
     def init_data_manager(
         self,
@@ -148,18 +279,21 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         #             print("Number of files: ", self._N_FILES, self._TRAINING_FILES)
 
         # shard data files
-        if self._MGPU_STRATEGY == "HVD":
-            print("[INFO] Sharding data files for Horovod")
-            splitter = self.data_manager._N_FILES // self.hvd_torch.size()
+        if self._MGPU_STRATEGY in ["HVD", "DDP"]:
+            if self._GLOBAL_RANK == 0:
+                print("[INFO (HVD)] Sharding data files for Horovod")
+            splitter = self.data_manager._N_FILES // self._MGPU_SIZE
             # splitter
-            print(self.data_manager._N_FILES, splitter, splitter*self.hvd_torch.rank(), splitter*(self.hvd_torch.rank()+1))
+            if self._GLOBAL_RANK == 0:
+                print(self.data_manager._N_FILES, splitter, splitter*self._GLOBAL_RANK, splitter*(self._GLOBAL_RANK+1))
             # divide training files
-            self.data_manager._TRAINING_FILES = self.data_manager._TRAINING_FILES[splitter*self.hvd_torch.rank():splitter*(self.hvd_torch.rank()+1)]
+            self.data_manager._TRAINING_FILES = self.data_manager._TRAINING_FILES[splitter*self._GLOBAL_RANK:splitter*(self._GLOBAL_RANK+1)]
             self.data_manager._N_FILES = len(self.data_manager._TRAINING_FILES)
         
         # files handled by single GPU
-        print("[INFO] Number of training files:", self.data_manager._N_FILES)
-        print("[INFO] Number of validation files:", self.data_manager._N_VAL_FILES)
+        if self._GLOBAL_RANK == 0:
+            print("[INFO] Number of training files:", self.data_manager._N_FILES)
+            print("[INFO] Number of validation files:", self.data_manager._N_VAL_FILES)
 
     def load_training_data(
         self,
@@ -182,12 +316,25 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         opt_params,
         criterion_params
     ):
+        if self._MGPU_STRATEGY == "DDP":
+            self._DEVICE = f'cuda:{self._LOCAL_RANK}'
+        
         super().init_training_engine(
             model_name=model_name,
             model_parameters=model_parameters,
-            criterion_params=criterion_params
+            criterion_params=criterion_params,
+            device=self._DEVICE
         )
-        self.model.to(self._DEVICE)
+        
+        if self._MGPU_STRATEGY == "DDP":
+            self.model.to(self._DEVICE)
+            from torch.nn.parallel import DistributedDataParallel as DDP
+            self.model = DDP(self.model, device_ids=[self._DEVICE])
+            if self._GLOBAL_RANK == 0:
+                print("[INFO (DDP)] Transforming model to DDP model.")
+        else:
+            self.model.to(self._DEVICE)
+        
         self.opt_name = self.app_manager.get_opt()
         if self.opt_name == "SGD":
             self.optimizer = torch.optim.SGD(
@@ -201,6 +348,8 @@ class PyTorchInterfaceGPU(PyTorchInterface):
             )
 
         if self._MGPU_STRATEGY == "HVD":
+            if self._GLOBAL_RANK == 0:
+                print("[INFO (HVD)] Distributing the optimizer and broadcasting parameters.")
             self.optimizer = self.hvd_torch.DistributedOptimizer(self.optimizer, named_parameters=self.model.named_parameters())
             
             self.hvd_torch.broadcast_parameters(self.model.state_dict(), root_rank=0)
@@ -249,6 +398,8 @@ class PyTorchInterfaceGPU(PyTorchInterface):
                     self.scaler.scale(loss).backward()
                 
                     if self._MGPU_STRATEGY == "HVD":
+                        if self._GLOBAL_RANK == 0:
+                            print("[INFO (HVD)] Synchronizing and scaling the model parameters.")
                         # Make sure all async allreduces are done
                         self.optimizer.synchronize()
 
@@ -277,13 +428,28 @@ class PyTorchInterfaceGPU(PyTorchInterface):
             epoch_time[epoch] = epoch_stop_time-epoch_start_time
             avg_batch_time[epoch] = epoch_time[epoch] / num_batches
             
-            print("Epoch (", epoch, "/", self._N_EPOCHS, "): MSE: ", all_loss[epoch])
+            # print("Local Rank:", self._LOCAL_RANK)
+            if self._GLOBAL_RANK == 0:
+                print("[INFO] Epoch (", epoch+1, "/", self._N_EPOCHS, "): MSE: ", all_loss[epoch])
                 
         m_stop = time.time()
-        model_training_time = m_stop - m_start
-        print("============> Model Fitting: ", model_training_time)
+        model_training_time = torch.tensor([m_stop - m_start]).to(self._DEVICE)
+        if self._GLOBAL_RANK == 0:
+            print("============> (Before) Model Fitting: ", model_training_time)
+        # sum of all the times
+        if self._MGPU_STRATEGY == "HVD":
+            model_training_time = self.hvd_torch.allreduce(model_training_time)
+            # print("[INFO (HVD)] Total Training Time", model_training_time)
+        elif self._MGPU_STRATEGY == "DDP":
+            dist.all_reduce(model_training_time, op=dist.ReduceOp.SUM)
+            model_training_time = model_training_time / self._MGPU_SIZE
         
-        
+        if self._GLOBAL_RANK == 0:
+            print("============> (After) Model Fitting: ", model_training_time)
+
+        if self._MGPU_STRATEGY == "DDP":
+            dist.barrier()
+            dist.destroy_process_group()        
 
     # def load_data(
     #     self,
