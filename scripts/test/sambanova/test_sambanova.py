@@ -8,7 +8,7 @@ import argparse
 # ------------------------------- CUSTOM FUNCTIONS ------------------------------------------------
 # Custom Library
 import sys
-sys.path.append('../')
+sys.path.append('../../../')
 from proxy_apps.framework.rdu import RDU
 from proxy_apps.apps import LSTMProxyApp, CNNProxyApp
 

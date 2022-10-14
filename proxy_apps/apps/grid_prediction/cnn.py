@@ -81,13 +81,6 @@ class CNNProxyApp(ProxyApp):
         pass    
 
     
-class Lambda(torch.nn.Module):
-    def __init__(self):
-        super(Lambda, self).__init__()
-        
-    def forward(self, x): 
-        return x[:, -3:, :]
-
 # Neural Network
 class TFCNN(tf.keras.Model):
     def __init__(self, bw_size, fw_size, n_features):
@@ -112,6 +105,13 @@ class TFCNN(tf.keras.Model):
         # print("Dense:", fx.shape)
         return self.output_layer(fx)
 
+class Lambda(torch.nn.Module):
+    def __init__(self):
+        super(Lambda, self).__init__()
+        
+    def forward(self, x): 
+        return x[:, -3:, :]
+
 class PTCNN(torch.nn.Module):
     def __init__(self, model_name, model_parameters, criterion):
         super(PTCNN, self).__init__()
@@ -127,7 +127,7 @@ class PTCNN(torch.nn.Module):
     def forward(self, inputs, targets):
         # print(x.shape)
         # Run through Conv1d and Pool1d layers
-        # print("Input:", inputs.shape)
+        print("Input:", inputs)
         l = self.lambda_layer(inputs)
         # print("Lambda:", l.shape)
         c = self.conv_layer(l.permute(0, 2, 1))
@@ -139,5 +139,6 @@ class PTCNN(torch.nn.Module):
         loss = self.criterion(
             out.reshape(-1, self.fw_size*self.n_features), 
             targets.reshape(-1, self.fw_size*self.n_features))
-        # print("Dense:", out.shape)
+        print("Dense:", out.shape)
+        print("Dense (Reshaped):", out.view((out.shape[0], self.fw_size, self.n_features)).shape)
         return out.view((out.shape[0], self.fw_size, self.n_features)), loss

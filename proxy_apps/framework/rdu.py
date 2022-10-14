@@ -1,5 +1,6 @@
 import os
 
+from termcolor import colored
 import sambaflow.samba.utils as utils
 from sambaflow import samba
 from sambaflow.samba.schema.snconfig import SNConfig
@@ -115,6 +116,31 @@ class PyTorchInterfaceSN(PyTorchInterface):
         inputs = (ipt, tgt)
         return inputs
 
+    def _get_args(self, command):
+        migrated_arguments = {}
+        if command=="compile":
+            argv_params = [command, '--pef-name='+self.app_manager._APP_NAME, '--output-folder='+self.app_manager._OUTPUT_DIR]
+        elif command=="run":
+            argv_params = [command, '--pef='+self.PEF_FILE]
+        
+        deprecated_args_found = set(migrated_arguments.keys()) & set(argv_params)
+        if deprecated_args_found:
+            for arg in deprecated_args_found:
+                print(
+                    colored(f'This specific argument {arg} is being deprecated, new argument is {migrated_arguments[arg]}',
+                            'red'))
+
+        args_cli = parse_app_args(argv=argv_params)
+        args_composed = args_cli
+        _ = SambaConfig(args_composed, SNConfig).get_all_params()
+
+        args = args_composed
+        # when it is not distributed mode, local rank is -1.
+        args.local_rank = dist.get_rank() if dist.is_initialized() else -1
+        print(args)
+
+        return args
+
     def init_training_engine(
         self,
         model_name,
@@ -129,9 +155,16 @@ class PyTorchInterfaceSN(PyTorchInterface):
             criterion_params=criterion_params
         )
 
+        # PEF file
+        self.PEF_FILE = os.path.join(
+            self.app_manager._OUTPUT_DIR,
+            self.app_manager._APP_NAME + "/" + self.app_manager._APP_NAME + ".pef"
+        )
+
         # Sync model parameters with RDU memory
         samba.from_torch_model_(self.model)
 
+        # get optimizer for model training
         self.opt_params = opt_params
         self.opt_name = self.app_manager.get_opt()
         print(opt_params)
@@ -154,26 +187,32 @@ class PyTorchInterfaceSN(PyTorchInterface):
 
         # Compile the model to generate a PEF (Plasticine Executable Format) binary
         # utils.get_file_dir(__file__)
-        # Create random input and output data for testing
 
+        # Create random input and output data for testing
         inputs = self._create_rand_arr()
 
-        self.args = parse_app_args(
-            argv=['compile', '--pef-name='+self.app_manager._APP_NAME, '--output-folder='+self.app_manager._OUTPUT_DIR]
-        )
-        self.PEF_FILE = os.path.join(
-            self.app_manager._OUTPUT_DIR,
-            self.app_manager._APP_NAME + "/" + self.app_manager._APP_NAME + ".pef"
-        )
-            
+        # Compile if PEF doesn't exist or a new PEF file is required    
         if not (os.path.exists(self.PEF_FILE) and (not refresh_pef_file)):
+            # collect all arguments
+            args = self._get_args(command="compile")
+            print(
+                "---------- Compile Arguments ------------- \n",
+                args,
+                "\n------------------------------------------- \n",
+            )
+            print(
+                "---------- Compile Inputs ------------- \n",
+                inputs,
+                "\n------------------------------------------- \n",
+            )
+            
             samba.session.compile(self.model,
                                 inputs,
                                 self.optimizer,
                                 name=self.app_manager._APP_NAME,
                                 app_dir=self.app_manager._OUTPUT_DIR,
-                                config_dict=vars(self.args),
-                                pef_metadata=get_pefmeta(self.args, self.model))
+                                config_dict=vars(args),
+                                pef_metadata=get_pefmeta(args, self.model))
 
             print("[INFO] PEF File: %s" %(self.PEF_FILE))
 
@@ -181,19 +220,30 @@ class PyTorchInterfaceSN(PyTorchInterface):
         self,
         train_loader,
         n_epochs,
-        mapping="spatial",
         num_spatial_batches=1
     ):
-        inputs = self._create_rand_arr("iwindow", "owindow")
+        args = self._get_args(command="run")
+        print(
+            "---------- Training Arguments ------------- \n",
+            args,
+            "\n------------------------------------------- \n",
+        )
+        
+        inputs = self._create_rand_arr()
+        print(
+            "---------- Train Inputs ------------- \n",
+            inputs,
+            "\n------------------------------------------- \n",
+        )
 
         # Build inputs of the correct shape for spatial
-        if mapping == "spatial":
+        if args.mapping == "spatial":
             # print(inputs[0].shape, inputs[1].shape)
             inputs = (samba.SambaTensor(samba.to_torch(inputs[0]).repeat(num_spatial_batches, 1),
-                                        name='iwindow',
+                                        name='inp_window',
                                         batch_dim=0),
                       samba.SambaTensor(samba.to_torch(inputs[1]).repeat(num_spatial_batches),
-                                        name='owindow',
+                                        name='out_window',
                                         batch_dim=0))
 
         # Trace the compiled graph to initialize the model weights and input/output tensors
@@ -202,13 +252,14 @@ class PyTorchInterfaceSN(PyTorchInterface):
         # Mapping refers to how the model layers are arranged in a pipeline for execution.
         # Valid options: 'spatial' or 'section'
         print("--------------------- Hello --------------------------------")
-        print(self.PEF_FILE)
+        print(args.pef)
+        print(inputs)
         traced_outputs = utils.trace_graph(self.model,
                                            inputs,
                                            self.optimizer,
-                                           pef=self.PEF_FILE,
-                                           mapping=mapping,
-                                           distlearn_config=self.args.distlearn_config)
+                                           pef=args.pef,
+                                           mapping=args.mapping,
+                                           distlearn_config=args.distlearn_config)
 
     
         # Get data loaders for training and test data
@@ -232,8 +283,8 @@ class PyTorchInterfaceSN(PyTorchInterface):
                 loss, outputs = samba.session.run(input_tensors=[sn_inp, sn_out],
                                                 output_tensors=traced_outputs,
                                                 hyperparam_dict=hyperparam_dict,
-                                                data_parallel=self.args.data_parallel,
-                                                reduce_on_rdu=self.args.reduce_on_rdu)
+                                                data_parallel=args.data_parallel,
+                                                reduce_on_rdu=args.reduce_on_rdu)
 
                 # Sync the loss and outputs with host memory
                 loss, outputs = samba.to_torch(loss), samba.to_torch(outputs)
