@@ -23,17 +23,26 @@ echo "Total #Ranks: ${N_RANKS}"
 echo "Current Directory: "
 pwd
 
+export TEMP=/tmp/
+export TMP=/tmp/
+export TEMPDIR=/tmp/
+export TMPDIR=/tmp/
+
 ###### --hostfile ${COBALT_NODEFILE} 
 ###### NCCL_DEBUG=INFO mpirun -n $N_RANKS --map-by node python ../scripts/test/test_ddp_mpic.py
 ###### mpirun -n $N_RANKS --hostfile ${COBALT_NODEFILE} --npernode 8 -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE python ../../scripts/test/test_ddp_mpic.py
 mpirun -n $N_RANKS --hostfile ${COBALT_NODEFILE} --npernode 8 \
 -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE \
+nsys profile --kill=none --trace=cuda,osrt,cudnn,cublas \
+-o /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_${2}${N_RANKS}_${1}_%p \
+-w true \
+--force-overwrite=true \
 python ../../scripts/test/test_gpu.py \
---config_file ../../scripts/configs/config_${2}.json \
+--config_file ../../scripts/configs/config_${2}_sn.json \
 --platform gpu \
 --machine_name a100 \
 --n_gpus $N_RANKS \
---n_cpus 1 \
+--n_cpus 0 \
 --n_epochs 20 \
 --batch_size 2048 \
 --mpgu_strategy ${1}

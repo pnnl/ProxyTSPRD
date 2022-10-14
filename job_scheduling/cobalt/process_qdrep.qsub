@@ -1,0 +1,21 @@
+#!/bin/bash -l
+#COBALT -n 1
+#COBALT -t 0:20:00 
+#COBALT -A GRACE
+#COBALT -q single-gpu
+#COBALT --attrs filesystems=home
+#COBALT -o ./logs/processqdrep_out
+#COBALT -e ./logs/processqdrep_err
+
+i=0
+for file in /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/*.qdrep
+do
+    i=$(( i + 1 ))
+    name=${file##*/}
+    echo "$file"
+    if [ "$i" -gt 0 ]; then
+        #echo "helloooooooooooooooo"
+        #echo ""
+        nsys stats -f csv -o . --force-overwrite=true $file
+    fi
+done

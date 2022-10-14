@@ -62,9 +62,9 @@ if __name__ == "__main__":
 
     # init app
     if _CONFIG["info"]["app_name"] == "LSTMProxyApp":
-        app = LSTMProxyApp()
+        app = LSTMProxyApp(args.platform)
     elif _CONFIG["info"]["app_name"] == "CNNProxyApp":
-        app = CNNProxyApp()
+        app = CNNProxyApp(args.platform)
     else:
         sys.exit("[ERROR] Invalid App")
     
