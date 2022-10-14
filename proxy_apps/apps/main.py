@@ -1,6 +1,6 @@
 class ProxyApp:
-    def __init__(self) -> None:
-        pass
+    def __init__(self, platform) -> None:
+        self._PLATFORM = platform
 
     def get_pt_training_data(
         self,

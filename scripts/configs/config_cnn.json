@@ -32,13 +32,8 @@
 	},
 	"model_info": {
 		"model_name": "CNN",
-<<<<<<< HEAD
 		"model_dir": "/people/jain432/pacer_saudade/models/ProxyTSPRD_IPDPS/",
 		"tb_log_dir": "/people/jain432/pacer_saudade/logs/",
-=======
-		"model_dir": "/home/milanjain91/output/ProxyTSPRD_IPDPS/models/",
-		"tb_log_dir": "/home/milanjain91/output/ProxyTSPRD_IPDPS/logs/",
->>>>>>> 1684fd7d396111893e65d1b8ef3c2f706328ff21
 		"fill_data": "False",
 		"model_parameters": {
 			"bw_size": 60,

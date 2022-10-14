@@ -507,6 +507,10 @@ def main(argv):
             inputs,
             "\n------------------------------------------- \n",
         )
+        print("--------------------- Hello-1 --------------------------------")
+        print(args.pef)
+        print(args.distlearn_config)
+        print("--------------------- Hello-2 --------------------------------")
         traced_outputs = utils.trace_graph(model,
                                            inputs,
                                            optimizer,
@@ -514,6 +518,7 @@ def main(argv):
                                            mapping=args.mapping,
                                            distlearn_config=args.distlearn_config)
 
+        print("--------------------- Hello-3 --------------------------------")
         if args.command == "test":
             # Test the model's functional correctness. This tests if the result of execution
             # on the RDU is comparable to that on a CPU. CPU run results are used as reference.

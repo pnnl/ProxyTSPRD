@@ -1,3 +1,4 @@
+import sys
 import torch
 from torch.autograd import Variable
 
@@ -6,8 +7,8 @@ from ..main import ProxyApp
 from .data_readers import GridNetworkSequentialDataGenerator_PT, GridNetworkSequentialDataGenerator_TF, get_indexer
 
 class CNNProxyApp(ProxyApp):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, platform) -> None:
+        super().__init__(platform)
 
     def get_pt_training_data(
         self,
@@ -53,10 +54,15 @@ class CNNProxyApp(ProxyApp):
     def get_pt_model(
         self,
         model_name,
-        model_parameters
+        model_parameters,
+        device=None
     ):
         super().get_pt_model()
-        self.model = PTCNN(model_name, model_parameters)
+        if self._PLATFORM == "gpu":
+            self.model = PTCNN(model_name, model_parameters)
+        elif self._PLATFORM == "rdu":
+            criterion = self.get_pt_criterion()
+            self.model = PTCNN_SN(model_name, model_parameters, criterion)
         return self.model
 
     def get_opt(
@@ -66,7 +72,7 @@ class CNNProxyApp(ProxyApp):
 
     def get_pt_criterion(
         self,
-        criterion_params
+        criterion_params=None
     ):
         criterion = torch.nn.MSELoss()
         return criterion
@@ -144,8 +150,9 @@ class PTCNN(torch.nn.Module):
         return out.view((out.shape[0], self.fw_size, self.n_features))
 
 class PTCNN_SN(torch.nn.Module):
-    def __init__(self, model_name, model_parameters, criterion):
-        super(PTCNN, self).__init__()
+    def __init__(self, model_name, model_parameters, criterion, device=None):
+        super(PTCNN_SN, self).__init__()
+        self.device = device
         self.bw_size = model_parameters["bw_size"] # size of the backward window
         self.fw_size = model_parameters["fw_size"] # size of the backward window
         self.n_features = model_parameters["n_features"] # size of the backward window
@@ -158,8 +165,9 @@ class PTCNN_SN(torch.nn.Module):
     def forward(self, inputs, targets):
         # print(x.shape)
         # Run through Conv1d and Pool1d layers
-        print("Input:", inputs)
-        l = self.lambda_layer(inputs)
+        # print("Input:", inputs)
+        # l = self.lambda_layer(inputs)
+        l = inputs[:, -3:, :]
         # print("Lambda:", l.shape)
         c = self.conv_layer(l.permute(0, 2, 1))
         # print("Conv:", c.shape)
@@ -170,6 +178,6 @@ class PTCNN_SN(torch.nn.Module):
         loss = self.criterion(
             out.reshape(-1, self.fw_size*self.n_features), 
             targets.reshape(-1, self.fw_size*self.n_features))
-        print("Dense:", out.shape)
-        print("Dense (Reshaped):", out.view((out.shape[0], self.fw_size, self.n_features)).shape)
-        return out.view((out.shape[0], self.fw_size, self.n_features)), loss
+        # print("Dense:", out.shape)
+        # print("Dense (Reshaped):", out.view((out.shape[0], self.fw_size, self.n_features)).shape)
+        return loss, out.view((out.shape[0], self.fw_size, self.n_features))                                                                                                  

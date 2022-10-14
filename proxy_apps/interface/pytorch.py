@@ -91,7 +91,7 @@ class PyTorchInterface(Interface):
         model_name,
         model_parameters,
         criterion_params,
-        device
+        device=None
     ):
         super().init_training_engine(
             model_name=model_name,

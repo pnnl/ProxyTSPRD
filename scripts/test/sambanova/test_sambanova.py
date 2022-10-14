@@ -75,7 +75,11 @@ if __name__ == "__main__":
     # select the interface
     interface = framework.use_pytorch()
     # init app
-    cnn_app = CNNProxyApp()
+    if _CONFIG["info"]["app_name"] == "CNNProxyApp":
+        cnn_app = CNNProxyApp(args.platform)
+    elif _CONFIG["info"]["app_name"] == "LSTMProxyApp":
+        cnn_app = LSTMProxyApp(args.platform)
+    
     # init app manager
     interface.init_app_manager(
         app=cnn_app,

@@ -1,4 +1,5 @@
 import os
+import sys
 
 from termcolor import colored
 import sambaflow.samba.utils as utils
@@ -168,10 +169,11 @@ class PyTorchInterfaceSN(PyTorchInterface):
         self.opt_params = opt_params
         self.opt_name = self.app_manager.get_opt()
         print(opt_params)
+        print("==== OPT MOMENTUM", type(opt_params['momentum']))
         if self.opt_name == "SGD":
             self.optimizer = samba.optim.SGD(
                 self.model.parameters(),
-                lr=opt_params['lr'],
+                lr=opt_params['learning_rate'],
                 momentum=opt_params['momentum'],
                 weight_decay=opt_params['weight_decay'])
         else:
@@ -222,6 +224,7 @@ class PyTorchInterfaceSN(PyTorchInterface):
         n_epochs,
         num_spatial_batches=1
     ):
+        # sys.exit()
         args = self._get_args(command="run")
         print(
             "---------- Training Arguments ------------- \n",
@@ -251,9 +254,10 @@ class PyTorchInterfaceSN(PyTorchInterface):
         # The PEF required for tracing is the binary generated during compilation
         # Mapping refers to how the model layers are arranged in a pipeline for execution.
         # Valid options: 'spatial' or 'section'
-        print("--------------------- Hello --------------------------------")
+        print("--------------------- Hello-1 --------------------------------")
         print(args.pef)
-        print(inputs)
+        print(args.distlearn_config)
+        print("--------------------- Hello-2 --------------------------------")
         traced_outputs = utils.trace_graph(self.model,
                                            inputs,
                                            self.optimizer,
@@ -262,6 +266,7 @@ class PyTorchInterfaceSN(PyTorchInterface):
                                            distlearn_config=args.distlearn_config)
 
     
+        print("--------------------- Hello-3 --------------------------------")
         # Get data loaders for training and test data
         # train_loader, test_loader = prepare_dataloader(args)
 
