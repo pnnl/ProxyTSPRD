@@ -1,0 +1,25 @@
+Jobid: 10112691
+qsub -n 4 -t 0:20:00 -A GRACE -q full-node --attrs filesystems=home -o ./logs_profiler/lstm_HVD_4_fp64_out -e ./logs_profiler/lstm_HVD_4_fp64_err ddp_job.qsub HVD lstm fp64
+Thu Nov 03 17:48:39 2022 +0000 (UTC) submitted with cwd set to: /home/milanjain91/ProxyTSPRD/job_scheduling/cobalt
+jobid 10112691 submitted from terminal /dev/pts/4
+Thu Nov 03 17:47:08 2022 +0000 (UTC) 
+Thu Nov 03 17:47:08 2022 +0000 (UTC) Command: '/usr/bin/ssh' 'thetagpu22' '/usr/bin/cobalt-launcher.py' '--nf' '/var/tmp/cobalt.10112691' '--jobid' '10112691' '--cwd' '/home/milanjain91/ProxyTSPRD/job_scheduling/cobalt' '--env' 'COBALT_JOBID=10112691' '/home/milanjain91/ProxyTSPRD/job_scheduling/cobalt/ddp_job.qsub' 'HVD' 'lstm' 'fp64'
+Thu Nov 03 17:47:08 2022 +0000 (UTC) 
+Thu Nov 03 17:47:08 2022 +0000 (UTC) Environment:
+Thu Nov 03 17:47:08 2022 +0000 (UTC) SHELL=/bin/bash
+Thu Nov 03 17:47:08 2022 +0000 (UTC) COBALT_NODEFILE=/tmp/tmpHn506U
+Thu Nov 03 17:47:08 2022 +0000 (UTC) COBALT_PARTNAME=thetagpu22
+Thu Nov 03 17:47:08 2022 +0000 (UTC) COBALT_JOBID=10112691
+Thu Nov 03 17:47:08 2022 +0000 (UTC) COBALT_STARTTIME=1667497617
+Thu Nov 03 17:47:08 2022 +0000 (UTC) LOGNAME=milanjain91
+Thu Nov 03 17:47:08 2022 +0000 (UTC) USER=milanjain91
+Thu Nov 03 17:47:08 2022 +0000 (UTC) COBALT_ENDTIME=1667498817
+Thu Nov 03 17:47:08 2022 +0000 (UTC) COBALT_PARTSIZE=4
+Thu Nov 03 17:47:08 2022 +0000 (UTC) HOME=/home/milanjain91
+Thu Nov 03 17:47:08 2022 +0000 (UTC) COBALT_JOBSIZE=4
+Thu Nov 03 17:47:08 2022 +0000 (UTC) 
+Thu Nov 03 17:47:08 2022 +0000 (UTC) Info: stdin received from /dev/null
+Thu Nov 03 17:47:08 2022 +0000 (UTC) Info: stdout sent to /home/milanjain91/ProxyTSPRD/job_scheduling/cobalt/./logs_profiler/lstm_HVD_4_fp64_out
+Thu Nov 03 17:47:08 2022 +0000 (UTC) Info: stderr sent to /home/milanjain91/ProxyTSPRD/job_scheduling/cobalt/./logs_profiler/lstm_HVD_4_fp64_err
+Thu Nov 03 17:47:08 2022 +0000 (UTC) 
+Thu Nov 03 18:07:12 2022 +0000 (UTC) Info: maximum execution time exceeded; initiating job termination

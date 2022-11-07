@@ -34,7 +34,7 @@ export TMPDIR=/tmp/
 mpirun -n $N_RANKS --hostfile ${COBALT_NODEFILE} --npernode 8 \
 -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE \
 nsys profile --kill=none --trace=cuda,osrt,cudnn,cublas \
--o /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_${2}${N_RANKS}_${1}_%p \
+-o /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_${2}${N_RANKS}_${1}_${3}_%p \
 -w true \
 --force-overwrite=true \
 python ../../scripts/test/test_gpu.py \
@@ -45,4 +45,5 @@ python ../../scripts/test/test_gpu.py \
 --n_cpus 0 \
 --n_epochs 20 \
 --batch_size 2048 \
---mpgu_strategy ${1}
+--mpgu_strategy ${1} \
+--dtype ${3}

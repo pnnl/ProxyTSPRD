@@ -1,0 +1,13 @@
+/home/milanjain91/.bashrc: line 1: module: command not found
+--------------------------------------------------------------------------
+No executable was specified on the orterun command line.
+
+Aborting.
+--------------------------------------------------------------------------
+2022-11-02 18:07:50.455480: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   thetagpu03
+  Local device: mlx5_0
+--------------------------------------------------------------------------

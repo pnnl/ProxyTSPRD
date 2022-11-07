@@ -7,16 +7,11 @@ class DataManager:
         self,
         training_data_dir,
         input_file_format,
-        dtype='float64',
         n_training_files=-1,
         val_data_dir=None,
         print_rank=0
     ) -> None:
         self._PRINT_RANK = print_rank
-        # data type
-        self._DTYPE = dtype
-        if self._PRINT_RANK:
-            print("[INFO] Default Data Type: %s" %(self._DTYPE))
         
         # training data
         self._TRAINING_DATA_DIR = os.path.join(training_data_dir)
@@ -71,7 +66,6 @@ class TimeSeriesDataManager(DataManager):
         self, 
         training_data_dir, 
         input_file_format, 
-        dtype='float64', 
         n_training_files=-1, 
         val_data_dir=None,
         print_rank=0
@@ -79,7 +73,6 @@ class TimeSeriesDataManager(DataManager):
         super().__init__(
             training_data_dir=training_data_dir, 
             input_file_format=input_file_format, 
-            dtype=dtype, 
             n_training_files=n_training_files, 
             val_data_dir=val_data_dir,
             print_rank=print_rank

@@ -1,0 +1,568 @@
+/home/milanjain91/.bashrc: line 1: module: command not found
+/home/milanjain91/.bashrc: line 1: module: command not found
+2022-10-12 04:47:19.199895: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-10-12 04:47:19.199877: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-10-12 04:47:19.199868: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-10-12 04:47:19.199881: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-10-12 04:47:19.200555: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-10-12 04:47:19.201930: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-10-12 04:47:19.203036: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-10-12 04:47:19.209936: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-10-12 04:47:19.980210: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-10-12 04:47:19.980208: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-10-12 04:47:19.980208: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-10-12 04:47:19.980309: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-10-12 04:47:19.980342: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-10-12 04:47:19.980290: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-10-12 04:47:19.980476: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-10-12 04:47:19.985601: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+python: ../nptl/pthread_mutex_lock.c:428: __pthread_mutex_lock_full: Assertion `e != ESRCH || !robust' failed.
+[thetagpu22:3933238] *** Process received signal ***
+[thetagpu22:3933238] Signal: Aborted (6)
+[thetagpu22:3933238] Signal code:  (-6)
+[thetagpu22:3933238] [ 0] /lib/x86_64-linux-gnu/libpthread.so.0(+0x14420)[0x7fdf3d7c2420]
+[thetagpu22:3933238] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7fdf3d5ff00b]
+[thetagpu22:3933238] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7fdf3d5de859]
+[thetagpu22:3933238] [ 3] /lib/x86_64-linux-gnu/libc.so.6(+0x22729)[0x7fdf3d5de729]
+[thetagpu22:3933238] [ 4] /lib/x86_64-linux-gnu/libc.so.6(+0x33fd6)[0x7fdf3d5effd6]
+[thetagpu22:3933238] [ 5] /lib/x86_64-linux-gnu/libpthread.so.0(+0xaed9)[0x7fdf3d7b8ed9]
+[thetagpu22:3933238] [ 6] /lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.1(__cuda_CallJitEntryPoint+0x59)[0x7fdeeb70d399]
+[thetagpu22:3933238] [ 7] /lib/x86_64-linux-gnu/libcuda.so(+0x3fa734)[0x7fdeecd73734]
+[thetagpu22:3933238] [ 8] /lib/x86_64-linux-gnu/libcuda.so(+0x1cc25b)[0x7fdeecb4525b]
+[thetagpu22:3933238] [ 9] /lib/x86_64-linux-gnu/libcuda.so(+0x1ccd8a)[0x7fdeecb45d8a]
+[thetagpu22:3933238] [10] /lib/x86_64-linux-gnu/libcuda.so(+0x2680aa)[0x7fdeecbe10aa]
+[thetagpu22:3933238] [11] /lib/x86_64-linux-gnu/libcuda.so(+0x26882b)[0x7fdeecbe182b]
+[thetagpu22:3933238] [12] /usr/local/cuda-11.3/lib64/libcublas.so.11(+0xa12924)[0x7fde14539924]
+[thetagpu22:3933238] [13] /usr/local/cuda-11.3/lib64/libcublas.so.11(+0xa022be)[0x7fde145292be]
+[thetagpu22:3933238] [14] /usr/local/cuda-11.3/lib64/libcublas.so.11(+0xa19044)[0x7fde14540044]
+[thetagpu22:3933238] [15] /usr/local/cuda-11.3/lib64/libcublas.so.11(+0xa1d80a)[0x7fde1454480a]
+[thetagpu22:3933238] [16] /usr/local/cuda-11.3/lib64/libcublas.so.11(+0xa1daa4)[0x7fde14544aa4]
+[thetagpu22:3933238] [17] /usr/local/cuda-11.3/lib64/libcublas.so.11(+0xa0f9ec)[0x7fde145369ec]
+[thetagpu22:3933238] [18] /usr/local/cuda-11.3/lib64/libcublas.so.11(+0x9eea7a)[0x7fde14515a7a]
+[thetagpu22:3933238] [19] /usr/local/cuda-11.3/lib64/libcublas.so.11(+0xa24fa5)[0x7fde1454bfa5]
+[thetagpu22:3933238] [20] /usr/local/cuda-11.3/lib64/libcublas.so.11(+0xf298c)[0x7fde13c1998c]
+[thetagpu22:3933238] [21] /usr/local/cuda-11.3/lib64/libcublas.so.11(+0xf3d80)[0x7fde13c1ad80]
+[thetagpu22:3933238] [22] /usr/local/cuda-11.3/lib64/libcublas.so.11(+0xf22c9)[0x7fde13c192c9]
+[thetagpu22:3933238] [23] /usr/local/cuda-11.3/lib64/libcublas.so.11(cublasDestroy_v2+0x14d)[0x7fde13cf1e2d]
+[thetagpu22:3933238] [24] /lus/theta-fs0/software/thetagpu/conda/2021-06-26/mconda3/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so(+0x312d306)[0x7fddeb3c5306]
+[thetagpu22:3933238] [25] /lus/theta-fs0/software/thetagpu/conda/2021-06-26/mconda3/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so(+0x312d410)[0x7fddeb3c5410]
+[thetagpu22:3933238] [26] /lib/x86_64-linux-gnu/libc.so.6(+0x468a7)[0x7fdf3d6028a7]
+[thetagpu22:3933238] [27] /lib/x86_64-linux-gnu/libc.so.6(on_exit+0x0)[0x7fdf3d602a60]
+[thetagpu22:3933238] [28] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xfa)[0x7fdf3d5e008a]
+[thetagpu22:3933238] [29] python(+0x1dee93)[0x55a8b2fbbe93]
+[thetagpu22:3933238] *** End of error message ***
+python: ../nptl/pthread_mutex_lock.c:428: __pthread_mutex_lock_full: Assertion `e != ESRCH || !robust' failed.
+[thetagpu22:3933239] *** Process received signal ***
+[thetagpu22:3933239] Signal: Aborted (6)
+[thetagpu22:3933239] Signal code:  (-6)
+[thetagpu22:3933239] [ 0] /lib/x86_64-linux-gnu/libpthread.so.0(+0x14420)[0x7f7045dea420]
+[thetagpu22:3933239] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f7045c2700b]
+[thetagpu22:3933239] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f7045c06859]
+[thetagpu22:3933239] [ 3] /lib/x86_64-linux-gnu/libc.so.6(+0x22729)[0x7f7045c06729]
+[thetagpu22:3933239] [ 4] /lib/x86_64-linux-gnu/libc.so.6(+0x33fd6)[0x7f7045c17fd6]
+[thetagpu22:3933239] [ 5] /lib/x86_64-linux-gnu/libpthread.so.0(+0xaed9)[0x7f7045de0ed9]
+[thetagpu22:3933239] [ 6] /lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.1(+0x60861)[0x7f6f73d60861]
+[thetagpu22:3933239] [ 7] /lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.1(__cuda_CallJitEntryPoint+0xcbc)[0x7f6f73d53ffc]
+[thetagpu22:3933239] [ 8] /lib/x86_64-linux-gnu/libcuda.so(+0x4072e2)[0x7f6f02f3a2e2]
+[thetagpu22:3933239] [ 9] /lib/x86_64-linux-gnu/libcuda.so(+0x43879d)[0x7f6f02f6b79d]
+[thetagpu22:3933239] [10] /lib/x86_64-linux-gnu/libcuda.so(+0x1ccdaa)[0x7f6f02cffdaa]
+[thetagpu22:3933239] [11] /lib/x86_64-linux-gnu/libcuda.so(+0x2680aa)[0x7f6f02d9b0aa]
+[thetagpu22:3933239] [12] /lib/x86_64-linux-gnu/libcuda.so(+0x26882b)[0x7f6f02d9b82b]
+[thetagpu22:3933239] [13] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d0ecd4)[0x7f6f05f67cd4]
+[thetagpu22:3933239] [14] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1cfe66e)[0x7f6f05f5766e]
+[thetagpu22:3933239] [15] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d153f4)[0x7f6f05f6e3f4]
+[thetagpu22:3933239] [16] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d19bba)[0x7f6f05f72bba]
+[thetagpu22:3933239] [17] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d19e54)[0x7f6f05f72e54]
+[thetagpu22:3933239] [18] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d0bd9c)[0x7f6f05f64d9c]
+[thetagpu22:3933239] [19] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1ceae2a)[0x7f6f05f43e2a]
+[thetagpu22:3933239] [20] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d21355)[0x7f6f05f7a355]
+[thetagpu22:3933239] [21] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(cublasLtShutdownCtx+0x170)[0x7f6f04526070]
+[thetagpu22:3933239] [22] /usr/local/cuda-11.3/lib64/libcublas.so.11(cublasDestroy_v2+0x155)[0x7f6f14e30e35]
+[thetagpu22:3933239] [23] /lus/theta-fs0/software/thetagpu/conda/2021-06-26/mconda3/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so(+0x312d306)[0x7f6eeadde306]
+[thetagpu22:3933239] [24] /lus/theta-fs0/software/thetagpu/conda/2021-06-26/mconda3/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so(+0x312d410)[0x7f6eeadde410]
+[thetagpu22:3933239] [25] /lib/x86_64-linux-gnu/libc.so.6(+0x468a7)[0x7f7045c2a8a7]
+[thetagpu22:3933239] [26] /lib/x86_64-linux-gnu/libc.so.6(on_exit+0x0)[0x7f7045c2aa60]
+[thetagpu22:3933239] [27] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xfa)[0x7f7045c0808a]
+[thetagpu22:3933239] [28] python(+0x1dee93)[0x55d6b2cf7e93]
+[thetagpu22:3933239] *** End of error message ***
+The futex facility returned an unexpected error code.
+[thetagpu05:1617758] *** Process received signal ***
+[thetagpu05:1617758] Signal: Aborted (6)
+[thetagpu05:1617758] Signal code:  (-6)
+[thetagpu05:1617758] [ 0] /lib/x86_64-linux-gnu/libpthread.so.0(+0x14420)[0x7fe5c1d7f420]
+[thetagpu05:1617758] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7fe5c1bbc00b]
+[thetagpu05:1617758] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7fe5c1b9b859]
+[thetagpu05:1617758] [ 3] /lib/x86_64-linux-gnu/libc.so.6(+0x8cfcc)[0x7fe5c1c05fcc]
+[thetagpu05:1617758] [ 4] /lib/x86_64-linux-gnu/libc.so.6(+0x8d2e0)[0x7fe5c1c062e0]
+[thetagpu05:1617758] [ 5] /lib/x86_64-linux-gnu/libpthread.so.0(+0xaeaf)[0x7fe5c1d75eaf]
+[thetagpu05:1617758] [ 6] /lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.1(+0x60861)[0x7fe4efcf5861]
+[thetagpu05:1617758] [ 7] /lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.1(__cuda_CallJitEntryPoint+0xcbc)[0x7fe4efce8ffc]
+[thetagpu05:1617758] [ 8] /lib/x86_64-linux-gnu/libcuda.so(+0x4072e2)[0x7fe47eeca2e2]
+[thetagpu05:1617758] [ 9] /lib/x86_64-linux-gnu/libcuda.so(+0x43879d)[0x7fe47eefb79d]
+[thetagpu05:1617758] [10] /lib/x86_64-linux-gnu/libcuda.so(+0x1ccdaa)[0x7fe47ec8fdaa]
+[thetagpu05:1617758] [11] /lib/x86_64-linux-gnu/libcuda.so(+0x2680aa)[0x7fe47ed2b0aa]
+[thetagpu05:1617758] [12] /lib/x86_64-linux-gnu/libcuda.so(+0x26882b)[0x7fe47ed2b82b]
+[thetagpu05:1617758] [13] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d0ecd4)[0x7fe481ef7cd4]
+[thetagpu05:1617758] [14] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1cfe66e)[0x7fe481ee766e]
+[thetagpu05:1617758] [15] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d153f4)[0x7fe481efe3f4]
+[thetagpu05:1617758] [16] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d19bba)[0x7fe481f02bba]
+[thetagpu05:1617758] [17] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d19e54)[0x7fe481f02e54]
+[thetagpu05:1617758] [18] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d0bd9c)[0x7fe481ef4d9c]
+[thetagpu05:1617758] [19] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1ceae2a)[0x7fe481ed3e2a]
+[thetagpu05:1617758] [20] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d21355)[0x7fe481f0a355]
+[thetagpu05:1617758] [21] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(cublasLtShutdownCtx+0x170)[0x7fe4804b6070]
+[thetagpu05:1617758] [22] /usr/local/cuda-11.3/lib64/libcublas.so.11(cublasDestroy_v2+0x155)[0x7fe490dc0e35]
+[thetagpu05:1617758] [23] /lus/theta-fs0/software/thetagpu/conda/2021-06-26/mconda3/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so(+0x312d306)[0x7fe466d6e306]
+[thetagpu05:1617758] [24] /lus/theta-fs0/software/thetagpu/conda/2021-06-26/mconda3/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so(+0x312d410)[0x7fe466d6e410]
+[thetagpu05:1617758] [25] /lib/x86_64-linux-gnu/libc.so.6(+0x468a7)[0x7fe5c1bbf8a7]
+[thetagpu05:1617758] [26] /lib/x86_64-linux-gnu/libc.so.6(on_exit+0x0)[0x7fe5c1bbfa60]
+[thetagpu05:1617758] [27] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xfa)[0x7fe5c1b9d08a]
+[thetagpu05:1617758] [28] python(+0x1dee93)[0x55c753629e93]
+[thetagpu05:1617758] *** End of error message ***
+python: ../nptl/pthread_mutex_lock.c:428: __pthread_mutex_lock_full: Assertion `e != ESRCH || !robust' failed.
+[thetagpu05:1617761] *** Process received signal ***
+[thetagpu05:1617761] Signal: Aborted (6)
+[thetagpu05:1617761] Signal code:  (-6)
+[thetagpu05:1617761] [ 0] /lib/x86_64-linux-gnu/libpthread.so.0(+0x14420)[0x7fb485f38420]
+[thetagpu05:1617761] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7fb485d7500b]
+[thetagpu05:1617761] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7fb485d54859]
+[thetagpu05:1617761] [ 3] /lib/x86_64-linux-gnu/libc.so.6(+0x22729)[0x7fb485d54729]
+[thetagpu05:1617761] [ 4] /lib/x86_64-linux-gnu/libc.so.6(+0x33fd6)[0x7fb485d65fd6]
+[thetagpu05:1617761] [ 5] /lib/x86_64-linux-gnu/libpthread.so.0(+0xaed9)[0x7fb485f2eed9]
+[thetagpu05:1617761] [ 6] /lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.1(+0x60861)[0x7fb403e90861]
+[thetagpu05:1617761] [ 7] /lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.1(__cuda_CallJitEntryPoint+0xcbc)[0x7fb403e83ffc]
+[thetagpu05:1617761] [ 8] /lib/x86_64-linux-gnu/libcuda.so(+0x4072e2)[0x7fb407c7e2e2]
+[thetagpu05:1617761] [ 9] /lib/x86_64-linux-gnu/libcuda.so(+0x43879d)[0x7fb407caf79d]
+[thetagpu05:1617761] [10] /lib/x86_64-linux-gnu/libcuda.so(+0x1ccdaa)[0x7fb407a43daa]
+[thetagpu05:1617761] [11] /lib/x86_64-linux-gnu/libcuda.so(+0x2680aa)[0x7fb407adf0aa]
+[thetagpu05:1617761] [12] /lib/x86_64-linux-gnu/libcuda.so(+0x26882b)[0x7fb407adf82b]
+[thetagpu05:1617761] [13] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d0ecd4)[0x7fb347e0bcd4]
+[thetagpu05:1617761] [14] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1cfe66e)[0x7fb347dfb66e]
+[thetagpu05:1617761] [15] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d153f4)[0x7fb347e123f4]
+[thetagpu05:1617761] [16] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d19bba)[0x7fb347e16bba]
+[thetagpu05:1617761] [17] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d19e54)[0x7fb347e16e54]
+[thetagpu05:1617761] [18] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d0bd9c)[0x7fb347e08d9c]
+[thetagpu05:1617761] [19] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1ceae2a)[0x7fb347de7e2a]
+[thetagpu05:1617761] [20] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d21355)[0x7fb347e1e355]
+[thetagpu05:1617761] [21] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(cublasLtShutdownCtx+0x170)[0x7fb3463ca070]
+[thetagpu05:1617761] [22] /usr/local/cuda-11.3/lib64/libcublas.so.11(cublasDestroy_v2+0x155)[0x7fb356cd4e35]
+[thetagpu05:1617761] [23] /lus/theta-fs0/software/thetagpu/conda/2021-06-26/mconda3/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so(+0x312d306)[0x7fb32fcc4306]
+[thetagpu05:1617761] [24] /lus/theta-fs0/software/thetagpu/conda/2021-06-26/mconda3/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so(+0x312d410)[0x7fb32fcc4410]
+[thetagpu05:1617761] [25] /lib/x86_64-linux-gnu/libc.so.6(+0x468a7)[0x7fb485d788a7]
+[thetagpu05:1617761] [26] /lib/x86_64-linux-gnu/libc.so.6(on_exit+0x0)[0x7fb485d78a60]
+[thetagpu05:1617761] [27] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xfa)[0x7fb485d5608a]
+[thetagpu05:1617761] [28] python(+0x1dee93)[0x55751112ee93]
+[thetagpu05:1617761] *** End of error message ***
+python: ../nptl/pthread_mutex_lock.c:428: __pthread_mutex_lock_full: Assertion `e != ESRCH || !robust' failed.
+[thetagpu05:1617755] *** Process received signal ***
+[thetagpu05:1617755] Signal: Aborted (6)
+[thetagpu05:1617755] Signal code:  (-6)
+[thetagpu05:1617755] [ 0] /lib/x86_64-linux-gnu/libpthread.so.0(+0x14420)[0x7f93ff9d4420]
+[thetagpu05:1617755] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f93ff81100b]
+[thetagpu05:1617755] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f93ff7f0859]
+[thetagpu05:1617755] [ 3] /lib/x86_64-linux-gnu/libc.so.6(+0x22729)[0x7f93ff7f0729]
+[thetagpu05:1617755] [ 4] /lib/x86_64-linux-gnu/libc.so.6(+0x33fd6)[0x7f93ff801fd6]
+[thetagpu05:1617755] [ 5] /lib/x86_64-linux-gnu/libpthread.so.0(+0xaed9)[0x7f93ff9caed9]
+[thetagpu05:1617755] [ 6] /lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.1(+0x60861)[0x7f9345942861]
+[thetagpu05:1617755] [ 7] /lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.1(__cuda_CallJitEntryPoint+0xcbc)[0x7f9345935ffc]
+[thetagpu05:1617755] [ 8] /lib/x86_64-linux-gnu/libcuda.so(+0x4072e2)[0x7f92be87a2e2]
+[thetagpu05:1617755] [ 9] /lib/x86_64-linux-gnu/libcuda.so(+0x43879d)[0x7f92be8ab79d]
+[thetagpu05:1617755] [10] /lib/x86_64-linux-gnu/libcuda.so(+0x1ccdaa)[0x7f92be63fdaa]
+[thetagpu05:1617755] [11] /lib/x86_64-linux-gnu/libcuda.so(+0x2680aa)[0x7f92be6db0aa]
+[thetagpu05:1617755] [12] /lib/x86_64-linux-gnu/libcuda.so(+0x26882b)[0x7f92be6db82b]
+[thetagpu05:1617755] [13] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d0ecd4)[0x7f92c18a7cd4]
+[thetagpu05:1617755] [14] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1cfe66e)[0x7f92c189766e]
+[thetagpu05:1617755] [15] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d153f4)[0x7f92c18ae3f4]
+[thetagpu05:1617755] [16] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d19bba)[0x7f92c18b2bba]
+[thetagpu05:1617755] [17] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d19e54)[0x7f92c18b2e54]
+[thetagpu05:1617755] [18] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d0bd9c)[0x7f92c18a4d9c]
+[thetagpu05:1617755] [19] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1ceae2a)[0x7f92c1883e2a]
+[thetagpu05:1617755] [20] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d21355)[0x7f92c18ba355]
+[thetagpu05:1617755] [21] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(cublasLtShutdownCtx+0x170)[0x7f92bfe66070]
+[thetagpu05:1617755] [22] /usr/local/cuda-11.3/lib64/libcublas.so.11(cublasDestroy_v2+0x155)[0x7f92d0770e35]
+[thetagpu05:1617755] [23] /lus/theta-fs0/software/thetagpu/conda/2021-06-26/mconda3/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so(+0x312d306)[0x7f92a671e306]
+[thetagpu05:1617755] [24] /lus/theta-fs0/software/thetagpu/conda/2021-06-26/mconda3/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so(+0x312d410)[0x7f92a671e410]
+[thetagpu05:1617755] [25] /lib/x86_64-linux-gnu/libc.so.6(+0x468a7)[0x7f93ff8148a7]
+[thetagpu05:1617755] [26] /lib/x86_64-linux-gnu/libc.so.6(on_exit+0x0)[0x7f93ff814a60]
+[thetagpu05:1617755] [27] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xfa)[0x7f93ff7f208a]
+[thetagpu05:1617755] [28] python(+0x1dee93)[0x55e777303e93]
+[thetagpu05:1617755] *** End of error message ***
+python: ../nptl/pthread_mutex_lock.c:428: __pthread_mutex_lock_full: Assertion `e != ESRCH || !robust' failed.
+[thetagpu22:3933240] *** Process received signal ***
+[thetagpu22:3933240] Signal: Aborted (6)
+[thetagpu22:3933240] Signal code:  (-6)
+[thetagpu22:3933240] [ 0] /lib/x86_64-linux-gnu/libpthread.so.0(+0x14420)[0x7fa743930420]
+[thetagpu22:3933240] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7fa74376d00b]
+[thetagpu22:3933240] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7fa74374c859]
+[thetagpu22:3933240] [ 3] /lib/x86_64-linux-gnu/libc.so.6(+0x22729)[0x7fa74374c729]
+[thetagpu22:3933240] [ 4] /lib/x86_64-linux-gnu/libc.so.6(+0x33fd6)[0x7fa74375dfd6]
+[thetagpu22:3933240] [ 5] /lib/x86_64-linux-gnu/libpthread.so.0(+0xaed9)[0x7fa743926ed9]
+[thetagpu22:3933240] [ 6] /lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.1(+0x60861)[0x7fa6d9888861]
+[thetagpu22:3933240] [ 7] /lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.1(__cuda_CallJitEntryPoint+0xcbc)[0x7fa6d987bffc]
+[thetagpu22:3933240] [ 8] /lib/x86_64-linux-gnu/libcuda.so(+0x4072e2)[0x7fa607f692e2]
+[thetagpu22:3933240] [ 9] /lib/x86_64-linux-gnu/libcuda.so(+0x43879d)[0x7fa607f9a79d]
+[thetagpu22:3933240] [10] /lib/x86_64-linux-gnu/libcuda.so(+0x1ccdaa)[0x7fa607d2edaa]
+[thetagpu22:3933240] [11] /lib/x86_64-linux-gnu/libcuda.so(+0x2680aa)[0x7fa607dca0aa]
+[thetagpu22:3933240] [12] /lib/x86_64-linux-gnu/libcuda.so(+0x26882b)[0x7fa607dca82b]
+[thetagpu22:3933240] [13] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d0ecd4)[0x7fa60af96cd4]
+[thetagpu22:3933240] [14] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1cfe66e)[0x7fa60af8666e]
+[thetagpu22:3933240] [15] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d153f4)[0x7fa60af9d3f4]
+[thetagpu22:3933240] [16] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d19bba)[0x7fa60afa1bba]
+[thetagpu22:3933240] [17] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d19e54)[0x7fa60afa1e54]
+[thetagpu22:3933240] [18] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d0bd9c)[0x7fa60af93d9c]
+[thetagpu22:3933240] [19] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1ceae2a)[0x7fa60af72e2a]
+[thetagpu22:3933240] [20] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d21355)[0x7fa60afa9355]
+[thetagpu22:3933240] [21] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(cublasLtShutdownCtx+0x170)[0x7fa609555070]
+[thetagpu22:3933240] [22] /usr/local/cuda-11.3/lib64/libcublas.so.11(cublasDestroy_v2+0x155)[0x7fa619e5fe35]
+[thetagpu22:3933240] [23] /lus/theta-fs0/software/thetagpu/conda/2021-06-26/mconda3/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so(+0x312d306)[0x7fa5efe0d306]
+[thetagpu22:3933240] [24] /lus/theta-fs0/software/thetagpu/conda/2021-06-26/mconda3/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so(+0x312d410)[0x7fa5efe0d410]
+[thetagpu22:3933240] [25] /lib/x86_64-linux-gnu/libc.so.6(+0x468a7)[0x7fa7437708a7]
+[thetagpu22:3933240] [26] /lib/x86_64-linux-gnu/libc.so.6(on_exit+0x0)[0x7fa743770a60]
+[thetagpu22:3933240] [27] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xfa)[0x7fa74374e08a]
+[thetagpu22:3933240] [28] python(+0x1dee93)[0x55a0ebe0fe93]
+[thetagpu22:3933240] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+python: ../nptl/pthread_mutex_lock.c:428: __pthread_mutex_lock_full: Assertion `e != ESRCH || !robust' failed.
+[thetagpu22:3933242] *** Process received signal ***
+[thetagpu22:3933242] Signal: Aborted (6)
+[thetagpu22:3933242] Signal code:  (-6)
+[thetagpu22:3933242] [ 0] /lib/x86_64-linux-gnu/libpthread.so.0(+0x14420)[0x7f94fed6c420]
+[thetagpu22:3933242] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f94feba900b]
+[thetagpu22:3933242] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f94feb88859]
+[thetagpu22:3933242] [ 3] /lib/x86_64-linux-gnu/libc.so.6(+0x22729)[0x7f94feb88729]
+[thetagpu22:3933242] [ 4] /lib/x86_64-linux-gnu/libc.so.6(+0x33fd6)[0x7f94feb99fd6]
+[thetagpu22:3933242] [ 5] /lib/x86_64-linux-gnu/libpthread.so.0(+0xaed9)[0x7f94fed62ed9]
+[thetagpu22:3933242] [ 6] /lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.1(+0x60861)[0x7f942cce2861]
+[thetagpu22:3933242] [ 7] /lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.1(__cuda_CallJitEntryPoint+0xcbc)[0x7f942ccd5ffc]
+[thetagpu22:3933242] [ 8] /lib/x86_64-linux-gnu/libcuda.so(+0x4072e2)[0x7f93bbebc2e2]
+[thetagpu22:3933242] [ 9] /lib/x86_64-linux-gnu/libcuda.so(+0x43879d)[0x7f93bbeed79d]
+[thetagpu22:3933242] [10] /lib/x86_64-linux-gnu/libcuda.so(+0x1ccdaa)[0x7f93bbc81daa]
+[thetagpu22:3933242] [11] /lib/x86_64-linux-gnu/libcuda.so(+0x2680aa)[0x7f93bbd1d0aa]
+[thetagpu22:3933242] [12] /lib/x86_64-linux-gnu/libcuda.so(+0x26882b)[0x7f93bbd1d82b]
+[thetagpu22:3933242] [13] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d0ecd4)[0x7f93beee9cd4]
+[thetagpu22:3933242] [14] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1cfe66e)[0x7f93beed966e]
+[thetagpu22:3933242] [15] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d153f4)[0x7f93beef03f4]
+[thetagpu22:3933242] [16] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d19bba)[0x7f93beef4bba]
+[thetagpu22:3933242] [17] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d19e54)[0x7f93beef4e54]
+[thetagpu22:3933242] [18] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d0bd9c)[0x7f93beee6d9c]
+[thetagpu22:3933242] [19] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1ceae2a)[0x7f93beec5e2a]
+[thetagpu22:3933242] [20] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(+0x1d21355)[0x7f93beefc355]
+[thetagpu22:3933242] [21] /usr/local/cuda-11.3/lib64/libcublasLt.so.11(cublasLtShutdownCtx+0x170)[0x7f93bd4a8070]
+[thetagpu22:3933242] [22] /usr/local/cuda-11.3/lib64/libcublas.so.11(cublasDestroy_v2+0x155)[0x7f93cddb2e35]
+[thetagpu22:3933242] [23] /lus/theta-fs0/software/thetagpu/conda/2021-06-26/mconda3/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so(+0x312d306)[0x7f93a3d60306]
+[thetagpu22:3933242] [24] /lus/theta-fs0/software/thetagpu/conda/2021-06-26/mconda3/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so(+0x312d410)[0x7f93a3d60410]
+[thetagpu22:3933242] [25] /lib/x86_64-linux-gnu/libc.so.6(+0x468a7)[0x7f94febac8a7]
+[thetagpu22:3933242] [26] /lib/x86_64-linux-gnu/libc.so.6(on_exit+0x0)[0x7f94febaca60]
+[thetagpu22:3933242] [27] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xfa)[0x7f94feb8a08a]
+[thetagpu22:3933242] [28] python(+0x1dee93)[0x55780abe9e93]
+[thetagpu22:3933242] *** End of error message ***
+--------------------------------------------------------------------------
+orterun noticed that process rank 3 with PID 0 on node thetagpu22 exited on signal 6 (Aborted).
+--------------------------------------------------------------------------

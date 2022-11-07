@@ -2,12 +2,7 @@
 # Standard Libraries
 import os
 # os.environ['OMP_NUM_THREADS'] = '48'
-import math
 import json
-import datetime
-import numpy as np
-import time
-
 import argparse
 
 # ------------------------------- CUSTOM FUNCTIONS ------------------------------------------------
@@ -30,6 +25,7 @@ parser.add_argument("--machine_name", type=str, help="name of the machine", requ
 parser.add_argument("--framework", choices=["TF", "PT"], type=str, help="framework", default="PT")
 parser.add_argument("--n_gpus", type=int, help="number of GPUs", default=1)
 parser.add_argument("--n_cpus", type=int, help="number of CPUs", default=1)
+parser.add_argument("--dtype", choices=["int", "fp16", "fp32", "fp64", "amp"], type=str, help="Data Type", default="fp64")
 parser.add_argument("--mpgu_strategy", choices=["HVD", "DDP"], type=str, help="MGPU strategy", default=None)
 parser.add_argument("--n_epochs", type=int, help="number of epochs", default=10)
 parser.add_argument("--batch_size", type=int, help="batch size", default=1024)
@@ -45,13 +41,20 @@ if __name__ == "__main__":
     # read configuration file
     with open(_CONFIG_FILE) as fp:
         _CONFIG = json.load(fp)
+    
+    # enable mixed precision
+    _mixed_precision = False
+    if args.dtype == "amp":
+        _mixed_precision = True
 
     # initialize the framework
     framework = GPU(
         machine_name=args.machine_name,
         n_gpus=args.n_gpus,
         n_cpus=args.n_cpus,
-        mgpu_strategy=args.mpgu_strategy
+        mgpu_strategy=args.mpgu_strategy,
+        mixed_precision=_mixed_precision,
+        dtype=args.dtype
     )
     
     # select the interface
@@ -87,7 +90,7 @@ if __name__ == "__main__":
         training_data_dir=_CONFIG["data_params"]["training_data_dir"],
         input_file_format=_CONFIG["data_params"]["input_file_format"],
         data_type=_CONFIG["info"]["data_type"],
-        dtype=_CONFIG["info"]["dtype"],
+        # dtype=_CONFIG["info"]["dtype"],
         n_training_files=_CONFIG["data_params"]["num_files"]
     )
     # attrs = vars(interface.data_manager)

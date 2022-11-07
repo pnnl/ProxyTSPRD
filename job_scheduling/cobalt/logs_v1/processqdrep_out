@@ -1,0 +1,1215 @@
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.qdrep
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209889.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209928.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209973.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209979.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209984.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209992.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209996.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1209998.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967791.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967841.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967889.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967929.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967932.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967939.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967944.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_1967947.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116224.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116415.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116423.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116494.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116496.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116510.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116512.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_3116515.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583521.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583587.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583629.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583638.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583645.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583647.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583650.sqlite does not contain DX12 GPU debug markers
+
+
+/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.qdrep
+Generating SQLite file /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite from /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.qdrep
+Using /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite for SQL queries.
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/cudaapisum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653_cudaapisum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpukernsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653_gpukernsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemtimesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653_gpumemtimesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/gpumemsizesum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653_gpumemsizesum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/osrtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653_osrtsum.csv]... PROCESSED
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/nvtxsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653_nvtxsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite does not contain NV Tools Extension (NVTX) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/openmpevtsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653_openmpevtsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite does not contain OpenMP event data.
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkanmarkerssum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653_vulkanmarkerssum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/pixsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653_pixsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite does not contain DX11/DX12 CPU debug markers
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebugsum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653_khrdebugsum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite does not contain KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/khrdebuggpusum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653_khrdebuggpusum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/vulkangpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653_vulkangpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data
+
+
+Running [/opt/nvidia/nsight-systems/2021.3.2/target-linux-x64/reports/dx12gpumarkersum.py /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite] to [/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653_dx12gpumarkersum.csv]... SKIPPED: /home/milanjain91/output/ProxyTSPRD_IPDPS/profiles/qdrep_report_lstm32_DDP_583653.sqlite does not contain DX12 GPU debug markers
+
+

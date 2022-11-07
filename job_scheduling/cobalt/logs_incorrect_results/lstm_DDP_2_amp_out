@@ -1,0 +1,41 @@
+Running Cobalt Job 10112533.
+Total #Ranks: 16
+Current Directory: 
+/home/milanjain91/ProxyTSPRD/job_scheduling/cobalt
+[1667435215.178495] [thetagpu11:1144509:0]    ucp_context.c:1079 UCX  ERROR exceeded transports/devices limit (73 requested, up to 64 are supported)
+[INFO] Device Type: cuda
+[WARNING] Selected 16 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float32
+[INFO] Framework Data Type: torch.float32
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Running basic DDP example on local rank 0, rank 0 of 1.
+[INFO (DDP)] Rank 0 setup complete
+[INFO] Sharding data files for Horovod
+180 180 0 180
+[INFO] Number of training files: 180
+[INFO] Number of validation files: -1
+[INFO (DDP)] Transforming model to DDP model.
+[INFO] Epoch ( 1 / 20 ): MSE:  tensor(0.0734, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 2 / 20 ): MSE:  tensor(0.0734, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 3 / 20 ): MSE:  tensor(0.0734, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 4 / 20 ): MSE:  tensor(0.0734, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 5 / 20 ): MSE:  tensor(0.0734, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 6 / 20 ): MSE:  tensor(0.0734, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 7 / 20 ): MSE:  tensor(0.0734, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 8 / 20 ): MSE:  tensor(0.0734, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 9 / 20 ): MSE:  tensor(0.0733, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 10 / 20 ): MSE:  tensor(0.0733, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 11 / 20 ): MSE:  tensor(0.0733, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 12 / 20 ): MSE:  tensor(0.0733, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 13 / 20 ): MSE:  tensor(0.0733, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 14 / 20 ): MSE:  tensor(0.0733, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 15 / 20 ): MSE:  tensor(0.0733, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 16 / 20 ): MSE:  tensor(0.0733, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 17 / 20 ): MSE:  tensor(0.0733, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 18 / 20 ): MSE:  tensor(0.0733, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 19 / 20 ): MSE:  tensor(0.0733, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 20 / 20 ): MSE:  tensor(0.0733, device='cuda:0', grad_fn=<SelectBackward>)
+============> (Before) Model Fitting:  tensor([218.7593], device='cuda:0')
+============> (After) Model Fitting:  tensor([218.7593], device='cuda:0')

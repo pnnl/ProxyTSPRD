@@ -1,0 +1,5 @@
+Running Cobalt Job 10112477.
+Total #Ranks: 64
+Current Directory: 
+/home/milanjain91/ProxyTSPRD/job_scheduling/cobalt
+[1667377323.766093] [thetagpu07:2553357:0]    ucp_context.c:1079 UCX  ERROR exceeded transports/devices limit (73 requested, up to 64 are supported)

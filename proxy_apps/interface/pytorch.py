@@ -40,7 +40,6 @@ class PyTorchInterface(Interface):
         training_data_dir,
         input_file_format,
         data_type,
-        dtype='float64',
         n_training_files=-1,
         val_data_dir=None
     ):
@@ -48,7 +47,6 @@ class PyTorchInterface(Interface):
             training_data_dir=training_data_dir,
             input_file_format=input_file_format,
             data_type=data_type,
-            dtype=dtype,
             n_training_files=n_training_files,
             val_data_dir=val_data_dir
         )
@@ -56,10 +54,7 @@ class PyTorchInterface(Interface):
         # keep track of framework
         self.data_manager._ML_FRAMEWORK = self._ML_FRAMEWORK
 
-        if self._GLOBAL_RANK == "0":
-            print("[INFO] Default Data Type: %s" %(self.data_manager._DTYPE))
-        if self.data_manager._DTYPE == "float64": torch.set_default_dtype(torch.float64)
-        else: torch.set_default_dtype(torch.float32)
+        
     
     def load_training_data(
         self, 

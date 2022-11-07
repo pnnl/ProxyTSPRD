@@ -1,0 +1,25 @@
+Jobid: 10112693
+qsub --mode script -n 1 -t 01:00:00 -A GRACE -q single-gpu --attrs filesystems=home -o ./logs/processqdrep_out -e ./logs/processqdrep_err process_qdrep.qsub
+Thu Nov 03 17:59:30 2022 +0000 (UTC) submitted with cwd set to: /home/milanjain91/ProxyTSPRD/job_scheduling/cobalt
+jobid 10112693 submitted from terminal /dev/pts/4
+Thu Nov 03 17:57:58 2022 +0000 (UTC) 
+Thu Nov 03 17:57:58 2022 +0000 (UTC) Command: '/usr/bin/ssh' 'thetagpu06-gpu0' '/usr/bin/cobalt-launcher.py' '--nf' '/var/tmp/cobalt.10112693' '--jobid' '10112693' '--cwd' '/home/milanjain91/ProxyTSPRD/job_scheduling/cobalt' '--env' 'COBALT_JOBID=10112693' '/home/milanjain91/ProxyTSPRD/job_scheduling/cobalt/process_qdrep.qsub'
+Thu Nov 03 17:57:58 2022 +0000 (UTC) 
+Thu Nov 03 17:57:58 2022 +0000 (UTC) Environment:
+Thu Nov 03 17:57:58 2022 +0000 (UTC) SHELL=/bin/bash
+Thu Nov 03 17:57:58 2022 +0000 (UTC) COBALT_NODEFILE=/tmp/tmpoF0Gr3
+Thu Nov 03 17:57:58 2022 +0000 (UTC) COBALT_PARTNAME=thetagpu06-gpu0
+Thu Nov 03 17:57:58 2022 +0000 (UTC) COBALT_JOBID=10112693
+Thu Nov 03 17:57:58 2022 +0000 (UTC) COBALT_STARTTIME=1667498267
+Thu Nov 03 17:57:58 2022 +0000 (UTC) LOGNAME=milanjain91
+Thu Nov 03 17:57:58 2022 +0000 (UTC) USER=milanjain91
+Thu Nov 03 17:57:58 2022 +0000 (UTC) COBALT_ENDTIME=1667501867
+Thu Nov 03 17:57:58 2022 +0000 (UTC) COBALT_PARTSIZE=1
+Thu Nov 03 17:57:58 2022 +0000 (UTC) HOME=/home/milanjain91
+Thu Nov 03 17:57:58 2022 +0000 (UTC) COBALT_JOBSIZE=1
+Thu Nov 03 17:57:58 2022 +0000 (UTC) 
+Thu Nov 03 17:57:58 2022 +0000 (UTC) Info: stdin received from /dev/null
+Thu Nov 03 17:57:58 2022 +0000 (UTC) Info: stdout sent to /home/milanjain91/ProxyTSPRD/job_scheduling/cobalt/./logs/processqdrep_out
+Thu Nov 03 17:57:58 2022 +0000 (UTC) Info: stderr sent to /home/milanjain91/ProxyTSPRD/job_scheduling/cobalt/./logs/processqdrep_err
+Thu Nov 03 17:57:58 2022 +0000 (UTC) 
+Thu Nov 03 18:29:14 2022 +0000 (UTC) Info: task completed normally with an exit code of 0; initiating job cleanup and removal

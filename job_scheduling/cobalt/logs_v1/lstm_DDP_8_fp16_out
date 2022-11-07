@@ -1,0 +1,860 @@
+Running Cobalt Job 10112473.
+Total #Ranks: 64
+Current Directory: 
+/home/milanjain91/ProxyTSPRD/job_scheduling/cobalt
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 0, rank 0 of 64.
+[INFO (DDP)] Rank 0 setup complete
+[INFO] Sharding data files for Horovod
+180 2 0 2
+[INFO] Number of training files: 2
+[INFO] Number of validation files: -1
+[INFO (DDP)] Transforming model to DDP model.
+[INFO] Epoch ( 1 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 2 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 3 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 4 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 5 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 6 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 7 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 8 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 9 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 10 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 11 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 12 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 13 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 14 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 15 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 16 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 17 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 18 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 19 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+[INFO] Epoch ( 20 / 20 ): MSE:  tensor(0.0736, device='cuda:0', grad_fn=<SelectBackward>)
+============> (Before) Model Fitting:  tensor([25.3125], device='cuda:0')
+============> (After) Model Fitting:  tensor([23.9844], device='cuda:0')
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 1, rank 1 of 64.
+[INFO (DDP)] Rank 1 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 2, rank 2 of 64.
+[INFO (DDP)] Rank 2 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 3, rank 3 of 64.
+[INFO (DDP)] Rank 3 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 5, rank 5 of 64.
+[INFO (DDP)] Rank 5 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 6, rank 6 of 64.
+[INFO (DDP)] Rank 6 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 7, rank 55 of 64.
+[INFO (DDP)] Rank 55 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 7, rank 31 of 64.
+[INFO (DDP)] Rank 31 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 0, rank 8 of 64.
+[INFO (DDP)] Rank 8 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 0, rank 24 of 64.
+[INFO (DDP)] Rank 24 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 2, rank 10 of 64.
+[INFO (DDP)] Rank 10 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 4, rank 28 of 64.
+[INFO (DDP)] Rank 28 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 0, rank 32 of 64.
+[INFO (DDP)] Rank 32 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 2, rank 50 of 64.
+[INFO (DDP)] Rank 50 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 2, rank 58 of 64.
+[INFO (DDP)] Rank 58 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 3, rank 51 of 64.
+[INFO (DDP)] Rank 51 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 6, rank 30 of 64.
+[INFO (DDP)] Rank 30 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 1, rank 41 of 64.
+[INFO (DDP)] Rank 41 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 3, rank 59 of 64.
+[INFO (DDP)] Rank 59 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 1, rank 33 of 64.
+[INFO (DDP)] Rank 33 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 6, rank 54 of 64.
+[INFO (DDP)] Rank 54 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 5, rank 29 of 64.
+[INFO (DDP)] Rank 29 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 3, rank 43 of 64.
+[INFO (DDP)] Rank 43 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 7, rank 15 of 64.
+[INFO (DDP)] Rank 15 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 4, rank 60 of 64.
+[INFO (DDP)] Rank 60 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 4, rank 36 of 64.
+[INFO (DDP)] Rank 36 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 4, rank 44 of 64.
+[INFO (DDP)] Rank 44 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 7, rank 63 of 64.
+[INFO (DDP)] Rank 63 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 5, rank 37 of 64.
+[INFO (DDP)] Rank 37 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 2, rank 42 of 64.
+[INFO (DDP)] Rank 42 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 0, rank 56 of 64.
+[INFO (DDP)] Rank 56 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 7, rank 39 of 64.
+[INFO (DDP)] Rank 39 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 7, rank 47 of 64.
+[INFO (DDP)] Rank 47 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 5, rank 61 of 64.
+[INFO (DDP)] Rank 61 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 0, rank 16 of 64.
+[INFO (DDP)] Rank 16 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 2, rank 18 of 64.
+[INFO (DDP)] Rank 18 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 3, rank 19 of 64.
+[INFO (DDP)] Rank 19 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 4, rank 20 of 64.
+[INFO (DDP)] Rank 20 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 7, rank 23 of 64.
+[INFO (DDP)] Rank 23 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 6, rank 22 of 64.
+[INFO (DDP)] Rank 22 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 1, rank 49 of 64.
+[INFO (DDP)] Rank 49 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 1, rank 57 of 64.
+[INFO (DDP)] Rank 57 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 3, rank 35 of 64.
+[INFO (DDP)] Rank 35 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 3, rank 27 of 64.
+[INFO (DDP)] Rank 27 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 6, rank 62 of 64.
+[INFO (DDP)] Rank 62 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 6, rank 38 of 64.
+[INFO (DDP)] Rank 38 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 3, rank 11 of 64.
+[INFO (DDP)] Rank 11 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 2, rank 34 of 64.
+[INFO (DDP)] Rank 34 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 2, rank 26 of 64.
+[INFO (DDP)] Rank 26 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 0, rank 48 of 64.
+[INFO (DDP)] Rank 48 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 5, rank 45 of 64.
+[INFO (DDP)] Rank 45 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 7, rank 7 of 64.
+[INFO (DDP)] Rank 7 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 1, rank 9 of 64.
+[INFO (DDP)] Rank 9 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 6, rank 46 of 64.
+[INFO (DDP)] Rank 46 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 4, rank 12 of 64.
+[INFO (DDP)] Rank 12 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 4, rank 4 of 64.
+[INFO (DDP)] Rank 4 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 5, rank 13 of 64.
+[INFO (DDP)] Rank 13 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 6, rank 14 of 64.
+[INFO (DDP)] Rank 14 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 0, rank 40 of 64.
+[INFO (DDP)] Rank 40 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 1, rank 17 of 64.
+[INFO (DDP)] Rank 17 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 5, rank 21 of 64.
+[INFO (DDP)] Rank 21 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 1, rank 25 of 64.
+[INFO (DDP)] Rank 25 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 5, rank 53 of 64.
+[INFO (DDP)] Rank 53 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files
+[INFO] Device Type: cuda
+[WARNING] Selected 64 GPUs but only 8 GPUs found. Using max #GPUs available: 8
+[INFO] Python Data Type: float16
+[INFO] Framework Data Type: torch.float16
+[INFO] Selected App: LSTMProxyApp
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports MGPUs (using DDP): True
+[INFO (DDP)] Determined local rank through environment variable OMPI_COMM_WORLD_LOCAL_RANK
+[INFO (DDP)] Running basic DDP example on local rank 4, rank 52 of 64.
+[INFO (DDP)] Rank 52 setup complete
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/test/
+[INFO] Found 180 `mat` files
+[INFO] Using 180/180 `mat` files

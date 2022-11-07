@@ -41,7 +41,6 @@ class Interface:
             training_data_dir,
             input_file_format,
             data_type,
-            dtype='float64',
             n_training_files=-1,
             val_data_dir=None
         ):
@@ -50,7 +49,6 @@ class Interface:
             self.data_manager = TimeSeriesDataManager(
                 training_data_dir=training_data_dir,
                 input_file_format=input_file_format,
-                dtype=dtype,
                 n_training_files=n_training_files,
                 val_data_dir=val_data_dir,
                 print_rank=int(self._GLOBAL_RANK)
@@ -65,13 +63,15 @@ class Interface:
     def load_training_data(
         self,
         data_params,
-        batch_size
+        batch_size,
+
     ):
         # get data reader
+        # print("Data Type:", self._DTYPE)
         self.data_manager.training_data = self.app_manager.get_training_data(
             training_files=self.data_manager._TRAINING_FILES,
             data_params=data_params,
-            dtype=self.data_manager._DTYPE
+            dtype=self._DTYPE
         )
         self.data_manager.load_training_data(batch_size)
         # print(type(self.data_manager.data_reader))

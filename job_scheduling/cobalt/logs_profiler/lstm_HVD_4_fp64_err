@@ -1,0 +1,266 @@
+/home/milanjain91/.bashrc: line 1: module: command not found
+/home/milanjain91/.bashrc: line 1: module: command not found
+/home/milanjain91/.bashrc: line 1: module: command not found
+/home/milanjain91/.bashrc: line 1: module: command not found
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Collecting data...
+2022-11-03 11:24:15.237205: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+2022-11-03 11:24:16.694832: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+2022-11-03 11:24:17.315316: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:17.445207: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:17.603328: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+2022-11-03 11:24:18.723252: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:18.838081: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:18.838997: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.015515: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.048828: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.052212: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.060634: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.081242: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.081253: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.081234: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.090907: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.090900: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.095373: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.097488: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.097487: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.113727: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.115442: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.126243: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.130728: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.134763: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.178031: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.178246: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.221525: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.255944: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.263539: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.395354: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:19.405711: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:29.961613: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:29.968954: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:29.989161: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.000029: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.010285: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.014877: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.029484: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.032117: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.254760: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.299540: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.348391: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.352658: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.354387: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.358905: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.360673: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.368594: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.369828: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.370352: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.372139: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.382312: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.386121: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.390286: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.397422: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.451053: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.503290: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.511903: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.518282: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.522675: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.525073: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.542453: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:30.562039: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 11:24:35.319586: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+Killed by signal 15.
+/home/milanjain91/.bashrc: line 1: module: command not found
+/home/milanjain91/.bashrc: line 1: module: command not found
+/home/milanjain91/.bashrc: line 1: module: command not found
+/home/milanjain91/.bashrc: line 1: module: command not found
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Warning: LBR backtrace method is not supported on this platform. DWARF backtrace method will be used.
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+Collecting data...
+2022-11-03 12:47:41.580127: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:41.580161: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:41.580171: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:41.580211: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:41.584332: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:41.589505: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:41.591190: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:41.594854: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:44.753699: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:44.753691: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:44.753694: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:44.753697: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:44.753687: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:44.753697: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:44.753690: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:44.753682: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:45.882056: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:45.882062: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:45.882054: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:45.882058: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:45.882061: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:45.882050: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:45.882059: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:45.882059: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:45.894958: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:45.894990: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:45.894967: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:45.894977: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:45.894980: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:45.894995: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:45.894984: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:47:45.894984: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:30.696071: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:30.753079: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:30.772226: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:30.777605: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:30.781513: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:30.788545: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:30.788582: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:30.793344: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:30.802208: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:30.803198: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:30.803235: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:30.819000: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:30.899006: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:30.967909: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:30.978173: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:31.572624: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:31.609698: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:31.632081: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:31.651838: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:31.654887: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:31.690801: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:31.709257: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:31.994003: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:32.013511: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:32.015417: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:32.026945: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:32.033780: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:32.054570: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:32.086883: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:32.100342: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:49.452265: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-11-03 12:48:51.308863: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+Killed by signal 15.
