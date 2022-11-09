@@ -26,8 +26,8 @@ parser.add_argument(
 )
 parser.add_argument(
     "--platform", 
-    choices=["gpu", "cpu", "rdu"], 
     type=str, 
+    choices=["gpu", "cpu", "rdu"], 
     help="name of the platform (cpu/gpu/rdu)", 
     required=True
 )
@@ -35,6 +35,13 @@ parser.add_argument(
     "--machine_name", 
     type=str, 
     help="name of the machine", 
+    required=True
+)
+parser.add_argument(
+    "--stage", 
+    type=str, 
+    choices=["compile", "train"], 
+    help="action to take", 
     required=True
 )
 parser.add_argument(
@@ -48,11 +55,6 @@ parser.add_argument(
     type=int, 
     help="batch size", 
     default=1024
-)
-parser.add_argument(
-    "--refresh_pef_file", 
-    action='store_true', 
-    help="Whether to recreate the PEF file"
 )
 
 if __name__ == "__main__":
@@ -70,6 +72,7 @@ if __name__ == "__main__":
     # initialize the framework
     framework = RDU(
         machine_name=args.machine_name,
+        dtype="fp32"
     )
 
     # select the interface
@@ -88,33 +91,41 @@ if __name__ == "__main__":
         mixed_precision_support=_CONFIG["info"]["mixed_precision_support"]
     )
     
-    # initialize data manager
-    interface.init_data_manager(
-        training_data_dir=_CONFIG["data_params"]["training_data_dir"],
-        input_file_format=_CONFIG["data_params"]["input_file_format"],
-        data_type=_CONFIG["info"]["data_type"],
-        dtype=_CONFIG["info"]["dtype"],
-        n_training_files=_CONFIG["data_params"]["num_files"]
-    )
-    # load training and validation data
-    training_data = interface.load_training_data(
-        data_params=_CONFIG["data_params"],
-        batch_size=args.batch_size,
-        train_sampler=None
-    )
-    
-    # train model
+    # init training engine
     interface.init_training_engine(
         model_name=_CONFIG["model_info"]["model_name"],
         model_parameters=_CONFIG["model_info"]["model_parameters"],
         opt_params=_CONFIG["model_info"]["opt_parameters"],
-        criterion_params=None,
-        refresh_pef_file=args.refresh_pef_file
+        criterion_params=None
     )
-    interface.train(
-        train_loader=training_data,
-        n_epochs=args.n_epochs
-    )
+    
+    if args.stage == "compile":
+        # compile the model
+        interface.compile(
+            batch_size=args.batch_size
+        )
+
+    elif args.stage == "train":
+        # initialize data manager
+        interface.init_data_manager(
+            training_data_dir=_CONFIG["data_params"]["training_data_dir"],
+            input_file_format=_CONFIG["data_params"]["input_file_format"],
+            data_type=_CONFIG["info"]["data_type"],
+            # dtype=_CONFIG["info"]["dtype"],
+            n_training_files=_CONFIG["data_params"]["num_files"]
+        )
+        # load training and validation data
+        training_data = interface.load_training_data(
+            data_params=_CONFIG["data_params"],
+            batch_size=args.batch_size,
+            train_sampler=None
+        )
+        
+        interface.train(
+            train_loader=training_data,
+            n_epochs=args.n_epochs,
+            batch_size=args.batch_size
+        )
 
 #     # read configuration file
 #     # 'config_baseline.json'
