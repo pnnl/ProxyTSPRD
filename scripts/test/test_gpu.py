@@ -27,7 +27,7 @@ parser.add_argument("--n_gpus", type=int, help="number of GPUs", default=1)
 parser.add_argument("--n_cpus", type=int, help="number of CPUs", default=1)
 parser.add_argument("--dtype", choices=["int", "fp16", "fp32", "fp64", "amp"], type=str, help="Data Type", default="fp64")
 parser.add_argument("--mpgu_strategy", choices=["HVD", "DDP"], type=str, help="MGPU strategy", default=None)
-parser.add_argument("--n_epochs", type=int, help="number of epochs", default=10)
+parser.add_argument("--n_epochs", type=int, help="number of epochs", default=20)
 parser.add_argument("--batch_size", type=int, help="batch size", default=1024)
 
 if __name__ == "__main__":

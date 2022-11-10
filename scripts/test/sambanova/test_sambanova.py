@@ -48,7 +48,7 @@ parser.add_argument(
     "--n_epochs", 
     type=int, 
     help="number of epochs", 
-    default=10
+    default=20
 )
 parser.add_argument(
     "--batch_size", 

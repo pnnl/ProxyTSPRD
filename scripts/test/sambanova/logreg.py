@@ -6,6 +6,7 @@ compiling it, training and testing it on SN RDU
 import argparse
 import os
 import sys
+import time
 from typing import Tuple
 
 import numpy as np
@@ -231,9 +232,18 @@ def prepare_dataloader(args: argparse.Namespace) -> Tuple[torch.utils.data.DataL
                                               train=False,
                                               transform=dataset_transform(vars(args)))
 
+    print(args.world_size)
+    train_sampler = torch.utils.data.distributed.DistributedSampler(
+    	train_dataset,
+    	num_replicas=2
+    )
+    test_sampler = torch.utils.data.distributed.DistributedSampler(
+    	test_dataset,
+    	num_replicas=2
+    )
     # Get the train & test data loaders (input pipeline)
-    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=True)
-    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=args.batch_size, shuffle=False)
+    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=True, sampler=train_sampler)
+    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=args.batch_size, shuffle=False, sampler=test_sampler)
     return train_loader, test_loader
 
 
@@ -423,19 +433,19 @@ def main(argv):
     args = args_composed
     # when it is not distributed mode, local rank is -1.
     args.local_rank = dist.get_rank() if dist.is_initialized() else -1
-    print(
-        "-------------- All Arguments: -----------------\n", 
-        args,
-        "\n-----------------------------------------------\n", 
-    )
+    # print(
+    #     "-------------- All Arguments: -----------------\n", 
+    #     args,
+    #     "\n-----------------------------------------------\n", 
+    # )
 
     # Create random input and output data for testing
     ipt = samba.randn(args.batch_size, args.num_features, name='image', batch_dim=0,
                       named_dims=('B', 'F')).bfloat16().float()
     tgt = samba.randint(args.num_classes, (args.batch_size, ), name='label', batch_dim=0, named_dims=('B', ))
 
-    ipt.host_memory = False
-    tgt.host_memory = False
+    ipt.mem_type = None
+    tgt.mem_type = None
 
     # Instantiate the model
     model = LogReg(args.num_features, args.num_classes)
@@ -461,18 +471,20 @@ def main(argv):
 
     if args.command == "compile":
         #  Compile the model to generate a PEF (Plasticine Executable Format) binary
-        print(
-            "---------- Compile - Inputs ------------- \n",
-            inputs,
-            "\n------------------------------------------- \n",
-        )
+        # print(
+        #     "---------- Compile - Inputs ------------- \n",
+        #     inputs,
+        #     "\n------------------------------------------- \n",
+        # )
+        HOST_MEMORY = {'host': True, 'device': False, 'auto': None}
         samba.session.compile(model,
                               inputs,
                               optimizer,
                               name='logreg_torch',
                               app_dir=utils.get_file_dir(__file__),
                               config_dict=vars(args),
-                              pef_metadata=get_pefmeta(args, model))
+                              pef_metadata=get_pefmeta(args, model),
+                              io_host_memory=None)
 
     elif args.__dict__.get("listen_for_input", False):
         model.online_inference(args=args, mock=args.mock_inference)
@@ -502,23 +514,23 @@ def main(argv):
         # The PEF required for tracing is the binary generated during compilation
         # Mapping refers to how the model layers are arranged in a pipeline for execution.
         # Valid options: 'spatial' or 'section'
-        print(
-            "---------- Training - Inputs ------------- \n",
-            inputs,
-            "\n------------------------------------------- \n",
-        )
-        print("--------------------- Hello-1 --------------------------------")
-        print(args.pef)
-        print(args.distlearn_config)
-        print("--------------------- Hello-2 --------------------------------")
+        # print(
+        #     "---------- Training - Inputs ------------- \n",
+        #     inputs,
+        #     "\n------------------------------------------- \n",
+        # )
+        # print(args.pef)
+        # print(args.distlearn_config)
+        # init_output_grads = not (args.ignore_output_grads or args.inference)
         traced_outputs = utils.trace_graph(model,
                                            inputs,
                                            optimizer,
                                            pef=args.pef,
                                            mapping=args.mapping,
-                                           distlearn_config=args.distlearn_config)
+                                           distlearn_config=args.distlearn_config,
+                                           data_parallel_mode=args.data_parallel_mode
+                            )
 
-        print("--------------------- Hello-3 --------------------------------")
         if args.command == "test":
             # Test the model's functional correctness. This tests if the result of execution
             # on the RDU is comparable to that on a CPU. CPU run results are used as reference.
@@ -542,7 +554,9 @@ def main(argv):
         elif args.command == "run":
             # Train the model on RDU. This is where the model will be trained
             # i.e. weights will be learned to fit the input dataset
+            start_time = time.perf_counter()
             train(args, model, traced_outputs)
+            print("[INFO] Training Time: %f" %(time.perf_counter()-start_time))
 
         elif args.command == 'measure-performance':
             utils.measure_performance(model,

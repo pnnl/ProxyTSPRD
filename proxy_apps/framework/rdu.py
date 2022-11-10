@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 
 from termcolor import colored
 import sambaflow.samba.utils as utils
@@ -13,6 +14,7 @@ from sambaflow.samba.utils.dataset.mnist import dataset_transform
 from sambaflow.samba.utils.pef_utils import get_pefmeta
 from sambaflow.samba.utils.tensorboard_debug import dump_accuracy_debug_info
 
+import torch
 import torch.distributed as dist
 
 from .main import Framework
@@ -21,24 +23,46 @@ from .import PyTorchInterface
 class RDU(Framework):
     def __init__(
         self, 
-        machine_name, 
+        machine_name,
+        dtype="fp64"
     ) -> None:
         super().__init__(machine_name)
+        self._DTYPE = dtype
 
     def use_pytorch(self):
         super().use_pytorch()
         
-        interface = PyTorchInterfaceSN()
+        interface = PyTorchInterfaceSN(
+            dtype=self._DTYPE
+        )
         return interface
 
 class PyTorchInterfaceSN(PyTorchInterface):
     def __init__(
-        self
+        self,
+        dtype
     ) -> None:
         super().__init__()
 
         # when it is not distributed mode, local rank is -1.
         self.local_rank = dist.get_rank() if dist.is_initialized() else -1
+
+        # set default data type
+        self._FDTYPE = torch.float64
+        self._DTYPE = "float64"
+        
+        if dtype == "int":
+            self._FDTYPE = torch.int32
+            self._DTYPE = "int32"
+        elif dtype == "fp16":
+            self._FDTYPE = torch.float16
+            self._DTYPE = "float16"
+        elif dtype == "fp32":
+            self._FDTYPE = torch.float32
+            self._DTYPE = "float32"
+        elif dtype == "amp":
+            self._FDTYPE = torch.float32
+            self._DTYPE = "float32"
 
     def init_app_manager(
         self, 
@@ -59,7 +83,6 @@ class PyTorchInterfaceSN(PyTorchInterface):
         training_data_dir,
         input_file_format,
         data_type,
-        dtype='float64',
         n_training_files=-1,
         val_data_dir=None
     ):
@@ -67,7 +90,6 @@ class PyTorchInterfaceSN(PyTorchInterface):
             training_data_dir=training_data_dir,
             input_file_format=input_file_format,
             data_type=data_type,
-            dtype=dtype,
             n_training_files=n_training_files,
             val_data_dir=val_data_dir
         )  
@@ -86,11 +108,12 @@ class PyTorchInterfaceSN(PyTorchInterface):
 
     def _create_rand_arr(
         self,
+        batch_size,
         iname = "inp_window",
-        oname = "out_window"
+        oname = "out_window",
     ):
         ipt = samba.randn(
-            1, 
+            batch_size, 
             60, 
             136, 
             name=iname,#'inp_window', 
@@ -101,7 +124,7 @@ class PyTorchInterfaceSN(PyTorchInterface):
         # print(ipt)
         
         tgt = samba.randn(
-            1, 
+            batch_size, 
             30, 
             136, 
             name=oname,#'out_window', 
@@ -111,8 +134,8 @@ class PyTorchInterfaceSN(PyTorchInterface):
         # tgt = samba.from_torch(torch.from_numpy(data_handler.y))
         # print(tgt)
         
-        ipt.host_memory = False
-        tgt.host_memory = False
+        ipt.mem_type = 'DDR' #'Host' #'HBM', 'DDR', None, 'Host'
+        tgt.mem_type = 'DDR' #'Host' #'HBM', 'DDR', None, 'Host'
 
         inputs = (ipt, tgt)
         return inputs
@@ -138,7 +161,7 @@ class PyTorchInterfaceSN(PyTorchInterface):
         args = args_composed
         # when it is not distributed mode, local rank is -1.
         args.local_rank = dist.get_rank() if dist.is_initialized() else -1
-        print(args)
+        # print(args)
 
         return args
 
@@ -147,8 +170,7 @@ class PyTorchInterfaceSN(PyTorchInterface):
         model_name,
         model_parameters,
         opt_params,
-        criterion_params,
-        refresh_pef_file
+        criterion_params
     ):
         super().init_training_engine(
             model_name=model_name,
@@ -190,54 +212,62 @@ class PyTorchInterfaceSN(PyTorchInterface):
         # Compile the model to generate a PEF (Plasticine Executable Format) binary
         # utils.get_file_dir(__file__)
 
+    def compile(
+        self,
+        batch_size
+    ):
         # Create random input and output data for testing
-        inputs = self._create_rand_arr()
+        inputs = self._create_rand_arr(
+            batch_size=batch_size
+        )
 
         # Compile if PEF doesn't exist or a new PEF file is required    
-        if not (os.path.exists(self.PEF_FILE) and (not refresh_pef_file)):
-            # collect all arguments
-            args = self._get_args(command="compile")
-            print(
-                "---------- Compile Arguments ------------- \n",
-                args,
-                "\n------------------------------------------- \n",
-            )
-            print(
-                "---------- Compile Inputs ------------- \n",
-                inputs,
-                "\n------------------------------------------- \n",
-            )
-            
-            samba.session.compile(self.model,
-                                inputs,
-                                self.optimizer,
-                                name=self.app_manager._APP_NAME,
-                                app_dir=self.app_manager._OUTPUT_DIR,
-                                config_dict=vars(args),
-                                pef_metadata=get_pefmeta(args, self.model))
+        # collect all arguments
+        args = self._get_args(command="compile")
+        # print(
+        #     "---------- Compile Arguments ------------- \n",
+        #     args,
+        #     "\n------------------------------------------- \n",
+        # )
+        # print(
+        #     "---------- Compile Inputs ------------- \n",
+        #     inputs,
+        #     "\n------------------------------------------- \n",
+        # )
+        
+        samba.session.compile(self.model,
+                            inputs,
+                            self.optimizer,
+                            name=self.app_manager._APP_NAME,
+                            app_dir=self.app_manager._OUTPUT_DIR,
+                            config_dict=vars(args),
+                            pef_metadata=get_pefmeta(args, self.model))
 
-            print("[INFO] PEF File: %s" %(self.PEF_FILE))
+        print("[INFO] PEF File: %s" %(self.PEF_FILE))
 
     def train(
         self,
         train_loader,
         n_epochs,
+        batch_size,
         num_spatial_batches=1
     ):
         # sys.exit()
         args = self._get_args(command="run")
-        print(
-            "---------- Training Arguments ------------- \n",
-            args,
-            "\n------------------------------------------- \n",
-        )
+        # print(
+        #     "---------- Training Arguments ------------- \n",
+        #     args,
+        #     "\n------------------------------------------- \n",
+        # )
         
-        inputs = self._create_rand_arr()
-        print(
-            "---------- Train Inputs ------------- \n",
-            inputs,
-            "\n------------------------------------------- \n",
+        inputs = self._create_rand_arr(
+            batch_size=batch_size
         )
+        # print(
+        #     "---------- Train Inputs ------------- \n",
+        #     inputs,
+        #     "\n------------------------------------------- \n",
+        # )
 
         # Build inputs of the correct shape for spatial
         if args.mapping == "spatial":
@@ -254,10 +284,10 @@ class PyTorchInterfaceSN(PyTorchInterface):
         # The PEF required for tracing is the binary generated during compilation
         # Mapping refers to how the model layers are arranged in a pipeline for execution.
         # Valid options: 'spatial' or 'section'
-        print("--------------------- Hello-1 --------------------------------")
-        print(args.pef)
-        print(args.distlearn_config)
-        print("--------------------- Hello-2 --------------------------------")
+        # print("--------------------- Hello-1 --------------------------------")
+        # print(args.pef)
+        # print(args.distlearn_config)
+        # print("--------------------- Hello-2 --------------------------------")
         traced_outputs = utils.trace_graph(self.model,
                                            inputs,
                                            self.optimizer,
@@ -266,7 +296,7 @@ class PyTorchInterfaceSN(PyTorchInterface):
                                            distlearn_config=args.distlearn_config)
 
     
-        print("--------------------- Hello-3 --------------------------------")
+        # print("--------------------- Hello-3 --------------------------------")
         # Get data loaders for training and test data
         # train_loader, test_loader = prepare_dataloader(args)
 
@@ -274,7 +304,8 @@ class PyTorchInterfaceSN(PyTorchInterface):
         total_step = len(train_loader)
 
         # hyperparam_dict = {"lr": args.lr, "momentum": args.momentum, "weight_decay": args.weight_decay}
-        print(self.opt_params)
+        # print(self.opt_params)
+        start_time = time.perf_counter()
 
         # Train and test for specified number of epochs
         for epoch in range(n_epochs):
@@ -282,12 +313,15 @@ class PyTorchInterfaceSN(PyTorchInterface):
 
             # Train the model for all samples in the train data loader
             for i, (inp_win, out_win) in enumerate(train_loader):
-                sn_inp = samba.from_torch(inp_win, name='inp_window', batch_dim=0)
-                sn_out = samba.from_torch(out_win, name='out_window', batch_dim=0)
+                if inp_win.shape[0] != batch_size:
+                    continue
+                
+                sn_inp = samba.from_torch_tensor(inp_win, name='inp_window', batch_dim=0)
+                sn_out = samba.from_torch_tensor(out_win, name='out_window', batch_dim=0)
 
                 loss, outputs = samba.session.run(input_tensors=[sn_inp, sn_out],
                                                 output_tensors=traced_outputs,
-                                                hyperparam_dict=hyperparam_dict,
+                                                hyperparam_dict=self.opt_params,
                                                 data_parallel=args.data_parallel,
                                                 reduce_on_rdu=args.reduce_on_rdu)
 
@@ -296,8 +330,8 @@ class PyTorchInterfaceSN(PyTorchInterface):
                 avg_loss += loss.mean()
 
                 # Print loss per 10,000th sample in every epoch
-                if (i + 1) % 10000 == 0 and args.local_rank <= 0:
-                    print('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}'.format(epoch + 1, n_epochs, i + 1, total_step,
+                # if (i + 1) % 10000 == 0 and args.local_rank <= 0:
+            print('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}'.format(epoch + 1, n_epochs, i + 1, total_step,
                                                                             avg_loss / (i + 1)))
 
             # # Check the accuracy of the trained model for all samples in the test data loader
@@ -331,3 +365,4 @@ class PyTorchInterfaceSN(PyTorchInterface):
         #                             batch_size=args.batch_size,
         #                             num_iterations=args.num_epochs * total_step)
         #     report.save(args.json)
+        print("[INFO] Training Time: %f" %(time.perf_counter()-start_time))
