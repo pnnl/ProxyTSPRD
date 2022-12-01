@@ -2,9 +2,9 @@ class ProxyApp:
     def __init__(self, platform) -> None:
         self._PLATFORM = platform
 
-    def get_pt_training_data(
+    def get_pt_dataloader(
         self,
-        training_files,
+        files,
         data_params,
         dtype,
         validation_files=None
@@ -14,9 +14,9 @@ class ProxyApp:
     def get_pt_model(self):
         pass
 
-    def get_tf_data_reader(
+    def get_tf_dataloader(
         self,
-        training_files,
+        files,
         data_params,
         dtype,
         validation_files=None

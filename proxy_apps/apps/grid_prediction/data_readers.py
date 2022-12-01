@@ -34,17 +34,17 @@ class GridNetworkSequentialDataGenerator_PT(torch.utils.data.Dataset):
         # self.n_signals = handler_params["n_signals"]
         self.d_type = dtype
         
-    def get_training_data(self, x_indexer, y_indexer):
+    def get_data(self, x_indexer, y_indexer):
         self.x_indexer = x_indexer
         self.y_indexer = y_indexer
         
-        complete_data = list(map(functools.partial(self.get_data), self.list_of_directories))
+        complete_data = list(map(functools.partial(self.read_data), self.list_of_directories))
         self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :]
         self.y = np.vstack([arr[1] for arr in complete_data]) # stacked_array[1, :, :]
         
         assert self.X.shape[0]==self.y.shape[0]
         
-    def get_data(self, dir_path): # , n_rows, n_cols, n_repeat, x_indexer, y_indexer, scale_factor, norm, d_type
+    def read_data(self, dir_path): # , n_rows, n_cols, n_repeat, x_indexer, y_indexer, scale_factor, norm, d_type
         dataset = TransientDataset(dir_path)
         raw_data = np.repeat(np.concatenate([dataset.F, dataset.Vm], axis=1), self.repeat_cols, axis=1)[:self.n_rows, :].astype(self.d_type)
 

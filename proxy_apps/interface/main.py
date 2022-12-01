@@ -1,4 +1,4 @@
-import os
+import os, sys
 import glob
 import json
 
@@ -42,7 +42,8 @@ class Interface:
             input_file_format,
             data_type,
             n_training_files=-1,
-            val_data_dir=None
+            val_data_dir=None,
+            batch_size=1
         ):
         self._DATA_TYPE = data_type
         if self._DATA_TYPE == "TimeSeries":
@@ -51,7 +52,8 @@ class Interface:
                 input_file_format=input_file_format,
                 n_training_files=n_training_files,
                 val_data_dir=val_data_dir,
-                print_rank=int(self._GLOBAL_RANK)
+                print_rank=int(self._GLOBAL_RANK),
+                batch_size=batch_size
             )
 
     def init_training_engine(self):
@@ -60,24 +62,27 @@ class Interface:
     def init_inference_engine(self):
         pass
 
-    def load_training_data(
+    def load_data(
         self,
-        data_params,
-        batch_size,
+        type,
+        data_params
 
     ):
         # get data reader
         # print("Data Type:", self._DTYPE)
-        self.data_manager.training_data = self.app_manager.get_training_data(
-            training_files=self.data_manager._TRAINING_FILES,
-            data_params=data_params,
-            dtype=self._DTYPE
-        )
-        self.data_manager.load_training_data(batch_size)
-        # print(type(self.data_manager.data_reader))
-
-    def load_data(self):
-        pass
+        if type == "train":
+            return self.app_manager.get_dataloader(
+                files=self.data_manager._TRAINING_FILES,
+                data_params=data_params,
+                dtype=self._DTYPE
+            )
+        elif type == "test":
+            # sys.exit(self.data_manager._TEST_FILES)
+            return self.app_manager.get_dataloader(
+                files=self.data_manager._TEST_FILES,
+                data_params=data_params,
+                dtype=self._DTYPE
+            )
     
     def init_training_engine(
         self,

@@ -91,16 +91,23 @@ if __name__ == "__main__":
         input_file_format=_CONFIG["data_params"]["input_file_format"],
         data_type=_CONFIG["info"]["data_type"],
         # dtype=_CONFIG["info"]["dtype"],
-        n_training_files=_CONFIG["data_params"]["num_files"]
+        n_training_files=_CONFIG["data_params"]["num_files"],
+        batch_size=args.batch_size
     )
     # attrs = vars(interface.data_manager)
     # print(', '.join("%s: %s" % item for item in attrs.items()))
     
-    # load training and validation data
-    training_data = interface.load_training_data(
+    # load training data
+    training_data = interface.load_data(
+        type="train",
         data_params=_CONFIG["data_params"],
-        batch_size=args.batch_size,
-        train_sampler=None
+        sampler=None
+    )
+    # load test data
+    test_data = interface.load_data(
+        type="test",
+        data_params=_CONFIG["data_params"],
+        sampler=None
     )
     # attrs = vars(interface.data_manager.data_reader)
     # print(', '.join("%s: %s" % item for item in attrs.items()))    
@@ -115,6 +122,11 @@ if __name__ == "__main__":
     interface.train(
         training_data=training_data,
         n_epochs=args.n_epochs
+    )
+
+    # inference
+    interface.infer(
+        data=test_data
     )
 
     # # train model

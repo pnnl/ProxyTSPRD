@@ -15,21 +15,21 @@ class LSTMProxyApp(ProxyApp):
     def __init__(self, platform) -> None:
         super().__init__(platform)
 
-    def get_pt_training_data(
+    def get_pt_dataloader(
         self,
-        training_files,
+        files,
         data_params,
         dtype,
         validation_files=None
     ):
-        super().get_pt_training_data(
-            training_files=training_files,
+        super().get_pt_dataloader(
+            files=files,
             validation_files=validation_files,
             data_params=data_params,
             dtype=dtype
         )
         self.data_reader = GridNetworkSequentialDataGenerator_PT(
-            dir_list=training_files,
+            dir_list=files,
             handler_params=data_params,
             dtype=dtype
         )
@@ -49,7 +49,7 @@ class LSTMProxyApp(ProxyApp):
             leave_last=self.data_reader.ow_params["leave_last"]
         )
 
-        self.data_reader.get_training_data(
+        self.data_reader.get_data(
             x_indexer, 
             y_indexer
         )
@@ -83,7 +83,7 @@ class LSTMProxyApp(ProxyApp):
         criterion = torch.nn.MSELoss()
         return criterion
 
-    def get_tf_training_data(self):
+    def get_tf_dataloader(self):
         super().get_tf_training_data()
         pass
 

@@ -26,23 +26,23 @@ class AppManager:
         self._ML_FRAMEWORK = ml_framework
         assert self._ML_FRAMEWORK in ["PyTorch", "TensorFlow"], "[ERROR] %s is not supported, choose between [PyTorch, TensorFlow] %(ml_framework)"
 
-    def get_training_data(
+    def get_dataloader(
         self,
-        training_files,
+        files,
         data_params,
         dtype,
         validation_files=None
     ):
         if self._ML_FRAMEWORK == "PyTorch":
-            return self._APP.get_pt_training_data(
-                training_files=training_files,
+            return self._APP.get_pt_dataloader(
+                files=files,
                 data_params=data_params,
                 dtype=dtype,
                 validation_files=validation_files
             )
         elif self._ML_FRAMEWORK == "TensorFlow":
-            return self._APP.get_tf_training_data(
-                training_files=training_files,
+            return self._APP.get_tf_dataloader(
+                files=files,
                 data_params=data_params,
                 dtype=dtype,
                 validation_files=validation_files

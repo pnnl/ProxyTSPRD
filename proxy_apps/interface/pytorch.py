@@ -41,45 +41,51 @@ class PyTorchInterface(Interface):
         input_file_format,
         data_type,
         n_training_files=-1,
-        val_data_dir=None
+        val_data_dir=None,
+        batch_size=1
     ):
         super().init_data_manager(
             training_data_dir=training_data_dir,
             input_file_format=input_file_format,
             data_type=data_type,
             n_training_files=n_training_files,
-            val_data_dir=val_data_dir
+            val_data_dir=val_data_dir,
+            batch_size=batch_size
         )
         
         # keep track of framework
         self.data_manager._ML_FRAMEWORK = self._ML_FRAMEWORK
-
-        
     
-    def load_training_data(
+    def load_data(
         self, 
+        type,
         data_params,
-        batch_size,
         num_workers=0,
         pin_memory=False,
-        train_sampler=None
+        sampler=None
     ):
-        super().load_training_data(data_params, batch_size)
+        # empty training dataset
+        dataloader = None
 
+        # pytorch data loader
+        dataset = super().load_data(
+            type,
+            data_params
+        )
         if data_params["data_generator"] == "torch.utils.data.Dataset":
-            training_dataset = torch.utils.data.DataLoader(
-                self.data_manager.training_data, 
+            dataloader = torch.utils.data.DataLoader(
+                dataset, 
                 batch_size=self.data_manager._BATCH_SIZE, 
                 pin_memory=pin_memory, 
                 num_workers=num_workers,
-                sampler=train_sampler
+                sampler=sampler
             )
 
-        return training_dataset
+        return dataloader
 
-    def load_data(self):
-        super().load_data()
-        self._DATA_GENERATOR_NAME = self.config["data_params"]["data_generator"] + "_PT"
+    # def load_data(self):
+    #     super().load_data()
+    #     self._DATA_GENERATOR_NAME = self.config["data_params"]["data_generator"] + "_PT"
         
     def init_training_engine(
         self,
@@ -102,6 +108,9 @@ class PyTorchInterface(Interface):
                     print(name, param.shape)
 
     def train(self):
+        pass
+
+    def infer(self):
         pass
 
 
