@@ -81,20 +81,25 @@ def main():
     path_list = []
     for mgpu in ["DDP", "HVD"]:
         for _dtype in ["fp16", "fp32", "fp64", "amp"]:
-            specific_files = glob.glob("/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles_updated/*lstm32_" + mgpu + "_" + _dtype + "*cudaapisum.csv")
+            specific_files = glob.glob("/qfs/projects/pacer/proxytsprd/data/theta_profiles/profiles_updated/*lstm32_" + mgpu + "_" + _dtype + "*cudaapisum.csv")
             specific_files.sort()
             print("[INFO] Number of files (%s, %s): %d" %(mgpu, _dtype, len(specific_files)))
             path_list.append(specific_files)
     # path_list = [f for f in path_list if re.match(".*lstm32.*(fp|amp).*", os.path.basename(f))]
-    # print(path_list)
-    
+    # print(path_list)    
     main_cuda(path_list, p)
 
     # sys.exit(1)
     # path_list = [item for item in path_tf if pathlib.Path(item).exists() is True and os.path.getsize(item) > 0]
-    path_list = glob.glob("/home/milanjain91/output/ProxyTSPRD_IPDPS/profiles_updated/*lstm32*gpukernsum.csv")
-    path_list.sort()
-    print("[INFO] Number of files: %d" %(len(path_list)))
+    path_list = []
+    for mgpu in ["DDP", "HVD"]:
+        for _dtype in ["fp16", "fp32", "fp64", "amp"]:
+            specific_files = glob.glob("/qfs/projects/pacer/proxytsprd/data/theta_profiles/profiles_updated/*lstm32_" + mgpu + "_" + _dtype + "*gpukernsum.csv")
+            specific_files.sort()
+            print("[INFO] Number of files (%s, %s): %d" %(mgpu, _dtype, len(specific_files)))
+            path_list.append(specific_files)
+    # path_list.sort()
+    # print("[INFO] Number of files: %d" %(len(path_list)))
     main_tf(path_list, p)
 
 def main_cuda(path_list, p):
@@ -104,9 +109,9 @@ def main_cuda(path_list, p):
     sns.set_theme(style="whitegrid")
     sns.set(font_scale=2)
 
-    #index = ["xfer", "mem", "event", "stream", "mod", "exec", "dev"]
+    index = ["xfer", "mem", "event", "stream", "mod", "exec", "dev"]
     #index = ["xfer", "mem", "event", "stream", "mod", "exec"]
-    index = ["xfer", "mem", "event", "stream", "exec"]
+    # index = ["xfer", "mem", "event", "stream", "exec"]
     
     nrows, ncols = len(index), len(path_list)
     #scale = 2
@@ -123,12 +128,12 @@ def main_cuda(path_list, p):
         list_of_frames = []
         # print(pf)
         label = "_".join(os.path.basename(pf[0]).split("_")[2:5])
+        xticks.append(label)
         for f in pf:
             # f = path_list[j]
             # title = titlegen(f)
-            title = os.path.basename(f).split("_")[4]
+            # title = os.path.basename(f).split("_")[4]
             # print(title)
-            xticks.append(title)
             try:
                 df = pd.read_csv(f, skip_blank_lines=True)
             except Exception as e:
@@ -152,16 +157,19 @@ def main_cuda(path_list, p):
         #         data[index.index(index[i])][j] = cdf.loc[cdf.index==index[i], 'Time(%)'].iloc[0]
 
         # j += 1
-    df_pfs = pd.concat(pfs, axis=1)
+    df_pfs = pd.concat(pfs, axis=1).loc[index]
+    print(df_pfs)
     data = df_pfs.values
     # print(data.values)
 
     data[data == 0] = np.nan
     mask = np.zeros_like(data)
     mask[np.isnan(data)] = True
+    print(data)
     # sys.exit(1)
-    ax = sns.heatmap(data=data, xticklabels=df_pfs.columns, yticklabels=df_pfs.index, cbar=False, annot=True, fmt="g", cmap='RdBu_r')
-    ax.set_xticklabels(df_pfs.columns, rotation=40, ha='right')
+    xticks = [','.join(c.split('_')[1:]) for c in df_pfs.columns]
+    ax = sns.heatmap(data=data, xticklabels=xticks, yticklabels=df_pfs.index, cbar=False, annot=True, fmt=".2f", cmap='RdBu_r')
+    ax.set_xticklabels(xticks, rotation=40, ha='right')
     ax.set_facecolor('white')
 
     fig.tight_layout(pad=0.0, h_pad=0.0, w_pad=0.01)
@@ -179,7 +187,8 @@ def main_tf(path_list, p):
     #index = ["hgemm", "sgemm", "dgemm", "cgemm", "implicit-gemm", "mem", "activation", "fusion", "reduce", "elem", "bias", "batchnorm", "other"]
     #index = ["hgemm", "sgemm", "cgemm", "implicit-gemm", "mem", "activation", "fusion", "reduce", "elem", "bias", "batchnorm", "other"]
     # training
-    index = ["hgemm", "dgemm", "eigen", "reduce", "elem", "bias", "mem", "other"]
+    # index = ["hgemm", "dgemm", "eigen", "reduce", "elem", "bias", "mem", "other"]
+    index = ["hgemm", "dgemm", "reduce", "elem", "mem", "other"]
     # inference
     #index = ["hgemm", "dgemm", "eigen", "reduce", "elem", "bias", "mem", "other"]
     
@@ -193,27 +202,54 @@ def main_tf(path_list, p):
 
     xticks = []
     
-    for j in range(ncols):
-        f = path_list[j]
-        # title = titlegen(f)
-        title = os.path.basename(f).split("_")[4]
-        xticks.append(title)
-        df = pd.read_csv(f, skip_blank_lines=True)
-        ngpus = 1# int(f[f.find('_ng')+3:f.find('_nc')])
-        # print(df)
-        cdf = tf_df_manip(df, ngpus) 
-        sys.exit(cdf)
-        for i in range(nrows):
-            if (index[i] in cdf.Name.values):
-                data[index.index(index[i])][j] = cdf.loc[cdf['Name']==index[i], 'Time(%)'].iloc[0]
+    pfs = []
+    for pf in path_list:
+        if len(pf) == 0: continue
+        list_of_frames = []
+        # print(pf)
+        label = "_".join(os.path.basename(pf[0]).split("_")[2:5])
+        # xticks.append(label)
+        for f in pf:
+            # f = path_list[j]
+            # title = titlegen(f)
+            # title = os.path.basename(f).split("_")[4]
+            # print(title)
+            # xticks.append(title)
+            try:
+                df = pd.read_csv(f, skip_blank_lines=True)
+            except Exception as e:
+                print(f)
+                print(e)
+                continue
+            # sys.exit(df)
+            # ngpus = int(f[f.find('_ng')+3:f.find('_nc')])
+            cdf = tf_df_manip(df, 1) 
+            cdf = cdf.set_index("Name")
+            list_of_frames.append(cdf["Time(%)"])
+        
+        if len(list_of_frames) == 0:
+            continue
+        cdf = pd.concat(list_of_frames, axis=1).mean(axis=1)
+        cdf.name = label
+        pfs.append(cdf)
+        # print(cdf)
+        # for i in range(nrows):
+        #     if (index[i] in cdf.index.values):
+        #         data[index.index(index[i])][j] = cdf.loc[cdf.index==index[i], 'Time(%)'].iloc[0]
 
+        # j += 1
+    df_pfs = pd.concat(pfs, axis=1).loc[index]
+    print(df_pfs)
+    data = df_pfs.values
+    
     data[data == 0] = np.nan
     mask = np.zeros_like(data)
     mask[np.isnan(data)] = True
     # print(data)
     #ax = sns.heatmap(data=data, xticklabels=xticks, yticklabels=index, mask=mask, cbar=False, annot=True, fmt="g", cmap='RdBu_r')
-    ax = sns.heatmap(data=data, xticklabels=False, yticklabels=index, mask=mask, cbar=False, annot=True, fmt="g", cmap='RdBu_r')
-    #ax.set_xticklabels(xticks, rotation=40, ha='right')
+    xticks = [','.join(c.split('_')[1:]) for c in df_pfs.columns]
+    ax = sns.heatmap(data=data, xticklabels=xticks, yticklabels=df_pfs.index, mask=mask, cbar=False, annot=True, fmt=".2f", cmap='RdBu_r')
+    ax.set_xticklabels(xticks, rotation=40, ha='right')
     ax.set_facecolor('white')
 
     fig.tight_layout(pad=0.0, h_pad=0.0, w_pad=0.01)
