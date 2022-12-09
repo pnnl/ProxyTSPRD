@@ -11,112 +11,129 @@ logger = tf.get_logger()
 from ..main import ProxyApp
 from .data_readers import GridNetworkSequentialDataGenerator_PT, GridNetworkSequentialDataGenerator_TF, get_indexer
 
-class LSTMProxyApp(ProxyApp):
+class LSTMProxyAppPT(ProxyApp):
     def __init__(self, platform) -> None:
-        super().__init__(platform)
+        super().__init__(platform, "PT")
 
-    def get_pt_dataloader(
+    def get_datagen(
         self,
         files,
         data_params,
         dtype,
         validation_files=None
     ):
-        super().get_pt_dataloader(
+        super().get_datagen(
             files=files,
             validation_files=validation_files,
             data_params=data_params,
             dtype=dtype
         )
-        self.data_reader = GridNetworkSequentialDataGenerator_PT(
+        self.datagen = GridNetworkSequentialDataGenerator_PT(
             dir_list=files,
             handler_params=data_params,
             dtype=dtype
         )
 
         x_indexer = get_indexer(
-            n_rows=self.data_reader.n_rows,
-            window_size=self.data_reader.iw_params["window_size"],
-            shift_size=self.data_reader.iw_params["shift_size"],
-            start_point=self.data_reader.iw_params["start_at"],
-            leave_last=self.data_reader.iw_params["leave_last"]
+            n_rows=self.datagen.n_rows,
+            window_size=self.datagen.iw_params["window_size"],
+            shift_size=self.datagen.iw_params["shift_size"],
+            start_point=self.datagen.iw_params["start_at"],
+            leave_last=self.datagen.iw_params["leave_last"]
         )
         y_indexer = get_indexer(
-            n_rows=self.data_reader.n_rows,
-            window_size=self.data_reader.ow_params["window_size"],
-            shift_size=self.data_reader.ow_params["shift_size"],
-            start_point=self.data_reader.ow_params["start_at"],
-            leave_last=self.data_reader.ow_params["leave_last"]
+            n_rows=self.datagen.n_rows,
+            window_size=self.datagen.ow_params["window_size"],
+            shift_size=self.datagen.ow_params["shift_size"],
+            start_point=self.datagen.ow_params["start_at"],
+            leave_last=self.datagen.ow_params["leave_last"]
         )
 
-        self.data_reader.get_data(
+        self.datagen.get_data(
             x_indexer, 
             y_indexer
         )
-        return self.data_reader
+        return self.datagen
         # pass
 
-    def get_pt_model(
-        self,
-        model_name,
-        model_parameters,
-        device=None
-    ):
-        super().get_pt_model()
-        # self.model = PTLSTM(model_name, model_parameters, device)
-        if self._PLATFORM == "gpu":
-            self.model = PTLSTM(model_name, model_parameters, device)
-        elif self._PLATFORM == "rdu":
-            criterion = self.get_pt_criterion()
-            self.model = PTLSTM_SN(model_name, model_parameters, criterion, device)
-        return self.model
-
-    def get_opt(
-        self
-    ):
-        return "SGD"
-
-    def get_pt_criterion(
+    def get_criterion(
         self,
         criterion_params=None
     ):
-        criterion = torch.nn.MSELoss()
-        return criterion
+        return torch.nn.MSELoss()
 
-    def get_tf_dataloader(self):
-        super().get_tf_training_data()
-        pass
-
-    def get_tf_model(self):
-        super().get_tf_model()
-        pass  
-
-class TFLSTM(tf.keras.Model):
-    def __init__(self, bw_size, fw_size, n_features):
-        super(TFLSTM, self).__init__(name = 'TFLSTM')
-        self.lstm1_layer   = tf.keras.layers.LSTM(512, input_shape=(bw_size, n_features), return_sequences=True, 
-                                                  kernel_initializer='zeros', recurrent_initializer='zeros')
-        self.lstm2_layer   = tf.keras.layers.LSTM(256, return_sequences=True, 
-                                                  kernel_initializer='zeros', recurrent_initializer='zeros')
-        self.lstm3_layer   = tf.keras.layers.LSTM(128, return_sequences=True, 
-                                                  kernel_initializer='zeros', recurrent_initializer='zeros')
-        self.lstm4_layer   = tf.keras.layers.LSTM(64, 
-                                                  kernel_initializer='zeros', recurrent_initializer='zeros')
-        self.dense_layer   = tf.keras.layers.Dense(fw_size * n_features)
-        self.output_layer  = tf.keras.layers.Reshape((fw_size, n_features))
+    def get_model(
+        self,
+        model_name,
+        data_params,
+        device=None
+    ):
+        super().get_model()
+        # get model
+        if self._PLATFORM in ["cpu", "gpu"]:
+            model = LSTMSingleLayerPT(
+                        model_name, 
+                        data_params, 
+                        device
+                    )
+        elif self._PLATFORM == "rdu":
+            criterion = self.get_pt_criterion()
+            model = PTLSTM_SN(
+                        model_name, 
+                        data_params, 
+                        criterion, 
+                        device
+                    )
+        else:
+            print("[ERROR] Invalid platform: %s" %(self._PLATFORM))
+            model = None
         
-    def call(self, input_data):
-        # print(input_data)
-        fx = self.lstm1_layer(input_data)        
-        fx = self.lstm2_layer(fx)        
-        fx = self.lstm3_layer(fx)        
-        fx = self.lstm4_layer(fx)        
-        fx = self.dense_layer(fx)        
-        return self.output_layer(fx)
-    
-class PTLSTM(torch.nn.Module):
+        return model
+
+    def get_opt(
+        self,
+        model_params,
+        opt_params
+    ):
+        return torch.optim.Adagrad(
+                model_params, 
+                lr=opt_params["learning_rate"]
+            )
+
+class LSTMSingleLayerPT(torch.nn.Module):
     def __init__(self, model_name, model_parameters, device=None):
-        super(PTLSTM, self).__init__()
+        super(LSTMSingleLayerPT, self).__init__()
+        self.bw_size = model_parameters["bw_size"] # size of the backward window
+        self.fw_size = model_parameters["fw_size"] # size of the backward window
+        self.n_features = model_parameters["n_features"] # size of the backward window
+        self.device = device
+        
+        self.hidden_units = 64
+        self.lstm_layer   = torch.nn.LSTM(
+                                hidden_size=self.hidden_units, 
+                                input_size=self.n_features, 
+                                batch_first=True
+                            )
+        self.dense_layer   = torch.nn.Linear(
+                                in_features=self.hidden_units, 
+                                out_features=self.fw_size * self.n_features
+                            )
+        
+    def forward(self,x):
+        # hidden layers
+        h = Variable(torch.zeros(1, x.size(0), self.hidden_units)).to(self.device)
+        c = Variable(torch.zeros(1, x.size(0), self.hidden_units)).to(self.device)
+        h, c = self.lstm_layer(x, (h, c)) #Final Output
+        
+        # prediction
+        out = self.dense_layer(h[:, -1, :])
+        
+        # return output
+        return out.view((out.shape[0], self.fw_size, self.n_features))
+
+class LSTMMultipleLayersPT(torch.nn.Module):
+    def __init__(self, model_name, model_parameters, device=None):
+        super(LSTMMultipleLayersPT, self).__init__()
         self.bw_size = model_parameters["bw_size"] # size of the backward window
         self.fw_size = model_parameters["fw_size"] # size of the backward window
         self.n_features = model_parameters["n_features"] # size of the backward window
@@ -131,8 +148,7 @@ class PTLSTM(torch.nn.Module):
         self.hidden_size4 = 64
         self.lstm4_layer   = torch.nn.LSTM(hidden_size=self.hidden_size4, input_size=self.hidden_size3, batch_first=True)
         self.dense_layer   = torch.nn.Linear(in_features=self.hidden_size4, out_features=self.fw_size * self.n_features)
-        # self.output_layer  = tf.keras.layers.Reshape((fw_size, n_features))
-    
+        
     def forward(self,x):
         # print(x.shape)
         h_1 = Variable(torch.zeros(1, x.size(0), self.hidden_size1))
@@ -168,7 +184,9 @@ class PTLSTM(torch.nn.Module):
         c_4 = Variable(torch.zeros(1, x.size(0), self.hidden_size4))
         if self.device is not None:
             c_4 = c_4.to(self.device) #internal state
-        h_4, c_4 = self.lstm4_layer(h_3, (h_4, c_4)) #Final Output
+        h_4, c_4 = self.lstm4_layer(h_3, (h_4, c_4)) #Final 
+        
+        # Output
         #print(h_4[:, -1, :].shape)
         
         out = self.dense_layer(h_4[:, -1, :])
@@ -246,3 +264,31 @@ class PTLSTM_SN(torch.nn.Module):
 # TFLSTM.add(LSTM(50, activation='relu', input_shape=(n_steps, n_features)))
 # TFLSTM.add(Dense(1))
 # TFLSTM.compile(optimizer='adam', loss='mse')
+
+class TFLSTM(tf.keras.Model):
+    def __init__(self, bw_size, fw_size, n_features):
+        super(TFLSTM, self).__init__(name = 'TFLSTM')
+        self.lstm1_layer   = tf.keras.layers.LSTM(
+            512, input_shape=(bw_size, n_features),
+            return_sequences=True, 
+            kernel_initializer='zeros',
+            recurrent_initializer='zeros'
+        )
+        self.lstm2_layer   = tf.keras.layers.LSTM(256, return_sequences=True, 
+                                                  kernel_initializer='zeros', recurrent_initializer='zeros')
+        self.lstm3_layer   = tf.keras.layers.LSTM(128, return_sequences=True, 
+                                                  kernel_initializer='zeros', recurrent_initializer='zeros')
+        self.lstm4_layer   = tf.keras.layers.LSTM(64, 
+                                                  kernel_initializer='zeros', recurrent_initializer='zeros')
+        self.dense_layer   = tf.keras.layers.Dense(fw_size * n_features)
+        self.output_layer  = tf.keras.layers.Reshape((fw_size, n_features))
+        
+    def call(self, input_data):
+        # print(input_data)
+        fx = self.lstm1_layer(input_data)        
+        fx = self.lstm2_layer(fx)        
+        fx = self.lstm3_layer(fx)        
+        fx = self.lstm4_layer(fx)        
+        fx = self.dense_layer(fx)        
+        return self.output_layer(fx)
+    

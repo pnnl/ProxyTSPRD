@@ -1,8 +1,11 @@
 class ProxyApp:
-    def __init__(self, platform) -> None:
+    def __init__(
+        self, platform, framework
+    ) -> None:
         self._PLATFORM = platform
+        self._FRAMEWORK = framework
 
-    def get_pt_dataloader(
+    def get_datagen(
         self,
         files,
         data_params,
@@ -11,17 +14,5 @@ class ProxyApp:
     ):
         pass
 
-    def get_pt_model(self):
-        pass
-
-    def get_tf_dataloader(
-        self,
-        files,
-        data_params,
-        dtype,
-        validation_files=None
-    ):
-        pass
-
-    def get_tf_model(self):
+    def get_model(self):
         pass

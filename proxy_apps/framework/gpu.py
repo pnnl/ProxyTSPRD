@@ -11,14 +11,12 @@ from .import PyTorchInterface
 from .import DataHandler
 from .main import Framework
 
-from mpi4py import MPI
-
 class GPU(Framework):
     def __init__(
         self, 
         machine_name,
-        n_gpus,
-        n_cpus,
+        n_gpus=0,
+        n_cpus=0, # means all available CPUs
         mgpu_strategy=None,
         mixed_precision=False,
         dtype="fp64"
@@ -58,26 +56,41 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         dtype
         # profiling
     ) -> None:
-        super().__init__()#machine_name, data_type, n_epochs, batch_size)
+        super().__init__()
 
+        # setup devices
+        self._setup_devices(n_gpus, n_cpus, mgpu_strategy)
+
+        # setup default data type
+        self._setup_default_dtype(dtype)
+
+        # mixed precision - could be moved to Interface because it is required for both GPU and RDU; and for both TF and PT
+        self._MIXED_PRECISION = mixed_precision
+
+        # enable profiling - could be moved to Interface because it is required for both GPU and RDU; and for both TF and PT
+        # self._PROFILING = profiling
+
+    def _setup_devices(self, n_gpus, n_cpus, mgpu_strategy):
         # number of GPUs and CPUs
         self._N_GPUS = n_gpus
         self._N_CPUS = n_cpus
         self._MGPU_STRATEGY = None
         
-        # check for GPU
-        if torch.cuda.is_available(): 
+        # enable GPU, when GPU is available and needed
+        self._DEVICE_STR = 'cpu'
+        if torch.cuda.is_available() and (self._N_GPUS > 0): 
             self._DEVICE_STR = 'cuda'  
-        else: 
-            self._DEVICE_STR = 'cpu'
+            
+        # set torch device
         self._DEVICE = torch.device(self._DEVICE_STR)
         if self._GLOBAL_RANK == 0:
             print("[INFO] Device Type: %s" %(self._DEVICE))
 
-        # number of GPUs
+        # if GPUs are not available or if GPUs are not selected
         if self._DEVICE_STR=='cpu': 
             if self._GLOBAL_RANK == 0:
                 print("[WARNING] No GPUs found, falling back to CPUs")
+        # if GPUs are available and selected
         elif self._DEVICE_STR=='cuda':
             # gpus found - using multi gpu strategy
             self._MGPU_STRATEGY = mgpu_strategy
@@ -91,6 +104,7 @@ class PyTorchInterfaceGPU(PyTorchInterface):
                 if self._GLOBAL_RANK == 0:
                     print("[INFO] Using %d/%d GPUs" %(self._N_GPUS, self._TOTAL_GPUs))
 
+    def _setup_default_dtype(self, dtype):
         # set default data type
         self._FDTYPE = torch.float64
         self._DTYPE = "float64"
@@ -112,14 +126,8 @@ class PyTorchInterfaceGPU(PyTorchInterface):
             torch.set_default_dtype(self._FDTYPE)
         if self._GLOBAL_RANK == 0:
             print("[INFO] Python Data Type: %s" %(self._DTYPE))
-            print("[INFO] Framework Data Type: %s" %(self._FDTYPE))
+            print("[INFO] Framework Data Type: %s" %(self._FDTYPE))        
         
-        # mixed precision - could be moved to Interface because it is required for both GPU and RDU; and for both TF and PT
-        self._MIXED_PRECISION = mixed_precision
-
-        # enable profiling - could be moved to Interface because it is required for both GPU and RDU; and for both TF and PT
-        # self._PROFILING = profiling
-
     def init_app_manager(
         self, 
         app,
@@ -138,12 +146,16 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         # multi gpu support
         self.app_manager._MGPU_SUPPORT = mgpu_support
         if self._GLOBAL_RANK == 0:
-            print("[INFO] App Supports MGPUs (using %s): %s" %(self._MGPU_STRATEGY, self.app_manager._MGPU_SUPPORT))
+            print("[INFO] App Supports MGPUs: %s" %(self.app_manager._MGPU_SUPPORT))
 
         # if multiple GPUs are supported by the app
         if self.app_manager._MGPU_SUPPORT:
+            # if no strategy selected
+            if self._MGPU_STRATEGY is None:
+                if self._GLOBAL_RANK == 0:
+                    print("[INFO] Disabling Multi-GPU Support. To use multiple gpus, provide a valid Multi-GPU strategy (HVD/DDP) when initializing the framework.")
             # if horovod
-            if self._MGPU_STRATEGY == "HVD":
+            elif self._MGPU_STRATEGY == "HVD":
                 if self._GLOBAL_RANK == 0:
                     print("[INFO (HVD)] Initializing Horovod")
                 import horovod.torch as hvd_torch
@@ -166,23 +178,28 @@ class PyTorchInterfaceGPU(PyTorchInterface):
                 self._LOCAL_RANK, self._GLOBAL_RANK, self._MGPU_SIZE = self._setup_ddp()
                 print("[INFO (DDP)] Running basic DDP example on local rank {}, rank {} of {}.".format(self._LOCAL_RANK, self._GLOBAL_RANK, self._MGPU_SIZE))
                 print("[INFO (DDP)] Rank {} setup complete".format(self._GLOBAL_RANK))
+            else:
+                if self._GLOBAL_RANK == 0:
+                    print("[INFO] Invalid Multi-GPU Strategy: %s" %(self._MGPU_STRATEGY))
         
     def init_data_manager(
         self,
-        training_data_dir,
-        input_file_format,
-        data_type,
-        n_training_files=-1,
-        val_data_dir=None,
-        batch_size=1
+        data_dir,
+        file_format,
+        data_manager,
+        train_files=-1,
+        test_files=0,
+        val_files=0,
+        shuffle=False
     ):
         super().init_data_manager(
-            training_data_dir=training_data_dir,
-            input_file_format=input_file_format,
-            data_type=data_type,
-            n_training_files=n_training_files,
-            val_data_dir=val_data_dir,
-            batch_size=batch_size
+            data_dir=data_dir,
+            file_format=file_format,
+            data_manager=data_manager,
+            train_files=train_files,
+            test_files=test_files,
+            val_files=val_files,
+            shuffle=shuffle
         )
 
         if self._MIXED_PRECISION and self.app_manager._MIXED_PRECISION_SUPPORT:
@@ -190,49 +207,45 @@ class PyTorchInterfaceGPU(PyTorchInterface):
             # print("[INFO] Mixed Precision:", self.app_manager._MIXED_PRECISION_SUPPORT)
             self.scaler = torch.cuda.amp.GradScaler(enabled=self._MIXED_PRECISION)
 
-        # # ignoring files
-        # if self._FILE_FORMAT == "npz":
-        #     if self._MGPU_STRATEGY == "HVD":
-        #         if self._N_FILES < self.hvd_torch.size():
-        #             self._TRAINING_FILES = self._TRAINING_FILES + self._TRAINING_FILES[:self.hvd_torch.size()-self._N_FILES]
-        #             self._N_FILES = len(self._TRAINING_FILES)
-        #             print("Number of files: ", self._N_FILES, self._TRAINING_FILES)
-
         # shard data files
         if self._MGPU_STRATEGY in ["HVD", "DDP"]:
             if self._GLOBAL_RANK == 0:
                 print("[INFO] Sharding data files for Horovod")
-            splitter = self.data_manager._N_FILES // self._MGPU_SIZE
+            
             # splitter
-            # if self._GLOBAL_RANK == 0:
+            splitter = self.data_manager._N_FILES // self._MGPU_SIZE
             print(self.data_manager._N_FILES, splitter, splitter*self._GLOBAL_RANK, splitter*(self._GLOBAL_RANK+1))
+            
             # divide training files
-            self.data_manager._TRAINING_FILES = self.data_manager._TRAINING_FILES[splitter*self._GLOBAL_RANK:splitter*(self._GLOBAL_RANK+1)]
-            self.data_manager._N_FILES = len(self.data_manager._TRAINING_FILES)
+            self.data_manager._TRAIN_FILES = self.data_manager._TRAIN_FILES[splitter*self._GLOBAL_RANK:splitter*(self._GLOBAL_RANK+1)]
+            self.data_manager._N_TRAIN_FILES = len(self.data_manager._TRAIN_FILES)
         
         # files handled by single GPU
         if self._GLOBAL_RANK == 0:
-            print("[INFO] Number of training files:", self.data_manager._N_FILES)
+            print("[INFO] Number of training files:", self.data_manager._N_TRAIN_FILES)
             print("[INFO] Number of validation files:", self.data_manager._N_VAL_FILES)
 
     def load_data(
         self,
-        type,
+        data_files,
         data_params,
-        sampler=None
+        sampler=None,
+        batch_size=1
     ):
         return super().load_data(
-            type,
+            data_files,
             data_params=data_params,
             pin_memory=True,
             num_workers=self._N_CPUS,
-            sampler=sampler
+            sampler=sampler,
+            batch_size=batch_size
         )  
 
     def init_training_engine(
         self,
         model_name,
-        model_parameters,
+        model_dir,
+        data_params,
         opt_params,
         criterion_params
     ):
@@ -241,7 +254,8 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         
         super().init_training_engine(
             model_name=model_name,
-            model_parameters=model_parameters,
+            model_dir=model_dir,
+            data_params=data_params,
             criterion_params=criterion_params,
             device=self._DEVICE
         )
@@ -255,17 +269,20 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         else:
             self.model.to(self._DEVICE)
         
-        self.opt_name = self.app_manager.get_opt()
-        if self.opt_name == "SGD":
-            self.optimizer = torch.optim.SGD(
-                self.model.parameters(), 
-                lr=opt_params["learning_rate"]
-            )
-        else:
-            self.optimizer = torch.optim.Adagrad(
-                self.model.parameters(), 
-                lr=opt_params["learning_rate"]
-            )
+        self.optimizer = self.app_manager.get_opt(
+                            self.model.parameters(),
+                            opt_params
+                        )
+        # if self.opt_name == "SGD":
+        #     self.optimizer = torch.optim.SGD(
+        #         self.model.parameters(), 
+        #         lr=opt_params["learning_rate"]
+        #     )
+        # else:
+        #     self.optimizer = torch.optim.Adagrad(
+        #         self.model.parameters(), 
+        #         lr=opt_params["learning_rate"]
+        #     )
 
         if self._MGPU_STRATEGY == "HVD":
             if self._GLOBAL_RANK == 0:
@@ -300,6 +317,7 @@ class PyTorchInterfaceGPU(PyTorchInterface):
             for i, (inputs, targets) in enumerate(training_data):
                 # if i > 100: break
                 # move data to GPU
+                # print(inputs.shape, targets.shape)
                 inputs, targets        = inputs.to(self._DEVICE), targets.to(self._DEVICE)
                 
                 # clear the gradients
@@ -370,6 +388,8 @@ class PyTorchInterfaceGPU(PyTorchInterface):
             dist.barrier()
             dist.destroy_process_group() 
 
+        torch.save(self.model.state_dict(), self._MODEL_PATH)
+
     def infer(
         self,
         data
@@ -417,6 +437,7 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         Feel free to modify or use the code below as you need.
         '''
 
+        from mpi4py import MPI
         # Get the global communicator:
         COMM_WORLD = MPI.COMM_WORLD
 
@@ -456,7 +477,8 @@ class PyTorchInterfaceGPU(PyTorchInterface):
 
 
     def _setup_ddp(self):
-
+        from mpi4py import MPI
+                
         size = MPI.COMM_WORLD.Get_size()
         rank = MPI.COMM_WORLD.Get_rank()
 
