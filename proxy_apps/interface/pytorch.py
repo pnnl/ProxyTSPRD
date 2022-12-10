@@ -1,4 +1,4 @@
-import os
+import os, sys
 from .main import Interface
 import torch
 
@@ -95,7 +95,10 @@ class PyTorchInterface(Interface):
         )
 
         # load if model exists
-        self._MODEL_PATH = os.path.join(model_dir, model_name + ".pt")
+        self._MODEL_PATH = os.path.join(
+                            model_dir, 
+                            model_name + ".pt"
+                        )
         if os.path.exists(self._MODEL_PATH):
             self.model.load_state_dict(
                 torch.load(
@@ -103,10 +106,12 @@ class PyTorchInterface(Interface):
                     map_location=torch.device(self._DEVICE)
                 )
             )
+        elif not os.path.exists(model_dir):
+            os.makedirs(model_dir)
 
         # print model parameters
         if self._GLOBAL_RANK == 0:
-            print("[INFO] Model Parameters: \n")
+            print("[INFO] Model Parameters:")
             for name, param in self.model.named_parameters():
                 if param.requires_grad:
                     print(name, param.shape)

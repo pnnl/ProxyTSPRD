@@ -23,9 +23,11 @@ parser.add_argument("--machine_name", type=str, help="name of the machine", requ
 parser.add_argument("--n_gpus", type=int, help="number of GPUs", default=1)
 parser.add_argument("--n_cpus", type=int, help="number of CPUs", default=1)
 parser.add_argument("--dtype", choices=["int", "fp16", "fp32", "fp64", "amp"], type=str, help="Data type", default="fp64")
-parser.add_argument("--mpgu_strategy", choices=["HVD", "DDP"], type=str, help="MGPU strategy", default=None)
+parser.add_argument("--mgpu_strategy", choices=["HVD", "DDP", "None"], type=str, help="MGPU strategy", default=None)
 parser.add_argument("--n_epochs", type=int, help="number of epochs", default=20)
 parser.add_argument("--batch_size", type=int, help="batch size", default=1024)
+parser.add_argument("--profiling", type=int, help="whether profiling or not using nsys", default=0)
+parser.add_argument("--run_type", type=str, help="train or infer")
 
 if __name__ == "__main__":
     # read the arguments
@@ -44,20 +46,49 @@ if __name__ == "__main__":
     if args.dtype == "amp":
         _mixed_precision = True
 
+    # mgpu support
+    _mgpu_strategy = None
+    if args.mgpu_strategy != "None":
+        _mgpu_strategy = args.mgpu_strategy
+
+
     # get app
-    if _CONFIG["info"]["app_name"] == "LSTMProxyApp":
+    if _CONFIG["info"]["app_name"] == "LSTMProxyAppPT":
         app = LSTMProxyAppPT(args.platform)
     elif _CONFIG["info"]["app_name"] == "CNNProxyApp":
         app = CNNProxyApp(args.platform)
     else:
         sys.exit("[ERROR] Invalid App")
+
+    # suffix 
+    print(
+        type(args.platform),
+        type(args.n_gpus),
+        type(args.n_cpus),
+        type(args.n_epochs),
+        type(args.batch_size),
+        type(args.dtype),
+        type(_mgpu_strategy),
+        type(args.profiling)
+    )
+    _SUFFIX = f"%s_ng%d_nc%d_e%d_b%d_d%s_mpgu%s_prof%d" %(
+        args.platform,
+        args.n_gpus,
+        args.n_cpus,
+        args.n_epochs,
+        args.batch_size,
+        args.dtype,
+        _mgpu_strategy,
+        args.profiling
+    )
+    print("[INFO] Suffix: %s" %(_SUFFIX))
     
     # initialize the framework
     framework = GPU(
         machine_name=args.machine_name,
         n_gpus=args.n_gpus,
         n_cpus=args.n_cpus,
-        mgpu_strategy=args.mpgu_strategy,
+        mgpu_strategy=_mgpu_strategy,
         mixed_precision=_mixed_precision,
         dtype=args.dtype
     )
@@ -105,8 +136,11 @@ if __name__ == "__main__":
     
     # train model
     interface.init_training_engine(
-        model_name=_CONFIG["model_info"]["model_name"],
-        model_dir=_CONFIG["model_info"]["model_dir"],
+        model_name=_SUFFIX,
+        model_dir=os.path.join(
+                    _CONFIG["model_info"]["model_dir"],
+                    _CONFIG["info"]["app_name"]
+                ),
         data_params=_CONFIG["model_info"]["data_params"],
         opt_params=_CONFIG["model_info"]["opt_parameters"],
         criterion_params=None

@@ -168,7 +168,8 @@ class PyTorchInterfaceGPU(PyTorchInterface):
                 if self._GLOBAL_RANK == 0:
                     print("[INFO (HVD)] Rank %s of %s" %(self._GLOBAL_RANK, self._MGPU_SIZE))
                     print("[INFO (HVD)] Setting devices")
-                torch.cuda.set_device(self._LOCAL_RANK)
+                print(self._LOCAL_RANK)
+                torch.cuda.set_device("cuda:" + str(self._LOCAL_RANK))
 
                 # Horovod: limit # of CPU threads to be used per worker.
                 torch.set_num_threads(1)
@@ -213,8 +214,8 @@ class PyTorchInterfaceGPU(PyTorchInterface):
                 print("[INFO] Sharding data files for Horovod")
             
             # splitter
-            splitter = self.data_manager._N_FILES // self._MGPU_SIZE
-            print(self.data_manager._N_FILES, splitter, splitter*self._GLOBAL_RANK, splitter*(self._GLOBAL_RANK+1))
+            splitter = self.data_manager._N_TRAIN_FILES // self._MGPU_SIZE
+            print(self.data_manager._N_TRAIN_FILES, splitter, splitter*self._GLOBAL_RANK, splitter*(self._GLOBAL_RANK+1))
             
             # divide training files
             self.data_manager._TRAIN_FILES = self.data_manager._TRAIN_FILES[splitter*self._GLOBAL_RANK:splitter*(self._GLOBAL_RANK+1)]
@@ -222,8 +223,8 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         
         # files handled by single GPU
         if self._GLOBAL_RANK == 0:
-            print("[INFO] Number of training files:", self.data_manager._N_TRAIN_FILES)
-            print("[INFO] Number of validation files:", self.data_manager._N_VAL_FILES)
+            print("[INFO] Number of training files (per GPU):", self.data_manager._N_TRAIN_FILES)
+            print("[INFO] Number of validation files (per GPU):", self.data_manager._N_VAL_FILES)
 
     def load_data(
         self,
@@ -388,7 +389,9 @@ class PyTorchInterfaceGPU(PyTorchInterface):
             dist.barrier()
             dist.destroy_process_group() 
 
-        torch.save(self.model.state_dict(), self._MODEL_PATH)
+        if self._GLOBAL_RANK == 0:
+            print("Model Path: %s" %(self._MODEL_PATH))
+            torch.save(self.model.state_dict(), self._MODEL_PATH)
 
     def infer(
         self,
