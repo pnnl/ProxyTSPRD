@@ -1,91 +1,131 @@
 import os, sys
 import glob
+import random
 import numpy as np
 
 class DataManager:
     def __init__(
         self,
-        training_data_dir,
-        input_file_format,
-        n_training_files=-1,
-        val_data_dir=None,
-        print_rank=0,
-        batch_size=1
+        data_dir,
+        file_format,
+        train_files=-1,
+        val_files=0,
+        test_files=0,
+        shuffle=False,
+        print_rank=0
     ) -> None:
         self._PRINT_RANK = print_rank
-        self._BATCH_SIZE = batch_size
         
-        # training data
-        self._TRAINING_DATA_DIR = os.path.join(training_data_dir)
-        if self._PRINT_RANK:
-            print("[INFO] Training Data Directory:", self._TRAINING_DATA_DIR)
+        # training data directory
+        self._TRAIN_DATA_DIR = os.path.join(data_dir)
+        if self._PRINT_RANK == 0:
+            print("[INFO] Training Data Directory:", self._TRAIN_DATA_DIR)
 
-        # read training files and count those files
-        self._FILE_FORMAT = input_file_format
-        if self._FILE_FORMAT == "npz":
-            self._ALL_FILES = glob.glob(self._TRAINING_DATA_DIR + "/*." + self._FILE_FORMAT)
-        elif self._FILE_FORMAT == "mat":
-            self._ALL_FILES = [self._TRAINING_DATA_DIR + "/" + f + "/" for f in os.listdir(self._TRAINING_DATA_DIR)]
+        # get all files
+        self._FILE_FORMAT = file_format
+        self._ALL_FILES = self._get_filenames(
+            self._TRAIN_DATA_DIR, self._FILE_FORMAT, shuffle
+        )
             
         # number of files
-        self._TOTAL_FILES = len(self._ALL_FILES)
-        if self._PRINT_RANK:
-            print("[INFO] Found %d `%s` files" %(self._TOTAL_FILES, self._FILE_FORMAT))
+        self._N_FILES = len(self._ALL_FILES)
+        if self._PRINT_RANK == 0:
+            print("[INFO] Found %d `%s` files" %(self._N_FILES, self._FILE_FORMAT))
 
-        # select training files
-        self._N_FILES = self._TOTAL_FILES
-        if ((n_training_files > 0) & (n_training_files < self._TOTAL_FILES)):
-            self._N_FILES = n_training_files
-            self._TRAINING_FILES = self._ALL_FILES[:self._N_FILES]
-        if self._PRINT_RANK:
-            print("[INFO] Training on %d/%d `%s` files" %(self._N_FILES, self._TOTAL_FILES, self._FILE_FORMAT))
-
-        # test files
-        self._N_TEST_FILES = self._TOTAL_FILES - self._N_FILES
-        # print("=========== Test Files: ", self._N_TEST_FILES, self._N_FILES)
-        if self._N_TEST_FILES > 0:
-            self._TEST_FILES = self._ALL_FILES[self._N_FILES:]
-            if self._PRINT_RANK:
-                print("[INFO] Testing on %d/%d `%s` files" %(self._N_TEST_FILES, self._TOTAL_FILES, self._FILE_FORMAT))
-            
-        # print(self._TEST_FILES)
-        # sys.exit(1)
-        # validation data - if any
-        if val_data_dir is not None:
-            self._VAL_DATA_DIR = os.path.join(val_data_dir)
-            if self._PRINT_RANK:
-                print("[INFO] Validation Data Directory:", self._VAL_DATA_DIR)
-                print("[INFO] Validation Data Directory:", self._VAL_DATA_DIR)
+        # training files
+        # if subset of files are not provided
+        # if train_files < 0:
+        self._N_TRAIN_FILES = self._N_FILES
+        self._TRAIN_FILES = self._ALL_FILES
+        # if subset of files are selected
+        if (
+            (train_files > 0) & 
+            (train_files < self._N_FILES)
+        ):
+            self._N_TRAIN_FILES = train_files
+            self._TRAIN_FILES = self._ALL_FILES[:self._N_TRAIN_FILES]
+        elif train_files == 0:
+            self._N_TRAIN_FILES = 0
+            self._TRAIN_FILES = []
         
-            if self._FILE_FORMAT == "npz":
-                if self._PRINT_RANK:
-                    print(self._VAL_DATA_DIR + "/*." + self._FILE_FORMAT)
-                self._VALIDATION_FILES = glob.glob(self._VAL_DATA_DIR + "/*." + self._FILE_FORMAT)
-                self._N_VAL_FILES = len(self._VALIDATION_FILES)
-            else:
-                self._VALIDATION_FILES = [self._VAL_DATA_DIR + "/" + f + "/" for f in os.listdir(self._VAL_DATA_DIR)]
-                self._N_VAL_FILES = len(self._VALIDATION_FILES)
-        else:
-            self._VALIDATION_FILES = None
-            self._N_VAL_FILES = -1
+        # print info
+        if self._PRINT_RANK == 0:
+            print("[INFO] Training on %d/%d `%s` files" %(self._N_TRAIN_FILES, self._N_FILES, self._FILE_FORMAT))
+
+        # validation files
+        self._VAL_DATA_DIR, self._VAL_FILES, self._N_VAL_FILES = self._read_test_val_files(
+            val_files, self._FILE_FORMAT,
+            self._N_TRAIN_FILES, shuffle
+        )
+        if self._PRINT_RANK == 0:
+            print("[INFO] Validation on %d/%d `%s` files" %(self._N_VAL_FILES, self._N_FILES, self._FILE_FORMAT))
+        
+        # test files
+        self._TEST_DATA_DIR, self._TEST_FILES, self._N_TEST_FILES = self._read_test_val_files(
+            test_files, self._FILE_FORMAT,
+            self._N_TRAIN_FILES+self._N_VAL_FILES, shuffle
+        )
+        if self._PRINT_RANK == 0:
+            print("[INFO] Testing on %d/%d `%s` files" %(self._N_TEST_FILES, self._N_FILES, self._FILE_FORMAT))
+
+    def _get_filenames(self, path, file_format, shuffle):
+        # read training files and count those files
+        if file_format == "npz":
+            files = glob.glob(path + "/*." + file_format)
+        elif self._FILE_FORMAT == "mat":
+            files = [path + "/" + f + "/" for f in os.listdir(path)]
+
+        if shuffle:
+            random.shuffle(files)
+
+        return files
+
+    def _read_test_val_files(self, files, file_format, start_index=0, shuffle=False):
+        # initialize
+        files_dir = None
+        list_of_files = []
+        n_files = 0
+        
+        # if number of files is given
+        if type(files) is int:
+            n_files = files
+            files_dir = self._TRAIN_DATA_DIR
+            if n_files > 0:
+                assert start_index < self._N_FILES, "[ERROR] Start index (%d) more than total number of files (%d)" %(start_index, self._N_FILES)
+                list_of_files = self._ALL_FILES[start_index:start_index+n_files]
+                
+        # if a path is provided
+        elif type(files) is str:
+            files_dir = files
+            list_of_files = self._get_filenames(
+                                    files_dir, 
+                                    file_format,
+                                    shuffle
+                                )
+            n_files = len(list_of_files)
+
+        return files_dir, list_of_files, n_files
+
 
 class TimeSeriesDataManager(DataManager):
     def __init__(
         self, 
-        training_data_dir, 
-        input_file_format, 
-        n_training_files=-1, 
-        val_data_dir=None,
-        print_rank=0,
-        batch_size=1
+        data_dir, 
+        file_format, 
+        train_files=-1,
+        val_files=0,
+        test_files=0,
+        shuffle=False,
+        print_rank=0
     ) -> None:
         super().__init__(
-            training_data_dir=training_data_dir, 
-            input_file_format=input_file_format, 
-            n_training_files=n_training_files, 
-            val_data_dir=val_data_dir,
-            print_rank=print_rank,
-            batch_size=batch_size
+            data_dir=data_dir, 
+            file_format=file_format, 
+            train_files=train_files,
+            test_files=test_files,
+            val_files=val_files,
+            shuffle=shuffle,
+            print_rank=print_rank
         )
 
 

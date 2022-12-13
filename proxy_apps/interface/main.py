@@ -9,16 +9,8 @@ from ..utils import path_handler
 
 class Interface:
     def __init__(
-        self#,
-        # machine_name,
-        # data_type,
-        # n_epochs,
-        # batch_size
+        self,
     ) -> None:
-        # self._MACHINE_NAME = machine_name
-        # self._DTYPE = data_type
-        # self._N_EPOCHS = n_epochs
-        # self._BATCH_SIZE = batch_size
         self._GLOBAL_RANK = 0
 
     def init_app_manager(
@@ -26,72 +18,76 @@ class Interface:
         app,
         app_name,
         output_dir,
-        ml_framework
+        mixed_precision_support=False
     ):
+        # initiate app manager
         self.app_manager = AppManager(
             app=app,
             app_name=app_name,
             output_dir=output_dir,
-            ml_framework=ml_framework,
-            print_rank=int(self._GLOBAL_RANK)
+            print_rank=self._GLOBAL_RANK
         )
+
+        # select ML framework in app manager
+        self.app_manager._ML_FRAMEWORK = self._ML_FRAMEWORK
+        assert self.app_manager._ML_FRAMEWORK in ["PyTorch", "TensorFlow"], "[ERROR] %s is not supported, choose between [PyTorch, TensorFlow] %(ml_framework)"
+
+        # mixed precision support
+        self.app_manager._MIXED_PRECISION_SUPPORT = mixed_precision_support
+        if self._GLOBAL_RANK == 0:
+            print("[INFO] App Supports Mixed Precision: %s" %(self.app_manager._MIXED_PRECISION_SUPPORT))
         
     def init_data_manager(
             self,
-            training_data_dir,
-            input_file_format,
-            data_type,
-            n_training_files=-1,
-            val_data_dir=None,
-            batch_size=1
+            data_dir,
+            file_format,
+            data_manager,
+            train_files=-1,
+            val_files=0,
+            test_files=0,
+            shuffle=False
         ):
-        self._DATA_TYPE = data_type
-        if self._DATA_TYPE == "TimeSeries":
+        self._DATA_MANAGER = data_manager
+        if self._DATA_MANAGER == "TimeSeries":
             self.data_manager = TimeSeriesDataManager(
-                training_data_dir=training_data_dir,
-                input_file_format=input_file_format,
-                n_training_files=n_training_files,
-                val_data_dir=val_data_dir,
-                print_rank=int(self._GLOBAL_RANK),
-                batch_size=batch_size
+                data_dir=data_dir,
+                file_format=file_format,
+                train_files=train_files,
+                test_files=test_files,
+                val_files=val_files,
+                shuffle=shuffle,
+                print_rank=int(self._GLOBAL_RANK)
             )
-
-    def init_training_engine(self):
-        pass
-
-    def init_inference_engine(self):
-        pass
 
     def load_data(
         self,
-        type,
+        data_files,
         data_params
 
     ):
-        # get data reader
-        # print("Data Type:", self._DTYPE)
-        if type == "train":
-            return self.app_manager.get_dataloader(
-                files=self.data_manager._TRAINING_FILES,
-                data_params=data_params,
-                dtype=self._DTYPE
-            )
-        elif type == "test":
-            # sys.exit(self.data_manager._TEST_FILES)
-            return self.app_manager.get_dataloader(
-                files=self.data_manager._TEST_FILES,
-                data_params=data_params,
-                dtype=self._DTYPE
-            )
+        assert len(data_files) > 0, "[ERROR] Empty files list. Cannot create data loader with zero data files."
+        return self.app_manager.get_datagenerator(
+            files=data_files,
+            data_params=data_params,
+            dtype=self._DTYPE
+        )
     
     def init_training_engine(
         self,
         model_name,
-        model_parameters,
+        data_params,
         criterion_params,
         device=None
     ):
-        self.model_params = model_parameters
+        self.data_params = data_params
         self.criterion = self.app_manager.get_criterion(criterion_params=criterion_params)
-        self.model = self.app_manager.get_model(model_name, model_parameters, device=device)
-        
+        self.model = self.app_manager.get_model(
+                        model_name, 
+                        data_params, 
+                        device=device
+                    )
+    
+    def init_inference_engine(self):
+        pass
+
+    

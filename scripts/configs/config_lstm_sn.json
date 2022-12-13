@@ -5,10 +5,10 @@
         "mgpu_support": "True",
 		"data_type": "TimeSeries",
         "dtype": "float64",
-        "output_dir": "/people/jain432/pacer_saudade/data/ProxyTSPRD_IPDPS/"
+        "output_dir": "/home/milanjain91/output/ProxyTSPRD_IPDPS/"
 	},
 	"data_params": {
-		"training_data_dir": "/people/jain432/pacer_saudade/data/NewTestScenarios/",
+		"training_data_dir": "/home/milanjain91/data/power_system/test/",
 		"input_file_format": "mat",
 		"data_generator": "torch.utils.data.Dataset",
 		"num_files": 128,
@@ -32,8 +32,8 @@
 	},
 	"model_info": {
 		"model_name": "LSTM",
-		"model_dir": "/people/jain432/pacer_saudade/models/ProxyTSPRD_IPDPS/",
-		"tb_log_dir": "/people/jain432/pacer_saudade/logs/",
+		"model_dir": "/home/milanjain91/models/ProxyTSPRD_IPDPS/",
+		"tb_log_dir": "/home/milanjain91/logs/",
 		"fill_data": "False",
 		"model_parameters": {
 			"bw_size": 60,

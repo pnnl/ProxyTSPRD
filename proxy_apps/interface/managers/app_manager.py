@@ -6,7 +6,6 @@ class AppManager:
         app,
         app_name,
         output_dir,
-        ml_framework,
         print_rank=0
     ) -> None:
         # app
@@ -23,52 +22,42 @@ class AppManager:
         if self._PRINT_RANK == 0:
             print("[INFO] Output Data Directory: %s" %(self._OUTPUT_DIR))
 
-        self._ML_FRAMEWORK = ml_framework
-        assert self._ML_FRAMEWORK in ["PyTorch", "TensorFlow"], "[ERROR] %s is not supported, choose between [PyTorch, TensorFlow] %(ml_framework)"
-
-    def get_dataloader(
+    def get_datagenerator(
         self,
         files,
         data_params,
         dtype,
         validation_files=None
     ):
-        if self._ML_FRAMEWORK == "PyTorch":
-            return self._APP.get_pt_dataloader(
-                files=files,
-                data_params=data_params,
-                dtype=dtype,
-                validation_files=validation_files
-            )
-        elif self._ML_FRAMEWORK == "TensorFlow":
-            return self._APP.get_tf_dataloader(
-                files=files,
-                data_params=data_params,
-                dtype=dtype,
-                validation_files=validation_files
-            )
-
+        return self._APP.get_datagen(
+            files=files,
+            data_params=data_params,
+            dtype=dtype,
+            validation_files=validation_files
+        )
+    
     def get_model(
         self, 
         model_name, 
-        model_parameters,
+        data_params,
         device=None
     ):
-        if self._ML_FRAMEWORK == "PyTorch":
-            return self._APP.get_pt_model(model_name, model_parameters, device=device)
-        elif self._ML_FRAMEWORK == "TensorFlow":
-            return self._APP.get_tf_model(model_name, model_parameters)
-
+        return self._APP.get_model(
+            model_name, 
+            data_params, 
+            device=device
+        )
+        
     def get_opt(
-        self
+        self,
+        model_params,
+        opt_params
     ):
-        return self._APP.get_opt()
+        return self._APP.get_opt(model_params, opt_params)
     
     def get_criterion(
         self, 
         criterion_params
     ):
-        if self._ML_FRAMEWORK == "PyTorch":
-            return self._APP.get_pt_criterion(criterion_params)
-        elif self._ML_FRAMEWORK == "TensorFlow":
-            return self._APP.get_tf_criterion(criterion_params)
+        return self._APP.get_criterion(criterion_params)
+        

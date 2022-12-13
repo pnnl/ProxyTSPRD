@@ -1,15 +1,12 @@
+import os, sys
 from .main import Interface
 import torch
 
 class PyTorchInterface(Interface):
     def __init__(
-        self#, 
-        # machine_name, 
-        # data_type, 
-        # n_epochs, 
-        # batch_size
+        self, 
     ) -> None:
-        super().__init__()#machine_name, data_type, n_epochs, batch_size)
+        super().__init__()
         self._ML_FRAMEWORK = "PyTorch"
 
         ## PyTorch Setup
@@ -27,30 +24,27 @@ class PyTorchInterface(Interface):
             app=app,
             app_name=app_name, 
             output_dir=output_dir,
-            ml_framework="PyTorch"
+            mixed_precision_support=mixed_precision_support
         )
-        
-        # mixed precision support
-        self.app_manager._MIXED_PRECISION_SUPPORT = mixed_precision_support
-        if self._GLOBAL_RANK == "0":
-            print("[INFO] App Supports Mixed Precision: %s" %(self.app_manager._MIXED_PRECISION_SUPPORT))
 
     def init_data_manager(
         self,
-        training_data_dir,
-        input_file_format,
-        data_type,
-        n_training_files=-1,
-        val_data_dir=None,
-        batch_size=1
+        data_dir,
+        file_format,
+        data_manager,
+        train_files=-1,
+        test_files=0,
+        val_files=0,
+        shuffle=False
     ):
         super().init_data_manager(
-            training_data_dir=training_data_dir,
-            input_file_format=input_file_format,
-            data_type=data_type,
-            n_training_files=n_training_files,
-            val_data_dir=val_data_dir,
-            batch_size=batch_size
+            data_dir=data_dir,
+            file_format=file_format,
+            data_manager=data_manager,
+            train_files=train_files,
+            test_files=test_files,
+            val_files=val_files,
+            shuffle=shuffle
         )
         
         # keep track of framework
@@ -58,23 +52,25 @@ class PyTorchInterface(Interface):
     
     def load_data(
         self, 
-        type,
+        data_files,
         data_params,
         num_workers=0,
         pin_memory=False,
-        sampler=None
+        sampler=None,
+        batch_size=1
     ):
         # empty training dataset
         dataloader = None
+        self.data_manager._BATCH_SIZE = batch_size
 
         # pytorch data loader
-        dataset = super().load_data(
-            type,
+        data_generator = super().load_data(
+            data_files,
             data_params
         )
-        if data_params["data_generator"] == "torch.utils.data.Dataset":
+        if data_params["dataloader"] == "torch.utils.data.Dataset":
             dataloader = torch.utils.data.DataLoader(
-                dataset, 
+                data_generator, 
                 batch_size=self.data_manager._BATCH_SIZE, 
                 pin_memory=pin_memory, 
                 num_workers=num_workers,
@@ -83,26 +79,39 @@ class PyTorchInterface(Interface):
 
         return dataloader
 
-    # def load_data(self):
-    #     super().load_data()
-    #     self._DATA_GENERATOR_NAME = self.config["data_params"]["data_generator"] + "_PT"
-        
     def init_training_engine(
         self,
         model_name,
-        model_parameters,
+        model_dir,
+        data_params,
         criterion_params,
         device=None
     ):
         super().init_training_engine(
             model_name=model_name,
-            model_parameters=model_parameters,
+            data_params=data_params,
             criterion_params=criterion_params,
             device=device
         )
 
-        if self._GLOBAL_RANK == "0":
-            print("[INFO] Model Parameters: \n")
+        # load if model exists
+        self._MODEL_PATH = os.path.join(
+                            model_dir, 
+                            model_name + ".pt"
+                        )
+        if os.path.exists(self._MODEL_PATH):
+            self.model.load_state_dict(
+                torch.load(
+                    self._MODEL_PATH,
+                    map_location=torch.device(self._DEVICE)
+                )
+            )
+        elif not os.path.exists(model_dir):
+            os.makedirs(model_dir)
+
+        # print model parameters
+        if self._GLOBAL_RANK == 0:
+            print("[INFO] Model Parameters:")
             for name, param in self.model.named_parameters():
                 if param.requires_grad:
                     print(name, param.shape)
