@@ -51,10 +51,19 @@ if [ ${9} == 1 ]; then
         
         echo "--------- Running with Horovod (with Profiler) -------------------"
         # mpirun -n ${4} --bind-to none -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH 
-        horovodrun -np ${3} nsys profile --kill=none -t cuda,osrt,cudnn,cublas -o ../../../../logs/ProxyTSPRD_IPDPS/scenarios_30/float64/R10/nsys/qdrep_report_${1}_${2}_ng${3}_nc${4}_e${5}_b${6}_mp${7}_mgpu${8}_prof${9}_${10}_%p -w true --force-overwrite=true python ../../scripts/test/test_gpu.py --config_file ../../scripts/configs/config_${1}.json --platform "gpu" --machine_name ${2} --n_gpus ${3} --n_cpus ${4} --n_epochs ${5} --batch_size ${6} --dtype ${7} --mgpu_strategy ${8} --profiling ${9} --run_type ${10} 
+        horovodrun -np ${3} nsys profile --kill=none -t cuda,osrt,cudnn,cublas -o ../../../../logs/ProxyTSPRD_IPDPS/scenarios_30/float64/R10/nsys/qdrep_report_${1}_${2}_ng${3}_nc${4}_e${5}_b${6}_mp${7}_mgpu${8}_prof${9}_${10}_%p -w true --force-overwrite=true python -u ../../scripts/test/test_gpu.py --config_file ../../scripts/configs/config_${1}.json --platform "gpu" --machine_name ${2} --n_gpus ${3} --n_cpus ${4} --n_epochs ${5} --batch_size ${6} --dtype ${7} --mgpu_strategy ${8} --profiling ${9} --run_type ${10} 
+    elif [ ${8} == "DDP" ]; then
+        module load openmpi/4.1.0
+        export HOROVOD_GPU_OPERATIONS="NCCL"
+        export HOROVOD_NCCL_INCLUDE="~/.conda/envs/horovod/include/"
+        export HOROVOD_NCCL_LIB="~/.conda/envs/horovod/lib/"
+        
+        echo "--------- Running with DDP (with Profiler) -------------------"
+        # mpirun -n ${4} --bind-to none -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH 
+        mpirun -n ${3} --npernode 8 -x PATH -x LD_LIBRARY_PATH \ nsys profile --kill=none -t cuda,osrt,cudnn,cublas -o ../../../../logs/ProxyTSPRD_IPDPS/scenarios_30/float64/R10/nsys/qdrep_report_${1}_${2}_ng${3}_nc${4}_e${5}_b${6}_mp${7}_mgpu${8}_prof${9}_${10}_%p -w true --force-overwrite=true python -u ../../scripts/test/test_gpu.py --config_file ../../scripts/configs/config_${1}.json --platform "gpu" --machine_name ${2} --n_gpus ${3} --n_cpus ${4} --n_epochs ${5} --batch_size ${6} --dtype ${7} --mgpu_strategy ${8} --profiling ${9} --run_type ${10} 
     else
         echo "--------- Running without Horovod (with Profiler) -------------------"
-        nsys profile --kill=none -t cuda,osrt,cudnn,cublas -o ../../../../logs/ProxyTSPRD_IPDPS/scenarios_30/float64/R10/nsys/qdrep_report_${1}_${2}_ng${3}_nc${4}_e${5}_b${6}_mp${7}_mgpu${8}_prof${9}_${10} -w true --force-overwrite=true python ../../scripts/test/test_gpu.py --config_file ../../scripts/configs/config_${1}.json --machine_name --platform "gpu" ${2} --n_gpus ${3} --n_cpus ${4} --n_epochs ${5} --batch_size ${6} --dtype ${7} --mgpu_strategy ${8} --profiling ${9} --run_type ${10} 
+        nsys profile --kill=none -t cuda,osrt,cudnn,cublas -o ../../../../logs/ProxyTSPRD_IPDPS/scenarios_30/float64/R10/nsys/qdrep_report_${1}_${2}_ng${3}_nc${4}_e${5}_b${6}_mp${7}_mgpu${8}_prof${9}_${10} -w true --force-overwrite=true python -u ../../scripts/test/test_gpu.py --config_file ../../scripts/configs/config_${1}.json --machine_name --platform "gpu" ${2} --n_gpus ${3} --n_cpus ${4} --n_epochs ${5} --batch_size ${6} --dtype ${7} --mgpu_strategy ${8} --profiling ${9} --run_type ${10} 
     fi
 else
     if [ ${8} == "HVD" ]; then
@@ -64,11 +73,20 @@ else
         export HOROVOD_NCCL_LIB="~/.conda/envs/horovod/lib/"
         
         echo "--------- Running with Horovod -------------------"
-        # horovodrun -np ${4} python app.py --config_file ${1} --framework ${2} --machine_name ${3} --n_gpus ${4} --n_cpus ${5} --n_epochs ${6} --batch_size ${7} --mixed_precision ${8} --mgpu_strategy ${9}
+        # horovodrun -np ${4} python -u app.py --config_file ${1} --framework ${2} --machine_name ${3} --n_gpus ${4} --n_cpus ${5} --n_epochs ${6} --batch_size ${7} --mixed_precision ${8} --mgpu_strategy ${9}
         # mpirun --bind-to none -n ${4} -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH 
-        horovodrun -np ${3} python ../../scripts/test/test_gpu.py --config_file ../../scripts/configs/config_${1}.json --platform "gpu" --machine_name ${2} --n_gpus ${3} --n_cpus ${4} --n_epochs ${5} --batch_size ${6} --dtype ${7} --mgpu_strategy ${8} --profiling ${9} --run_type ${10} 
+        horovodrun -np ${3} python -u ../../scripts/test/test_gpu.py --config_file ../../scripts/configs/config_${1}.json --platform "gpu" --machine_name ${2} --n_gpus ${3} --n_cpus ${4} --n_epochs ${5} --batch_size ${6} --dtype ${7} --mgpu_strategy ${8} --profiling ${9} --run_type ${10} 
+    elif [ ${8} == "DDP" ]; then
+        module load openmpi/4.1.0
+        export HOROVOD_GPU_OPERATIONS="NCCL"
+        export HOROVOD_NCCL_INCLUDE="~/.conda/envs/horovod/include/"
+        export HOROVOD_NCCL_LIB="~/.conda/envs/horovod/lib/"
+        
+        echo "--------- Running with DDP (with Profiler) -------------------"
+        # mpirun -n ${4} --bind-to none -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH 
+        mpirun -n ${3} --npernode 8 -x PATH -x LD_LIBRARY_PATH python -u ../../scripts/test/test_gpu.py --config_file ../../scripts/configs/config_${1}.json --platform "gpu" --machine_name ${2} --n_gpus ${3} --n_cpus ${4} --n_epochs ${5} --batch_size ${6} --dtype ${7} --mgpu_strategy ${8} --profiling ${9} --run_type ${10} 
     else
         echo "--------- Running without Horovod -------------------"
-        python ../../scripts/test/test_gpu.py --config_file ../../scripts/configs/config_${1}.json --platform "gpu" --machine_name ${2} --n_gpus ${3} --n_cpus ${4} --n_epochs ${5} --batch_size ${6} --dtype ${7} --mgpu_strategy ${8} --profiling ${9} --run_type ${10}
+        python -u ../../scripts/test/test_gpu.py --config_file ../../scripts/configs/config_${1}.json --platform "gpu" --machine_name ${2} --n_gpus ${3} --n_cpus ${4} --n_epochs ${5} --batch_size ${6} --dtype ${7} --mgpu_strategy ${8} --profiling ${9} --run_type ${10}
     fi
 fi
