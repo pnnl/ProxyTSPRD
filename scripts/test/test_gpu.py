@@ -58,19 +58,19 @@ if __name__ == "__main__":
     elif _CONFIG["info"]["app_name"] == "CNNProxyApp":
         app = CNNProxyApp(args.platform)
     else:
-        sys.exit("[ERROR] Invalid App")
+        sys.exit("[ERROR] Invalid App: %s" %(_CONFIG["info"]["app_name"]))
 
     # suffix 
-    print(
-        type(args.platform),
-        type(args.n_gpus),
-        type(args.n_cpus),
-        type(args.n_epochs),
-        type(args.batch_size),
-        type(args.dtype),
-        type(_mgpu_strategy),
-        type(args.profiling)
-    )
+    # print(
+    #     type(args.platform),
+    #     type(args.n_gpus),
+    #     type(args.n_cpus),
+    #     type(args.n_epochs),
+    #     type(args.batch_size),
+    #     type(args.dtype),
+    #     type(_mgpu_strategy),
+    #     type(args.profiling)
+    # )
     _SUFFIX = f"%s_ng%d_nc%d_e%d_b%d_d%s_mpgu%s_prof%d" %(
         args.platform,
         args.n_gpus,

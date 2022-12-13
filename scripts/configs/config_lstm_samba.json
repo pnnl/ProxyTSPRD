@@ -8,7 +8,7 @@
         "output_dir": "/home/milanjain91/output/ProxyTSPRD_IPDPS/"
 	},
 	"data_params": {
-		"training_data_dir": "/home/milanjain91/data/power_system/test/",
+		"training_data_dir": "/home/milanjain91/data/power_system/NewTestScenarios/",
 		"input_file_format": "mat",
 		"data_generator": "torch.utils.data.Dataset",
 		"num_files": 128,

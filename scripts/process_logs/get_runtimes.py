@@ -5,9 +5,9 @@ import json
 import numpy as np
 import pandas as pd
 
-_DATA_DIR = '../../job_scheduling/cobalt/logs/'
+_DATA_DIR = '/home/milanjain91/results/tpdps23/logs/sbatch/'
 
-data_files = glob.glob(_DATA_DIR + "*_out")
+data_files = glob.glob(_DATA_DIR + "o_*")
 data_files.sort()
 print(data_files)
 
@@ -33,6 +33,7 @@ for f in data_files:
     else:
         file_basename = os.path.basename(f)
         basename_comps = file_basename.split('_')
-        result.append([basename_comps[0], basename_comps[1], int(basename_comps[2]), basename_comps[3], t])
+        print(basename_comps)
+        result.append([basename_comps[1], basename_comps[8].split('mgpu')[1], int(basename_comps[3].split('ng')[1]), basename_comps[7].split('mp')[1], t])
 
-print(pd.DataFrame(result, columns=['model', 'mgpu_strategy', 'n_nodes', 'dtype', 'runtime']))
+print(pd.DataFrame(result, columns=['model', 'mgpu_strategy', 'n_gpus', 'dtype', 'runtime']))
