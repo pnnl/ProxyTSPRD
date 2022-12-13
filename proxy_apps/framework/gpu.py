@@ -384,15 +384,19 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         
         if self._GLOBAL_RANK == 0:
             print("============> (After) Model Fitting: ", model_training_time)
+            
+            # save model
+            print("Model Path: %s" %(self._MODEL_PATH))
+            if self._MGPU_STRATEGY == "DDP":
+                torch.save(self.model.module.state_dict(), self._MODEL_PATH)
+            else:
+                torch.save(self.model.state_dict(), self._MODEL_PATH)
 
         if self._MGPU_STRATEGY == "DDP":
             dist.barrier()
             dist.destroy_process_group() 
 
-        if self._GLOBAL_RANK == 0:
-            print("Model Path: %s" %(self._MODEL_PATH))
-            torch.save(self.model.state_dict(), self._MODEL_PATH)
-
+        
     def infer(
         self,
         data
