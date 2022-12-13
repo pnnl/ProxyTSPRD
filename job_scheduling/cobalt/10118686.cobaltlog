@@ -1,0 +1,25 @@
+Jobid: 10118686
+qsub -n 1 -t 0:20:00 -A GRACE -q full-node --attrs filesystems=home -o /home/milanjain91/results/tpdps23/logs/sbatch/o_lstm_theta_ng8_nc0_e50_b2048_mpfp32_mgpuDDP_prof0_train -e /home/milanjain91/results/tpdps23/logs/sbatch/e_lstm_theta_ng8_nc0_e50_b2048_mpfp32_mgpuDDP_prof0_train ddp_job.qsub lstm theta 1 0 50 2048 fp32 DDP 0 train
+Tue Dec 13 06:30:03 2022 +0000 (UTC) submitted with cwd set to: /home/milanjain91/ProxyTSPRD/job_scheduling/cobalt
+jobid 10118686 submitted from terminal /dev/pts/4
+Tue Dec 13 06:36:40 2022 +0000 (UTC) 
+Tue Dec 13 06:36:40 2022 +0000 (UTC) Command: '/usr/bin/ssh' 'thetagpu05' '/usr/bin/cobalt-launcher.py' '--nf' '/var/tmp/cobalt.10118686' '--jobid' '10118686' '--cwd' '/home/milanjain91/ProxyTSPRD/job_scheduling/cobalt' '--env' 'COBALT_JOBID=10118686' '/home/milanjain91/ProxyTSPRD/job_scheduling/cobalt/ddp_job.qsub' 'lstm' 'theta' '1' '0' '50' '2048' 'fp32' 'DDP' '0' 'train'
+Tue Dec 13 06:36:40 2022 +0000 (UTC) 
+Tue Dec 13 06:36:40 2022 +0000 (UTC) Environment:
+Tue Dec 13 06:36:40 2022 +0000 (UTC) SHELL=/bin/bash
+Tue Dec 13 06:36:40 2022 +0000 (UTC) COBALT_NODEFILE=/tmp/tmphUOhoJ
+Tue Dec 13 06:36:40 2022 +0000 (UTC) COBALT_PARTNAME=thetagpu05
+Tue Dec 13 06:36:40 2022 +0000 (UTC) COBALT_JOBID=10118686
+Tue Dec 13 06:36:40 2022 +0000 (UTC) COBALT_STARTTIME=1670913382
+Tue Dec 13 06:36:40 2022 +0000 (UTC) LOGNAME=milanjain91
+Tue Dec 13 06:36:40 2022 +0000 (UTC) USER=milanjain91
+Tue Dec 13 06:36:40 2022 +0000 (UTC) COBALT_ENDTIME=1670914582
+Tue Dec 13 06:36:40 2022 +0000 (UTC) COBALT_PARTSIZE=1
+Tue Dec 13 06:36:40 2022 +0000 (UTC) HOME=/home/milanjain91
+Tue Dec 13 06:36:40 2022 +0000 (UTC) COBALT_JOBSIZE=1
+Tue Dec 13 06:36:40 2022 +0000 (UTC) 
+Tue Dec 13 06:36:40 2022 +0000 (UTC) Info: stdin received from /dev/null
+Tue Dec 13 06:36:40 2022 +0000 (UTC) Info: stdout sent to /home/milanjain91/results/tpdps23/logs/sbatch/o_lstm_theta_ng8_nc0_e50_b2048_mpfp32_mgpuDDP_prof0_train
+Tue Dec 13 06:36:40 2022 +0000 (UTC) Info: stderr sent to /home/milanjain91/results/tpdps23/logs/sbatch/e_lstm_theta_ng8_nc0_e50_b2048_mpfp32_mgpuDDP_prof0_train
+Tue Dec 13 06:36:40 2022 +0000 (UTC) 
+Tue Dec 13 06:37:43 2022 +0000 (UTC) Info: task completed normally with an exit code of 134; initiating job cleanup and removal

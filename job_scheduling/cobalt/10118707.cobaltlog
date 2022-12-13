@@ -1,0 +1,4 @@
+Jobid: 10118707
+qsub -n 8 -t 0:20:00 -A GRACE -q full-node --attrs filesystems=home -o /home/milanjain91/results/tpdps23/logs/sbatch/o_lstm_theta_ng64_nc0_e50_b2048_mpfp64_mgpuDDP_prof0_train -e /home/milanjain91/results/tpdps23/logs/sbatch/e_lstm_theta_ng64_nc0_e50_b2048_mpfp64_mgpuDDP_prof0_train ddp_job.qsub lstm theta 8 0 50 2048 fp64 DDP 0 train
+Tue Dec 13 06:37:29 2022 +0000 (UTC) submitted with cwd set to: /home/milanjain91/ProxyTSPRD/job_scheduling/cobalt
+jobid 10118707 submitted from terminal /dev/pts/4
