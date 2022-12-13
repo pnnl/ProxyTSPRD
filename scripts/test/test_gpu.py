@@ -10,7 +10,7 @@ import argparse
 import sys
 sys.path.append('../../')
 from proxy_apps.framework.gpu import GPU
-from proxy_apps.apps import LSTMProxyAppPT, CNNProxyApp
+from proxy_apps.apps import LSTMProxyAppPT, CNNProxyAppPT
 
 # ------------------------------- PATH & LOGGER SETUP ------------------------------------------------
 
@@ -55,8 +55,8 @@ if __name__ == "__main__":
     # get app
     if _CONFIG["info"]["app_name"] == "LSTMProxyAppPT":
         app = LSTMProxyAppPT(args.platform)
-    elif _CONFIG["info"]["app_name"] == "CNNProxyApp":
-        app = CNNProxyApp(args.platform)
+    elif _CONFIG["info"]["app_name"] == "CNNProxyAppPT":
+        app = CNNProxyAppPT(args.platform)
     else:
         sys.exit("[ERROR] Invalid App: %s" %(_CONFIG["info"]["app_name"]))
 

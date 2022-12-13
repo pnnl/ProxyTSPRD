@@ -77,7 +77,7 @@ class LSTMProxyAppPT(ProxyApp):
                         device
                     )
         elif self._PLATFORM == "rdu":
-            criterion = self.get_pt_criterion()
+            criterion = self.get_criterion()
             model = PTLSTM_SN(
                         model_name, 
                         data_params, 

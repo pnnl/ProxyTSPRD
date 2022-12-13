@@ -6,84 +6,92 @@ import tensorflow as tf
 from ..main import ProxyApp
 from .data_readers import GridNetworkSequentialDataGenerator_PT, GridNetworkSequentialDataGenerator_TF, get_indexer
 
-class CNNProxyApp(ProxyApp):
+class CNNProxyAppPT(ProxyApp):
     def __init__(self, platform) -> None:
-        super().__init__(platform)
+        super().__init__(platform, "PT")
 
-    def get_pt_training_data(
+    def get_datagen(
         self,
-        training_files,
+        files,
         data_params,
         dtype,
         validation_files=None
     ):
-        super().get_pt_training_data(
-            training_files=training_files,
+        super().get_datagen(
+            files=files,
             validation_files=validation_files,
             data_params=data_params,
             dtype=dtype
         )
-        self.data_reader = GridNetworkSequentialDataGenerator_PT(
-            dir_list=training_files,
+        self.datagen = GridNetworkSequentialDataGenerator_PT(
+            dir_list=files,
             handler_params=data_params,
             dtype=dtype
         )
 
         x_indexer = get_indexer(
-            n_rows=self.data_reader.n_rows,
-            window_size=self.data_reader.iw_params["window_size"],
-            shift_size=self.data_reader.iw_params["shift_size"],
-            start_point=self.data_reader.iw_params["start_at"],
-            leave_last=self.data_reader.iw_params["leave_last"]
+            n_rows=self.datagen.n_rows,
+            window_size=self.datagen.iw_params["window_size"],
+            shift_size=self.datagen.iw_params["shift_size"],
+            start_point=self.datagen.iw_params["start_at"],
+            leave_last=self.datagen.iw_params["leave_last"]
         )
         y_indexer = get_indexer(
-            n_rows=self.data_reader.n_rows,
-            window_size=self.data_reader.ow_params["window_size"],
-            shift_size=self.data_reader.ow_params["shift_size"],
-            start_point=self.data_reader.ow_params["start_at"],
-            leave_last=self.data_reader.ow_params["leave_last"]
+            n_rows=self.datagen.n_rows,
+            window_size=self.datagen.ow_params["window_size"],
+            shift_size=self.datagen.ow_params["shift_size"],
+            start_point=self.datagen.ow_params["start_at"],
+            leave_last=self.datagen.ow_params["leave_last"]
         )
 
-        self.data_reader.get_training_data(
+        self.datagen.get_data(
             x_indexer, 
             y_indexer
         )
-        return self.data_reader
+        return self.datagen
         # pass
 
-    def get_pt_model(
-        self,
-        model_name,
-        model_parameters,
-        device=None
-    ):
-        super().get_pt_model()
-        if self._PLATFORM == "gpu":
-            self.model = PTCNN(model_name, model_parameters)
-        elif self._PLATFORM == "rdu":
-            criterion = self.get_pt_criterion()
-            self.model = PTCNN_SN(model_name, model_parameters, criterion)
-        return self.model
-
-    def get_opt(
-        self
-    ):
-        return "SGD"
-
-    def get_pt_criterion(
+    def get_criterion(
         self,
         criterion_params=None
     ):
-        criterion = torch.nn.MSELoss()
-        return criterion
+        return torch.nn.MSELoss()
 
-    def get_tf_training_data(self):
-        super().get_tf_training_data()
-        pass
+    def get_model(
+        self,
+        model_name,
+        data_params,
+        device=None
+    ):
+        super().get_model()
+        # get model
+        if self._PLATFORM in ["cpu", "gpu"]:
+            model = PTCNN(
+                        model_name, 
+                        data_params
+                    )
+        elif self._PLATFORM == "rdu":
+            criterion = self.get_criterion()
+            model = PTCNN_SN(
+                            model_name, 
+                            data_params, 
+                            criterion
+                        )
+        else:
+            print("[ERROR] Invalid platform: %s" %(self._PLATFORM))
+            model = None
+        
+        return model
 
-    def get_tf_model(self):
-        super().get_tf_model()
-        pass    
+    def get_opt(
+        self,
+        model_params,
+        opt_params
+    ):
+        return torch.optim.Adam(
+                model_params, 
+                lr=opt_params["learning_rate"]
+            )
 
     
 # Neural Network
