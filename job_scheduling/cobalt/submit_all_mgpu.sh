@@ -1,9 +1,9 @@
 #!/bin/bash
 
 GPUS=( "theta" ) # which gpu
-MODELS=( "lstm" )
-N_NODES=( 1 2 4 )
-DTYPE=( "fp16" "fp32" "fp64" ) # with or without mixed precision
+MODELS=( "lstm" "cnn" )
+N_NODES=( 1 2 4 8 )
+DTYPE=( "fp32" "fp64" "amp" ) # with or without mixed precision
 MGPU=( "HVD" "DDP" ) # with or without mixed precision
 PROF=( 0 ) # with and without profiler
 RTYPE=( "train" )

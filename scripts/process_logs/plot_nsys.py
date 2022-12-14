@@ -174,9 +174,9 @@ def main_cuda(path_list, p):
 
     fig.tight_layout(pad=0.0, h_pad=0.0, w_pad=0.01)
     if not p:
-        fig.savefig('ptsprd-lstm-cuda.pdf', bbox_inches='tight')
+        fig.savefig('ptsprd-lstm-cuda_v2.pdf', bbox_inches='tight')
     else:
-        fig.savefig('ptsprd-lstm-cuda-inf.pdf', bbox_inches='tight')
+        fig.savefig('ptsprd-lstm-cuda-inf_v2.pdf', bbox_inches='tight')
     #plt.show()
 
 def main_tf(path_list, p):
@@ -254,9 +254,9 @@ def main_tf(path_list, p):
 
     fig.tight_layout(pad=0.0, h_pad=0.0, w_pad=0.01)
     if not p:
-        fig.savefig('ptsprd-lstm-tf.pdf', bbox_inches='tight')
+        fig.savefig('ptsprd-lstm-tf_v2.pdf', bbox_inches='tight')
     else:
-        fig.savefig('ptsprd-lstm-tf-inf.pdf', bbox_inches='tight')
+        fig.savefig('ptsprd-lstm-tf-inf_v2.pdf', bbox_inches='tight')
     #plt.show()
 
 def cuda_df_manip(df, ngpus):
