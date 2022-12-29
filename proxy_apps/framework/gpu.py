@@ -187,16 +187,16 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         self,
         data_dir,
         file_format,
-        data_manager,
+        data_manager_type,
         train_files=-1,
         test_files=0,
         val_files=0,
         shuffle=False
     ):
-        super().init_data_manager(
+        data_manager = super().init_data_manager(
             data_dir=data_dir,
             file_format=file_format,
-            data_manager=data_manager,
+            data_manager_type=data_manager_type,
             train_files=train_files,
             test_files=test_files,
             val_files=val_files,
@@ -214,17 +214,19 @@ class PyTorchInterfaceGPU(PyTorchInterface):
                 print("[INFO] Sharding data files for Horovod")
             
             # splitter
-            splitter = self.data_manager._N_TRAIN_FILES // self._MGPU_SIZE
-            print(self.data_manager._N_TRAIN_FILES, splitter, splitter*self._GLOBAL_RANK, splitter*(self._GLOBAL_RANK+1))
+            splitter = data_manager._N_TRAIN_FILES // self._MGPU_SIZE
+            print(data_manager._N_TRAIN_FILES, splitter, splitter*self._GLOBAL_RANK, splitter*(self._GLOBAL_RANK+1))
             
             # divide training files
-            self.data_manager._TRAIN_FILES = self.data_manager._TRAIN_FILES[splitter*self._GLOBAL_RANK:splitter*(self._GLOBAL_RANK+1)]
-            self.data_manager._N_TRAIN_FILES = len(self.data_manager._TRAIN_FILES)
+            data_manager._TRAIN_FILES = data_manager._TRAIN_FILES[splitter*self._GLOBAL_RANK:splitter*(self._GLOBAL_RANK+1)]
+            data_manager._N_TRAIN_FILES = len(data_manager._TRAIN_FILES)
         
         # files handled by single GPU
         if self._GLOBAL_RANK == 0:
-            print("[INFO] Number of training files (per GPU):", self.data_manager._N_TRAIN_FILES)
-            print("[INFO] Number of validation files (per GPU):", self.data_manager._N_VAL_FILES)
+            print("[INFO] Number of training files (per GPU):", data_manager._N_TRAIN_FILES)
+            print("[INFO] Number of validation files (per GPU):", data_manager._N_VAL_FILES)
+        
+        return data_manager
 
     def load_data(
         self,

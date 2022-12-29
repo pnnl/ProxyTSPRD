@@ -1,10 +1,6 @@
-import sys
 import torch
-from torch.autograd import Variable
-
 import tensorflow as tf
-from ..main import ProxyApp
-from .data_readers import GridNetworkSequentialDataGenerator_PT, GridNetworkSequentialDataGenerator_TF, get_indexer
+from .main import ProxyApp, get_indexer
 
 class CNNProxyAppPT(ProxyApp):
     def __init__(self, platform) -> None:
@@ -12,44 +8,30 @@ class CNNProxyAppPT(ProxyApp):
 
     def get_datagen(
         self,
-        files,
-        data_params,
-        dtype,
-        validation_files=None
+        datagen
     ):
-        super().get_datagen(
-            files=files,
-            validation_files=validation_files,
-            data_params=data_params,
-            dtype=dtype
-        )
-        self.datagen = GridNetworkSequentialDataGenerator_PT(
-            dir_list=files,
-            handler_params=data_params,
-            dtype=dtype
-        )
-
+        # call ProxyApp super call
+        super().get_datagen()
+        
+        # split and process data
         x_indexer = get_indexer(
-            n_rows=self.datagen.n_rows,
-            window_size=self.datagen.iw_params["window_size"],
-            shift_size=self.datagen.iw_params["shift_size"],
-            start_point=self.datagen.iw_params["start_at"],
-            leave_last=self.datagen.iw_params["leave_last"]
+            n_rows=datagen.n_rows,
+            window_size=datagen.iw_params["window_size"],
+            shift_size=datagen.iw_params["shift_size"],
+            start_point=datagen.iw_params["start_at"],
+            leave_last=datagen.iw_params["leave_last"]
         )
         y_indexer = get_indexer(
-            n_rows=self.datagen.n_rows,
-            window_size=self.datagen.ow_params["window_size"],
-            shift_size=self.datagen.ow_params["shift_size"],
-            start_point=self.datagen.ow_params["start_at"],
-            leave_last=self.datagen.ow_params["leave_last"]
+            n_rows=datagen.n_rows,
+            window_size=datagen.ow_params["window_size"],
+            shift_size=datagen.ow_params["shift_size"],
+            start_point=datagen.ow_params["start_at"],
+            leave_last=datagen.ow_params["leave_last"]
         )
-
-        self.datagen.get_data(
-            x_indexer, 
-            y_indexer
-        )
-        return self.datagen
-        # pass
+        datagen.get_data(x_indexer, y_indexer)
+        
+        # return data generator
+        return datagen
 
     def get_criterion(
         self,

@@ -10,7 +10,7 @@ import argparse
 import sys
 sys.path.append('../../')
 from proxy_apps.framework.gpu import GPU
-from proxy_apps.apps import LSTMProxyAppPT, CNNProxyAppPT
+from proxy_apps.apps import GridLSTMProxyAppPT, GridCNNProxyAppPT, ClimateLSTMProxyAppPT, ClimateCNNProxyAppPT
 
 # ------------------------------- PATH & LOGGER SETUP ------------------------------------------------
 
@@ -53,10 +53,14 @@ if __name__ == "__main__":
 
 
     # get app
-    if _CONFIG["info"]["app_name"] == "LSTMProxyAppPT":
-        app = LSTMProxyAppPT(args.platform)
-    elif _CONFIG["info"]["app_name"] == "CNNProxyAppPT":
-        app = CNNProxyAppPT(args.platform)
+    if _CONFIG["info"]["app_name"] == "ClimateLSTMProxyAppPT":
+        app = ClimateLSTMProxyAppPT(args.platform)
+    elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppPT":
+        app = ClimateCNNProxyAppPT(args.platform)
+    elif _CONFIG["info"]["app_name"] == "GridLSTMProxyAppPT":
+        app = GridLSTMProxyAppPT(args.platform)
+    elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppPT":
+        app = GridCNNProxyAppPT(args.platform)
     else:
         sys.exit("[ERROR] Invalid App: %s" %(_CONFIG["info"]["app_name"]))
 
@@ -109,10 +113,10 @@ if __name__ == "__main__":
     )
     
     # initialize data manager
-    interface.init_data_manager(
+    data_manager = interface.init_data_manager(
         data_dir=_CONFIG["data_params"]["init"]["training_data_dir"],
         file_format=_CONFIG["data_params"]["init"]["file_format"],
-        data_manager=_CONFIG["info"]["data_manager"],
+        data_manager_type=_CONFIG["info"]["data_manager"],
         train_files=_CONFIG["data_params"]["init"]["train_files"],
         test_files=_CONFIG["data_params"]["init"]["test_files"],
         val_files=_CONFIG["data_params"]["init"]["val_files"],
@@ -121,14 +125,14 @@ if __name__ == "__main__":
     
     # load training data
     training_data = interface.load_data(
-        data_files=interface.data_manager._TRAIN_FILES,
+        data_files=data_manager._TRAIN_FILES,
         data_params=_CONFIG["data_params"]["load_and_prep"],
         sampler=None,
         batch_size=args.batch_size
     )
     # load test data
     test_data = interface.load_data(
-        data_files=interface.data_manager._TEST_FILES,
+        data_files=data_manager._TEST_FILES,
         data_params=_CONFIG["data_params"]["load_and_prep"],
         sampler=None,
         batch_size=args.batch_size

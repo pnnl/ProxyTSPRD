@@ -31,16 +31,16 @@ class PyTorchInterface(Interface):
         self,
         data_dir,
         file_format,
-        data_manager,
+        data_manager_type,
         train_files=-1,
         test_files=0,
         val_files=0,
         shuffle=False
     ):
-        super().init_data_manager(
+        data_manager = super().init_data_manager(
             data_dir=data_dir,
             file_format=file_format,
-            data_manager=data_manager,
+            data_manager_type=data_manager_type,
             train_files=train_files,
             test_files=test_files,
             val_files=val_files,
@@ -48,7 +48,9 @@ class PyTorchInterface(Interface):
         )
         
         # keep track of framework
-        self.data_manager._ML_FRAMEWORK = self._ML_FRAMEWORK
+        data_manager._ML_FRAMEWORK = self._ML_FRAMEWORK
+
+        return data_manager
     
     def load_data(
         self, 
@@ -61,7 +63,7 @@ class PyTorchInterface(Interface):
     ):
         # empty training dataset
         dataloader = None
-        self.data_manager._BATCH_SIZE = batch_size
+        # self.data_manager._BATCH_SIZE = batch_size
 
         # pytorch data loader
         data_generator = super().load_data(
@@ -71,7 +73,7 @@ class PyTorchInterface(Interface):
         if data_params["dataloader"] == "torch.utils.data.Dataset":
             dataloader = torch.utils.data.DataLoader(
                 data_generator, 
-                batch_size=self.data_manager._BATCH_SIZE, 
+                batch_size=batch_size, 
                 pin_memory=pin_memory, 
                 num_workers=num_workers,
                 sampler=sampler

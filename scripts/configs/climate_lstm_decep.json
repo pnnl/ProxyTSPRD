@@ -1,0 +1,69 @@
+{
+	"info": {
+		"app_name": "ClimateLSTMProxyAppPT",
+        "mixed_precision_support": true,
+        "mgpu_support": true,
+		"data_manager": "TimeSeries",
+        "dtype": "float64",
+        "output_dir": "/people/jain432/pacer_remote/data/ProxyTSPRD_IPDPS/"
+	},
+	"data_params": {
+		"init": {
+			"training_data_dir": "/people/jain432/pacer_remote/data/NewTestScenarios/",
+			"file_format": "mat",
+			"train_files": 128,
+			"test_files": 20,
+			"val_files": 0,
+			"shuffle": true
+		},
+		"load_and_prep": {
+			"dataloader": "torch.utils.data.Dataset",
+			"n_rows": 1400,
+			"n_cols": 136,
+			"repeat_cols": 1,
+			"iw_params": {
+				"window_size": 60,
+				"shift_size": 1,
+				"stride": 1,
+				"start_at": 0,
+				"leave_last": 33
+			},
+			"ow_params": {
+				"window_size": 30,
+				"shift_size": 1,
+				"stride": 1,
+				"start_at": 60,
+				"leave_last": 3
+			}
+		}
+	},
+	"model_info": {
+		"model_name": "LSTM",
+		"model_dir": "/people/jain432/pacer_remote/models/ProxyTSPRD_IPDPS/",
+		"tb_log_dir": "/people/jain432/pacer_remote/logs/",
+		"fill_data": false,
+		"data_params": {
+			"bw_size": 60,
+			"fw_size": 30,
+			"n_features": 136
+		},
+		"opt_parameters": {
+			"learning_rate" : 0.08,
+			"momentum"      : 0.0,
+			"weight_decay"  : 3e-4	
+		},
+		"hyperparameters": {
+			"hl_1_dim"           : 128,
+			"hl_2_dim"           : 128,
+			"hl_3_dim"           : 64,
+			"hl_4_dim"           : 64,
+			"latent_dim"         : 64, 
+			"reg_factor"         : 0,
+			"dropout_prob"       : 0.005,
+			"weight_regularizer" : 0.001, 
+			"bias_regularizer"   : 0,
+			"learning_rate"      : 5e-4, 
+			"validation_split"   : 0.25
+		}
+	}
+}

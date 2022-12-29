@@ -1,26 +1,26 @@
 {
 	"info": {
-		"app_name": "CNNProxyAppPT",
+		"app_name": "ClimateCNNProxyAppPT",
         "mixed_precision_support": true,
         "mgpu_support": true,
 		"data_manager": "TimeSeries",
         "dtype": "float64",
-        "output_dir": "/people/jain432/pacer_remote/data/ProxyTSPRD_IPDPS/"
+        "output_dir": "/people/jain432/pacer_remote/data/CliamteApp/"
 	},
 	"data_params": {
 		"init": {
-			"training_data_dir": "/people/jain432/pacer_remote/data/NewTestScenarios/",
-			"file_format": "mat",
-			"train_files": 128,
-			"test_files": 20,
+			"training_data_dir": "/people/jain432/pacer_remote/data/ISDProcessed/",
+			"file_format": "*",
+			"train_files": 32,
+			"test_files": 15,
 			"val_files": 0,
 			"shuffle": true
 		},
 		"load_and_prep": {
 			"dataloader": "torch.utils.data.Dataset",
-			"n_rows": 1400,
-			"n_cols": 136,
-			"repeat_cols": 1,
+			"n_rows": 8760,
+			"n_cols": 326,
+			"repeat_cols": 2,
 			"iw_params": {
 				"window_size": 60,
 				"shift_size": 1,

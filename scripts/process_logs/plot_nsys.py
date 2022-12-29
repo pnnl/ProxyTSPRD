@@ -79,12 +79,13 @@ def main():
     
     # path_list = [item for item in path_tf if pathlib.Path(item).exists() is True and os.path.getsize(item) > 0]
     path_list = []
-    for mgpu in ["DDP", "HVD"]:
-        for _dtype in ["fp16", "fp32", "fp64", "amp"]:
-            specific_files = glob.glob("/qfs/projects/pacer/proxytsprd/data/theta_profiles/profiles_updated/*lstm32_" + mgpu + "_" + _dtype + "*cudaapisum.csv")
-            specific_files.sort()
-            print("[INFO] Number of files (%s, %s): %d" %(mgpu, _dtype, len(specific_files)))
-            path_list.append(specific_files)
+    for model in ["lstm", "cnn"]:
+        for mgpu in ["DDP", "HVD"]:
+            for _dtype in ["fp32", "fp64", "amp"]:
+                specific_files = glob.glob("/qfs/projects/pacer/proxytsprd/output/profiles/theta_profiles/profiles_v3/*" + model + "*_ng32_*_mp" + _dtype + "_mgpu" + mgpu + "*cudaapisum.csv")
+                specific_files.sort()
+                print("[INFO] Number of files (%s, %s, %s): %d" %(model, mgpu, _dtype, len(specific_files)))
+                path_list.append(specific_files)
     # path_list = [f for f in path_list if re.match(".*lstm32.*(fp|amp).*", os.path.basename(f))]
     # print(path_list)    
     main_cuda(path_list, p)
@@ -92,12 +93,13 @@ def main():
     # sys.exit(1)
     # path_list = [item for item in path_tf if pathlib.Path(item).exists() is True and os.path.getsize(item) > 0]
     path_list = []
-    for mgpu in ["DDP", "HVD"]:
-        for _dtype in ["fp16", "fp32", "fp64", "amp"]:
-            specific_files = glob.glob("/qfs/projects/pacer/proxytsprd/data/theta_profiles/profiles_updated/*lstm32_" + mgpu + "_" + _dtype + "*gpukernsum.csv")
-            specific_files.sort()
-            print("[INFO] Number of files (%s, %s): %d" %(mgpu, _dtype, len(specific_files)))
-            path_list.append(specific_files)
+    for model in ["lstm", "cnn"]:
+        for mgpu in ["DDP", "HVD"]:
+            for _dtype in ["fp32", "fp64", "amp"]:
+                specific_files = glob.glob("/qfs/projects/pacer/proxytsprd/output/profiles/theta_profiles/profiles_v3/*" + model + "*_ng32_*_mp" + _dtype + "_mgpu" + mgpu + "*gpukernsum.csv")
+                specific_files.sort()
+                print("[INFO] Number of files (%s, %s, %s): %d" %(model, mgpu, _dtype, len(specific_files)))
+                path_list.append(specific_files)
     # path_list.sort()
     # print("[INFO] Number of files: %d" %(len(path_list)))
     main_tf(path_list, p)
@@ -107,7 +109,7 @@ def main_cuda(path_list, p):
     # sys.exit(path_list)
     #path_list = [item for item in path_cuda if pathlib.Path(item).exists() is True and is_blank(item) is False]
     sns.set_theme(style="whitegrid")
-    sns.set(font_scale=2)
+    sns.set(font_scale=1.8)
 
     index = ["xfer", "mem", "event", "stream", "mod", "exec", "dev"]
     #index = ["xfer", "mem", "event", "stream", "mod", "exec"]
@@ -126,8 +128,10 @@ def main_cuda(path_list, p):
     for pf in path_list:
         if len(pf) == 0: continue
         list_of_frames = []
-        # print(pf)
-        label = "_".join(os.path.basename(pf[0]).split("_")[2:5])
+        # sys.exit(pf)
+        path_split = os.path.basename(pf[0]).split("_")
+        label = path_split[2] + "_" + path_split[8][2:] + "_" + path_split[9][4:]
+        # print(label)
         xticks.append(label)
         for f in pf:
             # f = path_list[j]
@@ -167,28 +171,29 @@ def main_cuda(path_list, p):
     mask[np.isnan(data)] = True
     print(data)
     # sys.exit(1)
-    xticks = [','.join(c.split('_')[1:]) for c in df_pfs.columns]
+    xticks = [','.join(c.split('_')) for c in df_pfs.columns]
     ax = sns.heatmap(data=data, xticklabels=xticks, yticklabels=df_pfs.index, cbar=False, annot=True, fmt=".2f", cmap='RdBu_r')
     ax.set_xticklabels(xticks, rotation=40, ha='right')
+    ax.set_yticklabels(ax.get_yticklabels(), rotation=0, ha='right')
     ax.set_facecolor('white')
 
     fig.tight_layout(pad=0.0, h_pad=0.0, w_pad=0.01)
     if not p:
-        fig.savefig('ptsprd-lstm-cuda_v2.pdf', bbox_inches='tight')
+        fig.savefig('ptsprd-lstm-cuda_v2.png', bbox_inches='tight')
     else:
-        fig.savefig('ptsprd-lstm-cuda-inf_v2.pdf', bbox_inches='tight')
+        fig.savefig('ptsprd-lstm-cuda-inf_v2.png', bbox_inches='tight')
     #plt.show()
 
 def main_tf(path_list, p):
     #path_list = [item for item in path_tf if pathlib.Path(item).exists() is True and is_blank(item) is False]
     sns.set_theme(style="whitegrid")
-    sns.set(font_scale=2)
+    sns.set(font_scale=1.8)
 
-    #index = ["hgemm", "sgemm", "dgemm", "cgemm", "implicit-gemm", "mem", "activation", "fusion", "reduce", "elem", "bias", "batchnorm", "other"]
+    # index = ["hgemm", "sgemm", "dgemm", "cgemm", "implicit-gemm", "mem", "activation", "fusion", "reduce", "elem", "bias", "batchnorm", "other"]
     #index = ["hgemm", "sgemm", "cgemm", "implicit-gemm", "mem", "activation", "fusion", "reduce", "elem", "bias", "batchnorm", "other"]
     # training
     # index = ["hgemm", "dgemm", "eigen", "reduce", "elem", "bias", "mem", "other"]
-    index = ["hgemm", "dgemm", "reduce", "elem", "mem", "other"]
+    index = ["hgemm", "sgemm", "dgemm", "reduce", "elem", "mem", "other"]
     # inference
     #index = ["hgemm", "dgemm", "eigen", "reduce", "elem", "bias", "mem", "other"]
     
@@ -207,7 +212,8 @@ def main_tf(path_list, p):
         if len(pf) == 0: continue
         list_of_frames = []
         # print(pf)
-        label = "_".join(os.path.basename(pf[0]).split("_")[2:5])
+        path_split = os.path.basename(pf[0]).split("_")
+        label = path_split[2] + "_" + path_split[8][2:] + "_" + path_split[9][4:]
         # xticks.append(label)
         for f in pf:
             # f = path_list[j]
@@ -247,16 +253,16 @@ def main_tf(path_list, p):
     mask[np.isnan(data)] = True
     # print(data)
     #ax = sns.heatmap(data=data, xticklabels=xticks, yticklabels=index, mask=mask, cbar=False, annot=True, fmt="g", cmap='RdBu_r')
-    xticks = [','.join(c.split('_')[1:]) for c in df_pfs.columns]
+    xticks = [','.join(c.split('_')) for c in df_pfs.columns]
     ax = sns.heatmap(data=data, xticklabels=xticks, yticklabels=df_pfs.index, mask=mask, cbar=False, annot=True, fmt=".2f", cmap='RdBu_r')
     ax.set_xticklabels(xticks, rotation=40, ha='right')
     ax.set_facecolor('white')
 
     fig.tight_layout(pad=0.0, h_pad=0.0, w_pad=0.01)
     if not p:
-        fig.savefig('ptsprd-lstm-tf_v2.pdf', bbox_inches='tight')
+        fig.savefig('ptsprd-lstm-tf_v2.png', bbox_inches='tight')
     else:
-        fig.savefig('ptsprd-lstm-tf-inf_v2.pdf', bbox_inches='tight')
+        fig.savefig('ptsprd-lstm-tf-inf_v2.png', bbox_inches='tight')
     #plt.show()
 
 def cuda_df_manip(df, ngpus):

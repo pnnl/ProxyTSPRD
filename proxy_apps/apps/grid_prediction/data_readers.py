@@ -14,7 +14,7 @@ def get_indexer(
     ):
         return np.arange(window_size)[None, :] + start_point + shift_size*np.arange(((n_rows - window_size - leave_last - start_point) // shift_size) + 1)[:, None]
 
-class GridNetworkSequentialDataGenerator_PT(torch.utils.data.Dataset):
+class GridDataGenerator_PT(torch.utils.data.Dataset):
     'Characterizes a dataset for PyTorch'
     def __init__(self, dir_list, handler_params, dtype, scale_factor=2*np.pi, norm=True, validation_files=None):#, n_rows, n_cols, n_repeat, x_indexer, y_indexer, scale_factor=2, norm=True, d_type="float64"):
         'Initialization'
@@ -70,7 +70,7 @@ class GridNetworkSequentialDataGenerator_PT(torch.utils.data.Dataset):
         'Generates one sample of data'
         return self.X[index, :], self.y[index, :]
     
-class GridNetworkSequentialDataGenerator_TF(tf.keras.utils.Sequence):
+class GridDataGenerator_TF(tf.keras.utils.Sequence):
     'Characterizes a dataset for TensorFlow'
     def __init__(self, dir_list, handler_params, dtype, scale_factor=2*np.pi, norm=True, validation_files=None):#, n_rows, n_cols, n_repeat, x_indexer, y_indexer, scale_factor=2, norm=True, d_type="float64"):
         'Initialization'

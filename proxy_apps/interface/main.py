@@ -41,15 +41,15 @@ class Interface:
             self,
             data_dir,
             file_format,
-            data_manager,
+            data_manager_type,
             train_files=-1,
             val_files=0,
             test_files=0,
             shuffle=False
         ):
-        self._DATA_MANAGER = data_manager
-        if self._DATA_MANAGER == "TimeSeries":
-            self.data_manager = TimeSeriesDataManager(
+        self._DATA_MANAGER_TYPE = data_manager_type
+        if self._DATA_MANAGER_TYPE == "TimeSeries":
+            data_manager = TimeSeriesDataManager(
                 data_dir=data_dir,
                 file_format=file_format,
                 train_files=train_files,
@@ -58,6 +58,9 @@ class Interface:
                 shuffle=shuffle,
                 print_rank=int(self._GLOBAL_RANK)
             )
+            return data_manager
+        else:
+            return None
 
     def load_data(
         self,

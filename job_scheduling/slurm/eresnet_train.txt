@@ -1,0 +1,960 @@
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
+[libprotobuf ERROR /build/agent/work/20a3cfcd1c25021d/Imports/Source/ProtoBuf/protobuf-3_10_0/src/google/protobuf/message_lite.cc:122] Can't parse message of type "QuadDAnalysis.Data.SessionState" because it is missing required fields: DeviceState.Props.Items[39].Type, DeviceState.Props.Items[68].Type, StartRequest.RateHz
+Failed to export report.
+/build/agent/work/20a3cfcd1c25021d/QuadD/Common/ProtobufComm/Common/ProtobufUtils.cpp(70): Throw in function void QuadDProtobufUtils::ReadMessage(QuadDProtobufUtils::PbCodedIStream&, QuadDProtobufUtils::PbMessageLite&)
+Dynamic exception type: boost::wrapexcept<QuadDCommon::ProtobufParseException>
+std::exception::what: ProtobufParseException
+
