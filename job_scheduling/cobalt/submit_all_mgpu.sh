@@ -1,11 +1,11 @@
 #!/bin/bash
 
 GPUS=( "theta" ) # which gpu
-MODELS=( "lstm" "cnn" )
-N_NODES=( 1 2 4 8 )
+MODELS=( "climatecnn" "climatelstm" )
+N_NODES=( 4 )
 DTYPE=( "fp32" "fp64" "amp" ) # with or without mixed precision
 MGPU=( "HVD" "DDP" ) # with or without mixed precision
-PROF=( 0 ) # with and without profiler
+PROF=( 1 ) # with and without profiler
 RTYPE=( "train" )
 
 ## For single GPU
@@ -25,7 +25,7 @@ for gpu in ${GPUS[@]}; do
 
                             echo -n "GPU: $gpu; Model: $model N_GPUs: ${N_RANKS}; DTYPE: $dt;  MGPU: $mgpu; Profiler: $p; Run Type: $rtype"
                             echo ""
-                            bash qsub.sh $model $gpu $n 0 50 2048 $dt $mgpu $p $rtype
+                            bash qsub.sh $model $gpu $n 0 10 2048 $dt $mgpu $p $rtype
                             # sh qsub.sh lstm theta 1 0 50 2048 fp64 "DDP" $p $rtype
                         done
                     done

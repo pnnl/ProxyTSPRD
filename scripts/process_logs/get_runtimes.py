@@ -37,4 +37,5 @@ for f in data_files:
         result.append([basename_comps[1], basename_comps[8].split('mgpu')[1], int(basename_comps[3].split('ng')[1]), basename_comps[7].split('mp')[1], t])
 
 df_out = pd.DataFrame(result, columns=['model', 'mgpu_strategy', 'n_gpus', 'dtype', 'runtime'])
-df_out.to_csv("../../../results/tpdps23/runtimes_v2.csv")
+print(df_out)
+df_out.to_csv("../../../results/tpdps23/runtimes_v3.csv")

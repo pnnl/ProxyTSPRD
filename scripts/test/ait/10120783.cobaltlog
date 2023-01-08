@@ -1,0 +1,25 @@
+Jobid: 10120783
+qsub -n 1 -q full-node -A grace -I -t 01:00:00
+Sun Jan 08 03:11:37 2023 +0000 (UTC) submitted with cwd set to: /home/milanjain91/ProxyTSPRD/scripts/test/ait
+jobid 10120783 submitted from terminal /dev/pts/20
+Sun Jan 08 03:11:54 2023 +0000 (UTC) 
+Sun Jan 08 03:11:54 2023 +0000 (UTC) Command: '/usr/bin/ssh' 'thetagpu13' '/usr/bin/cobalt-launcher.py' '--nf' '/var/tmp/cobalt.10120783' '--jobid' '10120783' '--cwd' '/home/milanjain91/ProxyTSPRD/scripts/test/ait' '--env' 'COBALT_JOBID=10120783' '/bin/sleep' '3600'
+Sun Jan 08 03:11:54 2023 +0000 (UTC) 
+Sun Jan 08 03:11:54 2023 +0000 (UTC) Environment:
+Sun Jan 08 03:11:54 2023 +0000 (UTC) SHELL=/bin/bash
+Sun Jan 08 03:11:54 2023 +0000 (UTC) COBALT_NODEFILE=/tmp/tmpEON_2z
+Sun Jan 08 03:11:54 2023 +0000 (UTC) COBALT_PARTNAME=thetagpu13
+Sun Jan 08 03:11:54 2023 +0000 (UTC) COBALT_JOBID=10120783
+Sun Jan 08 03:11:54 2023 +0000 (UTC) COBALT_STARTTIME=1673147503
+Sun Jan 08 03:11:54 2023 +0000 (UTC) LOGNAME=milanjain91
+Sun Jan 08 03:11:54 2023 +0000 (UTC) USER=milanjain91
+Sun Jan 08 03:11:54 2023 +0000 (UTC) COBALT_ENDTIME=1673151103
+Sun Jan 08 03:11:54 2023 +0000 (UTC) COBALT_PARTSIZE=1
+Sun Jan 08 03:11:54 2023 +0000 (UTC) HOME=/home/milanjain91
+Sun Jan 08 03:11:54 2023 +0000 (UTC) COBALT_JOBSIZE=1
+Sun Jan 08 03:11:54 2023 +0000 (UTC) 
+Sun Jan 08 03:11:54 2023 +0000 (UTC) Info: stdin received from /dev/null
+Sun Jan 08 03:11:54 2023 +0000 (UTC) Info: stdout sent to /home/milanjain91/ProxyTSPRD/scripts/test/ait/10120783.output
+Sun Jan 08 03:11:54 2023 +0000 (UTC) Info: stderr sent to /home/milanjain91/ProxyTSPRD/scripts/test/ait/10120783.error
+Sun Jan 08 03:11:54 2023 +0000 (UTC) 
+Sun Jan 08 03:18:02 2023 +0000 (UTC) Info: user delete requested with signal SIGTERM by user milanjain91

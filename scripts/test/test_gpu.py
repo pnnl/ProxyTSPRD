@@ -10,7 +10,7 @@ import argparse
 import sys
 sys.path.append('../../')
 from proxy_apps.framework.gpu import GPU
-from proxy_apps.apps import GridLSTMProxyAppPT, GridCNNProxyAppPT, ClimateLSTMProxyAppPT, ClimateCNNProxyAppPT
+from proxy_apps.apps import *
 
 # ------------------------------- PATH & LOGGER SETUP ------------------------------------------------
 
@@ -57,6 +57,8 @@ if __name__ == "__main__":
         app = ClimateLSTMProxyAppPT(args.platform)
     elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppPT":
         app = ClimateCNNProxyAppPT(args.platform)
+    elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppTF":
+        app = ClimateCNNProxyAppTF(args.platform)
     elif _CONFIG["info"]["app_name"] == "GridLSTMProxyAppPT":
         app = GridLSTMProxyAppPT(args.platform)
     elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppPT":
@@ -139,13 +141,18 @@ if __name__ == "__main__":
     )
     
     # train model
+    data_params = {
+        "bw_size": _CONFIG["data_params"]["load_and_prep"]["iw_params"]["window_size"],
+        "fw_size": _CONFIG["data_params"]["load_and_prep"]["ow_params"]["window_size"],
+        "n_features": _CONFIG["data_params"]["load_and_prep"]["n_cols"] * _CONFIG["data_params"]["load_and_prep"]["repeat_cols"]
+    }
     interface.init_training_engine(
         model_name=_SUFFIX,
         model_dir=os.path.join(
                     _CONFIG["model_info"]["model_dir"],
                     _CONFIG["info"]["app_name"]
                 ),
-        data_params=_CONFIG["model_info"]["data_params"],
+        data_params=data_params,
         opt_params=_CONFIG["model_info"]["opt_parameters"],
         criterion_params=None
     )

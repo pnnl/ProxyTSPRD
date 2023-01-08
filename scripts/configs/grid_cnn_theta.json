@@ -1,6 +1,6 @@
 {
 	"info": {
-		"app_name": "CNNProxyAppPT",
+		"app_name": "GridCNNProxyAppPT",
         "mixed_precision_support": true,
         "mgpu_support": true,
 		"data_manager": "TimeSeries",
@@ -10,7 +10,7 @@
 	"data_params": {
 		"init": {
 			"training_data_dir": "/home/milanjain91/data/power_system/NewTestScenarios/",
-			"file_format": "mat",
+			"file_format": "*",
 			"train_files": 128,
 			"test_files": 20,
 			"val_files": 0,
@@ -42,11 +42,6 @@
 		"model_dir": "/home/milanjain91/models/ProxyTSPRD_IPDPS/",
 		"tb_log_dir": "/home/milanjain91/logs/",
 		"fill_data": false,
-		"data_params": {
-			"bw_size": 60,
-			"fw_size": 30,
-			"n_features": 136
-		},
 		"opt_parameters": {
 			"learning_rate" : 0.0015,
 			"momentum"      : 0.0,
