@@ -7,8 +7,8 @@ import numpy as np
 import torch
 import torch.distributed as dist
 
-from .import PyTorchInterface
-from .import DataHandler
+from . import PyTorchInterface, TensorFlowInterface
+from . import DataHandler
 from .main import Framework
 
 class GPU(Framework):
@@ -37,6 +37,19 @@ class GPU(Framework):
         super().use_pytorch()
 
         interface = PyTorchInterfaceGPU(
+            n_gpus=self._N_GPUS,
+            n_cpus=self._N_CPUS,
+            mgpu_strategy=self._MGPU_STRATEGY,
+            mixed_precision=self._MIXED_PRECISION,
+            dtype=self._DTYPE
+        )
+
+        return interface
+
+    def use_tensorflow(self):
+        super().use_tensorflow()
+
+        interface = TensorFlowInterfaceGPU(
             n_gpus=self._N_GPUS,
             n_cpus=self._N_CPUS,
             mgpu_strategy=self._MGPU_STRATEGY,
@@ -553,6 +566,10 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         )
 
         return local_rank, rank, size       
+
+class TensorFlowInterfaceGPU(TensorFlowInterface):
+    def __init__(self) -> None:
+        super().__init__()
 
     # def load_data(
     #     self,
