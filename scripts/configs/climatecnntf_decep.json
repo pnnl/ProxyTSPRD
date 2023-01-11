@@ -1,6 +1,6 @@
 {
 	"info": {
-		"app_name": "ClimateCNNProxyAppPT",
+		"app_name": "ClimateCNNProxyAppTF",
         "mixed_precision_support": true,
         "mgpu_support": true,
 		"data_manager": "TimeSeries",

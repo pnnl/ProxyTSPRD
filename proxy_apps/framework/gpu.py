@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import socket
 import datetime
@@ -6,6 +7,8 @@ import numpy as np
 
 import torch
 import torch.distributed as dist
+
+import tensorflow as tf
 
 from . import PyTorchInterface, TensorFlowInterface
 from . import DataHandler
@@ -568,8 +571,118 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         return local_rank, rank, size       
 
 class TensorFlowInterfaceGPU(TensorFlowInterface):
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        n_gpus,
+        n_cpus,
+        mgpu_strategy,
+        mixed_precision,
+        dtype
+    ) -> None:
         super().__init__()
+
+        # setup devices
+        self._setup_devices(n_gpus, n_cpus, mgpu_strategy)
+
+        # setup default data type
+        self._setup_default_dtype(dtype)
+
+        sys.exit("Helloooo")
+    
+    def _setup_devices(self, n_gpus, n_cpus, mgpu_strategy):
+        # os.environ['TF_XLA_FLAGS']="--tf_xla_auto_jit=2 --tf_xla_cpu_global_jit"
+        # os.environ['XLA_FLAGS']="--xla_gpu_cuda_data_dir=/share/apps/cuda/11.0/"
+        os.environ["TF_GPU_THREAD_MODE"] = "gpu_private"  # to avoid gpu contention
+        os.environ['TF_CUDNN_DETERMINISTIC']='1'
+        if self._GLOBAL_RANK == 0:
+            print("[INFO] Global variables set")
+        
+        # number of GPUs and CPUs
+        self._N_GPUS = n_gpus
+        self._N_CPUS = n_cpus
+        self._MGPU_STRATEGY = None
+        
+        # physical gpus
+        gpus = tf.config.experimental.list_physical_devices('GPU')
+        for gpu in gpus:
+            print("[INFO] Name:", gpu.name, "  Type:", gpu.device_type)
+            tf.config.experimental.set_memory_growth(gpu, True)
+
+        # enable GPU, when GPU is available and needed
+        self._DEVICE_STR = 'cpu'
+        if len(gpus) > 0: 
+            self._DEVICE_STR = 'cuda'  
+            
+        if self._GLOBAL_RANK == 0:
+            print("[INFO] Device Type: %s" %(self._DEVICE_STR))
+        
+        if gpus and (self._MGPU_STRATEGY == "HVD"):
+            tf.config.experimental.set_visible_devices(gpus[self.hvd_keras.local_rank()], 'GPU')
+            
+        # eager mode
+        # tf.compat.v1.disable_eager_execution()
+        if self._GLOBAL_RANK == 0:
+            print("[INFO] Eager mode: ", tf.executing_eagerly())  # For easy reset of notebook state.
+
+        # backend and JIT compilation
+        tf.keras.backend.clear_session()
+        # if self._LABEL not in ["Baseline"]: tf.config.optimizer.set_jit(True) # Enable XLA.
+
+        # if GPUs are not available or if GPUs are not selected
+        if self._DEVICE_STR=='cpu': 
+            if self._GLOBAL_RANK == 0:
+                print("[WARNING] No GPUs found, falling back to CPUs")
+        # if GPUs are available and selected
+        elif self._DEVICE_STR=='cuda':
+            # gpus found - using multi gpu strategy
+            self._MGPU_STRATEGY = mgpu_strategy
+            
+            self._TOTAL_GPUs = len(gpus)
+            # do we have the number of GPUs we are asking for
+            if self._N_GPUS > self._TOTAL_GPUs:
+                if self._GLOBAL_RANK == 0:
+                    print("[WARNING] Selected %d GPUs but only %d GPUs found. Using max #GPUs available: %d" %(self._N_GPUS, self._TOTAL_GPUs, self._TOTAL_GPUs))
+            else:
+                if self._GLOBAL_RANK == 0:
+                    print("[INFO] Using %d/%d GPUs" %(self._N_GPUS, self._TOTAL_GPUs))
+
+    def _setup_default_dtype(self, dtype):
+        # set default data type
+        if dtype == "int":
+            self._FDTYPE = torch.int32
+            self._DTYPE = "int32"
+        elif dtype == "fp16":
+            self._FDTYPE = torch.float16
+            self._DTYPE = "float16"
+            tf.keras.backend.set_floatx(self._DTYPE)
+        elif dtype == "fp32":
+            self._FDTYPE = torch.float32
+            self._DTYPE = "float32"
+            tf.keras.backend.set_floatx(self._DTYPE)
+        elif dtype == "fp64":
+            self._FDTYPE = torch.float64
+            self._DTYPE = "float64"
+            tf.keras.backend.set_floatx(self._DTYPE)
+        elif dtype == "amp":
+            self._FDTYPE = torch.float32
+            self._DTYPE = "float32"
+            tf.keras.backend.set_floatx(self._DTYPE)
+            # set policy
+            policy = tf.keras.mixed_precision.Policy('mixed_float16')
+            tf.keras.mixed_precision.set_global_policy(policy)
+
+            # check dtypes
+            print("[INFO] Enabling Mixed Precision")
+            print('[INFO] Compute dtype: %s' % policy.compute_dtype)
+            print('[INFO] Variable dtype: %s' % policy.variable_dtype)
+        
+        if dtype != "amp": 
+            torch.set_default_dtype(self._FDTYPE)
+        
+        if self._GLOBAL_RANK == 0:
+            print("[INFO] Python Data Type: %s" %(self._DTYPE))
+            print("[INFO] Framework Data Type: %s" %(self._FDTYPE))
+        
 
     # def load_data(
     #     self,

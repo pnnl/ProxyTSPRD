@@ -10,7 +10,7 @@ class PyTorchInterface(Interface):
         self._ML_FRAMEWORK = "PyTorch"
 
         ## PyTorch Setup
-        if self._GLOBAL_RANK == "0":
+        if self._GLOBAL_RANK == 0:
             print("[INFO] PyTorch version: ", torch.__version__)
 
     def init_app_manager(

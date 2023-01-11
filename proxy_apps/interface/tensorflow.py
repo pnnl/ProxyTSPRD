@@ -10,8 +10,8 @@ class TensorFlowInterface(Interface):
         super().__init__()
         self._ML_FRAMEWORK = "TensorFlow"
 
-        ## PyTorch Setup
-        if self._GLOBAL_RANK == "0":
+        ## Tensorflow Setup
+        if self._GLOBAL_RANK == 0:
             print("[INFO] TensorFlow version: ", tf.__version__)
 
     def init_app_manager(
