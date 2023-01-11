@@ -93,4 +93,7 @@ class Interface:
     def init_inference_engine(self):
         pass
 
+    def load_ait_model(self):
+        pass
+
     

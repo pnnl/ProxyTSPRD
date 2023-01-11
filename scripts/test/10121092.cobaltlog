@@ -1,0 +1,25 @@
+Jobid: 10121092
+qsub -n 1 -q single-gpu -A grace -I -t 01:00:00
+Wed Jan 11 05:24:44 2023 +0000 (UTC) submitted with cwd set to: /home/milanjain91/ProxyTSPRD/scripts/test
+jobid 10121092 submitted from terminal /dev/pts/11
+Wed Jan 11 05:24:55 2023 +0000 (UTC) 
+Wed Jan 11 05:24:55 2023 +0000 (UTC) Command: '/usr/bin/ssh' 'thetagpu06-gpu1' '/usr/bin/cobalt-launcher.py' '--nf' '/var/tmp/cobalt.10121092' '--jobid' '10121092' '--cwd' '/home/milanjain91/ProxyTSPRD/scripts/test' '--env' 'COBALT_JOBID=10121092' '/bin/sleep' '3600'
+Wed Jan 11 05:24:55 2023 +0000 (UTC) 
+Wed Jan 11 05:24:55 2023 +0000 (UTC) Environment:
+Wed Jan 11 05:24:55 2023 +0000 (UTC) SHELL=/bin/bash
+Wed Jan 11 05:24:55 2023 +0000 (UTC) COBALT_NODEFILE=/tmp/tmpKDco77
+Wed Jan 11 05:24:55 2023 +0000 (UTC) COBALT_PARTNAME=thetagpu06-gpu1
+Wed Jan 11 05:24:55 2023 +0000 (UTC) COBALT_JOBID=10121092
+Wed Jan 11 05:24:55 2023 +0000 (UTC) COBALT_STARTTIME=1673414684
+Wed Jan 11 05:24:55 2023 +0000 (UTC) LOGNAME=milanjain91
+Wed Jan 11 05:24:55 2023 +0000 (UTC) USER=milanjain91
+Wed Jan 11 05:24:55 2023 +0000 (UTC) COBALT_ENDTIME=1673418284
+Wed Jan 11 05:24:55 2023 +0000 (UTC) COBALT_PARTSIZE=1
+Wed Jan 11 05:24:55 2023 +0000 (UTC) HOME=/home/milanjain91
+Wed Jan 11 05:24:55 2023 +0000 (UTC) COBALT_JOBSIZE=1
+Wed Jan 11 05:24:55 2023 +0000 (UTC) 
+Wed Jan 11 05:24:55 2023 +0000 (UTC) Info: stdin received from /dev/null
+Wed Jan 11 05:24:55 2023 +0000 (UTC) Info: stdout sent to /home/milanjain91/ProxyTSPRD/scripts/test/10121092.output
+Wed Jan 11 05:24:55 2023 +0000 (UTC) Info: stderr sent to /home/milanjain91/ProxyTSPRD/scripts/test/10121092.error
+Wed Jan 11 05:24:55 2023 +0000 (UTC) 
+Wed Jan 11 05:44:41 2023 +0000 (UTC) Info: user delete requested with signal SIGTERM by user milanjain91

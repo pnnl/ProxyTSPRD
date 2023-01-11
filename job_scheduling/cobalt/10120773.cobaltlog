@@ -1,0 +1,25 @@
+Jobid: 10120773
+qsub -n 4 -t 01:00:00 -A GRACE -q full-node --attrs filesystems=home -o /home/milanjain91/results/tpdps23/logs/sbatch/o_climatecnn_theta_ng32_nc0_e10_b2048_mpfp32_mgpuDDP_prof1_train -e /home/milanjain91/results/tpdps23/logs/sbatch/e_climatecnn_theta_ng32_nc0_e10_b2048_mpfp32_mgpuDDP_prof1_train ddp_job.qsub climatecnn theta 4 0 10 2048 fp32 DDP 1 train
+Sun Jan 08 01:40:40 2023 +0000 (UTC) submitted with cwd set to: /home/milanjain91/ProxyTSPRD/job_scheduling/cobalt
+jobid 10120773 submitted from terminal /dev/pts/13
+Sun Jan 08 01:41:11 2023 +0000 (UTC) 
+Sun Jan 08 01:41:11 2023 +0000 (UTC) Command: '/usr/bin/ssh' 'thetagpu22' '/usr/bin/cobalt-launcher.py' '--nf' '/var/tmp/cobalt.10120773' '--jobid' '10120773' '--cwd' '/home/milanjain91/ProxyTSPRD/job_scheduling/cobalt' '--env' 'COBALT_JOBID=10120773' '/home/milanjain91/ProxyTSPRD/job_scheduling/cobalt/ddp_job.qsub' 'climatecnn' 'theta' '4' '0' '10' '2048' 'fp32' 'DDP' '1' 'train'
+Sun Jan 08 01:41:11 2023 +0000 (UTC) 
+Sun Jan 08 01:41:11 2023 +0000 (UTC) Environment:
+Sun Jan 08 01:41:11 2023 +0000 (UTC) SHELL=/bin/bash
+Sun Jan 08 01:41:11 2023 +0000 (UTC) COBALT_NODEFILE=/tmp/tmpwUXFB5
+Sun Jan 08 01:41:11 2023 +0000 (UTC) COBALT_PARTNAME=thetagpu22
+Sun Jan 08 01:41:11 2023 +0000 (UTC) COBALT_JOBID=10120773
+Sun Jan 08 01:41:11 2023 +0000 (UTC) COBALT_STARTTIME=1673142042
+Sun Jan 08 01:41:11 2023 +0000 (UTC) LOGNAME=milanjain91
+Sun Jan 08 01:41:11 2023 +0000 (UTC) USER=milanjain91
+Sun Jan 08 01:41:11 2023 +0000 (UTC) COBALT_ENDTIME=1673145642
+Sun Jan 08 01:41:11 2023 +0000 (UTC) COBALT_PARTSIZE=4
+Sun Jan 08 01:41:11 2023 +0000 (UTC) HOME=/home/milanjain91
+Sun Jan 08 01:41:11 2023 +0000 (UTC) COBALT_JOBSIZE=4
+Sun Jan 08 01:41:11 2023 +0000 (UTC) 
+Sun Jan 08 01:41:11 2023 +0000 (UTC) Info: stdin received from /dev/null
+Sun Jan 08 01:41:11 2023 +0000 (UTC) Info: stdout sent to /home/milanjain91/results/tpdps23/logs/sbatch/o_climatecnn_theta_ng32_nc0_e10_b2048_mpfp32_mgpuDDP_prof1_train
+Sun Jan 08 01:41:11 2023 +0000 (UTC) Info: stderr sent to /home/milanjain91/results/tpdps23/logs/sbatch/e_climatecnn_theta_ng32_nc0_e10_b2048_mpfp32_mgpuDDP_prof1_train
+Sun Jan 08 01:41:11 2023 +0000 (UTC) 
+Sun Jan 08 02:41:18 2023 +0000 (UTC) Info: maximum execution time exceeded; initiating job termination

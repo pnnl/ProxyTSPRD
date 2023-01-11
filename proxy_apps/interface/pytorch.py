@@ -101,6 +101,7 @@ class PyTorchInterface(Interface):
                             model_dir, 
                             model_name + ".pt"
                         )
+        print(f"[INFO] Model Path: %s" %(self._MODEL_PATH))
         if os.path.exists(self._MODEL_PATH):
             self.model.load_state_dict(
                 torch.load(
@@ -123,6 +124,61 @@ class PyTorchInterface(Interface):
 
     def infer(self):
         pass
+
+    def load_ait_module(
+        self,
+        data_params,
+        batch_size=1,
+        device=None
+    ):
+        super().load_ait_model()
+
+        ait_model = self.app_manager.get_ait_model(
+            data_params=data_params,
+            device=device
+        )
+
+        from aitemplate.compiler import compile_model
+        from aitemplate.frontend import Tensor
+        from aitemplate.testing import detect_target
+        from aitemplate.testing.benchmark_pt import benchmark_torch_function
+        from aitemplate.utils.graph_utils import sorted_graph_pseudo_code
+
+        from collections import OrderedDict
+
+        def map_pt_params(ait_model, pt_model):
+            ait_model.name_parameter_tensor()
+            pt_params = dict(pt_model.named_parameters())
+            mapped_pt_params = OrderedDict()
+            for name, _ in ait_model.named_parameters():
+                ait_name = name.replace(".", "_")
+                assert name in pt_params
+                mapped_pt_params[ait_name] = pt_params[name]
+            return mapped_pt_params
+
+        # create AIT input Tensor
+        X = Tensor(
+            shape=[batch_size, data_params["n_features"], data_params["bw_size"]],
+            name="X",
+            dtype="float64",
+            is_input=True,
+        )
+        # run AIT module to generate output tensor
+        Y = ait_model(X)
+        # mark the output tensor
+        Y._attrs["is_output"] = True
+        Y._attrs["name"] = "Y"
+
+        # map pt weights to ait
+        weights = map_pt_params(ait_model, self.model)
+
+        # codegen
+        target = detect_target()
+        module = compile_model(Y, target, "./tmp", "simple_model_demo", constants=weights)
+
+        return module
+
+
 
 
     

@@ -60,4 +60,14 @@ class AppManager:
         criterion_params
     ):
         return self._APP.get_criterion(criterion_params)
+
+    def get_ait_model(
+        self, 
+        data_params,
+        device=None
+    ):
+        return self._APP.get_ait_model(
+            data_params, 
+            device=device
+        )
         
