@@ -20,7 +20,7 @@
 			"dataloader": "torch.utils.data.Dataset",
 			"n_rows": 8760,
 			"n_cols": 326,
-			"repeat_cols": 2,
+			"repeat_cols": 1,
 			"iw_params": {
 				"window_size": 60,
 				"shift_size": 1,
