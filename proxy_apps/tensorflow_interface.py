@@ -261,16 +261,18 @@ class TFInterface:
             if self._MODEL_NAME in ["LSTM", "ConvLSTM", "TFOptimizedSGPU", "TFOptimizedMGPU"]:
                 print("[INFO] Learning Rate: ", self._HYPERPARAMETER_DICT["learning_rate"])
                 optimizer = tf.optimizers.Adagrad(self._HYPERPARAMETER_DICT["learning_rate"], 
-                                                  initial_accumulator_value=0, 
-                                                  epsilon=1e-10)
+                initial_accumulator_value=0, 
+                epsilon=1e-10)
             elif self._MODEL_NAME == "ResNet50":
                 optimizer = tf.keras.optimizers.SGD(self._HYPERPARAMETER_DICT["learning_rate"])
 
             # if horovod - distributed optimizer
             if self._MGPU_STRATEGY == "HVD":
-                optimizer = self.hvd_keras.DistributedOptimizer(optimizer, 
-                                                                backward_passes_per_step=1, 
-                                                                average_aggregated_gradients=True)
+                optimizer = self.hvd_keras.DistributedOptimizer(
+                    optimizer,
+                    backward_passes_per_step=1,
+                    average_aggregated_gradients=True
+                )
 
             # mixed precision optimizer
             if self._MIXED_PRECISION and (self.model in ["TFOptimizedSGPU", "TFOptimizedMGPU"]): 

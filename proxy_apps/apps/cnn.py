@@ -37,7 +37,7 @@ class CNNProxyAppTF(ProxyApp):
         self,
         criterion_params=None
     ):
-        return torch.nn.MSELoss()
+        return tf.losses.MeanSquaredError()
 
     def get_model(
         self,
@@ -48,17 +48,13 @@ class CNNProxyAppTF(ProxyApp):
         super().get_model()
         # get model
         if self._PLATFORM in ["cpu", "gpu"]:
-            model = PTCNN(
+            model = TFCNN(
                         model_name, 
                         data_params
                     )
         elif self._PLATFORM == "rdu":
             criterion = self.get_criterion()
-            model = PTCNN_SN(
-                            model_name, 
-                            data_params, 
-                            criterion
-                        )
+            pass
         else:
             print("[ERROR] Invalid platform: %s" %(self._PLATFORM))
             model = None
@@ -67,12 +63,11 @@ class CNNProxyAppTF(ProxyApp):
 
     def get_opt(
         self,
-        model_params,
-        opt_params
+        opt_params,
+        model_params=None
     ):
-        return torch.optim.Adam(
-                model_params, 
-                lr=opt_params["learning_rate"]
+        return tf.keras.optimizers.Adam(
+                learning_rate=opt_params["learning_rate"]
             )
 
     def get_ait_model(
@@ -114,6 +109,34 @@ class CNNProxyAppTF(ProxyApp):
         
         return ait_model
         
+class TFCNN(tf.keras.Model):
+    def __init__(self, model_name, model_parameters):
+        super(TFCNN, self).__init__(name = 'TFConvLSTM')
+        self.bw_size = model_parameters["bw_size"] # size of the backward window
+        self.fw_size = model_parameters["fw_size"] # size of the backward window
+        self.n_features = model_parameters["n_features"] # size of the backward window
+
+        # Shape [batch, time, features] => [batch, CONV_WIDTH, features]
+        self.lambda_layer  = tf.keras.layers.Lambda(lambda x: x[:, -3:, :])
+        # Shape => [batch, 1, conv_units]
+        self.conv_layer    = tf.keras.layers.Conv1D(256, activation='relu', kernel_size=(3))
+        # Shape => [batch, 1,  out_steps*features]
+        self.dense_layer   = tf.keras.layers.Dense(self.fw_size * self.n_features, kernel_initializer=tf.initializers.zeros())
+        # Shape => [batch, out_steps, features]
+        self.output_layer  = tf.keras.layers.Reshape([self.fw_size, self.n_features])
+    
+    def call(self, input_data):
+        # print(input_data)
+        # print("Input:", input_data.shape)
+        fx = self.lambda_layer(input_data)  
+        # print("Lambda:", fx.shape)
+        fx = self.conv_layer(fx)        
+        # print("Conv:", fx.shape)
+        fx = self.dense_layer(fx)        
+        # print("Dense:", fx.shape)
+        return self.output_layer(fx)
+
+
 class CNNProxyAppPT(ProxyApp):
     def __init__(self, platform) -> None:
         super().__init__(platform, "PT")
@@ -227,30 +250,6 @@ class CNNProxyAppPT(ProxyApp):
         return ait_model
 
     
-# Neural Network
-class TFCNN(tf.keras.Model):
-    def __init__(self, bw_size, fw_size, n_features):
-        super(TFCNN, self).__init__(name = 'TFConvLSTM')
-        # Shape [batch, time, features] => [batch, CONV_WIDTH, features]
-        self.lambda_layer  = tf.keras.layers.Lambda(lambda x: x[:, -3:, :])
-        # Shape => [batch, 1, conv_units]
-        self.conv_layer    = tf.keras.layers.Conv1D(256, activation='relu', kernel_size=(3))
-        # Shape => [batch, 1,  out_steps*features]
-        self.dense_layer   = tf.keras.layers.Dense(fw_size * n_features, kernel_initializer=tf.initializers.zeros())
-        # Shape => [batch, out_steps, features]
-        self.output_layer  = tf.keras.layers.Reshape([fw_size, n_features])
-    
-    def call(self, input_data):
-        # print(input_data)
-        # print("Input:", input_data.shape)
-        fx = self.lambda_layer(input_data)  
-        # print("Lambda:", fx.shape)
-        fx = self.conv_layer(fx)        
-        # print("Conv:", fx.shape)
-        fx = self.dense_layer(fx)        
-        # print("Dense:", fx.shape)
-        return self.output_layer(fx)
-
 class Lambda(torch.nn.Module):
     def __init__(self):
         super(Lambda, self).__init__()

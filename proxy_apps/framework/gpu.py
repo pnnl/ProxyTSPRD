@@ -184,7 +184,7 @@ class PyTorchInterfaceGPU(PyTorchInterface):
                 if self._GLOBAL_RANK == 0:
                     print("[INFO (HVD)] Rank %s of %s" %(self._GLOBAL_RANK, self._MGPU_SIZE))
                     print("[INFO (HVD)] Setting devices")
-                print(self._LOCAL_RANK)
+                # print(self._LOCAL_RANK)
                 torch.cuda.set_device("cuda:" + str(self._LOCAL_RANK))
 
                 # Horovod: limit # of CPU threads to be used per worker.
@@ -227,11 +227,11 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         # shard data files
         if self._MGPU_STRATEGY in ["HVD", "DDP"]:
             if self._GLOBAL_RANK == 0:
-                print("[INFO] Sharding data files for Horovod")
+                print("[INFO] Sharding data files for %s" %(self._MGPU_STRATEGY))
             
             # splitter
             splitter = data_manager._N_TRAIN_FILES // self._MGPU_SIZE
-            print(data_manager._N_TRAIN_FILES, splitter, splitter*self._GLOBAL_RANK, splitter*(self._GLOBAL_RANK+1))
+            print("[INFO] Rank-%d: Training Files: %d, #Files/GPU: %d, Start Indx: %d, End Indx: %d" %(self._GLOBAL_RANK, data_manager._N_TRAIN_FILES, splitter, splitter*self._GLOBAL_RANK, splitter*(self._GLOBAL_RANK+1)))
             
             # divide training files
             data_manager._TRAIN_FILES = data_manager._TRAIN_FILES[splitter*self._GLOBAL_RANK:splitter*(self._GLOBAL_RANK+1)]
@@ -289,9 +289,9 @@ class PyTorchInterfaceGPU(PyTorchInterface):
             self.model.to(self._DEVICE)
         
         self.optimizer = self.app_manager.get_opt(
-                            self.model.parameters(),
-                            opt_params
-                        )
+            model_params=self.model.parameters(),
+            opt_params=opt_params
+        )
         # if self.opt_name == "SGD":
         #     self.optimizer = torch.optim.SGD(
         #         self.model.parameters(), 
@@ -404,11 +404,12 @@ class PyTorchInterfaceGPU(PyTorchInterface):
             print("============> (After) Model Fitting: ", model_training_time)
             
             # save model
-            print("Model Path: %s" %(self._MODEL_PATH))
+            print("[INFO] Model Path: %s" %(self._MODEL_PATH))
             if self._MGPU_STRATEGY == "DDP":
                 torch.save(self.model.module.state_dict(), self._MODEL_PATH)
             else:
-                torch.save(self.model.state_dict(), self._MODEL_PATH)
+                if self.hvd_torch.rank() == 0:
+                    torch.save(self.model.state_dict(), self._MODEL_PATH)
 
         if self._MGPU_STRATEGY == "DDP":
             dist.barrier()
@@ -430,7 +431,7 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         # loss and accuracy
         num_samples = 0
         test_loss = 0.
-        print(data_params)
+        # print(data_params)
 
         if ait:
             module= self.load_ait_module(data_params=data_params, batch_size=batch_size, device=device)
@@ -462,6 +463,9 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         end_time = time.perf_counter()
         inf_time = end_time - start_time
         print("============> Inference Time: ", inf_time)
+
+    def close(self):
+        self.hvd_torch.shutdown()
 
     def _discover_local_rank(self, verbose=False):
         '''
@@ -587,7 +591,13 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
         # setup default data type
         self._setup_default_dtype(dtype)
 
-        sys.exit("Helloooo")
+        # mixed precision - could be moved to Interface because it is required for both GPU and RDU; and for both TF and PT
+        self._MIXED_PRECISION = mixed_precision
+
+        # enable profiling - could be moved to Interface because it is required for both GPU and RDU; and for both TF and PT
+        # self._PROFILING = profiling
+
+        # sys.exit("Helloooo")
     
     def _setup_devices(self, n_gpus, n_cpus, mgpu_strategy):
         # os.environ['TF_XLA_FLAGS']="--tf_xla_auto_jit=2 --tf_xla_cpu_global_jit"
@@ -604,6 +614,7 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
         
         # physical gpus
         gpus = tf.config.experimental.list_physical_devices('GPU')
+        self.GPUS = gpus
         for gpu in gpus:
             print("[INFO] Name:", gpu.name, "  Type:", gpu.device_type)
             tf.config.experimental.set_memory_growth(gpu, True)
@@ -616,9 +627,6 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
         if self._GLOBAL_RANK == 0:
             print("[INFO] Device Type: %s" %(self._DEVICE_STR))
         
-        if gpus and (self._MGPU_STRATEGY == "HVD"):
-            tf.config.experimental.set_visible_devices(gpus[self.hvd_keras.local_rank()], 'GPU')
-            
         # eager mode
         # tf.compat.v1.disable_eager_execution()
         if self._GLOBAL_RANK == 0:
@@ -649,22 +657,22 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
     def _setup_default_dtype(self, dtype):
         # set default data type
         if dtype == "int":
-            self._FDTYPE = torch.int32
+            self._FDTYPE = tf.int32
             self._DTYPE = "int32"
         elif dtype == "fp16":
-            self._FDTYPE = torch.float16
+            self._FDTYPE = tf.float16
             self._DTYPE = "float16"
             tf.keras.backend.set_floatx(self._DTYPE)
         elif dtype == "fp32":
-            self._FDTYPE = torch.float32
+            self._FDTYPE = tf.float32
             self._DTYPE = "float32"
             tf.keras.backend.set_floatx(self._DTYPE)
         elif dtype == "fp64":
-            self._FDTYPE = torch.float64
+            self._FDTYPE = tf.float64
             self._DTYPE = "float64"
             tf.keras.backend.set_floatx(self._DTYPE)
         elif dtype == "amp":
-            self._FDTYPE = torch.float32
+            self._FDTYPE = tf.float32
             self._DTYPE = "float32"
             tf.keras.backend.set_floatx(self._DTYPE)
             # set policy
@@ -677,55 +685,244 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
             print('[INFO] Variable dtype: %s' % policy.variable_dtype)
         
         if dtype != "amp": 
-            torch.set_default_dtype(self._FDTYPE)
+            tf.keras.backend.set_floatx(self._DTYPE)
         
         if self._GLOBAL_RANK == 0:
             print("[INFO] Python Data Type: %s" %(self._DTYPE))
             print("[INFO] Framework Data Type: %s" %(self._FDTYPE))
+
+    def init_app_manager(
+        self, 
+        app,
+        app_name,
+        output_dir,
+        mixed_precision_support=False,
+        mgpu_support=False
+    ):
+        super().init_app_manager(    
+            app=app,
+            app_name=app_name, 
+            output_dir=output_dir, 
+            mixed_precision_support=mixed_precision_support
+        )
+
+        # multi gpu support
+        self.app_manager._MGPU_SUPPORT = mgpu_support
+        if self._GLOBAL_RANK == 0:
+            print("[INFO] App Supports MGPUs: %s" %(self.app_manager._MGPU_SUPPORT))
+
+        # if multiple GPUs are supported by the app
+        if self.app_manager._MGPU_SUPPORT:
+            # if no strategy selected
+            if self._MGPU_STRATEGY is None:
+                if self._GLOBAL_RANK == 0:
+                    print("[INFO] Disabling Multi-GPU Support. To use multiple gpus, provide a valid Multi-GPU strategy (HVD/DDP) when initializing the framework.")
+            # if horovod
+            elif self._MGPU_STRATEGY == "HVD":
+                if self._GLOBAL_RANK == 0:
+                    print("[INFO (HVD)] Initializing Horovod")
+                import horovod.tensorflow.keras as hvd_keras
+                self.hvd_keras = hvd_keras
+                self.hvd_keras.init()
+                self._MGPU_SIZE = self.hvd_keras.size()
+                self._LOCAL_RANK = self.hvd_keras.local_rank()
+                self._GLOBAL_RANK = self.hvd_keras.rank()
+                if self._GLOBAL_RANK == 0:
+                    print("[INFO (HVD)] Rank %s of %s" %(self._GLOBAL_RANK, self._MGPU_SIZE))
+                    print("[INFO (HVD)] Setting devices")
+            else:
+                if self._GLOBAL_RANK == 0:
+                    print("[INFO] Invalid Multi-GPU Strategy: %s" %(self._MGPU_STRATEGY))
+
+            if self.GPUS and (self._MGPU_STRATEGY == "HVD"):
+                tf.config.experimental.set_visible_devices(self.GPUS[self._LOCAL_RANK], 'GPU')
+
+    def init_data_manager(
+        self,
+        data_dir,
+        file_format,
+        data_manager_type,
+        train_files=-1,
+        test_files=0,
+        val_files=0,
+        shuffle=False
+    ):
+        data_manager = super().init_data_manager(
+            data_dir=data_dir,
+            file_format=file_format,
+            data_manager_type=data_manager_type,
+            train_files=train_files,
+            test_files=test_files,
+            val_files=val_files,
+            shuffle=shuffle
+        )
+
+        # shard data files
+        if self._MGPU_STRATEGY in ["HVD"]:
+            if self._GLOBAL_RANK == 0:
+                print("[INFO] Sharding data files for %s" %(self._MGPU_STRATEGY))
+            
+            # splitter
+            splitter = data_manager._N_TRAIN_FILES // self._MGPU_SIZE
+            print("[INFO] Rank-%d: Training Files: %d, #Files/GPU: %d, Start Indx: %d, End Indx: %d" %(self._GLOBAL_RANK, data_manager._N_TRAIN_FILES, splitter, splitter*self._GLOBAL_RANK, splitter*(self._GLOBAL_RANK+1)))
+            
+            # divide training files
+            data_manager._TRAIN_FILES = data_manager._TRAIN_FILES[splitter*self._GLOBAL_RANK:splitter*(self._GLOBAL_RANK+1)]
+            data_manager._N_TRAIN_FILES = len(data_manager._TRAIN_FILES)
+        
+        # files handled by single GPU
+        if self._GLOBAL_RANK == 0:
+            print("[INFO] Number of training files (per GPU):", data_manager._N_TRAIN_FILES)
+            print("[INFO] Number of validation files (per GPU):", data_manager._N_VAL_FILES)
+        
+        return data_manager  
+            
+    def load_data(
+        self,
+        data_files,
+        data_params,
+        sampler=None,
+        batch_size=1
+    ):
+        return super().load_data(
+            data_files,
+            data_params=data_params,
+            batch_size=batch_size
+        ) 
+
+    def init_training_engine(
+        self,
+        model_name,
+        model_dir,
+        data_params,
+        opt_params,
+        criterion_params
+    ):
+        super().init_training_engine(
+            model_name=model_name,
+            model_dir=model_dir,
+            data_params=data_params,
+            criterion_params=criterion_params
+        )
+
+        self.optimizer = self.app_manager.get_opt(
+            opt_params=opt_params
+        ) 
+
+        # if horovod - distributed optimizer
+        if self._MGPU_STRATEGY == "HVD":
+            print("[INFO (HVD)] Distributing the optimizer.")
+            self.optimizer = self.hvd_keras.DistributedOptimizer(
+                self.optimizer,
+                backward_passes_per_step=1,
+                average_aggregated_gradients=True
+            )
+
+        # mixed precision optimizer
+        if self._MIXED_PRECISION: 
+            print("[INFO (HVD)] Enabling mixed precision in optimizer.")
+            self.optimizer = tf.keras.mixed_precision.LossScaleOptimizer(self.optimizer)
+
+        # compile model
+        self.model.compile(
+            loss=self.criterion,
+            optimizer=self.optimizer,
+            metrics=[self.criterion],
+            experimental_run_tf_function=False
+        )
+
+    def train(
+        self,
+        training_data,
+        n_epochs
+    ):
+        super().train()
+        self.callbacks = []
+        if self._MGPU_STRATEGY == "HVD":
+            self.callbacks.append(self.hvd_keras.callbacks.BroadcastGlobalVariablesCallback(0))
+            self.callbacks.append(self.hvd_keras.callbacks.MetricAverageCallback())
+
+        m_start = time.time()
+        history = self.model.fit(
+            training_data,
+            # steps_per_epoch=steps_per_epoch,
+            epochs=n_epochs,
+            callbacks=self.callbacks,
+            # workers=16,
+            # use_multiprocessing=True,
+        )
+        m_stop = time.time()
+        model_training_time = m_stop - m_start
+        if self._GLOBAL_RANK == 0:
+            print("============> Model Fitting: ", model_training_time)
+        
+        all_loss = history.history['loss']
+
+        if self._MGPU_STRATEGY == "HVD":
+            avg_model_training_time = self.hvd_keras.allreduce(model_training_time, average=True).numpy()
+            avg_all_loss = [self.hvd_keras.allreduce(l, average=True).numpy() for l in all_loss]
+        else:
+            avg_model_training_time = model_training_time
+            avg_all_loss = all_loss
+
+        if self._GLOBAL_RANK == 0:
+            print("============> (After) Model Fitting: ", avg_model_training_time)
+            print("============> (After) Model Loss: ", avg_all_loss)
+            
+            # save model
+            print("Model Path: %s" %(self._MODEL_PATH))
+        
+        # save model
+        if self._MGPU_STRATEGY == "HVD":
+            if self.hvd_keras.rank() == 0:
+                self.model.save_weights(self._MODEL_PATH)
+        else:
+            self.model.save_weights(self._MODEL_PATH)
+
+    def infer(
+        self,
+        data,
+        data_params,
+        ait=False,
+        batch_size=1,
+        device=None
+    ):
+        super().infer()
+
+        start_time = time.perf_counter()
+        
+        # loss and accuracy
+        start_time = time.perf_counter()
+        loss, acc = self.model.evaluate(data)
+        end_time = time.perf_counter()
+        inf_time = end_time - start_time
+        print("============> Inference Time: ", inf_time)
+
+        if self._MGPU_STRATEGY == "HVD":
+            avg_inference_time = self.hvd_keras.allreduce(inf_time, average=True).numpy()
+            avg_loss = self.hvd_keras.allreduce(loss, average=True).numpy()
+            avg_accuracy = self.hvd_keras.allreduce(acc, average=True).numpy()
+        else:
+            avg_inference_time = inf_time
+            avg_loss = loss
+            avg_accuracy = acc
+
+        if self._GLOBAL_RANK == 0:
+            print("============> Inference Time: ", avg_inference_time)
+            print("============> Inference Loss: ", avg_loss)
+            print("============> Inference Accuracy: ", avg_accuracy)
+
+    def close(self):
+        self.hvd_keras.shutdown()
+        
         
 
-    # def load_data(
-    #     self,
-    #     data_reader
-    # ):
-    #     # call parent
-    #     super().load_data()
-
-    #     # load data
-    #     dh_start = time.time()
-    #     data_handler = DataHandler(
-    #         handler_name=self._DATA_GENERATOR_NAME,
-    #         handler_params=self.config["data_params"], 
-    #         dtype=self._DTYPE, 
-    #         training_files=self._TRAINING_FILES, 
-    #         validation_files=self._VALIDATION_FILES
-    #     )
+    
+            
         
-    #     if self._FILE_FORMAT == "npz":
-    #         data_dict = data_handler.load_data()
-    #     else:
-    #         x_indexer = data_handler.get_indexer(self.config["data_params"]["n_rows"],
-    #                                      self.config["data_params"]["look_back"],
-    #                                      self.config["data_params"]["shift_size"],
-    #                                      0,
-    #                                      self.config["data_params"]["n_signals"]+self.config["data_params"]["look_forward"]
-    #                                      )
-    #         y_indexer = data_handler.get_indexer(self.config["data_params"]["n_rows"],
-    #                                      self.config["data_params"]["look_forward"],
-    #                                      self.config["data_params"]["shift_size"],
-    #                                      self.config["data_params"]["look_back"],
-    #                                      self.config["data_params"]["n_signals"]
-    #                                      )
-    #         # print("Indices....................", x_indexer, y_indexer)
 
-    #         data_dict = data_handler.load_data(x_indexer, y_indexer)
-    #     dh_stop = time.time()
-    #     print(data_dict)
 
-    #     # loading time
-    #     data_loading_time = dh_stop-dh_start
-    #     if self._MGPU_STRATEGY == "HVD":
-    #         avg_data_loading_time = avg_data_loading_time = data_loading_time
-    #         # self.hvd_torch.allreduce(torch.tensor(data_loading_time), average=True).numpy()
-    #     else:
-    #         avg_data_loading_time = data_loading_time
+        
+            
+
+    

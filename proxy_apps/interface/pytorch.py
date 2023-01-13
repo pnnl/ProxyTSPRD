@@ -1,6 +1,7 @@
 import os, sys
-from .main import Interface
 import torch
+
+from .main import Interface
 
 class PyTorchInterface(Interface):
     def __init__(

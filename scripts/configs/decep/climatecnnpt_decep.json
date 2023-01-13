@@ -1,25 +1,25 @@
 {
 	"info": {
-		"app_name": "LSTMProxyAppPT",
+		"app_name": "ClimateCNNProxyAppPT",
         "mixed_precision_support": true,
         "mgpu_support": true,
 		"data_manager": "TimeSeries",
         "dtype": "float64",
-        "output_dir": "/home/milanjain91/output/ProxyTSPRD_IPDPS/"
+        "output_dir": "/people/jain432/pacer_remote/data/ClimateApp/"
 	},
 	"data_params": {
 		"init": {
-			"training_data_dir": "/home/milanjain91/data/power_system/NewTestScenarios/",
-			"file_format": "mat",
-			"train_files": 128,
-			"test_files": 20,
+			"training_data_dir": "/people/jain432/pacer_remote/data/ISDMonthly/",
+			"file_format": "*",
+			"train_files": 576,
+			"test_files": 12,
 			"val_files": 0,
 			"shuffle": true
 		},
 		"load_and_prep": {
 			"dataloader": "torch.utils.data.Dataset",
-			"n_rows": 1400,
-			"n_cols": 136,
+			"n_rows": 672,
+			"n_cols": 326,
 			"repeat_cols": 1,
 			"iw_params": {
 				"window_size": 60,
@@ -38,14 +38,14 @@
 		}
 	},
 	"model_info": {
-		"model_name": "LSTM",
-		"model_dir": "/home/milanjain91/models/ProxyTSPRD_IPDPS/",
-		"tb_log_dir": "/home/milanjain91/logs/",
+		"model_name": "CNN",
+		"model_dir": "/people/jain432/pacer_remote/models/ClimateApp/",
+		"tb_log_dir": "/people/jain432/pacer_remote/logs/",
 		"fill_data": false,
 		"opt_parameters": {
-			"learning_rate" : 0.08,
+			"learning_rate" : 0.0015,
 			"momentum"      : 0.0,
-			"weight_decay"  : 3e-4	
+			"weight_decay"  : 3e-4
 		},
 		"hyperparameters": {
 			"hl_1_dim"           : 128,

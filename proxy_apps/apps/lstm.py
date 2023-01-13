@@ -10,6 +10,136 @@ logger = tf.get_logger()
 
 from .main import ProxyApp, get_indexer
 
+class LSTMProxyAppTF(ProxyApp):
+    def __init__(self, platform) -> None:
+        super().__init__(platform, "TF")
+
+    def get_datagen(
+        self,
+        datagen
+    ):
+        # call ProxyApp super call
+        super().get_datagen()
+        
+        # split and process data
+        x_indexer = get_indexer(
+            n_rows=datagen.n_rows,
+            window_size=datagen.iw_params["window_size"],
+            shift_size=datagen.iw_params["shift_size"],
+            start_point=datagen.iw_params["start_at"],
+            leave_last=datagen.iw_params["leave_last"]
+        )
+        y_indexer = get_indexer(
+            n_rows=datagen.n_rows,
+            window_size=datagen.ow_params["window_size"],
+            shift_size=datagen.ow_params["shift_size"],
+            start_point=datagen.ow_params["start_at"],
+            leave_last=datagen.ow_params["leave_last"]
+        )
+        datagen.get_data(x_indexer, y_indexer)
+        
+        # return data generator
+        return datagen
+        
+    def get_criterion(
+        self,
+        criterion_params=None
+    ):
+        return tf.losses.MeanSquaredError()
+
+    def get_model(
+        self,
+        model_name,
+        data_params,
+        device=None
+    ):
+        super().get_model()
+        # get model
+        if self._PLATFORM in ["cpu", "gpu"]:
+            model = LSTMSingleLayerTF(
+                        model_name, 
+                        data_params
+                    )
+        elif self._PLATFORM == "rdu":
+            criterion = self.get_criterion()
+            pass
+        else:
+            print("[ERROR] Invalid platform: %s" %(self._PLATFORM))
+            model = None
+        
+        return model
+
+    def get_opt(
+        self,
+        opt_params,
+        model_params=None
+    ):
+        return tf.keras.optimizers.Adagrad(
+                learning_rate=opt_params["learning_rate"]
+            )
+
+    def get_ait_model(
+        self,
+        data_params,
+        device=None
+    ):
+        super().get_model()
+
+        # from aitemplate.frontend import nn
+        # class AIT_PTCNN(nn.Module):
+        #     def __init__(self, model_parameters):
+        #         super(AIT_PTCNN, self).__init__()
+        #         self.bw_size = model_parameters["bw_size"] # size of the backward window
+        #         self.fw_size = model_parameters["fw_size"] # size of the backward window
+        #         self.n_features = model_parameters["n_features"] # size of the backward window
+                
+        #         # self.criterion = criterion
+        #         # self.lambda_layer  = Lambda()
+        #         self.conv_layer    = nn.Conv2d(in_channels=self.n_features, out_channels=256, kernel_size=3, stride=1)
+        #         self.dense_layer   = nn.Linear(in_channels=256, out_channels=self.fw_size * self.n_features)
+                
+        #     def forward(self, inputs):
+        #         # print(x.shape)
+        #         # Run through Conv1d and Pool1d layers
+        #         # l = self.lambda_layer(inputs)
+        #         # l = inputs[:, -3:, :]
+        #         print(inputs)
+        #         c = self.conv_layer(inputs)#.permute(0, 2, 1))
+        #         out = self.dense_layer(c)#.permute(0, 2, 1))
+        #         return out.view((out.shape[0], self.fw_size, self.n_features))
+        
+        # # get model
+        # if self._PLATFORM in ["cpu", "gpu"]:
+        #     ait_model = AIT_PTCNN(data_params)
+        # else:
+        #     print("[ERROR] Invalid platform for AIT: %s" %(self._PLATFORM))
+        #     ait_model = None
+        
+        # return ait_model
+        pass
+
+# Neural Network
+class LSTMSingleLayerTF(tf.keras.Model):
+    def __init__(self, model_name, model_parameters):
+        super(LSTMSingleLayerTF, self).__init__(name = 'LSTMSingleLayerTF')
+        self.bw_size = model_parameters["bw_size"] # size of the backward window
+        self.fw_size = model_parameters["fw_size"] # size of the backward window
+        self.n_features = model_parameters["n_features"] # size of the backward window
+        
+        self.lstm_layer   = tf.keras.layers.LSTM(
+            64, input_shape=(self.bw_size, self.n_features),
+            kernel_initializer='zeros',
+            recurrent_initializer='zeros'
+        )
+        self.dense_layer   = tf.keras.layers.Dense(self.fw_size * self.n_features)
+        self.output_layer  = tf.keras.layers.Reshape((self.fw_size, self.n_features))
+        
+    def call(self, input_data):
+        # print(input_data)
+        fx = self.lstm_layer(input_data)        
+        fx = self.dense_layer(fx)        
+        return self.output_layer(fx)
+
 class LSTMProxyAppPT(ProxyApp):
     def __init__(self, platform) -> None:
         super().__init__(platform, "PT")
@@ -84,6 +214,46 @@ class LSTMProxyAppPT(ProxyApp):
                 model_params, 
                 lr=opt_params["learning_rate"]
             )
+    
+    def get_ait_model(
+        self,
+        data_params,
+        device=None
+    ):
+        super().get_model()
+
+        # from aitemplate.frontend import nn
+        # class AIT_PTLSTM(nn.Module):
+        #     def __init__(self, model_parameters):
+        #         super(AIT_PTLSTM, self).__init__()
+        #         self.bw_size = model_parameters["bw_size"] # size of the backward window
+        #         self.fw_size = model_parameters["fw_size"] # size of the backward window
+        #         self.n_features = model_parameters["n_features"] # size of the backward window
+                
+        #         # self.criterion = criterion
+        #         # self.lambda_layer  = Lambda()
+        #         self.conv_layer    = nn.Conv2d(in_channels=self.n_features, out_channels=256, kernel_size=3, stride=1)
+        #         self.dense_layer   = nn.Linear(in_channels=256, out_channels=self.fw_size * self.n_features)
+                
+        #     def forward(self, inputs):
+        #         # print(x.shape)
+        #         # Run through Conv1d and Pool1d layers
+        #         # l = self.lambda_layer(inputs)
+        #         # l = inputs[:, -3:, :]
+        #         print(inputs)
+        #         c = self.conv_layer(inputs)#.permute(0, 2, 1))
+        #         out = self.dense_layer(c)#.permute(0, 2, 1))
+        #         return out.view((out.shape[0], self.fw_size, self.n_features))
+        
+        # # get model
+        # if self._PLATFORM in ["cpu", "gpu"]:
+        #     ait_model = AIT_PTCNN(data_params)
+        # else:
+        #     print("[ERROR] Invalid platform for AIT: %s" %(self._PLATFORM))
+        #     ait_model = None
+        
+        # return ait_model
+        pass
 
 class LSTMSingleLayerPT(torch.nn.Module):
     def __init__(self, model_name, model_parameters, device=None):

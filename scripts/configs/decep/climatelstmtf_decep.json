@@ -1,6 +1,6 @@
 {
 	"info": {
-		"app_name": "ClimateCNNProxyAppTF",
+		"app_name": "ClimateLSTMProxyAppTF",
         "mixed_precision_support": true,
         "mgpu_support": true,
 		"data_manager": "TimeSeries",
@@ -17,7 +17,7 @@
 			"shuffle": true
 		},
 		"load_and_prep": {
-			"dataloader": "torch.utils.data.Dataset",
+			"dataloader": "tf.data.Dataset",
 			"n_rows": 672,
 			"n_cols": 326,
 			"repeat_cols": 1,
@@ -38,12 +38,12 @@
 		}
 	},
 	"model_info": {
-		"model_name": "CNN",
-		"model_dir": "/people/jain432/pacer_remote/models/ProxyTSPRD_IPDPS/",
+		"model_name": "LSTM",
+		"model_dir": "/people/jain432/pacer_remote/models/ClimateApp/",
 		"tb_log_dir": "/people/jain432/pacer_remote/logs/",
 		"fill_data": false,
 		"opt_parameters": {
-			"learning_rate" : 0.0015,
+			"learning_rate" : 0.08,
 			"momentum"      : 0.0,
 			"weight_decay"  : 3e-4
 		},

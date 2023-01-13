@@ -1,4 +1,4 @@
-import os
+import os, sys
 import tensorflow as tf
 
 from .main import Interface
@@ -57,9 +57,6 @@ class TensorFlowInterface(Interface):
         self, 
         data_files,
         data_params,
-        num_workers=0,
-        pin_memory=False,
-        sampler=None,
         batch_size=1
     ):
         # empty training dataset
@@ -71,14 +68,25 @@ class TensorFlowInterface(Interface):
             data_files,
             data_params
         )
-        if data_params["dataloader"] == "torch.utils.data.Dataset":
-            dataloader = torch.utils.data.DataLoader(
-                data_generator, 
-                batch_size=batch_size, 
-                pin_memory=pin_memory, 
-                num_workers=num_workers,
-                sampler=sampler
+        if data_params["dataloader"] == "tf.data.Dataset":
+            # print(data_generator.x_indexer.shape)
+            dataloader = tf.data.Dataset.from_generator(
+                data_generator,
+                output_signature = (
+                    tf.TensorSpec(
+                        shape=(data_generator.x_indexer.shape[1], data_generator.n_cols * data_generator.repeat_cols),
+                        dtype=data_generator.d_type
+                    ),
+                    tf.TensorSpec(
+                        shape=(data_generator.y_indexer.shape[1], data_generator.n_cols * data_generator.repeat_cols),
+                        dtype=data_generator.d_type
+                    )
+                )
             )
+            data_options = tf.data.Options()
+            dataloader = dataloader.with_options(data_options).batch(batch_size)
+            dataloader = dataloader.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
+            
 
         return dataloader
 
@@ -96,29 +104,30 @@ class TensorFlowInterface(Interface):
             criterion_params=criterion_params,
             device=device
         )
+        # print(data_params)
+        self.model.build(
+            input_shape=(
+                data_params["batch_size"], 
+                data_params["bw_size"], 
+                data_params["n_features"]
+            )
+        )
 
         # load if model exists
         self._MODEL_PATH = os.path.join(
                             model_dir, 
-                            model_name + ".pt"
+                            model_name + ".tf"
                         )
         print(f"[INFO] Model Path: %s" %(self._MODEL_PATH))
         if os.path.exists(self._MODEL_PATH):
-            self.model.load_state_dict(
-                torch.load(
-                    self._MODEL_PATH,
-                    map_location=torch.device(self._DEVICE)
-                )
-            )
+            self.model.load_weights(self._MODEL_PATH)
         elif not os.path.exists(model_dir):
             os.makedirs(model_dir)
 
         # print model parameters
         if self._GLOBAL_RANK == 0:
             print("[INFO] Model Parameters:")
-            for name, param in self.model.named_parameters():
-                if param.requires_grad:
-                    print(name, param.shape)
+            print(self.model.summary())
 
     def train(self):
         pass

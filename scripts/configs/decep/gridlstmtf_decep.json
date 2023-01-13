@@ -1,6 +1,6 @@
 {
 	"info": {
-		"app_name": "ClimateLSTMProxyAppPT",
+		"app_name": "GridLSTMProxyAppTF",
         "mixed_precision_support": true,
         "mgpu_support": true,
 		"data_manager": "TimeSeries",
@@ -10,14 +10,14 @@
 	"data_params": {
 		"init": {
 			"training_data_dir": "/people/jain432/pacer_remote/data/NewTestScenarios/",
-			"file_format": "mat",
+			"file_format": "*",
 			"train_files": 128,
 			"test_files": 20,
 			"val_files": 0,
 			"shuffle": true
 		},
 		"load_and_prep": {
-			"dataloader": "torch.utils.data.Dataset",
+			"dataloader": "tf.data.Dataset",
 			"n_rows": 1400,
 			"n_cols": 136,
 			"repeat_cols": 1,

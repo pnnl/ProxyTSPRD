@@ -1,6 +1,6 @@
 {
 	"info": {
-		"app_name": "ClimateCNNProxyAppPT",
+		"app_name": "ClimateCNNProxyAppTF",
         "mixed_precision_support": true,
         "mgpu_support": true,
 		"data_manager": "TimeSeries",
@@ -17,7 +17,7 @@
 			"shuffle": true
 		},
 		"load_and_prep": {
-			"dataloader": "torch.utils.data.Dataset",
+			"dataloader": "tf.data.Dataset",
 			"n_rows": 672,
 			"n_cols": 326,
 			"repeat_cols": 1,
@@ -39,7 +39,7 @@
 	},
 	"model_info": {
 		"model_name": "CNN",
-		"model_dir": "/home/milanjain91/models/ProxyTSPRD_IPDPS/",
+		"model_dir": "/home/milanjain91/models/ClimateApp/",
 		"tb_log_dir": "/home/milanjain91/logs/",
 		"fill_data": false,
 		"opt_parameters": {

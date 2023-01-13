@@ -50,10 +50,12 @@ class AppManager:
         
     def get_opt(
         self,
-        model_params,
-        opt_params
+        opt_params,
+        model_params=None
     ):
-        return self._APP.get_opt(model_params, opt_params)
+        return self._APP.get_opt(
+            model_params=model_params, opt_params=opt_params
+        )
     
     def get_criterion(
         self, 
