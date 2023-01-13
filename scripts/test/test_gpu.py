@@ -132,6 +132,9 @@ if __name__ == "__main__":
         sampler=None,
         batch_size=args.batch_size
     )
+    train_iter = iter(training_data)
+    print(next(train_iter).numpy())
+    
     # load test data
     test_data = interface.load_data(
         data_files=data_manager._TEST_FILES,
@@ -139,6 +142,9 @@ if __name__ == "__main__":
         sampler=None,
         batch_size=args.batch_size
     )
+    test_iter = iter(test_data)
+    print(next(test_iter).numpy())
+    sys.exit(1)
     
     # train model
     data_params = {

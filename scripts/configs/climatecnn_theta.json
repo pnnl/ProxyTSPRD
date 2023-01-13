@@ -11,7 +11,7 @@
 		"init": {
 			"training_data_dir": "/home/milanjain91/data/ISDMonthly/",
 			"file_format": "*",
-			"train_files": 576,
+			"train_files": 76,
 			"test_files": 12,
 			"val_files": 0,
 			"shuffle": true
