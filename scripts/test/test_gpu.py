@@ -27,12 +27,12 @@ parser.add_argument("--mgpu_strategy", choices=["HVD", "DDP", "None"], type=str,
 parser.add_argument("--n_epochs", type=int, help="number of epochs", default=20)
 parser.add_argument("--batch_size", type=int, help="batch size", default=1024)
 parser.add_argument("--profiling", type=int, help="whether profiling or not using nsys", default=0)
-parser.add_argument("--run_type", type=str, help="train or infer")
+parser.add_argument("--run_type", choices=["train", "infer"], type=str, help="train or infer", default="train")
 
 if __name__ == "__main__":
     # read the arguments
     args = parser.parse_args()
-
+    
     # configuration file
     _CONFIG_FILE = args.config_file
     # check if configuration file exists
@@ -40,6 +40,21 @@ if __name__ == "__main__":
     # read configuration file
     with open(_CONFIG_FILE) as fp:
         _CONFIG = json.load(fp)
+    
+    if args.run_type == "infer":
+        args.n_gpus = args.n_gpus * 8
+        _CONFIG["data_params"]["init"]["shuffle"] = False
+        n_files = _CONFIG["data_params"]["init"]["train_files"] + _CONFIG["data_params"]["init"]["test_files"]
+        if _CONFIG["info"]["app_name"].startswith("Climate"):
+            _CONFIG["data_params"]["init"]["test_files"] = 240
+        elif _CONFIG["info"]["app_name"].startswith("Grid"):
+            _CONFIG["data_params"]["init"]["test_files"] = 140
+        _CONFIG["data_params"]["init"]["train_files"] = n_files - _CONFIG["data_params"]["init"]["test_files"]
+
+        args.profiling = 0
+
+    # only for testing
+    # _CONFIG["data_params"]["init"]["train_files"] = 16
 
     # enable mixed precision
     _mixed_precision = False
@@ -55,14 +70,20 @@ if __name__ == "__main__":
     # get app
     if _CONFIG["info"]["app_name"] == "ClimateLSTMProxyAppPT":
         app = ClimateLSTMProxyAppPT(args.platform)
+    elif _CONFIG["info"]["app_name"] == "ClimateLSTMProxyAppTF":
+        app = ClimateLSTMProxyAppTF(args.platform)
     elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppPT":
         app = ClimateCNNProxyAppPT(args.platform)
     elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppTF":
         app = ClimateCNNProxyAppTF(args.platform)
     elif _CONFIG["info"]["app_name"] == "GridLSTMProxyAppPT":
         app = GridLSTMProxyAppPT(args.platform)
+    elif _CONFIG["info"]["app_name"] == "GridLSTMProxyAppTF":
+        app = GridLSTMProxyAppTF(args.platform)
     elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppPT":
         app = GridCNNProxyAppPT(args.platform)
+    elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppTF":
+        app = GridCNNProxyAppTF(args.platform)
     else:
         sys.exit("[ERROR] Invalid App: %s" %(_CONFIG["info"]["app_name"]))
 
@@ -125,15 +146,14 @@ if __name__ == "__main__":
         shuffle=_CONFIG["data_params"]["init"]["shuffle"]
     )
     
-    # load training data
-    training_data = interface.load_data(
-        data_files=data_manager._TRAIN_FILES,
-        data_params=_CONFIG["data_params"]["load_and_prep"],
-        sampler=None,
-        batch_size=args.batch_size
-    )
-    train_iter = iter(training_data)
-    print(next(train_iter).numpy())
+    if args.run_type == "train":
+        # load training data
+        training_data = interface.load_data(
+            data_files=data_manager._TRAIN_FILES,
+            data_params=_CONFIG["data_params"]["load_and_prep"],
+            sampler=None,
+            batch_size=args.batch_size
+        )
     
     # load test data
     test_data = interface.load_data(
@@ -142,17 +162,18 @@ if __name__ == "__main__":
         sampler=None,
         batch_size=args.batch_size
     )
-    test_iter = iter(test_data)
-    print(next(test_iter).numpy())
-    sys.exit(1)
+    # test_iter = iter(test_data)
+    # print(next(test_iter).numpy())
+    # sys.exit(1)
     
     # train model
     data_params = {
         "bw_size": _CONFIG["data_params"]["load_and_prep"]["iw_params"]["window_size"],
         "fw_size": _CONFIG["data_params"]["load_and_prep"]["ow_params"]["window_size"],
-        "n_features": _CONFIG["data_params"]["load_and_prep"]["n_cols"] * _CONFIG["data_params"]["load_and_prep"]["repeat_cols"]
+        "n_features": _CONFIG["data_params"]["load_and_prep"]["n_cols"] * _CONFIG["data_params"]["load_and_prep"]["repeat_cols"],
+        "batch_size": args.batch_size
     }
-    interface.init_training_engine(
+    model_exists = interface.init_training_engine(
         model_name=_SUFFIX,
         model_dir=os.path.join(
                     _CONFIG["model_info"]["model_dir"],
@@ -162,15 +183,21 @@ if __name__ == "__main__":
         opt_params=_CONFIG["model_info"]["opt_parameters"],
         criterion_params=None
     )
-    interface.train(
-        training_data=training_data,
-        n_epochs=args.n_epochs
+    if (args.run_type == "infer") & (not model_exists):
+        sys.exit("[ERROR] Cannot infer without trained model.")
+    
+    if args.run_type == "train":
+        interface.train(
+            training_data=training_data,
+            n_epochs=args.n_epochs
+        )
+    
+    # inference
+    interface.infer(
+        data=test_data,
+        data_params=data_params
     )
-
-    # # inference
-    # interface.infer(
-    #     data=test_data
-    # )
+    interface.close()
 
     # # train model
     # framework.train(model, train_data)

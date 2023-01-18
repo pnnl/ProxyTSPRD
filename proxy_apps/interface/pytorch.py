@@ -1,6 +1,7 @@
 import os, sys
-from .main import Interface
 import torch
+
+from .main import Interface
 
 class PyTorchInterface(Interface):
     def __init__(
@@ -10,7 +11,7 @@ class PyTorchInterface(Interface):
         self._ML_FRAMEWORK = "PyTorch"
 
         ## PyTorch Setup
-        if self._GLOBAL_RANK == "0":
+        if self._GLOBAL_RANK == 0:
             print("[INFO] PyTorch version: ", torch.__version__)
 
     def init_app_manager(
@@ -95,13 +96,15 @@ class PyTorchInterface(Interface):
             criterion_params=criterion_params,
             device=device
         )
+        model_exists = False
 
         # load if model exists
         self._MODEL_PATH = os.path.join(
                             model_dir, 
                             model_name + ".pt"
                         )
-        print(f"[INFO] Model Path: %s" %(self._MODEL_PATH))
+        if self._GLOBAL_RANK == 0:
+            print(f"[INFO] Model Path: %s" %(self._MODEL_PATH))
         if os.path.exists(self._MODEL_PATH):
             self.model.load_state_dict(
                 torch.load(
@@ -109,6 +112,10 @@ class PyTorchInterface(Interface):
                     map_location=torch.device(self._DEVICE)
                 )
             )
+            if self._GLOBAL_RANK == 0:
+                print(f"[INFO] Loaded Model: %s" %(self._MODEL_PATH))
+        
+            model_exists = True
         elif not os.path.exists(model_dir):
             os.makedirs(model_dir)
 
@@ -118,6 +125,8 @@ class PyTorchInterface(Interface):
             for name, param in self.model.named_parameters():
                 if param.requires_grad:
                     print(name, param.shape)
+
+        return model_exists
 
     def train(self):
         pass

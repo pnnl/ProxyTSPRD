@@ -1,6 +1,6 @@
 from .data_readers import GridDataGenerator_PT, GridDataGenerator_TF
-from ..lstm import LSTMProxyAppPT
-from ..cnn import CNNProxyAppPT
+from ..lstm import LSTMProxyAppPT, LSTMProxyAppTF
+from ..cnn import CNNProxyAppPT, CNNProxyAppTF
 
 class GridLSTMProxyAppPT(LSTMProxyAppPT):
     def __init__(self, platform) -> None:
@@ -33,6 +33,44 @@ class GridCNNProxyAppPT(CNNProxyAppPT):
         validation_files=None
     ):
         datagen = GridDataGenerator_PT(
+            dir_list=files,
+            handler_params=data_params,
+            dtype=dtype
+        )
+
+        return super().get_datagen(datagen)
+
+class GridLSTMProxyAppTF(LSTMProxyAppTF):
+    def __init__(self, platform) -> None:
+        super().__init__(platform)
+
+    def get_datagen(
+        self, 
+        files, 
+        data_params, 
+        dtype, 
+        validation_files=None
+    ):
+        datagen = GridDataGenerator_TF(
+            dir_list=files,
+            handler_params=data_params,
+            dtype=dtype
+        )
+
+        return super().get_datagen(datagen)
+
+class GridCNNProxyAppTF(CNNProxyAppTF):
+    def __init__(self, platform) -> None:
+        super().__init__(platform)
+
+    def get_datagen(
+        self, 
+        files, 
+        data_params, 
+        dtype, 
+        validation_files=None
+    ):
+        datagen = GridDataGenerator_TF(
             dir_list=files,
             handler_params=data_params,
             dtype=dtype

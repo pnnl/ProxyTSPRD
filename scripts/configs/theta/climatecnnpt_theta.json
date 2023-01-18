@@ -1,6 +1,6 @@
 {
 	"info": {
-		"app_name": "ClimateLSTMProxyAppPT",
+		"app_name": "ClimateCNNProxyAppPT",
         "mixed_precision_support": true,
         "mgpu_support": true,
 		"data_manager": "TimeSeries",
@@ -38,14 +38,14 @@
 		}
 	},
 	"model_info": {
-		"model_name": "LSTM",
-		"model_dir": "/home/milanjain91/models/ProxyTSPRD_IPDPS/",
+		"model_name": "CNN",
+		"model_dir": "/home/milanjain91/models/ClimateApp/",
 		"tb_log_dir": "/home/milanjain91/logs/",
 		"fill_data": false,
 		"opt_parameters": {
-			"learning_rate" : 0.08,
+			"learning_rate" : 0.0015,
 			"momentum"      : 0.0,
-			"weight_decay"  : 3e-4	
+			"weight_decay"  : 3e-4
 		},
 		"hyperparameters": {
 			"hl_1_dim"           : 128,

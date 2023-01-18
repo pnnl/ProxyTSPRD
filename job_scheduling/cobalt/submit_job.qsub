@@ -13,24 +13,32 @@ echo "Running Cobalt Job $COBALT_JOBID."
 
 module load conda
 conda activate
+# module load openmpi/openmpi-4.0.5
+# module load cobalt/cobalt-knl
+
 # module load nccl/nccl-v2.12.12-1_CUDA11.4
 
 N_NODES=$(cat $COBALT_NODEFILE | wc -l)
-RANKS_PER_NODE=8
+if [ "${11}" = "full-node" ]; then
+    RANKS_PER_NODE=8
+else
+    RANKS_PER_NODE=1
+fi
 let N_RANKS=${RANKS_PER_NODE}*${N_NODES}
 echo "Total #Ranks: ${N_RANKS}"
 
 echo "Current Directory: "
 pwd
 
-# export TEMP=/home/milanjain91/tmp/ 
-# export TMP=/home/milanjain91/tmp/ 
-# export TEMPDIR=/home/milanjain91/tmp/ 
-# export TMPDIR=/home/milanjain91/tmp/ 
+export TEMP=/tmp/ 
+export TMP=/tmp/ 
+export TEMPDIR=/tmp/ 
+export TMPDIR=/tmp/ 
+echo "$LD_LIBRARY_PATH"
 
 ###### --hostfile ${COBALT_NODEFILE} 
-###### NCCL_DEBUG=INFO mpirun -n $N_RANKS --map-by node python ../scripts/test/test_ddp_mpic.py
-###### mpirun -n $N_RANKS --hostfile ${COBALT_NODEFILE} --npernode 8 -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE python ../../scripts/test/test_ddp_mpic.py
+###### NCCL_DEBUG=INFO mpirun -np $N_RANKS --map-by node python ../scripts/test/test_ddp_mpic.py
+###### mpirun -np $N_RANKS --hostfile ${COBALT_NODEFILE} --npernode 8 -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE python ../../scripts/test/test_ddp_mpic.py
 
 echo "Job Configuration File: ${1}"
 echo "Partition: ${2}"
@@ -43,19 +51,28 @@ echo "Multi-GPU Strategy: ${8}"
 echo "Profiling: ${9}"
 echo "Run Type: ${10}"
 
-if [ ${9} == 1 ]; then
-    if [ ${8} == "HVD" ]; then
-        echo "--------- Running with Horovod (with Profiler) -------------------"
-        mpirun -n $N_RANKS \
+mpirun -np $N_RANKS \
         --hostfile ${COBALT_NODEFILE} \
         --npernode 8 \
         -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE \
-        nsys profile --kill=none --trace=cuda,osrt,cudnn,cublas \
+        orte-clean
+
+echo "Cleaning done --------------------" 1>&2
+if [ ${9} == 1 ]; then
+    if [ ${8} == "HVD" ]; then
+        echo "--------- Running with Horovod (with Profiler) -------------------"
+        export HOROVOD_GPU_OPERATIONS="NCCL"
+        
+        mpirun -np $N_RANKS \
+        --hostfile ${COBALT_NODEFILE} \
+        --npernode 8 \
+        -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE \
+        nsys profile --kill=none --trace=cuda,cudnn,cublas \
         -o /home/milanjain91/results/tpdps23/profiles/nsys/qdrep_report_${1}_${2}_ng${N_RANKS}_nc${4}_e${5}_b${6}_mp${7}_mgpu${8}_prof${9}_${10}_%p \
         -w true \
         --force-overwrite=true \
         python -u ../../scripts/test/test_gpu.py \
-        --config_file ../../scripts/configs/${1}_theta.json \
+        --config_file ../../scripts/configs/theta/${1}_theta.json \
         --platform "gpu" \
         --machine_name ${2} \
         --n_gpus ${N_RANKS} \
@@ -68,16 +85,16 @@ if [ ${9} == 1 ]; then
         --run_type ${10}
     elif [ ${8} == "DDP" ]; then
         echo "--------- Running with DDP (with Profiler) -------------------"
-        mpirun -n $N_RANKS \
+        mpirun -np $N_RANKS \
         --hostfile ${COBALT_NODEFILE} \
         --npernode 8 \
         -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE \
-        nsys profile --kill=none --trace=cuda,osrt,cudnn,cublas \
+        nsys profile --kill=none --trace=cuda,cudnn,cublas \
         -o /home/milanjain91/results/tpdps23/profiles/nsys/qdrep_report_${1}_${2}_ng${N_RANKS}_nc${4}_e${5}_b${6}_mp${7}_mgpu${8}_prof${9}_${10}_%p \
         -w true \
         --force-overwrite=true \
         python -u ../../scripts/test/test_gpu.py \
-        --config_file ../../scripts/configs/${1}_theta.json \
+        --config_file ../../scripts/configs/theta/${1}_theta.json \
         --platform "gpu" \
         --machine_name ${2} \
         --n_gpus ${N_RANKS} \
@@ -89,13 +106,13 @@ if [ ${9} == 1 ]; then
         --profiling ${9} \
         --run_type ${10}
     else
-        echo "--------- Running without Horovod (with Profiler) -------------------"
-        nsys profile --kill=none --trace=cuda,osrt,cudnn,cublas \
+        echo "--------- Running without Horovod/DDP (with Profiler) -------------------"
+        nsys profile --kill=none --trace=cuda,cudnn,cublas \
         -o /home/milanjain91/results/tpdps23/profiles/nsys/qdrep_report_${1}_${2}_ng${N_RANKS}_nc${4}_e${5}_b${6}_mp${7}_mgpu${8}_prof${9}_${10}_%p \
         -w true \
         --force-overwrite=true \
         python -u ../../scripts/test/test_gpu.py \
-        --config_file ../../scripts/configs/${1}_theta.json \
+        --config_file ../../scripts/configs/theta/${1}_theta.json \
         --platform "gpu" \
         --machine_name ${2} \
         --n_gpus ${N_RANKS} \
@@ -110,12 +127,14 @@ if [ ${9} == 1 ]; then
 else
     if [ ${8} == "HVD" ]; then
         echo "--------- Running with Horovod (without Profiler) -------------------"
-        mpirun -n $N_RANKS \
+        export HOROVOD_GPU_OPERATIONS="NCCL"
+        
+        mpirun -np $N_RANKS \
         --hostfile ${COBALT_NODEFILE} \
         --npernode 8 \
         -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE \
         python -u ../../scripts/test/test_gpu.py \
-        --config_file ../../scripts/configs/${1}_theta.json \
+        --config_file ../../scripts/configs/theta/${1}_theta.json \
         --platform "gpu" \
         --machine_name ${2} \
         --n_gpus ${N_RANKS} \
@@ -133,7 +152,7 @@ else
         --npernode 8 \
         -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE \
         python -u ../../scripts/test/test_gpu.py \
-        --config_file ../../scripts/configs/${1}_theta.json \
+        --config_file ../../scripts/configs/theta/${1}_theta.json \
         --platform "gpu" \
         --machine_name ${2} \
         --n_gpus ${N_RANKS} \
@@ -145,9 +164,9 @@ else
         --profiling ${9} \
         --run_type ${10} 
     else
-        echo "--------- Running without Horovod (without Profiler) -------------------"
+        echo "--------- Running without Horovod/DDP (without Profiler) -------------------"
         python -u ../../scripts/test/test_gpu.py \
-        --config_file ../../scripts/configs/${1}_theta.json \
+        --config_file ../../scripts/configs/theta/${1}_theta.json \
         --platform "gpu" \
         --machine_name ${2} \
         --n_gpus ${N_RANKS} \

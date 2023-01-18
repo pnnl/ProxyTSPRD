@@ -22,3 +22,6 @@ Use `n` to control number of GPUs/Nodes
 `qsub -n 1 -q single-gpu -A grace -I -t 01:00:00` (Single GPU)
 
 `qsub -n 1 -q full-node -A grace -I -t 01:00:00` (Single Node)
+
+# Cancel all Jobs
+`qstat -u milanjain91 | awk '{ print $1 }' | tail -n+3 | xargs -n 1 qdel`

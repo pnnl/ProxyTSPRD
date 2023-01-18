@@ -1,0 +1,25 @@
+mpirun -n 8 --hostfile ${COBALT_NODEFILE} --npernode 8 -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE python test_gpu.py --config_file ../configs/theta/climatecnnpt_theta.json --platform gpu --machine_name theta --mgpu_strategy HVD --n_epochs 2 --n_gpus 8
+
+mpirun -n 8 --hostfile ${COBALT_NODEFILE} --npernode 8 -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE python test_gpu.py --config_file ../configs/theta/climatecnntf_theta.json --platform gpu --machine_name theta --mgpu_strategy HVD --n_epochs 2 --n_gpus 8
+
+mpirun -n 8 --hostfile ${COBALT_NODEFILE} --npernode 8 -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE python test_gpu.py --config_file ../configs/theta/climatelstmpt_theta.json --platform gpu --machine_name theta --mgpu_strategy HVD --n_epochs 2 --n_gpus 8
+
+mpirun -n 8 --hostfile ${COBALT_NODEFILE} --npernode 8 -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE python test_gpu.py --config_file ../configs/theta/climatelstmtf_theta.json --platform gpu --machine_name theta --mgpu_strategy HVD --n_epochs 2 --n_gpus 8
+
+mpirun -n 8 --hostfile ${COBALT_NODEFILE} --npernode 8 -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE python test_gpu.py --config_file ../configs/theta/gridcnnpt_theta.json --platform gpu --machine_name theta --mgpu_strategy HVD --n_epochs 2 --n_gpus 8
+
+mpirun -n 8 --hostfile ${COBALT_NODEFILE} --npernode 8 -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE python test_gpu.py --config_file ../configs/theta/gridcnntf_theta.json --platform gpu --machine_name theta --mgpu_strategy HVD --n_epochs 2 --n_gpus 8
+
+mpirun -n 8 --hostfile ${COBALT_NODEFILE} --npernode 8 -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE python test_gpu.py --config_file ../configs/theta/gridlstmpt_theta.json --platform gpu --machine_name theta --mgpu_strategy HVD --n_epochs 2 --n_gpus 8
+
+mpirun -n 8 --hostfile ${COBALT_NODEFILE} --npernode 8 -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE python test_gpu.py --config_file ../configs/theta/gridlstmtf_theta.json --platform gpu --machine_name theta --mgpu_strategy HVD --n_epochs 2 --n_gpus 8
+
+===================================================
+
+mpirun -n 8 --hostfile ${COBALT_NODEFILE} --npernode 8 -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE python test_gpu.py --config_file ../configs/theta/climatecnnpt_theta.json --platform gpu --machine_name theta --mgpu_strategy DDP --n_epochs 2 --n_gpus 8
+
+mpirun -n 8 --hostfile ${COBALT_NODEFILE} --npernode 8 -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE python test_gpu.py --config_file ../configs/theta/climatelstmpt_theta.json --platform gpu --machine_name theta --mgpu_strategy DDP --n_epochs 2 --n_gpus 8
+
+mpirun -n 8 --hostfile ${COBALT_NODEFILE} --npernode 8 -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE python test_gpu.py --config_file ../configs/theta/gridcnnpt_theta.json --platform gpu --machine_name theta --mgpu_strategy DDP --n_epochs 2 --n_gpus 8
+
+mpirun -n 8 --hostfile ${COBALT_NODEFILE} --npernode 8 -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE python test_gpu.py --config_file ../configs/theta/gridlstmpt_theta.json --platform gpu --machine_name theta --mgpu_strategy DDP --n_epochs 2 --n_gpus 8

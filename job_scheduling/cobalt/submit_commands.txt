@@ -1,0 +1,48 @@
+    bash submit_qsub.sh climatecnnpt theta 1 0 50 2048 fp32 HVD 0 infer single-gpu
+    bash submit_qsub.sh climatecnnpt theta 1 0 50 2048 fp64 HVD 0 infer single-gpu
+    bash submit_qsub.sh climatecnnpt theta 1 0 50 2048 amp HVD 0 infer single-gpu
+    bash submit_qsub.sh climatelstmpt theta 1 0 50 2048 fp32 HVD 0 infer single-gpu
+    bash submit_qsub.sh climatelstmpt theta 1 0 50 2048 fp64 HVD 0 infer single-gpu
+    bash submit_qsub.sh climatelstmpt theta 1 0 50 2048 amp HVD 0 infer single-gpu
+    bash submit_qsub.sh gridcnnpt theta 1 0 50 2048 fp32 HVD 0 infer single-gpu
+    bash submit_qsub.sh gridcnnpt theta 1 0 50 2048 amp HVD 0 infer single-gpu
+    bash submit_qsub.sh gridcnnpt theta 1 0 50 2048 fp64 HVD 0 infer single-gpu
+    bash submit_qsub.sh gridlstmpt theta 1 0 50 2048 fp32 HVD 0 infer single-gpu
+    bash submit_qsub.sh gridlstmpt theta 1 0 50 2048 amp HVD 0 infer single-gpu
+    bash submit_qsub.sh gridlstmpt theta 1 0 50 2048 fp64 HVD 0 infer single-gpu
+    bash submit_qsub.sh climatecnntf theta 1 0 50 2048 fp32 HVD 0 infer single-gpu
+    bash submit_qsub.sh climatecnntf theta 1 0 50 2048 amp HVD 0 infer single-gpu
+    bash submit_qsub.sh climatecnntf theta 1 0 50 2048 fp64 HVD 0 infer single-gpu
+    bash submit_qsub.sh climatelstmtf theta 1 0 50 2048 fp32 HVD 0 infer single-gpu
+    bash submit_qsub.sh climatelstmtf theta 1 0 50 2048 amp HVD 0 infer single-gpu
+    bash submit_qsub.sh climatelstmtf theta 1 0 50 2048 fp64 HVD 0 infer single-gpu
+    bash submit_qsub.sh gridcnntf theta 1 0 50 2048 fp32 HVD 0 infer single-gpu
+    bash submit_qsub.sh gridcnntf theta 1 0 50 2048 amp HVD 0 infer single-gpu
+    bash submit_qsub.sh gridcnntf theta 1 0 50 2048 fp64 HVD 0 infer single-gpu
+    bash submit_qsub.sh gridlstmtf theta 1 0 50 2048 fp32 HVD 0 infer single-gpu
+    bash submit_qsub.sh gridlstmtf theta 1 0 50 2048 amp HVD 0 infer single-gpu
+    bash submit_qsub.sh gridlstmtf theta 1 0 50 2048 fp64 HVD 0 infer single-gpu
+bash submit_qsub.sh climatecnnpt theta 1 0 50 2048 fp32 HVD 1 infer single-gpu
+bash submit_qsub.sh climatecnnpt theta 1 0 50 2048 fp64 HVD 1 infer single-gpu
+bash submit_qsub.sh climatecnnpt theta 1 0 50 2048 amp HVD 1 infer single-gpu
+bash submit_qsub.sh climatelstmpt theta 1 0 50 2048 fp32 HVD 1 infer single-gpu
+bash submit_qsub.sh climatelstmpt theta 1 0 50 2048 fp64 HVD 1 infer single-gpu
+bash submit_qsub.sh climatelstmpt theta 1 0 50 2048 amp HVD 1 infer single-gpu
+bash submit_qsub.sh gridcnnpt theta 1 0 50 2048 fp32 HVD 1 infer single-gpu
+bash submit_qsub.sh gridcnnpt theta 1 0 50 2048 amp HVD 1 infer single-gpu
+bash submit_qsub.sh gridcnnpt theta 1 0 50 2048 fp64 HVD 1 infer single-gpu
+bash submit_qsub.sh gridlstmpt theta 1 0 50 2048 fp32 HVD 1 infer single-gpu
+bash submit_qsub.sh gridlstmpt theta 1 0 50 2048 amp HVD 1 infer single-gpu
+bash submit_qsub.sh gridlstmpt theta 1 0 50 2048 fp64 HVD 1 infer single-gpu
+bash submit_qsub.sh climatecnntf theta 1 0 50 2048 fp32 HVD 1 infer single-gpu
+bash submit_qsub.sh climatecnntf theta 1 0 50 2048 amp HVD 1 infer single-gpu
+bash submit_qsub.sh climatecnntf theta 1 0 50 2048 fp64 HVD 1 infer single-gpu
+bash submit_qsub.sh climatelstmtf theta 1 0 50 2048 fp32 HVD 1 infer single-gpu
+bash submit_qsub.sh climatelstmtf theta 1 0 50 2048 amp HVD 1 infer single-gpu
+bash submit_qsub.sh climatelstmtf theta 1 0 50 2048 fp64 HVD 1 infer single-gpu
+bash submit_qsub.sh gridcnntf theta 1 0 50 2048 fp32 HVD 1 infer single-gpu
+bash submit_qsub.sh gridcnntf theta 1 0 50 2048 amp HVD 1 infer single-gpu
+bash submit_qsub.sh gridcnntf theta 1 0 50 2048 fp64 HVD 1 infer single-gpu
+bash submit_qsub.sh gridlstmtf theta 1 0 50 2048 fp32 HVD 1 infer single-gpu
+bash submit_qsub.sh gridlstmtf theta 1 0 50 2048 amp HVD 1 infer single-gpu
+    bash submit_qsub.sh gridlstmtf theta 1 0 50 2048 fp64 HVD 1 infer single-gpu

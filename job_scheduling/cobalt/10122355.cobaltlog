@@ -1,0 +1,5 @@
+Jobid: 10122355
+qsub -n 4 -t 00:15:00 -A GRACE -q full-node -o /home/milanjain91/results/tpdps23/logs/sbatch/o_climatecnntf_theta_ng32_nc0_e50_b2048_mpfp32_mgpuHVD_prof1_train -e /home/milanjain91/results/tpdps23/logs/sbatch/e_climatecnntf_theta_ng32_nc0_e50_b2048_mpfp32_mgpuHVD_prof1_train submit_job.qsub climatecnntf theta 4 0 50 2048 fp32 HVD 1 train full-node
+Wed Jan 18 20:49:20 2023 +0000 (UTC) submitted with cwd set to: /home/milanjain91/ProxyTSPRD/job_scheduling/cobalt
+jobid 10122355 submitted from terminal /dev/pts/15
+Wed Jan 18 20:55:01 2023 +0000 (UTC) Info: user delete requested; removing job from the queue
