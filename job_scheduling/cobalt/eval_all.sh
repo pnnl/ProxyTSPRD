@@ -43,8 +43,6 @@ for gpu in ${GPUS[@]}; do
                                         # echo $STATUS
                                     done
                                 fi
-                            else
-                                sleep 10
                             fi
                             echo "bash submit_qsub.sh $model $gpu $n 0 50 2048 $dt $mgpu $p $rtype $NODE"
                             bash submit_qsub.sh $model $gpu $n 0 50 2048 $dt $mgpu $p $rtype $NODE

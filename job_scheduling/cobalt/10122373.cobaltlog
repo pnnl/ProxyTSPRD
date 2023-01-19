@@ -1,4 +1,0 @@
-Jobid: 10122373
-qsub -n 4 -t 00:30:00 -A GRACE -q full-node -o /home/milanjain91/results/tpdps23/logs/sbatch/o_gridcnntf_theta_ng32_nc0_e50_b2048_mpfp32_mgpuHVD_prof1_train -e /home/milanjain91/results/tpdps23/logs/sbatch/e_gridcnntf_theta_ng32_nc0_e50_b2048_mpfp32_mgpuHVD_prof1_train submit_job.qsub gridcnntf theta 4 0 50 2048 fp32 HVD 1 train full-node
-Wed Jan 18 20:56:33 2023 +0000 (UTC) submitted with cwd set to: /home/milanjain91/ProxyTSPRD/job_scheduling/cobalt
-jobid 10122373 submitted from terminal /dev/pts/15
