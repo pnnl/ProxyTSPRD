@@ -160,16 +160,24 @@ class PyTorchInterface(Interface):
             pt_params = dict(pt_model.named_parameters())
             mapped_pt_params = OrderedDict()
             for name, _ in ait_model.named_parameters():
+                # print("Length:", len(pt_params[name].shape))
+                if len(pt_params[name].shape) == 4:
+                    arr = pt_params[name].permute((0, 2, 3, 1)).contiguous()
+                else:
+                    arr = pt_params[name].contiguous()
                 ait_name = name.replace(".", "_")
                 assert name in pt_params
-                mapped_pt_params[ait_name] = pt_params[name]
+                mapped_pt_params[ait_name] = arr
+                print(name, arr.shape, pt_params[name].shape)
+
             return mapped_pt_params
 
         # create AIT input Tensor
+        print(self._DTYPE)
         X = Tensor(
-            shape=[batch_size, data_params["n_features"], data_params["bw_size"]],
+            shape=[batch_size, data_params["bw_size"], data_params["n_features"], data_params["n_channels"]],
             name="X",
-            dtype="float64",
+            dtype=self._DTYPE,
             is_input=True,
         )
         # run AIT module to generate output tensor
@@ -183,7 +191,13 @@ class PyTorchInterface(Interface):
 
         # codegen
         target = detect_target()
-        module = compile_model(Y, target, "./tmp", "simple_model_demo", constants=weights)
+        # print(self.app_manager._OUTPUT_DIR, os.path.basename(self._MODEL_PATH).split(".")[0])
+        # sys.exit()
+        module = compile_model(
+            Y, target, 
+            os.path.dirname(self._MODEL_PATH), 
+            os.path.basename(self._MODEL_PATH).split(".")[0], 
+            constants=weights)
 
         return module
 

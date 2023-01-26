@@ -27,7 +27,9 @@ parser.add_argument("--mgpu_strategy", choices=["HVD", "DDP", "None"], type=str,
 parser.add_argument("--n_epochs", type=int, help="number of epochs", default=20)
 parser.add_argument("--batch_size", type=int, help="batch size", default=1024)
 parser.add_argument("--profiling", type=int, help="whether profiling or not using nsys", default=0)
-parser.add_argument("--run_type", choices=["train", "infer"], type=str, help="train or infer", default="train")
+parser.add_argument("--run_type", choices=["train", "infer", "infer_ait", "infer_onnx"], type=str, help="train or infer", default="train")
+parser.add_argument("--write_graph", action='store_true')
+parser.add_argument("--train_suffix", type=str, default="")
 
 if __name__ == "__main__":
     # read the arguments
@@ -41,8 +43,17 @@ if __name__ == "__main__":
     with open(_CONFIG_FILE) as fp:
         _CONFIG = json.load(fp)
     
-    if args.run_type == "infer":
-        args.n_gpus = args.n_gpus * 8
+    run_type = args.run_type.split("_")
+    enable_ait = False
+    enable_onnx = False
+    if len(run_type) == 2:
+        if run_type[1] == "ait":
+            enable_ait = True
+        elif run_type[1] == "onnx":
+            enable_onnx = True
+        
+    if args.run_type in ["infer", "infer_ait", "infer_onnx"]:
+        args.n_gpus = args.n_gpus# * 8
         _CONFIG["data_params"]["init"]["shuffle"] = False
         n_files = _CONFIG["data_params"]["init"]["train_files"] + _CONFIG["data_params"]["init"]["test_files"]
         if _CONFIG["info"]["app_name"].startswith("Climate"):
@@ -50,6 +61,7 @@ if __name__ == "__main__":
         elif _CONFIG["info"]["app_name"].startswith("Grid"):
             _CONFIG["data_params"]["init"]["test_files"] = 140
         _CONFIG["data_params"]["init"]["train_files"] = n_files - _CONFIG["data_params"]["init"]["test_files"]
+        print(_CONFIG["data_params"]["init"])
 
         args.profiling = 0
 
@@ -68,12 +80,16 @@ if __name__ == "__main__":
 
 
     # get app
+    n_channels = 1
     if _CONFIG["info"]["app_name"] == "ClimateLSTMProxyAppPT":
         app = ClimateLSTMProxyAppPT(args.platform)
     elif _CONFIG["info"]["app_name"] == "ClimateLSTMProxyAppTF":
         app = ClimateLSTMProxyAppTF(args.platform)
     elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppPT":
         app = ClimateCNNProxyAppPT(args.platform)
+    elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppPTATT":
+        app = ClimateCNNProxyAppPTATT(args.platform)
+        n_channels = 4
     elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppTF":
         app = ClimateCNNProxyAppTF(args.platform)
     elif _CONFIG["info"]["app_name"] == "GridLSTMProxyAppPT":
@@ -82,6 +98,9 @@ if __name__ == "__main__":
         app = GridLSTMProxyAppTF(args.platform)
     elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppPT":
         app = GridCNNProxyAppPT(args.platform)
+    elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppPTATT":
+        app = GridCNNProxyAppPTATT(args.platform)
+        n_channels = 4
     elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppTF":
         app = GridCNNProxyAppTF(args.platform)
     else:
@@ -98,17 +117,26 @@ if __name__ == "__main__":
     #     type(_mgpu_strategy),
     #     type(args.profiling)
     # )
-    _SUFFIX = f"%s_ng%d_nc%d_e%d_b%d_d%s_mpgu%s_prof%d" %(
-        args.platform,
-        args.n_gpus,
-        args.n_cpus,
-        args.n_epochs,
-        args.batch_size,
-        args.dtype,
-        _mgpu_strategy,
-        args.profiling
-    )
+    if args.run_type == "train":
+        args.train_suffix = ""
+        print("[WARNING] Train suffix can only be used for inference")
+    
+    if args.train_suffix == "":
+        _SUFFIX = f"%s_ng%d_nc%d_e%d_b%d_d%s_mpgu%s_prof%d" %(
+            args.platform,
+            args.n_gpus,
+            args.n_cpus,
+            args.n_epochs,
+            args.batch_size,
+            args.dtype,
+            _mgpu_strategy,
+            args.profiling
+        )
+    else:
+        _SUFFIX = args.train_suffix
+    
     print("[INFO] Suffix: %s" %(_SUFFIX))
+    # sys.exit(1)
     
     # initialize the framework
     framework = GPU(
@@ -166,13 +194,16 @@ if __name__ == "__main__":
     # print(next(test_iter).numpy())
     # sys.exit(1)
     
-    # train model
+    # set parameters
     data_params = {
         "bw_size": _CONFIG["data_params"]["load_and_prep"]["iw_params"]["window_size"],
         "fw_size": _CONFIG["data_params"]["load_and_prep"]["ow_params"]["window_size"],
         "n_features": _CONFIG["data_params"]["load_and_prep"]["n_cols"] * _CONFIG["data_params"]["load_and_prep"]["repeat_cols"],
-        "batch_size": args.batch_size
+        "batch_size": args.batch_size,
+        "n_channels": n_channels
     }
+    
+    # train model
     model_exists = interface.init_training_engine(
         model_name=_SUFFIX,
         model_dir=os.path.join(
@@ -181,7 +212,9 @@ if __name__ == "__main__":
                 ),
         data_params=data_params,
         opt_params=_CONFIG["model_info"]["opt_parameters"],
-        criterion_params=None
+        criterion_params=None,
+        ait=enable_ait,
+        batch_size=args.batch_size
     )
     if (args.run_type == "infer") & (not model_exists):
         sys.exit("[ERROR] Cannot infer without trained model.")
@@ -195,7 +228,8 @@ if __name__ == "__main__":
     # inference
     interface.infer(
         data=test_data,
-        data_params=data_params
+        ait=enable_ait,
+        batch_size=args.batch_size
     )
     interface.close()
 

@@ -50,6 +50,8 @@ echo "Mixed Precision: ${7}"
 echo "Multi-GPU Strategy: ${8}"
 echo "Profiling: ${9}"
 echo "Run Type: ${10}"
+echo "Node: ${11}"
+echo "Train Suffix: ${12}"
 
 mpirun -np $N_RANKS \
         --hostfile ${COBALT_NODEFILE} \
@@ -82,7 +84,8 @@ if [ ${9} == 1 ]; then
         --dtype ${7} \
         --mgpu_strategy ${8} \
         --profiling ${9} \
-        --run_type ${10}
+        --run_type ${10} \
+        --train_suffix ${12}
     elif [ ${8} == "DDP" ]; then
         echo "--------- Running with DDP (with Profiler) -------------------"
         mpirun -np $N_RANKS \
@@ -104,7 +107,8 @@ if [ ${9} == 1 ]; then
         --dtype ${7} \
         --mgpu_strategy ${8} \
         --profiling ${9} \
-        --run_type ${10}
+        --run_type ${10} \
+        --train_suffix ${12}
     else
         echo "--------- Running without Horovod/DDP (with Profiler) -------------------"
         nsys profile --kill=none --trace=cuda,cudnn,cublas \
@@ -122,7 +126,8 @@ if [ ${9} == 1 ]; then
         --dtype ${7} \
         --mgpu_strategy ${8} \
         --profiling ${9} \
-        --run_type ${10}
+        --run_type ${10} \
+        --train_suffix ${12}
     fi
 else
     if [ ${8} == "HVD" ]; then
@@ -144,7 +149,8 @@ else
         --dtype ${7} \
         --mgpu_strategy ${8} \
         --profiling ${9} \
-        --run_type ${10}
+        --run_type ${10} \
+        --train_suffix ${12}
     elif [ ${8} == "DDP" ]; then
         echo "--------- Running with DDP (without Profiler) -------------------"
         mpirun -n $N_RANKS \
@@ -162,7 +168,8 @@ else
         --dtype ${7} \
         --mgpu_strategy ${8} \
         --profiling ${9} \
-        --run_type ${10} 
+        --run_type ${10} \
+        --train_suffix ${12} 
     else
         echo "--------- Running without Horovod/DDP (without Profiler) -------------------"
         python -u ../../scripts/test/test_gpu.py \
@@ -176,7 +183,8 @@ else
         --dtype ${7} \
         --mgpu_strategy ${8} \
         --profiling ${9} \
-        --run_type ${10} 
+        --run_type ${10} \
+        --train_suffix ${12}
     fi
 fi
 

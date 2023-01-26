@@ -1,0 +1,24 @@
+Jobid: 10123814
+qsub -n 1 -t 00:30:00 -A GRACE -q single-gpu -o /home/milanjain91/results/tpdps23/logs/sbatch/o_gridcnnpt_theta_ng1_nc0_e1_b1_mpfp64_mgpuNone_prof1_infer -e /home/milanjain91/results/tpdps23/logs/sbatch/e_gridcnnpt_theta_ng1_nc0_e1_b1_mpfp64_mgpuNone_prof1_infer submit_job.qsub gridcnnpt theta 1 0 1 1 fp64 None 1 infer single-gpu gpu_ng8_nc0_e50_b2048_dfp32_mpguHVD_prof0
+Thu Jan 26 07:32:30 2023 +0000 (UTC) submitted with cwd set to: /home/milanjain91/ProxyTSPRD/job_scheduling/cobalt
+Thu Jan 26 07:32:40 2023 +0000 (UTC) 
+Thu Jan 26 07:32:40 2023 +0000 (UTC) Command: '/usr/bin/ssh' 'thetagpu06-gpu0' '/usr/bin/cobalt-launcher.py' '--nf' '/var/tmp/cobalt.10123814' '--jobid' '10123814' '--cwd' '/home/milanjain91/ProxyTSPRD/job_scheduling/cobalt' '--env' 'COBALT_JOBID=10123814' '/home/milanjain91/ProxyTSPRD/job_scheduling/cobalt/submit_job.qsub' 'gridcnnpt' 'theta' '1' '0' '1' '1' 'fp64' 'None' '1' 'infer' 'single-gpu' 'gpu_ng8_nc0_e50_b2048_dfp32_mpguHVD_prof0'
+Thu Jan 26 07:32:40 2023 +0000 (UTC) 
+Thu Jan 26 07:32:40 2023 +0000 (UTC) Environment:
+Thu Jan 26 07:32:40 2023 +0000 (UTC) SHELL=/bin/bash
+Thu Jan 26 07:32:40 2023 +0000 (UTC) COBALT_NODEFILE=/tmp/tmpGRWvRS
+Thu Jan 26 07:32:40 2023 +0000 (UTC) COBALT_PARTNAME=thetagpu06-gpu0
+Thu Jan 26 07:32:40 2023 +0000 (UTC) COBALT_JOBID=10123814
+Thu Jan 26 07:32:40 2023 +0000 (UTC) COBALT_STARTTIME=1674718350
+Thu Jan 26 07:32:40 2023 +0000 (UTC) LOGNAME=milanjain91
+Thu Jan 26 07:32:40 2023 +0000 (UTC) USER=milanjain91
+Thu Jan 26 07:32:40 2023 +0000 (UTC) COBALT_ENDTIME=1674720150
+Thu Jan 26 07:32:40 2023 +0000 (UTC) COBALT_PARTSIZE=1
+Thu Jan 26 07:32:40 2023 +0000 (UTC) HOME=/home/milanjain91
+Thu Jan 26 07:32:40 2023 +0000 (UTC) COBALT_JOBSIZE=1
+Thu Jan 26 07:32:40 2023 +0000 (UTC) 
+Thu Jan 26 07:32:40 2023 +0000 (UTC) Info: stdin received from /dev/null
+Thu Jan 26 07:32:40 2023 +0000 (UTC) Info: stdout sent to /home/milanjain91/results/tpdps23/logs/sbatch/o_gridcnnpt_theta_ng1_nc0_e1_b1_mpfp64_mgpuNone_prof1_infer
+Thu Jan 26 07:32:40 2023 +0000 (UTC) Info: stderr sent to /home/milanjain91/results/tpdps23/logs/sbatch/e_gridcnnpt_theta_ng1_nc0_e1_b1_mpfp64_mgpuNone_prof1_infer
+Thu Jan 26 07:32:40 2023 +0000 (UTC) 
+Thu Jan 26 07:35:36 2023 +0000 (UTC) Info: task completed normally with an exit code of 0; initiating job cleanup and removal

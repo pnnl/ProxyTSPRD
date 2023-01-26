@@ -1,5 +1,5 @@
 from collections import OrderedDict
-
+import sys
 import torch
 
 from aitemplate.compiler import compile_model
@@ -32,10 +32,15 @@ class AITSimpleModel(nn.Module):
     self.layernorm = nn.LayerNorm(hidden, eps=eps)
 
   def forward(self, input):
+    print("Input:", input.shape())
     hidden_states = self.dense1(input)
+    print("HS1:", hidden_states.shape())
     hidden_states = self.dense2(hidden_states)
+    print("HS2:", hidden_states.shape())
     hidden_states = hidden_states + input
+    print("HS3:", hidden_states.shape())
     hidden_states = self.layernorm(hidden_states)
+    print("HS4:", hidden_states.shape())
     return hidden_states
 
 def map_pt_params(ait_model, pt_model):
@@ -46,6 +51,8 @@ def map_pt_params(ait_model, pt_model):
     ait_name = name.replace(".", "_")
     assert name in pt_params
     mapped_pt_params[ait_name] = pt_params[name]
+    print(name, pt_params[name].shape)
+  # sys.exit(1)
   return mapped_pt_params
 
 batch_size=1024
@@ -56,9 +63,9 @@ pt_model = PTSimpleModel(hidden).cuda().half()
 # create pt input
 x = torch.randn([batch_size, hidden]).cuda().half()
 
-# # run pt model
-# pt_model.eval()
-# y_pt = pt_model(x)
+# run pt model
+pt_model.eval()
+y_pt = pt_model(x)
 
 # create AIT model
 ait_model = AITSimpleModel(hidden)
@@ -99,7 +106,7 @@ with compile_model(
 
     print("After Execution y:", y)
     # verify output is correct
-    # print(torch.allclose(y, y_pt, atol=1e-2, rtol=1e-2))
+    print(torch.allclose(y, y_pt, atol=1e-2, rtol=1e-2))
 
     # # run pt model
     # pt_model.eval()

@@ -1,0 +1,25 @@
+Jobid: 10123790
+qsub -n 1 -t 00:30:00 -A GRACE -q single-gpu -o /home/milanjain91/results/tpdps23/logs/sbatch/o_climatecnnpt_theta_ng1_nc0_e50_b1_mpint_mgpuNone_prof0_infer -e /home/milanjain91/results/tpdps23/logs/sbatch/e_climatecnnpt_theta_ng1_nc0_e50_b1_mpint_mgpuNone_prof0_infer submit_job.qsub climatecnnpt theta 1 0 50 1 int None 0 infer single-gpu gpu_ng8_nc0_e50_b2048_dfp32_mpguHVD_prof0
+Thu Jan 26 06:05:48 2023 +0000 (UTC) submitted with cwd set to: /home/milanjain91/ProxyTSPRD/job_scheduling/cobalt
+jobid 10123790 submitted from terminal /dev/pts/1
+Thu Jan 26 06:06:06 2023 +0000 (UTC) 
+Thu Jan 26 06:06:06 2023 +0000 (UTC) Command: '/usr/bin/ssh' 'thetagpu06-gpu0' '/usr/bin/cobalt-launcher.py' '--nf' '/var/tmp/cobalt.10123790' '--jobid' '10123790' '--cwd' '/home/milanjain91/ProxyTSPRD/job_scheduling/cobalt' '--env' 'COBALT_JOBID=10123790' '/home/milanjain91/ProxyTSPRD/job_scheduling/cobalt/submit_job.qsub' 'climatecnnpt' 'theta' '1' '0' '50' '1' 'int' 'None' '0' 'infer' 'single-gpu' 'gpu_ng8_nc0_e50_b2048_dfp32_mpguHVD_prof0'
+Thu Jan 26 06:06:06 2023 +0000 (UTC) 
+Thu Jan 26 06:06:06 2023 +0000 (UTC) Environment:
+Thu Jan 26 06:06:06 2023 +0000 (UTC) SHELL=/bin/bash
+Thu Jan 26 06:06:06 2023 +0000 (UTC) COBALT_NODEFILE=/tmp/tmpww4i76
+Thu Jan 26 06:06:06 2023 +0000 (UTC) COBALT_PARTNAME=thetagpu06-gpu0
+Thu Jan 26 06:06:06 2023 +0000 (UTC) COBALT_JOBID=10123790
+Thu Jan 26 06:06:06 2023 +0000 (UTC) COBALT_STARTTIME=1674713157
+Thu Jan 26 06:06:06 2023 +0000 (UTC) LOGNAME=milanjain91
+Thu Jan 26 06:06:06 2023 +0000 (UTC) USER=milanjain91
+Thu Jan 26 06:06:06 2023 +0000 (UTC) COBALT_ENDTIME=1674714957
+Thu Jan 26 06:06:06 2023 +0000 (UTC) COBALT_PARTSIZE=1
+Thu Jan 26 06:06:06 2023 +0000 (UTC) HOME=/home/milanjain91
+Thu Jan 26 06:06:06 2023 +0000 (UTC) COBALT_JOBSIZE=1
+Thu Jan 26 06:06:06 2023 +0000 (UTC) 
+Thu Jan 26 06:06:06 2023 +0000 (UTC) Info: stdin received from /dev/null
+Thu Jan 26 06:06:06 2023 +0000 (UTC) Info: stdout sent to /home/milanjain91/results/tpdps23/logs/sbatch/o_climatecnnpt_theta_ng1_nc0_e50_b1_mpint_mgpuNone_prof0_infer
+Thu Jan 26 06:06:06 2023 +0000 (UTC) Info: stderr sent to /home/milanjain91/results/tpdps23/logs/sbatch/e_climatecnnpt_theta_ng1_nc0_e50_b1_mpint_mgpuNone_prof0_infer
+Thu Jan 26 06:06:06 2023 +0000 (UTC) 
+Thu Jan 26 06:06:22 2023 +0000 (UTC) Info: task completed normally with an exit code of 1; initiating job cleanup and removal

@@ -71,7 +71,16 @@ class GridDataGenerator_PT(torch.utils.data.Dataset):
     def __getitem__(self, index):
         'Generates one sample of data'
         return self.X[index, :], self.y[index, :]
-    
+
+class GridDataGenerator_PTATT(GridDataGenerator_PT):
+    def __init__(self, dir_list, handler_params, dtype, norm=True, validation_files=None):
+        super().__init__(dir_list, handler_params, dtype, norm, validation_files)
+
+    def __getitem__(self, index):
+        'Generates one sample of data'
+        X_out = np.repeat(self.X[index, np.newaxis, :, :], 4, axis=0)
+        return X_out, self.y[index, :]
+
 class GridDataGenerator_TF(tf.keras.utils.Sequence):
     'Characterizes a dataset for TensorFlow'
     def __init__(
