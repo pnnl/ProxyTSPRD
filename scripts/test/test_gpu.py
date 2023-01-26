@@ -27,7 +27,7 @@ parser.add_argument("--mgpu_strategy", choices=["HVD", "DDP", "None"], type=str,
 parser.add_argument("--n_epochs", type=int, help="number of epochs", default=20)
 parser.add_argument("--batch_size", type=int, help="batch size", default=1024)
 parser.add_argument("--profiling", type=int, help="whether profiling or not using nsys", default=0)
-parser.add_argument("--run_type", choices=["train", "infer", "infer_ait", "infer_onnx"], type=str, help="train or infer", default="train")
+parser.add_argument("--run_type", choices=["train", "sinfer", "infer", "infer_ait", "infer_onnx"], type=str, help="train or infer", default="train")
 parser.add_argument("--write_graph", action='store_true')
 parser.add_argument("--train_suffix", type=str, default="")
 
@@ -52,7 +52,7 @@ if __name__ == "__main__":
         elif run_type[1] == "onnx":
             enable_onnx = True
         
-    if args.run_type in ["infer", "infer_ait", "infer_onnx"]:
+    if args.run_type in ["sinfer", "infer", "infer_ait", "infer_onnx"]:
         args.n_gpus = args.n_gpus# * 8
         _CONFIG["data_params"]["init"]["shuffle"] = False
         n_files = _CONFIG["data_params"]["init"]["train_files"] + _CONFIG["data_params"]["init"]["test_files"]

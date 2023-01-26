@@ -123,7 +123,9 @@ class TensorFlowInterface(Interface):
         if self._GLOBAL_RANK == 0:
             print(f"[INFO] Model Path: %s" %(self._MODEL_PATH))
         if os.path.exists(self._MODEL_PATH + ".index"):
-            self.model.load_weights(self._MODEL_PATH)
+            # self.model.load_weights(self._MODEL_PATH)
+            trained_model = tf.keras.models.load_model(self._MODEL_PATH)
+            self.model.set_weight(trained_model.get_weights())
             if self._GLOBAL_RANK == 0:
                 print(f"[INFO] Loaded Model: %s" %(self._MODEL_PATH))
         

@@ -11,7 +11,7 @@ module load conda
 conda activate
 
 i=0
-for file in /home/milanjain91/results/tpdps23/profiles/nsys/*climate*pt*.qdrep
+for file in /home/milanjain91/results/tpdps23/profiles/nsys/*e1_b1*infer*.qdrep
 do
     i=$(( i + 1 ))
     name=${file##*/}

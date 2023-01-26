@@ -1,12 +1,12 @@
 #!/bin/bash
 # gridcnntf, amp
 GPUS=( "theta" ) # which gpu
-MODELS=( "climatelstmpt" "gridcnnpt" "gridlstmpt" "climatecnntf" "climatelstmtf" "gridcnntf" "gridlstmtf" ) # "climatecnnpt" "climatelstmpt" "gridcnnpt" "gridlstmpt" "climatecnntf" "climatelstmtf" "gridcnntf" "gridlstmtf"
+MODELS=( "climatecnnpt" "climatelstmpt" "gridcnnpt" "gridlstmpt" "climatecnntf" "climatelstmtf" "gridcnntf" "gridlstmtf" ) # "climatecnnpt" "climatelstmpt" "gridcnnpt" "gridlstmpt" "climatecnntf" "climatelstmtf" "gridcnntf" "gridlstmtf", "climatecnnptatt", "gridcnnptatt"
 N_NODES=( 1 )
-DTYPE=( "fp16" "fp32" "fp64" "amp" ) # "fp16" "fp32" "fp64" "amp" with or without mixed precision
-MGPU=( "None" ) # "HVD" "DDP" with or without mixed precision
-PROF=( 0 1 ) # with and without profiler
-RTYPE=( "infer" )
+DTYPE=( "fp32" "fp64" "amp" ) # "fp16" "fp32" "fp64" "amp" with or without mixed precision
+MGPU=( "HVD" "DDP" ) # "HVD" "DDP" with or without mixed precision
+PROF=( 0 ) # with and without profiler
+RTYPE=( "sinfer" )
 NODE="full-node"
 EPOCHS=50
 BATCH_SIZE=2048
@@ -33,6 +33,19 @@ for gpu in ${GPUS[@]}; do
                                 EPOCHS=1
                                 BATCH_SIZE=1
                                 TRAIN_SUFFIX="gpu_ng8_nc0_e50_b2048_dfp32_mpguHVD_prof0"
+                            elif [[ $rtype = sinf* ]]
+                            then
+                                echo "Same Precision Inference Mode"
+                                NODE="single-gpu"
+                                EPOCHS=1
+                                BATCH_SIZE=1
+                                TRAIN_SUFFIX="gpu_ng8_nc0_e50_b2048_d${dt}_mpgu${mgpu}_prof0"
+                            fi
+
+                            if [[ $model = *cnnptatt ]]
+                            then
+                                echo "AIT Inference"
+                                TRAIN_SUFFIX="gpu_ng1_nc1_e20_b1024_dfp32_mpguNone_prof0"
                             fi
 
                             JOBID=$(qstat --header JobId:State:RunTime:Queue -u milanjain91 | awk -v node="$NODE" '{ if ($4 == node) { print } }' | awk '{ print $1}' | tail -1)
