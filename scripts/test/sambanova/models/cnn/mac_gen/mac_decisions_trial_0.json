@@ -1,0 +1,109 @@
+{
+    "bwd_section_boundaries": [
+        [
+            "ptconvlstm__conv_layer__conv1d__conv2d_Conv2d_bwd",
+            "ptconvlstm__dense_layer__linear_bwd_weight"
+        ]
+    ],
+    "conv2d_tile_size_maximum": 132,
+    "fwd_section_boundaries": [
+        [
+            "ptconvlstm__criterion__mseloss",
+            "ptconvlstm__view"
+        ]
+    ],
+    "gradnorm_section_boundaries": [],
+    "mac_resources_scale": {
+        "bwd": 1.2,
+        "fwd": 1.1,
+        "opt": 0.9
+    },
+    "opt_section_boundaries": [
+        [
+            "ptconvlstm__conv_layer__bias__ptconvlstm__conv_layer__conv1d__conv2d_Conv2d_bwd_opt",
+            "ptconvlstm__conv_layer__weight__ptconvlstm__conv_layer__conv1d__conv2d_Conv2d_bwd_opt",
+            "ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt",
+            "ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt"
+        ]
+    ],
+    "par_factors": {
+        "ptconvlstm__conv_layer__bias__ptconvlstm__conv_layer__conv1d__conv2d_Conv2d_bwd_opt": 1,
+        "ptconvlstm__conv_layer__conv1d__conv2d_Conv2d": [
+            1,
+            1,
+            22,
+            1,
+            true
+        ],
+        "ptconvlstm__conv_layer__conv1d__conv2d_Conv2d_bwd": [
+            [
+                1,
+                1
+            ],
+            [
+                1,
+                1
+            ],
+            [
+                3,
+                4
+            ],
+            [
+                1,
+                1
+            ],
+            [
+                true,
+                true
+            ]
+        ],
+        "ptconvlstm__conv_layer__conv1d__squeeze_Reshape": 1,
+        "ptconvlstm__conv_layer__conv1d__squeeze_Reshape_bwd": 1,
+        "ptconvlstm__conv_layer__conv1d__unsqueeze_Reshape": 1,
+        "ptconvlstm__conv_layer__conv1d__unsqueeze_Reshape_recompute_": 1,
+        "ptconvlstm__conv_layer__weight__ptconvlstm__conv_layer__conv1d__conv2d_Conv2d_bwd_opt": 1,
+        "ptconvlstm__criterion__mseloss": 1,
+        "ptconvlstm__criterion__mseloss_bwd": 1,
+        "ptconvlstm__criterion__mseloss_bwd_expand": 1,
+        "ptconvlstm__criterion__mseloss_bwd_mul": 1,
+        "ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt": 1,
+        "ptconvlstm__dense_layer__linear": [
+            32,
+            1,
+            4
+        ],
+        "ptconvlstm__dense_layer__linear_bwd_loss": [
+            8,
+            1,
+            1
+        ],
+        "ptconvlstm__dense_layer__linear_bwd_weight": [
+            1,
+            3,
+            16
+        ],
+        "ptconvlstm__dense_layer__linear_t_input0": 1,
+        "ptconvlstm__dense_layer__linear_t_input0_bwd": 1,
+        "ptconvlstm__dense_layer__linear_t_output0": 1,
+        "ptconvlstm__dense_layer__linear_t_output0_bwd": 1,
+        "ptconvlstm__dense_layer__linear_t_output0_bwd_addn0": 1,
+        "ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt": 1,
+        "ptconvlstm__lambda_layer__indexselect": 1,
+        "ptconvlstm__lambda_layer__indexselect_recompute_": 1,
+        "ptconvlstm__permute": 1,
+        "ptconvlstm__permute_1": 1,
+        "ptconvlstm__permute_1_bwd": 1,
+        "ptconvlstm__permute_recompute_": 1,
+        "ptconvlstm__reshape": 1,
+        "ptconvlstm__reshape_1": 1,
+        "ptconvlstm__reshape_1_recompute_": 1,
+        "ptconvlstm__reshape_bwd": 1,
+        "ptconvlstm__view": 1,
+        "ptconvlstm__view_bwd": 1
+    },
+    "section_scaling_factors": [
+        1.100000023841858,
+        1.2000000476837158,
+        0.8999999761581421
+    ]
+}

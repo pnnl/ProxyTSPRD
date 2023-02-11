@@ -1,0 +1,38 @@
+{
+ "nodes": {
+  "tbuf1a_1_0_90.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0": {
+   "initial_ctx_count": 12,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "tbuf1a_1_0_90.kDefaultRead1",
+       "port": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0_wdone_in__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/tbuffer/TBufferIOInsertion.cpp:187:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 12
+    }
+   },
+   "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:1246:0",
+   "terminal_node": false
+  },
+  "tbuf1a_1_0_90.kDefaultRead1": {
+   "initial_node": false,
+   "input_ports": {
+    "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0_wdone_in__": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_every": 10
+    }
+   },
+   "output_ports": null,
+   "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:347:0",
+   "terminal_ctx_count": 10,
+   "terminal_node": true
+  }
+ }
+}

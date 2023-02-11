@@ -1,0 +1,761 @@
+{
+    "available": {
+        "chips": 1,
+        "fcmus": 640,
+        "sections": 3,
+        "tiles": 4
+    },
+    "partitions": {
+        "{0, 0}": {
+            "pcus": {
+                "count": 52,
+                "utilization": 8.125
+            },
+            "pmus": {
+                "count": 108,
+                "utilization": 16.875
+            }
+        }
+    },
+    "templates": {
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_807": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_808": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_809": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_811": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_821": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_822": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_823": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_824": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_871": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_914": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_922": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_923": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_924": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_925": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_926": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_927": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_928": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_929": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_930": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_931": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_932": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_933": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_934": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_935": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_936": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_975": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2a_0_0_810": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2a_0_0_812": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2a_0_0_813": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2a_0_0_814": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2a_0_0_815": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2a_0_0_816": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2a_0_0_817": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2a_0_0_818": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2a_0_0_819": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2a_0_0_820": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2a_0_0_921": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2a_0_0_974": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2u_0_0_344": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.mean_unalign_0_0_560": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.mul_0_0_559": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__dense_layer__linear_add_bias.ptconvlstm__dense_layer__linear_add_bias.add0": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__dense_layer__linear_add_bias.ptconvlstm__dense_layer__linear_add_bias.wbuf": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__dense_layer__linear_stage_buf": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 5,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__dense_layer__linear_wo_bias": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 19,
+            "pmus": 19,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_add_0": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_add_1": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_add_2": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_add_3": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_cell": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_cell_loop_buffer": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_f_t": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_g_t": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_hidden": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_hidden_loop_buffer": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_i_t": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_v_0": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 2,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_v_0.ptconvlstm__lstm_layer__lstm_linear_v_0Bias_W_Buf": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_v_0.ptconvlstm__lstm_layer__lstm_linear_v_0FwdPropBias": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_v_1": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 2,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_v_1.ptconvlstm__lstm_layer__lstm_linear_v_1Bias_W_Buf": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_v_1.ptconvlstm__lstm_layer__lstm_linear_v_1FwdPropBias": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_v_2": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 2,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_v_2.ptconvlstm__lstm_layer__lstm_linear_v_2Bias_W_Buf": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_v_2.ptconvlstm__lstm_layer__lstm_linear_v_2FwdPropBias": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_v_3": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 2,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_v_3.ptconvlstm__lstm_layer__lstm_linear_v_3Bias_W_Buf": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_v_3.ptconvlstm__lstm_layer__lstm_linear_v_3FwdPropBias": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_w_0": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 2,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_w_0.ptconvlstm__lstm_layer__lstm_linear_w_0Bias_W_Buf": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_w_0.ptconvlstm__lstm_layer__lstm_linear_w_0FwdPropBias": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_w_1": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 2,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_w_1.ptconvlstm__lstm_layer__lstm_linear_w_1Bias_W_Buf": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_w_1.ptconvlstm__lstm_layer__lstm_linear_w_1FwdPropBias": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_w_2": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 2,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_w_2.ptconvlstm__lstm_layer__lstm_linear_w_2Bias_W_Buf": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_w_2.ptconvlstm__lstm_layer__lstm_linear_w_2FwdPropBias": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_w_3": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 2,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_w_3.ptconvlstm__lstm_layer__lstm_linear_w_3Bias_W_Buf": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_linear_w_3.ptconvlstm__lstm_layer__lstm_linear_w_3FwdPropBias": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_meta_outputs0_used_by_ptconvlstm__lstm_layer__lstm_shifted_outputs_0_0_298_tiler.ptconvlstm__lstm_layer__lstm_meta_outputs0_used_by_ptconvlstm__lstm_layer__lstm_shifted_outputs_0_0_298_tilerSubStoreTiler": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_meta_outputs0_used_by_ptconvlstm__lstm_layer__lstm_shifted_outputs_0_0_487_tiler.ptconvlstm__lstm_layer__lstm_meta_outputs0_used_by_ptconvlstm__lstm_layer__lstm_shifted_outputs_0_0_487_tilerSubStoreTiler": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_mul0": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_mul1": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_o_t": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__lstm_layer__lstm_tanh_cell": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.realign_0_0_889.realign_0_0_889.gbuffer": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.s0.backing_pmu_group_42_ptconvlstm__lstm_layer__lstm_tensor": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.s0.backing_pmu_group_43_ptconvlstm__lstm_layer__lstm_tensor1": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.s0.fronting_pmu_load_group_23": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.s0.fronting_pmu_load_group_24": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.s0.fronting_pmu_load_group_25": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.s0.fronting_pmu_load_group_26": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.s0.fronting_pmu_load_group_27": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.s0.fronting_pmu_load_group_32": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.s0.fronting_pmu_load_group_34": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.s0.fronting_pmu_load_group_4": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.s0.fronting_pmu_load_group_45": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.sub_0_0_558": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.tbuf1u_0_0_335": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.tbuf2u_0_0_334": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.tbuf2u_0_0_342": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.vector_transpose_0_0_886.vector_transpose_0_0_886.buffer": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        }
+    },
+    "used": {
+        "floating": {
+            "pcus": 0,
+            "pmus": 0,
+            "units": 0
+        },
+        "templates": {
+            "pcus": 52,
+            "pmus": 108,
+            "units": 160
+        },
+        "total": {
+            "agcus": 2,
+            "pcus": 52,
+            "pmus": 108,
+            "units": 160
+        }
+    }
+}

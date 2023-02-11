@@ -3,43 +3,45 @@
 		"app_name": "LSTMProxyApp",
         "mixed_precision_support": "True",
         "mgpu_support": "True",
-		"data_type": "TimeSeries",
+		"data_manager": "TimeSeries",
         "dtype": "float64",
-        "output_dir": "/home/milanjain91/output/ProxyTSPRD_IPDPS/"
+        "output_dir": "/people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/"
 	},
 	"data_params": {
-		"training_data_dir": "/home/milanjain91/data/power_system/NewTestScenarios/",
-		"input_file_format": "mat",
-		"data_generator": "torch.utils.data.Dataset",
-		"num_files": 128,
-		"n_rows": 1400,
-		"n_cols": 136,
-		"repeat_cols": 1,
-		"iw_params": {
-			"window_size": 60,
-			"shift_size": 1,
-			"stride": 1,
-			"start_at": 0,
-			"leave_last": 33
+		"init": {
+			"training_data_dir": "/people/jain432/pacer_saudade/data/power_system/NewTestScenarios/",
+			"file_format": "*",
+			"train_files": 10,
+			"test_files": 10,
+			"val_files": 0,
+			"shuffle": true
 		},
-		"ow_params": {
-			"window_size": 30,
-			"shift_size": 1,
-			"stride": 1,
-			"start_at": 60,
-			"leave_last": 3
+		"load_and_prep": {
+			"dataloader": "torch.utils.data.Dataset",
+			"n_rows": 1400,
+			"n_cols": 136,
+			"repeat_cols": 1,
+			"iw_params": {
+				"window_size": 60,
+				"shift_size": 1,
+				"stride": 1,
+				"start_at": 0,
+				"leave_last": 33
+			},
+			"ow_params": {
+				"window_size": 30,
+				"shift_size": 1,
+				"stride": 1,
+				"start_at": 60,
+				"leave_last": 3
+			}
 		}
 	},
 	"model_info": {
 		"model_name": "LSTM",
-		"model_dir": "/home/milanjain91/models/ProxyTSPRD_IPDPS/",
-		"tb_log_dir": "/home/milanjain91/logs/",
+		"model_dir": "/people/jain432/pacer_saudade/models/ProxyTSPRD_IPDPS/",
+		"tb_log_dir": "/people/jain432/pacer_saudade/logs/",
 		"fill_data": "False",
-		"model_parameters": {
-			"bw_size": 60,
-			"fw_size": 30,
-			"n_features": 136
-		},
 		"opt_parameters": {
 			"learning_rate"      : 5e-4,
 			"momentum"      : 0.0,

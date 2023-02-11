@@ -1,0 +1,14 @@
+ ----------------- Utilization [by node] ----------------- 
+Partition{0, 2}: LogregTorchSamba.partition_2_0_.logreg__lin_layer__weight__logreg__lin_layer__linear_bwd_weight_opt 3 PMU(s) + 2 PCU(s)
+Partition{0, 2}: LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_2 1 PMU(s) + 0 PCU(s)
+Partition{0, 2}: LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_6 1 PMU(s) + 0 PCU(s)
+Partition{0, 2}: LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_5 1 PMU(s) + 0 PCU(s)
+Partition{0, 2}: LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_2_logreg__lin_layer__weight_2_0_48 1 PMU(s) + 0 PCU(s)
+Partition{0, 2}: LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_5_logreg__lin_layer__weight__sgd0__momentum_2_0_49 1 PMU(s) + 0 PCU(s)
+ ----------------- Utilization [by partition] ----------------- 
+Section: 2 Chip: 0 Partition: Partition{0, 2} Usage: 8 PMU(s) + 2 PCU(s) PMU Utilization: 1.25 PCU Utilization: 0.3125
+ --------------------------------------------------------- 
+Available: 640 FCMU(s) across 4 tile(s) of 1 chip(s)
+Used (templates): 8 PMU(s) + 2 PCU(s) = 10 unit(s) 
+Used (floating): 0 PMU(s) + 0 PCU(s) = 0 unit(s) 
+Used (total): 8 PMU(s) + 2 PCU(s) = 10 unit(s) and 1 AGCU(s)

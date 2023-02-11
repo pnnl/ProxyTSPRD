@@ -1,0 +1,29 @@
+{
+    "0": {
+        "0": {
+            "data_load_size": 27744,
+            "data_store_size": 8704,
+            "grad_store_size": 0,
+            "ideal_ddr_bw": 107374182400.0,
+            "weight_load_size": 2318848
+        }
+    },
+    "1": {
+        "0": {
+            "data_load_size": 44736,
+            "data_store_size": 2318848,
+            "grad_store_size": 0,
+            "ideal_ddr_bw": 107374182400.0,
+            "weight_load_size": 2097152
+        }
+    },
+    "2": {
+        "0": {
+            "data_load_size": 2318848,
+            "data_store_size": 0,
+            "grad_store_size": 4637696,
+            "ideal_ddr_bw": 107374182400.0,
+            "weight_load_size": 4637696
+        }
+    }
+}

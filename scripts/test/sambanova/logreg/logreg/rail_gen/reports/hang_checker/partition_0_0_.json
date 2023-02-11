@@ -1,0 +1,274 @@
+{
+ "nodes": {
+  "partition_0_0_.LogregTorchSamba.partition_0_0_.ptconvlstm__conv_layer__conv2d_weight_permute.tbuf.R": {
+   "ctx_count": 3264,
+   "initial_node": false,
+   "input_ports": {
+    "W_wdone_in___FROM_partition_0_0_.LogregTorchSamba.partition_0_0_.ptconvlstm__conv_layer__conv2d_weight_permute.tbuf.W.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      3263,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": null,
+   "src_ctx": "software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0",
+   "terminal_ctx_count": 3264,
+   "terminal_node": true
+  },
+  "partition_0_0_.LogregTorchSamba.partition_0_0_.ptconvlstm__conv_layer__conv2d_weight_permute.tbuf.W": {
+   "ctx_count": 104448,
+   "init_ctx_count": 104448,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_0_0_.LogregTorchSamba.partition_0_0_.ptconvlstm__conv_layer__conv2d_weight_permute.tbuf.R",
+       "port": "W_wdone_in___FROM_partition_0_0_.LogregTorchSamba.partition_0_0_.ptconvlstm__conv_layer__conv2d_weight_permute.tbuf.W.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      104447,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0",
+   "terminal_node": false
+  },
+  "partition_0_0_.tbuf1u_0_0_198.LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kIndexRd": {
+   "ctx_count": 15,
+   "initial_node": false,
+   "input_ports": {
+    "kFrontDynamicWriteCtx_wdone_in___FROM_partition_0_0_.tbuf1u_0_0_198.kFrontDynamicWriteCtx.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      14,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "1001": {
+     "destinations": [
+      {
+       "node": "partition_0_0_.tbuf2u_0_0_197.LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kLutRd",
+       "port": "idx",
+       "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0"
+      }
+     ],
+     "push_schedule": [
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/index/rail/Index.cpp:124:0",
+   "terminal_node": false
+  },
+  "partition_0_0_.tbuf1u_0_0_198.kFrontDynamicWriteCtx": {
+   "ctx_count": 1,
+   "init_ctx_count": 1,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_0_0_.tbuf1u_0_0_198.LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kIndexRd",
+       "port": "kFrontDynamicWriteCtx_wdone_in___FROM_partition_0_0_.tbuf1u_0_0_198.kFrontDynamicWriteCtx.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0",
+   "terminal_node": false
+  },
+  "partition_0_0_.tbuf2u_0_0_197.LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kLutRd": {
+   "ctx_count": 15,
+   "initial_node": false,
+   "input_ports": {
+    "0_FROM_partition_0_0_.tbuf2u_0_0_202.LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kOutWr.1000": {
+     "buffer_depth": 8192,
+     "init": 1,
+     "pop_schedule": [
+      0,
+      14,
+      1,
+      1
+     ]
+    },
+    "1_FROM_partition_0_0_.tbuf2u_0_0_202.kDefaultRead1.1000": {
+     "buffer_depth": 8192,
+     "init": 2,
+     "pop_schedule": [
+      0,
+      14,
+      1,
+      1
+     ]
+    },
+    "idx": {
+     "buffer_depth": 32,
+     "init": 0,
+     "pop_schedule": [
+      1,
+      1
+     ]
+    },
+    "kFrontDynamicWriteCtx_wdone_in___FROM_partition_0_0_.tbuf2u_0_0_197.kFrontDynamicWriteCtx.wdone__": {
+     "buffer_depth": 2,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      14,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "1001": {
+     "destinations": [
+      {
+       "node": "partition_0_0_.tbuf2u_0_0_202.LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kOutWr",
+       "port": "8",
+       "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0"
+      }
+     ],
+     "push_schedule": [
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/index/rail/Index.cpp:137:0",
+   "terminal_node": false
+  },
+  "partition_0_0_.tbuf2u_0_0_197.kFrontDynamicWriteCtx": {
+   "ctx_count": 300,
+   "init_ctx_count": 300,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_0_0_.tbuf2u_0_0_197.LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kLutRd",
+       "port": "kFrontDynamicWriteCtx_wdone_in___FROM_partition_0_0_.tbuf2u_0_0_197.kFrontDynamicWriteCtx.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      299,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0",
+   "terminal_node": false
+  },
+  "partition_0_0_.tbuf2u_0_0_202.LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kOutWr": {
+   "ctx_count": 15,
+   "initial_node": false,
+   "input_ports": {
+    "8": {
+     "buffer_depth": 32,
+     "init": 0,
+     "pop_schedule": [
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "1000": {
+     "destinations": [
+      {
+       "node": "partition_0_0_.tbuf2u_0_0_197.LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kLutRd",
+       "port": "0_FROM_partition_0_0_.tbuf2u_0_0_202.LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kOutWr.1000",
+       "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      14,
+      1,
+      1
+     ]
+    },
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_0_0_.tbuf2u_0_0_202.kDefaultRead1",
+       "port": "LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kOutWr_wdone_in___FROM_partition_0_0_.tbuf2u_0_0_202.LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kOutWr.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      14,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/index/rail/Index.cpp:161:0",
+   "terminal_node": false
+  },
+  "partition_0_0_.tbuf2u_0_0_202.kDefaultRead1": {
+   "ctx_count": 15,
+   "initial_node": false,
+   "input_ports": {
+    "LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kOutWr_wdone_in___FROM_partition_0_0_.tbuf2u_0_0_202.LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kOutWr.wdone__": {
+     "buffer_depth": 2,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      14,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "1000": {
+     "destinations": [
+      {
+       "node": "partition_0_0_.tbuf2u_0_0_197.LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kLutRd",
+       "port": "1_FROM_partition_0_0_.tbuf2u_0_0_202.kDefaultRead1.1000",
+       "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      14,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0",
+   "terminal_node": false
+  }
+ }
+}

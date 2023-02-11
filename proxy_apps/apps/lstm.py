@@ -84,38 +84,6 @@ class LSTMProxyAppTF(ProxyApp):
         device=None
     ):
         super().get_model()
-
-        # from aitemplate.frontend import nn
-        # class AIT_PTCNN(nn.Module):
-        #     def __init__(self, model_parameters):
-        #         super(AIT_PTCNN, self).__init__()
-        #         self.bw_size = model_parameters["bw_size"] # size of the backward window
-        #         self.fw_size = model_parameters["fw_size"] # size of the backward window
-        #         self.n_features = model_parameters["n_features"] # size of the backward window
-                
-        #         # self.criterion = criterion
-        #         # self.lambda_layer  = Lambda()
-        #         self.conv_layer    = nn.Conv2d(in_channels=self.n_features, out_channels=256, kernel_size=3, stride=1)
-        #         self.dense_layer   = nn.Linear(in_channels=256, out_channels=self.fw_size * self.n_features)
-                
-        #     def forward(self, inputs):
-        #         # print(x.shape)
-        #         # Run through Conv1d and Pool1d layers
-        #         # l = self.lambda_layer(inputs)
-        #         # l = inputs[:, -3:, :]
-        #         print(inputs)
-        #         c = self.conv_layer(inputs)#.permute(0, 2, 1))
-        #         out = self.dense_layer(c)#.permute(0, 2, 1))
-        #         return out.view((out.shape[0], self.fw_size, self.n_features))
-        
-        # # get model
-        # if self._PLATFORM in ["cpu", "gpu"]:
-        #     ait_model = AIT_PTCNN(data_params)
-        # else:
-        #     print("[ERROR] Invalid platform for AIT: %s" %(self._PLATFORM))
-        #     ait_model = None
-        
-        # return ait_model
         pass
 
 # Neural Network
@@ -193,7 +161,7 @@ class LSTMProxyAppPT(ProxyApp):
                     )
         elif self._PLATFORM == "rdu":
             criterion = self.get_criterion()
-            model = PTLSTM_SN(
+            model = LSTMSingleLayerPTSamba(
                         model_name, 
                         data_params, 
                         criterion, 
@@ -210,10 +178,22 @@ class LSTMProxyAppPT(ProxyApp):
         model_params,
         opt_params
     ):
-        return torch.optim.Adagrad(
-                model_params, 
-                lr=opt_params["learning_rate"]
-            )
+        if self._PLATFORM in ["cpu", "gpu"]:
+            return torch.optim.Adagrad(
+                    model_params, 
+                    lr=opt_params["learning_rate"]
+                )
+        elif self._PLATFORM == "rdu":
+            from sambaflow import samba
+            return samba.optim.SGD(
+                    model_params, 
+                    lr=opt_params["learning_rate"],
+                    momentum=opt_params["momentum"],
+                    weight_decay=opt_params["weight_decay"]
+                )
+        else:
+            print("[ERROR] Invalid platform: %s" %(self._PLATFORM))
+            return None
     
     def get_ait_model(
         self,
@@ -221,38 +201,6 @@ class LSTMProxyAppPT(ProxyApp):
         device=None
     ):
         super().get_model()
-
-        # from aitemplate.frontend import nn
-        # class AIT_PTLSTM(nn.Module):
-        #     def __init__(self, model_parameters):
-        #         super(AIT_PTLSTM, self).__init__()
-        #         self.bw_size = model_parameters["bw_size"] # size of the backward window
-        #         self.fw_size = model_parameters["fw_size"] # size of the backward window
-        #         self.n_features = model_parameters["n_features"] # size of the backward window
-                
-        #         # self.criterion = criterion
-        #         # self.lambda_layer  = Lambda()
-        #         self.conv_layer    = nn.Conv2d(in_channels=self.n_features, out_channels=256, kernel_size=3, stride=1)
-        #         self.dense_layer   = nn.Linear(in_channels=256, out_channels=self.fw_size * self.n_features)
-                
-        #     def forward(self, inputs):
-        #         # print(x.shape)
-        #         # Run through Conv1d and Pool1d layers
-        #         # l = self.lambda_layer(inputs)
-        #         # l = inputs[:, -3:, :]
-        #         print(inputs)
-        #         c = self.conv_layer(inputs)#.permute(0, 2, 1))
-        #         out = self.dense_layer(c)#.permute(0, 2, 1))
-        #         return out.view((out.shape[0], self.fw_size, self.n_features))
-        
-        # # get model
-        # if self._PLATFORM in ["cpu", "gpu"]:
-        #     ait_model = AIT_PTCNN(data_params)
-        # else:
-        #     print("[ERROR] Invalid platform for AIT: %s" %(self._PLATFORM))
-        #     ait_model = None
-        
-        # return ait_model
         pass
 
 class LSTMSingleLayerPT(torch.nn.Module):
@@ -285,6 +233,42 @@ class LSTMSingleLayerPT(torch.nn.Module):
         
         # return output
         return out.view((out.shape[0], self.fw_size, self.n_features))
+
+class LSTMSingleLayerPTSamba(torch.nn.Module):
+    def __init__(self, model_name, model_parameters, criterion, device=None):
+        super(LSTMSingleLayerPTSamba, self).__init__()
+        self.bw_size = model_parameters["bw_size"] # size of the backward window
+        self.fw_size = model_parameters["fw_size"] # size of the backward window
+        self.n_features = model_parameters["n_features"] # size of the backward window
+        self.device = device
+        
+        self.criterion = criterion
+        self.hidden_units = 64
+        self.lstm_layer   = torch.nn.LSTM(
+                                hidden_size=self.hidden_units, 
+                                input_size=self.n_features, 
+                                # batch_first=True
+                            )
+        self.dense_layer   = torch.nn.Linear(
+                                in_features=self.hidden_units, 
+                                out_features=self.fw_size * self.n_features
+                            )
+        
+    def forward(self, x, targets):
+        # hidden layers
+        h = Variable(torch.zeros(1, x.shape[1], self.hidden_units))#.to(self.device)
+        c = Variable(torch.zeros(1, x.shape[1], self.hidden_units))#.to(self.device)
+        h_out, c_out = self.lstm_layer(x, (h, c)) #Final Output
+        
+        # prediction
+        out = self.dense_layer(h_out[:, -1, :])
+
+        loss = self.criterion(
+            out.reshape(-1, self.fw_size*self.n_features), 
+            targets.reshape(-1, self.fw_size*self.n_features))
+        
+        # return output
+        return loss, out.view((out.shape[0], self.fw_size, self.n_features))
 
 class LSTMMultipleLayersPT(torch.nn.Module):
     def __init__(self, model_name, model_parameters, device=None):

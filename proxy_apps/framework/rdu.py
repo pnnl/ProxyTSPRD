@@ -80,19 +80,25 @@ class PyTorchInterfaceSN(PyTorchInterface):
         
     def init_data_manager(
         self,
-        training_data_dir,
-        input_file_format,
-        data_type,
-        n_training_files=-1,
-        val_data_dir=None
+        data_dir,
+        file_format,
+        data_manager_type,
+        train_files=-1,
+        test_files=0,
+        val_files=0,
+        shuffle=False
     ):
-        super().init_data_manager(
-            training_data_dir=training_data_dir,
-            input_file_format=input_file_format,
-            data_type=data_type,
-            n_training_files=n_training_files,
-            val_data_dir=val_data_dir
+        data_manager = super().init_data_manager(
+            data_dir=data_dir,
+            file_format=file_format,
+            data_manager_type=data_manager_type,
+            train_files=train_files,
+            test_files=test_files,
+            val_files=val_files,
+            shuffle=shuffle
         )  
+
+        return data_manager
 
     def load_training_data(
         self,
@@ -134,8 +140,8 @@ class PyTorchInterfaceSN(PyTorchInterface):
         # tgt = samba.from_torch(torch.from_numpy(data_handler.y))
         # print(tgt)
         
-        ipt.mem_type = 'DDR' #'Host' #'HBM', 'DDR', None, 'Host'
-        tgt.mem_type = 'DDR' #'Host' #'HBM', 'DDR', None, 'Host'
+        ipt.host_memory = False #'Host' #'HBM', 'DDR', None, 'Host'
+        tgt.host_memory = False #'Host' #'HBM', 'DDR', None, 'Host'
 
         inputs = (ipt, tgt)
         return inputs
@@ -147,18 +153,22 @@ class PyTorchInterfaceSN(PyTorchInterface):
         elif command=="run":
             argv_params = [command, '--pef='+self.PEF_FILE]
         
-        deprecated_args_found = set(migrated_arguments.keys()) & set(argv_params)
-        if deprecated_args_found:
-            for arg in deprecated_args_found:
-                print(
-                    colored(f'This specific argument {arg} is being deprecated, new argument is {migrated_arguments[arg]}',
-                            'red'))
+        # deprecated_args_found = set(migrated_arguments.keys()) & set(argv_params)
+        # if deprecated_args_found:
+        #     for arg in deprecated_args_found:
+        #         print(
+        #             colored(f'This specific argument {arg} is being deprecated, new argument is {migrated_arguments[arg]}',
+        #                     'red'))
 
-        args_cli = parse_app_args(argv=argv_params)
-        args_composed = args_cli
-        _ = SambaConfig(args_composed, SNConfig).get_all_params()
+        args = parse_app_args(argv=argv_params)
+        # args_composed = args_cli
+        # _ = SambaConfig(args_composed, SNConfig).get_all_params()
 
-        args = args_composed
+        # args = args_composed
+        # if args.yaml_config:
+        #     print("Config file do exist!")
+        #     parse_yaml_to_args(args.yaml_config, args)
+
         # when it is not distributed mode, local rank is -1.
         args.local_rank = dist.get_rank() if dist.is_initialized() else -1
         # print(args)
@@ -168,13 +178,16 @@ class PyTorchInterfaceSN(PyTorchInterface):
     def init_training_engine(
         self,
         model_name,
-        model_parameters,
+        model_dir,
+        data_params,
         opt_params,
-        criterion_params
+        criterion_params,
+        batch_size
     ):
         super().init_training_engine(
             model_name=model_name,
-            model_parameters=model_parameters,
+            model_dir=model_dir,
+            data_params=data_params,
             criterion_params=criterion_params
         )
 
@@ -183,42 +196,24 @@ class PyTorchInterfaceSN(PyTorchInterface):
             self.app_manager._OUTPUT_DIR,
             self.app_manager._APP_NAME + "/" + self.app_manager._APP_NAME + ".pef"
         )
-
+        
         # Sync model parameters with RDU memory
         samba.from_torch_model_(self.model)
-
+        
         # get optimizer for model training
         self.opt_params = opt_params
-        self.opt_name = self.app_manager.get_opt()
-        print(opt_params)
-        print("==== OPT MOMENTUM", type(opt_params['momentum']))
-        if self.opt_name == "SGD":
-            self.optimizer = samba.optim.SGD(
-                self.model.parameters(),
-                lr=opt_params['learning_rate'],
-                momentum=opt_params['momentum'],
-                weight_decay=opt_params['weight_decay'])
-        else:
-            self.optimizer = samba.optim.Adagrad(
-                self.model.parameters(),
-                lr=opt_params['lr'],
-                momentum=opt_params['momentum'],
-                weight_decay=opt_params['weight_decay'])
-
-        # # Annotate parameters if weight normalization is on
-        # if weight_norm:
-        #     utils.weight_norm_(self.model.lin_layer)
-
-        # Compile the model to generate a PEF (Plasticine Executable Format) binary
-        # utils.get_file_dir(__file__)
-
+        self.optimizer = self.app_manager.get_opt(
+            model_params=self.model.parameters(),
+            opt_params=self.opt_params
+        )
+        
     def compile(
         self,
         batch_size
     ):
         # Create random input and output data for testing
         inputs = self._create_rand_arr(
-            batch_size=batch_size
+            batch_size=1
         )
 
         # Compile if PEF doesn't exist or a new PEF file is required    
@@ -231,9 +226,10 @@ class PyTorchInterfaceSN(PyTorchInterface):
         # )
         # print(
         #     "---------- Compile Inputs ------------- \n",
-        #     inputs,
+        #     inputs[0].shape, inputs[1].shape,
         #     "\n------------------------------------------- \n",
         # )
+        # print(self.model)
         
         samba.session.compile(self.model,
                             inputs,
@@ -244,6 +240,7 @@ class PyTorchInterfaceSN(PyTorchInterface):
                             pef_metadata=get_pefmeta(args, self.model))
 
         print("[INFO] PEF File: %s" %(self.PEF_FILE))
+        # sys.exit(1)
 
     def train(
         self,

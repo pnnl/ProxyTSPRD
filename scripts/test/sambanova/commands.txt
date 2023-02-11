@@ -1,0 +1,9 @@
+[Logreg]
+Activate: source /opt/sambaflow/apps/starters/logreg/venv/bin/activate
+Compile: python logreg.py compile --pef-name="logreg" --output-folder="logreg" --data-parallel -ws 2
+Run: /opt/mpich-3.4.3/bin/mpirun -np 2 python logreg.py run --num-epochs 1 --data-parallel --reduce-on-rdu --pef="./logreg/logreg/logreg.pef"
+
+[ProxyTSPRD]
+Activate: source /opt/sambaflow/apps/starters/logreg/venv/bin/activate
+Compile: python test_sambanova.py --config_file ../../configs/samba/gridlstmpt_samba.json --stage compile
+Run: /opt/mpich-3.4.3/bin/mpirun -np 2 python test_sambanova.py run --num-epochs 1 --data-parallel --reduce-on-rdu --pef="./logreg/logreg/logreg.pef"

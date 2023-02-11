@@ -1,0 +1,18 @@
+*******************************************************************
+tbuf:
+    kData PMU: 1
+    total PMU: 1, Tensor size / (PMU size * depth): 1
+    total PCU: 0
+total RAIL resource for LogregTorchSamba.partition_1_0_.ptconvlstm__conv_layer__conv1d__conv2d_Conv2d_bwd_accum
+    kData PMU: 1
+    total PMU: 1, Tensor size / (PMU size * depth): 1
+    total PCU: 0
+*******************************************************************
+tbuf:
+    kData PMU: 1
+    total PMU: 1, Tensor size / (PMU size * depth): 1
+    total PCU: 0
+total RAIL resource for LogregTorchSamba.partition_1_0_.ptconvlstm__conv_layer__conv1d__conv2d_Conv2d_bwd_accum_1
+    kData PMU: 1
+    total PMU: 1, Tensor size / (PMU size * depth): 1
+    total PCU: 0

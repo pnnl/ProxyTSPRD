@@ -1,0 +1,488 @@
+{
+    "available": {
+        "chips": 1,
+        "fcmus": 640,
+        "sections": 3,
+        "tiles": 4
+    },
+    "partitions": {
+        "{0, 0}": {
+            "pcus": {
+                "count": 177,
+                "utilization": 27.65625
+            },
+            "pmus": {
+                "count": 239,
+                "utilization": 37.34375
+            }
+        }
+    },
+    "templates": {
+        "LogregTorchSamba.partition_0_0_.bias_add_0_0_390.bias_add_0_0_390.add0": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.bias_add_0_0_390.bias_add_0_0_390.wbuf": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.bias_transpose_add_0_0_322": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_297": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_298": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_299": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_300": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_301": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_302": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_303": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_304": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_305": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_306": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_307": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_308": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_309": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_310": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_311": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_312": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_313": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_314": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_315": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_316": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_317": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.biggemm_0_0_318": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_393": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 6,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_395": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_400": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_401": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_430": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 6,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_431": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_442": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2a_0_0_397": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2a_0_0_399": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2a_0_0_432": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2a_0_0_437": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2a_0_0_440": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2a_0_0_441": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2u_0_0_204": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2u_0_0_206": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2u_0_0_208": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 5,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2u_0_0_210": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.gbuf2u_0_0_321": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 13,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.lbuf1a_0_0_396": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.mean_unalign_0_0_332": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.mul_0_0_331": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__conv_layer__conv2d_weight_permute.tbuf": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 17,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.ptconvlstm__dense_layer__linear": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 128,
+            "pmus": 128,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.realign_0_0_412.realign_0_0_412.gbuffer": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.realign_0_0_413.realign_0_0_413.gbuffer": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.realign_0_0_418.realign_0_0_418.gbuffer": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.s0.backing_pmu_group_20_ptconvlstm__conv_layer__reshape_20_used_by_ptconvlstm__dense_layer__linear_bwd_weight_0_0_274": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.s0.fronting_pmu_load_group_10": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.s0.fronting_pmu_load_group_11": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.s0.fronting_pmu_load_group_23": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.s0.fronting_pmu_load_group_3": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.sbuf2u_0_0_295": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.split_kernel_gbuf_0_0_296": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 11,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.streaming_transpose_0_0_323": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.sub_0_0_330": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.tbuf1u_0_0_198": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.tbuf2u_0_0_197": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.tbuf2u_0_0_202": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.vector_transpose_0_0_414.vector_transpose_0_0_414.buffer": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        }
+    },
+    "used": {
+        "floating": {
+            "pcus": 0,
+            "pmus": 0,
+            "units": 0
+        },
+        "templates": {
+            "pcus": 177,
+            "pmus": 239,
+            "units": 416
+        },
+        "total": {
+            "agcus": 1,
+            "pcus": 177,
+            "pmus": 239,
+            "units": 416
+        }
+    }
+}

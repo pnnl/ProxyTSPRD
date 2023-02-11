@@ -1,0 +1,2280 @@
+========= Summary IR ========
+tbuffer partition_0_0__LogregTorchSamba_partition_0_0__ptconvlstm__conv_layer__conv2d_weight_permute_tbuf
+    loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":69:0)
+    layout: <BF16[256, 136, 3, 1]RM/64@0x0> vec_order: {0, 1, 2, 3} vec_dim: 3 depth: 1 dims: {256, 136, 3, 32}
+    pmu: D_0_0_0_0_0_min_0_max_417792 depth: 1 capacity: 208896 (words) is_transpose: 1 min: 0 max:417792
+        uctx: D_0_0_0_0_0_min_0_max_417792.W
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (104448 # steps): 
+                  iter[0] : (0 until 2228224 by 278528)
+                  iter[1] : (0 until 2048 by 64)
+                  iter[2] : (0 until 278528 by 2048)
+                  iter[3] : (0 until 6684672 by 2228224)
+                ctx done: L0(W_iter0,) (104448 # steps)
+            addresses:
+                addr : ((((0 until 6684672 by 2228224).c3 + (0 until 2228224 by 278528).c0) + (0 until 278528 by 2048).c2) + (0 until 2048 by 64).c1)
+                ofst : (0 until 2048 by 64).c1
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(W_iter0,)
+                cout[wdone__] - src: L0(W_iter0,)
+        uctx: D_0_0_0_0_0_min_0_max_417792.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 204 port: READ1 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (13056 # steps): 
+                  iter[0] : (0 until 6684672 by 2048)
+                  iter[1] : (0 until 256 by 64)
+                ctx done: L0(R_addr_chain_iter0,) (13056 # steps)
+                pacing_chain  (816 # steps): 
+                  iter[0] : (0 until 816 by 1)
+            addresses:
+                addr : ((0 until 6684672 by 2048).c0 + (0 until 256 by 64).c1)
+                ofst : (0 until 256 by 64).c1
+                pred : (cast<UInt32>(((0 until 256 by 64).c1!=0)) * 4)
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[W_wdone_in__] popif: L0(R_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                tb init: 4 pushif: cin[rob_rdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+    pmu: D_0_0_0_0_0_min_417792_max_835584 depth: 1 capacity: 208896 (words) is_transpose: 1 min: 417792 max:835584
+        uctx: D_0_0_0_0_0_min_417792_max_835584.W
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (104448 # steps): 
+                  iter[0] : (0 until 2228224 by 278528)
+                  iter[1] : (0 until 2048 by 64)
+                  iter[2] : (0 until 278528 by 2048)
+                  iter[3] : (0 until 6684672 by 2228224)
+                ctx done: L0(W_iter0,) (104448 # steps)
+            addresses:
+                addr : ((((0 until 6684672 by 2228224).c3 + (0 until 2228224 by 278528).c0) + (0 until 278528 by 2048).c2) + (0 until 2048 by 64).c1)
+                ofst : (0 until 2048 by 64).c1
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(W_iter0,)
+                cout[wdone__] - src: L0(W_iter0,)
+        uctx: D_0_0_0_0_0_min_417792_max_835584.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 204 port: READ1 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (13056 # steps): 
+                  iter[0] : (0 until 6684672 by 2048)
+                  iter[1] : (0 until 256 by 64)
+                ctx done: L0(R_addr_chain_iter0,) (13056 # steps)
+                pacing_chain  (816 # steps): 
+                  iter[0] : (0 until 816 by 1)
+            addresses:
+                addr : ((0 until 6684672 by 2048).c0 + (0 until 256 by 64).c1)
+                ofst : (0 until 256 by 64).c1
+                pred : (cast<UInt32>(((0 until 256 by 64).c1!=0)) * 4)
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[W_wdone_in__] popif: L0(R_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                tb init: 4 pushif: cin[rob_rdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+    pmu: D_0_0_0_0_0_min_835584_max_1253376 depth: 1 capacity: 208896 (words) is_transpose: 1 min: 835584 max:1253376
+        uctx: D_0_0_0_0_0_min_835584_max_1253376.W
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (104448 # steps): 
+                  iter[0] : (0 until 2228224 by 278528)
+                  iter[1] : (0 until 2048 by 64)
+                  iter[2] : (0 until 278528 by 2048)
+                  iter[3] : (0 until 6684672 by 2228224)
+                ctx done: L0(W_iter0,) (104448 # steps)
+            addresses:
+                addr : ((((0 until 6684672 by 2228224).c3 + (0 until 2228224 by 278528).c0) + (0 until 278528 by 2048).c2) + (0 until 2048 by 64).c1)
+                ofst : (0 until 2048 by 64).c1
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(W_iter0,)
+                cout[wdone__] - src: L0(W_iter0,)
+        uctx: D_0_0_0_0_0_min_835584_max_1253376.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 204 port: READ1 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (13056 # steps): 
+                  iter[0] : (0 until 6684672 by 2048)
+                  iter[1] : (0 until 256 by 64)
+                ctx done: L0(R_addr_chain_iter0,) (13056 # steps)
+                pacing_chain  (816 # steps): 
+                  iter[0] : (0 until 816 by 1)
+            addresses:
+                addr : ((0 until 6684672 by 2048).c0 + (0 until 256 by 64).c1)
+                ofst : (0 until 256 by 64).c1
+                pred : (cast<UInt32>(((0 until 256 by 64).c1!=0)) * 4)
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[W_wdone_in__] popif: L0(R_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                tb init: 4 pushif: cin[rob_rdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+    pmu: D_0_0_0_0_0_min_1253376_max_1671168 depth: 1 capacity: 208896 (words) is_transpose: 1 min: 1253376 max:1671168
+        uctx: D_0_0_0_0_0_min_1253376_max_1671168.W
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (104448 # steps): 
+                  iter[0] : (0 until 2228224 by 278528)
+                  iter[1] : (0 until 2048 by 64)
+                  iter[2] : (0 until 278528 by 2048)
+                  iter[3] : (0 until 6684672 by 2228224)
+                ctx done: L0(W_iter0,) (104448 # steps)
+            addresses:
+                addr : ((((0 until 6684672 by 2228224).c3 + (0 until 2228224 by 278528).c0) + (0 until 278528 by 2048).c2) + (0 until 2048 by 64).c1)
+                ofst : (0 until 2048 by 64).c1
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(W_iter0,)
+                cout[wdone__] - src: L0(W_iter0,)
+        uctx: D_0_0_0_0_0_min_1253376_max_1671168.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 204 port: READ1 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (13056 # steps): 
+                  iter[0] : (0 until 6684672 by 2048)
+                  iter[1] : (0 until 256 by 64)
+                ctx done: L0(R_addr_chain_iter0,) (13056 # steps)
+                pacing_chain  (816 # steps): 
+                  iter[0] : (0 until 816 by 1)
+            addresses:
+                addr : ((0 until 6684672 by 2048).c0 + (0 until 256 by 64).c1)
+                ofst : (0 until 256 by 64).c1
+                pred : (cast<UInt32>(((0 until 256 by 64).c1!=0)) * 4)
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[W_wdone_in__] popif: L0(R_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                tb init: 4 pushif: cin[rob_rdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+    pmu: D_0_0_0_0_0_min_1671168_max_2088960 depth: 1 capacity: 208896 (words) is_transpose: 1 min: 1671168 max:2088960
+        uctx: D_0_0_0_0_0_min_1671168_max_2088960.W
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (104448 # steps): 
+                  iter[0] : (0 until 2228224 by 278528)
+                  iter[1] : (0 until 2048 by 64)
+                  iter[2] : (0 until 278528 by 2048)
+                  iter[3] : (0 until 6684672 by 2228224)
+                ctx done: L0(W_iter0,) (104448 # steps)
+            addresses:
+                addr : ((((0 until 6684672 by 2228224).c3 + (0 until 2228224 by 278528).c0) + (0 until 278528 by 2048).c2) + (0 until 2048 by 64).c1)
+                ofst : (0 until 2048 by 64).c1
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(W_iter0,)
+                cout[wdone__] - src: L0(W_iter0,)
+        uctx: D_0_0_0_0_0_min_1671168_max_2088960.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 204 port: READ1 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (13056 # steps): 
+                  iter[0] : (0 until 6684672 by 2048)
+                  iter[1] : (0 until 256 by 64)
+                ctx done: L0(R_addr_chain_iter0,) (13056 # steps)
+                pacing_chain  (816 # steps): 
+                  iter[0] : (0 until 816 by 1)
+            addresses:
+                addr : ((0 until 6684672 by 2048).c0 + (0 until 256 by 64).c1)
+                ofst : (0 until 256 by 64).c1
+                pred : (cast<UInt32>(((0 until 256 by 64).c1!=0)) * 4)
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[W_wdone_in__] popif: L0(R_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                tb init: 4 pushif: cin[rob_rdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+    pmu: D_0_0_0_0_0_min_2088960_max_2506752 depth: 1 capacity: 208896 (words) is_transpose: 1 min: 2088960 max:2506752
+        uctx: D_0_0_0_0_0_min_2088960_max_2506752.W
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (104448 # steps): 
+                  iter[0] : (0 until 2228224 by 278528)
+                  iter[1] : (0 until 2048 by 64)
+                  iter[2] : (0 until 278528 by 2048)
+                  iter[3] : (0 until 6684672 by 2228224)
+                ctx done: L0(W_iter0,) (104448 # steps)
+            addresses:
+                addr : ((((0 until 6684672 by 2228224).c3 + (0 until 2228224 by 278528).c0) + (0 until 278528 by 2048).c2) + (0 until 2048 by 64).c1)
+                ofst : (0 until 2048 by 64).c1
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(W_iter0,)
+                cout[wdone__] - src: L0(W_iter0,)
+        uctx: D_0_0_0_0_0_min_2088960_max_2506752.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 204 port: READ1 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (13056 # steps): 
+                  iter[0] : (0 until 6684672 by 2048)
+                  iter[1] : (0 until 256 by 64)
+                ctx done: L0(R_addr_chain_iter0,) (13056 # steps)
+                pacing_chain  (816 # steps): 
+                  iter[0] : (0 until 816 by 1)
+            addresses:
+                addr : ((0 until 6684672 by 2048).c0 + (0 until 256 by 64).c1)
+                ofst : (0 until 256 by 64).c1
+                pred : (cast<UInt32>(((0 until 256 by 64).c1!=0)) * 4)
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[W_wdone_in__] popif: L0(R_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                tb init: 4 pushif: cin[rob_rdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+    pmu: D_0_0_0_0_0_min_2506752_max_2924544 depth: 1 capacity: 208896 (words) is_transpose: 1 min: 2506752 max:2924544
+        uctx: D_0_0_0_0_0_min_2506752_max_2924544.W
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (104448 # steps): 
+                  iter[0] : (0 until 2228224 by 278528)
+                  iter[1] : (0 until 2048 by 64)
+                  iter[2] : (0 until 278528 by 2048)
+                  iter[3] : (0 until 6684672 by 2228224)
+                ctx done: L0(W_iter0,) (104448 # steps)
+            addresses:
+                addr : ((((0 until 6684672 by 2228224).c3 + (0 until 2228224 by 278528).c0) + (0 until 278528 by 2048).c2) + (0 until 2048 by 64).c1)
+                ofst : (0 until 2048 by 64).c1
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(W_iter0,)
+                cout[wdone__] - src: L0(W_iter0,)
+        uctx: D_0_0_0_0_0_min_2506752_max_2924544.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 204 port: READ1 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (13056 # steps): 
+                  iter[0] : (0 until 6684672 by 2048)
+                  iter[1] : (0 until 256 by 64)
+                ctx done: L0(R_addr_chain_iter0,) (13056 # steps)
+                pacing_chain  (816 # steps): 
+                  iter[0] : (0 until 816 by 1)
+            addresses:
+                addr : ((0 until 6684672 by 2048).c0 + (0 until 256 by 64).c1)
+                ofst : (0 until 256 by 64).c1
+                pred : (cast<UInt32>(((0 until 256 by 64).c1!=0)) * 4)
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[W_wdone_in__] popif: L0(R_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                tb init: 4 pushif: cin[rob_rdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+    pmu: D_0_0_0_0_0_min_2924544_max_3342336 depth: 1 capacity: 208896 (words) is_transpose: 1 min: 2924544 max:3342336
+        uctx: D_0_0_0_0_0_min_2924544_max_3342336.W
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (104448 # steps): 
+                  iter[0] : (0 until 2228224 by 278528)
+                  iter[1] : (0 until 2048 by 64)
+                  iter[2] : (0 until 278528 by 2048)
+                  iter[3] : (0 until 6684672 by 2228224)
+                ctx done: L0(W_iter0,) (104448 # steps)
+            addresses:
+                addr : ((((0 until 6684672 by 2228224).c3 + (0 until 2228224 by 278528).c0) + (0 until 278528 by 2048).c2) + (0 until 2048 by 64).c1)
+                ofst : (0 until 2048 by 64).c1
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(W_iter0,)
+                cout[wdone__] - src: L0(W_iter0,)
+        uctx: D_0_0_0_0_0_min_2924544_max_3342336.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 204 port: READ1 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (13056 # steps): 
+                  iter[0] : (0 until 6684672 by 2048)
+                  iter[1] : (0 until 256 by 64)
+                ctx done: L0(R_addr_chain_iter0,) (13056 # steps)
+                pacing_chain  (816 # steps): 
+                  iter[0] : (0 until 816 by 1)
+            addresses:
+                addr : ((0 until 6684672 by 2048).c0 + (0 until 256 by 64).c1)
+                ofst : (0 until 256 by 64).c1
+                pred : (cast<UInt32>(((0 until 256 by 64).c1!=0)) * 4)
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[W_wdone_in__] popif: L0(R_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                tb init: 4 pushif: cin[rob_rdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+    pmu: D_0_0_0_0_0_min_3342336_max_3760128 depth: 1 capacity: 208896 (words) is_transpose: 1 min: 3342336 max:3760128
+        uctx: D_0_0_0_0_0_min_3342336_max_3760128.W
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (104448 # steps): 
+                  iter[0] : (0 until 2228224 by 278528)
+                  iter[1] : (0 until 2048 by 64)
+                  iter[2] : (0 until 278528 by 2048)
+                  iter[3] : (0 until 6684672 by 2228224)
+                ctx done: L0(W_iter0,) (104448 # steps)
+            addresses:
+                addr : ((((0 until 6684672 by 2228224).c3 + (0 until 2228224 by 278528).c0) + (0 until 278528 by 2048).c2) + (0 until 2048 by 64).c1)
+                ofst : (0 until 2048 by 64).c1
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(W_iter0,)
+                cout[wdone__] - src: L0(W_iter0,)
+        uctx: D_0_0_0_0_0_min_3342336_max_3760128.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 204 port: READ1 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (13056 # steps): 
+                  iter[0] : (0 until 6684672 by 2048)
+                  iter[1] : (0 until 256 by 64)
+                ctx done: L0(R_addr_chain_iter0,) (13056 # steps)
+                pacing_chain  (816 # steps): 
+                  iter[0] : (0 until 816 by 1)
+            addresses:
+                addr : ((0 until 6684672 by 2048).c0 + (0 until 256 by 64).c1)
+                ofst : (0 until 256 by 64).c1
+                pred : (cast<UInt32>(((0 until 256 by 64).c1!=0)) * 4)
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[W_wdone_in__] popif: L0(R_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                tb init: 4 pushif: cin[rob_rdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+    pmu: D_0_0_0_0_0_min_3760128_max_4177920 depth: 1 capacity: 208896 (words) is_transpose: 1 min: 3760128 max:4177920
+        uctx: D_0_0_0_0_0_min_3760128_max_4177920.W
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (104448 # steps): 
+                  iter[0] : (0 until 2228224 by 278528)
+                  iter[1] : (0 until 2048 by 64)
+                  iter[2] : (0 until 278528 by 2048)
+                  iter[3] : (0 until 6684672 by 2228224)
+                ctx done: L0(W_iter0,) (104448 # steps)
+            addresses:
+                addr : ((((0 until 6684672 by 2228224).c3 + (0 until 2228224 by 278528).c0) + (0 until 278528 by 2048).c2) + (0 until 2048 by 64).c1)
+                ofst : (0 until 2048 by 64).c1
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(W_iter0,)
+                cout[wdone__] - src: L0(W_iter0,)
+        uctx: D_0_0_0_0_0_min_3760128_max_4177920.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 204 port: READ1 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (13056 # steps): 
+                  iter[0] : (0 until 6684672 by 2048)
+                  iter[1] : (0 until 256 by 64)
+                ctx done: L0(R_addr_chain_iter0,) (13056 # steps)
+                pacing_chain  (816 # steps): 
+                  iter[0] : (0 until 816 by 1)
+            addresses:
+                addr : ((0 until 6684672 by 2048).c0 + (0 until 256 by 64).c1)
+                ofst : (0 until 256 by 64).c1
+                pred : (cast<UInt32>(((0 until 256 by 64).c1!=0)) * 4)
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[W_wdone_in__] popif: L0(R_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                tb init: 4 pushif: cin[rob_rdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+    pmu: D_0_0_0_0_0_min_4177920_max_4595712 depth: 1 capacity: 208896 (words) is_transpose: 1 min: 4177920 max:4595712
+        uctx: D_0_0_0_0_0_min_4177920_max_4595712.W
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (104448 # steps): 
+                  iter[0] : (0 until 2228224 by 278528)
+                  iter[1] : (0 until 2048 by 64)
+                  iter[2] : (0 until 278528 by 2048)
+                  iter[3] : (0 until 6684672 by 2228224)
+                ctx done: L0(W_iter0,) (104448 # steps)
+            addresses:
+                addr : ((((0 until 6684672 by 2228224).c3 + (0 until 2228224 by 278528).c0) + (0 until 278528 by 2048).c2) + (0 until 2048 by 64).c1)
+                ofst : (0 until 2048 by 64).c1
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(W_iter0,)
+                cout[wdone__] - src: L0(W_iter0,)
+        uctx: D_0_0_0_0_0_min_4177920_max_4595712.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 204 port: READ1 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (13056 # steps): 
+                  iter[0] : (0 until 6684672 by 2048)
+                  iter[1] : (0 until 256 by 64)
+                ctx done: L0(R_addr_chain_iter0,) (13056 # steps)
+                pacing_chain  (816 # steps): 
+                  iter[0] : (0 until 816 by 1)
+            addresses:
+                addr : ((0 until 6684672 by 2048).c0 + (0 until 256 by 64).c1)
+                ofst : (0 until 256 by 64).c1
+                pred : (cast<UInt32>(((0 until 256 by 64).c1!=0)) * 4)
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[W_wdone_in__] popif: L0(R_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                tb init: 4 pushif: cin[rob_rdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+    pmu: D_0_0_0_0_0_min_4595712_max_5013504 depth: 1 capacity: 208896 (words) is_transpose: 1 min: 4595712 max:5013504
+        uctx: D_0_0_0_0_0_min_4595712_max_5013504.W
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (104448 # steps): 
+                  iter[0] : (0 until 2228224 by 278528)
+                  iter[1] : (0 until 2048 by 64)
+                  iter[2] : (0 until 278528 by 2048)
+                  iter[3] : (0 until 6684672 by 2228224)
+                ctx done: L0(W_iter0,) (104448 # steps)
+            addresses:
+                addr : ((((0 until 6684672 by 2228224).c3 + (0 until 2228224 by 278528).c0) + (0 until 278528 by 2048).c2) + (0 until 2048 by 64).c1)
+                ofst : (0 until 2048 by 64).c1
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(W_iter0,)
+                cout[wdone__] - src: L0(W_iter0,)
+        uctx: D_0_0_0_0_0_min_4595712_max_5013504.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 204 port: READ1 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (13056 # steps): 
+                  iter[0] : (0 until 6684672 by 2048)
+                  iter[1] : (0 until 256 by 64)
+                ctx done: L0(R_addr_chain_iter0,) (13056 # steps)
+                pacing_chain  (816 # steps): 
+                  iter[0] : (0 until 816 by 1)
+            addresses:
+                addr : ((0 until 6684672 by 2048).c0 + (0 until 256 by 64).c1)
+                ofst : (0 until 256 by 64).c1
+                pred : (cast<UInt32>(((0 until 256 by 64).c1!=0)) * 4)
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[W_wdone_in__] popif: L0(R_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                tb init: 4 pushif: cin[rob_rdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+    pmu: D_0_0_0_0_0_min_5013504_max_5431296 depth: 1 capacity: 208896 (words) is_transpose: 1 min: 5013504 max:5431296
+        uctx: D_0_0_0_0_0_min_5013504_max_5431296.W
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (104448 # steps): 
+                  iter[0] : (0 until 2228224 by 278528)
+                  iter[1] : (0 until 2048 by 64)
+                  iter[2] : (0 until 278528 by 2048)
+                  iter[3] : (0 until 6684672 by 2228224)
+                ctx done: L0(W_iter0,) (104448 # steps)
+            addresses:
+                addr : ((((0 until 6684672 by 2228224).c3 + (0 until 2228224 by 278528).c0) + (0 until 278528 by 2048).c2) + (0 until 2048 by 64).c1)
+                ofst : (0 until 2048 by 64).c1
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(W_iter0,)
+                cout[wdone__] - src: L0(W_iter0,)
+        uctx: D_0_0_0_0_0_min_5013504_max_5431296.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 204 port: READ1 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (13056 # steps): 
+                  iter[0] : (0 until 6684672 by 2048)
+                  iter[1] : (0 until 256 by 64)
+                ctx done: L0(R_addr_chain_iter0,) (13056 # steps)
+                pacing_chain  (816 # steps): 
+                  iter[0] : (0 until 816 by 1)
+            addresses:
+                addr : ((0 until 6684672 by 2048).c0 + (0 until 256 by 64).c1)
+                ofst : (0 until 256 by 64).c1
+                pred : (cast<UInt32>(((0 until 256 by 64).c1!=0)) * 4)
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[W_wdone_in__] popif: L0(R_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                tb init: 4 pushif: cin[rob_rdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+    pmu: D_0_0_0_0_0_min_5431296_max_5849088 depth: 1 capacity: 208896 (words) is_transpose: 1 min: 5431296 max:5849088
+        uctx: D_0_0_0_0_0_min_5431296_max_5849088.W
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (104448 # steps): 
+                  iter[0] : (0 until 2228224 by 278528)
+                  iter[1] : (0 until 2048 by 64)
+                  iter[2] : (0 until 278528 by 2048)
+                  iter[3] : (0 until 6684672 by 2228224)
+                ctx done: L0(W_iter0,) (104448 # steps)
+            addresses:
+                addr : ((((0 until 6684672 by 2228224).c3 + (0 until 2228224 by 278528).c0) + (0 until 278528 by 2048).c2) + (0 until 2048 by 64).c1)
+                ofst : (0 until 2048 by 64).c1
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(W_iter0,)
+                cout[wdone__] - src: L0(W_iter0,)
+        uctx: D_0_0_0_0_0_min_5431296_max_5849088.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 204 port: READ1 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (13056 # steps): 
+                  iter[0] : (0 until 6684672 by 2048)
+                  iter[1] : (0 until 256 by 64)
+                ctx done: L0(R_addr_chain_iter0,) (13056 # steps)
+                pacing_chain  (816 # steps): 
+                  iter[0] : (0 until 816 by 1)
+            addresses:
+                addr : ((0 until 6684672 by 2048).c0 + (0 until 256 by 64).c1)
+                ofst : (0 until 256 by 64).c1
+                pred : (cast<UInt32>(((0 until 256 by 64).c1!=0)) * 4)
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[W_wdone_in__] popif: L0(R_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                tb init: 4 pushif: cin[rob_rdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+    pmu: D_0_0_0_0_0_min_5849088_max_6266880 depth: 1 capacity: 208896 (words) is_transpose: 1 min: 5849088 max:6266880
+        uctx: D_0_0_0_0_0_min_5849088_max_6266880.W
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (104448 # steps): 
+                  iter[0] : (0 until 2228224 by 278528)
+                  iter[1] : (0 until 2048 by 64)
+                  iter[2] : (0 until 278528 by 2048)
+                  iter[3] : (0 until 6684672 by 2228224)
+                ctx done: L0(W_iter0,) (104448 # steps)
+            addresses:
+                addr : ((((0 until 6684672 by 2228224).c3 + (0 until 2228224 by 278528).c0) + (0 until 278528 by 2048).c2) + (0 until 2048 by 64).c1)
+                ofst : (0 until 2048 by 64).c1
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(W_iter0,)
+                cout[wdone__] - src: L0(W_iter0,)
+        uctx: D_0_0_0_0_0_min_5849088_max_6266880.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 204 port: READ1 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (13056 # steps): 
+                  iter[0] : (0 until 6684672 by 2048)
+                  iter[1] : (0 until 256 by 64)
+                ctx done: L0(R_addr_chain_iter0,) (13056 # steps)
+                pacing_chain  (816 # steps): 
+                  iter[0] : (0 until 816 by 1)
+            addresses:
+                addr : ((0 until 6684672 by 2048).c0 + (0 until 256 by 64).c1)
+                ofst : (0 until 256 by 64).c1
+                pred : (cast<UInt32>(((0 until 256 by 64).c1!=0)) * 4)
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[W_wdone_in__] popif: L0(R_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                tb init: 4 pushif: cin[rob_rdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+    pmu: D_0_0_0_0_0_min_6266880_max_6684672 depth: 1 capacity: 208896 (words) is_transpose: 1 min: 6266880 max:6684672
+        uctx: D_0_0_0_0_0_min_6266880_max_6684672.W
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (104448 # steps): 
+                  iter[0] : (0 until 2228224 by 278528)
+                  iter[1] : (0 until 2048 by 64)
+                  iter[2] : (0 until 278528 by 2048)
+                  iter[3] : (0 until 6684672 by 2228224)
+                ctx done: L0(W_iter0,) (104448 # steps)
+            addresses:
+                addr : ((((0 until 6684672 by 2228224).c3 + (0 until 2228224 by 278528).c0) + (0 until 278528 by 2048).c2) + (0 until 2048 by 64).c1)
+                ofst : (0 until 2048 by 64).c1
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(W_iter0,)
+                cout[wdone__] - src: L0(W_iter0,)
+        uctx: D_0_0_0_0_0_min_6266880_max_6684672.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 204 port: READ1 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (13056 # steps): 
+                  iter[0] : (0 until 6684672 by 2048)
+                  iter[1] : (0 until 256 by 64)
+                ctx done: L0(R_addr_chain_iter0,) (13056 # steps)
+                pacing_chain  (816 # steps): 
+                  iter[0] : (0 until 816 by 1)
+            addresses:
+                addr : ((0 until 6684672 by 2048).c0 + (0 until 256 by 64).c1)
+                ofst : (0 until 256 by 64).c1
+                pred : (cast<UInt32>(((0 until 256 by 64).c1!=0)) * 4)
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[W_wdone_in__] popif: L0(R_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                tb init: 4 pushif: cin[rob_rdone] popif: L1(R_addr_chain_iter0,R_pacing_chain_iter0,)
+    pmu: ROB_R_0_0_0_0 depth: 4 capacity: 6528 (words) is_transpose: 0
+        uctx: ROB_R_0_0_0_0.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (3264 # steps): 
+                  iter[0] : (0 until 6684672 by 2048)
+                pacing_chain  (204 # steps): 
+                  iter[0] : (0 until 13056 by 64)
+                ctx done: L0(R_addr_chain_iter0,R_pacing_chain_iter0,) (204 # steps)
+            addresses:
+                addr : (0 until 13056 by 64).c0
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[1001] - popif: ctx_en
+                cout[pacing_done] - src: L0(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                cout[wdone_out] - src: L0(R_addr_chain_iter0,R_pacing_chain_iter0,)
+        uctx: ROB_R_0_0_0_0.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 204 port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (3264 # steps): 
+                  iter[0] : (0 until 6684672 by 2048)
+                pacing_chain  (204 # steps): 
+                  iter[0] : (0 until 13056 by 64)
+                ctx done: L0(R_addr_chain_iter0,R_pacing_chain_iter0,) (204 # steps)
+            addresses:
+                addr : (0 until 13056 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[wdone_in] popif: L0(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                cout[pacing_done] - src: L0(R_addr_chain_iter0,R_pacing_chain_iter0,)
+                cout[1000] - src: L1(R_addr_chain_iter0,)
+========= Summary IR ========
+tbuffer partition_0_0__tbuf2u_0_0_197
+    loc("LogregTorchSamba.cpp":166:0)
+    layout: <BF16[60, 136]RM/64@0x0> vec_order: {0, 1} vec_dim: 1 depth: 2 dims: {60, 160}
+    pmu: D_0_0 depth: 2 capacity: 9600 (words) is_transpose: 0
+        uctx: D_0_0.kFrontDynamicWriteCtx
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (300 # steps): 
+                  iter[0] : (0 until 19200 by 64)
+                ctx done: L0(kFrontDynamicWriteCtx_iter0,) (300 # steps)
+            addresses:
+                addr : (0 until 19200 by 64).c0
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(kFrontDynamicWriteCtx_iter0,)
+                cout[wdone__] - src: L0(kFrontDynamicWriteCtx_iter0,)
+        uctx: D_0_0.LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kLutRd
+            loc("software/templates/src/templates/index/rail/Index.cpp":137:0)
+            pacing_window: 15 port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (15 # steps): 
+                  iter[0] : (0 until 3 by 1)
+                  iter[1] : (0 until 320 by 64)
+                ctx done: L0(LogregTorchSamba_partition_0_0__ptconvlstm__lambda_layer__indexselect_kLutRd_iter0,) (15 # steps)
+            addresses:
+                addr : (sin[idx] * 320 + (0 until 320 by 64).c1)
+                ofst : 0
+                pred : cast<UInt32>((sin[idx] >= 60))
+                vec = 1
+            triggers:
+                sin[idx] - popif: ctx_en
+                tb init: 1 pushif: cin[0] popif: L0(LogregTorchSamba_partition_0_0__ptconvlstm__lambda_layer__indexselect_kLutRd_iter0,)
+                tb init: 2 pushif: cin[1] popif: L0(LogregTorchSamba_partition_0_0__ptconvlstm__lambda_layer__indexselect_kLutRd_iter0,)
+                tb init: 0 pushif: cin[kFrontDynamicWriteCtx_wdone_in__] popif: L0(LogregTorchSamba_partition_0_0__ptconvlstm__lambda_layer__indexselect_kLutRd_iter0,)
+                cout[1000] - src: L0(LogregTorchSamba_partition_0_0__ptconvlstm__lambda_layer__indexselect_kLutRd_iter0,)
+========= Summary IR ========
+tbuffer partition_0_0__tbuf1u_0_0_198
+    loc("LogregTorchSamba.cpp":177:0)
+    layout: <INT32[3]RM@0x0> vec_order: {0} vec_dim: 0 depth: 1 dims: {3}
+    pmu: D_0_0 depth: 1 capacity: 16 (words) is_transpose: 0
+        uctx: D_0_0.kFrontDynamicWriteCtx
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1 # steps): 
+                  iter[0] : (0 until 3 by 16)
+                ctx done: L0(kFrontDynamicWriteCtx_iter0,) (1 # steps)
+            addresses:
+                addr : 0
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(kFrontDynamicWriteCtx_iter0,)
+                cout[wdone__] - src: L0(kFrontDynamicWriteCtx_iter0,)
+        uctx: D_0_0.LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kIndexRd
+            loc("software/templates/src/templates/index/rail/Index.cpp":124:0)
+            pacing_window: 1 port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (15 # steps): 
+                  iter[0] : (0 until 12 by 4)
+                  iter[1] : (0 until 136 by 32)
+                ctx done: L0(LogregTorchSamba_partition_0_0__ptconvlstm__lambda_layer__indexselect_kIndexRd_iter0,) (15 # steps)
+            addresses:
+                addr : (0 until 12 by 4).c0
+                ofst : 0
+                pred : 0
+                vec = 0
+            triggers:
+                tb init: 0 pushif: cin[kFrontDynamicWriteCtx_wdone_in__] popif: L0(LogregTorchSamba_partition_0_0__ptconvlstm__lambda_layer__indexselect_kIndexRd_iter0,)
+                cout[1000] - src: L0(LogregTorchSamba_partition_0_0__ptconvlstm__lambda_layer__indexselect_kIndexRd_iter0,)
+========= Summary IR ========
+tbuffer partition_0_0__tbuf2u_0_0_202
+    loc("LogregTorchSamba.cpp":201:0)
+    layout: <BF16[136, 3]CM/64@0x0> vec_order: {1, 0} vec_dim: 0 depth: 2 dims: {160, 3}
+    pmu: D_0_0 depth: 2 capacity: 480 (words) is_transpose: 0
+        uctx: D_0_0.LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kOutWr
+            loc("software/templates/src/templates/index/rail/Index.cpp":161:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (15 # steps): 
+                  iter[0] : (0 until 960 by 64)
+                ctx done: L0(LogregTorchSamba_partition_0_0__ptconvlstm__lambda_layer__indexselect_kOutWr_iter0,) (15 # steps)
+            addresses:
+                addr : (0 until 960 by 64).c0
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(LogregTorchSamba_partition_0_0__ptconvlstm__lambda_layer__indexselect_kOutWr_iter0,)
+                cout[wdone__] - src: L0(LogregTorchSamba_partition_0_0__ptconvlstm__lambda_layer__indexselect_kOutWr_iter0,)
+        uctx: D_0_0.kDefaultRead1
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            pacing_window: 15 port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (15 # steps): 
+                  iter[0] : (0 until 960 by 64)
+                ctx done: L0(kDefaultRead1_iter0,) (15 # steps)
+            addresses:
+                addr : (0 until 960 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 2 pushif: cin[0] popif: L0(kDefaultRead1_iter0,)
+                tb init: 2 pushif: cin[1] popif: L0(kDefaultRead1_iter0,)
+                tb init: 0 pushif: cin[LogregTorchSamba.partition_0_0_.ptconvlstm__lambda_layer__indexselect@kOutWr_wdone_in__] popif: L0(kDefaultRead1_iter0,)
+                cout[1000] - src: L0(kDefaultRead1_iter0,)
+========= Summary IR ========
+tbuffer partition_1_0__tbuf2u_1_0_253
+    loc("LogregTorchSamba.cpp":1937:0)
+    layout: <BF16[60, 136]RM/64@0x0> vec_order: {0, 1} vec_dim: 1 depth: 2 dims: {60, 160}
+    pmu: D_0_0 depth: 2 capacity: 9600 (words) is_transpose: 0
+        uctx: D_0_0.kFrontDynamicWriteCtx
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (300 # steps): 
+                  iter[0] : (0 until 19200 by 64)
+                ctx done: L0(kFrontDynamicWriteCtx_iter0,) (300 # steps)
+            addresses:
+                addr : (0 until 19200 by 64).c0
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(kFrontDynamicWriteCtx_iter0,)
+                cout[wdone__] - src: L0(kFrontDynamicWriteCtx_iter0,)
+        uctx: D_0_0.LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kLutRd
+            loc("software/templates/src/templates/index/rail/Index.cpp":137:0)
+            pacing_window: 15 port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (15 # steps): 
+                  iter[0] : (0 until 3 by 1)
+                  iter[1] : (0 until 320 by 64)
+                ctx done: L0(LogregTorchSamba_partition_1_0__ptconvlstm__lambda_layer__indexselect_recompute__kLutRd_iter0,) (15 # steps)
+            addresses:
+                addr : (sin[idx] * 320 + (0 until 320 by 64).c1)
+                ofst : 0
+                pred : cast<UInt32>((sin[idx] >= 60))
+                vec = 1
+            triggers:
+                sin[idx] - popif: ctx_en
+                tb init: 1 pushif: cin[0] popif: L0(LogregTorchSamba_partition_1_0__ptconvlstm__lambda_layer__indexselect_recompute__kLutRd_iter0,)
+                tb init: 2 pushif: cin[1] popif: L0(LogregTorchSamba_partition_1_0__ptconvlstm__lambda_layer__indexselect_recompute__kLutRd_iter0,)
+                tb init: 0 pushif: cin[kFrontDynamicWriteCtx_wdone_in__] popif: L0(LogregTorchSamba_partition_1_0__ptconvlstm__lambda_layer__indexselect_recompute__kLutRd_iter0,)
+                cout[1000] - src: L0(LogregTorchSamba_partition_1_0__ptconvlstm__lambda_layer__indexselect_recompute__kLutRd_iter0,)
+========= Summary IR ========
+tbuffer partition_1_0__tbuf1u_1_0_254
+    loc("LogregTorchSamba.cpp":1948:0)
+    layout: <INT32[3]RM@0x0> vec_order: {0} vec_dim: 0 depth: 1 dims: {3}
+    pmu: D_0_0 depth: 1 capacity: 16 (words) is_transpose: 0
+        uctx: D_0_0.kFrontDynamicWriteCtx
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1 # steps): 
+                  iter[0] : (0 until 3 by 16)
+                ctx done: L0(kFrontDynamicWriteCtx_iter0,) (1 # steps)
+            addresses:
+                addr : 0
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(kFrontDynamicWriteCtx_iter0,)
+                cout[wdone__] - src: L0(kFrontDynamicWriteCtx_iter0,)
+        uctx: D_0_0.LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kIndexRd
+            loc("software/templates/src/templates/index/rail/Index.cpp":124:0)
+            pacing_window: 1 port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (15 # steps): 
+                  iter[0] : (0 until 12 by 4)
+                  iter[1] : (0 until 136 by 32)
+                ctx done: L0(LogregTorchSamba_partition_1_0__ptconvlstm__lambda_layer__indexselect_recompute__kIndexRd_iter0,) (15 # steps)
+            addresses:
+                addr : (0 until 12 by 4).c0
+                ofst : 0
+                pred : 0
+                vec = 0
+            triggers:
+                tb init: 0 pushif: cin[kFrontDynamicWriteCtx_wdone_in__] popif: L0(LogregTorchSamba_partition_1_0__ptconvlstm__lambda_layer__indexselect_recompute__kIndexRd_iter0,)
+                cout[1000] - src: L0(LogregTorchSamba_partition_1_0__ptconvlstm__lambda_layer__indexselect_recompute__kIndexRd_iter0,)
+========= Summary IR ========
+tbuffer partition_1_0__tbuf2u_1_0_258
+    loc("LogregTorchSamba.cpp":1972:0)
+    layout: <BF16[136, 3]CM/64@0x0> vec_order: {1, 0} vec_dim: 0 depth: 2 dims: {160, 3}
+    pmu: D_0_0 depth: 2 capacity: 480 (words) is_transpose: 0
+        uctx: D_0_0.LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kOutWr
+            loc("software/templates/src/templates/index/rail/Index.cpp":161:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (15 # steps): 
+                  iter[0] : (0 until 960 by 64)
+                ctx done: L0(LogregTorchSamba_partition_1_0__ptconvlstm__lambda_layer__indexselect_recompute__kOutWr_iter0,) (15 # steps)
+            addresses:
+                addr : (0 until 960 by 64).c0
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(LogregTorchSamba_partition_1_0__ptconvlstm__lambda_layer__indexselect_recompute__kOutWr_iter0,)
+                cout[wdone__] - src: L0(LogregTorchSamba_partition_1_0__ptconvlstm__lambda_layer__indexselect_recompute__kOutWr_iter0,)
+        uctx: D_0_0.kDefaultRead1
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            pacing_window: 15 port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (15 # steps): 
+                  iter[0] : (0 until 960 by 64)
+                ctx done: L0(kDefaultRead1_iter0,) (15 # steps)
+            addresses:
+                addr : (0 until 960 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 2 pushif: cin[0] popif: L0(kDefaultRead1_iter0,)
+                tb init: 2 pushif: cin[1] popif: L0(kDefaultRead1_iter0,)
+                tb init: 0 pushif: cin[LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kOutWr_wdone_in__] popif: L0(kDefaultRead1_iter0,)
+                cout[1000] - src: L0(kDefaultRead1_iter0,)
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__dense_layer__linear_bwd_weight_accum_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[4096, 256]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {4096, 256}
+    pmu: D_0_0_0_min_0_max_65536 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 0 max:65536
+        uctx: D_0_0_0_min_0_max_65536.w_loop_0_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_0_0_iter0,) (1024 # steps)
+            addresses:
+                addr : (0 until 65536 by 64).c0
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_0_0_iter0,)
+                cout[1000] - src: L0(w_loop_0_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_0_0_iter0,)
+        uctx: D_0_0_0_min_0_max_65536.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_0_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_1_0_0_min_65536_max_131072 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 65536 max:131072
+        uctx: D_1_0_0_min_65536_max_131072.w_loop_1_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_1_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 65536)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_1_0_iter0,)
+                cout[1000] - src: L0(w_loop_1_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_1_0_iter0,)
+        uctx: D_1_0_0_min_65536_max_131072.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_1_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_2_0_0_min_131072_max_196608 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 131072 max:196608
+        uctx: D_2_0_0_min_131072_max_196608.w_loop_2_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_2_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 131072)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_2_0_iter0,)
+                cout[1000] - src: L0(w_loop_2_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_2_0_iter0,)
+        uctx: D_2_0_0_min_131072_max_196608.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_2_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_3_0_0_min_196608_max_262144 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 196608 max:262144
+        uctx: D_3_0_0_min_196608_max_262144.w_loop_3_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_3_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 196608)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_3_0_iter0,)
+                cout[1000] - src: L0(w_loop_3_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_3_0_iter0,)
+        uctx: D_3_0_0_min_196608_max_262144.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_3_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_4_0_0_min_262144_max_327680 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 262144 max:327680
+        uctx: D_4_0_0_min_262144_max_327680.w_loop_4_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_4_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 262144)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_4_0_iter0,)
+                cout[1000] - src: L0(w_loop_4_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_4_0_iter0,)
+        uctx: D_4_0_0_min_262144_max_327680.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_4_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_5_0_0_min_327680_max_393216 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 327680 max:393216
+        uctx: D_5_0_0_min_327680_max_393216.w_loop_5_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_5_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 327680)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_5_0_iter0,)
+                cout[1000] - src: L0(w_loop_5_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_5_0_iter0,)
+        uctx: D_5_0_0_min_327680_max_393216.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_5_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_6_0_0_min_393216_max_458752 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 393216 max:458752
+        uctx: D_6_0_0_min_393216_max_458752.w_loop_6_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_6_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 393216)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_6_0_iter0,)
+                cout[1000] - src: L0(w_loop_6_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_6_0_iter0,)
+        uctx: D_6_0_0_min_393216_max_458752.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_6_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_7_0_0_min_458752_max_524288 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 458752 max:524288
+        uctx: D_7_0_0_min_458752_max_524288.w_loop_7_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_7_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 458752)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_7_0_iter0,)
+                cout[1000] - src: L0(w_loop_7_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_7_0_iter0,)
+        uctx: D_7_0_0_min_458752_max_524288.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_7_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_8_0_0_min_524288_max_589824 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 524288 max:589824
+        uctx: D_8_0_0_min_524288_max_589824.w_loop_8_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_8_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 524288)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_8_0_iter0,)
+                cout[1000] - src: L0(w_loop_8_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_8_0_iter0,)
+        uctx: D_8_0_0_min_524288_max_589824.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_8_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_9_0_0_min_589824_max_655360 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 589824 max:655360
+        uctx: D_9_0_0_min_589824_max_655360.w_loop_9_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_9_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 589824)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_9_0_iter0,)
+                cout[1000] - src: L0(w_loop_9_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_9_0_iter0,)
+        uctx: D_9_0_0_min_589824_max_655360.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_9_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_10_0_0_min_655360_max_720896 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 655360 max:720896
+        uctx: D_10_0_0_min_655360_max_720896.w_loop_10_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_10_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 655360)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_10_0_iter0,)
+                cout[1000] - src: L0(w_loop_10_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_10_0_iter0,)
+        uctx: D_10_0_0_min_655360_max_720896.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_10_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_11_0_0_min_720896_max_786432 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 720896 max:786432
+        uctx: D_11_0_0_min_720896_max_786432.w_loop_11_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_11_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 720896)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_11_0_iter0,)
+                cout[1000] - src: L0(w_loop_11_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_11_0_iter0,)
+        uctx: D_11_0_0_min_720896_max_786432.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_11_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_12_0_0_min_786432_max_851968 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 786432 max:851968
+        uctx: D_12_0_0_min_786432_max_851968.w_loop_12_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_12_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 786432)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_12_0_iter0,)
+                cout[1000] - src: L0(w_loop_12_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_12_0_iter0,)
+        uctx: D_12_0_0_min_786432_max_851968.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_12_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_13_0_0_min_851968_max_917504 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 851968 max:917504
+        uctx: D_13_0_0_min_851968_max_917504.w_loop_13_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_13_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 851968)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_13_0_iter0,)
+                cout[1000] - src: L0(w_loop_13_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_13_0_iter0,)
+        uctx: D_13_0_0_min_851968_max_917504.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_13_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_14_0_0_min_917504_max_983040 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 917504 max:983040
+        uctx: D_14_0_0_min_917504_max_983040.w_loop_14_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_14_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 917504)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_14_0_iter0,)
+                cout[1000] - src: L0(w_loop_14_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_14_0_iter0,)
+        uctx: D_14_0_0_min_917504_max_983040.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_14_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_15_0_0_min_983040_max_1048576 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 983040 max:1048576
+        uctx: D_15_0_0_min_983040_max_1048576.w_loop_15_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_15_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 983040)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_15_0_iter0,)
+                cout[1000] - src: L0(w_loop_15_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_15_0_iter0,)
+        uctx: D_15_0_0_min_983040_max_1048576.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_15_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_16_0_0_min_1048576_max_1114112 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 1048576 max:1114112
+        uctx: D_16_0_0_min_1048576_max_1114112.w_loop_16_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_16_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 1048576)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_16_0_iter0,)
+                cout[1000] - src: L0(w_loop_16_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_16_0_iter0,)
+        uctx: D_16_0_0_min_1048576_max_1114112.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_16_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_17_0_0_min_1114112_max_1179648 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 1114112 max:1179648
+        uctx: D_17_0_0_min_1114112_max_1179648.w_loop_17_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_17_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 1114112)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_17_0_iter0,)
+                cout[1000] - src: L0(w_loop_17_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_17_0_iter0,)
+        uctx: D_17_0_0_min_1114112_max_1179648.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_17_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_18_0_0_min_1179648_max_1245184 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 1179648 max:1245184
+        uctx: D_18_0_0_min_1179648_max_1245184.w_loop_18_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_18_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 1179648)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_18_0_iter0,)
+                cout[1000] - src: L0(w_loop_18_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_18_0_iter0,)
+        uctx: D_18_0_0_min_1179648_max_1245184.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_18_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_19_0_0_min_1245184_max_1310720 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 1245184 max:1310720
+        uctx: D_19_0_0_min_1245184_max_1310720.w_loop_19_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_19_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 1245184)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_19_0_iter0,)
+                cout[1000] - src: L0(w_loop_19_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_19_0_iter0,)
+        uctx: D_19_0_0_min_1245184_max_1310720.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_19_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_20_0_0_min_1310720_max_1376256 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 1310720 max:1376256
+        uctx: D_20_0_0_min_1310720_max_1376256.w_loop_20_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_20_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 1310720)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_20_0_iter0,)
+                cout[1000] - src: L0(w_loop_20_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_20_0_iter0,)
+        uctx: D_20_0_0_min_1310720_max_1376256.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_20_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_21_0_0_min_1376256_max_1441792 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 1376256 max:1441792
+        uctx: D_21_0_0_min_1376256_max_1441792.w_loop_21_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_21_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 1376256)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_21_0_iter0,)
+                cout[1000] - src: L0(w_loop_21_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_21_0_iter0,)
+        uctx: D_21_0_0_min_1376256_max_1441792.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_21_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_22_0_0_min_1441792_max_1507328 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 1441792 max:1507328
+        uctx: D_22_0_0_min_1441792_max_1507328.w_loop_22_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_22_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 1441792)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_22_0_iter0,)
+                cout[1000] - src: L0(w_loop_22_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_22_0_iter0,)
+        uctx: D_22_0_0_min_1441792_max_1507328.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_22_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_23_0_0_min_1507328_max_1572864 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 1507328 max:1572864
+        uctx: D_23_0_0_min_1507328_max_1572864.w_loop_23_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_23_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 1507328)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_23_0_iter0,)
+                cout[1000] - src: L0(w_loop_23_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_23_0_iter0,)
+        uctx: D_23_0_0_min_1507328_max_1572864.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_23_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_24_0_0_min_1572864_max_1638400 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 1572864 max:1638400
+        uctx: D_24_0_0_min_1572864_max_1638400.w_loop_24_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_24_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 1572864)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_24_0_iter0,)
+                cout[1000] - src: L0(w_loop_24_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_24_0_iter0,)
+        uctx: D_24_0_0_min_1572864_max_1638400.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_24_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_25_0_0_min_1638400_max_1703936 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 1638400 max:1703936
+        uctx: D_25_0_0_min_1638400_max_1703936.w_loop_25_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_25_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 1638400)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_25_0_iter0,)
+                cout[1000] - src: L0(w_loop_25_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_25_0_iter0,)
+        uctx: D_25_0_0_min_1638400_max_1703936.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_25_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_26_0_0_min_1703936_max_1769472 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 1703936 max:1769472
+        uctx: D_26_0_0_min_1703936_max_1769472.w_loop_26_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_26_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 1703936)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_26_0_iter0,)
+                cout[1000] - src: L0(w_loop_26_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_26_0_iter0,)
+        uctx: D_26_0_0_min_1703936_max_1769472.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_26_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_27_0_0_min_1769472_max_1835008 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 1769472 max:1835008
+        uctx: D_27_0_0_min_1769472_max_1835008.w_loop_27_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_27_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 1769472)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_27_0_iter0,)
+                cout[1000] - src: L0(w_loop_27_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_27_0_iter0,)
+        uctx: D_27_0_0_min_1769472_max_1835008.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_27_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_28_0_0_min_1835008_max_1900544 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 1835008 max:1900544
+        uctx: D_28_0_0_min_1835008_max_1900544.w_loop_28_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_28_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 1835008)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_28_0_iter0,)
+                cout[1000] - src: L0(w_loop_28_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_28_0_iter0,)
+        uctx: D_28_0_0_min_1835008_max_1900544.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_28_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_29_0_0_min_1900544_max_1966080 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 1900544 max:1966080
+        uctx: D_29_0_0_min_1900544_max_1966080.w_loop_29_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_29_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 1900544)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_29_0_iter0,)
+                cout[1000] - src: L0(w_loop_29_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_29_0_iter0,)
+        uctx: D_29_0_0_min_1900544_max_1966080.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_29_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_30_0_0_min_1966080_max_2031616 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 1966080 max:2031616
+        uctx: D_30_0_0_min_1966080_max_2031616.w_loop_30_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_30_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 1966080)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_30_0_iter0,)
+                cout[1000] - src: L0(w_loop_30_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_30_0_iter0,)
+        uctx: D_30_0_0_min_1966080_max_2031616.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_30_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: D_31_0_0_min_2031616_max_2097152 depth: 1 capacity: 32768 (words) is_transpose: 0 min: 2031616 max:2097152
+        uctx: D_31_0_0_min_2031616_max_2097152.w_loop_31_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (1024 # steps): 
+                  iter[0] : (0 until 65536 by 64)
+                ctx done: L0(w_loop_31_0_iter0,) (1024 # steps)
+            addresses:
+                addr : ((0 until 65536 by 64).c0 + 2031616)
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_31_0_iter0,)
+                cout[1000] - src: L0(w_loop_31_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_31_0_iter0,)
+        uctx: D_31_0_0_min_2031616_max_2097152.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 2097152 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,) (32768 # steps)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+            addresses:
+                addr : (0 until 2097152 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_31_0_wdone_in__] popif: L0(kBackReadCtx_addr_chain_iter0,)
+                tb init: 1 pushif: cin[rob_wdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 1 pushif: cin[rob_rdone] popif: L1(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+    pmu: ROB_kBackReadCtx_0_0 depth: 1 capacity: 262144 (words) is_transpose: 0
+        uctx: ROB_kBackReadCtx_0_0.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 32768 by 1)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 8192 by 1)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,) (8192 # steps)
+            addresses:
+                addr : seqid_bytes
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[1001] - popif: ctx_en
+                cout[pacing_done] - src: L0(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                cout[wdone_out] - src: L0(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+        uctx: ROB_kBackReadCtx_0_0.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8192 port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (32768 # steps): 
+                  iter[0] : (0 until 32768 by 1)
+                pacing_chain  (8192 # steps): 
+                  iter[0] : (0 until 524288 by 64)
+                ctx done: L0(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,) (8192 # steps)
+            addresses:
+                addr : (0 until 524288 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 1 pushif: cin[pacing_in] popif: L0(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                tb init: 0 pushif: cin[wdone_in] popif: L0(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                cout[pacing_done] - src: L0(kBackReadCtx_addr_chain_iter0,kBackReadCtx_pacing_chain_iter0,)
+                cout[1000] - src: L1(kBackReadCtx_addr_chain_iter0,)
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__dense_layer__linear_bwd_weight_accum_1_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[4096, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {4096, 1}
+    pmu: D_0_0_0 depth: 1 capacity: 4096 (words) is_transpose: 0
+        uctx: D_0_0_0.w_loop_0_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (128 # steps): 
+                  iter[0] : (0 until 8192 by 64)
+                ctx done: L0(w_loop_0_0_iter0,) (128 # steps)
+            addresses:
+                addr : (0 until 8192 by 64).c0
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_0_0_iter0,)
+                cout[1000] - src: L0(w_loop_0_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_0_0_iter0,)
+        uctx: D_0_0_0.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 128 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (128 # steps): 
+                  iter[0] : (0 until 8192 by 64)
+                ctx done: L0(kBackReadCtx_iter0,) (128 # steps)
+            addresses:
+                addr : (0 until 8192 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 4 pushif: cin[pacing_in] popif: L0(kBackReadCtx_iter0,)
+                tb init: 0 pushif: cin[w_loop_0_0_wdone_in__] popif: L0(kBackReadCtx_iter0,)
+                cout[1000] - src: L0(kBackReadCtx_iter0,)
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__conv_layer__conv2d_bwd_accum_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[122880, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {122880, 1}
+    pmu: D_0_0_0 depth: 1 capacity: 122880 (words) is_transpose: 0
+        uctx: D_0_0_0.w_loop_0_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (3840 # steps): 
+                  iter[0] : (0 until 245760 by 64)
+                ctx done: L0(w_loop_0_0_iter0,) (3840 # steps)
+            addresses:
+                addr : (0 until 245760 by 64).c0
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_0_0_iter0,)
+                cout[1000] - src: L0(w_loop_0_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_0_0_iter0,)
+        uctx: D_0_0_0.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 960 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (3840 # steps): 
+                  iter[0] : (0 until 245760 by 64)
+                ctx done: L0(kBackReadCtx_iter0,) (3840 # steps)
+            addresses:
+                addr : (0 until 245760 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[w_loop_0_0_wdone_in__] popif: L0(kBackReadCtx_iter0,)
+                cout[1000] - src: L0(kBackReadCtx_iter0,)
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__conv_layer__conv2d_bwd_accum_1_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[256, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {256, 1}
+    pmu: D_0_0_0 depth: 1 capacity: 256 (words) is_transpose: 0
+        uctx: D_0_0_0.w_loop_0_0
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+            disable_full_stall port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (8 # steps): 
+                  iter[0] : (0 until 512 by 64)
+                ctx done: L0(w_loop_0_0_iter0,) (8 # steps)
+            addresses:
+                addr : (0 until 512 by 64).c0
+                ofst : 0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[w_loop_done] - src: L0(w_loop_0_0_iter0,)
+                cout[1000] - src: L0(w_loop_0_0_iter0,)
+                cout[wdone__] - src: L0(w_loop_0_0_iter0,)
+        uctx: D_0_0_0.kBackReadCtx
+            loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+            pacing_window: 8 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (8 # steps): 
+                  iter[0] : (0 until 512 by 64)
+                ctx done: L0(kBackReadCtx_iter0,) (8 # steps)
+            addresses:
+                addr : (0 until 512 by 64).c0
+                ofst : 0
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 4 pushif: cin[pacing_in] popif: L0(kBackReadCtx_iter0,)
+                tb init: 0 pushif: cin[w_loop_0_0_wdone_in__] popif: L0(kBackReadCtx_iter0,)
+                cout[1000] - src: L0(kBackReadCtx_iter0,)
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__permute_1_0_425_tbuf
+    loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":69:0)
+    layout: <BF16[256, 3, 1, 136]RM/64@0x0> vec_order: {0, 1, 2, 3} vec_dim: 3 depth: 1 dims: {256, 3, 1, 160}
+    pmu: D_0_0_0_0_0 depth: 1 capacity: 122880 (words) is_transpose: 1
+        uctx: D_0_0_0_0_0.W
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (3840 # steps): 
+                  iter[0] : (0 until 245760 by 30720)
+                  iter[1] : (0 until 2048 by 64)
+                  iter[2] : (0 until 30720 by 2048)
+                ctx done: L0(W_iter0,) (3840 # steps)
+            addresses:
+                addr : (((0 until 30720 by 2048).c2 + (0 until 245760 by 30720).c0) + (0 until 2048 by 64).c1)
+                ofst : (0 until 2048 by 64).c1
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(W_iter0,)
+                cout[wdone__] - src: L0(W_iter0,)
+        uctx: D_0_0_0_0_0.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 960 port: READ1 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (3264 # steps): 
+                  iter[0] : (0 until 30720 by 10240)
+                  iter[1] : (0 until 245760 by 30720)
+                  iter[2] : (0 until 8704 by 64)
+                ctx done: L0(R_iter0,) (3264 # steps)
+            addresses:
+                addr : (((0 until 245760 by 30720).c1 + (0 until 30720 by 10240).c0) + (0 until 8704 by 64).c2)
+                ofst : ((0 until 8704 by 64).c2 & 2047)
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[W_wdone_in__] popif: L0(R_iter0,)
+                cout[1000] - src: L0(R_iter0,)
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__conv_layer__conv2d_weight_permute_bwd_tbuf
+    loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":69:0)
+    layout: <BF16[3, 1, 136, 256]CVRM/64@0x0> vec_order: {0, 1, 2, 3} vec_dim: 2 depth: 1 dims: {3, 1, 160, 256}
+    pmu: D_0_0_0_0_0 depth: 1 capacity: 163840 (words) is_transpose: 1
+        uctx: D_0_0_0_0_0.W
+            loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+            port: WRITE ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (3840 # steps): 
+                  iter[0] : (0 until 192 by 64)
+                  iter[1] : (0 until 327680 by 256)
+                ctx done: L0(W_iter0,) (3840 # steps)
+            addresses:
+                addr : ((0 until 327680 by 256).c1 + (0 until 192 by 64).c0)
+                ofst : (0 until 192 by 64).c0
+                pred : 2
+                vec = 1
+            triggers:
+                vin[8] - popif: ctx_en
+                cout[1000] - src: L0(W_iter0,)
+                cout[wdone__] - src: L0(W_iter0,)
+        uctx: D_0_0_0_0_0.R
+            loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)
+            pacing_window: 960 port: READ1 ctxid: 0 metapipe_iter (post divider): {1} 
+            iter_chains:
+                addr_chain  (34816 # steps): 
+                  iter[0] : (0 until 65536 by 256)
+                  iter[1] : (0 until 8704 by 64)
+                ctx done: L0(R_iter0,) (34816 # steps)
+            addresses:
+                addr : ((((0 until 8704 by 64).c1 >> 11) * 65536 + (0 until 65536 by 256).c0) + ((0 until 8704 by 64).c1 & 2047))
+                ofst : ((0 until 8704 by 64).c1 & 2047)
+                pred : 0
+                vec = 1
+            triggers:
+                tb init: 0 pushif: cin[W_wdone_in__] popif: L0(R_iter0,)
+                cout[1000] - src: L0(R_iter0,)

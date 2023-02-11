@@ -1,0 +1,489 @@
+Total bandwidth report for Data Vector connection
+|  Partition  |  Timing Group  |  provisioned(P) total,num,mean,stdev |  switch2switch(S)  |  BW Ratio (S/P)  |  switch2unit  | switch N/S output | switch N/S % | switch E/W output | switch E/W % |   undefined  |
+    {0, 0}      FinalGroup        0.04,         4,  0.01,  0.01              0.02              0.61              0.02              0.00           0.00%              0.02           0.00%              0.00
+    {0, 0}       ExecGroup       77.61,       502,  0.15,  0.31            111.49              1.44             45.30             64.46           4.13%             47.02           3.24%              0.00
+    {0, 0}       InitGroup       26.53,       279,  0.10,  0.11             13.32              0.50              3.58             12.11           0.78%              1.21           0.08%              0.00
+
+Total bandwidth report for Data Scalar connection
+|  Partition  |  Timing Group  |  provisioned(P) total,num,mean,stdev |  switch2switch(S)  |  BW Ratio (S/P)  |  switch2unit  | switch N/S output | switch N/S % | switch E/W output | switch E/W % |   undefined  |
+    {0, 0}      FinalGroup        0.00,         0,  -nan,  -nan              0.00              -nan              0.00              0.00           0.00%              0.00           0.00%              0.00
+    {0, 0}       ExecGroup        0.30,         7,  0.04,  0.07              6.93             23.01              0.14              5.81           0.37%              1.12           0.08%              4.00
+    {0, 0}       InitGroup        1.66,         8,  0.21,  0.31              8.06              4.84              1.76              7.31           0.47%              0.75           0.05%              0.00
+
+Network|  Partition  |  TimingGroup  | # congestion  |  max congestion  |  avg congestion  |
+ Vector     {0, 0}      FinalGroup            0/6            0.00              0.00
+ Scalar     {0, 0}      FinalGroup            0/0            0.00              0.00
+ Vector     {0, 0}       ExecGroup         0/1419            0.00              0.00
+ Scalar     {0, 0}       ExecGroup           0/63            0.00              0.00
+ Vector     {0, 0}       InitGroup          0/206            0.00              0.00
+ Scalar     {0, 0}       InitGroup           0/20            0.00              0.00
+
+
+Overlapped Edges and BWs on congested ports
+Network|  Partition  |    Location    | # Port  |  TimingGroup  |  BWOverlaps  |
+
+ Vector Congestion distribution [ FinalGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|                                              
+    8|                                              
+    7|                                              
+    6|                                              
+    5|                                              
+    4|                                              
+    3|                                              
+    2|                                              
+    1|                                              
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     1 1 1 1 1 1 1 1 1 1 1 
+ Vector Non-Congestion distribution [ FinalGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|                                              
+    8|                                              
+    7|                                              
+    6|   x                                          
+    5|   x                                          
+    4|   x                                          
+    3|   x                                          
+    2|   x                                          
+    1|   x                                          
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 
+ Scalar Congestion distribution [ FinalGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|                                              
+    8|                                              
+    7|                                              
+    6|                                              
+    5|                                              
+    4|                                              
+    3|                                              
+    2|                                              
+    1|                                              
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     1 1 1 1 1 1 1 1 1 1 1 
+ Scalar Non-Congestion distribution [ FinalGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|                                              
+    8|                                              
+    7|                                              
+    6|                                              
+    5|                                              
+    4|                                              
+    3|                                              
+    2|                                              
+    1|                                              
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 
+ Vector Congestion distribution [ ExecGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|                                              
+    8|                                              
+    7|                                              
+    6|                                              
+    5|                                              
+    4|                                              
+    3|                                              
+    2|                                              
+    1|                                              
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     1 1 1 1 1 1 1 1 1 1 1 
+ Vector Non-Congestion distribution [ ExecGroup ] -- x: bw, y: #congested
+ 1010|   x                                          
+  909|   x                                          
+  808|   x                                          
+  707|   x                                          
+  606|   x                                          
+  505|   x                                          
+  404|   x                                          
+  303|   x                                          
+  202|   x   x                                      
+  101|   x   x                                      
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 
+ Scalar Congestion distribution [ ExecGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|                                              
+    8|                                              
+    7|                                              
+    6|                                              
+    5|                                              
+    4|                                              
+    3|                                              
+    2|                                              
+    1|                                              
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     1 1 1 1 1 1 1 1 1 1 1 
+ Scalar Non-Congestion distribution [ ExecGroup ] -- x: bw, y: #congested
+   50|       x                                      
+   45|       x                                      
+   40|       x                                      
+   35|       x                                      
+   30|       x                                      
+   25|       x                                      
+   20|       x                                      
+   15|       x                                      
+   10|   x   x                                      
+    5|   x   x                                      
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 
+ Vector Congestion distribution [ InitGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|                                              
+    8|                                              
+    7|                                              
+    6|                                              
+    5|                                              
+    4|                                              
+    3|                                              
+    2|                                              
+    1|                                              
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     1 1 1 1 1 1 1 1 1 1 1 
+ Vector Non-Congestion distribution [ InitGroup ] -- x: bw, y: #congested
+  160|   x                                          
+  144|   x                                          
+  128|   x                                          
+  112|   x                                          
+   96|   x                                          
+   80|   x                                          
+   64|   x                                          
+   48|   x                                          
+   32|   x                                          
+   16|   x   x                                      
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 
+ Scalar Congestion distribution [ InitGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|                                              
+    8|                                              
+    7|                                              
+    6|                                              
+    5|                                              
+    4|                                              
+    3|                                              
+    2|                                              
+    1|                                              
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     1 1 1 1 1 1 1 1 1 1 1 
+ Scalar Non-Congestion distribution [ InitGroup ] -- x: bw, y: #congested
+   10|   x                           x              
+    9|   x                           x              
+    8|   x                           x              
+    7|   x                           x              
+    6|   x                           x              
+    5|   x                           x              
+    4|   x                           x              
+    3|   x                           x              
+    2|   x                           x              
+    1|   x                           x              
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 
+Total bandwidth report for Data Vector connection
+|  Partition  |  Timing Group  |  provisioned(P) total,num,mean,stdev |  switch2switch(S)  |  BW Ratio (S/P)  |  switch2unit  | switch N/S output | switch N/S % | switch E/W output | switch E/W % |   undefined  |
+    {0, 1}      FinalGroup        0.91,         4,  0.23,  0.23              3.60              3.94              0.95              3.13           0.20%              0.47           0.03%              0.00
+    {0, 1}       InitGroup        8.77,        36,  0.24,  0.42              0.79              0.09              1.27              0.02           0.00%              0.77           0.05%              0.00
+    {0, 1}       ExecGroup       49.27,       318,  0.15,  0.29            376.62              7.64             47.69            266.00          17.05%            110.63           7.62%              0.00
+
+Total bandwidth report for Data Scalar connection
+|  Partition  |  Timing Group  |  provisioned(P) total,num,mean,stdev |  switch2switch(S)  |  BW Ratio (S/P)  |  switch2unit  | switch N/S output | switch N/S % | switch E/W output | switch E/W % |   undefined  |
+    {0, 1}      FinalGroup        0.00,         0,  -nan,  -nan              0.00              -nan              0.00              0.00           0.00%              0.00           0.00%              0.00
+    {0, 1}       InitGroup        0.77,         9,  0.09,  0.23              0.78              1.02              0.77              0.02           0.00%              0.77           0.05%              0.00
+    {0, 1}       ExecGroup        0.54,         9,  0.06,  0.11              1.09              2.01              1.29              0.55           0.04%              0.54           0.04%              4.00
+
+Network|  Partition  |  TimingGroup  | # congestion  |  max congestion  |  avg congestion  |
+ Vector     {0, 1}      FinalGroup           0/12            0.00              0.00
+ Scalar     {0, 1}      FinalGroup            0/0            0.00              0.00
+ Vector     {0, 1}       InitGroup           0/55            0.00              0.00
+ Scalar     {0, 1}       InitGroup           0/10            0.00              0.00
+ Vector     {0, 1}       ExecGroup          0/913            0.00              0.00
+ Scalar     {0, 1}       ExecGroup           0/35            0.00              0.00
+
+
+Overlapped Edges and BWs on congested ports
+Network|  Partition  |    Location    | # Port  |  TimingGroup  |  BWOverlaps  |
+
+ Vector Congestion distribution [ FinalGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|                                              
+    8|                                              
+    7|                                              
+    6|                                              
+    5|                                              
+    4|                                              
+    3|                                              
+    2|                                              
+    1|                                              
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     1 1 1 1 1 1 1 1 1 1 1 
+ Vector Non-Congestion distribution [ FinalGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|                                              
+    8|                   x                          
+    7|                   x                          
+    6|                   x                          
+    5|                   x                          
+    4|   x               x                          
+    3|   x               x                          
+    2|   x               x                          
+    1|   x               x                          
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 
+ Scalar Congestion distribution [ FinalGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|                                              
+    8|                                              
+    7|                                              
+    6|                                              
+    5|                                              
+    4|                                              
+    3|                                              
+    2|                                              
+    1|                                              
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     1 1 1 1 1 1 1 1 1 1 1 
+ Scalar Non-Congestion distribution [ FinalGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|                                              
+    8|                                              
+    7|                                              
+    6|                                              
+    5|                                              
+    4|                                              
+    3|                                              
+    2|                                              
+    1|                                              
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 
+ Vector Congestion distribution [ InitGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|                                              
+    8|                                              
+    7|                                              
+    6|                                              
+    5|                                              
+    4|                                              
+    3|                                              
+    2|                                              
+    1|                                              
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     1 1 1 1 1 1 1 1 1 1 1 
+ Vector Non-Congestion distribution [ InitGroup ] -- x: bw, y: #congested
+   50|   x                                          
+   45|   x                                          
+   40|   x                                          
+   35|   x                                          
+   30|   x                                          
+   25|   x                                          
+   20|   x                                          
+   15|   x                                          
+   10|   x                                          
+    5|   x                                          
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 
+ Scalar Congestion distribution [ InitGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|                                              
+    8|                                              
+    7|                                              
+    6|                                              
+    5|                                              
+    4|                                              
+    3|                                              
+    2|                                              
+    1|                                              
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     1 1 1 1 1 1 1 1 1 1 1 
+ Scalar Non-Congestion distribution [ InitGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|   x                                          
+    8|   x                                          
+    7|   x                                          
+    6|   x                                          
+    5|   x                                          
+    4|   x                                          
+    3|   x                                          
+    2|   x                                          
+    1|   x                           x              
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 
+ Vector Congestion distribution [ ExecGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|                                              
+    8|                                              
+    7|                                              
+    6|                                              
+    5|                                              
+    4|                                              
+    3|                                              
+    2|                                              
+    1|                                              
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     1 1 1 1 1 1 1 1 1 1 1 
+ Vector Non-Congestion distribution [ ExecGroup ] -- x: bw, y: #congested
+  380|   x                                          
+  342|   x                                       x  
+  304|   x                                       x  
+  266|   x                                       x  
+  228|   x                                       x  
+  190|   x                                       x  
+  152|   x   x                                   x  
+  114|   x   x                                   x  
+   76|   x   x                                   x  
+   38|   x   x                                   x  
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 
+ Scalar Congestion distribution [ ExecGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|                                              
+    8|                                              
+    7|                                              
+    6|                                              
+    5|                                              
+    4|                                              
+    3|                                              
+    2|                                              
+    1|                                              
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     1 1 1 1 1 1 1 1 1 1 1 
+ Scalar Non-Congestion distribution [ ExecGroup ] -- x: bw, y: #congested
+   30|   x                                          
+   27|   x                                          
+   24|   x                                          
+   21|   x                                          
+   18|   x                                          
+   15|   x                                          
+   12|   x                                          
+    9|   x                                          
+    6|   x                                          
+    3|   x       x                                  
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 
+Total bandwidth report for Data Vector connection
+|  Partition  |  Timing Group  |  provisioned(P) total,num,mean,stdev |  switch2switch(S)  |  BW Ratio (S/P)  |  switch2unit  | switch N/S output | switch N/S % | switch E/W output | switch E/W % |   undefined  |
+    {0, 2}       ExecGroup      122.39,       146,  0.84,  0.22            196.48              1.61             71.24            126.49           8.11%             69.99           4.82%              0.00
+
+Total bandwidth report for Data Scalar connection
+|  Partition  |  Timing Group  |  provisioned(P) total,num,mean,stdev |  switch2switch(S)  |  BW Ratio (S/P)  |  switch2unit  | switch N/S output | switch N/S % | switch E/W output | switch E/W % |   undefined  |
+    {0, 2}       ExecGroup        6.00,        14,  0.43,  0.37             18.00              3.00              8.25             10.50           0.67%              7.50           0.52%              6.00
+
+Network|  Partition  |  TimingGroup  | # congestion  |  max congestion  |  avg congestion  |
+ Vector     {0, 2}       ExecGroup         10/219            2.00              0.80
+ Scalar     {0, 2}       ExecGroup           6/27            1.50              0.75
+
+
+Overlapped Edges and BWs on congested ports
+Network|  Partition  |    Location    | # Port  |  TimingGroup  |  BWOverlaps  |
+ Vector     {0, 2}   (25, 3, 0, 2)         N
+                                                 ExecGroup:         1, 0.999598
+ Vector     {0, 2}   (18, 4, 0, 2)         W
+                                                 ExecGroup:       0.5, 1
+ Vector     {0, 2}   (21, 5, 0, 2)         N
+                                                 ExecGroup:      0.75, 0.75
+ Vector     {0, 2}   (22, 5, 0, 2)         N
+                                                 ExecGroup:      0.75, 0.75
+ Vector     {0, 2}   (23, 5, 0, 2)         N
+                                                 ExecGroup:      0.75, 0.75
+ Scalar     {0, 2}   (21, 5, 0, 2)         N
+                                                 ExecGroup:      0.75, 0.75
+ Scalar     {0, 2}   (22, 5, 0, 2)         N
+                                                 ExecGroup:      0.75, 0.75
+ Scalar     {0, 2}   (23, 5, 0, 2)         N
+                                                 ExecGroup:      0.75, 0.75
+
+ Vector Congestion distribution [ ExecGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|                                              
+    8|                       x                      
+    7|                       x                      
+    6|                       x                      
+    5|                       x                      
+    4|                       x                      
+    3|                       x                      
+    2|                       x                   x  
+    1|                       x                   x  
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     1 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2 
+ Vector Non-Congestion distribution [ ExecGroup ] -- x: bw, y: #congested
+  100|                                           x  
+   90|                                           x  
+   80|                                           x  
+   70|                                           x  
+   60|                                           x  
+   50|                                       x   x  
+   40|                                       x   x  
+   30|                       x               x   x  
+   20|                       x               x   x  
+   10|                       x       x       x   x  
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 
+ Scalar Congestion distribution [ ExecGroup ] -- x: bw, y: #congested
+   10|                                              
+    9|                                              
+    8|                                              
+    7|                                              
+    6|                                           x  
+    5|                                           x  
+    4|                                           x  
+    3|                                           x  
+    2|                                           x  
+    1|                                           x  
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     1 1.05 1.1 1.15 1.2 1.25 1.3 1.35 1.4 1.45 1.5 
+ Scalar Non-Congestion distribution [ ExecGroup ] -- x: bw, y: #congested
+   20|                               x              
+   18|                               x              
+   16|                               x              
+   14|                               x              
+   12|                               x              
+   10|                               x              
+    8|                               x              
+    6|                               x              
+    4|                               x              
+    2|                               x              
+    0|   x   x   x   x   x   x   x   x   x   x   x  
+----------------------------------------------------------------
+     0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 
+-----------------
+Partition (0, 0)
+-----------------
+Timing group: InitGroup
+Scalar
+src: AGCU_(71, 5, 0, 0) (AGU: 0, VAG: 0) @ (71, 5, 0, 0):<AGCU_OUTPUT_PORTS.SCALAR_NW: 3>, e2e bandwidth: 0.680851, provisioned bandwidth: 0.75
+
+-----------------
+Partition (0, 1)
+-----------------
+-----------------
+Partition (0, 2)
+-----------------
+Timing group: ExecGroup
+Vector
+src: s2.backing_pmu_group_13_ptconvcnn__dense_layer__bias__ptconvcnn__dense_layer__linear_bwd_weight_opt_tensor1 PMU Context: READ0, 0 @ (20, 2, 0, 2):<PMU_OUTPUT_PORTS.VECTOR_NW: 4>, e2e bandwidth: 0.842105, provisioned bandwidth: 1
+

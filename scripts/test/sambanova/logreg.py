@@ -4,29 +4,23 @@ compiling it, training and testing it on SN RDU
 """
 
 import argparse
-import os
 import sys
-import time
 from typing import Tuple
 
 import numpy as np
-from termcolor import colored
-
-import sambaflow.samba.utils as utils
-from sambaflow import samba
-from sambaflow.samba.schema.snconfig import SNConfig
-from sambaflow.samba.test import TestWithGold
-from sambaflow.samba.utils.argparser import (SambaConfig, parse_app_args,
-                                             parse_yaml_to_args)
-from sambaflow.samba.utils.benchmark_acc import AccuracyReport
-from sambaflow.samba.utils.dataset.mnist import dataset_transform
-from sambaflow.samba.utils.pef_utils import get_pefmeta
-from sambaflow.samba.utils.tensorboard_debug import dump_accuracy_debug_info
-
 import torch
 import torch.distributed as dist
 import torch.nn as nn
 import torchvision
+
+import sambaflow.samba.utils as utils
+from sambaflow import samba
+from sambaflow.samba.utils.argparser import parse_app_args, parse_yaml_to_args
+from sambaflow.samba.utils.benchmark_acc import AccuracyReport
+from sambaflow.samba.utils.dataset.mnist import dataset_transform
+from sambaflow.samba.utils.pef_utils import get_pefmeta
+# from sambaflow.samba.utils.tensorboard_debug import dump_accuracy_debug_info
+
 
 class LogReg(nn.Module):
     """
@@ -69,7 +63,6 @@ class LogReg(nn.Module):
         """
         out = self.lin_layer(inputs)
         loss = self.criterion(out, targets)
-
         return loss, out
 
     def setup_mock_online_inference(self, args: argparse.Namespace):
@@ -81,7 +74,7 @@ class LogReg(nn.Module):
         """
         from sambaflow.online_inference_service.sn_sqs_handler import Queue
         n_mock = 10
-        dataset = torchvision.datasets.MNIST(root=args.data_dir, train=False, transform=None, download=True)
+        dataset = torchvision.datasets.MNIST(root=args.data_folder, train=False, transform=None, download=True)
         mock_inputs = [(str(i), dataset[i][0]) for i in range(n_mock)]
         queue = Queue(request_queue_name='', mock_inputs=mock_inputs)
         return queue
@@ -104,7 +97,7 @@ class LogReg(nn.Module):
 
         # set model to eval, get preprocessing
         self.lin_layer.eval()
-        preprocess = dataset_transform({'num_features': self.num_features})
+        preprocess = dataset_transform(argparse.Namespace(num_features=self.num_features))
 
         # get sns queue
         try:
@@ -118,7 +111,8 @@ class LogReg(nn.Module):
                 queue = Queue(request_queue_name='')
 
         except Exception as e:
-            raise Exception(f'ERROR queue setup failed') from e
+            print(f'ERROR queue setup failed {e}')
+            exit()
 
         while queue:
             # get next item from queue
@@ -164,49 +158,28 @@ class LogReg(nn.Module):
 
 
 def add_args(parser: argparse.ArgumentParser) -> None:
-    # Add DaaS args
-    parser.add_argument('--pod-name', type=str, default='starters', help="Pod name the app belongs to")
-    parser.add_argument('--script', type=str, default=__file__, help="Script file to run the app")
-    parser.add_argument('--mpirun', action='store_true', help="Whether it run with MPIRUN or not")
-    parser.add_argument('--world-size', type=int, default=1, help="Number of communicators to run DP/MP apps")
-    parser.add_argument('--task-name', type=str, default='classification', help="Task name")
-    parser.add_argument('--model-name', type=str, default=__file__.split('/')[-1].split('.')[0], help="Dataset name")
-    parser.add_argument('--data-name', type=str, default='mnist', help="Dataset name")
-    parser.add_argument('--data-type', type=str, default='image', help="Training dataset type")
-    parser.add_argument('--label-type',
-                        type=str,
-                        default='classes',
-                        choices=['classes', 'numbers', 'resolvers'],
-                        help="Label type")
-    parser.add_argument('--ckpt-dir', type=str, default='', help="Checkpoint directory")
-    parser.add_argument('--dataloader',
-                        type=str,
-                        default='torchloader',
-                        choices=['torchloader', 'sambaloader'],
-                        help="Dataloader type")
-    parser.add_argument('--logger-name', type=str, default='default', choices=['default', 'acp'], help="Logger type")
-    parser.add_argument('--logger-dir', type=str, default='output', help="Logger output dir")
 
-    # Other args
-    parser.add_argument('--optim', type=str, default='sgd', help="Optimizer to use for training")
+    # Compile time args
     parser.add_argument('--lr', type=float, default=0.0015, help="Learning rate for training")
     parser.add_argument('--momentum', type=float, default=0.0, help="Momentum value for training")
     parser.add_argument('--weight-decay', type=float, default=3e-4, help="Weight decay for training")
-    parser.add_argument('--num-epochs', '-e', type=int, default=1)
-    parser.add_argument('--num-steps', type=int, default=-1)
+    parser.add_argument('-e', '--num-epochs', type=int, default=1)
     parser.add_argument('--num-features', type=int, default=784)
     parser.add_argument('--num-classes', type=int, default=10)
     parser.add_argument('--weight-norm', action="store_true", help="Enable weight normalization")
     parser.add_argument('--acc-test', action='store_true', help='Option for accuracy guard test in RDU regression.')
     parser.add_argument('--yaml-config', default=None, type=str, help='YAML file used with launch_app.py')
-    parser.add_argument('--data-dir',
-                        '--data-folder',
+    parser.add_argument('--data-folder',
                         type=str,
                         default='mnist_data',
                         help="The folder to download the MNIST dataset to.")
-    parser.add_argument('--visualize', action="store_true", help="Generate plots for accuracy comparisons")
-    parser.add_argument('--enable-profiler', action='store_true', help='Enable Samba Profiler')
-    parser.add_argument('--profiler-trace', type=str, help='Samba profiler trace output file')
+    # end args
+
+
+def add_run_args(parser: argparse.ArgumentParser) -> None:
+    # Runtime args
+    pass
+    # ...
     # end args
 
 
@@ -224,26 +197,17 @@ def prepare_dataloader(args: argparse.Namespace) -> Tuple[torch.utils.data.DataL
     """
 
     # Get the train & test data (images and labels) from the MNIST dataset
-    train_dataset = torchvision.datasets.MNIST(root=f'{args.data_dir}',
+    train_dataset = torchvision.datasets.MNIST(root=f'{args.data_folder}',
                                                train=True,
-                                               transform=dataset_transform(vars(args)),
+                                               transform=dataset_transform(args),
                                                download=True)
-    test_dataset = torchvision.datasets.MNIST(root=f'{args.data_dir}',
+    test_dataset = torchvision.datasets.MNIST(root=f'{args.data_folder}',
                                               train=False,
-                                              transform=dataset_transform(vars(args)))
+                                              transform=dataset_transform(args))
 
-    print(args.world_size)
-    train_sampler = torch.utils.data.distributed.DistributedSampler(
-    	train_dataset,
-    	num_replicas=2
-    )
-    test_sampler = torch.utils.data.distributed.DistributedSampler(
-    	test_dataset,
-    	num_replicas=2
-    )
     # Get the train & test data loaders (input pipeline)
-    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=True, sampler=train_sampler)
-    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=args.batch_size, shuffle=False, sampler=test_sampler)
+    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=True)
+    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=args.batch_size, shuffle=False)
     return train_loader, test_loader
 
 
@@ -276,29 +240,18 @@ def train(args: argparse.Namespace, model: nn.Module, output_tensors: Tuple[samb
 
         # Train the model for all samples in the train data loader
         for i, (images, labels) in enumerate(train_loader):
-            global_step = epoch * total_step + i
-            if args.num_steps > 0 and global_step >= args.num_steps:
-                print('Maximum num of steps reached. ')
-                return None
+            sn_images = samba.from_torch(images, name='image', batch_dim=0)
+            sn_labels = samba.from_torch(labels, name='label', batch_dim=0)
 
-            data_event = samba.session.profiler.start_event('data_step')
-            sn_images = samba.from_torch_tensor(images, name='image', batch_dim=0)
-            sn_labels = samba.from_torch_tensor(labels, name='label', batch_dim=0)
-            samba.session.profiler.end_event(data_event)
-
-            compute_step = samba.session.profiler.start_event('compute_step')
             loss, outputs = samba.session.run(input_tensors=[sn_images, sn_labels],
                                               output_tensors=output_tensors,
                                               hyperparam_dict=hyperparam_dict,
                                               data_parallel=args.data_parallel,
                                               reduce_on_rdu=args.reduce_on_rdu)
-            samba.session.profiler.end_event(compute_step)
 
-            get_outputs_event = samba.session.profiler.start_event('get_outputs')
             # Sync the loss and outputs with host memory
             loss, outputs = samba.to_torch(loss), samba.to_torch(outputs)
             avg_loss += loss.mean()
-            samba.session.profiler.end_event(get_outputs_event)
 
             # Print loss per 10,000th sample in every epoch
             if (i + 1) % 10000 == 0 and args.local_rank <= 0:
@@ -331,12 +284,11 @@ def train(args: argparse.Namespace, model: nn.Module, output_tensors: Tuple[samb
             assert args.num_epochs == 1, "Accuracy test only supported for 1 epoch"
             assert test_acc > 91.0 and test_acc < 92.0, "Test accuracy not within specified bounds."
 
-    if args.acc_report_json is not None:
-        val_metrics = {'acc': test_acc.item() / 100.0, 'loss': total_loss.item() / len(test_loader)}
-        report = AccuracyReport(val_metrics=val_metrics,
+    if args.json is not None:
+        report = AccuracyReport(val_accuracy=test_acc.item(),
                                 batch_size=args.batch_size,
                                 num_iterations=args.num_epochs * total_step)
-        report.save(args.acc_report_json)
+        report.save(args.json)
 
 
 def test(args: argparse.Namespace, model: nn.Module, inputs: Tuple[samba.SambaTensor],
@@ -356,13 +308,8 @@ def test(args: argparse.Namespace, model: nn.Module, inputs: Tuple[samba.SambaTe
     :param outputs: RDU memory for the outputs
     :type outputs: Tuple[samba.SambaTensor]
     """
-    # Run forwards and backwards on CPU
     outputs_gold = model(*inputs)
-    loss, out = outputs_gold
-    loss.backward()
 
-    # Run all sections on RDU. If the graph was compiled for inference, this is only the forward pass. Otherwise, the
-    # pass includes backwards and optimizer sections, which will also be executed.
     outputs_samba = samba.session.run(input_tensors=inputs,
                                       output_tensors=outputs,
                                       data_parallel=args.data_parallel,
@@ -372,16 +319,7 @@ def test(args: argparse.Namespace, model: nn.Module, inputs: Tuple[samba.SambaTe
     for i, (output_samba, output_gold) in enumerate(zip(outputs_samba, outputs_gold)):
         print('samba:', output_samba)
         print('gold:', output_gold)
-        utils.assert_close(output_samba, output_gold, f'forward output #{i}', threshold=5e-3, visualize=args.visualize)
-
-    if not args.inference:
-        # Check all weight gradients
-        for name, param in model.named_parameters():
-            # Retrieve gradient that was calculated on CPU
-            golden_gradient = param.grad
-            # Retrieve gradient that was calculated on RDU
-            samba_gradient = param.sn_grad
-            utils.assert_close(golden_gradient, samba_gradient, f'Gradient for {name}', visualize=args.visualize)
+        utils.assert_close(output_samba, output_gold, f'forward output #{i}', threshold=5e-3)
 
     if args.weight_norm:
         # Perform extra checks for verifying weight norm implementation
@@ -418,40 +356,26 @@ def main(argv):
     """
     utils.set_seed(256)
 
-    migrated_arguments = {'-e': '--num-epochs', '--data-folder': '--data-dir'}
-    deprecated_args_found = set(migrated_arguments.keys()) & set(argv)
-    if deprecated_args_found:
-        for arg in deprecated_args_found:
-            print(
-                colored(f'This specific argument {arg} is being deprecated, new argument is {migrated_arguments[arg]}',
-                        'red'))
+    args = parse_app_args(argv=argv, common_parser_fn=add_args, run_parser_fn=add_run_args)
+    if args.yaml_config:
+        parse_yaml_to_args(args.yaml_config, args)
 
-    args_cli = parse_app_args(argv=argv, common_parser_fn=add_args)
-    args_composed = parse_yaml_to_args(args_cli.yaml_config, args_cli) if args_cli.yaml_config else args_cli
-    _ = SambaConfig(args_composed, SNConfig).get_all_params()
-
-    args = args_composed
     # when it is not distributed mode, local rank is -1.
     args.local_rank = dist.get_rank() if dist.is_initialized() else -1
-    # print(
-    #     "-------------- All Arguments: -----------------\n", 
-    #     args,
-    #     "\n-----------------------------------------------\n", 
-    # )
 
     # Create random input and output data for testing
     ipt = samba.randn(args.batch_size, args.num_features, name='image', batch_dim=0,
                       named_dims=('B', 'F')).bfloat16().float()
     tgt = samba.randint(args.num_classes, (args.batch_size, ), name='label', batch_dim=0, named_dims=('B', ))
 
-    ipt.mem_type = None
-    tgt.mem_type = None
+    ipt.host_memory = False
+    tgt.host_memory = False
 
     # Instantiate the model
     model = LogReg(args.num_features, args.num_classes)
 
     # Sync model parameters with RDU memory
-    samba.from_torch_model_(model)
+    samba.from_torch_(model)
 
     # Annotate parameters if weight normalization is on
     if args.weight_norm:
@@ -471,20 +395,13 @@ def main(argv):
 
     if args.command == "compile":
         #  Compile the model to generate a PEF (Plasticine Executable Format) binary
-        # print(
-        #     "---------- Compile - Inputs ------------- \n",
-        #     inputs,
-        #     "\n------------------------------------------- \n",
-        # )
-        HOST_MEMORY = {'host': True, 'device': False, 'auto': None}
         samba.session.compile(model,
                               inputs,
                               optimizer,
                               name='logreg_torch',
                               app_dir=utils.get_file_dir(__file__),
                               config_dict=vars(args),
-                              pef_metadata=get_pefmeta(args, model),
-                              io_host_memory=None)
+                              pef_metadata=get_pefmeta(args, model))
 
     elif args.__dict__.get("listen_for_input", False):
         model.online_inference(args=args, mock=args.mock_inference)
@@ -497,9 +414,6 @@ def main(argv):
         dump_accuracy_debug_info(args, model, inputs, traced_outputs)
 
     elif args.command in ["test", "run", "measure-performance"]:
-        if args.enable_profiler:
-            samba.session.start_samba_profile()
-
         # Build inputs of the correct shape for spatial
         if args.mapping == "spatial":
             inputs = (samba.SambaTensor(samba.to_torch(inputs[0]).repeat(args.num_spatial_batches, 1),
@@ -514,22 +428,12 @@ def main(argv):
         # The PEF required for tracing is the binary generated during compilation
         # Mapping refers to how the model layers are arranged in a pipeline for execution.
         # Valid options: 'spatial' or 'section'
-        # print(
-        #     "---------- Training - Inputs ------------- \n",
-        #     inputs,
-        #     "\n------------------------------------------- \n",
-        # )
-        # print(args.pef)
-        # print(args.distlearn_config)
-        # init_output_grads = not (args.ignore_output_grads or args.inference)
         traced_outputs = utils.trace_graph(model,
                                            inputs,
                                            optimizer,
                                            pef=args.pef,
                                            mapping=args.mapping,
-                                           distlearn_config=args.distlearn_config,
-                                           data_parallel_mode=args.data_parallel_mode
-                            )
+                                           distlearn_config=args.distlearn_config)
 
         if args.command == "test":
             # Test the model's functional correctness. This tests if the result of execution
@@ -543,20 +447,13 @@ def main(argv):
                 args.batch_size *= args.num_spatial_batches
                 test_spatial(args, model, inputs, traced_outputs, optimizer, mini_batch_size)
             else:
-                if args.gold_file_path:
-                    # If gold files have been provided by the user, utilize that to run bit-wise checking
-                    # to ensure the behavior of the model is identical to the ones cached in the gold files.
-                    t = TestWithGold(args, "logreg", model, None, optimizer)
-                    t.test()
-                else:
-                    test(args, model, inputs, traced_outputs)
+                # section by section
+                test(args, model, inputs, traced_outputs)
 
         elif args.command == "run":
             # Train the model on RDU. This is where the model will be trained
             # i.e. weights will be learned to fit the input dataset
-            start_time = time.perf_counter()
             train(args, model, traced_outputs)
-            print("[INFO] Training Time: %f" %(time.perf_counter()-start_time))
 
         elif args.command == 'measure-performance':
             utils.measure_performance(model,
@@ -566,15 +463,12 @@ def main(argv):
                                       args.inference,
                                       run_graph_only=args.run_graph_only,
                                       n_iterations=args.num_iterations,
-                                      json=args.bench_report_json,
+                                      json=args.json,
                                       compiled_stats_json=args.compiled_stats_json,
                                       data_parallel=args.data_parallel,
                                       reduce_on_rdu=args.reduce_on_rdu,
                                       use_sambaloader=True,
                                       min_duration=args.min_duration)
-
-        if args.enable_profiler:
-            samba.session.end_samba_profile(filename=args.profiler_trace)
 
 
 if __name__ == '__main__':

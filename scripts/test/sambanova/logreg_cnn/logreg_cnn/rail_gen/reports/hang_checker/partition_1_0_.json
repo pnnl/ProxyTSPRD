@@ -1,0 +1,1584 @@
+{
+ "nodes": {
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.permute_1_0_425.tbuf.R": {
+   "ctx_count": 3264,
+   "initial_node": false,
+   "input_ports": {
+    "W_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.permute_1_0_425.tbuf.W.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      3263,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": null,
+   "src_ctx": "software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0",
+   "terminal_ctx_count": 3264,
+   "terminal_node": true
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.permute_1_0_425.tbuf.W": {
+   "ctx_count": 3840,
+   "init_ctx_count": 3840,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.permute_1_0_425.tbuf.R",
+       "port": "W_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.permute_1_0_425.tbuf.W.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      3839,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__conv_layer__conv2d_bwd_accum.tbuf.kBackReadCtx": {
+   "ctx_count": 3840,
+   "initial_node": false,
+   "input_ports": {
+    "w_loop_0_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__conv_layer__conv2d_bwd_accum.tbuf.w_loop_0_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      3839,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": null,
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:629:0",
+   "terminal_ctx_count": 3840,
+   "terminal_node": true
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__conv_layer__conv2d_bwd_accum.tbuf.w_loop_0_0": {
+   "ctx_count": 3840,
+   "init_ctx_count": 3840,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__conv_layer__conv2d_bwd_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_0_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__conv_layer__conv2d_bwd_accum.tbuf.w_loop_0_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      3839,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__conv_layer__conv2d_bwd_accum_1.tbuf.kBackReadCtx": {
+   "ctx_count": 8,
+   "initial_node": false,
+   "input_ports": {
+    "w_loop_0_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__conv_layer__conv2d_bwd_accum_1.tbuf.w_loop_0_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      7,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": null,
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:629:0",
+   "terminal_ctx_count": 8,
+   "terminal_node": true
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__conv_layer__conv2d_bwd_accum_1.tbuf.w_loop_0_0": {
+   "ctx_count": 8,
+   "init_ctx_count": 8,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__conv_layer__conv2d_bwd_accum_1.tbuf.kBackReadCtx",
+       "port": "w_loop_0_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__conv_layer__conv2d_bwd_accum_1.tbuf.w_loop_0_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      7,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__conv_layer__conv2d_weight_permute_bwd.tbuf.R": {
+   "ctx_count": 34816,
+   "initial_node": false,
+   "input_ports": {
+    "W_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__conv_layer__conv2d_weight_permute_bwd.tbuf.W.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      34815,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": null,
+   "src_ctx": "software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0",
+   "terminal_ctx_count": 34816,
+   "terminal_node": true
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__conv_layer__conv2d_weight_permute_bwd.tbuf.W": {
+   "ctx_count": 3840,
+   "init_ctx_count": 3840,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__conv_layer__conv2d_weight_permute_bwd.tbuf.R",
+       "port": "W_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__conv_layer__conv2d_weight_permute_bwd.tbuf.W.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      3839,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx": {
+   "ctx_count": 32768,
+   "initial_node": false,
+   "input_ports": {
+    "w_loop_0_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_0_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_10_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_10_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_11_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_11_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_12_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_12_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_13_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_13_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_14_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_14_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_15_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_15_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_16_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_16_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_17_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_17_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_18_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_18_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_19_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_19_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_1_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_1_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_20_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_20_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_21_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_21_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_22_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_22_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_23_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_23_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_24_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_24_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_25_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_25_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_26_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_26_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_27_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_27_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_28_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_28_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_29_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_29_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_2_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_2_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_30_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_30_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_31_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_31_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_3_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_3_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_4_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_4_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_5_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_5_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_6_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_6_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_7_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_7_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_8_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_8_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    },
+    "w_loop_9_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_9_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      32767,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": null,
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:629:0",
+   "terminal_ctx_count": 32768,
+   "terminal_node": true
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_0_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_0_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_0_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_10_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_10_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_10_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_11_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_11_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_11_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_12_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_12_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_12_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_13_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_13_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_13_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_14_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_14_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_14_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_15_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_15_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_15_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_16_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_16_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_16_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_17_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_17_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_17_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_18_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_18_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_18_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_19_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_19_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_19_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_1_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_1_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_1_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_20_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_20_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_20_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_21_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_21_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_21_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_22_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_22_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_22_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_23_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_23_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_23_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_24_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_24_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_24_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_25_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_25_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_25_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_26_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_26_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_26_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_27_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_27_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_27_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_28_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_28_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_28_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_29_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_29_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_29_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_2_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_2_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_2_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_30_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_30_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_30_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_31_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_31_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_31_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_3_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_3_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_3_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_4_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_4_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_4_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_5_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_5_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_5_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_6_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_6_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_6_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_7_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_7_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_7_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_8_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_8_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_8_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_9_0": {
+   "ctx_count": 1024,
+   "init_ctx_count": 1024,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.kBackReadCtx",
+       "port": "w_loop_9_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum.tbuf.w_loop_9_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      1023,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum_1.tbuf.kBackReadCtx": {
+   "ctx_count": 128,
+   "initial_node": false,
+   "input_ports": {
+    "w_loop_0_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum_1.tbuf.w_loop_0_0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      127,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": null,
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:629:0",
+   "terminal_ctx_count": 128,
+   "terminal_node": true
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum_1.tbuf.w_loop_0_0": {
+   "ctx_count": 128,
+   "init_ctx_count": 128,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum_1.tbuf.kBackReadCtx",
+       "port": "w_loop_0_0_wdone_in___FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.ptconvcnn__dense_layer__linear_bwd_weight_accum_1.tbuf.w_loop_0_0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      127,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/accumulator/rail/ParAccum.cpp:424:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.tbuf1u_1_0_254.LogregTorchSamba.partition_1_0_.ptconvcnn__lambda_layer__indexselect_recompute_@kIndexRd": {
+   "ctx_count": 15,
+   "initial_node": false,
+   "input_ports": {
+    "kFrontDynamicWriteCtx_wdone_in___FROM_partition_1_0_.tbuf1u_1_0_254.kFrontDynamicWriteCtx.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      14,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "1001": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.tbuf2u_1_0_253.LogregTorchSamba.partition_1_0_.ptconvcnn__lambda_layer__indexselect_recompute_@kLutRd",
+       "port": "idx",
+       "src_ctx": "software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0"
+      }
+     ],
+     "push_schedule": [
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/index/rail/Index.cpp:124:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.tbuf1u_1_0_254.kFrontDynamicWriteCtx": {
+   "ctx_count": 1,
+   "init_ctx_count": 1,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.tbuf1u_1_0_254.LogregTorchSamba.partition_1_0_.ptconvcnn__lambda_layer__indexselect_recompute_@kIndexRd",
+       "port": "kFrontDynamicWriteCtx_wdone_in___FROM_partition_1_0_.tbuf1u_1_0_254.kFrontDynamicWriteCtx.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.tbuf2u_1_0_253.LogregTorchSamba.partition_1_0_.ptconvcnn__lambda_layer__indexselect_recompute_@kLutRd": {
+   "ctx_count": 15,
+   "initial_node": false,
+   "input_ports": {
+    "0_FROM_partition_1_0_.tbuf2u_1_0_258.LogregTorchSamba.partition_1_0_.ptconvcnn__lambda_layer__indexselect_recompute_@kOutWr.1000": {
+     "buffer_depth": 8192,
+     "init": 1,
+     "pop_schedule": [
+      0,
+      14,
+      1,
+      1
+     ]
+    },
+    "1_FROM_partition_1_0_.tbuf2u_1_0_258.kDefaultRead1.1000": {
+     "buffer_depth": 8192,
+     "init": 2,
+     "pop_schedule": [
+      0,
+      14,
+      1,
+      1
+     ]
+    },
+    "idx": {
+     "buffer_depth": 32,
+     "init": 0,
+     "pop_schedule": [
+      1,
+      1
+     ]
+    },
+    "kFrontDynamicWriteCtx_wdone_in___FROM_partition_1_0_.tbuf2u_1_0_253.kFrontDynamicWriteCtx.wdone__": {
+     "buffer_depth": 2,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      14,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "1001": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.tbuf2u_1_0_258.LogregTorchSamba.partition_1_0_.ptconvcnn__lambda_layer__indexselect_recompute_@kOutWr",
+       "port": "8",
+       "src_ctx": "software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0"
+      }
+     ],
+     "push_schedule": [
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/index/rail/Index.cpp:137:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.tbuf2u_1_0_253.kFrontDynamicWriteCtx": {
+   "ctx_count": 300,
+   "init_ctx_count": 300,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.tbuf2u_1_0_253.LogregTorchSamba.partition_1_0_.ptconvcnn__lambda_layer__indexselect_recompute_@kLutRd",
+       "port": "kFrontDynamicWriteCtx_wdone_in___FROM_partition_1_0_.tbuf2u_1_0_253.kFrontDynamicWriteCtx.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      299,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.tbuf2u_1_0_258.LogregTorchSamba.partition_1_0_.ptconvcnn__lambda_layer__indexselect_recompute_@kOutWr": {
+   "ctx_count": 15,
+   "initial_node": false,
+   "input_ports": {
+    "8": {
+     "buffer_depth": 32,
+     "init": 0,
+     "pop_schedule": [
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "1000": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.tbuf2u_1_0_253.LogregTorchSamba.partition_1_0_.ptconvcnn__lambda_layer__indexselect_recompute_@kLutRd",
+       "port": "0_FROM_partition_1_0_.tbuf2u_1_0_258.LogregTorchSamba.partition_1_0_.ptconvcnn__lambda_layer__indexselect_recompute_@kOutWr.1000",
+       "src_ctx": "software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      14,
+      1,
+      1
+     ]
+    },
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.tbuf2u_1_0_258.kDefaultRead1",
+       "port": "LogregTorchSamba.partition_1_0_.ptconvcnn__lambda_layer__indexselect_recompute_@kOutWr_wdone_in___FROM_partition_1_0_.tbuf2u_1_0_258.LogregTorchSamba.partition_1_0_.ptconvcnn__lambda_layer__indexselect_recompute_@kOutWr.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      14,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/index/rail/Index.cpp:161:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.tbuf2u_1_0_258.kDefaultRead1": {
+   "ctx_count": 15,
+   "initial_node": false,
+   "input_ports": {
+    "LogregTorchSamba.partition_1_0_.ptconvcnn__lambda_layer__indexselect_recompute_@kOutWr_wdone_in___FROM_partition_1_0_.tbuf2u_1_0_258.LogregTorchSamba.partition_1_0_.ptconvcnn__lambda_layer__indexselect_recompute_@kOutWr.wdone__": {
+     "buffer_depth": 2,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      14,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "1000": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.tbuf2u_1_0_253.LogregTorchSamba.partition_1_0_.ptconvcnn__lambda_layer__indexselect_recompute_@kLutRd",
+       "port": "1_FROM_partition_1_0_.tbuf2u_1_0_258.kDefaultRead1.1000",
+       "src_ctx": "software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      14,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0",
+   "terminal_node": false
+  }
+ }
+}
