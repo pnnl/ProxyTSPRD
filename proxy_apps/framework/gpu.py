@@ -248,7 +248,6 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         self,
         data_files,
         data_params,
-        sampler=None,
         batch_size=1
     ):
         return super().load_data(
@@ -256,7 +255,6 @@ class PyTorchInterfaceGPU(PyTorchInterface):
             data_params=data_params,
             pin_memory=True,
             num_workers=self._N_CPUS,
-            sampler=sampler,
             batch_size=batch_size
         )  
 

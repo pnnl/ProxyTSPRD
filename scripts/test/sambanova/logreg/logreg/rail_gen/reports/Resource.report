@@ -1,69 +1,55 @@
 *******************************************************************
-tbuf:
-    kData PMU: 16
-    kROB PMU: 1
-    total PMU: 17, Tensor size / (PMU size * depth): 13
-    total PCU: 0
-tbuf2u_0_0_197:
+tbuf1a_0_0_81:
     kData PMU: 1
     total PMU: 1, Tensor size / (PMU size * depth): 1
     total PCU: 0
-tbuf1u_0_0_198:
+tbuf1a_0_0_82:
     kData PMU: 1
     total PMU: 1, Tensor size / (PMU size * depth): 1
     total PCU: 0
-tbuf2u_0_0_202:
+tcompute0:
+    total PMU: 0, Tensor size / (PMU size * depth): 0
+    total PCU: 1
+logreg__criterion__crossentropyloss_tbuf_tmp:
+    kData PMU: 1
+    total PMU: 1, Tensor size / (PMU size * depth): 1
+    total PCU: 0
+tbuf1a_0_0_83:
     kData PMU: 1
     total PMU: 1, Tensor size / (PMU size * depth): 1
     total PCU: 0
 total RAIL resource for partition_0_0_
-    kData PMU: 19
-    kROB PMU: 1
-    total PMU: 20, Tensor size / (PMU size * depth): 16
-    total PCU: 0
+    kData PMU: 4
+    total PMU: 4, Tensor size / (PMU size * depth): 4
+    total PCU: 1
 *******************************************************************
-tbuf2u_1_0_253:
+tbuf1a_1_0_85:
     kData PMU: 1
     total PMU: 1, Tensor size / (PMU size * depth): 1
     total PCU: 0
-tbuf1u_1_0_254:
+tbuf1a_1_0_86:
     kData PMU: 1
     total PMU: 1, Tensor size / (PMU size * depth): 1
     total PCU: 0
-tbuf2u_1_0_258:
+tbuf1a_1_0_87:
     kData PMU: 1
     total PMU: 1, Tensor size / (PMU size * depth): 1
     total PCU: 0
-tbuf:
-    kData PMU: 32
-    kROB PMU: 1
-    total PMU: 33, Tensor size / (PMU size * depth): 4
-    total PCU: 0
-tbuf:
+tcompute0:
+    total PMU: 0, Tensor size / (PMU size * depth): 0
+    total PCU: 1
+tbuf_tmp0:
     kData PMU: 1
     total PMU: 1, Tensor size / (PMU size * depth): 1
     total PCU: 0
-tbuf:
-    kData PMU: 1
-    total PMU: 1, Tensor size / (PMU size * depth): 1
-    total PCU: 0
-tbuf:
-    kData PMU: 1
-    total PMU: 1, Tensor size / (PMU size * depth): 1
-    total PCU: 0
-tbuf:
-    kData PMU: 1
-    total PMU: 1, Tensor size / (PMU size * depth): 1
-    total PCU: 0
-tbuf:
+tbuf1a_1_0_99:
     kData PMU: 1
     total PMU: 1, Tensor size / (PMU size * depth): 1
     total PCU: 0
 total RAIL resource for partition_1_0_
-    kData PMU: 40
-    kROB PMU: 1
-    total PMU: 41, Tensor size / (PMU size * depth): 12
-    total PCU: 0
+    kData PMU: 5
+    total PMU: 5, Tensor size / (PMU size * depth): 5
+    total PCU: 1
 *******************************************************************
 total RAIL resource for partition_2_0_
     total PMU: 0, Tensor size / (PMU size * depth): 0

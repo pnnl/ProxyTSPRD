@@ -24,15 +24,18 @@ class RDU(Framework):
     def __init__(
         self, 
         machine_name,
-        dtype="fp64"
+        dtype="fp64",
+        n_rdus=1
     ) -> None:
         super().__init__(machine_name)
+        self._N_RDUS = n_rdus
         self._DTYPE = dtype
 
     def use_pytorch(self):
         super().use_pytorch()
         
         interface = PyTorchInterfaceSN(
+            n_rdus=self._N_RDUS,
             dtype=self._DTYPE
         )
         return interface
@@ -40,9 +43,13 @@ class RDU(Framework):
 class PyTorchInterfaceSN(PyTorchInterface):
     def __init__(
         self,
+        n_rdus,
         dtype
     ) -> None:
         super().__init__()
+
+        # multiple rdus
+        self._N_RDUS = n_rdus
 
         # when it is not distributed mode, local rank is -1.
         self.local_rank = dist.get_rank() if dist.is_initialized() else -1
@@ -68,15 +75,31 @@ class PyTorchInterfaceSN(PyTorchInterface):
         self, 
         app,
         app_name,
+        suffix,
         output_dir,
+        stage,
         mixed_precision_support=False
     ):
         super().init_app_manager(    
             app=app,
-            app_name=app_name, 
+            app_name=app_name,
             output_dir=output_dir, 
             mixed_precision_support=mixed_precision_support
         )
+
+        # PEF file
+        self.app_manager._OUTPUT_DIR = os.path.join(
+            self.app_manager._OUTPUT_DIR,
+            self.app_manager._APP_NAME
+        )
+        self.app_manager._PEF_NAME = suffix
+        self.app_manager._PEF_FILE = os.path.join(
+            self.app_manager._OUTPUT_DIR,
+            self.app_manager._PEF_NAME + "/" + self.app_manager._PEF_NAME + ".pef"
+        )
+        
+        # collect all arguments
+        self._ARGS = self._get_args(command=stage)
         
     def init_data_manager(
         self,
@@ -100,17 +123,21 @@ class PyTorchInterfaceSN(PyTorchInterface):
 
         return data_manager
 
-    def load_training_data(
+    def load_data(
         self,
+        data_files,
         data_params,
-        batch_size,
-        train_sampler=None
+        batch_size=1
     ):
-        return super().load_training_data(
+        dataloader = super().load_data(
+            data_files,
             data_params=data_params,
+            pin_memory=False,
             batch_size=batch_size,
-            train_sampler=train_sampler
-        )   
+            num_replicas=self._N_RDUS
+        )
+
+        return dataloader 
 
     def _create_rand_arr(
         self,
@@ -149,9 +176,15 @@ class PyTorchInterfaceSN(PyTorchInterface):
     def _get_args(self, command):
         migrated_arguments = {}
         if command=="compile":
-            argv_params = [command, '--pef-name='+self.app_manager._APP_NAME, '--output-folder='+self.app_manager._OUTPUT_DIR]
+            argv_params = [command, '--pef-name='+self.app_manager._PEF_NAME, '--output-folder='+self.app_manager._OUTPUT_DIR]
+            if self._N_RDUS > 1:
+                mrdu_params = ["--data-parallel", "-ws=" + str(self._N_RDUS)]
+                argv_params = argv_params + mrdu_params
         elif command=="run":
-            argv_params = [command, '--pef='+self.PEF_FILE]
+            argv_params = [command, '--pef='+self.app_manager._PEF_FILE]
+            if self._N_RDUS > 1:
+                mrdu_params = ["--data-parallel", "--reduce-on-rdu"]
+                argv_params = argv_params + mrdu_params
         
         # deprecated_args_found = set(migrated_arguments.keys()) & set(argv_params)
         # if deprecated_args_found:
@@ -170,7 +203,11 @@ class PyTorchInterfaceSN(PyTorchInterface):
         #     parse_yaml_to_args(args.yaml_config, args)
 
         # when it is not distributed mode, local rank is -1.
-        args.local_rank = dist.get_rank() if dist.is_initialized() else -1
+        self._LOCAL_RANK = dist.get_rank() if dist.is_initialized() else -1
+        self._GLOBAL_RANK = self._LOCAL_RANK
+        args.local_rank = self._LOCAL_RANK
+        # print(args.local_rank)
+        # sys.exit(1)
         # print(args)
 
         return args
@@ -190,12 +227,6 @@ class PyTorchInterfaceSN(PyTorchInterface):
             data_params=data_params,
             criterion_params=criterion_params
         )
-
-        # PEF file
-        self.PEF_FILE = os.path.join(
-            self.app_manager._OUTPUT_DIR,
-            self.app_manager._APP_NAME + "/" + self.app_manager._APP_NAME + ".pef"
-        )
         
         # Sync model parameters with RDU memory
         samba.from_torch_model_(self.model)
@@ -213,34 +244,19 @@ class PyTorchInterfaceSN(PyTorchInterface):
     ):
         # Create random input and output data for testing
         inputs = self._create_rand_arr(
-            batch_size=1
+            batch_size=batch_size
         )
-
-        # Compile if PEF doesn't exist or a new PEF file is required    
-        # collect all arguments
-        args = self._get_args(command="compile")
-        # print(
-        #     "---------- Compile Arguments ------------- \n",
-        #     args,
-        #     "\n------------------------------------------- \n",
-        # )
-        # print(
-        #     "---------- Compile Inputs ------------- \n",
-        #     inputs[0].shape, inputs[1].shape,
-        #     "\n------------------------------------------- \n",
-        # )
-        # print(self.model)
         
+        # Compile if PEF doesn't exist or a new PEF file is required    
         samba.session.compile(self.model,
                             inputs,
                             self.optimizer,
                             name=self.app_manager._APP_NAME,
                             app_dir=self.app_manager._OUTPUT_DIR,
-                            config_dict=vars(args),
-                            pef_metadata=get_pefmeta(args, self.model))
+                            config_dict=vars(self._ARGS),
+                            pef_metadata=get_pefmeta(self._ARGS, self.model))
 
-        print("[INFO] PEF File: %s" %(self.PEF_FILE))
-        # sys.exit(1)
+        print("[INFO] PEF File: %s" %(self.app_manager._PEF_FILE))
 
     def train(
         self,
@@ -249,25 +265,13 @@ class PyTorchInterfaceSN(PyTorchInterface):
         batch_size,
         num_spatial_batches=1
     ):
-        # sys.exit()
-        args = self._get_args(command="run")
-        # print(
-        #     "---------- Training Arguments ------------- \n",
-        #     args,
-        #     "\n------------------------------------------- \n",
-        # )
-        
+        # create random array
         inputs = self._create_rand_arr(
             batch_size=batch_size
         )
-        # print(
-        #     "---------- Train Inputs ------------- \n",
-        #     inputs,
-        #     "\n------------------------------------------- \n",
-        # )
-
+        
         # Build inputs of the correct shape for spatial
-        if args.mapping == "spatial":
+        if self._ARGS.mapping == "spatial":
             # print(inputs[0].shape, inputs[1].shape)
             inputs = (samba.SambaTensor(samba.to_torch(inputs[0]).repeat(num_spatial_batches, 1),
                                         name='inp_window',
@@ -281,27 +285,18 @@ class PyTorchInterfaceSN(PyTorchInterface):
         # The PEF required for tracing is the binary generated during compilation
         # Mapping refers to how the model layers are arranged in a pipeline for execution.
         # Valid options: 'spatial' or 'section'
-        # print("--------------------- Hello-1 --------------------------------")
-        # print(args.pef)
-        # print(args.distlearn_config)
-        # print("--------------------- Hello-2 --------------------------------")
         traced_outputs = utils.trace_graph(self.model,
                                            inputs,
                                            self.optimizer,
-                                           pef=args.pef,
-                                           mapping=args.mapping,
-                                           distlearn_config=args.distlearn_config)
+                                           pef=self._ARGS.pef,
+                                           mapping=self._ARGS.mapping,
+                                           distlearn_config=self._ARGS.distlearn_config)
 
     
-        # print("--------------------- Hello-3 --------------------------------")
-        # Get data loaders for training and test data
-        # train_loader, test_loader = prepare_dataloader(args)
-
         # Total training steps (iterations) per epoch
         total_step = len(train_loader)
 
-        # hyperparam_dict = {"lr": args.lr, "momentum": args.momentum, "weight_decay": args.weight_decay}
-        # print(self.opt_params)
+        # start training
         start_time = time.perf_counter()
 
         # Train and test for specified number of epochs
@@ -319,8 +314,8 @@ class PyTorchInterfaceSN(PyTorchInterface):
                 loss, outputs = samba.session.run(input_tensors=[sn_inp, sn_out],
                                                 output_tensors=traced_outputs,
                                                 hyperparam_dict=self.opt_params,
-                                                data_parallel=args.data_parallel,
-                                                reduce_on_rdu=args.reduce_on_rdu)
+                                                data_parallel=self._ARGS.data_parallel,
+                                                reduce_on_rdu=self._ARGS.reduce_on_rdu)
 
                 # Sync the loss and outputs with host memory
                 loss, outputs = samba.to_torch(loss), samba.to_torch(outputs)
@@ -328,8 +323,7 @@ class PyTorchInterfaceSN(PyTorchInterface):
 
                 # Print loss per 10,000th sample in every epoch
                 # if (i + 1) % 10000 == 0 and args.local_rank <= 0:
-            print('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}'.format(epoch + 1, n_epochs, i + 1, total_step,
-                                                                            avg_loss / (i + 1)))
+            print('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}'.format(epoch + 1, n_epochs, i + 1, total_step, avg_loss / (i + 1)))
 
             # # Check the accuracy of the trained model for all samples in the test data loader
             # # Sync the model parameters with host memory

@@ -1,65 +1,10 @@
 module @partition_1_0_ attributes {rail.kChipId = 0 : i64, rail.kIsSectionModule = true, rail.kSectionId = 1 : i64}  {
-  module @tbuf2u_1_0_253  {
+  module @tbuf1a_1_0_85  {
     "rail.buffer"() ( {
       "rail.context"() ( {
         %4 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-        %5 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 1 : i64} : () -> ui32
-        %6 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 60 : i64} : () -> ui32
-        %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32) -> ui32
-        %8 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-        %9 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 32 : i64} : () -> ui32
-        %10 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 136 : i64} : () -> ui32
-        %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32) -> ui32
-        "rail.iterchain"(%7, %11) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32) -> ()
-        %12 = "rail.ctrdone"(%7) {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32) -> i1
-        %13 = "rail.ctxdone"(%12) {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (i1) -> i1
-        %14 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = true} : () -> i1
-        %15 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = true} : () -> i1
-        %16 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-        %17 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-        %18 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-        "rail.addr"(%7, %11, %14, %15, %16, %17, %18) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-        "rail.terminator"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : () -> ()
-      }) {kContextType = "kRolled", kName = "kFrontDynamicWriteCtx", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), rail.kMetapipeIterCounts = [1], sym_name = "kFrontDynamicWriteCtx"} : () -> ()
-      "rail.context"() ( {
-        %4 = "rail.io.scalar_in"() {kCtxName = "LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kLutRd", kLanes = [], kPortName = "idx", kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0), kUnitName = "tbuf2u_1_0_253", sym_name = "tbuf2u_1_0_253_tbuffer_LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kLutRd_scalar_in_idx"} : () -> ui32
-        %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0), kValue = 0 : i64} : () -> ui32
-        %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0), kValue = 1 : i64} : () -> ui32
-        %7 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0), kValue = 3 : i64} : () -> ui32
-        %8 = "rail.iterator"(%5, %6, %7) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0)} : (ui32, ui32, ui32) -> ui32
-        %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0), kValue = 0 : i64} : () -> ui32
-        %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0), kValue = 32 : i64} : () -> ui32
-        %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0), kValue = 136 : i64} : () -> ui32
-        %12 = "rail.iterator"(%9, %10, %11) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0)} : (ui32, ui32, ui32) -> ui32
-        "rail.iterchain"(%8, %12) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0)} : (ui32, ui32) -> ()
-        %13 = "rail.ctrdone"(%8) {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0)} : (ui32) -> i1
-        %14 = "rail.ctxdone"(%13) {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0)} : (i1) -> i1
-        %15 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0), kValue = true} : () -> i1
-        %16 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0), kValue = 60 : i64} : () -> ui32
-        %17 = "rail.less_than"(%4, %16) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0)} : (ui32, ui32) -> i1
-        %18 = "rail.and"(%15, %17) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0)} : (i1, i1) -> i1
-        %19 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0), kValue = true} : () -> i1
-        %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0), kValue = true} : () -> i1
-        %21 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0), kValue = 0 : i64} : () -> ui32
-        %22 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0), kValue = 0 : i64} : () -> ui32
-        %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0), kValue = 0 : i64} : () -> ui32
-        "rail.addr"(%4, %12, %19, %18, %21, %22, %23) {kDim = 2 : i8, kMemOp = false, kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0), kVecDim = 1 : i64} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-        %24 = "rail.io.control_in"() {kCtxName = "LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kLutRd", kLanes = [], kPortName = "0", kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0), kUnitName = "tbuf2u_1_0_253", sym_name = "0"} : () -> i1
-        "rail.inbuf"(%24, %14) {kInit = 1 : i32, kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0)} : (i1, i1) -> ()
-        %25 = "rail.io.control_in"() {kCtxName = "LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kLutRd", kLanes = [], kPortName = "1", kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0), kUnitName = "tbuf2u_1_0_253", sym_name = "1"} : () -> i1
-        "rail.inbuf"(%25, %14) {kInit = 2 : i32, kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0)} : (i1, i1) -> ()
-        "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0)} : () -> ()
-      }) {kArithSplit = true, kContextType = "kRolled", kName = "LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kLutRd", kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":137:0), rail.kMetapipeIterCounts = [1], sym_name = "LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kLutRd"} : () -> ()
-      "rail.terminator"() {kSourceContext = loc("LogregTorchSamba.cpp":1937:0)} : () -> ()
-    }) {kFIFOMode = false, kName = "tbuf2u_1_0_253", kSourceContext = loc("LogregTorchSamba.cpp":1937:0), params = {kDepth = 2 : i64, kLayout = {alignments = [[1, 64]], base_address = 0 : i64, dim_order = [0, 1], format = 9 : i64, shape = [60, 136], vector_transpose = 1 : i64}, kMinMaxCapacitySplit = true, kMinPmus = -1 : i64, kPacingWindow = -1 : i64, kSplitAlgorithm = 0 : i64}, sym_name = "tbuf2u_1_0_253"} : () -> ()
-    module_terminator {kSourceContext = loc("LogregTorchSamba.cpp":1937:0)}
-  }
-  module @tbuf1u_1_0_254  {
-    "rail.buffer"() ( {
-      "rail.context"() ( {
-        %4 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-        %5 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 16 : i64} : () -> ui32
-        %6 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 3 : i64} : () -> ui32
+        %5 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 32 : i64} : () -> ui32
+        %6 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 1 : i64} : () -> ui32
         %7 = "rail.iterator"(%4, %5, %6) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32) -> ui32
         "rail.iterchain"(%7) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32) -> ()
         %8 = "rail.ctrdone"(%7) {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32) -> i1
@@ -73,65 +18,585 @@ module @partition_1_0_ attributes {rail.kChipId = 0 : i64, rail.kIsSectionModule
         "rail.terminator"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : () -> ()
       }) {kContextType = "kRolled", kName = "kFrontDynamicWriteCtx", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), rail.kMetapipeIterCounts = [1], sym_name = "kFrontDynamicWriteCtx"} : () -> ()
       "rail.context"() ( {
-        %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0), kValue = 0 : i64} : () -> ui32
-        %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0), kValue = 1 : i64} : () -> ui32
-        %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0), kValue = 3 : i64} : () -> ui32
-        %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0)} : (ui32, ui32, ui32) -> ui32
-        %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0), kValue = 0 : i64} : () -> ui32
-        %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0), kValue = 32 : i64} : () -> ui32
-        %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0), kValue = 136 : i64} : () -> ui32
-        %11 = "rail.iterator"(%8, %9, %10) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0)} : (ui32, ui32, ui32) -> ui32
-        "rail.iterchain"(%7, %11) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0)} : (ui32, ui32) -> ()
-        %12 = "rail.ctrdone"(%7) {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0)} : (ui32) -> i1
-        %13 = "rail.ctxdone"(%12) {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0)} : (i1) -> i1
-        %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0), kValue = true} : () -> i1
-        %15 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0), kValue = true} : () -> i1
-        %16 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0), kValue = 0 : i64} : () -> ui32
-        %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0), kValue = 0 : i64} : () -> ui32
-        %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0), kValue = 0 : i64} : () -> ui32
-        "rail.addr"(%7, %14, %15, %16, %17, %18) {kDim = 1 : i8, kMemOp = false, kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0), kVecDim = -1 : i64} : (ui32, i1, i1, ui32, ui32, ui32) -> ()
-        "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0)} : () -> ()
-      }) {kContextType = "kRolled", kName = "LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kIndexRd", kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":124:0), rail.kMetapipeIterCounts = [1], sym_name = "LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kIndexRd"} : () -> ()
-      "rail.terminator"() {kSourceContext = loc("LogregTorchSamba.cpp":1948:0)} : () -> ()
-    }) {kFIFOMode = false, kName = "tbuf1u_1_0_254", kSourceContext = loc("LogregTorchSamba.cpp":1948:0), params = {kDepth = 1 : i64, kLayout = {alignments = [], base_address = 0 : i64, dim_order = [0], format = 5 : i64, shape = [3], vector_transpose = 0 : i64}, kMinMaxCapacitySplit = true, kMinPmus = -1 : i64, kPacingWindow = -1 : i64, kSplitAlgorithm = 0 : i64}, sym_name = "tbuf1u_1_0_254"} : () -> ()
-    module_terminator {kSourceContext = loc("LogregTorchSamba.cpp":1948:0)}
+        %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0), kValue = 0 : i64} : () -> ui32
+        %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0), kValue = 1 : i64} : () -> ui32
+        %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0), kValue = 12 : i64} : () -> ui32
+        %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0)} : (ui32, ui32, ui32) -> ui32
+        %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0), kValue = 0 : i64} : () -> ui32
+        %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0), kValue = 32 : i64} : () -> ui32
+        %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0), kValue = 1 : i64} : () -> ui32
+        %11 = "rail.iterator"(%8, %9, %10) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0)} : (ui32, ui32, ui32) -> ui32
+        %12 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0)} : (ui32) -> i1
+        %13 = "rail.ctxdone"(%12) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0)} : (i1) -> i1
+        "rail.iterchain"(%11, %7) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0)} : (ui32, ui32) -> ()
+        %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0), kValue = true} : () -> i1
+        %15 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0), kValue = true} : () -> i1
+        %16 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0), kValue = 0 : i64} : () -> ui32
+        %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0), kValue = 0 : i64} : () -> ui32
+        %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0), kValue = 0 : i64} : () -> ui32
+        "rail.addr"(%11, %14, %15, %16, %17, %18) {kDim = 1 : i8, kMemOp = false, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0), kVecDim = 0 : i64} : (ui32, i1, i1, ui32, ui32, ui32) -> ()
+        %19 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0)} : (ui32) -> i1
+        %20 = "rail.io.control_in"() {kCtxName = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputY", kLanes = [], kPortName = "phase2_strip_done", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0), kUnitName = "tbuf1a_1_0_85", sym_name = "phase2_strip_done"} : () -> i1
+        "rail.inbuf"(%20, %19) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0)} : (i1, i1) -> ()
+        "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0)} : () -> ()
+      }) {kConcurrencyGroup = 0 : i64, kContextType = "kRolled", kName = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputY", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0), rail.kMetapipeIterCounts = [1], sym_name = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputY"} : () -> ()
+      "rail.terminator"() {kSourceContext = loc("LogregTorchSamba.cpp":253:0)} : () -> ()
+    }) {kFIFOMode = false, kName = "tbuf1a_1_0_85", kSourceContext = loc("LogregTorchSamba.cpp":253:0), params = {kDepth = 1 : i64, kLayout = {alignments = [[0, 64]], base_address = 0 : i64, dim_order = [0], format = 3 : i64, shape = [1], vector_transpose = 0 : i64}, kMinMaxCapacitySplit = true, kMinPmus = -1 : i64, kPacingWindow = -1 : i64, kSplitAlgorithm = 0 : i64}, sym_name = "tbuf1a_1_0_85"} : () -> ()
+    module_terminator {kSourceContext = loc("LogregTorchSamba.cpp":253:0)}
   }
-  module @LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_ attributes {rail.kMetapipeIterCounts = [1]}  {
-    module_terminator {kSourceContext = loc("LogregTorchSamba.cpp":1961:0)}
-  }
-  module @tbuf2u_1_0_258  {
+  module @tbuf1a_1_0_86  {
     "rail.buffer"() ( {
-      "rail.context"() ( {
-        %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0), kValue = 0 : i64} : () -> ui32
-        %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0), kValue = 1 : i64} : () -> ui32
-        %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0), kValue = 3 : i64} : () -> ui32
-        %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0)} : (ui32, ui32, ui32) -> ui32
-        %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0), kValue = 0 : i64} : () -> ui32
-        %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0), kValue = 32 : i64} : () -> ui32
-        %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0), kValue = 136 : i64} : () -> ui32
-        %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0)} : (ui32, ui32, ui32) -> ui32
-        "rail.iterchain"(%7, %11) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0)} : (ui32, ui32) -> ()
-        %12 = "rail.ctrdone"(%7) {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0)} : (ui32) -> i1
-        %13 = "rail.ctxdone"(%12) {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0)} : (i1) -> i1
-        %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0), kValue = true} : () -> i1
-        %15 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0), kValue = true} : () -> i1
-        %16 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0), kValue = 0 : i64} : () -> ui32
-        %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0), kValue = 0 : i64} : () -> ui32
-        %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0), kValue = 0 : i64} : () -> ui32
-        "rail.addr"(%11, %7, %14, %15, %16, %17, %18) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0), kVecDim = 0 : i64} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-        %19 = "rail.io.control_out"() {kCtxName = "LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kOutWr", kLanes = [], kPortName = "1000", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kUnitName = "tbuf2u_1_0_258", sym_name = "1000"} : () -> i1
-        "rail.send"(%13, %19) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (i1, i1) -> ()
-        "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0)} : () -> ()
-      }) {kArithSplit = true, kContextType = "kRolled", kName = "LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kOutWr", kSourceContext = loc("software/templates/src/templates/index/rail/Index.cpp":161:0), rail.kMetapipeIterCounts = [1], sym_name = "LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kOutWr"} : () -> ()
       "rail.context"() ( {
         %4 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
         %5 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 32 : i64} : () -> ui32
-        %6 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 136 : i64} : () -> ui32
-        %7 = "rail.iterator"(%4, %5, %6) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32) -> ui32
+        %6 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 1 : i64} : () -> ui32
+        %7 = "rail.iterator"(%4, %5, %6) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32) -> ui32
+        "rail.iterchain"(%7) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32) -> ()
+        %8 = "rail.ctrdone"(%7) {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32) -> i1
+        %9 = "rail.ctxdone"(%8) {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (i1) -> i1
+        %10 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = true} : () -> i1
+        %11 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = true} : () -> i1
+        %12 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
+        %13 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
+        %14 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
+        "rail.addr"(%7, %10, %11, %12, %13, %14) {kDim = 1 : i8, kMemOp = true, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, i1, i1, ui32, ui32, ui32) -> ()
+        "rail.terminator"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : () -> ()
+      }) {kContextType = "kRolled", kName = "kFrontDynamicWriteCtx", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), rail.kMetapipeIterCounts = [1], sym_name = "kFrontDynamicWriteCtx"} : () -> ()
+      "rail.context"() ( {
+        %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0), kValue = 0 : i64} : () -> ui32
+        %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0), kValue = 1 : i64} : () -> ui32
+        %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0), kValue = 12 : i64} : () -> ui32
+        %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0)} : (ui32, ui32, ui32) -> ui32
+        %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0), kValue = 0 : i64} : () -> ui32
+        %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0), kValue = 32 : i64} : () -> ui32
+        %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0), kValue = 1 : i64} : () -> ui32
+        %11 = "rail.iterator"(%8, %9, %10) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0)} : (ui32, ui32, ui32) -> ui32
+        %12 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0)} : (ui32) -> i1
+        %13 = "rail.ctxdone"(%12) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0)} : (i1) -> i1
+        "rail.iterchain"(%11, %7) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0)} : (ui32, ui32) -> ()
+        %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0), kValue = true} : () -> i1
+        %15 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0), kValue = true} : () -> i1
+        %16 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0), kValue = 0 : i64} : () -> ui32
+        %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0), kValue = 0 : i64} : () -> ui32
+        %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0), kValue = 0 : i64} : () -> ui32
+        "rail.addr"(%11, %14, %15, %16, %17, %18) {kDim = 1 : i8, kMemOp = false, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0), kVecDim = 0 : i64} : (ui32, i1, i1, ui32, ui32, ui32) -> ()
+        %19 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0)} : (ui32) -> i1
+        %20 = "rail.io.control_in"() {kCtxName = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputLoss", kLanes = [], kPortName = "phase2_strip_done", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0), kUnitName = "tbuf1a_1_0_86", sym_name = "phase2_strip_done"} : () -> i1
+        "rail.inbuf"(%20, %19) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0)} : (i1, i1) -> ()
+        "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0)} : () -> ()
+      }) {kConcurrencyGroup = 0 : i64, kContextType = "kRolled", kName = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputLoss", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0), rail.kMetapipeIterCounts = [1], sym_name = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputLoss"} : () -> ()
+      "rail.terminator"() {kSourceContext = loc("LogregTorchSamba.cpp":264:0)} : () -> ()
+    }) {kFIFOMode = false, kName = "tbuf1a_1_0_86", kSourceContext = loc("LogregTorchSamba.cpp":264:0), params = {kDepth = 1 : i64, kLayout = {alignments = [[0, 64]], base_address = 0 : i64, dim_order = [0], format = 9 : i64, shape = [1], vector_transpose = 0 : i64}, kMinMaxCapacitySplit = true, kMinPmus = -1 : i64, kPacingWindow = -1 : i64, kSplitAlgorithm = 0 : i64}, sym_name = "tbuf1a_1_0_86"} : () -> ()
+    module_terminator {kSourceContext = loc("LogregTorchSamba.cpp":264:0)}
+  }
+  module @tbuf1a_1_0_87  {
+    "rail.buffer"() ( {
+      "rail.context"() ( {
+        %4 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
+        %5 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 1 : i64} : () -> ui32
+        %6 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 10 : i64} : () -> ui32
+        %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32) -> ui32
         %8 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-        %9 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 1 : i64} : () -> ui32
-        %10 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 3 : i64} : () -> ui32
-        %11 = "rail.iterator"(%8, %9, %10) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32) -> ui32
+        %9 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 32 : i64} : () -> ui32
+        %10 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 1 : i64} : () -> ui32
+        %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32) -> ui32
+        "rail.iterchain"(%11, %7) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32) -> ()
+        %12 = "rail.ctrdone"(%11) {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32) -> i1
+        %13 = "rail.ctxdone"(%12) {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (i1) -> i1
+        %14 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = true} : () -> i1
+        %15 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = true} : () -> i1
+        %16 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
+        %17 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
+        %18 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
+        "rail.addr"(%7, %11, %14, %15, %16, %17, %18) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
+        "rail.terminator"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : () -> ()
+      }) {kContextType = "kRolled", kName = "kDefaultWrite", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), rail.kMetapipeIterCounts = [1], sym_name = "kDefaultWrite"} : () -> ()
+      "rail.context"() ( {
+        %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kValue = 0 : i64} : () -> ui32
+        %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kValue = 1 : i64} : () -> ui32
+        %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kValue = 2 : i64} : () -> ui32
+        %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0)} : (ui32, ui32, ui32) -> ui32
+        %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kValue = 0 : i64} : () -> ui32
+        %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kValue = 32 : i64} : () -> ui32
+        %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kValue = 1 : i64} : () -> ui32
+        %11 = "rail.iterator"(%8, %9, %10) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0)} : (ui32, ui32, ui32) -> ui32
+        %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kValue = 0 : i64} : () -> ui32
+        %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kValue = 1 : i64} : () -> ui32
+        %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kValue = 12 : i64} : () -> ui32
+        %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0)} : (ui32, ui32, ui32) -> ui32
+        %16 = "rail.ctrdone"(%7) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0)} : (ui32) -> i1
+        %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0)} : (i1) -> i1
+        "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0)} : (ui32, ui32, ui32) -> ()
+        %18 = "rail.ctrdone"(%7) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0)} : (ui32) -> i1
+        %19 = "rail.io.control_out"() {kCtxName = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0", kLanes = [], kPortName = "1000", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kUnitName = "tbuf1a_1_0_87", sym_name = "1000"} : () -> i1
+        "rail.send"(%18, %19) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0)} : (i1, i1) -> ()
+        %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kValue = true} : () -> i1
+        %21 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kValue = true} : () -> i1
+        %22 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kValue = 0 : i64} : () -> ui32
+        %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kValue = 0 : i64} : () -> ui32
+        %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kValue = 0 : i64} : () -> ui32
+        %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kValue = 10 : i64} : () -> ui32
+        %26 = "rail.less_than"(%15, %25) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0)} : (ui32, ui32) -> i1
+        "rail.addr"(%15, %11, %20, %26, %22, %23, %24) {kDim = 2 : i8, kMemOp = false, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kVecDim = 1 : i64} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
+        %27 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0)} : (ui32) -> i1
+        %28 = "rail.ctrdone"(%7) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0)} : (ui32) -> i1
+        %29 = "rail.ctrdone"(%7) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0)} : (ui32) -> i1
+        %30 = "rail.io.control_in"() {kCtxName = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0", kLanes = [], kPortName = "phase0_strip_done", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kUnitName = "tbuf1a_1_0_87", sym_name = "phase0_strip_done"} : () -> i1
+        %31 = "rail.io.control_in"() {kCtxName = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0", kLanes = [], kPortName = "phase1_strip_done", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kUnitName = "tbuf1a_1_0_87", sym_name = "phase1_strip_done"} : () -> i1
+        %32 = "rail.or"(%30, %31) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0)} : (i1, i1) -> i1
+        "rail.inbuf"(%32, %27) {kInit = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0)} : (i1, i1) -> ()
+        %33 = "rail.io.control_in"() {kCtxName = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0", kLanes = [], kPortName = "phase3_strip_done", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kUnitName = "tbuf1a_1_0_87", sym_name = "phase3_strip_done"} : () -> i1
+        "rail.inbuf"(%33, %28) {kInit = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0)} : (i1, i1) -> ()
+        %34 = "rail.io.control_out"() {kCtxName = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0", kLanes = [], kPortName = "kSecondReplayDone", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), kUnitName = "tbuf1a_1_0_87", sym_name = "kSecondReplayDone"} : () -> i1
+        "rail.send"(%28, %34) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0)} : (i1, i1) -> ()
+        "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0)} : () -> ()
+      }) {kArithSplit = true, kConcurrencyGroup = 0 : i64, kContextType = "kRolled", kDispatchIds = {data = [[0 : i32]], dims = [1]}, kName = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0", kPacingWindow = 12 : i64, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0), rail.kMetapipeIterCounts = [1], sym_name = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0"} : () -> ()
+      "rail.terminator"() {kSourceContext = loc("LogregTorchSamba.cpp":275:0)} : () -> ()
+    }) {kBankByDuplication = true, kFIFOMode = false, kName = "tbuf1a_1_0_87", kSourceContext = loc("LogregTorchSamba.cpp":275:0), params = {kDepth = 1 : i64, kLayout = {alignments = [[1, 64]], base_address = 0 : i64, dim_order = [0, 1], format = 9 : i64, shape = [10, 1], vector_transpose = 0 : i64}, kMinMaxCapacitySplit = true, kMinPmus = -1 : i64, kPacingWindow = -1 : i64, kSplitAlgorithm = 0 : i64}, sym_name = "tbuf1a_1_0_87"} : () -> ()
+    module_terminator {kSourceContext = loc("LogregTorchSamba.cpp":275:0)}
+  }
+  module @LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss attributes {rail.kMetapipeIterCounts = [1]}  {
+    module @tcompute0  {
+      "rail.tcompute"() ( {
+        "rail.context"() ( {
+          %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 0 : i64} : () -> ui16
+          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 32 : i64} : () -> ui16
+          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 1 : i64} : () -> ui16
+          %14 = "rail.iterator"(%11, %12, %13) {Par = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16, ui16, ui16) -> ui16
+          %15 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16) -> i1
+          %16 = "rail.ctxdone"(%15) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (i1) -> i1
+          %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 0 : i64} : () -> ui16
+          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 1 : i64} : () -> ui16
+          %19 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 12 : i64} : () -> ui16
+          %20 = "rail.iterator"(%17, %18, %19) {Par = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16, ui16, ui16) -> ui16
+          %21 = "rail.io.vector_in"() {kCtxName = "phase0", kLanes = [], kPortName = "0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase0_vector_in_0"} : () -> vector<32xbf16>
+          %22 = "rail.io.vector_out"() {kCtxName = "phase0", kLanes = [], kPortName = "2000", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase0_vector_out_2000"} : () -> vector<32xbf16>
+          "rail.for_loop"(%14) ( {
+            %27:2 = "rail.accumulator"() {kInitValue = 0xFFF0000000000000 : f64, kNumStages = 1 : i64, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : () -> (vector<32xbf16>, vector<1x32xbf16>)
+            "rail.for_loop"(%20) ( {
+              %28 = "rail.pop"(%21) {kInstructionStageType = 1 : i64, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>) -> vector<32xbf16>
+              %29 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = -9.984000e+04 : bf16} : () -> bf16
+              %30 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 10 : i64} : () -> ui16
+              %31 = "rail.less_than"(%20, %30) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16, ui16) -> i1
+              %32 = "rail.ifelse"(%31, %28, %29) {kInstructionStageType = 2 : i64, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (i1, vector<32xbf16>, bf16) -> vector<32xbf16>
+              %33 = "rail.max"(%32, %27#0) {kInstructionStageType = 2 : i64, kIsAccumulated = true, kIsArithmetic = true, kIsBinaryOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>, vector<32xbf16>) -> vector<32xbf16>
+              "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":678:0)} : () -> ()
+            }) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":678:0), type = none} : (ui16) -> ()
+            "rail.send"(%27#0, %22) {kInstructionStageType = 0 : i64, kIsDataPathOp = true, kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>, vector<32xbf16>) -> ()
+            "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":680:0)} : () -> ()
+          }) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":680:0), type = none} : (ui16) -> ()
+          %23 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16) -> i1
+          %24 = "rail.io.control_in"() {kCtxName = "phase0", kLanes = [], kPortName = "kBegin", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase0_control_in_kBegin"} : () -> i1
+          "rail.inbuf"(%24, %23) {kInit = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (i1, i1) -> ()
+          %25 = "rail.io.control_out"() {kCtxName = "phase0", kLanes = [], kPortName = "kDone", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase0_control_out_kDone"} : () -> i1
+          %26 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16) -> i1
+          "rail.send"(%26, %25) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (i1, i1) -> ()
+          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : () -> ()
+        }) {kContextTableEntry = {kNetwork = 0 : i64}, kName = "phase0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), sym_name = "phase0"} : () -> ()
+        "rail.context"() ( {
+          %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 0 : i64} : () -> ui16
+          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 1 : i64} : () -> ui16
+          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 12 : i64} : () -> ui16
+          %14 = "rail.iterator"(%11, %12, %13) {Par = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16, ui16, ui16) -> ui16
+          %15 = "rail.io.vector_in"() {kCtxName = "phase1", kLanes = [], kPortName = "9000", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase1_vector_in_9000"} : () -> vector<32xbf16>
+          %16 = "rail.io.vector_in"() {kCtxName = "phase1", kLanes = [], kPortName = "6000", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase1_vector_in_6000"} : () -> vector<32xbf16>
+          %17 = "rail.io.vector_out"() {kCtxName = "phase1", kLanes = [], kPortName = "10000", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase1_vector_out_10000"} : () -> vector<32xbf16>
+          "rail.for_loop"(%14) ( {
+            %22 = "rail.pop"(%16) {kInstructionStageType = 1 : i64, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>) -> vector<32xbf16>
+            %23 = "rail.pop"(%15) {kInstructionStageType = 1 : i64, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>) -> vector<32xbf16>
+            %24 = "rail.sub"(%23, %22) {kInstructionStageType = 2 : i64, kIsArithmetic = true, kIsBinaryOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>, vector<32xbf16>) -> vector<32xbf16>
+            %25 = "rail.exp"(%24) {kInstructionStageType = 3 : i64, kIsDataPathOp = true, kIsTailComplexOp = true, kIsUnaryOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>) -> vector<32xbf16>
+            "rail.send"(%25, %17) {kInstructionStageType = 0 : i64, kIsDataPathOp = true, kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>, vector<32xbf16>) -> ()
+            "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":718:0)} : () -> ()
+          }) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":718:0), type = none} : (ui16) -> ()
+          %18 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16) -> i1
+          %19 = "rail.io.control_in"() {kCtxName = "phase1", kLanes = [], kPortName = "kBegin", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase1_control_in_kBegin"} : () -> i1
+          "rail.inbuf"(%19, %18) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (i1, i1) -> ()
+          %20 = "rail.io.control_out"() {kCtxName = "phase1", kLanes = [], kPortName = "kDone", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase1_control_out_kDone"} : () -> i1
+          %21 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16) -> i1
+          "rail.send"(%21, %20) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (i1, i1) -> ()
+          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : () -> ()
+        }) {kContextTableEntry = {kNetwork = 0 : i64}, kName = "phase1", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), sym_name = "phase1"} : () -> ()
+        "rail.context"() ( {
+          %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 0 : i64} : () -> ui16
+          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 32 : i64} : () -> ui16
+          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 1 : i64} : () -> ui16
+          %14 = "rail.iterator"(%11, %12, %13) {Par = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16, ui16, ui16) -> ui16
+          %15 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16) -> i1
+          %16 = "rail.ctxdone"(%15) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (i1) -> i1
+          %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 0 : i64} : () -> ui16
+          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 1 : i64} : () -> ui16
+          %19 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 12 : i64} : () -> ui16
+          %20 = "rail.iterator"(%17, %18, %19) {Par = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16, ui16, ui16) -> ui16
+          %21 = "rail.io.vector_in"() {kCtxName = "phase2", kLanes = [], kPortName = "12000", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase2_vector_in_12000"} : () -> vector<32xbf16>
+          %22 = "rail.io.vector_out"() {kCtxName = "phase2", kLanes = [], kPortName = "7000", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase2_vector_out_7000"} : () -> vector<32xbf16>
+          "rail.for_loop"(%14) ( {
+            %27:2 = "rail.accumulator"() {kInitValue = 0.000000e+00 : f32, kNumStages = 1 : i64, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : () -> (vector<32xbf16>, vector<1x32xbf16>)
+            "rail.for_loop"(%20) ( {
+              %29 = "rail.pop"(%21) {kInstructionStageType = 1 : i64, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>) -> vector<32xbf16>
+              %30 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 0.000000e+00 : bf16} : () -> bf16
+              %31 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 10 : i64} : () -> ui16
+              %32 = "rail.less_than"(%20, %31) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16, ui16) -> i1
+              %33 = "rail.ifelse"(%32, %29, %30) {kInstructionStageType = 2 : i64, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (i1, vector<32xbf16>, bf16) -> vector<32xbf16>
+              %34 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 1.000000e+00 : bf16} : () -> bf16
+              "rail.tcompute_fma"(%33, %34, %27#0) {kInstructionStageType = 2 : i64, kIsArithmetic = true, kIsDataPathOp = true, kOpRWPattern2 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>, bf16, vector<32xbf16>) -> ()
+              "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":748:0)} : () -> ()
+            }) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":748:0), type = none} : (ui16) -> ()
+            %28 = "rail.recip"(%27#0) {kInstructionStageType = 3 : i64, kIsDataPathOp = true, kIsTailComplexOp = true, kIsUnaryOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>) -> vector<32xbf16>
+            "rail.send"(%28, %22) {kInstructionStageType = 0 : i64, kIsDataPathOp = true, kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>, vector<32xbf16>) -> ()
+            "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":751:0)} : () -> ()
+          }) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":751:0), type = none} : (ui16) -> ()
+          %23 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16) -> i1
+          %24 = "rail.io.control_in"() {kCtxName = "phase2", kLanes = [], kPortName = "kBegin", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase2_control_in_kBegin"} : () -> i1
+          "rail.inbuf"(%24, %23) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (i1, i1) -> ()
+          %25 = "rail.io.control_out"() {kCtxName = "phase2", kLanes = [], kPortName = "kDone", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase2_control_out_kDone"} : () -> i1
+          %26 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16) -> i1
+          "rail.send"(%26, %25) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (i1, i1) -> ()
+          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : () -> ()
+        }) {kContextTableEntry = {kNetwork = 0 : i64}, kName = "phase2", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), sym_name = "phase2"} : () -> ()
+        "rail.context"() ( {
+          %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 0 : i64} : () -> ui16
+          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 32 : i64} : () -> ui16
+          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 1 : i64} : () -> ui16
+          %14 = "rail.iterator"(%11, %12, %13) {Par = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16, ui16, ui16) -> ui16
+          %15 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16) -> i1
+          %16 = "rail.ctxdone"(%15) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (i1) -> i1
+          %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 0 : i64} : () -> ui16
+          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 1 : i64} : () -> ui16
+          %19 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 12 : i64} : () -> ui16
+          %20 = "rail.iterator"(%17, %18, %19) {Par = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16, ui16, ui16) -> ui16
+          %21 = "rail.io.vector_in"() {kCtxName = "phase3", kLanes = [], kPortName = "21000", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase3_vector_in_21000"} : () -> vector<32xi16>
+          %22 = "rail.io.vector_in"() {kCtxName = "phase3", kLanes = [], kPortName = "16000", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase3_vector_in_16000"} : () -> vector<32xbf16>
+          %23 = "rail.io.vector_in"() {kCtxName = "phase3", kLanes = [], kPortName = "17000", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase3_vector_in_17000"} : () -> vector<32xbf16>
+          %24 = "rail.io.vector_in"() {kCtxName = "phase3", kLanes = [], kPortName = "20000", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase3_vector_in_20000"} : () -> vector<32xbf16>
+          %25 = "rail.io.vector_out"() {kCtxName = "phase3", kLanes = [], kPortName = "15000", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase3_vector_out_15000"} : () -> vector<32xbf16>
+          "rail.for_loop"(%14) ( {
+            "rail.for_loop"(%20) ( {
+              %30 = "rail.pop"(%21) {kInstructionStageType = 1 : i64, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xi16>) -> vector<32xi16>
+              %31 = "rail.equal"(%30, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xi16>, ui16) -> vector<32xi1>
+              %32 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 1.000000e+00 : bf16} : () -> bf16
+              %33 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kValue = 0.000000e+00 : bf16} : () -> bf16
+              %34 = "rail.ifelse"(%31, %32, %33) {kInstructionStageType = 2 : i64, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xi1>, bf16, bf16) -> vector<32xbf16>
+              %35 = "rail.pop"(%22) {kInstructionStageType = 1 : i64, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>) -> vector<32xbf16>
+              %36 = "rail.pop"(%23) {kInstructionStageType = 1 : i64, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>) -> vector<32xbf16>
+              %37 = "rail.mul"(%35, %36) {kInstructionStageType = 2 : i64, kIsArithmetic = true, kIsBinaryOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>, vector<32xbf16>) -> vector<32xbf16>
+              %38 = "rail.sub"(%37, %34) {kInstructionStageType = 2 : i64, kIsArithmetic = true, kIsBinaryOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>, vector<32xbf16>) -> vector<32xbf16>
+              %39 = "rail.pop"(%24) {kInstructionStageType = 1 : i64, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>) -> vector<32xbf16>
+              %40 = "rail.mul"(%38, %39) {kInstructionStageType = 2 : i64, kIsArithmetic = true, kIsBinaryOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>, vector<32xbf16>) -> vector<32xbf16>
+              "rail.send"(%40, %25) {kInstructionStageType = 0 : i64, kIsDataPathOp = true, kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (vector<32xbf16>, vector<32xbf16>) -> ()
+              "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":849:0)} : () -> ()
+            }) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":849:0), type = none} : (ui16) -> ()
+            "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":850:0)} : () -> ()
+          }) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":850:0), type = none} : (ui16) -> ()
+          %26 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16) -> i1
+          %27 = "rail.io.control_in"() {kCtxName = "phase3", kLanes = [], kPortName = "kBegin", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase3_control_in_kBegin"} : () -> i1
+          "rail.inbuf"(%27, %26) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (i1, i1) -> ()
+          %28 = "rail.io.control_out"() {kCtxName = "phase3", kLanes = [], kPortName = "kDone", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase3_control_out_kDone"} : () -> i1
+          %29 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (ui16) -> i1
+          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : (i1, i1) -> ()
+          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : () -> ()
+        }) {kContextTableEntry = {kNetwork = 1 : i64}, kName = "phase3", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), sym_name = "phase3"} : () -> ()
+        "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)} : () -> ()
+      }) {kDataFormat = "BF16", kDisableContextSplit = true, kName = "tcompute0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), sym_name = "tcompute0"} : () -> ()
+      module_terminator {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0)}
+    }
+    "rail.TConnect"() {kDst = @tcompute0::@tcompute0::@phase0::@tcompute0_tcompute_phase0_control_in_kBegin, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kSrc = @tcompute0::@tcompute0::@phase3::@tcompute0_tcompute_phase3_control_out_kDone} : () -> ()
+    "rail.TConnect"() {kDst = @tcompute0::@tcompute0::@phase1::@tcompute0_tcompute_phase1_control_in_kBegin, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kSrc = @tcompute0::@tcompute0::@phase0::@tcompute0_tcompute_phase0_control_out_kDone} : () -> ()
+    "rail.TConnect"() {kDst = @tcompute0::@tcompute0::@phase2::@tcompute0_tcompute_phase2_control_in_kBegin, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kSrc = @tcompute0::@tcompute0::@phase1::@tcompute0_tcompute_phase1_control_out_kDone} : () -> ()
+    "rail.TConnect"() {kDst = @tcompute0::@tcompute0::@phase3::@tcompute0_tcompute_phase3_control_in_kBegin, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1865:0), kSrc = @tcompute0::@tcompute0::@phase2::@tcompute0_tcompute_phase2_control_out_kDone} : () -> ()
+    module @tbuf_tmp0  {
+      "rail.buffer"() ( {
+        "rail.context"() ( {
+          %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kValue = 0 : i64} : () -> ui32
+          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kValue = 32 : i64} : () -> ui32
+          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kValue = 1 : i64} : () -> ui32
+          %14 = "rail.iterator"(%11, %12, %13) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0)} : (ui32, ui32, ui32) -> ui32
+          %15 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0)} : (ui32) -> i1
+          %16 = "rail.ctxdone"(%15) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0)} : (i1) -> i1
+          "rail.iterchain"(%14) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0)} : (ui32) -> ()
+          %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kValue = 13 : i64} : () -> ui32
+          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kValue = true} : () -> i1
+          %19 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kValue = true} : () -> i1
+          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kValue = 0 : i64} : () -> ui32
+          %21 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kValue = 0 : i64} : () -> ui32
+          %22 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kValue = 0 : i64} : () -> ui32
+          "rail.addr"(%17, %14, %18, %19, %20, %21, %22) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kVecDim = 1 : i64} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
+          %23 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0)} : (ui32) -> i1
+          %24 = "rail.io.control_in"() {kCtxName = "phaseW0", kLanes = [], kPortName = "kBeginFromTCompute0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kUnitName = "tbuf_tmp0", sym_name = "kBeginFromTCompute0"} : () -> i1
+          "rail.inbuf"(%24, %23) {kInit = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0)} : (i1, i1) -> ()
+          %25 = "rail.io.control_out"() {kCtxName = "phaseW0", kLanes = [], kPortName = "kDone", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", sym_name = "kDone"} : () -> i1
+          "rail.send"(%16, %25) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1, i1) -> ()
+          %26 = "rail.io.control_in"() {kCtxName = "phaseW0", kLanes = [], kName = "kBegin0", kPortName = "kBegin0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", sym_name = "kBegin0"} : () -> i1
+          "rail.inbuf"(%26, %16) {kInit = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1, i1) -> ()
+          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0)} : () -> ()
+        }) {kConcurrencyGroup = 0 : i64, kContextType = "kRolled", kDisableFullStall = true, kName = "phaseW0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), sym_name = "phaseW0"} : () -> ()
+        "rail.context"() ( {
+          %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 0 : i64} : () -> ui32
+          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 1 : i64} : () -> ui32
+          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 12 : i64} : () -> ui32
+          %14 = "rail.iterator"(%11, %12, %13) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (ui32, ui32, ui32) -> ui32
+          %15 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 0 : i64} : () -> ui32
+          %16 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 32 : i64} : () -> ui32
+          %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 1 : i64} : () -> ui32
+          %18 = "rail.iterator"(%15, %16, %17) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (ui32, ui32, ui32) -> ui32
+          %19 = "rail.ctrdone"(%18) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (ui32) -> i1
+          %20 = "rail.ctxdone"(%19) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1) -> i1
+          "rail.iterchain"(%18, %14) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (ui32, ui32) -> ()
+          %21 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 13 : i64} : () -> ui32
+          %22 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = true} : () -> i1
+          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = true} : () -> i1
+          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 0 : i64} : () -> ui32
+          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 0 : i64} : () -> ui32
+          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 0 : i64} : () -> ui32
+          "rail.addr"(%21, %18, %22, %23, %24, %25, %26) {kDim = 2 : i8, kMemOp = false, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kVecDim = 1 : i64} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
+          %27 = "rail.ctrdone"(%18) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (ui32) -> i1
+          %28 = "rail.io.control_in"() {kCtxName = "phaseRMax", kLanes = [], kPortName = "kBeginFromTCompute0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", sym_name = "kBeginFromTCompute0"} : () -> i1
+          "rail.inbuf"(%28, %27) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1, i1) -> ()
+          %29 = "rail.ctrdone"(%18) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (ui32) -> i1
+          %30 = "rail.io.control_in"() {kCtxName = "phaseRMax", kLanes = [], kPortName = "kBeginFromTCompute1", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", sym_name = "kBeginFromTCompute1"} : () -> i1
+          "rail.inbuf"(%30, %29) {kInit = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1, i1) -> ()
+          %31 = "rail.io.control_in"() {kCtxName = "phaseRMax", kLanes = [], kName = "kBegin0", kPortName = "kBegin0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", sym_name = "kBegin0"} : () -> i1
+          "rail.inbuf"(%31, %20) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1, i1) -> ()
+          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : () -> ()
+        }) {kConcurrencyGroup = 0 : i64, kContextType = "kRolled", kDisableEmptyStall = true, kDisableEmptyStallEarly = false, kExplicitCtxSwitch = ["phaseRExp0"], kExplicitMemPort = 1 : i64, kName = "phaseRMax", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), sym_name = "phaseRMax"} : () -> ()
+        "rail.context"() ( {
+          %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0), kValue = 0 : i64} : () -> ui32
+          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0), kValue = 1 : i64} : () -> ui32
+          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0), kValue = 12 : i64} : () -> ui32
+          %14 = "rail.iterator"(%11, %12, %13) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0)} : (ui32, ui32, ui32) -> ui32
+          %15 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0), kValue = 0 : i64} : () -> ui32
+          %16 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0), kValue = 32 : i64} : () -> ui32
+          %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0), kValue = 1 : i64} : () -> ui32
+          %18 = "rail.iterator"(%15, %16, %17) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0)} : (ui32, ui32, ui32) -> ui32
+          "rail.iterchain"(%18, %14) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0)} : (ui32, ui32) -> ()
+          %19 = "rail.ctrdone"(%18) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0)} : (ui32) -> i1
+          %20 = "rail.ctxdone"(%19) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0)} : (i1) -> i1
+          %21 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0), kValue = 0 : i64} : () -> ui32
+          %22 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0), kValue = 0 : i64} : () -> ui32
+          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0), kValue = true} : () -> i1
+          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0), kValue = true} : () -> i1
+          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0), kValue = 0 : i64} : () -> ui32
+          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0), kValue = 0 : i64} : () -> ui32
+          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0), kValue = 0 : i64} : () -> ui32
+          %28 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0), kValue = false} : () -> i1
+          "rail.addr"(%21, %22, %28, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = false, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0), kVecDim = 1 : i64} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
+          %29 = "rail.io.control_in"() {kCtxName = "phase_rd_dummy", kLanes = [], kName = "kBegin0", kPortName = "kBegin0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", sym_name = "kBegin0"} : () -> i1
+          "rail.inbuf"(%29, %20) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1, i1) -> ()
+          %30 = "rail.io.control_out"() {kCtxName = "phase_rd_dummy", kLanes = [], kPortName = "kDone", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", sym_name = "kDone"} : () -> i1
+          "rail.send"(%20, %30) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1, i1) -> ()
+          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0)} : () -> ()
+        }) {kConcurrencyGroup = 0 : i64, kContextType = "kRolled", kDisableEmptyStall = true, kDisableEmptyStallEarly = false, kExplicitCtxSwitch = ["phaseRSumRecip"], kExplicitMemPort = 2 : i64, kName = "phase_rd_dummy", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0), sym_name = "phase_rd_dummy"} : () -> ()
+        "rail.context"() ( {
+          %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0), kValue = 0 : i64} : () -> ui32
+          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0), kValue = 1 : i64} : () -> ui32
+          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0), kValue = 12 : i64} : () -> ui32
+          %14 = "rail.iterator"(%11, %12, %13) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0)} : (ui32, ui32, ui32) -> ui32
+          %15 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0), kValue = 0 : i64} : () -> ui32
+          %16 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0), kValue = 32 : i64} : () -> ui32
+          %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0), kValue = 1 : i64} : () -> ui32
+          %18 = "rail.iterator"(%15, %16, %17) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0)} : (ui32, ui32, ui32) -> ui32
+          %19 = "rail.ctrdone"(%18) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0)} : (ui32) -> i1
+          %20 = "rail.ctxdone"(%19) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0)} : (i1) -> i1
+          "rail.iterchain"(%18, %14) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0)} : (ui32, ui32) -> ()
+          %21 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0), kValue = true} : () -> i1
+          %22 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0), kValue = true} : () -> i1
+          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0), kValue = 0 : i64} : () -> ui32
+          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0), kValue = 0 : i64} : () -> ui32
+          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0), kValue = 0 : i64} : () -> ui32
+          "rail.addr"(%14, %18, %21, %22, %23, %24, %25) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0), kVecDim = 1 : i64} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
+          %26 = "rail.ctrdone"(%18) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0)} : (ui32) -> i1
+          %27 = "rail.io.control_in"() {kCtxName = "phaseW1", kLanes = [], kPortName = "kBeginFromTCompute0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0), kUnitName = "tbuf_tmp0", sym_name = "kBeginFromTCompute0"} : () -> i1
+          "rail.inbuf"(%27, %26) {kInit = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0)} : (i1, i1) -> ()
+          %28 = "rail.io.control_in"() {kCtxName = "phaseW1", kLanes = [], kName = "kBegin0", kPortName = "kBegin0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", sym_name = "kBegin0"} : () -> i1
+          "rail.inbuf"(%28, %20) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1, i1) -> ()
+          %29 = "rail.io.control_out"() {kCtxName = "phaseW1", kLanes = [], kPortName = "kDone", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", sym_name = "kDone"} : () -> i1
+          "rail.send"(%20, %29) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1, i1) -> ()
+          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0)} : () -> ()
+        }) {kConcurrencyGroup = 1 : i64, kContextType = "kRolled", kDisableFullStall = true, kName = "phaseW1", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0), sym_name = "phaseW1"} : () -> ()
+        "rail.context"() ( {
+          %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = 0 : i64} : () -> ui32
+          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = 32 : i64} : () -> ui32
+          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = 1 : i64} : () -> ui32
+          %14 = "rail.iterator"(%11, %12, %13) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)} : (ui32, ui32, ui32) -> ui32
+          %15 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = 0 : i64} : () -> ui32
+          %16 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = 1 : i64} : () -> ui32
+          %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = 12 : i64} : () -> ui32
+          %18 = "rail.iterator"(%15, %16, %17) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)} : (ui32, ui32, ui32) -> ui32
+          %19 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)} : (ui32) -> i1
+          %20 = "rail.ctxdone"(%19) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)} : (i1) -> i1
+          "rail.iterchain"(%14, %18) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)} : (ui32, ui32) -> ()
+          %21 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = true} : () -> i1
+          %22 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = true} : () -> i1
+          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = 0 : i64} : () -> ui32
+          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = 0 : i64} : () -> ui32
+          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = 0 : i64} : () -> ui32
+          "rail.addr"(%18, %14, %21, %22, %23, %24, %25) {kDim = 2 : i8, kMemOp = false, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kVecDim = 1 : i64} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
+          %26 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)} : (ui32) -> i1
+          %27 = "rail.io.control_in"() {kCtxName = "phaseRExp0", kLanes = [], kPortName = "kBeginFromTCompute0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kUnitName = "tbuf_tmp0", sym_name = "kBeginFromTCompute0"} : () -> i1
+          "rail.inbuf"(%27, %26) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)} : (i1, i1) -> ()
+          %28 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)} : (ui32) -> i1
+          %29 = "rail.io.control_in"() {kCtxName = "phaseRExp0", kLanes = [], kPortName = "kBeginFromTCompute1", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kUnitName = "tbuf_tmp0", sym_name = "kBeginFromTCompute1"} : () -> i1
+          "rail.inbuf"(%29, %28) {kInit = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)} : (i1, i1) -> ()
+          %30 = "rail.io.control_in"() {kCtxName = "phaseRExp0", kLanes = [], kName = "kBegin0", kPortName = "kBegin0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", sym_name = "kBegin0"} : () -> i1
+          "rail.inbuf"(%30, %20) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1, i1) -> ()
+          %31 = "rail.io.control_out"() {kCtxName = "phaseRExp0", kLanes = [], kPortName = "kDone", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", sym_name = "kDone"} : () -> i1
+          "rail.send"(%20, %31) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1, i1) -> ()
+          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)} : () -> ()
+        }) {kConcurrencyGroup = 1 : i64, kContextType = "kRolled", kDisableEmptyStall = true, kDisableEmptyStallEarly = false, kExplicitCtxSwitch = ["phaseRSumRecip"], kExplicitMemPort = 1 : i64, kName = "phaseRExp0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), sym_name = "phaseRExp0"} : () -> ()
+        "rail.context"() ( {
+          %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kValue = 0 : i64} : () -> ui32
+          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kValue = 32 : i64} : () -> ui32
+          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kValue = 1 : i64} : () -> ui32
+          %14 = "rail.iterator"(%11, %12, %13) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0)} : (ui32, ui32, ui32) -> ui32
+          %15 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0)} : (ui32) -> i1
+          %16 = "rail.ctxdone"(%15) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0)} : (i1) -> i1
+          "rail.iterchain"(%14) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0)} : (ui32) -> ()
+          %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kValue = 12 : i64} : () -> ui32
+          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kValue = true} : () -> i1
+          %19 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kValue = true} : () -> i1
+          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kValue = 0 : i64} : () -> ui32
+          %21 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kValue = 0 : i64} : () -> ui32
+          %22 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kValue = 0 : i64} : () -> ui32
+          "rail.addr"(%17, %14, %18, %19, %20, %21, %22) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kVecDim = 1 : i64} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
+          %23 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0)} : (ui32) -> i1
+          %24 = "rail.io.control_in"() {kCtxName = "phaseW2", kLanes = [], kPortName = "kBeginFromTCompute0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), kUnitName = "tbuf_tmp0", sym_name = "kBeginFromTCompute0"} : () -> i1
+          "rail.inbuf"(%24, %23) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0)} : (i1, i1) -> ()
+          %25 = "rail.io.control_in"() {kCtxName = "phaseW2", kLanes = [], kName = "kBegin0", kPortName = "kBegin0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", sym_name = "kBegin0"} : () -> i1
+          "rail.inbuf"(%25, %16) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1, i1) -> ()
+          %26 = "rail.io.control_out"() {kCtxName = "phaseW2", kLanes = [], kPortName = "kDone", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", sym_name = "kDone"} : () -> i1
+          "rail.send"(%16, %26) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1, i1) -> ()
+          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0)} : () -> ()
+        }) {kConcurrencyGroup = 2 : i64, kContextType = "kRolled", kDisableFullStall = true, kExplicitCtxSwitch = ["phaseW0"], kName = "phaseW2", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0), sym_name = "phaseW2"} : () -> ()
+        "rail.context"() ( {
+          %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = 0 : i64} : () -> ui32
+          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = 32 : i64} : () -> ui32
+          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = 1 : i64} : () -> ui32
+          %14 = "rail.iterator"(%11, %12, %13) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)} : (ui32, ui32, ui32) -> ui32
+          %15 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = 0 : i64} : () -> ui32
+          %16 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = 1 : i64} : () -> ui32
+          %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = 12 : i64} : () -> ui32
+          %18 = "rail.iterator"(%15, %16, %17) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)} : (ui32, ui32, ui32) -> ui32
+          %19 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)} : (ui32) -> i1
+          %20 = "rail.ctxdone"(%19) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)} : (i1) -> i1
+          "rail.iterchain"(%14, %18) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)} : (ui32, ui32) -> ()
+          %21 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = true} : () -> i1
+          %22 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = true} : () -> i1
+          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = 0 : i64} : () -> ui32
+          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = 0 : i64} : () -> ui32
+          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kValue = 0 : i64} : () -> ui32
+          "rail.addr"(%18, %14, %21, %22, %23, %24, %25) {kDim = 2 : i8, kMemOp = false, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kVecDim = 1 : i64} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
+          %26 = "rail.ctrdone"(%14) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)} : (ui32) -> i1
+          %27 = "rail.io.control_in"() {kCtxName = "phaseRExp1", kLanes = [], kPortName = "kBeginFromTCompute0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), kUnitName = "tbuf_tmp0", sym_name = "kBeginFromTCompute0"} : () -> i1
+          "rail.inbuf"(%27, %26) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)} : (i1, i1) -> ()
+          %28 = "rail.io.control_in"() {kCtxName = "phaseRExp1", kLanes = [], kName = "kBegin0", kPortName = "kBegin0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", sym_name = "kBegin0"} : () -> i1
+          "rail.inbuf"(%28, %20) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1, i1) -> ()
+          %29 = "rail.io.control_in"() {kCtxName = "phaseRExp1", kLanes = [], kName = "kBegin1", kPortName = "kBegin1", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", sym_name = "kBegin1"} : () -> i1
+          "rail.inbuf"(%29, %20) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1, i1) -> ()
+          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)} : () -> ()
+        }) {kConcurrencyGroup = 2 : i64, kContextType = "kRolled", kDisableEmptyStall = true, kDisableEmptyStallEarly = false, kExplicitCtxSwitch = ["phaseRMax"], kExplicitMemPort = 1 : i64, kName = "phaseRExp1", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0), sym_name = "phaseRExp1"} : () -> ()
+        "rail.context"() ( {
+          %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 0 : i64} : () -> ui32
+          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 1 : i64} : () -> ui32
+          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 12 : i64} : () -> ui32
+          %14 = "rail.iterator"(%11, %12, %13) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (ui32, ui32, ui32) -> ui32
+          %15 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 0 : i64} : () -> ui32
+          %16 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 32 : i64} : () -> ui32
+          %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 1 : i64} : () -> ui32
+          %18 = "rail.iterator"(%15, %16, %17) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (ui32, ui32, ui32) -> ui32
+          %19 = "rail.ctrdone"(%18) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (ui32) -> i1
+          %20 = "rail.ctxdone"(%19) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1) -> i1
+          "rail.iterchain"(%18, %14) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (ui32, ui32) -> ()
+          %21 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 12 : i64} : () -> ui32
+          %22 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = true} : () -> i1
+          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = true} : () -> i1
+          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 0 : i64} : () -> ui32
+          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 0 : i64} : () -> ui32
+          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kValue = 0 : i64} : () -> ui32
+          "rail.addr"(%21, %18, %22, %23, %24, %25, %26) {kDim = 2 : i8, kMemOp = false, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kVecDim = 1 : i64} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
+          %27 = "rail.ctrdone"(%18) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (ui32) -> i1
+          %28 = "rail.io.control_in"() {kCtxName = "phaseRSumRecip", kLanes = [], kPortName = "kBeginFromTCompute0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", sym_name = "kBeginFromTCompute0"} : () -> i1
+          "rail.inbuf"(%28, %27) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1, i1) -> ()
+          %29 = "rail.io.control_in"() {kCtxName = "phaseRSumRecip", kLanes = [], kName = "kBegin0", kPortName = "kBegin0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", sym_name = "kBegin0"} : () -> i1
+          "rail.inbuf"(%29, %20) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1, i1) -> ()
+          %30 = "rail.io.control_in"() {kCtxName = "phaseRSumRecip", kLanes = [], kName = "kBegin1", kPortName = "kBegin1", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", sym_name = "kBegin1"} : () -> i1
+          "rail.inbuf"(%30, %20) {kInit = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : (i1, i1) -> ()
+          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)} : () -> ()
+        }) {kConcurrencyGroup = 2 : i64, kContextType = "kRolled", kDisableEmptyStall = true, kDisableEmptyStallEarly = false, kExplicitCtxSwitch = ["phase_rd_dummy"], kExplicitMemPort = 2 : i64, kName = "phaseRSumRecip", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), sym_name = "phaseRSumRecip"} : () -> ()
+        "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1761:0)} : () -> ()
+      }) {kFIFOMode = false, kImplicitControl = false, kName = "tbuf_tmp0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1761:0), params = {kDepth = 1 : i64, kLayout = {alignments = [[1, 64]], base_address = 0 : i64, dim_order = [0, 1], format = 9 : i64, shape = [14, 1], vector_transpose = 1 : i64}, kMinMaxCapacitySplit = true, kMinPmus = -1 : i64, kPacingWindow = -1 : i64, kSplitAlgorithm = 0 : i64}, sym_name = "tbuf_tmp0"} : () -> ()
+      module_terminator {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1761:0)}
+    }
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phaseW1::@kBegin0, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tbuf_tmp0::@tbuf_tmp0::@phaseW0::@kDone} : () -> ()
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phaseRMax::@kBegin0, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tbuf_tmp0::@tbuf_tmp0::@phaseW0::@kDone} : () -> ()
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phase_rd_dummy::@kBegin0, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tbuf_tmp0::@tbuf_tmp0::@phaseW0::@kDone} : () -> ()
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phaseW2::@kBegin0, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tbuf_tmp0::@tbuf_tmp0::@phaseW1::@kDone} : () -> ()
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phaseRExp0::@kBegin0, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tbuf_tmp0::@tbuf_tmp0::@phaseW1::@kDone} : () -> ()
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phaseRExp1::@kBegin0, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tbuf_tmp0::@tbuf_tmp0::@phaseW2::@kDone} : () -> ()
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phaseRExp1::@kBegin1, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tbuf_tmp0::@tbuf_tmp0::@phaseRExp0::@kDone} : () -> ()
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phaseRSumRecip::@kBegin0, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tbuf_tmp0::@tbuf_tmp0::@phaseW2::@kDone} : () -> ()
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phaseRSumRecip::@kBegin1, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tbuf_tmp0::@tbuf_tmp0::@phase_rd_dummy::@kDone} : () -> ()
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phaseW0::@kBegin0, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tbuf_tmp0::@tbuf_tmp0::@phaseW2::@kDone} : () -> ()
+    %4 = "rail.io.vector_in"() {kCtxName = "phaseW0", kLanes = [], kPortName = "8", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", kVectorLengthInBytes = 64 : i64, sym_name = "tbuf_tmp0_tbuffer_phaseW0_vector_in_8"} : () -> vector<32xbf16>
+    "rail.TConnect"() {kDst = @tbuf_tmp0_tbuffer_phaseW0_vector_in_8, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tcompute0::@tcompute0::@phase0::@tcompute0_tcompute_phase0_vector_out_2000} : () -> ()
+    %5 = "rail.io.vector_out"() {kCtxName = "phaseRMax", kLanes = [], kPortName = "1001", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", kVectorLengthInBytes = 64 : i64, sym_name = "tbuf_tmp0_tbuffer_phaseRMax_vector_out_1001"} : () -> vector<32xbf16>
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phaseRMax::@kBeginFromTCompute0, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tcompute0::@tcompute0::@phase0::@tcompute0_tcompute_phase0_control_out_kDone} : () -> ()
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phaseRMax::@kBeginFromTCompute1, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tcompute0::@tcompute0::@phase3::@tcompute0_tcompute_phase3_control_out_kDone} : () -> ()
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phaseW1::@kBeginFromTCompute0, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tcompute0::@tcompute0::@phase3::@tcompute0_tcompute_phase3_control_out_kDone} : () -> ()
+    "rail.TConnect"() {kDst = @tcompute0::@tcompute0::@phase1::@tcompute0_tcompute_phase1_vector_in_6000, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tbuf_tmp0_tbuffer_phaseRMax_vector_out_1001} : () -> ()
+    %6 = "rail.io.vector_in"() {kCtxName = "phaseW1", kLanes = [], kPortName = "8", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", kVectorLengthInBytes = 64 : i64, sym_name = "tbuf_tmp0_tbuffer_phaseW1_vector_in_8"} : () -> vector<32xbf16>
+    "rail.TConnect"() {kDst = @tbuf_tmp0_tbuffer_phaseW1_vector_in_8, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tcompute0::@tcompute0::@phase1::@tcompute0_tcompute_phase1_vector_out_10000} : () -> ()
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phaseRExp0::@kBeginFromTCompute0, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tcompute0::@tcompute0::@phase1::@tcompute0_tcompute_phase1_control_out_kDone} : () -> ()
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phaseRExp0::@kBeginFromTCompute1, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tcompute0::@tcompute0::@phase3::@tcompute0_tcompute_phase3_control_out_kDone} : () -> ()
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phaseW2::@kBeginFromTCompute0, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tcompute0::@tcompute0::@phase1::@tcompute0_tcompute_phase1_control_out_kDone} : () -> ()
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phaseRSumRecip::@kBeginFromTCompute0, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tcompute0::@tcompute0::@phase2::@tcompute0_tcompute_phase2_control_out_kDone} : () -> ()
+    %7 = "rail.io.vector_out"() {kCtxName = "phaseRExp0", kLanes = [], kPortName = "1001", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", kVectorLengthInBytes = 64 : i64, sym_name = "tbuf_tmp0_tbuffer_phaseRExp0_vector_out_1001"} : () -> vector<32xbf16>
+    "rail.TConnect"() {kDst = @tcompute0::@tcompute0::@phase2::@tcompute0_tcompute_phase2_vector_in_12000, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tbuf_tmp0_tbuffer_phaseRExp0_vector_out_1001} : () -> ()
+    %8 = "rail.io.vector_in"() {kCtxName = "phaseW2", kLanes = [], kPortName = "8", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", kVectorLengthInBytes = 64 : i64, sym_name = "tbuf_tmp0_tbuffer_phaseW2_vector_in_8"} : () -> vector<32xbf16>
+    "rail.TConnect"() {kDst = @tbuf_tmp0_tbuffer_phaseW2_vector_in_8, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tcompute0::@tcompute0::@phase2::@tcompute0_tcompute_phase2_vector_out_7000} : () -> ()
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phaseRExp1::@kBeginFromTCompute0, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tcompute0::@tcompute0::@phase2::@tcompute0_tcompute_phase2_control_out_kDone} : () -> ()
+    %9 = "rail.io.vector_out"() {kCtxName = "phaseRExp1", kLanes = [], kPortName = "1001", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", kVectorLengthInBytes = 64 : i64, sym_name = "tbuf_tmp0_tbuffer_phaseRExp1_vector_out_1001"} : () -> vector<32xbf16>
+    "rail.TConnect"() {kDst = @tcompute0::@tcompute0::@phase3::@tcompute0_tcompute_phase3_vector_in_16000, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tbuf_tmp0_tbuffer_phaseRExp1_vector_out_1001} : () -> ()
+    %10 = "rail.io.vector_out"() {kCtxName = "phaseRSumRecip", kLanes = [], kPortName = "1001", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kUnitName = "tbuf_tmp0", kVectorLengthInBytes = 64 : i64, sym_name = "tbuf_tmp0_tbuffer_phaseRSumRecip_vector_out_1001"} : () -> vector<32xbf16>
+    "rail.TConnect"() {kDst = @tcompute0::@tcompute0::@phase3::@tcompute0_tcompute_phase3_vector_in_17000, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tbuf_tmp0_tbuffer_phaseRSumRecip_vector_out_1001} : () -> ()
+    "rail.TConnect"() {kDst = @tbuf_tmp0::@tbuf_tmp0::@phaseW0::@kBeginFromTCompute0, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0), kSrc = @tcompute0::@tcompute0::@phase3::@tcompute0_tcompute_phase3_control_out_kDone} : () -> ()
+    module_terminator {kSourceContext = loc("LogregTorchSamba.cpp":290:0)}
+  }
+  module @tbuf1a_1_0_99  {
+    "rail.buffer"() ( {
+      "rail.context"() ( {
+        %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0), kValue = 0 : i64} : () -> ui32
+        %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0), kValue = 1 : i64} : () -> ui32
+        %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0), kValue = 12 : i64} : () -> ui32
+        %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0)} : (ui32, ui32, ui32) -> ui32
+        %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0), kValue = 0 : i64} : () -> ui32
+        %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0), kValue = 32 : i64} : () -> ui32
+        %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0), kValue = 1 : i64} : () -> ui32
+        %11 = "rail.iterator"(%8, %9, %10) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0)} : (ui32, ui32, ui32) -> ui32
+        %12 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0)} : (ui32) -> i1
+        %13 = "rail.ctxdone"(%12) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0)} : (i1) -> i1
+        "rail.iterchain"(%11, %7) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0)} : (ui32, ui32) -> ()
+        %14 = "rail.io.control_out"() {kCtxName = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0", kLanes = [], kPortName = "done", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0), kUnitName = "tbuf1a_1_0_99", sym_name = "done"} : () -> i1
+        %15 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0)} : (ui32) -> i1
+        "rail.send"(%15, %14) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0)} : (i1, i1) -> ()
+        %16 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0), kValue = 10 : i64} : () -> ui32
+        %17 = "rail.less_than"(%7, %16) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0)} : (ui32, ui32) -> i1
+        %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0), kValue = true} : () -> i1
+        %19 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0), kValue = true} : () -> i1
+        %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0), kValue = 0 : i64} : () -> ui32
+        %21 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0), kValue = 0 : i64} : () -> ui32
+        %22 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0), kValue = 0 : i64} : () -> ui32
+        "rail.addr"(%7, %11, %17, %19, %20, %21, %22) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0), kVecDim = 1 : i64} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
+        "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0)} : () -> ()
+      }) {kArithSplit = true, kContextType = "kRolled", kDispatchIds = {data = [[0 : i32]], dims = [1]}, kName = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0", kSourceContext = loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0), rail.kMetapipeIterCounts = [1], sym_name = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0"} : () -> ()
+      "rail.context"() ( {
+        %4 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
+        %5 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 1 : i64} : () -> ui32
+        %6 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 10 : i64} : () -> ui32
+        %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32) -> ui32
+        %8 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
+        %9 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 32 : i64} : () -> ui32
+        %10 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 1 : i64} : () -> ui32
+        %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32) -> ui32
         "rail.iterchain"(%11, %7) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32) -> ()
         %12 = "rail.ctrdone"(%11) {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32) -> i1
         %13 = "rail.ctxdone"(%12) {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (i1) -> i1
@@ -141,1430 +606,25 @@ module @partition_1_0_ attributes {rail.kChipId = 0 : i64, rail.kIsSectionModule
         %17 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
         %18 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
         "rail.addr"(%7, %11, %14, %15, %16, %17, %18) {kDim = 2 : i8, kMemOp = false, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-        %19 = "rail.io.control_in"() {kCtxName = "kDefaultRead1", kLanes = [], kPortName = "0", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kUnitName = "tbuf2u_1_0_258", sym_name = "0"} : () -> i1
-        "rail.inbuf"(%19, %13) {kInit = 2 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (i1, i1) -> ()
-        %20 = "rail.io.control_in"() {kCtxName = "kDefaultRead1", kLanes = [], kPortName = "1", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kUnitName = "tbuf2u_1_0_258", sym_name = "1"} : () -> i1
-        "rail.inbuf"(%20, %13) {kInit = 2 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (i1, i1) -> ()
-        %21 = "rail.io.control_out"() {kCtxName = "kDefaultRead1", kLanes = [], kPortName = "1000", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kUnitName = "tbuf2u_1_0_258", sym_name = "1000"} : () -> i1
-        "rail.send"(%13, %21) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (i1, i1) -> ()
         "rail.terminator"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : () -> ()
       }) {kContextType = "kRolled", kName = "kDefaultRead1", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), rail.kMetapipeIterCounts = [1], sym_name = "kDefaultRead1"} : () -> ()
-      "rail.terminator"() {kSourceContext = loc("LogregTorchSamba.cpp":1972:0)} : () -> ()
-    }) {kFIFOMode = false, kName = "tbuf2u_1_0_258", kSourceContext = loc("LogregTorchSamba.cpp":1972:0), params = {kDepth = 2 : i64, kLayout = {alignments = [[1, 64]], base_address = 0 : i64, dim_order = [1, 0], format = 9 : i64, shape = [136, 3], vector_transpose = 1 : i64}, kMinMaxCapacitySplit = true, kMinPmus = -1 : i64, kPacingWindow = -1 : i64, kSplitAlgorithm = 0 : i64}, sym_name = "tbuf2u_1_0_258"} : () -> ()
-    module_terminator {kSourceContext = loc("LogregTorchSamba.cpp":1972:0)}
+      "rail.terminator"() {kSourceContext = loc("LogregTorchSamba.cpp":301:0)} : () -> ()
+    }) {kBankByDuplication = true, kFIFOMode = false, kName = "tbuf1a_1_0_99", kSourceContext = loc("LogregTorchSamba.cpp":301:0), params = {kDepth = 1 : i64, kLayout = {alignments = [[1, 64]], base_address = 0 : i64, dim_order = [0, 1], format = 9 : i64, shape = [10, 1], vector_transpose = 0 : i64}, kMinMaxCapacitySplit = true, kMinPmus = -1 : i64, kPacingWindow = -1 : i64, kSplitAlgorithm = 0 : i64}, sym_name = "tbuf1a_1_0_99"} : () -> ()
+    module_terminator {kSourceContext = loc("LogregTorchSamba.cpp":301:0)}
   }
-  module @LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum attributes {rail.kMetapipeIterCounts = [1]}  {
-    module @tbuf  {
-      "rail.buffer"() ( {
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 128 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 128 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_0_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[0 : i32]], dims = [1]}, kName = "w_loop_0_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_0_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 128 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 128 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_1_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[1 : i32]], dims = [1]}, kName = "w_loop_1_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_1_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 384 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 384 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_2_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[2 : i32]], dims = [1]}, kName = "w_loop_2_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_2_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 384 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 512 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 384 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 512 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_3_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[3 : i32]], dims = [1]}, kName = "w_loop_3_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_3_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 512 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 640 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 512 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 640 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_4_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[4 : i32]], dims = [1]}, kName = "w_loop_4_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_4_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 640 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 768 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 640 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 768 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_5_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[5 : i32]], dims = [1]}, kName = "w_loop_5_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_5_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 768 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 896 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 768 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 896 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_6_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[6 : i32]], dims = [1]}, kName = "w_loop_6_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_6_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 896 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1024 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 896 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1024 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_7_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[7 : i32]], dims = [1]}, kName = "w_loop_7_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_7_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1024 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1152 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1024 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1152 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_8_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[8 : i32]], dims = [1]}, kName = "w_loop_8_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_8_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1152 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1280 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1152 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1280 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_9_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[9 : i32]], dims = [1]}, kName = "w_loop_9_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_9_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1280 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1408 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1280 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1408 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_10_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[10 : i32]], dims = [1]}, kName = "w_loop_10_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_10_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1408 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1536 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1408 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1536 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_11_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[11 : i32]], dims = [1]}, kName = "w_loop_11_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_11_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1536 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1664 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1536 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1664 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_12_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[12 : i32]], dims = [1]}, kName = "w_loop_12_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_12_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1664 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1792 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1664 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1792 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_13_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[13 : i32]], dims = [1]}, kName = "w_loop_13_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_13_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1792 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1920 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1792 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1920 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_14_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[14 : i32]], dims = [1]}, kName = "w_loop_14_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_14_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1920 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2048 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1920 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2048 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_15_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[15 : i32]], dims = [1]}, kName = "w_loop_15_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_15_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2048 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2176 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2048 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2176 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_16_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[16 : i32]], dims = [1]}, kName = "w_loop_16_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_16_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2176 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2304 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2176 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2304 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_17_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[17 : i32]], dims = [1]}, kName = "w_loop_17_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_17_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2304 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2432 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2304 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2432 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_18_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[18 : i32]], dims = [1]}, kName = "w_loop_18_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_18_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2432 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2560 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2432 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2560 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_19_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[19 : i32]], dims = [1]}, kName = "w_loop_19_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_19_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2560 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2688 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2560 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2688 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_20_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[20 : i32]], dims = [1]}, kName = "w_loop_20_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_20_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2688 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2816 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2688 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2816 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_21_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[21 : i32]], dims = [1]}, kName = "w_loop_21_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_21_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2816 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2944 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2816 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2944 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_22_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[22 : i32]], dims = [1]}, kName = "w_loop_22_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_22_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2944 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3072 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 2944 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3072 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_23_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[23 : i32]], dims = [1]}, kName = "w_loop_23_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_23_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3072 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3200 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3072 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3200 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_24_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[24 : i32]], dims = [1]}, kName = "w_loop_24_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_24_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3200 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3328 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3200 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3328 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_25_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[25 : i32]], dims = [1]}, kName = "w_loop_25_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_25_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3328 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3456 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3328 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3456 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_26_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[26 : i32]], dims = [1]}, kName = "w_loop_26_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_26_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3456 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3584 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3456 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3584 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_27_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[27 : i32]], dims = [1]}, kName = "w_loop_27_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_27_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3584 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3712 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3584 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3712 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_28_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[28 : i32]], dims = [1]}, kName = "w_loop_28_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_28_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3712 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3840 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3712 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3840 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_29_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[29 : i32]], dims = [1]}, kName = "w_loop_29_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_29_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3840 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3968 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3840 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3968 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_30_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[30 : i32]], dims = [1]}, kName = "w_loop_30_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_30_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3968 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 4080 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 3968 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 4080 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_31_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[31 : i32]], dims = [1]}, kName = "w_loop_31_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_31_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 32 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 4080 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.ctrdone"(%7) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32) -> i1
-          %9 = "rail.ctxdone"(%8) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (i1) -> i1
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 1 : i64} : () -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 256 : i64} : () -> ui32
-          %13 = "rail.iterator"(%10, %11, %12) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32, ui32, ui32) -> ui32
-          "rail.iterchain"(%7, %13) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32, ui32) -> ()
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = true} : () -> i1
-          %15 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = true} : () -> i1
-          %16 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%7, %13, %14, %15, %16, %17, %18) {kDim = 2 : i8, kMemOp = false, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %19 = "rail.pacing_done_expr"(%7) {kPacingWindow = 8192 : i64, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32) -> i1
-          %20 = "rail.io.control_in"() {kCtxName = "kBackReadCtx", kLanes = [], kPortName = "pacing_in", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kUnitName = "tbuf", sym_name = "pacing_in"} : () -> i1
-          "rail.inbuf"(%20, %19) {kInit = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableEmptyStall = true, kDisableEmptyStallEarly = false, kExplicitMemPort = 1 : i64, kName = "kBackReadCtx", kPacingWindow = 8192 : i64, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), sym_name = "kBackReadCtx"} : () -> ()
-        "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)} : () -> ()
-      }) {kAllowTrimWithMinMax = true, kBankByDuplication = true, kDisableUnderflowCheck = 1 : i64, kEnableDispatchReassignment = false, kFIFOMode = false, kName = "tbuf", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0), params = {kDepth = 1 : i64, kLayout = {alignments = [[1, 64]], base_address = 0 : i64, dim_order = [1, 0], format = 9 : i64, shape = [4096, 256], vector_transpose = 0 : i64}, kMinMaxCapacitySplit = true, kMinPmus = -1 : i64, kPacingWindow = -1 : i64, kSplitAlgorithm = 0 : i64}, sym_name = "tbuf"} : () -> ()
-      module_terminator {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)}
-    }
-    module_terminator {kSourceContext = loc("LogregTorchSamba.cpp":2366:0)}
-  }
-  module @LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum_1 attributes {rail.kMetapipeIterCounts = [1]}  {
-    module @tbuf  {
-      "rail.buffer"() ( {
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 4096 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 4096 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_0_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[0 : i32]], dims = [1]}, kName = "w_loop_0_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_0_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 32 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 4096 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.ctrdone"(%7) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32) -> i1
-          %9 = "rail.ctxdone"(%8) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (i1) -> i1
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 1 : i64} : () -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 1 : i64} : () -> ui32
-          %13 = "rail.iterator"(%10, %11, %12) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32, ui32, ui32) -> ui32
-          "rail.iterchain"(%7, %13) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32, ui32) -> ()
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = true} : () -> i1
-          %15 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = true} : () -> i1
-          %16 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%7, %13, %14, %15, %16, %17, %18) {kDim = 2 : i8, kMemOp = false, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %19 = "rail.pacing_done_expr"(%7) {kPacingWindow = 128 : i64, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32) -> i1
-          %20 = "rail.io.control_in"() {kCtxName = "kBackReadCtx", kLanes = [], kPortName = "pacing_in", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kUnitName = "tbuf", sym_name = "pacing_in"} : () -> i1
-          "rail.inbuf"(%20, %19) {kInit = 4 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableEmptyStall = true, kDisableEmptyStallEarly = false, kExplicitMemPort = 1 : i64, kName = "kBackReadCtx", kPacingWindow = 128 : i64, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), sym_name = "kBackReadCtx"} : () -> ()
-        "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)} : () -> ()
-      }) {kAllowTrimWithMinMax = true, kBankByDuplication = true, kDisableUnderflowCheck = 1 : i64, kEnableDispatchReassignment = false, kFIFOMode = false, kName = "tbuf", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0), params = {kDepth = 1 : i64, kLayout = {alignments = [[1, 64]], base_address = 0 : i64, dim_order = [1, 0], format = 9 : i64, shape = [4096, 1], vector_transpose = 0 : i64}, kMinMaxCapacitySplit = true, kMinPmus = -1 : i64, kPacingWindow = -1 : i64, kSplitAlgorithm = 0 : i64}, sym_name = "tbuf"} : () -> ()
-      module_terminator {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)}
-    }
-    module_terminator {kSourceContext = loc("LogregTorchSamba.cpp":2386:0)}
-  }
-  module @LogregTorchSamba.partition_1_0_.ptconvlstm__conv_layer__conv2d_bwd_accum attributes {rail.kMetapipeIterCounts = [1]}  {
-    module @tbuf  {
-      "rail.buffer"() ( {
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 122880 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 122880 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_0_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[0 : i32]], dims = [1]}, kName = "w_loop_0_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_0_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 32 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 122880 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.ctrdone"(%7) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32) -> i1
-          %9 = "rail.ctxdone"(%8) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (i1) -> i1
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 1 : i64} : () -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 1 : i64} : () -> ui32
-          %13 = "rail.iterator"(%10, %11, %12) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32, ui32, ui32) -> ui32
-          "rail.iterchain"(%7, %13) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32, ui32) -> ()
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = true} : () -> i1
-          %15 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = true} : () -> i1
-          %16 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%7, %13, %14, %15, %16, %17, %18) {kDim = 2 : i8, kMemOp = false, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableEmptyStall = true, kDisableEmptyStallEarly = false, kExplicitMemPort = 1 : i64, kName = "kBackReadCtx", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), sym_name = "kBackReadCtx"} : () -> ()
-        "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)} : () -> ()
-      }) {kAllowTrimWithMinMax = true, kBankByDuplication = true, kDisableUnderflowCheck = 1 : i64, kEnableDispatchReassignment = false, kFIFOMode = false, kName = "tbuf", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0), params = {kDepth = 1 : i64, kLayout = {alignments = [[1, 64]], base_address = 0 : i64, dim_order = [1, 0], format = 9 : i64, shape = [122880, 1], vector_transpose = 0 : i64}, kMinMaxCapacitySplit = true, kMinPmus = -1 : i64, kPacingWindow = -1 : i64, kSplitAlgorithm = 0 : i64}, sym_name = "tbuf"} : () -> ()
-      module_terminator {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)}
-    }
-    module_terminator {kSourceContext = loc("LogregTorchSamba.cpp":2404:0)}
-  }
-  module @LogregTorchSamba.partition_1_0_.ptconvlstm__conv_layer__conv2d_bwd_accum_1 attributes {rail.kMetapipeIterCounts = [1]}  {
-    module @tbuf  {
-      "rail.buffer"() ( {
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 32 : i64} : () -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %11 = "rail.iterator"(%8, %9, %10) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %13 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 1 : i64} : () -> ui32
-          %15 = "rail.iterator"(%12, %13, %14) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ui32
-          %16 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          %17 = "rail.ctxdone"(%16) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1) -> i1
-          "rail.iterchain"(%7, %11, %15) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, ui32) -> ()
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %19 = "rail.greater_than_equal"(%11, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %20 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 256 : i64} : () -> ui32
-          %21 = "rail.less_than"(%11, %20) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32) -> i1
-          %22 = "rail.and"(%19, %21) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> i1
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %26 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%11, %15, %22, %24, %25, %26, %27) {kDim = 2 : i8, kMemOp = true, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %28 = "rail.io.control_out"() {kCtxName = "w_loop_0_0", kLanes = [], kPortName = "w_loop_done", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), kUnitName = "tbuf", sym_name = "w_loop_done"} : () -> i1
-          %29 = "rail.ctrdone"(%11) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (ui32) -> i1
-          "rail.send"(%29, %28) {kOpRWPattern1 = "kWriteOperand", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableFullStall = true, kDispatchIds = {data = [[0 : i32]], dims = [1]}, kName = "w_loop_0_0", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0), sym_name = "w_loop_0_0"} : () -> ()
-        "rail.context"() ( {
-          %4 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          %5 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 32 : i64} : () -> ui32
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 256 : i64} : () -> ui32
-          %7 = "rail.iterator"(%4, %5, %6) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32, ui32, ui32) -> ui32
-          %8 = "rail.ctrdone"(%7) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32) -> i1
-          %9 = "rail.ctxdone"(%8) {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (i1) -> i1
-          %10 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 1 : i64} : () -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 1 : i64} : () -> ui32
-          %13 = "rail.iterator"(%10, %11, %12) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32, ui32, ui32) -> ui32
-          "rail.iterchain"(%7, %13) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32, ui32) -> ()
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = true} : () -> i1
-          %15 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = true} : () -> i1
-          %16 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          %17 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%7, %13, %14, %15, %16, %17, %18) {kDim = 2 : i8, kMemOp = false, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          %19 = "rail.pacing_done_expr"(%7) {kPacingWindow = 8 : i64, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (ui32) -> i1
-          %20 = "rail.io.control_in"() {kCtxName = "kBackReadCtx", kLanes = [], kPortName = "pacing_in", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), kUnitName = "tbuf", sym_name = "pacing_in"} : () -> i1
-          "rail.inbuf"(%20, %19) {kInit = 4 : i32, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : (i1, i1) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)} : () -> ()
-        }) {kContextType = "kRolled", kDisableEmptyStall = true, kDisableEmptyStallEarly = false, kExplicitMemPort = 1 : i64, kName = "kBackReadCtx", kPacingWindow = 8 : i64, kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0), sym_name = "kBackReadCtx"} : () -> ()
-        "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)} : () -> ()
-      }) {kAllowTrimWithMinMax = true, kBankByDuplication = true, kDisableUnderflowCheck = 1 : i64, kEnableDispatchReassignment = false, kFIFOMode = false, kName = "tbuf", kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0), params = {kDepth = 1 : i64, kLayout = {alignments = [[1, 64]], base_address = 0 : i64, dim_order = [1, 0], format = 9 : i64, shape = [256, 1], vector_transpose = 0 : i64}, kMinMaxCapacitySplit = true, kMinPmus = -1 : i64, kPacingWindow = -1 : i64, kSplitAlgorithm = 0 : i64}, sym_name = "tbuf"} : () -> ()
-      module_terminator {kSourceContext = loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)}
-    }
-    module_terminator {kSourceContext = loc("LogregTorchSamba.cpp":2423:0)}
-  }
-  module @LogregTorchSamba.partition_1_0_.permute_1_0_425 attributes {rail.kMetapipeIterCounts = [1]}  {
-    module @tbuf  {
-      "rail.buffer"() ( {
-        "rail.context"() ( {
-          %6 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-          %7 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 1 : i64} : () -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 256 : i64} : () -> ui32
-          %9 = "rail.iterator"(%6, %7, %8) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32) -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-          %11 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 1 : i64} : () -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 3 : i64} : () -> ui32
-          %13 = "rail.iterator"(%10, %11, %12) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32) -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-          %15 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 1 : i64} : () -> ui32
-          %16 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 1 : i64} : () -> ui32
-          %17 = "rail.iterator"(%14, %15, %16) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32) -> ui32
-          %18 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-          %19 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 32 : i64} : () -> ui32
-          %20 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 136 : i64} : () -> ui32
-          %21 = "rail.iterator"(%18, %19, %20) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 3 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32) -> ui32
-          "rail.iterchain"(%9, %13, %17, %21) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32, ui32) -> ()
-          %22 = "rail.ctrdone"(%9) {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32) -> i1
-          %23 = "rail.ctxdone"(%22) {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (i1) -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = true} : () -> i1
-          %26 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-          %28 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%9, %13, %17, %21, %24, %25, %26, %27, %28) {kDim = 4 : i8, kMemOp = true, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : () -> ()
-        }) {kContextType = "kRolled", kName = "W", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), sym_name = "W"} : () -> ()
-        "rail.context"() ( {
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = true} : () -> i1
-          %7 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 0 : i64} : () -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 1 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 3 : i64} : () -> ui32
-          %10 = "rail.iterator"(%7, %8, %9) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32, ui32) -> ui32
-          %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 3 : i64} : () -> ui32
-          %12 = "rail.less_than"(%10, %11) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32) -> i1
-          %13 = "rail.and"(%6, %12) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (i1, i1) -> i1
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 0 : i64} : () -> ui32
-          %15 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 1 : i64} : () -> ui32
-          %16 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 1 : i64} : () -> ui32
-          %17 = "rail.iterator"(%14, %15, %16) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32, ui32) -> ui32
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 1 : i64} : () -> ui32
-          %19 = "rail.less_than"(%17, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32) -> i1
-          %20 = "rail.and"(%13, %19) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (i1, i1) -> i1
-          %21 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 0 : i64} : () -> ui32
-          %22 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 1 : i64} : () -> ui32
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 136 : i64} : () -> ui32
-          %24 = "rail.iterator"(%21, %22, %23) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 3 : i32, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32, ui32) -> ui32
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 136 : i64} : () -> ui32
-          %26 = "rail.less_than"(%24, %25) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32) -> i1
-          %27 = "rail.and"(%20, %26) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (i1, i1) -> i1
-          %28 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 0 : i64} : () -> ui32
-          %29 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 32 : i64} : () -> ui32
-          %30 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 256 : i64} : () -> ui32
-          %31 = "rail.iterator"(%28, %29, %30) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32, ui32) -> ui32
-          %32 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 256 : i64} : () -> ui32
-          %33 = "rail.less_than"(%31, %32) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32) -> i1
-          %34 = "rail.and"(%27, %33) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (i1, i1) -> i1
-          "rail.iterchain"(%10, %17, %31, %24) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32, ui32, ui32) -> ()
-          %35 = "rail.ctrdone"(%10) {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32) -> i1
-          %36 = "rail.ctxdone"(%35) {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (i1) -> i1
-          %37 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = true} : () -> i1
-          %38 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = true} : () -> i1
-          %39 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 0 : i64} : () -> ui32
-          %40 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 0 : i64} : () -> ui32
-          %41 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%31, %10, %17, %24, %34, %38, %39, %40, %41) {kDim = 4 : i8, kMemOp = false, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32, ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : () -> ()
-        }) {kArithSplit = true, kContextType = "kRolled", kName = "R", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), sym_name = "R"} : () -> ()
-        "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":69:0)} : () -> ()
-      }) {kFIFOMode = false, kName = "tbuf", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":69:0), params = {kDepth = 1 : i64, kLayout = {alignments = [[3, 64]], base_address = 0 : i64, dim_order = [0, 1, 2, 3], format = 9 : i64, shape = [256, 3, 1, 136], vector_transpose = 3 : i64}, kMinMaxCapacitySplit = true, kMinPmus = -1 : i64, kPacingWindow = -1 : i64, kSplitAlgorithm = 0 : i64}, sym_name = "tbuf"} : () -> ()
-      module_terminator {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":69:0)}
-    }
-    %4 = "rail.io.vector_in"() {kCtxName = "W", kLanes = [], kPortName = "8", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kUnitName = "tbuf", kVectorLengthInBytes = 64 : i64, sym_name = "tbuf_tbuffer_W_vector_in_8"} : () -> vector<32xbf16>
-    %5 = "rail.io.vector_out"() {kCtxName = "R", kLanes = [], kPortName = "1001", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kUnitName = "tbuf", kVectorLengthInBytes = 64 : i64, sym_name = "tbuf_tbuffer_R_vector_out_1001"} : () -> vector<32xbf16>
-    module_terminator {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":26:0)}
-  }
-  module @LogregTorchSamba.partition_1_0_.ptconvlstm__conv_layer__conv2d_weight_permute_bwd attributes {rail.kMetapipeIterCounts = [1]}  {
-    module @tbuf  {
-      "rail.buffer"() ( {
-        "rail.context"() ( {
-          %6 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-          %7 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 1 : i64} : () -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 3 : i64} : () -> ui32
-          %9 = "rail.iterator"(%6, %7, %8) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32) -> ui32
-          %10 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-          %11 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 1 : i64} : () -> ui32
-          %12 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 1 : i64} : () -> ui32
-          %13 = "rail.iterator"(%10, %11, %12) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32) -> ui32
-          %14 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-          %15 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 32 : i64} : () -> ui32
-          %16 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 136 : i64} : () -> ui32
-          %17 = "rail.iterator"(%14, %15, %16) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32) -> ui32
-          %18 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-          %19 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 1 : i64} : () -> ui32
-          %20 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 256 : i64} : () -> ui32
-          %21 = "rail.iterator"(%18, %19, %20) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 3 : i32, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32) -> ui32
-          "rail.iterchain"(%9, %13, %17, %21) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32, ui32) -> ()
-          %22 = "rail.ctrdone"(%9) {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32) -> i1
-          %23 = "rail.ctxdone"(%22) {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (i1) -> i1
-          %24 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = true} : () -> i1
-          %25 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = true} : () -> i1
-          %26 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-          %27 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-          %28 = "rail.const"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%9, %13, %17, %21, %24, %25, %26, %27, %28) {kDim = 4 : i8, kMemOp = true, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : (ui32, ui32, ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)} : () -> ()
-        }) {kContextType = "kRolled", kName = "W", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), sym_name = "W"} : () -> ()
-        "rail.context"() ( {
-          %6 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = true} : () -> i1
-          %7 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 0 : i64} : () -> ui32
-          %8 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 1 : i64} : () -> ui32
-          %9 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 256 : i64} : () -> ui32
-          %10 = "rail.iterator"(%7, %8, %9) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 0 : i32, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32, ui32) -> ui32
-          %11 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 256 : i64} : () -> ui32
-          %12 = "rail.less_than"(%10, %11) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32) -> i1
-          %13 = "rail.and"(%6, %12) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (i1, i1) -> i1
-          %14 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 0 : i64} : () -> ui32
-          %15 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 1 : i64} : () -> ui32
-          %16 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 136 : i64} : () -> ui32
-          %17 = "rail.iterator"(%14, %15, %16) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 1 : i32, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32, ui32) -> ui32
-          %18 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 136 : i64} : () -> ui32
-          %19 = "rail.less_than"(%17, %18) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32) -> i1
-          %20 = "rail.and"(%13, %19) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (i1, i1) -> i1
-          %21 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 0 : i64} : () -> ui32
-          %22 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 32 : i64} : () -> ui32
-          %23 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 3 : i64} : () -> ui32
-          %24 = "rail.iterator"(%21, %22, %23) {Par = -1 : i32, kChainID = 0 : i64, kIterPos = 2 : i32, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32, ui32) -> ui32
-          %25 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 3 : i64} : () -> ui32
-          %26 = "rail.less_than"(%24, %25) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32) -> i1
-          %27 = "rail.and"(%20, %26) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (i1, i1) -> i1
-          %28 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 0 : i64} : () -> ui32
-          %29 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 1 : i64} : () -> ui32
-          %30 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 1 : i64} : () -> ui32
-          %31 = "rail.iterator"(%28, %29, %30) {Par = 1 : i32, kChainID = 0 : i64, kIterPos = 3 : i32, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32, ui32) -> ui32
-          %32 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 1 : i64} : () -> ui32
-          %33 = "rail.less_than"(%31, %32) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32) -> i1
-          %34 = "rail.and"(%27, %33) {kInstructionStageType = 2 : i64, kIsBinaryOp = true, kIsBooleanOp = true, kIsDataPathOp = true, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (i1, i1) -> i1
-          "rail.iterchain"(%10, %17, %24, %31) {kChainID = 0 : i64, kName = "addr_chain", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32, ui32, ui32) -> ()
-          %35 = "rail.ctrdone"(%10) {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32) -> i1
-          %36 = "rail.ctxdone"(%35) {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (i1) -> i1
-          %37 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = true} : () -> i1
-          %38 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = true} : () -> i1
-          %39 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 0 : i64} : () -> ui32
-          %40 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 0 : i64} : () -> ui32
-          %41 = "rail.const"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kValue = 0 : i64} : () -> ui32
-          "rail.addr"(%24, %31, %17, %10, %34, %38, %39, %40, %41) {kDim = 4 : i8, kMemOp = false, kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : (ui32, ui32, ui32, ui32, i1, i1, ui32, ui32, ui32) -> ()
-          "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0)} : () -> ()
-        }) {kArithSplit = true, kContextType = "kRolled", kName = "R", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), sym_name = "R"} : () -> ()
-        "rail.terminator"() {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":69:0)} : () -> ()
-      }) {kFIFOMode = false, kName = "tbuf", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":69:0), params = {kDepth = 1 : i64, kLayout = {alignments = [[3, 64]], base_address = 0 : i64, dim_order = [0, 1, 3, 2], format = 9 : i64, shape = [3, 1, 136, 256], vector_transpose = 2 : i64}, kMinMaxCapacitySplit = true, kMinPmus = -1 : i64, kPacingWindow = -1 : i64, kSplitAlgorithm = 0 : i64}, sym_name = "tbuf"} : () -> ()
-      module_terminator {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":69:0)}
-    }
-    %4 = "rail.io.vector_in"() {kCtxName = "W", kLanes = [], kPortName = "8", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kUnitName = "tbuf", kVectorLengthInBytes = 64 : i64, sym_name = "tbuf_tbuffer_W_vector_in_8"} : () -> vector<32xbf16>
-    %5 = "rail.io.vector_out"() {kCtxName = "R", kLanes = [], kPortName = "1001", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kUnitName = "tbuf", kVectorLengthInBytes = 64 : i64, sym_name = "tbuf_tbuffer_R_vector_out_1001"} : () -> vector<32xbf16>
-    module_terminator {kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":26:0)}
-  }
-  %0 = "rail.io.scalar_in"() {kCtxName = "LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kLutRd", kLanes = [], kPortName = "idx", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kUnitName = "tbuf2u_1_0_253", sym_name = "tbuf2u_1_0_253_tbuffer_LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kLutRd_scalar_in_idx"} : () -> ui32
-  %1 = "rail.io.vector_out"() {kCtxName = "LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kLutRd", kLanes = [], kPortName = "1001", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kUnitName = "tbuf2u_1_0_253", kVectorLengthInBytes = 64 : i64, sym_name = "tbuf2u_1_0_253_tbuffer_LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kLutRd_vector_out_1001"} : () -> vector<32xbf16>
-  %2 = "rail.io.scalar_out"() {kCtxName = "LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kIndexRd", kLanes = [], kPortName = "1001", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kUnitName = "tbuf1u_1_0_254", sym_name = "tbuf1u_1_0_254_tbuffer_LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kIndexRd_scalar_out_1001"} : () -> ui32
-  %3 = "rail.io.vector_in"() {kCtxName = "LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kOutWr", kLanes = [], kPortName = "8", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kUnitName = "tbuf2u_1_0_258", kVectorLengthInBytes = 64 : i64, sym_name = "tbuf2u_1_0_258_tbuffer_LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kOutWr_vector_in_8"} : () -> vector<32xbf16>
-  "rail.TConnect"() {kDst = @"tbuf2u_1_0_253_tbuffer_LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kLutRd_scalar_in_idx", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kSrc = @"tbuf1u_1_0_254_tbuffer_LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kIndexRd_scalar_out_1001"} : () -> ()
-  "rail.TConnect"() {kDst = @"tbuf2u_1_0_258_tbuffer_LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kOutWr_vector_in_8", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kSrc = @"tbuf2u_1_0_253_tbuffer_LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kLutRd_vector_out_1001"} : () -> ()
-  "rail.TConnect"() {kDst = @tbuf2u_1_0_253::@tbuf2u_1_0_253::@"LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kLutRd"::@"0", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kSrc = @tbuf2u_1_0_258::@tbuf2u_1_0_258::@"LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kOutWr"::@"1000"} : () -> ()
-  "rail.TConnect"() {kDst = @tbuf2u_1_0_253::@tbuf2u_1_0_253::@"LogregTorchSamba.partition_1_0_.ptconvlstm__lambda_layer__indexselect_recompute_@kLutRd"::@"1", kSourceContext = loc("software/templates/src/templates/permute/rail/TBufferPermute.cpp":73:0), kSrc = @tbuf2u_1_0_258::@tbuf2u_1_0_258::@kDefaultRead1::@"1000"} : () -> ()
+  %0 = "rail.io.vector_out"() {kCtxName = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputY", kLanes = [], kPortName = "1001", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kUnitName = "tbuf1a_1_0_85", kVectorLengthInBytes = 64 : i64, sym_name = "tbuf1a_1_0_85_tbuffer_LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputY_vector_out_1001"} : () -> vector<32xi16>
+  "rail.TConnect"() {kDst = @LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss::@tcompute0::@tcompute0::@phase3::@tcompute0_tcompute_phase3_vector_in_21000, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kSrc = @"tbuf1a_1_0_85_tbuffer_LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputY_vector_out_1001"} : () -> ()
+  "rail.TConnect"() {kDst = @tbuf1a_1_0_85::@tbuf1a_1_0_85::@"LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputY"::@phase2_strip_done, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kSrc = @LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss::@tcompute0::@tcompute0::@phase2::@tcompute0_tcompute_phase2_control_out_kDone} : () -> ()
+  %1 = "rail.io.vector_out"() {kCtxName = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputLoss", kLanes = [], kPortName = "1001", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kUnitName = "tbuf1a_1_0_86", kVectorLengthInBytes = 64 : i64, sym_name = "tbuf1a_1_0_86_tbuffer_LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputLoss_vector_out_1001"} : () -> vector<32xbf16>
+  "rail.TConnect"() {kDst = @LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss::@tcompute0::@tcompute0::@phase3::@tcompute0_tcompute_phase3_vector_in_20000, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kSrc = @"tbuf1a_1_0_86_tbuffer_LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputLoss_vector_out_1001"} : () -> ()
+  "rail.TConnect"() {kDst = @tbuf1a_1_0_86::@tbuf1a_1_0_86::@"LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputLoss"::@phase2_strip_done, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kSrc = @LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss::@tcompute0::@tcompute0::@phase2::@tcompute0_tcompute_phase2_control_out_kDone} : () -> ()
+  %2 = "rail.io.vector_out"() {kCtxName = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0", kLanes = [], kPortName = "1001", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kUnitName = "tbuf1a_1_0_87", kVectorLengthInBytes = 64 : i64, sym_name = "tbuf1a_1_0_87_tbuffer_LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0_vector_out_1001"} : () -> vector<32xbf16>
+  "rail.TConnect"() {kDst = @LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss::@tcompute0::@tcompute0::@phase0::@tcompute0_tcompute_phase0_vector_in_0, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kSrc = @"tbuf1a_1_0_87_tbuffer_LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0_vector_out_1001"} : () -> ()
+  "rail.TConnect"() {kDst = @LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss::@tcompute0::@tcompute0::@phase1::@tcompute0_tcompute_phase1_vector_in_9000, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kSrc = @"tbuf1a_1_0_87_tbuffer_LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0_vector_out_1001"} : () -> ()
+  "rail.TConnect"() {kDst = @tbuf1a_1_0_87::@tbuf1a_1_0_87::@"LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0"::@phase0_strip_done, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kSrc = @LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss::@tcompute0::@tcompute0::@phase0::@tcompute0_tcompute_phase0_control_out_kDone} : () -> ()
+  "rail.TConnect"() {kDst = @tbuf1a_1_0_87::@tbuf1a_1_0_87::@"LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0"::@phase1_strip_done, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kSrc = @LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss::@tcompute0::@tcompute0::@phase1::@tcompute0_tcompute_phase1_control_out_kDone} : () -> ()
+  "rail.TConnect"() {kDst = @tbuf1a_1_0_87::@tbuf1a_1_0_87::@"LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0"::@phase3_strip_done, kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kSrc = @LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss::@tcompute0::@tcompute0::@phase3::@tcompute0_tcompute_phase3_control_out_kDone} : () -> ()
+  %3 = "rail.io.vector_in"() {kCtxName = "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0", kLanes = [], kPortName = "8", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kUnitName = "tbuf1a_1_0_99", kVectorLengthInBytes = 64 : i64, sym_name = "tbuf1a_1_0_99_tbuffer_LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0_vector_in_8"} : () -> vector<32xbf16>
+  "rail.TConnect"() {kDst = @"tbuf1a_1_0_99_tbuffer_LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0_vector_in_8", kSourceContext = loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0), kSrc = @LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss::@tcompute0::@tcompute0::@phase3::@tcompute0_tcompute_phase3_vector_out_15000} : () -> ()
   module_terminator {kSourceContext = loc(unknown)}
 }

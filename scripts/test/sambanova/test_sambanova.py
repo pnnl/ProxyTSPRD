@@ -10,7 +10,7 @@ import argparse
 import sys
 sys.path.append('../../../')
 from proxy_apps.framework.rdu import RDU
-from proxy_apps.apps import GridLSTMProxyAppPT, GridCNNProxyAppPT
+from proxy_apps.apps import GridLSTMProxyAppPT, GridCNNProxyAppPT, ClimateLSTMProxyAppPT, ClimateCNNProxyAppPT
 
 # ------------------------------- PATH & LOGGER SETUP ------------------------------------------------
 
@@ -25,18 +25,20 @@ parser.add_argument(
     required=True
 )
 parser.add_argument(
-    "--stage", 
-    type=str, 
-    choices=["compile", "train"], 
-    help="action to take", 
-    required=True
-)
-parser.add_argument(
     "--n_rdus", 
     type=int, 
     help="Number of RDUs to use", 
     default=1
 )
+# program changes required to support other floating type
+parser.add_argument(
+    "--dtype", 
+    choices=["fp32"], 
+    type=str, 
+    help="Data type", 
+    default="fp32"
+)
+
 parser.add_argument(
     "--n_epochs", 
     type=int, 
@@ -48,6 +50,24 @@ parser.add_argument(
     type=int, 
     help="batch size", 
     default=1024
+)
+parser.add_argument(
+    "--run_type", 
+    type=str, 
+    choices=["compile", "run"], 
+    help="action to take", 
+    default="compile"
+)
+parser.add_argument(
+    "--train_suffix", 
+    type=str, 
+    default=""
+)
+parser.add_argument(
+    "--profiling", 
+    type=int, 
+    help="whether profiling or not using nsys", 
+    default=0
 )
 
 if __name__ == "__main__":
@@ -64,27 +84,50 @@ if __name__ == "__main__":
 
     _PLATFORM = "rdu"
     _MACHINE_NAME = "sambanova"
+    # for debugging
+    _CONFIG["data_params"]["init"]["train_files"] = 10
+
+    if args.train_suffix == "":
+        _SUFFIX = f"%s_nr%d_e%d_b%d_d%s_prof%d" %(
+            _PLATFORM,
+            args.n_rdus,
+            args.n_epochs,
+            args.batch_size,
+            args.dtype,
+            args.profiling
+        )
+    else:
+        _SUFFIX = args.train_suffix
+    
+    print("[INFO] Suffix: %s" %(_SUFFIX))
 
     # initialize the framework
     framework = RDU(
         machine_name=_MACHINE_NAME,
-        dtype="fp32"
+        dtype=args.dtype,
+        n_rdus=args.n_rdus
     )
 
     # select the interface
     interface = framework.use_pytorch()
     # init app
-    if _CONFIG["info"]["app_name"] == "CNNProxyApp":
-        cnn_app = GridCNNProxyAppPT(_PLATFORM)
-    elif _CONFIG["info"]["app_name"] == "LSTMProxyApp":
-        cnn_app = GridLSTMProxyAppPT(_PLATFORM)
+    if _CONFIG["info"]["app_name"] == "ClimateLSTMProxyAppPT":
+        app = ClimateLSTMProxyAppPT(_PLATFORM)
+    elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppPT":
+        app = ClimateCNNProxyAppPT(_PLATFORM)
+    elif _CONFIG["info"]["app_name"] == "GridLSTMProxyAppPT":
+        app = GridLSTMProxyAppPT(_PLATFORM)
+    elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppPT":
+        app = GridCNNProxyAppPT(_PLATFORM)
     
     # init app manager
     interface.init_app_manager(
-        app=cnn_app,
+        app=app,
         app_name=_CONFIG["info"]["app_name"],
+        suffix=_SUFFIX,
         output_dir=_CONFIG["info"]["output_dir"],
-        mixed_precision_support=_CONFIG["info"]["mixed_precision_support"]
+        mixed_precision_support=_CONFIG["info"]["mixed_precision_support"],
+        stage=args.run_type,
     )
     
     # set parameters
@@ -95,9 +138,10 @@ if __name__ == "__main__":
         "batch_size": args.batch_size
     }
     
+    ### LOADING DATA LATER: because data only required for training and not for comilation however training engine initialization needed for both compilation and training
     # init training engine
     interface.init_training_engine(
-        model_name="test_sambanova",
+        model_name=_SUFFIX,
         model_dir=os.path.join(
                     _CONFIG["model_info"]["model_dir"],
                     _CONFIG["info"]["app_name"]
@@ -108,13 +152,13 @@ if __name__ == "__main__":
         batch_size=args.batch_size
     )
     
-    if args.stage == "compile":
+    if args.run_type == "compile":
         # compile the model
         interface.compile(
             batch_size=args.batch_size
         )
 
-    elif args.stage == "train":
+    elif args.run_type == "run":
         # initialize data manager
         data_manager = interface.init_data_manager(
             data_dir=_CONFIG["data_params"]["init"]["training_data_dir"],
@@ -129,10 +173,9 @@ if __name__ == "__main__":
         training_data = interface.load_data(
             data_files=data_manager._TRAIN_FILES,
             data_params=_CONFIG["data_params"]["load_and_prep"],
-            sampler=None,
             batch_size=args.batch_size
         )
-        
+
         interface.train(
             train_loader=training_data,
             n_epochs=args.n_epochs,

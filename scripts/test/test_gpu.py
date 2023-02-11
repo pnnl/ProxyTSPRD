@@ -16,18 +16,75 @@ from proxy_apps.apps import *
 
 # Parse Arguments
 parser = argparse.ArgumentParser(description='Run Time Series Prediction')
-parser.add_argument("--config_file", type=str,
-    help="configuration file for model training", required=True)
-parser.add_argument("--platform", choices=["gpu", "cpu", "rdu"], type=str, help="name of the platform (cpu/gpu/rdu)", required=True)
-parser.add_argument("--machine_name", type=str, help="name of the machine", required=True)
-parser.add_argument("--n_gpus", type=int, help="number of GPUs", default=1)
-parser.add_argument("--n_cpus", type=int, help="number of CPUs", default=1)
-parser.add_argument("--dtype", choices=["int", "fp16", "fp32", "fp64", "amp"], type=str, help="Data type", default="fp64")
-parser.add_argument("--mgpu_strategy", choices=["HVD", "DDP", "None"], type=str, help="MGPU strategy", default=None)
-parser.add_argument("--n_epochs", type=int, help="number of epochs", default=20)
-parser.add_argument("--batch_size", type=int, help="batch size", default=1024)
-parser.add_argument("--profiling", type=int, help="whether profiling or not using nsys", default=0)
-parser.add_argument("--run_type", choices=["train", "sinfer", "infer", "infer_ait", "infer_onnx"], type=str, help="train or infer", default="train")
+parser.add_argument(
+    "--config_file", 
+    type=str,
+    help="configuration file for model training", 
+    required=True
+)
+parser.add_argument(
+    "--platform", 
+    choices=["gpu", "cpu", "rdu"], 
+    type=str, 
+    help="name of the platform (cpu/gpu/rdu)", 
+    required=True
+)
+parser.add_argument(
+    "--machine_name", 
+    type=str, 
+    help="name of the machine", 
+    required=True
+)
+parser.add_argument(
+    "--n_gpus", 
+    type=int, help="number of GPUs", 
+    default=1
+)
+parser.add_argument(
+    "--n_cpus", 
+    type=int, 
+    help="number of CPUs", 
+    default=1
+)
+parser.add_argument(
+    "--dtype", 
+    choices=["int", "fp16", "fp32", "fp64", "amp"], 
+    type=str, 
+    help="Data type", 
+    default="fp64"
+)
+parser.add_argument(
+    "--mgpu_strategy", 
+    choices=["HVD", "DDP", "None"], 
+    type=str, 
+    help="MGPU strategy", 
+    default=None
+)
+parser.add_argument(
+    "--n_epochs", 
+    type=int, 
+    help="number of epochs", 
+    default=20
+)
+parser.add_argument(
+    "--batch_size", 
+    type=int, 
+    help="batch size", 
+    default=1024
+)
+parser.add_argument(
+    "--run_type", 
+    type=str, 
+    choices=["train", "sinfer", "infer", "infer_ait", "infer_onnx"], 
+    help="action to take", 
+    default="train"
+)
+parser.add_argument(
+    "--profiling", 
+    type=int, 
+    help="whether profiling or not using nsys", 
+    default=0
+)
 parser.add_argument("--write_graph", action='store_true')
 parser.add_argument("--train_suffix", type=str, default="")
 
@@ -179,7 +236,6 @@ if __name__ == "__main__":
         training_data = interface.load_data(
             data_files=data_manager._TRAIN_FILES,
             data_params=_CONFIG["data_params"]["load_and_prep"],
-            sampler=None,
             batch_size=args.batch_size
         )
     

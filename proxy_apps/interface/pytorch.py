@@ -59,8 +59,8 @@ class PyTorchInterface(Interface):
         data_params,
         num_workers=0,
         pin_memory=False,
-        sampler=None,
-        batch_size=1
+        batch_size=1,
+        num_replicas=1
     ):
         # empty training dataset
         dataloader = None
@@ -72,6 +72,13 @@ class PyTorchInterface(Interface):
             data_params
         )
         if data_params["dataloader"] == "torch.utils.data.Dataset":
+            sampler = None
+            if num_replicas > 1:
+                sampler = torch.utils.data.distributed.DistributedSampler(
+                    data_generator,
+                    num_replicas=num_replicas
+                )
+
             dataloader = torch.utils.data.DataLoader(
                 data_generator, 
                 batch_size=batch_size, 

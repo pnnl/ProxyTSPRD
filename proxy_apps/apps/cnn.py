@@ -166,10 +166,22 @@ class CNNProxyAppPT(ProxyApp):
         model_params,
         opt_params
     ):
-        return torch.optim.Adam(
-                model_params, 
-                lr=opt_params["learning_rate"]
-            )
+        if self._PLATFORM in ["cpu", "gpu"]:
+            return torch.optim.Adagrad(
+                    model_params, 
+                    lr=opt_params["learning_rate"]
+                )
+        elif self._PLATFORM == "rdu":
+            from sambaflow import samba
+            return samba.optim.SGD(
+                    model_params, 
+                    lr=opt_params["learning_rate"],
+                    momentum=opt_params["momentum"],
+                    weight_decay=opt_params["weight_decay"]
+                )
+        else:
+            print("[ERROR] Invalid platform: %s" %(self._PLATFORM))
+            return None
     
 class Lambda(torch.nn.Module):
     def __init__(self):
@@ -242,7 +254,7 @@ class PTCNN_SN(torch.nn.Module):
             targets.reshape(-1, self.fw_size*self.n_features))
         # print("Dense:", out.shape)
         # print("Dense (Reshaped):", out.view((out.shape[0], self.fw_size, self.n_features)).shape)
-        return loss, out.view((out.shape[0], self.fw_size, self.n_features))                                                                                                  
+        return loss, out.view((out.shape[0], self.fw_size, self.n_features))                  
 
 class CNNProxyAppPTATT(ProxyApp):
     def __init__(self, platform) -> None:
