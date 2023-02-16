@@ -10,7 +10,7 @@
     },
     "1": {
         "0": {
-            "data_load_size": 128,
+            "data_load_size": 33024,
             "data_store_size": 50176,
             "grad_store_size": 0,
             "ideal_ddr_bw": 107374182400.0,
@@ -24,6 +24,15 @@
             "grad_store_size": 100352,
             "ideal_ddr_bw": 107374182400.0,
             "weight_load_size": 100352
+        }
+    },
+    "3": {
+        "0": {
+            "data_load_size": 83072,
+            "data_store_size": 32768,
+            "grad_store_size": 0,
+            "ideal_ddr_bw": 107374182400.0,
+            "weight_load_size": 0
         }
     }
 }

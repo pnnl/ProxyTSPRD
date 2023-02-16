@@ -2,7 +2,7 @@
     "available": {
         "chips": 1,
         "fcmus": 640,
-        "sections": 3,
+        "sections": 4,
         "tiles": 4
     },
     "partitions": {
@@ -18,28 +18,28 @@
         }
     },
     "templates": {
-        "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_917": {
+        "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_939": {
             "chip_id": 0,
             "partition": "{0, 2}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 2
         },
-        "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_918": {
+        "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_940": {
             "chip_id": 0,
             "partition": "{0, 2}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 2
         },
-        "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_919": {
+        "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_941": {
             "chip_id": 0,
             "partition": "{0, 2}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 2
         },
-        "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_920": {
+        "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_942": {
             "chip_id": 0,
             "partition": "{0, 2}",
             "pcus": 0,
@@ -88,77 +88,56 @@
             "pmus": 3,
             "section_id": 2
         },
-        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_23_ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor": {
+        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_26_ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor": {
             "chip_id": 0,
             "partition": "{0, 2}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 2
         },
-        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_24_ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor": {
+        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_27_ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor": {
             "chip_id": 0,
             "partition": "{0, 2}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 2
         },
-        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_25_ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor": {
+        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_28_ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor": {
             "chip_id": 0,
             "partition": "{0, 2}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 2
         },
-        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_26_ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor": {
+        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_29_ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor": {
             "chip_id": 0,
             "partition": "{0, 2}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 2
         },
-        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_27_ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor": {
+        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_30_ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor": {
             "chip_id": 0,
             "partition": "{0, 2}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 2
         },
-        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_28_ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor1": {
+        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_31_ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor1": {
             "chip_id": 0,
             "partition": "{0, 2}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 2
         },
-        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_29_ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor1": {
+        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_32_ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor1": {
             "chip_id": 0,
             "partition": "{0, 2}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 2
         },
-        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_4_ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor": {
-            "chip_id": 0,
-            "partition": "{0, 2}",
-            "pcus": 0,
-            "pmus": 1,
-            "section_id": 2
-        },
-        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_23": {
-            "chip_id": 0,
-            "partition": "{0, 2}",
-            "pcus": 0,
-            "pmus": 1,
-            "section_id": 2
-        },
-        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_24": {
-            "chip_id": 0,
-            "partition": "{0, 2}",
-            "pcus": 0,
-            "pmus": 1,
-            "section_id": 2
-        },
-        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_25": {
+        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_5_ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor": {
             "chip_id": 0,
             "partition": "{0, 2}",
             "pcus": 0,
@@ -207,28 +186,28 @@
             "pmus": 1,
             "section_id": 2
         },
-        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_4": {
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_32": {
             "chip_id": 0,
             "partition": "{0, 2}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 2
         },
-        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_81": {
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_33": {
             "chip_id": 0,
             "partition": "{0, 2}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 2
         },
-        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_82": {
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_34": {
             "chip_id": 0,
             "partition": "{0, 2}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 2
         },
-        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_83": {
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_5": {
             "chip_id": 0,
             "partition": "{0, 2}",
             "pcus": 0,
@@ -236,6 +215,27 @@
             "section_id": 2
         },
         "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_84": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_85": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_86": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_87": {
             "chip_id": 0,
             "partition": "{0, 2}",
             "pcus": 0,

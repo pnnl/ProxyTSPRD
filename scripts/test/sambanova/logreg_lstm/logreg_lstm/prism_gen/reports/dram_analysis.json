@@ -1,49 +1,49 @@
 {
     "Partition{0, 0}": {
         "DDR": {
-            "estimated_bw_for_latency_calculated_with_request_length_overhead": 60000000000.0,
+            "estimated_bw_for_latency_calculated_with_request_length_overhead": 107374182400.0,
             "estimated_bw_for_latency_calculated_without_request_length_overhead": 107374182400.0,
-            "num_load_vectors_calculated_with_request_length_overhead": 10368,
-            "num_load_vectors_calculated_without_request_length_overhead": 10364,
-            "num_store_vectors_calculated_with_request_length_overhead": 840,
-            "num_store_vectors_calculated_without_request_length_overhead": 840,
-            "predicted_max_latency": 1.10592e-05,
-            "predicted_min_latency": 6.678104400634766e-06,
+            "num_load_vectors_calculated_with_request_length_overhead": 56336,
+            "num_load_vectors_calculated_without_request_length_overhead": 52936,
+            "num_store_vectors_calculated_with_request_length_overhead": 72120,
+            "num_store_vectors_calculated_without_request_length_overhead": 72120,
+            "predicted_max_latency": 7.656574249267578e-05,
+            "predicted_min_latency": 7.45391845703125e-05,
             "total_num_loads": 8,
             "total_num_stores": 7,
-            "total_num_vectors_calculated_with_request_length_overhead": 11208,
-            "total_num_vectors_calculated_without_request_length_overhead": 11204
+            "total_num_vectors_calculated_with_request_length_overhead": 128456,
+            "total_num_vectors_calculated_without_request_length_overhead": 125056
         },
         "HOST": {
-            "estimated_bw_for_latency_calculated_with_request_length_overhead": 107374182400.0,
+            "estimated_bw_for_latency_calculated_with_request_length_overhead": 80000000000.0,
             "estimated_bw_for_latency_calculated_without_request_length_overhead": 107374182400.0,
             "num_load_vectors_calculated_with_request_length_overhead": 248,
             "num_load_vectors_calculated_without_request_length_overhead": 241,
-            "num_store_vectors_calculated_with_request_length_overhead": 376,
-            "num_store_vectors_calculated_without_request_length_overhead": 369,
-            "predicted_max_latency": 3.719329833984375e-07,
-            "predicted_min_latency": 3.635883331298828e-07,
+            "num_store_vectors_calculated_with_request_length_overhead": 13048,
+            "num_store_vectors_calculated_without_request_length_overhead": 13041,
+            "predicted_max_latency": 1.04384e-05,
+            "predicted_min_latency": 7.916688919067382e-06,
             "total_num_loads": 3,
             "total_num_stores": 4,
-            "total_num_vectors_calculated_with_request_length_overhead": 624,
-            "total_num_vectors_calculated_without_request_length_overhead": 610
+            "total_num_vectors_calculated_with_request_length_overhead": 13296,
+            "total_num_vectors_calculated_without_request_length_overhead": 13282
         },
-        "predicted_min_latency": 6.678104400634766e-06
+        "predicted_min_latency": 7.45391845703125e-05
     },
     "Partition{0, 1}": {
         "DDR": {
             "estimated_bw_for_latency_calculated_with_request_length_overhead": 60000000000.0,
             "estimated_bw_for_latency_calculated_without_request_length_overhead": 107374182400.0,
-            "num_load_vectors_calculated_with_request_length_overhead": 19960,
-            "num_load_vectors_calculated_without_request_length_overhead": 19945,
+            "num_load_vectors_calculated_with_request_length_overhead": 176776,
+            "num_load_vectors_calculated_without_request_length_overhead": 175969,
             "num_store_vectors_calculated_with_request_length_overhead": 10624,
             "num_store_vectors_calculated_without_request_length_overhead": 10624,
-            "predicted_max_latency": 2.1290666666666666e-05,
-            "predicted_min_latency": 1.822054386138916e-05,
+            "predicted_max_latency": 0.00018856106666666667,
+            "predicted_min_latency": 0.00011121809482574463,
             "total_num_loads": 20,
             "total_num_stores": 18,
-            "total_num_vectors_calculated_with_request_length_overhead": 30584,
-            "total_num_vectors_calculated_without_request_length_overhead": 30569
+            "total_num_vectors_calculated_with_request_length_overhead": 187400,
+            "total_num_vectors_calculated_without_request_length_overhead": 186593
         },
         "HOST": {
             "estimated_bw_for_latency_calculated_with_request_length_overhead": 60000000000.0,
@@ -59,7 +59,7 @@
             "total_num_vectors_calculated_with_request_length_overhead": 248,
             "total_num_vectors_calculated_without_request_length_overhead": 241
         },
-        "predicted_min_latency": 1.822054386138916e-05
+        "predicted_min_latency": 0.00011121809482574463
     },
     "Partition{0, 2}": {
         "DDR": {
@@ -77,6 +77,23 @@
             "total_num_vectors_calculated_without_request_length_overhead": 50368
         },
         "predicted_min_latency": 3.002166748046875e-05
+    },
+    "Partition{0, 3}": {
+        "DDR": {
+            "estimated_bw_for_latency_calculated_with_request_length_overhead": 60000000000.0,
+            "estimated_bw_for_latency_calculated_without_request_length_overhead": 60000000000.0,
+            "num_load_vectors_calculated_with_request_length_overhead": 1024,
+            "num_load_vectors_calculated_without_request_length_overhead": 1024,
+            "num_store_vectors_calculated_with_request_length_overhead": 512,
+            "num_store_vectors_calculated_without_request_length_overhead": 512,
+            "predicted_max_latency": 1.0922666666666667e-06,
+            "predicted_min_latency": 1.0922666666666667e-06,
+            "total_num_loads": 2,
+            "total_num_stores": 1,
+            "total_num_vectors_calculated_with_request_length_overhead": 1536,
+            "total_num_vectors_calculated_without_request_length_overhead": 1536
+        },
+        "predicted_min_latency": 1.0922666666666667e-06
     },
     "symbol_0_Partition{0, 0}": {
         "dram_layout": "<BF16[60, 64]RM/64>",
@@ -127,7 +144,24 @@
         "pmu_layout.tensor_size()": 65536,
         "pmu_layout.tensor_vectors()": 1024,
         "request_length": 65536,
-        "symbol_name": "group_4"
+        "symbol_name": "group_5"
+    },
+    "symbol_0_Partition{0, 3}": {
+        "dram_layout": "<BF16[16384]RM>",
+        "dram_layout.element_size()": 2,
+        "dram_layout.tensor_size()": 32768,
+        "dram_layout.tensor_vectors()": 512,
+        "indices_shape": "[]",
+        "is_load": true,
+        "memory": "DDR",
+        "num_vectors_calculated_with_request_length_overhead": 512,
+        "num_vectors_calculated_without_request_length_overhead": 512,
+        "pmu_layout": "<BF16[8192]RM/64@0x0>",
+        "pmu_layout.element_size()": 2,
+        "pmu_layout.tensor_size()": 16384,
+        "pmu_layout.tensor_vectors()": 256,
+        "request_length": 16384,
+        "symbol_name": "dummy_dp_accum_region_0"
     },
     "symbol_10_Partition{0, 0}": {
         "dram_layout": "<UINT8[1088, 64]RM>",
@@ -144,7 +178,7 @@
         "pmu_layout.tensor_size()": 16384,
         "pmu_layout.tensor_vectors()": 256,
         "request_length": 16384,
-        "symbol_name": "group_26"
+        "symbol_name": "group_29"
     },
     "symbol_10_Partition{0, 1}": {
         "dram_layout": "<UINT8[1088, 64]RM>",
@@ -161,7 +195,7 @@
         "pmu_layout.tensor_size()": 16384,
         "pmu_layout.tensor_vectors()": 256,
         "request_length": 16384,
-        "symbol_name": "group_26"
+        "symbol_name": "group_29"
     },
     "symbol_10_Partition{0, 2}": {
         "dram_layout": "<UINT8[8, 64]RM>",
@@ -178,7 +212,7 @@
         "pmu_layout.tensor_size()": 512,
         "pmu_layout.tensor_vectors()": 8,
         "request_length": 512,
-        "symbol_name": "group_24"
+        "symbol_name": "group_27"
     },
     "symbol_11_Partition{0, 0}": {
         "dram_layout": "<UINT8[512, 64]RM>",
@@ -195,7 +229,7 @@
         "pmu_layout.tensor_size()": 16384,
         "pmu_layout.tensor_vectors()": 256,
         "request_length": 16384,
-        "symbol_name": "group_25"
+        "symbol_name": "group_28"
     },
     "symbol_11_Partition{0, 1}": {
         "dram_layout": "<UINT8[512, 64]RM>",
@@ -212,7 +246,7 @@
         "pmu_layout.tensor_size()": 16384,
         "pmu_layout.tensor_vectors()": 256,
         "request_length": 16384,
-        "symbol_name": "group_25"
+        "symbol_name": "group_28"
     },
     "symbol_11_Partition{0, 2}": {
         "dram_layout": "<BF16[4, 64, 1]RM/64>",
@@ -246,7 +280,7 @@
         "pmu_layout.tensor_size()": 512,
         "pmu_layout.tensor_vectors()": 8,
         "request_length": 512,
-        "symbol_name": "group_24"
+        "symbol_name": "group_27"
     },
     "symbol_12_Partition{0, 1}": {
         "dram_layout": "<UINT8[8, 64]RM>",
@@ -263,7 +297,7 @@
         "pmu_layout.tensor_size()": 512,
         "pmu_layout.tensor_vectors()": 8,
         "request_length": 512,
-        "symbol_name": "group_24"
+        "symbol_name": "group_27"
     },
     "symbol_12_Partition{0, 2}": {
         "dram_layout": "<UINT8[8, 64]RM>",
@@ -280,7 +314,7 @@
         "pmu_layout.tensor_size()": 512,
         "pmu_layout.tensor_vectors()": 8,
         "request_length": 512,
-        "symbol_name": "group_23"
+        "symbol_name": "group_26"
     },
     "symbol_13_Partition{0, 0}": {
         "dram_layout": "<UINT8[8, 64]RM>",
@@ -297,7 +331,7 @@
         "pmu_layout.tensor_size()": 512,
         "pmu_layout.tensor_vectors()": 8,
         "request_length": 512,
-        "symbol_name": "group_23"
+        "symbol_name": "group_26"
     },
     "symbol_13_Partition{0, 1}": {
         "dram_layout": "<UINT8[8, 64]RM>",
@@ -314,7 +348,7 @@
         "pmu_layout.tensor_size()": 512,
         "pmu_layout.tensor_vectors()": 8,
         "request_length": 512,
-        "symbol_name": "group_23"
+        "symbol_name": "group_26"
     },
     "symbol_13_Partition{0, 2}": {
         "dram_layout": "<BF16[4, 64, 1]RM/64>",
@@ -334,32 +368,34 @@
         "symbol_name": "ptconvlstm__lstm_layer__bias_hh_l0__grad"
     },
     "symbol_14_Partition{0, 0}": {
-        "dram_layout": "<BF16[30, 136]RM>",
+        "dram_layout": "<BF16[100, 30, 136]RM>",
         "dram_layout.element_size()": 2,
-        "dram_layout.tensor_size()": 8160,
-        "dram_layout.tensor_vectors()": 128,
-        "indices_shape": "[]",
+        "dram_layout.tensor_size()": 816000,
+        "dram_layout.tensor_vectors()": 12750,
+        "indices_shape": "[100, 6, 136]",
         "is_load": true,
         "memory": "DDR",
-        "num_vectors_calculated_with_request_length_overhead": 128,
-        "num_vectors_calculated_without_request_length_overhead": 128,
-        "pmu_layout": "<BF16[30, 136]RM@0x0>",
+        "num_vectors_calculated_with_request_length_overhead": 16000,
+        "num_vectors_calculated_without_request_length_overhead": 13000,
+        "pmu_layout": "<BF16[100, 6, 136]RM@0x0>",
         "pmu_layout.element_size()": 2,
-        "pmu_layout.tensor_size()": 8160,
-        "pmu_layout.tensor_vectors()": 128,
-        "request_length": 8160,
-        "symbol_name": "out_window"
+        "pmu_layout.tensor_size()": 163200,
+        "pmu_layout.tensor_vectors()": 2550,
+        "request_length": 1632,
+        "symbol_name": "out_window",
+        "tiler_total_bytes": 832000,
+        "tiler_total_num_vectors": 13000
     },
     "symbol_14_Partition{0, 1}": {
-        "dram_layout": "<BF16[30, 136]RM>",
+        "dram_layout": "<BF16[100, 30, 136]RM>",
         "dram_layout.element_size()": 2,
-        "dram_layout.tensor_size()": 8160,
-        "dram_layout.tensor_vectors()": 128,
+        "dram_layout.tensor_size()": 816000,
+        "dram_layout.tensor_vectors()": 12750,
         "indices_shape": "[]",
         "is_load": true,
         "memory": "DDR",
-        "num_vectors_calculated_with_request_length_overhead": 128,
-        "num_vectors_calculated_without_request_length_overhead": 128,
+        "num_vectors_calculated_with_request_length_overhead": 12800,
+        "num_vectors_calculated_without_request_length_overhead": 12800,
         "pmu_layout": "<BF16[30, 136]RM/0:64@0x0>",
         "pmu_layout.element_size()": 2,
         "pmu_layout.tensor_size()": 8192,
@@ -382,26 +418,26 @@
         "pmu_layout.tensor_size()": 262144,
         "pmu_layout.tensor_vectors()": 4096,
         "request_length": 262144,
-        "symbol_name": "group_4"
+        "symbol_name": "group_5"
     },
     "symbol_15_Partition{0, 0}": {
-        "dram_layout": "<BF16[2, 60, 64]RM/64>",
+        "dram_layout": "<BF16[101, 60, 64]RM/64>",
         "dram_layout.element_size()": 2,
-        "dram_layout.tensor_size()": 15360,
-        "dram_layout.tensor_vectors()": 240,
+        "dram_layout.tensor_size()": 775680,
+        "dram_layout.tensor_vectors()": 12120,
         "indices_shape": "[1, 60, 64]",
         "is_load": false,
         "memory": "DDR",
-        "num_vectors_calculated_with_request_length_overhead": 120,
-        "num_vectors_calculated_without_request_length_overhead": 120,
+        "num_vectors_calculated_with_request_length_overhead": 12000,
+        "num_vectors_calculated_without_request_length_overhead": 12000,
         "pmu_layout": "<BF16[1, 60, 64]RM@0x0>",
         "pmu_layout.element_size()": 2,
         "pmu_layout.tensor_size()": 7680,
         "pmu_layout.tensor_vectors()": 120,
         "request_length": 7680,
         "symbol_name": "ptconvlstm__lstm_layer__lstm_meta_outputs0_used_by_ptconvlstm__lstm_layer__lstm_shifted_outputs",
-        "tiler_total_bytes": 7680,
-        "tiler_total_num_vectors": 120
+        "tiler_total_bytes": 768000,
+        "tiler_total_num_vectors": 12000
     },
     "symbol_15_Partition{0, 1}": {
         "dram_layout": "<BF16[4080, 64]CVRM/64>",
@@ -435,18 +471,18 @@
         "pmu_layout.tensor_size()": 262144,
         "pmu_layout.tensor_vectors()": 4096,
         "request_length": 262144,
-        "symbol_name": "group_28"
+        "symbol_name": "group_31"
     },
     "symbol_16_Partition{0, 0}": {
-        "dram_layout": "<UINT8[120, 64]RM>",
+        "dram_layout": "<UINT8[12000, 64]RM>",
         "dram_layout.element_size()": 1,
-        "dram_layout.tensor_size()": 7680,
-        "dram_layout.tensor_vectors()": 120,
+        "dram_layout.tensor_size()": 768000,
+        "dram_layout.tensor_vectors()": 12000,
         "indices_shape": "[]",
         "is_load": false,
         "memory": "DDR",
-        "num_vectors_calculated_with_request_length_overhead": 120,
-        "num_vectors_calculated_without_request_length_overhead": 120,
+        "num_vectors_calculated_with_request_length_overhead": 12000,
+        "num_vectors_calculated_without_request_length_overhead": 12000,
         "pmu_layout": "<UINT8[120, 64]RM@0x0>",
         "pmu_layout.element_size()": 1,
         "pmu_layout.tensor_size()": 7680,
@@ -455,15 +491,15 @@
         "symbol_name": "ptconvlstm__lstm_layer__lstm3_used_by_ptconvlstm__lstm_layer__lstm_bwd"
     },
     "symbol_16_Partition{0, 1}": {
-        "dram_layout": "<BF16[60, 136]RM/64>",
+        "dram_layout": "<BF16[100, 60, 136]RM/64>",
         "dram_layout.element_size()": 2,
-        "dram_layout.tensor_size()": 19200,
-        "dram_layout.tensor_vectors()": 300,
+        "dram_layout.tensor_size()": 1920000,
+        "dram_layout.tensor_vectors()": 30000,
         "indices_shape": "[]",
         "is_load": true,
         "memory": "DDR",
-        "num_vectors_calculated_with_request_length_overhead": 304,
-        "num_vectors_calculated_without_request_length_overhead": 300,
+        "num_vectors_calculated_with_request_length_overhead": 30400,
+        "num_vectors_calculated_without_request_length_overhead": 30000,
         "pmu_layout": "<BF16[60, 136]RM/64@0x0>",
         "pmu_layout.element_size()": 2,
         "pmu_layout.tensor_size()": 19200,
@@ -486,18 +522,18 @@
         "pmu_layout.tensor_size()": 8192,
         "pmu_layout.tensor_vectors()": 128,
         "request_length": 8192,
-        "symbol_name": "group_27"
+        "symbol_name": "group_30"
     },
     "symbol_17_Partition{0, 0}": {
-        "dram_layout": "<UINT8[120, 64]RM>",
+        "dram_layout": "<UINT8[12000, 64]RM>",
         "dram_layout.element_size()": 1,
-        "dram_layout.tensor_size()": 7680,
-        "dram_layout.tensor_vectors()": 120,
+        "dram_layout.tensor_size()": 768000,
+        "dram_layout.tensor_vectors()": 12000,
         "indices_shape": "[]",
         "is_load": false,
         "memory": "DDR",
-        "num_vectors_calculated_with_request_length_overhead": 120,
-        "num_vectors_calculated_without_request_length_overhead": 120,
+        "num_vectors_calculated_with_request_length_overhead": 12000,
+        "num_vectors_calculated_without_request_length_overhead": 12000,
         "pmu_layout": "<UINT8[120, 64]RM@0x0>",
         "pmu_layout.element_size()": 1,
         "pmu_layout.tensor_size()": 7680,
@@ -506,15 +542,15 @@
         "symbol_name": "ptconvlstm__lstm_layer__lstm4_used_by_ptconvlstm__lstm_layer__lstm_bwd"
     },
     "symbol_17_Partition{0, 1}": {
-        "dram_layout": "<BF16[64, 60]CVRM/64>",
+        "dram_layout": "<BF16[100, 64, 60]CVRM/64>",
         "dram_layout.element_size()": 2,
-        "dram_layout.tensor_size()": 7680,
-        "dram_layout.tensor_vectors()": 120,
+        "dram_layout.tensor_size()": 768000,
+        "dram_layout.tensor_vectors()": 12000,
         "indices_shape": "[]",
         "is_load": true,
         "memory": "DDR",
-        "num_vectors_calculated_with_request_length_overhead": 120,
-        "num_vectors_calculated_without_request_length_overhead": 120,
+        "num_vectors_calculated_with_request_length_overhead": 12000,
+        "num_vectors_calculated_without_request_length_overhead": 12000,
         "pmu_layout": "<BF16[64, 60]CVRM/64@0x0>",
         "pmu_layout.element_size()": 2,
         "pmu_layout.tensor_size()": 7680,
@@ -537,18 +573,18 @@
         "pmu_layout.tensor_size()": 111616,
         "pmu_layout.tensor_vectors()": 1744,
         "request_length": 111616,
-        "symbol_name": "group_29"
+        "symbol_name": "group_32"
     },
     "symbol_18_Partition{0, 0}": {
-        "dram_layout": "<UINT8[120, 64]RM>",
+        "dram_layout": "<UINT8[12000, 64]RM>",
         "dram_layout.element_size()": 1,
-        "dram_layout.tensor_size()": 7680,
-        "dram_layout.tensor_vectors()": 120,
+        "dram_layout.tensor_size()": 768000,
+        "dram_layout.tensor_vectors()": 12000,
         "indices_shape": "[]",
         "is_load": false,
         "memory": "DDR",
-        "num_vectors_calculated_with_request_length_overhead": 120,
-        "num_vectors_calculated_without_request_length_overhead": 120,
+        "num_vectors_calculated_with_request_length_overhead": 12000,
+        "num_vectors_calculated_without_request_length_overhead": 12000,
         "pmu_layout": "<UINT8[120, 64]RM@0x0>",
         "pmu_layout.element_size()": 1,
         "pmu_layout.tensor_size()": 7680,
@@ -557,15 +593,15 @@
         "symbol_name": "ptconvlstm__lstm_layer__lstm5_used_by_ptconvlstm__lstm_layer__lstm_bwd"
     },
     "symbol_18_Partition{0, 1}": {
-        "dram_layout": "<BF16[64, 60]CVRM/64>",
+        "dram_layout": "<BF16[100, 64, 60]CVRM/64>",
         "dram_layout.element_size()": 2,
-        "dram_layout.tensor_size()": 7680,
-        "dram_layout.tensor_vectors()": 120,
+        "dram_layout.tensor_size()": 768000,
+        "dram_layout.tensor_vectors()": 12000,
         "indices_shape": "[]",
         "is_load": true,
         "memory": "DDR",
-        "num_vectors_calculated_with_request_length_overhead": 120,
-        "num_vectors_calculated_without_request_length_overhead": 120,
+        "num_vectors_calculated_with_request_length_overhead": 12000,
+        "num_vectors_calculated_without_request_length_overhead": 12000,
         "pmu_layout": "<BF16[64, 60]CVRM/64@0x0>",
         "pmu_layout.element_size()": 2,
         "pmu_layout.tensor_size()": 7680,
@@ -588,18 +624,18 @@
         "pmu_layout.tensor_size()": 69632,
         "pmu_layout.tensor_vectors()": 1088,
         "request_length": 69632,
-        "symbol_name": "group_26"
+        "symbol_name": "group_29"
     },
     "symbol_19_Partition{0, 0}": {
-        "dram_layout": "<UINT8[120, 64]RM>",
+        "dram_layout": "<UINT8[12000, 64]RM>",
         "dram_layout.element_size()": 1,
-        "dram_layout.tensor_size()": 7680,
-        "dram_layout.tensor_vectors()": 120,
+        "dram_layout.tensor_size()": 768000,
+        "dram_layout.tensor_vectors()": 12000,
         "indices_shape": "[]",
         "is_load": false,
         "memory": "DDR",
-        "num_vectors_calculated_with_request_length_overhead": 120,
-        "num_vectors_calculated_without_request_length_overhead": 120,
+        "num_vectors_calculated_with_request_length_overhead": 12000,
+        "num_vectors_calculated_without_request_length_overhead": 12000,
         "pmu_layout": "<UINT8[120, 64]RM@0x0>",
         "pmu_layout.element_size()": 1,
         "pmu_layout.tensor_size()": 7680,
@@ -608,15 +644,15 @@
         "symbol_name": "ptconvlstm__lstm_layer__lstm6_used_by_ptconvlstm__lstm_layer__lstm_bwd"
     },
     "symbol_19_Partition{0, 1}": {
-        "dram_layout": "<BF16[64, 60]CVRM/64>",
+        "dram_layout": "<BF16[100, 64, 60]CVRM/64>",
         "dram_layout.element_size()": 2,
-        "dram_layout.tensor_size()": 7680,
-        "dram_layout.tensor_vectors()": 120,
+        "dram_layout.tensor_size()": 768000,
+        "dram_layout.tensor_vectors()": 12000,
         "indices_shape": "[]",
         "is_load": true,
         "memory": "DDR",
-        "num_vectors_calculated_with_request_length_overhead": 120,
-        "num_vectors_calculated_without_request_length_overhead": 120,
+        "num_vectors_calculated_with_request_length_overhead": 12000,
+        "num_vectors_calculated_without_request_length_overhead": 12000,
         "pmu_layout": "<BF16[64, 60]CVRM/64@0x0>",
         "pmu_layout.element_size()": 2,
         "pmu_layout.tensor_size()": 7680,
@@ -639,7 +675,7 @@
         "pmu_layout.tensor_size()": 32768,
         "pmu_layout.tensor_vectors()": 512,
         "request_length": 32768,
-        "symbol_name": "group_25"
+        "symbol_name": "group_28"
     },
     "symbol_1_Partition{0, 0}": {
         "dram_layout": "<BF16[60, 64]RM/64>",
@@ -690,18 +726,35 @@
         "pmu_layout.tensor_size()": 65536,
         "pmu_layout.tensor_vectors()": 1024,
         "request_length": 65536,
-        "symbol_name": "group_30"
+        "symbol_name": "$OPT_dp_accum_group_9d34dcacdfc5e3740f57fe6b0875d64261f47893"
+    },
+    "symbol_1_Partition{0, 3}": {
+        "dram_layout": "<BF16[16384]RM>",
+        "dram_layout.element_size()": 2,
+        "dram_layout.tensor_size()": 32768,
+        "dram_layout.tensor_vectors()": 512,
+        "indices_shape": "[]",
+        "is_load": true,
+        "memory": "DDR",
+        "num_vectors_calculated_with_request_length_overhead": 512,
+        "num_vectors_calculated_without_request_length_overhead": 512,
+        "pmu_layout": "<BF16[8192]RM/64@0x0>",
+        "pmu_layout.element_size()": 2,
+        "pmu_layout.tensor_size()": 16384,
+        "pmu_layout.tensor_vectors()": 256,
+        "request_length": 16384,
+        "symbol_name": "accum_dummy_0_reduce_buf"
     },
     "symbol_20_Partition{0, 0}": {
-        "dram_layout": "<UINT8[120, 64]RM>",
+        "dram_layout": "<UINT8[12000, 64]RM>",
         "dram_layout.element_size()": 1,
-        "dram_layout.tensor_size()": 7680,
-        "dram_layout.tensor_vectors()": 120,
+        "dram_layout.tensor_size()": 768000,
+        "dram_layout.tensor_vectors()": 12000,
         "indices_shape": "[]",
         "is_load": false,
         "memory": "DDR",
-        "num_vectors_calculated_with_request_length_overhead": 120,
-        "num_vectors_calculated_without_request_length_overhead": 120,
+        "num_vectors_calculated_with_request_length_overhead": 12000,
+        "num_vectors_calculated_without_request_length_overhead": 12000,
         "pmu_layout": "<UINT8[120, 64]RM@0x0>",
         "pmu_layout.element_size()": 1,
         "pmu_layout.tensor_size()": 7680,
@@ -710,15 +763,15 @@
         "symbol_name": "ptconvlstm__lstm_layer__lstm7_used_by_ptconvlstm__lstm_layer__lstm_bwd"
     },
     "symbol_20_Partition{0, 1}": {
-        "dram_layout": "<BF16[64, 60]CVRM/64>",
+        "dram_layout": "<BF16[100, 64, 60]CVRM/64>",
         "dram_layout.element_size()": 2,
-        "dram_layout.tensor_size()": 7680,
-        "dram_layout.tensor_vectors()": 120,
+        "dram_layout.tensor_size()": 768000,
+        "dram_layout.tensor_vectors()": 12000,
         "indices_shape": "[]",
         "is_load": true,
         "memory": "DDR",
-        "num_vectors_calculated_with_request_length_overhead": 120,
-        "num_vectors_calculated_without_request_length_overhead": 120,
+        "num_vectors_calculated_with_request_length_overhead": 12000,
+        "num_vectors_calculated_without_request_length_overhead": 12000,
         "pmu_layout": "<BF16[64, 60]CVRM/64@0x0>",
         "pmu_layout.element_size()": 2,
         "pmu_layout.tensor_size()": 7680,
@@ -741,13 +794,13 @@
         "pmu_layout.tensor_size()": 512,
         "pmu_layout.tensor_vectors()": 8,
         "request_length": 512,
-        "symbol_name": "group_24"
+        "symbol_name": "group_27"
     },
     "symbol_21_Partition{0, 0}": {
-        "dram_layout": "<BF16[2, 60, 64]RM/64>",
+        "dram_layout": "<BF16[101, 60, 64]RM/64>",
         "dram_layout.element_size()": 2,
-        "dram_layout.tensor_size()": 15360,
-        "dram_layout.tensor_vectors()": 240,
+        "dram_layout.tensor_size()": 775680,
+        "dram_layout.tensor_vectors()": 12120,
         "indices_shape": "[1, 60, 64]",
         "is_load": false,
         "memory": "DDR",
@@ -763,15 +816,15 @@
         "tiler_total_num_vectors": 120
     },
     "symbol_21_Partition{0, 1}": {
-        "dram_layout": "<BF16[64, 60]CVRM/64>",
+        "dram_layout": "<BF16[100, 64, 60]CVRM/64>",
         "dram_layout.element_size()": 2,
-        "dram_layout.tensor_size()": 7680,
-        "dram_layout.tensor_vectors()": 120,
+        "dram_layout.tensor_size()": 768000,
+        "dram_layout.tensor_vectors()": 12000,
         "indices_shape": "[]",
         "is_load": true,
         "memory": "DDR",
-        "num_vectors_calculated_with_request_length_overhead": 120,
-        "num_vectors_calculated_without_request_length_overhead": 120,
+        "num_vectors_calculated_with_request_length_overhead": 12000,
+        "num_vectors_calculated_without_request_length_overhead": 12000,
         "pmu_layout": "<BF16[64, 60]CVRM/64@0x0>",
         "pmu_layout.element_size()": 2,
         "pmu_layout.tensor_size()": 7680,
@@ -794,26 +847,26 @@
         "pmu_layout.tensor_size()": 512,
         "pmu_layout.tensor_vectors()": 8,
         "request_length": 512,
-        "symbol_name": "group_23"
+        "symbol_name": "group_26"
     },
     "symbol_22_Partition{0, 1}": {
-        "dram_layout": "<BF16[2, 60, 64]RM/64>",
+        "dram_layout": "<BF16[101, 60, 64]RM/64>",
         "dram_layout.element_size()": 2,
-        "dram_layout.tensor_size()": 15360,
-        "dram_layout.tensor_vectors()": 240,
+        "dram_layout.tensor_size()": 775680,
+        "dram_layout.tensor_vectors()": 12120,
         "indices_shape": "[1, 60, 64]",
         "is_load": true,
         "memory": "DDR",
-        "num_vectors_calculated_with_request_length_overhead": 120,
-        "num_vectors_calculated_without_request_length_overhead": 120,
+        "num_vectors_calculated_with_request_length_overhead": 12000,
+        "num_vectors_calculated_without_request_length_overhead": 12000,
         "pmu_layout": "<BF16[1, 60, 64]RM@0x0>",
         "pmu_layout.element_size()": 2,
         "pmu_layout.tensor_size()": 7680,
         "pmu_layout.tensor_vectors()": 120,
         "request_length": 7680,
         "symbol_name": "ptconvlstm__lstm_layer__lstm_meta_outputs0_used_by_ptconvlstm__lstm_layer__lstm_shifted_outputs",
-        "tiler_total_bytes": 7680,
-        "tiler_total_num_vectors": 120
+        "tiler_total_bytes": 768000,
+        "tiler_total_num_vectors": 12000
     },
     "symbol_23_Partition{0, 1}": {
         "dram_layout": "<UINT8[8192, 64]RM>",
@@ -983,7 +1036,24 @@
         "pmu_layout.tensor_size()": 65536,
         "pmu_layout.tensor_vectors()": 1024,
         "request_length": 65536,
-        "symbol_name": "group_28"
+        "symbol_name": "group_31"
+    },
+    "symbol_2_Partition{0, 3}": {
+        "dram_layout": "<UINT8[512, 64]RM>",
+        "dram_layout.element_size()": 1,
+        "dram_layout.tensor_size()": 32768,
+        "dram_layout.tensor_vectors()": 512,
+        "indices_shape": "[]",
+        "is_load": false,
+        "memory": "DDR",
+        "num_vectors_calculated_with_request_length_overhead": 512,
+        "num_vectors_calculated_without_request_length_overhead": 512,
+        "pmu_layout": "<UINT8[256, 64]RM@0x0>",
+        "pmu_layout.element_size()": 1,
+        "pmu_layout.tensor_size()": 16384,
+        "pmu_layout.tensor_vectors()": 256,
+        "request_length": 16384,
+        "symbol_name": "dummy_dp_accum_region_0"
     },
     "symbol_30_Partition{0, 1}": {
         "dram_layout": "<UINT8[320, 64]RM>",
@@ -1156,15 +1226,15 @@
         "symbol_name": "ptconvlstm__lstm_layer__bias_hh_l0__grad"
     },
     "symbol_3_Partition{0, 0}": {
-        "dram_layout": "<BF16[30, 136]RM>",
+        "dram_layout": "<BF16[100, 30, 136]RM>",
         "dram_layout.element_size()": 2,
-        "dram_layout.tensor_size()": 8160,
-        "dram_layout.tensor_vectors()": 128,
+        "dram_layout.tensor_size()": 816000,
+        "dram_layout.tensor_vectors()": 12750,
         "indices_shape": "[]",
         "is_load": false,
         "memory": "HOST",
-        "num_vectors_calculated_with_request_length_overhead": 128,
-        "num_vectors_calculated_without_request_length_overhead": 128,
+        "num_vectors_calculated_with_request_length_overhead": 12800,
+        "num_vectors_calculated_without_request_length_overhead": 12800,
         "pmu_layout": "<BF16[30, 136]RM/0:64@0x0>",
         "pmu_layout.element_size()": 2,
         "pmu_layout.tensor_size()": 8192,
@@ -1187,7 +1257,7 @@
         "pmu_layout.tensor_size()": 65536,
         "pmu_layout.tensor_vectors()": 1024,
         "request_length": 65536,
-        "symbol_name": "group_4"
+        "symbol_name": "group_5"
     },
     "symbol_3_Partition{0, 2}": {
         "dram_layout": "<UINT8[128, 64]RM>",
@@ -1204,7 +1274,7 @@
         "pmu_layout.tensor_size()": 8192,
         "pmu_layout.tensor_vectors()": 128,
         "request_length": 8192,
-        "symbol_name": "group_27"
+        "symbol_name": "group_30"
     },
     "symbol_40_Partition{0, 1}": {
         "dram_layout": "<UINT8[64, 64]RM>",
@@ -1255,7 +1325,7 @@
         "pmu_layout.tensor_size()": 8192,
         "pmu_layout.tensor_vectors()": 128,
         "request_length": 8192,
-        "symbol_name": "group_27"
+        "symbol_name": "group_30"
     },
     "symbol_4_Partition{0, 2}": {
         "dram_layout": "<UINT8[128, 64]RM>",
@@ -1272,7 +1342,7 @@
         "pmu_layout.tensor_size()": 8192,
         "pmu_layout.tensor_vectors()": 128,
         "request_length": 8192,
-        "symbol_name": "group_31"
+        "symbol_name": "$OPT_dp_accum_group_a3cd3e13b6b2b2b9cfe22b9b84a0c92ae1ec7594"
     },
     "symbol_5_Partition{0, 0}": {
         "dram_layout": "<UINT8[120, 64]RM>",
@@ -1323,23 +1393,23 @@
         "pmu_layout.tensor_size()": 16384,
         "pmu_layout.tensor_vectors()": 256,
         "request_length": 16384,
-        "symbol_name": "group_29"
+        "symbol_name": "group_32"
     },
     "symbol_6_Partition{0, 0}": {
-        "dram_layout": "<BF16[1]RM>",
-        "dram_layout.element_size()": 2,
-        "dram_layout.tensor_size()": 2,
+        "dram_layout": "<UINT8[64]RM>",
+        "dram_layout.element_size()": 1,
+        "dram_layout.tensor_size()": 64,
         "dram_layout.tensor_vectors()": 1,
         "indices_shape": "[]",
         "is_load": false,
         "memory": "HOST",
         "num_vectors_calculated_with_request_length_overhead": 8,
         "num_vectors_calculated_without_request_length_overhead": 1,
-        "pmu_layout": "<BF16[1]RM/64@0x0>",
-        "pmu_layout.element_size()": 2,
+        "pmu_layout": "<UINT8[64]RM@0x0>",
+        "pmu_layout.element_size()": 1,
         "pmu_layout.tensor_size()": 64,
         "pmu_layout.tensor_vectors()": 1,
-        "request_length": 2,
+        "request_length": 64,
         "symbol_name": "ptconvlstm__criterion__mseloss__outputs__0"
     },
     "symbol_6_Partition{0, 1}": {
@@ -1374,7 +1444,7 @@
         "pmu_layout.tensor_size()": 16384,
         "pmu_layout.tensor_vectors()": 256,
         "request_length": 16384,
-        "symbol_name": "group_26"
+        "symbol_name": "group_29"
     },
     "symbol_7_Partition{0, 0}": {
         "dram_layout": "<UINT8[8192, 64]RM>",
@@ -1391,7 +1461,7 @@
         "pmu_layout.tensor_size()": 65536,
         "pmu_layout.tensor_vectors()": 1024,
         "request_length": 65536,
-        "symbol_name": "group_4"
+        "symbol_name": "group_5"
     },
     "symbol_7_Partition{0, 1}": {
         "dram_layout": "<BF16[60, 64]RM/64>",
@@ -1442,18 +1512,18 @@
         "pmu_layout.tensor_size()": 8192,
         "pmu_layout.tensor_vectors()": 128,
         "request_length": 8192,
-        "symbol_name": "group_27"
+        "symbol_name": "group_30"
     },
     "symbol_8_Partition{0, 1}": {
-        "dram_layout": "<BF16[30, 136]RM>",
+        "dram_layout": "<BF16[100, 30, 136]RM>",
         "dram_layout.element_size()": 2,
-        "dram_layout.tensor_size()": 8160,
-        "dram_layout.tensor_vectors()": 128,
+        "dram_layout.tensor_size()": 816000,
+        "dram_layout.tensor_vectors()": 12750,
         "indices_shape": "[]",
         "is_load": true,
         "memory": "DDR",
-        "num_vectors_calculated_with_request_length_overhead": 128,
-        "num_vectors_calculated_without_request_length_overhead": 128,
+        "num_vectors_calculated_with_request_length_overhead": 12800,
+        "num_vectors_calculated_without_request_length_overhead": 12800,
         "pmu_layout": "<BF16[30, 136]RM/0:64@0x0>",
         "pmu_layout.element_size()": 2,
         "pmu_layout.tensor_size()": 8192,
@@ -1476,18 +1546,18 @@
         "pmu_layout.tensor_size()": 16384,
         "pmu_layout.tensor_vectors()": 256,
         "request_length": 16384,
-        "symbol_name": "group_25"
+        "symbol_name": "group_28"
     },
     "symbol_9_Partition{0, 0}": {
-        "dram_layout": "<BF16[60, 136]RM/64>",
+        "dram_layout": "<BF16[100, 60, 136]RM/64>",
         "dram_layout.element_size()": 2,
-        "dram_layout.tensor_size()": 19200,
-        "dram_layout.tensor_vectors()": 300,
+        "dram_layout.tensor_size()": 1920000,
+        "dram_layout.tensor_vectors()": 30000,
         "indices_shape": "[]",
         "is_load": true,
         "memory": "DDR",
-        "num_vectors_calculated_with_request_length_overhead": 304,
-        "num_vectors_calculated_without_request_length_overhead": 300,
+        "num_vectors_calculated_with_request_length_overhead": 30400,
+        "num_vectors_calculated_without_request_length_overhead": 30000,
         "pmu_layout": "<BF16[136, 60]CM/64@0x0>",
         "pmu_layout.element_size()": 2,
         "pmu_layout.tensor_size()": 19200,
@@ -1496,15 +1566,15 @@
         "symbol_name": "inp_window"
     },
     "symbol_9_Partition{0, 1}": {
-        "dram_layout": "<BF16[60, 136]RM/64>",
+        "dram_layout": "<BF16[100, 60, 136]RM/64>",
         "dram_layout.element_size()": 2,
-        "dram_layout.tensor_size()": 19200,
-        "dram_layout.tensor_vectors()": 300,
+        "dram_layout.tensor_size()": 1920000,
+        "dram_layout.tensor_vectors()": 30000,
         "indices_shape": "[]",
         "is_load": true,
         "memory": "DDR",
-        "num_vectors_calculated_with_request_length_overhead": 304,
-        "num_vectors_calculated_without_request_length_overhead": 300,
+        "num_vectors_calculated_with_request_length_overhead": 30400,
+        "num_vectors_calculated_without_request_length_overhead": 30000,
         "pmu_layout": "<BF16[136, 60]CM/64@0x0>",
         "pmu_layout.element_size()": 2,
         "pmu_layout.tensor_size()": 19200,

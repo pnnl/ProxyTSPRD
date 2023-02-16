@@ -18,38 +18,40 @@ ndaddr_funcs = {}
 # Start ctxs #
 ##############
 
-ctxs.append('LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kOutput0')
-def LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kOutput0():
-    x0 = 768
-    x1 = 640
+ctxs.append('kFrontDynamicWriteCtx')
+def kFrontDynamicWriteCtx():
+    x0 = 1
+    x1 = 12
     x2 = True
-    x3 = 0
-    x4 = 64
+    x3 = 64
+    x4 = 1000
+    x5 = 0
     ndaddrs = []
-    for x5 in range(x3,x0,x4):
-        x6 = True
-        x9 = x5 < x1
+    for x6 in range(x5,x4,x3):
+        x7 = True
         print("trim_pred: {} ".format(x2), end='')
-        print("pmuid: [" + str(x3) +"," + "] ", end='')
-        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x5),qaddr(x5//2),qaddr(x5//64),qaddr(x3),qaddr(x3),x2,x9,True,))
+        print("pmuid: [" + str(x5) +"," + "] ", end='')
+        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x6),qaddr(x6//2),qaddr(x6//64),qaddr(x5),qaddr(x5),x2,x2,True,))
     return ndaddrs
 
-ndaddr_funcs['LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kOutput0'] = LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kOutput0
-ctxs.append('kDefaultRead1')
-def kDefaultRead1():
-    x0 = 768
-    x1 = 640
+ndaddr_funcs['kFrontDynamicWriteCtx'] = kFrontDynamicWriteCtx
+ctxs.append('LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputY')
+def LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputY():
+    x0 = 1
+    x1 = 12
     x2 = True
-    x3 = 0
-    x4 = 64
+    x3 = 64
+    x4 = 1000
+    x5 = 0
     ndaddrs = []
-    for x5 in range(x3,x1,x4):
-        x6 = True
-        print("pmuid: [" + str(x3) +"," + "] ", end='')
-        print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x5),qaddr(x5//2),qaddr(x5//64),qaddr(x3),qaddr(x3),x2,x2,True,))
+    for x7 in range(x5,x4,x3):
+        for x6 in range(x5,x1,x0):
+            x8 = True
+            print("pmuid: [" + str(x5) +"," + "] ", end='')
+            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x7),qaddr(x7//2),qaddr(x7//64),qaddr(x5),qaddr(x5),x2,x2,True,))
     return ndaddrs
 
-ndaddr_funcs['kDefaultRead1'] = kDefaultRead1
+ndaddr_funcs['LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputY'] = LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputY
 
 ############
 # End ctxs #

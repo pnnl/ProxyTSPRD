@@ -103,7 +103,7 @@
     "preassign-vag-analyze": true,
     "preassign-vag-load-only": false,
     "prism-compiler-config-file": "",
-    "prism-verbose": false,
+    "prism-verbose": true,
     "py-cost-model-file": "",
     "ramp-control": "None",
     "ramp-control-aware": false,

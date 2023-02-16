@@ -233,7 +233,7 @@ class PTCNN_SN(torch.nn.Module):
         
         self.criterion = criterion
         # self.lambda_layer  = Lambda()
-        self.conv_layer    = torch.nn.Conv1d(in_channels=136, out_channels=256, kernel_size=(3))
+        self.conv_layer    = torch.nn.Conv1d(in_channels=self.n_features, out_channels=256, kernel_size=(3))
         self.dense_layer   = torch.nn.Linear(in_features=256, out_features=self.fw_size * self.n_features)
         
     def forward(self, inputs, targets):

@@ -431,6 +431,8 @@ def main(argv):
     _ = SambaConfig(args_composed, SNConfig).get_all_params()
 
     args = args_composed
+    # args.batch_size = 1024
+    # sys.exit(args.batch_size)
     # when it is not distributed mode, local rank is -1.
     args.local_rank = dist.get_rank() if dist.is_initialized() else -1
     # print(

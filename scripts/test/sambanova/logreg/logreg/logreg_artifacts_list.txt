@@ -1,8 +1,10 @@
 /qfs/people/jain432/pacer_saudade/code/ProxyTSPRD/scripts/test/sambanova/logreg/logreg//logreg.s0.utilization_report.json
 /qfs/people/jain432/pacer_saudade/code/ProxyTSPRD/scripts/test/sambanova/logreg/logreg//logreg.s1.utilization_report.json
 /qfs/people/jain432/pacer_saudade/code/ProxyTSPRD/scripts/test/sambanova/logreg/logreg//logreg.s2.utilization_report.json
+/qfs/people/jain432/pacer_saudade/code/ProxyTSPRD/scripts/test/sambanova/logreg/logreg//logreg.s3.utilization_report.json
 /qfs/people/jain432/pacer_saudade/code/ProxyTSPRD/scripts/test/sambanova/logreg/logreg/stage_buffers/partition_latency_0_0.dot
 /qfs/people/jain432/pacer_saudade/code/ProxyTSPRD/scripts/test/sambanova/logreg/logreg/stage_buffers/partition_latency_1_0.dot
 /qfs/people/jain432/pacer_saudade/code/ProxyTSPRD/scripts/test/sambanova/logreg/logreg/stage_buffers/partition_latency_2_0.dot
-/qfs/people/jain432/pacer_saudade/code/ProxyTSPRD/scripts/test/sambanova/logreg/logreg//logreg_0_2_bandwidth_statistics.txt
-/qfs/people/jain432/pacer_saudade/code/ProxyTSPRD/scripts/test/sambanova/logreg/logreg//logreg_0_2_bandwidth_statistics.csv
+/qfs/people/jain432/pacer_saudade/code/ProxyTSPRD/scripts/test/sambanova/logreg/logreg/stage_buffers/partition_latency_3_0.dot
+/qfs/people/jain432/pacer_saudade/code/ProxyTSPRD/scripts/test/sambanova/logreg/logreg//logreg_0_3_bandwidth_statistics.txt
+/qfs/people/jain432/pacer_saudade/code/ProxyTSPRD/scripts/test/sambanova/logreg/logreg//logreg_0_3_bandwidth_statistics.csv

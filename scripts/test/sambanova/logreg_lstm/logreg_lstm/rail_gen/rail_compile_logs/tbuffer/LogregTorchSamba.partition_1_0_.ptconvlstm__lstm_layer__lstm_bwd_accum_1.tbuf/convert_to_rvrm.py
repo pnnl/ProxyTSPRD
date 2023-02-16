@@ -32,6 +32,12 @@ def main():
     if opts.ctx == 'w_loop_0_0':
         w_loop_0_0()
 
+    def r_loop_0_0():
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 0, [4096, 1, ])
+        np.save('RVRM_r_loop_0_0.npy', matrix)
+    if opts.ctx == 'r_loop_0_0':
+        r_loop_0_0()
+
     def kBackReadCtx():
         matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 0, [4096, 1, ])
         np.save('RVRM_kBackReadCtx.npy', matrix)

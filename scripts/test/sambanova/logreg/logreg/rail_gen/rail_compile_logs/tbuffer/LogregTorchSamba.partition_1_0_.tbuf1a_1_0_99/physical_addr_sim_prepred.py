@@ -18,35 +18,37 @@ ndaddr_funcs = {}
 # Start ctxs #
 ##############
 
-ctxs.append('D_0_0_LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kOutput0')
-def D_0_0_LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kOutput0():
-    x0 = 768
-    x1 = 64
-    x2 = 640
-    x3 = True
-    x4 = 0
+ctxs.append('D_0_0_kFrontDynamicWriteCtx')
+def D_0_0_kFrontDynamicWriteCtx():
+    x0 = 1
+    x1 = 12
+    x2 = 64
+    x3 = 1000
+    x4 = True
+    x5 = 0
     ndaddrs = []
-    for x5 in range(x4,x0,x1):
-        x6 = True
-        x9 = x5 < x2
-        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x5),qaddr(x5//2),qaddr(x5//64),qaddr(x4),qaddr(x4),x3,x9,True,))
+    for x6 in range(x5,x3,x2):
+        x7 = True
+        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x6),qaddr(x6//2),qaddr(x6//64),qaddr(x5),qaddr(x5),x4,x4,True,))
     return ndaddrs
 
-ndaddr_funcs['D_0_0_LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kOutput0'] = D_0_0_LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kOutput0
-ctxs.append('D_0_0_kDefaultRead1')
-def D_0_0_kDefaultRead1():
-    x0 = 768
-    x1 = 64
-    x2 = 640
-    x3 = True
-    x4 = 0
+ndaddr_funcs['D_0_0_kFrontDynamicWriteCtx'] = D_0_0_kFrontDynamicWriteCtx
+ctxs.append('D_0_0_LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputY')
+def D_0_0_LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputY():
+    x0 = 1
+    x1 = 12
+    x2 = 64
+    x3 = 1000
+    x4 = True
+    x5 = 0
     ndaddrs = []
-    for x5 in range(x4,x2,x1):
-        x6 = True
-        print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x5),qaddr(x5//2),qaddr(x5//64),qaddr(x4),qaddr(x4),x3,x3,True,))
+    for x7 in range(x5,x3,x2):
+        for x6 in range(x5,x1,x0):
+            x8 = True
+            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x7),qaddr(x7//2),qaddr(x7//64),qaddr(x5),qaddr(x5),x4,x4,True,))
     return ndaddrs
 
-ndaddr_funcs['D_0_0_kDefaultRead1'] = D_0_0_kDefaultRead1
+ndaddr_funcs['D_0_0_LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputY'] = D_0_0_LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputY
 
 ############
 # End ctxs #

@@ -18,39 +18,39 @@ ndaddr_funcs = {}
 # Start ctxs #
 ##############
 
-ctxs.append('D_0_0_LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kOutput0')
-def D_0_0_LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kOutput0():
-    x0 = 768
-    x1 = 64
-    x2 = 640
-    x3 = 0
-    x4 = 2
-    x5 = 0
+ctxs.append('D_0_0_kFrontDynamicWriteCtx')
+def D_0_0_kFrontDynamicWriteCtx():
+    x0 = 1
+    x1 = 12
+    x2 = 64
+    x3 = 1000
+    x4 = 0
+    x5 = 2
+    x6 = 0
     ndaddrs = []
-    for x6 in range(x3,x0,x1):
-        x7 = True
-        x10 = x6 < x2
-        x12 =  1 if x10 else 0
-        x13 = x12 * x4
-        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} pred_bits:{} zero:{} pred:{} invalid:{} min_max:{}".format(qaddr(x6),qaddr(x6//2),qaddr(x6//64),qaddr(x3),qaddr(x3),bin(x13)[2::],x13 % 2 >> 0 ,x13 % 4 >> 1 ,x13 % 8 >> 2 ,True,))
+    for x7 in range(x4,x3,x2):
+        x8 = True
+        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} pred_bits:{} zero:{} pred:{} invalid:{} min_max:{}".format(qaddr(x7),qaddr(x7//2),qaddr(x7//64),qaddr(x4),qaddr(x4),bin(x5)[2::],x5 % 2 >> 0 ,x5 % 4 >> 1 ,x5 % 8 >> 2 ,True,))
     return ndaddrs
 
-ndaddr_funcs['D_0_0_LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kOutput0'] = D_0_0_LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kOutput0
-ctxs.append('D_0_0_kDefaultRead1')
-def D_0_0_kDefaultRead1():
-    x0 = 768
-    x1 = 64
-    x2 = 640
-    x3 = 0
-    x4 = 2
-    x5 = 0
+ndaddr_funcs['D_0_0_kFrontDynamicWriteCtx'] = D_0_0_kFrontDynamicWriteCtx
+ctxs.append('D_0_0_LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputY')
+def D_0_0_LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputY():
+    x0 = 1
+    x1 = 12
+    x2 = 64
+    x3 = 1000
+    x4 = 0
+    x5 = 2
+    x6 = 0
     ndaddrs = []
-    for x6 in range(x3,x2,x1):
-        x7 = True
-        print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} pred_bits:{} zero:{} pred:{} invalid:{} min_max:{}".format(qaddr(x6),qaddr(x6//2),qaddr(x6//64),qaddr(x3),qaddr(x3),bin(x5)[2::],x5 % 2 >> 0 ,x5 % 4 >> 1 ,x5 % 8 >> 2 ,True,))
+    for x8 in range(x4,x3,x2):
+        for x7 in range(x4,x1,x0):
+            x9 = True
+            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} pred_bits:{} zero:{} pred:{} invalid:{} min_max:{}".format(qaddr(x8),qaddr(x8//2),qaddr(x8//64),qaddr(x4),qaddr(x4),bin(x6)[2::],x6 % 2 >> 0 ,x6 % 4 >> 1 ,x6 % 8 >> 2 ,True,))
     return ndaddrs
 
-ndaddr_funcs['D_0_0_kDefaultRead1'] = D_0_0_kDefaultRead1
+ndaddr_funcs['D_0_0_LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputY'] = D_0_0_LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputY
 
 ############
 # End ctxs #

@@ -20,29 +20,57 @@ ndaddr_funcs = {}
 
 ctxs.append('D_0_0_0_w_loop_0_0')
 def D_0_0_0_w_loop_0_0():
-    x0 = 64
-    x1 = 8192
-    x2 = 0
-    x3 = 2
-    x4 = 0
+    x0 = 100
+    x1 = 1
+    x2 = 99
+    x3 = 64
+    x4 = 8192
+    x5 = 0
+    x6 = 2
+    x7 = 0
     ndaddrs = []
-    for x5 in range(x2,x1,x0):
-        x6 = True
-        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} pred_bits:{} zero:{} pred:{} invalid:{} min_max:{}".format(qaddr(x5),qaddr(x5//2),qaddr(x5//64),qaddr(x2),qaddr(x2),bin(x3)[2::],x3 % 2 >> 0 ,x3 % 4 >> 1 ,x3 % 8 >> 2 ,True,))
+    for x8 in range(x5,x0,x1):
+        for x9 in range(x5,x4,x3):
+            x10 = True
+            print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} pred_bits:{} zero:{} pred:{} invalid:{} min_max:{}".format(qaddr(x9),qaddr(x9//2),qaddr(x9//64),qaddr(x5),qaddr(x5),bin(x6)[2::],x6 % 2 >> 0 ,x6 % 4 >> 1 ,x6 % 8 >> 2 ,True,))
+            x14 = True
     return ndaddrs
 
 ndaddr_funcs['D_0_0_0_w_loop_0_0'] = D_0_0_0_w_loop_0_0
+ctxs.append('D_0_0_0_r_loop_0_0')
+def D_0_0_0_r_loop_0_0():
+    x0 = 100
+    x1 = 1
+    x2 = 99
+    x3 = 64
+    x4 = 8192
+    x5 = 0
+    x6 = 2
+    x7 = 0
+    ndaddrs = []
+    for x8 in range(x5,x2,x1):
+        for x9 in range(x5,x4,x3):
+            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} pred_bits:{} zero:{} pred:{} invalid:{} min_max:{}".format(qaddr(x9),qaddr(x9//2),qaddr(x9//64),qaddr(x5),qaddr(x5),bin(x7)[2::],x7 % 2 >> 0 ,x7 % 4 >> 1 ,x7 % 8 >> 2 ,True,))
+            x11 = True
+            x14 = x11 | x13
+            x16 = True
+    return ndaddrs
+
+ndaddr_funcs['D_0_0_0_r_loop_0_0'] = D_0_0_0_r_loop_0_0
 ctxs.append('D_0_0_0_kBackReadCtx')
 def D_0_0_0_kBackReadCtx():
-    x0 = 64
-    x1 = 8192
-    x2 = 0
-    x3 = 2
-    x4 = 0
+    x0 = 100
+    x1 = 1
+    x2 = 99
+    x3 = 64
+    x4 = 8192
+    x5 = 0
+    x6 = 2
+    x7 = 0
     ndaddrs = []
-    for x5 in range(x2,x1,x0):
-        x6 = True
-        print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} pred_bits:{} zero:{} pred:{} invalid:{} min_max:{}".format(qaddr(x5),qaddr(x5//2),qaddr(x5//64),qaddr(x2),qaddr(x2),bin(x4)[2::],x4 % 2 >> 0 ,x4 % 4 >> 1 ,x4 % 8 >> 2 ,True,))
+    for x8 in range(x5,x4,x3):
+        x9 = True
+        print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} pred_bits:{} zero:{} pred:{} invalid:{} min_max:{}".format(qaddr(x8),qaddr(x8//2),qaddr(x8//64),qaddr(x5),qaddr(x5),bin(x7)[2::],x7 % 2 >> 0 ,x7 % 4 >> 1 ,x7 % 8 >> 2 ,True,))
     return ndaddrs
 
 ndaddr_funcs['D_0_0_0_kBackReadCtx'] = D_0_0_0_kBackReadCtx

@@ -20,7 +20,7 @@ ndaddr_funcs = {}
 
 ctxs.append('LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kOutWr')
 def LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kOutWr():
-    x0 = 7
+    x0 = 128
     x1 = 32
     x2 = 64
     x3 = True
@@ -38,9 +38,9 @@ def LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kOutWr():
     return ndaddrs
 
 ndaddr_funcs['LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kOutWr'] = LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kOutWr
-ctxs.append('LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_wo_bias_kB')
-def LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_wo_bias_kB():
-    x0 = 7
+ctxs.append('LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_kFwdPropB')
+def LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_kFwdPropB():
+    x0 = 128
     x1 = 32
     x2 = 64
     x3 = True
@@ -48,21 +48,25 @@ def LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_wo_bias_kB()
     x5 = 1
     ndaddrs = []
     for x6 in range(x4,x0,x5):
-        for x10 in range(x4,x5,x5):
-            for x9 in range(x4,x2,x1):
-                for x11 in range(x4,x5,x5):
-                    x7 = True
-                    x12 = x4 - x11
-                    x13 = x10 + x12
-                    x14 = x13 < x5
-                    ndaddr = [x9, x13, ]
-                    en_drop = x14
-                    en_zero = x3
-                    ND = NDAddr(ndaddr, en_zero and en_drop)
-                    ndaddrs.append(ND)
+        for x9 in range(x4,x2,x2):
+            for x11 in range(x4,x5,x5):
+                for x12 in range(x4,x5,x5):
+                    for x10 in range(x4,x2,x1):
+                        for x13 in range(x4,x5,x5):
+                            x7 = True
+                            x14 = x4 - x13
+                            x15 = x11 + x12
+                            x16 = x15 + x14
+                            x17 = x9 + x10
+                            x18 = x16 < x5
+                            ndaddr = [x17, x16, ]
+                            en_drop = x18
+                            en_zero = x3
+                            ND = NDAddr(ndaddr, en_zero and en_drop)
+                            ndaddrs.append(ND)
     return ndaddrs
 
-ndaddr_funcs['LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_wo_bias_kB'] = LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_wo_bias_kB
+ndaddr_funcs['LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_kFwdPropB'] = LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_kFwdPropB
 
 ############
 # End ctxs #

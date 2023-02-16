@@ -20,425 +20,58 @@ ndaddr_funcs = {}
 
 ctxs.append('w_loop_0_0')
 def w_loop_0_0():
-    x0 = 327680
-    x1 = 393216
-    x2 = 458752
-    x3 = 64
-    x4 = 524288
-    x5 = True
-    x6 = 65536
-    x7 = 131072
-    x8 = 196608
-    x9 = 2
-    x10 = 262144
-    x11 = 0
-    x12 = 32
-    x13 = 2048
+    x0 = 100
+    x1 = 99
+    x2 = 1
+    x3 = True
+    x4 = 64
+    x5 = 524288
+    x6 = 0
     ndaddrs = []
-    for x14 in range(x11,x6,x3):
-        x15 = True
-        print("trim_pred: {} ".format(x5), end='')
-        print("pmuid: [" + str(x11) +"," + str(x11) +"," + "] ", end='')
-        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x14),qaddr(x14//2),qaddr(x14//64),qaddr(x11),qaddr(x11),x5,x5,True,))
+    for x7 in range(x6,x0,x2):
+        for x8 in range(x6,x5,x4):
+            x9 = True
+            print("trim_pred: {} ".format(x3), end='')
+            print("pmuid: [" + str(x6) +"," + str(x6) +"," + "] ", end='')
+            print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x8),qaddr(x8//2),qaddr(x8//64),qaddr(x6),qaddr(x6),x3,x3,True,))
+            x13 = True
     return ndaddrs
 
 ndaddr_funcs['w_loop_0_0'] = w_loop_0_0
-ctxs.append('w_loop_1_0')
-def w_loop_1_0():
-    x0 = 327680
-    x1 = 393216
-    x2 = 458752
-    x3 = 64
-    x4 = 524288
-    x5 = True
-    x6 = 65536
-    x7 = 131072
-    x8 = 196608
-    x9 = 2
-    x10 = 262144
-    x11 = 0
-    x12 = 32
-    x13 = 2048
+ctxs.append('r_loop_0_0')
+def r_loop_0_0():
+    x0 = 100
+    x1 = 99
+    x2 = 1
+    x3 = True
+    x4 = 64
+    x5 = 524288
+    x6 = 0
     ndaddrs = []
-    for x14 in range(x6,x7,x3):
-        x15 = True
-        print("trim_pred: {} ".format(x5), end='')
-        print("pmuid: [" + str(x11) +"," + str(x11) +"," + "] ", end='')
-        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x14),qaddr(x14//2),qaddr(x14//64),qaddr(x11),qaddr(x11),x5,x5,True,))
+    for x7 in range(x6,x1,x2):
+        for x8 in range(x6,x5,x4):
+            print("pmuid: [" + str(x6) +"," + str(x6) +"," + "] ", end='')
+            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x8),qaddr(x8//2),qaddr(x8//64),qaddr(x6),qaddr(x6),x3,x3,True,))
+            x10 = True
+            x13 = x10 | x12
+            x15 = True
     return ndaddrs
 
-ndaddr_funcs['w_loop_1_0'] = w_loop_1_0
-ctxs.append('w_loop_2_0')
-def w_loop_2_0():
-    x0 = 327680
-    x1 = 393216
-    x2 = 458752
-    x3 = 64
-    x4 = 524288
-    x5 = True
-    x6 = 65536
-    x7 = 131072
-    x8 = 196608
-    x9 = 2
-    x10 = 262144
-    x11 = 0
-    x12 = 32
-    x13 = 2048
-    ndaddrs = []
-    for x14 in range(x7,x8,x3):
-        x15 = True
-        print("trim_pred: {} ".format(x5), end='')
-        print("pmuid: [" + str(x11) +"," + str(x11) +"," + "] ", end='')
-        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x14),qaddr(x14//2),qaddr(x14//64),qaddr(x11),qaddr(x11),x5,x5,True,))
-    return ndaddrs
-
-ndaddr_funcs['w_loop_2_0'] = w_loop_2_0
-ctxs.append('w_loop_3_0')
-def w_loop_3_0():
-    x0 = 327680
-    x1 = 393216
-    x2 = 458752
-    x3 = 64
-    x4 = 524288
-    x5 = True
-    x6 = 65536
-    x7 = 131072
-    x8 = 196608
-    x9 = 2
-    x10 = 262144
-    x11 = 0
-    x12 = 32
-    x13 = 2048
-    ndaddrs = []
-    for x14 in range(x8,x10,x3):
-        x15 = True
-        print("trim_pred: {} ".format(x5), end='')
-        print("pmuid: [" + str(x11) +"," + str(x11) +"," + "] ", end='')
-        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x14),qaddr(x14//2),qaddr(x14//64),qaddr(x11),qaddr(x11),x5,x5,True,))
-    return ndaddrs
-
-ndaddr_funcs['w_loop_3_0'] = w_loop_3_0
-ctxs.append('w_loop_4_0')
-def w_loop_4_0():
-    x0 = 327680
-    x1 = 393216
-    x2 = 458752
-    x3 = 64
-    x4 = 524288
-    x5 = True
-    x6 = 65536
-    x7 = 131072
-    x8 = 196608
-    x9 = 2
-    x10 = 262144
-    x11 = 0
-    x12 = 32
-    x13 = 2048
-    ndaddrs = []
-    for x14 in range(x10,x0,x3):
-        x15 = True
-        print("trim_pred: {} ".format(x5), end='')
-        print("pmuid: [" + str(x11) +"," + str(x11) +"," + "] ", end='')
-        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x14),qaddr(x14//2),qaddr(x14//64),qaddr(x11),qaddr(x11),x5,x5,True,))
-    return ndaddrs
-
-ndaddr_funcs['w_loop_4_0'] = w_loop_4_0
-ctxs.append('w_loop_5_0')
-def w_loop_5_0():
-    x0 = 327680
-    x1 = 393216
-    x2 = 458752
-    x3 = 64
-    x4 = 524288
-    x5 = True
-    x6 = 65536
-    x7 = 131072
-    x8 = 196608
-    x9 = 2
-    x10 = 262144
-    x11 = 0
-    x12 = 32
-    x13 = 2048
-    ndaddrs = []
-    for x14 in range(x0,x1,x3):
-        x15 = True
-        print("trim_pred: {} ".format(x5), end='')
-        print("pmuid: [" + str(x11) +"," + str(x11) +"," + "] ", end='')
-        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x14),qaddr(x14//2),qaddr(x14//64),qaddr(x11),qaddr(x11),x5,x5,True,))
-    return ndaddrs
-
-ndaddr_funcs['w_loop_5_0'] = w_loop_5_0
-ctxs.append('w_loop_6_0')
-def w_loop_6_0():
-    x0 = 327680
-    x1 = 393216
-    x2 = 458752
-    x3 = 64
-    x4 = 524288
-    x5 = True
-    x6 = 65536
-    x7 = 131072
-    x8 = 196608
-    x9 = 2
-    x10 = 262144
-    x11 = 0
-    x12 = 32
-    x13 = 2048
-    ndaddrs = []
-    for x14 in range(x1,x2,x3):
-        x15 = True
-        print("trim_pred: {} ".format(x5), end='')
-        print("pmuid: [" + str(x11) +"," + str(x11) +"," + "] ", end='')
-        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x14),qaddr(x14//2),qaddr(x14//64),qaddr(x11),qaddr(x11),x5,x5,True,))
-    return ndaddrs
-
-ndaddr_funcs['w_loop_6_0'] = w_loop_6_0
-ctxs.append('w_loop_7_0')
-def w_loop_7_0():
-    x0 = 327680
-    x1 = 393216
-    x2 = 458752
-    x3 = 64
-    x4 = 524288
-    x5 = True
-    x6 = 65536
-    x7 = 131072
-    x8 = 196608
-    x9 = 2
-    x10 = 262144
-    x11 = 0
-    x12 = 32
-    x13 = 2048
-    ndaddrs = []
-    for x14 in range(x2,x4,x3):
-        x15 = True
-        print("trim_pred: {} ".format(x5), end='')
-        print("pmuid: [" + str(x11) +"," + str(x11) +"," + "] ", end='')
-        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x14),qaddr(x14//2),qaddr(x14//64),qaddr(x11),qaddr(x11),x5,x5,True,))
-    return ndaddrs
-
-ndaddr_funcs['w_loop_7_0'] = w_loop_7_0
+ndaddr_funcs['r_loop_0_0'] = r_loop_0_0
 ctxs.append('kBackReadCtx')
 def kBackReadCtx():
-    x0 = 327680
-    x1 = 393216
-    x2 = 458752
-    x3 = 64
-    x4 = 524288
-    x5 = True
-    x6 = 65536
-    x7 = 131072
-    x8 = 196608
-    x9 = 2
-    x10 = 262144
-    x11 = 0
-    x12 = 32
-    x13 = 2048
+    x0 = 100
+    x1 = 99
+    x2 = 1
+    x3 = True
+    x4 = 64
+    x5 = 524288
+    x6 = 0
     ndaddrs = []
-    for x14 in range(x11,x10,x13):
-        for x15 in range(x11,x13,x12):
-            x16 = True
-            print("trim_pred: {} ".format(x5), end='')
-            x19 = x14 + x15
-            x20 = x19 * x9
-            print("pmuid: [" + str(x11) +"," + str(x11) +"," + "] ", end='')
-            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x20),qaddr(x20//2),qaddr(x20//64),qaddr(x11),qaddr(x11),x5,x5,True,))
-    return ndaddrs
-
-ndaddr_funcs['kBackReadCtx'] = kBackReadCtx
-ctxs.append('kBackReadCtx')
-def kBackReadCtx():
-    x0 = 327680
-    x1 = 393216
-    x2 = 458752
-    x3 = 64
-    x4 = 524288
-    x5 = True
-    x6 = 65536
-    x7 = 131072
-    x8 = 196608
-    x9 = 2
-    x10 = 262144
-    x11 = 0
-    x12 = 32
-    x13 = 2048
-    ndaddrs = []
-    for x14 in range(x11,x10,x13):
-        for x15 in range(x11,x13,x12):
-            x16 = True
-            print("trim_pred: {} ".format(x5), end='')
-            x19 = x14 + x15
-            x20 = x19 * x9
-            print("pmuid: [" + str(x11) +"," + str(x11) +"," + "] ", end='')
-            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x20),qaddr(x20//2),qaddr(x20//64),qaddr(x11),qaddr(x11),x5,x5,True,))
-    return ndaddrs
-
-ndaddr_funcs['kBackReadCtx'] = kBackReadCtx
-ctxs.append('kBackReadCtx')
-def kBackReadCtx():
-    x0 = 327680
-    x1 = 393216
-    x2 = 458752
-    x3 = 64
-    x4 = 524288
-    x5 = True
-    x6 = 65536
-    x7 = 131072
-    x8 = 196608
-    x9 = 2
-    x10 = 262144
-    x11 = 0
-    x12 = 32
-    x13 = 2048
-    ndaddrs = []
-    for x14 in range(x11,x10,x13):
-        for x15 in range(x11,x13,x12):
-            x16 = True
-            print("trim_pred: {} ".format(x5), end='')
-            x19 = x14 + x15
-            x20 = x19 * x9
-            print("pmuid: [" + str(x11) +"," + str(x11) +"," + "] ", end='')
-            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x20),qaddr(x20//2),qaddr(x20//64),qaddr(x11),qaddr(x11),x5,x5,True,))
-    return ndaddrs
-
-ndaddr_funcs['kBackReadCtx'] = kBackReadCtx
-ctxs.append('kBackReadCtx')
-def kBackReadCtx():
-    x0 = 327680
-    x1 = 393216
-    x2 = 458752
-    x3 = 64
-    x4 = 524288
-    x5 = True
-    x6 = 65536
-    x7 = 131072
-    x8 = 196608
-    x9 = 2
-    x10 = 262144
-    x11 = 0
-    x12 = 32
-    x13 = 2048
-    ndaddrs = []
-    for x14 in range(x11,x10,x13):
-        for x15 in range(x11,x13,x12):
-            x16 = True
-            print("trim_pred: {} ".format(x5), end='')
-            x19 = x14 + x15
-            x20 = x19 * x9
-            print("pmuid: [" + str(x11) +"," + str(x11) +"," + "] ", end='')
-            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x20),qaddr(x20//2),qaddr(x20//64),qaddr(x11),qaddr(x11),x5,x5,True,))
-    return ndaddrs
-
-ndaddr_funcs['kBackReadCtx'] = kBackReadCtx
-ctxs.append('kBackReadCtx')
-def kBackReadCtx():
-    x0 = 327680
-    x1 = 393216
-    x2 = 458752
-    x3 = 64
-    x4 = 524288
-    x5 = True
-    x6 = 65536
-    x7 = 131072
-    x8 = 196608
-    x9 = 2
-    x10 = 262144
-    x11 = 0
-    x12 = 32
-    x13 = 2048
-    ndaddrs = []
-    for x14 in range(x11,x10,x13):
-        for x15 in range(x11,x13,x12):
-            x16 = True
-            print("trim_pred: {} ".format(x5), end='')
-            x19 = x14 + x15
-            x20 = x19 * x9
-            print("pmuid: [" + str(x11) +"," + str(x11) +"," + "] ", end='')
-            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x20),qaddr(x20//2),qaddr(x20//64),qaddr(x11),qaddr(x11),x5,x5,True,))
-    return ndaddrs
-
-ndaddr_funcs['kBackReadCtx'] = kBackReadCtx
-ctxs.append('kBackReadCtx')
-def kBackReadCtx():
-    x0 = 327680
-    x1 = 393216
-    x2 = 458752
-    x3 = 64
-    x4 = 524288
-    x5 = True
-    x6 = 65536
-    x7 = 131072
-    x8 = 196608
-    x9 = 2
-    x10 = 262144
-    x11 = 0
-    x12 = 32
-    x13 = 2048
-    ndaddrs = []
-    for x14 in range(x11,x10,x13):
-        for x15 in range(x11,x13,x12):
-            x16 = True
-            print("trim_pred: {} ".format(x5), end='')
-            x19 = x14 + x15
-            x20 = x19 * x9
-            print("pmuid: [" + str(x11) +"," + str(x11) +"," + "] ", end='')
-            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x20),qaddr(x20//2),qaddr(x20//64),qaddr(x11),qaddr(x11),x5,x5,True,))
-    return ndaddrs
-
-ndaddr_funcs['kBackReadCtx'] = kBackReadCtx
-ctxs.append('kBackReadCtx')
-def kBackReadCtx():
-    x0 = 327680
-    x1 = 393216
-    x2 = 458752
-    x3 = 64
-    x4 = 524288
-    x5 = True
-    x6 = 65536
-    x7 = 131072
-    x8 = 196608
-    x9 = 2
-    x10 = 262144
-    x11 = 0
-    x12 = 32
-    x13 = 2048
-    ndaddrs = []
-    for x14 in range(x11,x10,x13):
-        for x15 in range(x11,x13,x12):
-            x16 = True
-            print("trim_pred: {} ".format(x5), end='')
-            x19 = x14 + x15
-            x20 = x19 * x9
-            print("pmuid: [" + str(x11) +"," + str(x11) +"," + "] ", end='')
-            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x20),qaddr(x20//2),qaddr(x20//64),qaddr(x11),qaddr(x11),x5,x5,True,))
-    return ndaddrs
-
-ndaddr_funcs['kBackReadCtx'] = kBackReadCtx
-ctxs.append('kBackReadCtx')
-def kBackReadCtx():
-    x0 = 327680
-    x1 = 393216
-    x2 = 458752
-    x3 = 64
-    x4 = 524288
-    x5 = True
-    x6 = 65536
-    x7 = 131072
-    x8 = 196608
-    x9 = 2
-    x10 = 262144
-    x11 = 0
-    x12 = 32
-    x13 = 2048
-    ndaddrs = []
-    for x14 in range(x11,x10,x13):
-        for x15 in range(x11,x13,x12):
-            x16 = True
-            print("trim_pred: {} ".format(x5), end='')
-            x19 = x14 + x15
-            x20 = x19 * x9
-            print("pmuid: [" + str(x11) +"," + str(x11) +"," + "] ", end='')
-            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x20),qaddr(x20//2),qaddr(x20//64),qaddr(x11),qaddr(x11),x5,x5,True,))
+    for x7 in range(x6,x5,x4):
+        x8 = True
+        print("pmuid: [" + str(x6) +"," + str(x6) +"," + "] ", end='')
+        print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x7),qaddr(x7//2),qaddr(x7//64),qaddr(x6),qaddr(x6),x3,x3,True,))
     return ndaddrs
 
 ndaddr_funcs['kBackReadCtx'] = kBackReadCtx

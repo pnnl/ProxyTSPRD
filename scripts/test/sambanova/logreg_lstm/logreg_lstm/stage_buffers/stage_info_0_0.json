@@ -7,7 +7,7 @@
                 "is_buffer": true,
                 "mac_id": "default_334",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "tbuf2u_0_0_334",
                 "pcu_count": 0,
                 "pmu_count": 1,
@@ -17,10 +17,10 @@
             {
                 "graph_node_id": 52,
                 "is_buffer": true,
-                "mac_id": "default_819",
+                "mac_id": "default_837",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf2a_0_0_819",
+                "multiplier": 100,
+                "name": "gbuf2a_0_0_837",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "scaling_factor": -1.0,
@@ -29,10 +29,10 @@
             {
                 "graph_node_id": 50,
                 "is_buffer": true,
-                "mac_id": "default_818",
+                "mac_id": "default_836",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf2a_0_0_818",
+                "multiplier": 100,
+                "name": "gbuf2a_0_0_836",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "scaling_factor": -1.0,
@@ -41,10 +41,10 @@
             {
                 "graph_node_id": 47,
                 "is_buffer": true,
-                "mac_id": "default_817",
+                "mac_id": "default_835",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf2a_0_0_817",
+                "multiplier": 100,
+                "name": "gbuf2a_0_0_835",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "scaling_factor": -1.0,
@@ -53,10 +53,10 @@
             {
                 "graph_node_id": 32,
                 "is_buffer": true,
-                "mac_id": "default_813",
+                "mac_id": "default_831",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf2a_0_0_813",
+                "multiplier": 100,
+                "name": "gbuf2a_0_0_831",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "scaling_factor": -1.0,
@@ -65,10 +65,10 @@
             {
                 "graph_node_id": 35,
                 "is_buffer": true,
-                "mac_id": "default_814",
+                "mac_id": "default_832",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf2a_0_0_814",
+                "multiplier": 100,
+                "name": "gbuf2a_0_0_832",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "scaling_factor": -1.0,
@@ -77,10 +77,10 @@
             {
                 "graph_node_id": 38,
                 "is_buffer": true,
-                "mac_id": "default_815",
+                "mac_id": "default_833",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf2a_0_0_815",
+                "multiplier": 100,
+                "name": "gbuf2a_0_0_833",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "scaling_factor": -1.0,
@@ -89,39 +89,39 @@
             {
                 "graph_node_id": 40,
                 "is_buffer": true,
-                "mac_id": "default_816",
+                "mac_id": "default_834",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf2a_0_0_816",
+                "multiplier": 100,
+                "name": "gbuf2a_0_0_834",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "scaling_factor": -1.0,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
             },
             {
-                "graph_node_id": 65,
+                "graph_node_id": 63,
                 "is_buffer": true,
-                "mac_id": "default_812",
+                "mac_id": "default_830",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf2a_0_0_812",
+                "multiplier": 100,
+                "name": "gbuf2a_0_0_830",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "scaling_factor": -1.0,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
             }
         ],
-        "prism_stage_latency": 4532,
+        "prism_stage_latency": 453200,
         "section_id": 0,
         "stage_id": 0,
         "start_buffers": [
             {
                 "graph_node_id": 6,
                 "is_buffer": true,
-                "mac_id": "default_810",
+                "mac_id": "default_828",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf2a_0_0_810",
+                "multiplier": 100,
+                "name": "gbuf4a_0_0_828",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -129,10 +129,10 @@
             {
                 "graph_node_id": 47,
                 "is_buffer": true,
-                "mac_id": "default_817",
+                "mac_id": "default_835",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf2a_0_0_817",
+                "multiplier": 100,
+                "name": "gbuf2a_0_0_835",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -140,23 +140,34 @@
             {
                 "graph_node_id": 50,
                 "is_buffer": true,
-                "mac_id": "default_818",
+                "mac_id": "default_836",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf2a_0_0_818",
+                "multiplier": 100,
+                "name": "gbuf2a_0_0_836",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
+            },
+            {
+                "graph_node_id": 84,
+                "is_buffer": true,
+                "mac_id": "default_335",
+                "mac_latency": -1.0,
+                "multiplier": 100,
+                "name": "rbuf1u_0_0_335",
+                "pcu_count": 0,
+                "pmu_count": 1,
+                "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).TBuffer"
             }
         ],
         "template_info": [
             {
                 "graph_node_id": 49,
                 "is_buffer": false,
-                "mac_id": "default_886",
+                "mac_id": "default_906",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "vector_transpose_0_0_886",
+                "multiplier": 100,
+                "name": "vector_transpose_0_0_906",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).VectorTranspose"
@@ -166,7 +177,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_hidden",
                 "pcu_count": 1,
                 "pmu_count": 0,
@@ -175,10 +186,10 @@
             {
                 "graph_node_id": 48,
                 "is_buffer": true,
-                "mac_id": "default_936",
+                "mac_id": "default_960",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf1a_0_0_936",
+                "multiplier": 100,
+                "name": "gbuf1a_0_0_960",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -188,7 +199,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_tanh_cell",
                 "pcu_count": 1,
                 "pmu_count": 0,
@@ -199,7 +210,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_cell",
                 "pcu_count": 1,
                 "pmu_count": 0,
@@ -208,10 +219,10 @@
             {
                 "graph_node_id": 45,
                 "is_buffer": true,
-                "mac_id": "default_934",
+                "mac_id": "default_958",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf1a_0_0_934",
+                "multiplier": 100,
+                "name": "gbuf1a_0_0_958",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -221,7 +232,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_mul1",
                 "pcu_count": 1,
                 "pmu_count": 0,
@@ -230,10 +241,10 @@
             {
                 "graph_node_id": 31,
                 "is_buffer": true,
-                "mac_id": "default_931",
+                "mac_id": "default_955",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf1a_0_0_931",
+                "multiplier": 100,
+                "name": "gbuf1a_0_0_955",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -243,7 +254,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_i_t",
                 "pcu_count": 1,
                 "pmu_count": 0,
@@ -254,7 +265,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_add_0",
                 "pcu_count": 1,
                 "pmu_count": 0,
@@ -263,10 +274,10 @@
             {
                 "graph_node_id": 11,
                 "is_buffer": true,
-                "mac_id": "default_923",
+                "mac_id": "default_947",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf1a_0_0_923",
+                "multiplier": 100,
+                "name": "gbuf1a_0_0_947",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -276,7 +287,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_linear_w_0",
                 "pcu_count": 2,
                 "pmu_count": 3,
@@ -285,10 +296,10 @@
             {
                 "graph_node_id": 43,
                 "is_buffer": true,
-                "mac_id": "default_933",
+                "mac_id": "default_957",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf1a_0_0_933",
+                "multiplier": 100,
+                "name": "gbuf1a_0_0_957",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -298,7 +309,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_mul0",
                 "pcu_count": 1,
                 "pmu_count": 0,
@@ -307,10 +318,10 @@
             {
                 "graph_node_id": 34,
                 "is_buffer": true,
-                "mac_id": "default_930",
+                "mac_id": "default_954",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf1a_0_0_930",
+                "multiplier": 100,
+                "name": "gbuf1a_0_0_954",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -320,7 +331,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_f_t",
                 "pcu_count": 1,
                 "pmu_count": 0,
@@ -331,7 +342,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_add_1",
                 "pcu_count": 1,
                 "pmu_count": 0,
@@ -340,10 +351,10 @@
             {
                 "graph_node_id": 16,
                 "is_buffer": true,
-                "mac_id": "default_925",
+                "mac_id": "default_949",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf1a_0_0_925",
+                "multiplier": 100,
+                "name": "gbuf1a_0_0_949",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -353,7 +364,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_linear_w_1",
                 "pcu_count": 2,
                 "pmu_count": 3,
@@ -362,10 +373,10 @@
             {
                 "graph_node_id": 37,
                 "is_buffer": true,
-                "mac_id": "default_932",
+                "mac_id": "default_956",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf1a_0_0_932",
+                "multiplier": 100,
+                "name": "gbuf1a_0_0_956",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -375,7 +386,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_g_t",
                 "pcu_count": 1,
                 "pmu_count": 0,
@@ -386,7 +397,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_add_2",
                 "pcu_count": 1,
                 "pmu_count": 0,
@@ -395,10 +406,10 @@
             {
                 "graph_node_id": 21,
                 "is_buffer": true,
-                "mac_id": "default_927",
+                "mac_id": "default_951",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf1a_0_0_927",
+                "multiplier": 100,
+                "name": "gbuf1a_0_0_951",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -408,7 +419,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_linear_w_2",
                 "pcu_count": 2,
                 "pmu_count": 3,
@@ -417,10 +428,10 @@
             {
                 "graph_node_id": 39,
                 "is_buffer": true,
-                "mac_id": "default_935",
+                "mac_id": "default_959",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf1a_0_0_935",
+                "multiplier": 100,
+                "name": "gbuf1a_0_0_959",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -430,7 +441,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_o_t",
                 "pcu_count": 1,
                 "pmu_count": 0,
@@ -441,7 +452,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_add_3",
                 "pcu_count": 1,
                 "pmu_count": 0,
@@ -450,10 +461,10 @@
             {
                 "graph_node_id": 26,
                 "is_buffer": true,
-                "mac_id": "default_929",
+                "mac_id": "default_953",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf1a_0_0_929",
+                "multiplier": 100,
+                "name": "gbuf1a_0_0_953",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -463,7 +474,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_linear_w_3",
                 "pcu_count": 2,
                 "pmu_count": 3,
@@ -472,10 +483,10 @@
             {
                 "graph_node_id": 42,
                 "is_buffer": true,
-                "mac_id": "default_811",
+                "mac_id": "default_829",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf1a_0_0_811",
+                "multiplier": 100,
+                "name": "gbuf1a_0_0_829",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -494,10 +505,10 @@
             {
                 "graph_node_id": 14,
                 "is_buffer": true,
-                "mac_id": "default_922",
+                "mac_id": "default_946",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf1a_0_0_922",
+                "multiplier": 100,
+                "name": "gbuf1a_0_0_946",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -507,7 +518,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_linear_v_0",
                 "pcu_count": 2,
                 "pmu_count": 3,
@@ -527,10 +538,10 @@
             {
                 "graph_node_id": 19,
                 "is_buffer": true,
-                "mac_id": "default_924",
+                "mac_id": "default_948",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf1a_0_0_924",
+                "multiplier": 100,
+                "name": "gbuf1a_0_0_948",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -540,7 +551,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_linear_v_1",
                 "pcu_count": 2,
                 "pmu_count": 3,
@@ -549,10 +560,10 @@
             {
                 "graph_node_id": 24,
                 "is_buffer": true,
-                "mac_id": "default_926",
+                "mac_id": "default_950",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf1a_0_0_926",
+                "multiplier": 100,
+                "name": "gbuf1a_0_0_950",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -562,7 +573,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_linear_v_2",
                 "pcu_count": 2,
                 "pmu_count": 3,
@@ -571,10 +582,10 @@
             {
                 "graph_node_id": 29,
                 "is_buffer": true,
-                "mac_id": "default_928",
+                "mac_id": "default_952",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf1a_0_0_928",
+                "multiplier": 100,
+                "name": "gbuf1a_0_0_952",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -584,7 +595,7 @@
                 "is_buffer": false,
                 "mac_id": "ptconvlstm__lstm_layer__lstm",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "ptconvlstm__lstm_layer__lstm_linear_v_3",
                 "pcu_count": 2,
                 "pmu_count": 3,
@@ -596,11 +607,11 @@
         "chip_id": 0,
         "end_buffers": [
             {
-                "graph_node_id": 82,
+                "graph_node_id": 83,
                 "is_buffer": true,
                 "mac_id": "default_342",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "tbuf2u_0_0_342",
                 "pcu_count": 0,
                 "pmu_count": 1,
@@ -608,7 +619,7 @@
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).TBuffer"
             }
         ],
-        "prism_stage_latency": 2,
+        "prism_stage_latency": 200,
         "section_id": 0,
         "stage_id": 1,
         "start_buffers": [
@@ -617,8 +628,19 @@
                 "is_buffer": true,
                 "mac_id": "default_334",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "tbuf2u_0_0_334",
+                "pcu_count": 0,
+                "pmu_count": 1,
+                "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).TBuffer"
+            },
+            {
+                "graph_node_id": 84,
+                "is_buffer": true,
+                "mac_id": "default_335",
+                "mac_latency": -1.0,
+                "multiplier": 100,
+                "name": "rbuf1u_0_0_335",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).TBuffer"
@@ -630,45 +652,181 @@
         "chip_id": 0,
         "end_buffers": [
             {
-                "graph_node_id": 56,
+                "graph_node_id": 55,
                 "is_buffer": true,
-                "mac_id": "default_344",
+                "mac_id": "default_1001",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf2u_0_0_344",
+                "multiplier": 100,
+                "name": "gbuf2a_0_0_1001",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "scaling_factor": -1.0,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
             }
         ],
-        "prism_stage_latency": 142,
+        "prism_stage_latency": 12800,
         "section_id": 0,
         "stage_id": 2,
         "start_buffers": [
             {
                 "graph_node_id": 54,
                 "is_buffer": true,
-                "mac_id": "default_795",
-                "mac_latency": 798.0,
+                "mac_id": "default_344",
+                "mac_latency": -1.0,
+                "multiplier": 100,
+                "name": "gbuf2u_0_0_344",
+                "pcu_count": 0,
+                "pmu_count": 1,
+                "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
+            }
+        ],
+        "template_info": []
+    },
+    {
+        "chip_id": 0,
+        "end_buffers": [
+            {
+                "graph_node_id": 56,
+                "is_buffer": true,
+                "mac_id": "default_944",
+                "mac_latency": -1.0,
                 "multiplier": 1,
-                "name": "ptconvlstm__dense_layer__linear_stage_buf",
+                "name": "gbuf2a_0_0_944",
+                "pcu_count": 0,
+                "pmu_count": 5,
+                "scaling_factor": -1.0,
+                "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
+            }
+        ],
+        "prism_stage_latency": 12800,
+        "section_id": 0,
+        "stage_id": 3,
+        "start_buffers": [
+            {
+                "graph_node_id": 55,
+                "is_buffer": true,
+                "mac_id": "default_1001",
+                "mac_latency": -1.0,
+                "multiplier": 100,
+                "name": "gbuf2a_0_0_1001",
+                "pcu_count": 0,
+                "pmu_count": 1,
+                "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
+            }
+        ],
+        "template_info": []
+    },
+    {
+        "chip_id": 0,
+        "end_buffers": [
+            {
+                "graph_node_id": 57,
+                "is_buffer": true,
+                "mac_id": "default_838",
+                "mac_latency": -1.0,
+                "multiplier": 100,
+                "name": "gbuf2a_0_0_838",
+                "pcu_count": 0,
+                "pmu_count": 1,
+                "scaling_factor": -1.0,
+                "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
+            }
+        ],
+        "prism_stage_latency": 12800,
+        "section_id": 0,
+        "stage_id": 4,
+        "start_buffers": [
+            {
+                "graph_node_id": 55,
+                "is_buffer": true,
+                "mac_id": "default_1001",
+                "mac_latency": -1.0,
+                "multiplier": 100,
+                "name": "gbuf2a_0_0_1001",
+                "pcu_count": 0,
+                "pmu_count": 1,
+                "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
+            }
+        ],
+        "template_info": []
+    },
+    {
+        "chip_id": 0,
+        "end_buffers": [
+            {
+                "graph_node_id": 66,
+                "is_buffer": true,
+                "mac_id": "default_994",
+                "mac_latency": -1.0,
+                "multiplier": 1,
+                "name": "gbuf2a_0_0_994",
+                "pcu_count": 0,
+                "pmu_count": 5,
+                "scaling_factor": -1.0,
+                "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
+            }
+        ],
+        "prism_stage_latency": 12800,
+        "section_id": 0,
+        "stage_id": 5,
+        "start_buffers": [
+            {
+                "graph_node_id": 56,
+                "is_buffer": true,
+                "mac_id": "default_944",
+                "mac_latency": -1.0,
+                "multiplier": 1,
+                "name": "gbuf2a_0_0_944",
                 "pcu_count": 0,
                 "pmu_count": 5,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
             }
         ],
+        "template_info": []
+    },
+    {
+        "chip_id": 0,
+        "end_buffers": [
+            {
+                "graph_node_id": 74,
+                "is_buffer": true,
+                "mac_id": "default_363",
+                "mac_latency": -1.0,
+                "multiplier": 5,
+                "name": "gbuf2u_0_0_363",
+                "pcu_count": 0,
+                "pmu_count": 1,
+                "scaling_factor": -1.0,
+                "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
+            }
+        ],
+        "prism_stage_latency": 17920,
+        "section_id": 0,
+        "stage_id": 6,
+        "start_buffers": [
+            {
+                "graph_node_id": 72,
+                "is_buffer": true,
+                "mac_id": "default_936",
+                "mac_latency": -1.0,
+                "multiplier": 5,
+                "name": "gbuf2a_0_0_936",
+                "pcu_count": 0,
+                "pmu_count": 1,
+                "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
+            }
+        ],
         "template_info": [
             {
-                "graph_node_id": 55,
+                "graph_node_id": 73,
                 "is_buffer": false,
-                "mac_id": "default_796",
-                "mac_latency": 798.0,
-                "multiplier": 1,
-                "name": "ptconvlstm__dense_layer__linear_add_bias",
-                "pcu_count": 1,
+                "mac_id": "default_909",
+                "mac_latency": -1.0,
+                "multiplier": 5,
+                "name": "streaming_transpose_0_0_909",
+                "pcu_count": 0,
                 "pmu_count": 1,
-                "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).BiasAdd"
+                "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).StreamingTranspose"
             }
         ]
     },
@@ -676,97 +834,29 @@
         "chip_id": 0,
         "end_buffers": [
             {
-                "graph_node_id": 57,
+                "graph_node_id": 75,
                 "is_buffer": true,
-                "mac_id": "default_974",
+                "mac_id": "default_945",
                 "mac_latency": -1.0,
                 "multiplier": 1,
-                "name": "gbuf2a_0_0_974",
+                "name": "gbuf2a_0_0_945",
                 "pcu_count": 0,
-                "pmu_count": 1,
+                "pmu_count": 5,
                 "scaling_factor": -1.0,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
             }
         ],
-        "prism_stage_latency": 128,
+        "prism_stage_latency": 16320,
         "section_id": 0,
-        "stage_id": 3,
+        "stage_id": 7,
         "start_buffers": [
             {
-                "graph_node_id": 56,
+                "graph_node_id": 74,
                 "is_buffer": true,
-                "mac_id": "default_344",
+                "mac_id": "default_363",
                 "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf2u_0_0_344",
-                "pcu_count": 0,
-                "pmu_count": 1,
-                "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
-            }
-        ],
-        "template_info": []
-    },
-    {
-        "chip_id": 0,
-        "end_buffers": [
-            {
-                "graph_node_id": 58,
-                "is_buffer": true,
-                "mac_id": "default_921",
-                "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf2a_0_0_921",
-                "pcu_count": 0,
-                "pmu_count": 1,
-                "scaling_factor": -1.0,
-                "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
-            }
-        ],
-        "prism_stage_latency": 128,
-        "section_id": 0,
-        "stage_id": 4,
-        "start_buffers": [
-            {
-                "graph_node_id": 57,
-                "is_buffer": true,
-                "mac_id": "default_974",
-                "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf2a_0_0_974",
-                "pcu_count": 0,
-                "pmu_count": 1,
-                "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
-            }
-        ],
-        "template_info": []
-    },
-    {
-        "chip_id": 0,
-        "end_buffers": [
-            {
-                "graph_node_id": 59,
-                "is_buffer": true,
-                "mac_id": "default_820",
-                "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf2a_0_0_820",
-                "pcu_count": 0,
-                "pmu_count": 1,
-                "scaling_factor": -1.0,
-                "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
-            }
-        ],
-        "prism_stage_latency": 128,
-        "section_id": 0,
-        "stage_id": 5,
-        "start_buffers": [
-            {
-                "graph_node_id": 57,
-                "is_buffer": true,
-                "mac_id": "default_974",
-                "mac_latency": -1.0,
-                "multiplier": 1,
-                "name": "gbuf2a_0_0_974",
+                "multiplier": 5,
+                "name": "gbuf2u_0_0_363",
                 "pcu_count": 0,
                 "pmu_count": 1,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
@@ -780,26 +870,26 @@
             {
                 "graph_node_id": 54,
                 "is_buffer": true,
-                "mac_id": "default_795",
-                "mac_latency": 798.0,
-                "multiplier": 1,
-                "name": "ptconvlstm__dense_layer__linear_stage_buf",
+                "mac_id": "default_344",
+                "mac_latency": -1.0,
+                "multiplier": 100,
+                "name": "gbuf2u_0_0_344",
                 "pcu_count": 0,
-                "pmu_count": 5,
+                "pmu_count": 1,
                 "scaling_factor": -1.0,
                 "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer"
             }
         ],
-        "prism_stage_latency": 798,
+        "prism_stage_latency": 1190400,
         "section_id": 0,
-        "stage_id": 6,
+        "stage_id": 8,
         "start_buffers": [
             {
-                "graph_node_id": 82,
+                "graph_node_id": 83,
                 "is_buffer": true,
                 "mac_id": "default_342",
                 "mac_latency": -1.0,
-                "multiplier": 1,
+                "multiplier": 100,
                 "name": "tbuf2u_0_0_342",
                 "pcu_count": 0,
                 "pmu_count": 1,
@@ -810,13 +900,13 @@
             {
                 "graph_node_id": 53,
                 "is_buffer": false,
-                "mac_id": "default_794",
-                "mac_latency": 798.0,
-                "multiplier": 1,
-                "name": "ptconvlstm__dense_layer__linear_wo_bias",
-                "pcu_count": 19,
-                "pmu_count": 19,
-                "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).BigGemm"
+                "mac_id": "ptconvlstm__dense_layer__linear",
+                "mac_latency": 12352.0,
+                "multiplier": 100,
+                "name": "ptconvlstm__dense_layer__linear",
+                "pcu_count": 2,
+                "pmu_count": 3,
+                "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GemmSubnet"
             }
         ]
     }

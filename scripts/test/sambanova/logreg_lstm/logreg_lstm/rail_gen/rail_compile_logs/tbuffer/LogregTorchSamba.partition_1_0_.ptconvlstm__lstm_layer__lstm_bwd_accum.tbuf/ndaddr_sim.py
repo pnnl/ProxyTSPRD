@@ -20,44 +20,79 @@ ndaddr_funcs = {}
 
 ctxs.append('w_loop_0_0')
 def w_loop_0_0():
-    x0 = 32
-    x1 = 4096
-    x2 = 1
-    x3 = True
-    x4 = 0
+    x0 = 100
+    x1 = 99
+    x2 = 32
+    x3 = 4096
+    x4 = 1
+    x5 = True
+    x6 = 0
     ndaddrs = []
-    for x5 in range(x4,x2,x2):
-        for x6 in range(x4,x1,x0):
-            for x7 in range(x4,x2,x2):
-                x8 = True
-                x10 = x6 >= x4
-                x11 = x6 < x1
-                x12 = x10 & x11
-                ndaddr = [x6, x7, ]
+    for x7 in range(x6,x0,x4):
+        for x8 in range(x6,x3,x2):
+            for x9 in range(x6,x4,x4):
+                x10 = True
+                x12 = x8 >= x6
+                x13 = x8 < x3
+                x14 = x12 & x13
+                ndaddr = [x8, x9, ]
                 en_drop = True
-                en_zero = x3
+                en_zero = x5
                 ND = NDAddr(ndaddr, en_zero and en_drop)
                 ndaddrs.append(ND)
-                x15 = True
+                x17 = True
+                x19 = True
     return ndaddrs
 
 ndaddr_funcs['w_loop_0_0'] = w_loop_0_0
+ctxs.append('r_loop_0_0')
+def r_loop_0_0():
+    x0 = 100
+    x1 = 99
+    x2 = 32
+    x3 = 4096
+    x4 = 1
+    x5 = True
+    x6 = 0
+    ndaddrs = []
+    for x7 in range(x6,x1,x4):
+        for x8 in range(x6,x3,x2):
+            for x9 in range(x6,x4,x4):
+                x10 = x8 >= x6
+                x11 = x8 < x3
+                x12 = x10 & x11
+                ndaddr = [x8, x9, ]
+                en_drop = x5
+                en_zero = x12
+                ND = NDAddr(ndaddr, en_zero and en_drop)
+                ndaddrs.append(ND)
+                x14 = True
+                x18 = True
+                x19 = x18 | x17
+                x21 = True
+    return ndaddrs
+
+ndaddr_funcs['r_loop_0_0'] = r_loop_0_0
 ctxs.append('kBackReadCtx')
 def kBackReadCtx():
-    x0 = 32
-    x1 = 4096
-    x2 = 1
-    x3 = True
-    x4 = 0
+    x0 = 100
+    x1 = 99
+    x2 = 32
+    x3 = 4096
+    x4 = 1
+    x5 = True
+    x6 = 0
     ndaddrs = []
-    for x5 in range(x4,x1,x0):
-        for x8 in range(x4,x2,x2):
-            x6 = True
-            ndaddr = [x5, x8, ]
-            en_drop = x3
-            en_zero = x3
+    for x7 in range(x6,x3,x2):
+        for x10 in range(x6,x4,x4):
+            x8 = True
+            ndaddr = [x7, x10, ]
+            en_drop = x5
+            en_zero = x5
             ND = NDAddr(ndaddr, en_zero and en_drop)
             ndaddrs.append(ND)
+            x12 = True
+            x15 = True
     return ndaddrs
 
 ndaddr_funcs['kBackReadCtx'] = kBackReadCtx

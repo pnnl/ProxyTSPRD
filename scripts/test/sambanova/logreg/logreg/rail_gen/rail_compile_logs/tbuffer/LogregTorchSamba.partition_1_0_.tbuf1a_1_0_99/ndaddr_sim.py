@@ -18,48 +18,46 @@ ndaddr_funcs = {}
 # Start ctxs #
 ##############
 
-ctxs.append('LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kOutput0')
-def LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kOutput0():
-    x0 = 12
-    x1 = 10
+ctxs.append('kFrontDynamicWriteCtx')
+def kFrontDynamicWriteCtx():
+    x0 = 1
+    x1 = 12
     x2 = 32
-    x3 = 1
+    x3 = 500
     x4 = True
     x5 = 0
     ndaddrs = []
-    for x7 in range(x5,x3,x2):
-        for x6 in range(x5,x0,x3):
-            x8 = True
-            x11 = True
-            x12 = x6 < x1
-            ndaddr = [x6, x7, ]
-            en_drop = True
-            en_zero = x4
-            ND = NDAddr(ndaddr, en_zero and en_drop)
-            ndaddrs.append(ND)
+    for x6 in range(x5,x3,x2):
+        x7 = True
+        ndaddr = [x6, ]
+        en_drop = True
+        en_zero = x4
+        ND = NDAddr(ndaddr, en_zero and en_drop)
+        ndaddrs.append(ND)
     return ndaddrs
 
-ndaddr_funcs['LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kOutput0'] = LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kOutput0
-ctxs.append('kDefaultRead1')
-def kDefaultRead1():
-    x0 = 12
-    x1 = 10
+ndaddr_funcs['kFrontDynamicWriteCtx'] = kFrontDynamicWriteCtx
+ctxs.append('LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputY')
+def LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputY():
+    x0 = 1
+    x1 = 12
     x2 = 32
-    x3 = 1
+    x3 = 500
     x4 = True
     x5 = 0
     ndaddrs = []
     for x7 in range(x5,x3,x2):
-        for x6 in range(x5,x1,x3):
+        for x6 in range(x5,x1,x0):
             x8 = True
-            ndaddr = [x6, x7, ]
+            ndaddr = [x7, ]
             en_drop = x4
             en_zero = x4
             ND = NDAddr(ndaddr, en_zero and en_drop)
             ndaddrs.append(ND)
+            x11 = True
     return ndaddrs
 
-ndaddr_funcs['kDefaultRead1'] = kDefaultRead1
+ndaddr_funcs['LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputY'] = LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputY
 
 ############
 # End ctxs #

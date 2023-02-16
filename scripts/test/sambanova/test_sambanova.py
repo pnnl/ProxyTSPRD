@@ -128,6 +128,7 @@ if __name__ == "__main__":
         output_dir=_CONFIG["info"]["output_dir"],
         mixed_precision_support=_CONFIG["info"]["mixed_precision_support"],
         stage=args.run_type,
+        batch_size=args.batch_size
     )
     
     # set parameters
@@ -148,13 +149,13 @@ if __name__ == "__main__":
                 ),
         data_params=data_params,
         opt_params=_CONFIG["model_info"]["opt_parameters"],
-        criterion_params=None,
-        batch_size=args.batch_size
+        criterion_params=None
     )
     
     if args.run_type == "compile":
         # compile the model
         interface.compile(
+            data_params=data_params,
             batch_size=args.batch_size
         )
 
@@ -175,9 +176,15 @@ if __name__ == "__main__":
             data_params=_CONFIG["data_params"]["load_and_prep"],
             batch_size=args.batch_size
         )
+        # from torch.profiler import profile, record_function, ProfilerActivity
 
+        # with profile(activities=[ProfilerActivity.CPU], profile_memory=True, record_shapes=True) as prof:
+        #     with record_function("model_inference"):            
         interface.train(
             train_loader=training_data,
+            data_params=data_params,
             n_epochs=args.n_epochs,
             batch_size=args.batch_size
         )
+
+        # print(prof.key_averages().table(sort_by="cpu_time_total"))

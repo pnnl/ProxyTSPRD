@@ -172,13 +172,13 @@ def prepare_dataloader(args: argparse.Namespace) -> Tuple[torch.utils.data.DataL
     train_sampler = SubsetRandomSampler(train_indices)
     test_sampler = SubsetRandomSampler(test_indices)
     train_loader = torch.utils.data.DataLoader(data_handler, 
-                                                       batch_size=1, 
+                                                       batch_size=args.batch_size, 
                                                        pin_memory=True, 
                                                        num_workers=2,
                                                        sampler=train_sampler
                                                       )
     test_loader = torch.utils.data.DataLoader(data_handler, 
-                                                       batch_size=1, 
+                                                       batch_size=args.batch_size, 
                                                        pin_memory=True, 
                                                        num_workers=2,
                                                        sampler=test_sampler

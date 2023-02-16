@@ -78,6 +78,7 @@ class PyTorchInterfaceSN(PyTorchInterface):
         suffix,
         output_dir,
         stage,
+        batch_size=1,
         mixed_precision_support=False
     ):
         super().init_app_manager(    
@@ -99,7 +100,7 @@ class PyTorchInterfaceSN(PyTorchInterface):
         )
         
         # collect all arguments
-        self._ARGS = self._get_args(command=stage)
+        self._ARGS = self._get_args(command=stage, batch_size=batch_size)
         
     def init_data_manager(
         self,
@@ -141,14 +142,15 @@ class PyTorchInterfaceSN(PyTorchInterface):
 
     def _create_rand_arr(
         self,
+        data_params,
         batch_size,
         iname = "inp_window",
         oname = "out_window",
     ):
         ipt = samba.randn(
             batch_size, 
-            60, 
-            136, 
+            data_params["bw_size"], 
+            data_params["n_features"], 
             name=iname,#'inp_window', 
             batch_dim=0,
             named_dims=('B', 'W', 'F')
@@ -158,8 +160,8 @@ class PyTorchInterfaceSN(PyTorchInterface):
         
         tgt = samba.randn(
             batch_size, 
-            30, 
-            136, 
+            data_params["fw_size"], 
+            data_params["n_features"], 
             name=oname,#'out_window', 
             batch_dim=0, 
             named_dims=('B', 'W', 'F')
@@ -173,15 +175,15 @@ class PyTorchInterfaceSN(PyTorchInterface):
         inputs = (ipt, tgt)
         return inputs
 
-    def _get_args(self, command):
+    def _get_args(self, command, batch_size):
         migrated_arguments = {}
         if command=="compile":
-            argv_params = [command, '--pef-name='+self.app_manager._PEF_NAME, '--output-folder='+self.app_manager._OUTPUT_DIR]
+            argv_params = [command, '--pef-name='+self.app_manager._PEF_NAME, '--output-folder='+self.app_manager._OUTPUT_DIR, '-b=' + str(batch_size), "--log-level=error"]
             if self._N_RDUS > 1:
                 mrdu_params = ["--data-parallel", "-ws=" + str(self._N_RDUS)]
                 argv_params = argv_params + mrdu_params
         elif command=="run":
-            argv_params = [command, '--pef='+self.app_manager._PEF_FILE]
+            argv_params = [command, '--pef='+self.app_manager._PEF_FILE, '-b=' + str(batch_size), "--log-level=error"]
             if self._N_RDUS > 1:
                 mrdu_params = ["--data-parallel", "--reduce-on-rdu"]
                 argv_params = argv_params + mrdu_params
@@ -204,7 +206,10 @@ class PyTorchInterfaceSN(PyTorchInterface):
 
         # when it is not distributed mode, local rank is -1.
         self._LOCAL_RANK = dist.get_rank() if dist.is_initialized() else -1
-        self._GLOBAL_RANK = self._LOCAL_RANK
+        if self._LOCAL_RANK == -1:
+            self._GLOBAL_RANK = 0
+        else:
+            self._GLOBAL_RANK = self._LOCAL_RANK
         args.local_rank = self._LOCAL_RANK
         # print(args.local_rank)
         # sys.exit(1)
@@ -218,8 +223,7 @@ class PyTorchInterfaceSN(PyTorchInterface):
         model_dir,
         data_params,
         opt_params,
-        criterion_params,
-        batch_size
+        criterion_params
     ):
         super().init_training_engine(
             model_name=model_name,
@@ -240,10 +244,12 @@ class PyTorchInterfaceSN(PyTorchInterface):
         
     def compile(
         self,
+        data_params,
         batch_size
     ):
         # Create random input and output data for testing
         inputs = self._create_rand_arr(
+            data_params=data_params,
             batch_size=batch_size
         )
         
@@ -256,17 +262,20 @@ class PyTorchInterfaceSN(PyTorchInterface):
                             config_dict=vars(self._ARGS),
                             pef_metadata=get_pefmeta(self._ARGS, self.model))
 
-        print("[INFO] PEF File: %s" %(self.app_manager._PEF_FILE))
+        if self._GLOBAL_RANK == 0:
+            print("[INFO] PEF File: %s" %(self.app_manager._PEF_FILE))
 
     def train(
         self,
         train_loader,
+        data_params,
         n_epochs,
         batch_size,
         num_spatial_batches=1
     ):
         # create random array
         inputs = self._create_rand_arr(
+            data_params=data_params,
             batch_size=batch_size
         )
         
@@ -323,7 +332,8 @@ class PyTorchInterfaceSN(PyTorchInterface):
 
                 # Print loss per 10,000th sample in every epoch
                 # if (i + 1) % 10000 == 0 and args.local_rank <= 0:
-            print('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}'.format(epoch + 1, n_epochs, i + 1, total_step, avg_loss / (i + 1)))
+            if self._GLOBAL_RANK == 0:
+                print('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}'.format(epoch + 1, n_epochs, i + 1, total_step, avg_loss / (i + 1)))
 
             # # Check the accuracy of the trained model for all samples in the test data loader
             # # Sync the model parameters with host memory
@@ -356,4 +366,5 @@ class PyTorchInterfaceSN(PyTorchInterface):
         #                             batch_size=args.batch_size,
         #                             num_iterations=args.num_epochs * total_step)
         #     report.save(args.json)
-        print("[INFO] Training Time: %f" %(time.perf_counter()-start_time))
+        if self._GLOBAL_RANK == 0:
+            print("[INFO] Training Time: %f" %(time.perf_counter()-start_time))

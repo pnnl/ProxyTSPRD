@@ -2,62 +2,62 @@
     "available": {
         "chips": 1,
         "fcmus": 640,
-        "sections": 3,
+        "sections": 4,
         "tiles": 4
     },
     "partitions": {
         "{0, 1}": {
             "pcus": {
-                "count": 4,
-                "utilization": 0.625
+                "count": 6,
+                "utilization": 0.9375
             },
             "pmus": {
-                "count": 16,
-                "utilization": 2.5
+                "count": 20,
+                "utilization": 3.125
             }
         }
     },
     "templates": {
-        "LogregTorchSamba.partition_1_0_.gbuf1a_1_0_84": {
+        "LogregTorchSamba.partition_1_0_.gbuf1a_1_0_102": {
             "chip_id": 0,
             "partition": "{0, 1}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 1
         },
-        "LogregTorchSamba.partition_1_0_.gbuf1a_1_0_88": {
+        "LogregTorchSamba.partition_1_0_.gbuf1a_1_0_103": {
             "chip_id": 0,
             "partition": "{0, 1}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 1
         },
-        "LogregTorchSamba.partition_1_0_.gbuf1a_1_0_89": {
+        "LogregTorchSamba.partition_1_0_.gbuf1a_1_0_104": {
             "chip_id": 0,
             "partition": "{0, 1}",
             "pcus": 0,
-            "pmus": 1,
+            "pmus": 3,
             "section_id": 1
         },
-        "LogregTorchSamba.partition_1_0_.gbuf1a_1_0_90": {
+        "LogregTorchSamba.partition_1_0_.gbuf1a_1_0_105": {
             "chip_id": 0,
             "partition": "{0, 1}",
             "pcus": 0,
-            "pmus": 1,
+            "pmus": 3,
             "section_id": 1
         },
-        "LogregTorchSamba.partition_1_0_.gbuf1a_1_0_91": {
-            "chip_id": 0,
-            "partition": "{0, 1}",
-            "pcus": 0,
-            "pmus": 1,
-            "section_id": 1
-        },
-        "LogregTorchSamba.partition_1_0_.gbuf1a_1_0_92": {
+        "LogregTorchSamba.partition_1_0_.gbuf1a_1_0_106": {
             "chip_id": 0,
             "partition": "{0, 1}",
             "pcus": 0,
             "pmus": 2,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.gbuf1a_1_0_98": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
             "section_id": 1
         },
         "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0": {
@@ -77,7 +77,7 @@
         "LogregTorchSamba.partition_1_0_.logreg__lin_layer__linear_bwd_weight_grad_a": {
             "chip_id": 0,
             "partition": "{0, 1}",
-            "pcus": 2,
+            "pcus": 4,
             "pmus": 1,
             "section_id": 1
         },
@@ -88,42 +88,42 @@
             "pmus": 0,
             "section_id": 1
         },
-        "LogregTorchSamba.partition_1_0_.s1.fronting_pmu_load_group_11": {
+        "LogregTorchSamba.partition_1_0_.s1.fronting_pmu_load_group_14": {
             "chip_id": 0,
             "partition": "{0, 1}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 1
         },
-        "LogregTorchSamba.partition_1_0_.s1.fronting_pmu_load_group_12": {
+        "LogregTorchSamba.partition_1_0_.s1.fronting_pmu_load_group_15": {
             "chip_id": 0,
             "partition": "{0, 1}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 1
         },
-        "LogregTorchSamba.partition_1_0_.s1.fronting_pmu_load_group_13": {
+        "LogregTorchSamba.partition_1_0_.s1.fronting_pmu_load_group_16": {
             "chip_id": 0,
             "partition": "{0, 1}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 1
         },
-        "LogregTorchSamba.partition_1_0_.tbuf1a_1_0_85": {
+        "LogregTorchSamba.partition_1_0_.tbuf1a_1_0_100": {
             "chip_id": 0,
             "partition": "{0, 1}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 1
         },
-        "LogregTorchSamba.partition_1_0_.tbuf1a_1_0_86": {
+        "LogregTorchSamba.partition_1_0_.tbuf1a_1_0_101": {
             "chip_id": 0,
             "partition": "{0, 1}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 1
         },
-        "LogregTorchSamba.partition_1_0_.tbuf1a_1_0_87": {
+        "LogregTorchSamba.partition_1_0_.tbuf1a_1_0_114": {
             "chip_id": 0,
             "partition": "{0, 1}",
             "pcus": 0,
@@ -145,15 +145,15 @@
             "units": 0
         },
         "templates": {
-            "pcus": 4,
-            "pmus": 16,
-            "units": 20
+            "pcus": 6,
+            "pmus": 20,
+            "units": 26
         },
         "total": {
             "agcus": 1,
-            "pcus": 4,
-            "pmus": 16,
-            "units": 20
+            "pcus": 6,
+            "pmus": 20,
+            "units": 26
         }
     }
 }

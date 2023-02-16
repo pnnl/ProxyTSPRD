@@ -27,49 +27,49 @@ def main():
     ##############
 
     def phase_w0():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [32, 1, ])
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [32, 500, ])
         np.save('RVRM_phase_w0.npy', matrix)
     if opts.ctx == 'phase_w0':
         phase_w0()
 
     def phase1_R_max():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [32, 1, ])
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [32, 500, ])
         np.save('RVRM_phase1_R_max.npy', matrix)
     if opts.ctx == 'phase1_R_max':
         phase1_R_max()
 
     def phase_rd_dummy():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, 'drop', 32, 1, [32, 1, ])
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, 'drop', 32, 1, [32, 500, ])
         np.save('RVRM_phase_rd_dummy.npy', matrix)
     if opts.ctx == 'phase_rd_dummy':
         phase_rd_dummy()
 
     def phase_w1():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [32, 1, ])
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [32, 500, ])
         np.save('RVRM_phase_w1.npy', matrix)
     if opts.ctx == 'phase_w1':
         phase_w1()
 
     def phase2_R_exp():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [32, 1, ])
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [32, 500, ])
         np.save('RVRM_phase2_R_exp.npy', matrix)
     if opts.ctx == 'phase2_R_exp':
         phase2_R_exp()
 
     def phase_w2():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [32, 1, ])
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [32, 500, ])
         np.save('RVRM_phase_w2.npy', matrix)
     if opts.ctx == 'phase_w2':
         phase_w2()
 
     def phase3_R_max():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, -1, [32, 1, ])
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, -1, [32, 500, ])
         np.save('RVRM_phase3_R_max.npy', matrix)
     if opts.ctx == 'phase3_R_max':
         phase3_R_max()
 
     def phase3_R_logsum():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, -1, [32, 1, ])
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, -1, [32, 500, ])
         np.save('RVRM_phase3_R_logsum.npy', matrix)
     if opts.ctx == 'phase3_R_logsum':
         phase3_R_logsum()

@@ -27,49 +27,49 @@ def main():
     ##############
 
     def phaseW0():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [14, 32, ])
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [14, 512, ])
         np.save('RVRM_phaseW0.npy', matrix)
     if opts.ctx == 'phaseW0':
         phaseW0()
 
     def phaseRMax():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [14, 32, ])
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [14, 512, ])
         np.save('RVRM_phaseRMax.npy', matrix)
     if opts.ctx == 'phaseRMax':
         phaseRMax()
 
     def phase_rd_dummy():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, 'drop', 32, 1, [14, 32, ])
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, 'drop', 32, 1, [14, 512, ])
         np.save('RVRM_phase_rd_dummy.npy', matrix)
     if opts.ctx == 'phase_rd_dummy':
         phase_rd_dummy()
 
     def phaseW1():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [14, 32, ])
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [14, 512, ])
         np.save('RVRM_phaseW1.npy', matrix)
     if opts.ctx == 'phaseW1':
         phaseW1()
 
     def phaseRExp0():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [14, 32, ])
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [14, 512, ])
         np.save('RVRM_phaseRExp0.npy', matrix)
     if opts.ctx == 'phaseRExp0':
         phaseRExp0()
 
     def phaseW2():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [14, 32, ])
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [14, 512, ])
         np.save('RVRM_phaseW2.npy', matrix)
     if opts.ctx == 'phaseW2':
         phaseW2()
 
     def phaseRExp1():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [14, 32, ])
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [14, 512, ])
         np.save('RVRM_phaseRExp1.npy', matrix)
     if opts.ctx == 'phaseRExp1':
         phaseRExp1()
 
     def phaseRSumRecip():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [14, 32, ])
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [14, 512, ])
         np.save('RVRM_phaseRSumRecip.npy', matrix)
     if opts.ctx == 'phaseRSumRecip':
         phaseRSumRecip()

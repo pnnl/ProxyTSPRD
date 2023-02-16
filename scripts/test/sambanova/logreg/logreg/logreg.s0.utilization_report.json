@@ -2,37 +2,37 @@
     "available": {
         "chips": 1,
         "fcmus": 640,
-        "sections": 3,
+        "sections": 4,
         "tiles": 4
     },
     "partitions": {
         "{0, 0}": {
             "pcus": {
-                "count": 2,
-                "utilization": 0.3125
+                "count": 5,
+                "utilization": 0.78125
             },
             "pmus": {
-                "count": 12,
-                "utilization": 1.875
+                "count": 16,
+                "utilization": 2.5
             }
         }
     },
     "templates": {
-        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_78": {
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_92": {
             "chip_id": 0,
             "partition": "{0, 0}",
             "pcus": 0,
-            "pmus": 1,
+            "pmus": 2,
             "section_id": 0
         },
-        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_79": {
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_93": {
             "chip_id": 0,
             "partition": "{0, 0}",
             "pcus": 0,
-            "pmus": 1,
+            "pmus": 3,
             "section_id": 0
         },
-        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_80": {
+        "LogregTorchSamba.partition_0_0_.gbuf1a_0_0_94": {
             "chip_id": 0,
             "partition": "{0, 0}",
             "pcus": 0,
@@ -56,53 +56,60 @@
         "LogregTorchSamba.partition_0_0_.logreg__lin_layer__linear": {
             "chip_id": 0,
             "partition": "{0, 0}",
-            "pcus": 1,
+            "pcus": 4,
             "pmus": 1,
             "section_id": 0
         },
-        "LogregTorchSamba.partition_0_0_.s0.backing_pmu_group_9_logreg__lin_layer__linear_t_output0_tensor": {
+        "LogregTorchSamba.partition_0_0_.s0.backing_pmu_group_12_logreg__lin_layer__linear_t_output0_tensor": {
             "chip_id": 0,
             "partition": "{0, 0}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 0
         },
-        "LogregTorchSamba.partition_0_0_.s0.fronting_pmu_load_group_4": {
+        "LogregTorchSamba.partition_0_0_.s0.fronting_pmu_load_group_1": {
             "chip_id": 0,
             "partition": "{0, 0}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 0
         },
-        "LogregTorchSamba.partition_0_0_.tbuf1a_0_0_81": {
+        "LogregTorchSamba.partition_0_0_.s0.fronting_pmu_load_group_7": {
             "chip_id": 0,
             "partition": "{0, 0}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 0
         },
-        "LogregTorchSamba.partition_0_0_.tbuf1a_0_0_82": {
+        "LogregTorchSamba.partition_0_0_.tbuf1a_0_0_95": {
             "chip_id": 0,
             "partition": "{0, 0}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 0
         },
-        "LogregTorchSamba.partition_0_0_.tbuf1a_0_0_83": {
+        "LogregTorchSamba.partition_0_0_.tbuf1a_0_0_96": {
             "chip_id": 0,
             "partition": "{0, 0}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 0
         },
-        "LogregTorchSamba.partition_0_0_.transpose_0_0_94.transpose_0_0_94.buffer": {
+        "LogregTorchSamba.partition_0_0_.tbuf1a_0_0_97": {
             "chip_id": 0,
             "partition": "{0, 0}",
             "pcus": 0,
             "pmus": 1,
             "section_id": 0
         },
-        "LogregTorchSamba.partition_0_0_.transpose_0_0_97.transpose_0_0_97.buffer": {
+        "LogregTorchSamba.partition_0_0_.transpose_0_0_109.transpose_0_0_109.buffer": {
+            "chip_id": 0,
+            "partition": "{0, 0}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 0
+        },
+        "LogregTorchSamba.partition_0_0_.transpose_0_0_112.transpose_0_0_112.buffer": {
             "chip_id": 0,
             "partition": "{0, 0}",
             "pcus": 0,
@@ -117,15 +124,15 @@
             "units": 0
         },
         "templates": {
-            "pcus": 2,
-            "pmus": 12,
-            "units": 14
+            "pcus": 5,
+            "pmus": 16,
+            "units": 21
         },
         "total": {
             "agcus": 1,
-            "pcus": 2,
-            "pmus": 12,
-            "units": 14
+            "pcus": 5,
+            "pmus": 16,
+            "units": 21
         }
     }
 }

@@ -20,27 +20,54 @@ ndaddr_funcs = {}
 
 ctxs.append('D_0_0_0_w_loop_0_0')
 def D_0_0_0_w_loop_0_0():
-    x0 = 64
-    x1 = 17408
-    x2 = True
-    x3 = 0
+    x0 = 100
+    x1 = 1
+    x2 = 99
+    x3 = 64
+    x4 = 17408
+    x5 = True
+    x6 = 0
     ndaddrs = []
-    for x4 in range(x3,x1,x0):
-        x5 = True
-        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x4),qaddr(x4//2),qaddr(x4//64),qaddr(x3),qaddr(x3),x2,x2,True,))
+    for x7 in range(x6,x0,x1):
+        for x8 in range(x6,x4,x3):
+            x9 = True
+            print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x8),qaddr(x8//2),qaddr(x8//64),qaddr(x6),qaddr(x6),x5,x5,True,))
+            x13 = True
     return ndaddrs
 
 ndaddr_funcs['D_0_0_0_w_loop_0_0'] = D_0_0_0_w_loop_0_0
+ctxs.append('D_0_0_0_r_loop_0_0')
+def D_0_0_0_r_loop_0_0():
+    x0 = 100
+    x1 = 1
+    x2 = 99
+    x3 = 64
+    x4 = 17408
+    x5 = True
+    x6 = 0
+    ndaddrs = []
+    for x7 in range(x6,x2,x1):
+        for x8 in range(x6,x4,x3):
+            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x8),qaddr(x8//2),qaddr(x8//64),qaddr(x6),qaddr(x6),x5,x5,True,))
+            x10 = True
+            x13 = x10 | x12
+            x15 = True
+    return ndaddrs
+
+ndaddr_funcs['D_0_0_0_r_loop_0_0'] = D_0_0_0_r_loop_0_0
 ctxs.append('D_0_0_0_kBackReadCtx')
 def D_0_0_0_kBackReadCtx():
-    x0 = 64
-    x1 = 17408
-    x2 = True
-    x3 = 0
+    x0 = 100
+    x1 = 1
+    x2 = 99
+    x3 = 64
+    x4 = 17408
+    x5 = True
+    x6 = 0
     ndaddrs = []
-    for x4 in range(x3,x1,x0):
-        x5 = True
-        print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x4),qaddr(x4//2),qaddr(x4//64),qaddr(x3),qaddr(x3),x2,x2,True,))
+    for x7 in range(x6,x4,x3):
+        x8 = True
+        print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x7),qaddr(x7//2),qaddr(x7//64),qaddr(x6),qaddr(x6),x5,x5,True,))
     return ndaddrs
 
 ndaddr_funcs['D_0_0_0_kBackReadCtx'] = D_0_0_0_kBackReadCtx

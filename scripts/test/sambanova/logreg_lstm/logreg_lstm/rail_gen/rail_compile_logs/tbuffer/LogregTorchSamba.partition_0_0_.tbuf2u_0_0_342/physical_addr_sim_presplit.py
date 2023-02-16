@@ -21,36 +21,34 @@ ndaddr_funcs = {}
 ctxs.append('D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kOutWr')
 def D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kOutWr():
     x0 = 1
-    x1 = 7
-    x2 = 64
-    x3 = 128
-    x4 = 0
-    x5 = 2
-    x6 = 0
+    x1 = 64
+    x2 = 128
+    x3 = 0
+    x4 = 2
+    x5 = 0
     ndaddrs = []
-    for x7 in range(x4,x3,x2):
-        x8 = True
-        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} pred_bits:{} zero:{} pred:{} invalid:{} min_max:{}".format(qaddr(x7),qaddr(x7//2),qaddr(x7//64),qaddr(x4),qaddr(x4),bin(x5)[2::],x5 % 2 >> 0 ,x5 % 4 >> 1 ,x5 % 8 >> 2 ,True,))
+    for x6 in range(x3,x2,x1):
+        x7 = True
+        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} pred_bits:{} zero:{} pred:{} invalid:{} min_max:{}".format(qaddr(x6),qaddr(x6//2),qaddr(x6//64),qaddr(x3),qaddr(x3),bin(x4)[2::],x4 % 2 >> 0 ,x4 % 4 >> 1 ,x4 % 8 >> 2 ,True,))
     return ndaddrs
 
 ndaddr_funcs['D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kOutWr'] = D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kOutWr
-ctxs.append('D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_wo_bias_kB')
-def D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_wo_bias_kB():
+ctxs.append('D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_kFwdPropB')
+def D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_kFwdPropB():
     x0 = 1
-    x1 = 7
-    x2 = 64
-    x3 = 128
-    x4 = 0
-    x5 = 2
-    x6 = 0
+    x1 = 64
+    x2 = 128
+    x3 = 0
+    x4 = 2
+    x5 = 0
     ndaddrs = []
-    for x7 in range(x4,x1,x0):
-        for x8 in range(x4,x3,x2):
-            x9 = True
-            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} pred_bits:{} zero:{} pred:{} invalid:{} min_max:{}".format(qaddr(x8),qaddr(x8//2),qaddr(x8//64),qaddr(x4),qaddr(x4),bin(x6)[2::],x6 % 2 >> 0 ,x6 % 4 >> 1 ,x6 % 8 >> 2 ,True,))
+    for x6 in range(x3,x2,x0):
+        for x7 in range(x3,x2,x1):
+            x8 = True
+            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} pred_bits:{} zero:{} pred:{} invalid:{} min_max:{}".format(qaddr(x7),qaddr(x7//2),qaddr(x7//64),qaddr(x3),qaddr(x3),bin(x5)[2::],x5 % 2 >> 0 ,x5 % 4 >> 1 ,x5 % 8 >> 2 ,True,))
     return ndaddrs
 
-ndaddr_funcs['D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_wo_bias_kB'] = D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_wo_bias_kB
+ndaddr_funcs['D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_kFwdPropB'] = D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_kFwdPropB
 
 ############
 # End ctxs #

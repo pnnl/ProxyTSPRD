@@ -26,17 +26,17 @@ def main():
     # Start ctxs #
     ##############
 
-    def LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, 'drop', 32, 1, [10, 32, ])
-        np.save('RVRM_LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0.npy', matrix)
-    if opts.ctx == 'LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0':
-        LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0()
+    def kFrontDynamicWriteCtx():
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 0, [512, ])
+        np.save('RVRM_kFrontDynamicWriteCtx.npy', matrix)
+    if opts.ctx == 'kFrontDynamicWriteCtx':
+        kFrontDynamicWriteCtx()
 
-    def kDefaultRead1():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 1, [10, 32, ])
-        np.save('RVRM_kDefaultRead1.npy', matrix)
-    if opts.ctx == 'kDefaultRead1':
-        kDefaultRead1()
+    def LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputY():
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 0, [512, ])
+        np.save('RVRM_LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputY.npy', matrix)
+    if opts.ctx == 'LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputY':
+        LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputY()
 
 
     ############

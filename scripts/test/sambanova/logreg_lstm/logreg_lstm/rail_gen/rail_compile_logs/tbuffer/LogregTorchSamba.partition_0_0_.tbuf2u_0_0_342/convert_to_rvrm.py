@@ -32,11 +32,11 @@ def main():
     if opts.ctx == 'LogregTorchSamba.partition_0_0_.ptconvlstm__indexselect@kOutWr':
         LogregTorchSamba.partition_0_0_.ptconvlstm__indexselect@kOutWr()
 
-    def LogregTorchSamba.partition_0_0_.ptconvlstm__dense_layer__linear_wo_bias@kB():
+    def LogregTorchSamba.partition_0_0_.ptconvlstm__dense_layer__linear@kFwdPropB():
         matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, 'drop', 32, 0, [64, 1, ])
-        np.save('RVRM_LogregTorchSamba.partition_0_0_.ptconvlstm__dense_layer__linear_wo_bias@kB.npy', matrix)
-    if opts.ctx == 'LogregTorchSamba.partition_0_0_.ptconvlstm__dense_layer__linear_wo_bias@kB':
-        LogregTorchSamba.partition_0_0_.ptconvlstm__dense_layer__linear_wo_bias@kB()
+        np.save('RVRM_LogregTorchSamba.partition_0_0_.ptconvlstm__dense_layer__linear@kFwdPropB.npy', matrix)
+    if opts.ctx == 'LogregTorchSamba.partition_0_0_.ptconvlstm__dense_layer__linear@kFwdPropB':
+        LogregTorchSamba.partition_0_0_.ptconvlstm__dense_layer__linear@kFwdPropB()
 
 
     ############

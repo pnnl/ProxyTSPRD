@@ -33,15 +33,16 @@
 
 #include "prism/Emul/Tensor.h"
 #include "mlnodes/GBuffer.h"
-#include "templates/gemm/prism/GemmSubnet.h"
+#include "templates/gemm/prism/BigGemm.h"
 #include "templates/transpose/prism/Transpose.h"
 #include "mlnodes/View.h"
 #include "rail/node/tbuffer/TBuffer.h"
 #include "templates/cross_entropy/rail/CrossEntropy.h"
 #include "templates/cross_entropy/rail/CrossEntropyGrad.h"
 #include "templates/add_n/prism/AddN.h"
-#include "templates/gemm/prism/BigGemm.h"
 #include "templates/optimizer/prism/OptimizerSGD.h"
+#include "templates/binary/prism/BinaryOps.h"
+#include "templates/scale/prism/Scale.h"
 
 namespace prism {
 namespace plasma {
@@ -70,11 +71,18 @@ public:
         TensorLayout logreg__lin_layer__linear__outputs__0_dram_in;
         TensorLayout logreg__lin_layer__weight__grad_2_0_52;
         TensorLayout logreg__lin_layer__weight__grad_dram_in;
+        TensorLayout dummy_dp_accum_region_0_dram_in;
+        TensorLayout accum_dummy_0_3_0_84;
+        TensorLayout accum_dummy_0_dram_in;
+        TensorLayout accum_dummy_0_reduce_buf_3_0_85;
+        TensorLayout accum_dummy_0_reduce_buf_dram_in;
         TensorLayout logreg__lin_layer__weight_dram_out;
         TensorLayout logreg__lin_layer__weight__sgd0__momentum_dram_out;
         TensorLayout logreg__lin_layer__linear__outputs__0_dram_out;
         TensorLayout logreg__criterion__crossentropyloss__outputs__0_dram_out;
         TensorLayout logreg__lin_layer__weight__grad_dram_out;
+        TensorLayout dummy_dp_accum_region_0_dram_out;
+        TensorLayout accum_dummy_0_dram_out;
     };
 
     /// P2P dram layout
@@ -102,7 +110,11 @@ public:
         // Input
         klogreg__lin_layer__weight__grad_2_0_52        ,
         // Weight
-        klogreg__lin_layer__weight__sgd0__momentum_2_0_53        
+        klogreg__lin_layer__weight__sgd0__momentum_2_0_53        ,
+        // Input
+        kaccum_dummy_0_3_0_84        ,
+        // Input
+        kaccum_dummy_0_reduce_buf_3_0_85        
     };
 
     /// Output enums
@@ -116,28 +128,34 @@ public:
         // Weight
         klogreg__lin_layer__weight__logreg__lin_layer__linear_bwd_weight_opt_tensor        ,
         // Weight
-        klogreg__lin_layer__weight__logreg__lin_layer__linear_bwd_weight_opt_tensor1        
+        klogreg__lin_layer__weight__logreg__lin_layer__linear_bwd_weight_opt_tensor1        ,
+        // Output
+        kaccum_dummy_0_3_0_88        
     };
 
     /// Node enums
     enum NodeEnum {
-        kgbuf1a_0_0_79,
-        kgbuf1a_0_0_78,
-        kgbuf1a_0_0_80,
-        ktbuf1a_0_0_81,
-        ktbuf1a_0_0_82,
-        ktbuf1a_0_0_83,
-        kgbuf1a_1_0_84,
-        ktbuf1a_1_0_85,
-        ktbuf1a_1_0_86,
-        ktbuf1a_1_0_87,
+        kgbuf1a_0_0_93,
+        klogreg__lin_layer__linear,
+        kgbuf1a_0_0_92,
+        kgbuf1a_0_0_94,
+        ktbuf1a_0_0_95,
+        ktbuf1a_0_0_96,
+        ktbuf1a_0_0_97,
+        kgbuf1a_1_0_98,
         ktbuf1a_1_0_99,
-        kgbuf1a_1_0_88,
-        kgbuf1a_1_0_89,
-        kgbuf1a_1_0_90,
-        kgbuf1a_1_0_91,
+        ktbuf1a_1_0_100,
+        ktbuf1a_1_0_101,
+        ktbuf1a_1_0_114,
+        kgbuf1a_1_0_102,
+        kgbuf1a_1_0_103,
+        kgbuf1a_1_0_104,
+        kgbuf1a_1_0_105,
         klogreg__lin_layer__linear_bwd_weight_grad_a,
-        kgbuf1a_1_0_92,
+        kgbuf1a_1_0_106,
+        kgbuf2a_3_0_115,
+        kgbuf2a_3_0_116,
+        kgbuf2a_3_0_107,
     };
 
     LogregTorchSamba(const std::string &name, SuperNode *parent, mlir::rail::RAIL *rail, Params params, int64_t section_id);
@@ -150,6 +168,8 @@ public:
     void configure_section1();
     void construct_section2();
     void configure_section2();
+    void construct_section3();
+    void configure_section3();
     BufferNode *wbuf_in(Input input) const {
         switch (input) {
             case klogreg__lin_layer__weight_0_0_29: return logreg__lin_layer__linear_->wbuf();
@@ -178,6 +198,8 @@ public:
           return partition_1_0_;
         if (partition.section_id == 2 && partition.chip_id == 0)
           return partition_2_0_;
+        if (partition.section_id == 3 && partition.chip_id == 0)
+          return partition_3_0_;
         return nullptr;
     }
     
@@ -203,6 +225,10 @@ public:
             if (partition.chip_id == 0) {
             }
         }
+        if (partition.section_id == 3) {
+            if (partition.chip_id == 0) {
+            }
+        }
     }
     
     SuperNode* get_node(NodeEnum node_enum);
@@ -217,65 +243,77 @@ public:
     /** Section 0, Chip 0 **/
     PartitionNode *partition_0_0_;
     // UnknownFileName:0:0: tlir.Buffer
-    GBuffer* gbuf1a_0_0_79_;
+    GBuffer* gbuf1a_0_0_93_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.Linear
-    GemmSubnet* logreg__lin_layer__linear_;
+    BigGemm* logreg__lin_layer__linear_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.Buffer
-    GBuffer* gbuf1a_0_0_78_;
+    GBuffer* gbuf1a_0_0_92_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.Transpose
-    Transpose* transpose_0_0_97_;
+    Transpose* transpose_0_0_112_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.Transpose
-    Transpose* transpose_0_0_94_;
+    Transpose* transpose_0_0_109_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.Buffer
-    GBuffer* gbuf1a_0_0_80_;
+    GBuffer* gbuf1a_0_0_94_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.PermuteView
     PermuteView* permute_view_0_0_75_;
     // UnknownFileName:0:0: tlir.Buffer
-    TBuffer* tbuf1a_0_0_81_;
+    TBuffer* tbuf1a_0_0_95_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.Buffer
-    TBuffer* tbuf1a_0_0_82_;
+    TBuffer* tbuf1a_0_0_96_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.CrossEntropy
     RAILCrossEntropy* logreg__criterion__crossentropyloss_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.Buffer
-    TBuffer* tbuf1a_0_0_83_;
+    TBuffer* tbuf1a_0_0_97_;
     /** Section 1, Chip 0 **/
     PartitionNode *partition_1_0_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.Buffer
-    GBuffer* gbuf1a_1_0_84_;
+    GBuffer* gbuf1a_1_0_98_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.PermuteView
     PermuteView* permute_view_1_0_76_;
     // UnknownFileName:0:0: tlir.Buffer
-    TBuffer* tbuf1a_1_0_85_;
+    TBuffer* tbuf1a_1_0_99_;
     // UnknownFileName:0:0: tlir.Buffer
-    TBuffer* tbuf1a_1_0_86_;
+    TBuffer* tbuf1a_1_0_100_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.Buffer
-    TBuffer* tbuf1a_1_0_87_;
+    TBuffer* tbuf1a_1_0_101_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.CrossEntropyGrad
     RAILCrossEntropyGrad* logreg__criterion__crossentropyloss_bwd_loss_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.Buffer
-    TBuffer* tbuf1a_1_0_99_;
+    TBuffer* tbuf1a_1_0_114_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.Buffer
-    GBuffer* gbuf1a_1_0_88_;
+    GBuffer* gbuf1a_1_0_102_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.PermuteView
     PermuteView* permute_view_1_0_77_;
     // UnknownFileName:0:0: tlir.Buffer
-    GBuffer* gbuf1a_1_0_89_;
+    GBuffer* gbuf1a_1_0_103_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.AddN
     AddN* logreg__lin_layer__linear_t_output0_bwd_addn0_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.PermuteView
     PermuteView* logreg__lin_layer__linear_t_output0_bwd_;
     // UnknownFileName:0:0: tlir.Buffer
-    GBuffer* gbuf1a_1_0_90_;
+    GBuffer* gbuf1a_1_0_104_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.Buffer
-    GBuffer* gbuf1a_1_0_91_;
+    GBuffer* gbuf1a_1_0_105_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.Linear
     BigGemm* logreg__lin_layer__linear_bwd_weight_grad_a_;
     // /usr/local/lib/python3.7/site-packages/torch/overrides.py:1355:0: tlir.Buffer
-    GBuffer* gbuf1a_1_0_92_;
+    GBuffer* gbuf1a_1_0_106_;
     /** Section 2, Chip 0 **/
     PartitionNode *partition_2_0_;
     // logreg__lin_layer__weight:0:0: tlir.SGD
     OptimizerSGD* logreg__lin_layer__weight__logreg__lin_layer__linear_bwd_weight_opt_;
+    /** Section 3, Chip 0 **/
+    PartitionNode *partition_3_0_;
+    // <unknown location>: tlir.Buffer
+    GBuffer* gbuf2a_3_0_115_;
+    // <unknown location>: tlir.Buffer
+    GBuffer* gbuf2a_3_0_116_;
+    // <unknown location>: tlir.AddV2
+    BinaryOps* add_3_0_86_;
+    // <unknown location>: tlir.Scale
+    Scale* scale_3_0_87_;
+    // <unknown location>: tlir.Buffer
+    GBuffer* gbuf2a_3_0_107_;
 
 };
 } // namespace arc

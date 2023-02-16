@@ -272,7 +272,7 @@
         "templates": []
     },
     {
-        "box_id": 43,
+        "box_id": 32,
         "box_key_unit": "ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -280,8 +280,8 @@
         "col": 10,
         "dynamic": false,
         "fast_bypass_sink": false,
-        "fcmu_pair": 596,
-        "id": 595,
+        "fcmu_pair": 549,
+        "id": 548,
         "kind": "PCU",
         "name": "ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_mw_pcu10_PCU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt",
@@ -295,7 +295,7 @@
         ]
     },
     {
-        "box_id": 43,
+        "box_id": 32,
         "box_key_unit": "ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -303,8 +303,8 @@
         "col": 10,
         "dynamic": false,
         "fast_bypass_available": false,
-        "fcmu_pair": 595,
-        "id": 596,
+        "fcmu_pair": 548,
+        "id": 549,
         "kind": "PMU",
         "name": "ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_mw_pcu10_PMU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt",
@@ -318,7 +318,7 @@
         ]
     },
     {
-        "box_id": 43,
+        "box_id": 32,
         "box_key_unit": "ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -326,8 +326,8 @@
         "col": 11,
         "dynamic": false,
         "fast_bypass_sink": false,
-        "fcmu_pair": 598,
-        "id": 597,
+        "fcmu_pair": 551,
+        "id": 550,
         "kind": "PCU",
         "name": "ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_w_pcu20_PCU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt",
@@ -341,7 +341,7 @@
         ]
     },
     {
-        "box_id": 43,
+        "box_id": 32,
         "box_key_unit": "ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -349,8 +349,8 @@
         "col": 11,
         "dynamic": false,
         "fast_bypass_available": false,
-        "fcmu_pair": 597,
-        "id": 598,
+        "fcmu_pair": 550,
+        "id": 551,
         "kind": "PMU",
         "name": "ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_w_pcu20_PMU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt",
@@ -364,7 +364,7 @@
         ]
     },
     {
-        "box_id": 43,
+        "box_id": 32,
         "box_key_unit": "ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -372,7 +372,7 @@
         "col": 12,
         "dynamic": false,
         "fast_bypass_available": false,
-        "id": 599,
+        "id": 552,
         "kind": "PMU",
         "name": "ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_dw0",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt",
@@ -386,7 +386,7 @@
         ]
     },
     {
-        "box_id": 44,
+        "box_id": 33,
         "box_key_unit": "ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -394,8 +394,8 @@
         "col": 10,
         "dynamic": false,
         "fast_bypass_sink": false,
-        "fcmu_pair": 601,
-        "id": 600,
+        "fcmu_pair": 554,
+        "id": 553,
         "kind": "PCU",
         "name": "ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_mw_pcu10_PCU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt",
@@ -409,7 +409,7 @@
         ]
     },
     {
-        "box_id": 44,
+        "box_id": 33,
         "box_key_unit": "ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -417,8 +417,8 @@
         "col": 10,
         "dynamic": false,
         "fast_bypass_available": false,
-        "fcmu_pair": 600,
-        "id": 601,
+        "fcmu_pair": 553,
+        "id": 554,
         "kind": "PMU",
         "name": "ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_mw_pcu10_PMU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt",
@@ -432,7 +432,7 @@
         ]
     },
     {
-        "box_id": 44,
+        "box_id": 33,
         "box_key_unit": "ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -440,8 +440,8 @@
         "col": 11,
         "dynamic": false,
         "fast_bypass_sink": false,
-        "fcmu_pair": 603,
-        "id": 602,
+        "fcmu_pair": 556,
+        "id": 555,
         "kind": "PCU",
         "name": "ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_w_pcu20_PCU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt",
@@ -455,7 +455,7 @@
         ]
     },
     {
-        "box_id": 44,
+        "box_id": 33,
         "box_key_unit": "ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -463,8 +463,8 @@
         "col": 11,
         "dynamic": false,
         "fast_bypass_available": false,
-        "fcmu_pair": 602,
-        "id": 603,
+        "fcmu_pair": 555,
+        "id": 556,
         "kind": "PMU",
         "name": "ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_w_pcu20_PMU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt",
@@ -478,7 +478,7 @@
         ]
     },
     {
-        "box_id": 44,
+        "box_id": 33,
         "box_key_unit": "ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -486,7 +486,7 @@
         "col": 12,
         "dynamic": false,
         "fast_bypass_available": false,
-        "id": 604,
+        "id": 557,
         "kind": "PMU",
         "name": "ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_OptimizerSGD_dw0",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt",
@@ -508,21 +508,21 @@
         "col": 12,
         "dynamic": false,
         "fast_bypass_available": false,
-        "id": 605,
+        "id": 558,
         "kind": "PMU",
-        "name": "gbuf1a_2_0_917_head1_neck0_data_pmu0",
-        "node": "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_917",
+        "name": "gbuf1a_2_0_939_head1_neck0_data_pmu0",
+        "node": "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_939",
         "row": 19,
         "section_id": 2,
         "template_kind": "BufferNode.GBuffer",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "gbuf1a_2_0_917"
+            "gbuf1a_2_0_939"
         ]
     },
     {
-        "box_id": 45,
+        "box_id": 34,
         "box_key_unit": "ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -530,8 +530,8 @@
         "col": 9,
         "dynamic": false,
         "fast_bypass_sink": false,
-        "fcmu_pair": 607,
-        "id": 606,
+        "fcmu_pair": 560,
+        "id": 559,
         "kind": "PCU",
         "name": "ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PCU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -545,7 +545,7 @@
         ]
     },
     {
-        "box_id": 45,
+        "box_id": 34,
         "box_key_unit": "ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -553,8 +553,8 @@
         "col": 9,
         "dynamic": false,
         "fast_bypass_available": false,
-        "fcmu_pair": 606,
-        "id": 607,
+        "fcmu_pair": 559,
+        "id": 560,
         "kind": "PMU",
         "name": "ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -568,7 +568,7 @@
         ]
     },
     {
-        "box_id": 45,
+        "box_id": 34,
         "box_key_unit": "ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -576,8 +576,8 @@
         "col": 10,
         "dynamic": false,
         "fast_bypass_sink": false,
-        "fcmu_pair": 609,
-        "id": 608,
+        "fcmu_pair": 562,
+        "id": 561,
         "kind": "PCU",
         "name": "ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_w_pcu20_PCU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -591,7 +591,7 @@
         ]
     },
     {
-        "box_id": 45,
+        "box_id": 34,
         "box_key_unit": "ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -599,8 +599,8 @@
         "col": 10,
         "dynamic": false,
         "fast_bypass_available": false,
-        "fcmu_pair": 608,
-        "id": 609,
+        "fcmu_pair": 561,
+        "id": 562,
         "kind": "PMU",
         "name": "ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_w_pcu20_PMU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -614,7 +614,7 @@
         ]
     },
     {
-        "box_id": 45,
+        "box_id": 34,
         "box_key_unit": "ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -622,7 +622,7 @@
         "col": 11,
         "dynamic": false,
         "fast_bypass_available": false,
-        "id": 610,
+        "id": 563,
         "kind": "PMU",
         "name": "ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_dw0",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -644,21 +644,21 @@
         "col": 12,
         "dynamic": false,
         "fast_bypass_available": false,
-        "id": 611,
+        "id": 564,
         "kind": "PMU",
-        "name": "gbuf1a_2_0_918_head1_neck0_data_pmu0",
-        "node": "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_918",
+        "name": "gbuf1a_2_0_940_head1_neck0_data_pmu0",
+        "node": "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_940",
         "row": 24,
         "section_id": 2,
         "template_kind": "BufferNode.GBuffer",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "gbuf1a_2_0_918"
+            "gbuf1a_2_0_940"
         ]
     },
     {
-        "box_id": 46,
+        "box_id": 35,
         "box_key_unit": "ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -666,8 +666,8 @@
         "col": 10,
         "dynamic": false,
         "fast_bypass_sink": false,
-        "fcmu_pair": 613,
-        "id": 612,
+        "fcmu_pair": 566,
+        "id": 565,
         "kind": "PCU",
         "name": "ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PCU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -681,7 +681,7 @@
         ]
     },
     {
-        "box_id": 46,
+        "box_id": 35,
         "box_key_unit": "ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -689,8 +689,8 @@
         "col": 10,
         "dynamic": false,
         "fast_bypass_available": false,
-        "fcmu_pair": 612,
-        "id": 613,
+        "fcmu_pair": 565,
+        "id": 566,
         "kind": "PMU",
         "name": "ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -704,7 +704,7 @@
         ]
     },
     {
-        "box_id": 46,
+        "box_id": 35,
         "box_key_unit": "ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -712,8 +712,8 @@
         "col": 11,
         "dynamic": false,
         "fast_bypass_sink": false,
-        "fcmu_pair": 615,
-        "id": 614,
+        "fcmu_pair": 568,
+        "id": 567,
         "kind": "PCU",
         "name": "ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_w_pcu20_PCU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -727,7 +727,7 @@
         ]
     },
     {
-        "box_id": 46,
+        "box_id": 35,
         "box_key_unit": "ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -735,8 +735,8 @@
         "col": 11,
         "dynamic": false,
         "fast_bypass_available": false,
-        "fcmu_pair": 614,
-        "id": 615,
+        "fcmu_pair": 567,
+        "id": 568,
         "kind": "PMU",
         "name": "ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_w_pcu20_PMU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -750,7 +750,7 @@
         ]
     },
     {
-        "box_id": 46,
+        "box_id": 35,
         "box_key_unit": "ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -758,7 +758,7 @@
         "col": 12,
         "dynamic": false,
         "fast_bypass_available": false,
-        "id": 616,
+        "id": 569,
         "kind": "PMU",
         "name": "ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_dw0",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -780,21 +780,21 @@
         "col": 12,
         "dynamic": false,
         "fast_bypass_available": false,
-        "id": 617,
+        "id": 570,
         "kind": "PMU",
-        "name": "gbuf1a_2_0_919_head1_neck0_data_pmu0",
-        "node": "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_919",
+        "name": "gbuf1a_2_0_941_head1_neck0_data_pmu0",
+        "node": "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_941",
         "row": 26,
         "section_id": 2,
         "template_kind": "BufferNode.GBuffer",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "gbuf1a_2_0_919"
+            "gbuf1a_2_0_941"
         ]
     },
     {
-        "box_id": 47,
+        "box_id": 36,
         "box_key_unit": "ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -802,8 +802,8 @@
         "col": 9,
         "dynamic": false,
         "fast_bypass_sink": false,
-        "fcmu_pair": 619,
-        "id": 618,
+        "fcmu_pair": 572,
+        "id": 571,
         "kind": "PCU",
         "name": "ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PCU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -817,7 +817,7 @@
         ]
     },
     {
-        "box_id": 47,
+        "box_id": 36,
         "box_key_unit": "ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -825,8 +825,8 @@
         "col": 9,
         "dynamic": false,
         "fast_bypass_available": false,
-        "fcmu_pair": 618,
-        "id": 619,
+        "fcmu_pair": 571,
+        "id": 572,
         "kind": "PMU",
         "name": "ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -840,7 +840,7 @@
         ]
     },
     {
-        "box_id": 47,
+        "box_id": 36,
         "box_key_unit": "ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -848,8 +848,8 @@
         "col": 10,
         "dynamic": false,
         "fast_bypass_sink": false,
-        "fcmu_pair": 621,
-        "id": 620,
+        "fcmu_pair": 574,
+        "id": 573,
         "kind": "PCU",
         "name": "ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_w_pcu20_PCU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -863,7 +863,7 @@
         ]
     },
     {
-        "box_id": 47,
+        "box_id": 36,
         "box_key_unit": "ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -871,8 +871,8 @@
         "col": 10,
         "dynamic": false,
         "fast_bypass_available": false,
-        "fcmu_pair": 620,
-        "id": 621,
+        "fcmu_pair": 573,
+        "id": 574,
         "kind": "PMU",
         "name": "ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_w_pcu20_PMU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -886,7 +886,7 @@
         ]
     },
     {
-        "box_id": 47,
+        "box_id": 36,
         "box_key_unit": "ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -894,7 +894,7 @@
         "col": 11,
         "dynamic": false,
         "fast_bypass_available": false,
-        "id": 622,
+        "id": 575,
         "kind": "PMU",
         "name": "ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_dw0",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -916,21 +916,21 @@
         "col": 3,
         "dynamic": false,
         "fast_bypass_available": false,
-        "id": 623,
+        "id": 576,
         "kind": "PMU",
-        "name": "gbuf1a_2_0_920_head1_neck0_data_pmu0",
-        "node": "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_920",
+        "name": "gbuf1a_2_0_942_head1_neck0_data_pmu0",
+        "node": "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_942",
         "row": 65,
         "section_id": 2,
         "template_kind": "BufferNode.GBuffer",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "gbuf1a_2_0_920"
+            "gbuf1a_2_0_942"
         ]
     },
     {
-        "box_id": 48,
+        "box_id": 37,
         "box_key_unit": "ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -938,8 +938,8 @@
         "col": 1,
         "dynamic": false,
         "fast_bypass_sink": false,
-        "fcmu_pair": 625,
-        "id": 624,
+        "fcmu_pair": 578,
+        "id": 577,
         "kind": "PCU",
         "name": "ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PCU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -953,7 +953,7 @@
         ]
     },
     {
-        "box_id": 48,
+        "box_id": 37,
         "box_key_unit": "ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -961,8 +961,8 @@
         "col": 1,
         "dynamic": false,
         "fast_bypass_available": false,
-        "fcmu_pair": 624,
-        "id": 625,
+        "fcmu_pair": 577,
+        "id": 578,
         "kind": "PMU",
         "name": "ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -976,7 +976,7 @@
         ]
     },
     {
-        "box_id": 48,
+        "box_id": 37,
         "box_key_unit": "ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -984,8 +984,8 @@
         "col": 2,
         "dynamic": false,
         "fast_bypass_sink": false,
-        "fcmu_pair": 627,
-        "id": 626,
+        "fcmu_pair": 580,
+        "id": 579,
         "kind": "PCU",
         "name": "ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_w_pcu20_PCU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -999,7 +999,7 @@
         ]
     },
     {
-        "box_id": 48,
+        "box_id": 37,
         "box_key_unit": "ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -1007,8 +1007,8 @@
         "col": 2,
         "dynamic": false,
         "fast_bypass_available": false,
-        "fcmu_pair": 626,
-        "id": 627,
+        "fcmu_pair": 579,
+        "id": 580,
         "kind": "PMU",
         "name": "ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_w_pcu20_PMU",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -1022,7 +1022,7 @@
         ]
     },
     {
-        "box_id": 48,
+        "box_id": 37,
         "box_key_unit": "ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_mw_pcu10_PMU",
         "box_perf_attr": "kDefaultPerformance",
         "box_style": "",
@@ -1030,7 +1030,7 @@
         "col": 3,
         "dynamic": false,
         "fast_bypass_available": false,
-        "id": 628,
+        "id": 581,
         "kind": "PMU",
         "name": "ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_OptimizerSGD_dw0",
         "node": "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt",
@@ -1052,17 +1052,17 @@
         "col": 9,
         "dynamic": false,
         "fast_bypass_available": false,
-        "id": 629,
+        "id": 582,
         "kind": "PMU",
-        "name": "s2.fronting_pmu_load_group_4",
-        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_4",
+        "name": "s2.fronting_pmu_load_group_5",
+        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_5",
         "row": 23,
         "section_id": 2,
         "template_kind": "FrontingPmu",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "s2.fronting_pmu_load_group_4"
+            "s2.fronting_pmu_load_group_5"
         ]
     },
     {
@@ -1074,17 +1074,17 @@
         "col": 12,
         "dynamic": false,
         "fast_bypass_available": false,
-        "id": 630,
+        "id": 583,
         "kind": "PMU",
-        "name": "s2.fronting_pmu_load_group_30",
-        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_30",
+        "name": "s2.fronting_pmu_load_group_33",
+        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_33",
         "row": 7,
         "section_id": 2,
         "template_kind": "FrontingPmu",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "s2.fronting_pmu_load_group_30"
+            "s2.fronting_pmu_load_group_33"
         ]
     },
     {
@@ -1096,55 +1096,11 @@
         "col": 10,
         "dynamic": false,
         "fast_bypass_available": false,
-        "id": 631,
-        "kind": "PMU",
-        "name": "s2.fronting_pmu_load_group_28",
-        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_28",
-        "row": 7,
-        "section_id": 2,
-        "template_kind": "FrontingPmu",
-        "templates": [
-            "LogregTorchSamba",
-            "partition_2_0_",
-            "s2.fronting_pmu_load_group_28"
-        ]
-    },
-    {
-        "box_id": 4294967295,
-        "box_key_unit": "",
-        "box_perf_attr": "",
-        "box_style": "",
-        "chameleon_id": 0,
-        "col": 0,
-        "dynamic": false,
-        "fast_bypass_available": false,
-        "id": 632,
-        "kind": "PMU",
-        "name": "s2.fronting_pmu_load_group_27",
-        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_27",
-        "row": 23,
-        "section_id": 2,
-        "template_kind": "FrontingPmu",
-        "templates": [
-            "LogregTorchSamba",
-            "partition_2_0_",
-            "s2.fronting_pmu_load_group_27"
-        ]
-    },
-    {
-        "box_id": 4294967295,
-        "box_key_unit": "",
-        "box_perf_attr": "",
-        "box_style": "",
-        "chameleon_id": 0,
-        "col": 12,
-        "dynamic": false,
-        "fast_bypass_available": false,
-        "id": 633,
+        "id": 584,
         "kind": "PMU",
         "name": "s2.fronting_pmu_load_group_31",
         "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_31",
-        "row": 8,
+        "row": 7,
         "section_id": 2,
         "template_kind": "FrontingPmu",
         "templates": [
@@ -1159,10 +1115,76 @@
         "box_perf_attr": "",
         "box_style": "",
         "chameleon_id": 0,
+        "col": 0,
+        "dynamic": false,
+        "fast_bypass_available": false,
+        "id": 585,
+        "kind": "PMU",
+        "name": "s2.fronting_pmu_load_group_30",
+        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_30",
+        "row": 23,
+        "section_id": 2,
+        "template_kind": "FrontingPmu",
+        "templates": [
+            "LogregTorchSamba",
+            "partition_2_0_",
+            "s2.fronting_pmu_load_group_30"
+        ]
+    },
+    {
+        "box_id": 4294967295,
+        "box_key_unit": "",
+        "box_perf_attr": "",
+        "box_style": "",
+        "chameleon_id": 0,
+        "col": 12,
+        "dynamic": false,
+        "fast_bypass_available": false,
+        "id": 586,
+        "kind": "PMU",
+        "name": "s2.fronting_pmu_load_group_34",
+        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_34",
+        "row": 8,
+        "section_id": 2,
+        "template_kind": "FrontingPmu",
+        "templates": [
+            "LogregTorchSamba",
+            "partition_2_0_",
+            "s2.fronting_pmu_load_group_34"
+        ]
+    },
+    {
+        "box_id": 4294967295,
+        "box_key_unit": "",
+        "box_perf_attr": "",
+        "box_style": "",
+        "chameleon_id": 0,
         "col": 11,
         "dynamic": false,
         "fast_bypass_available": false,
-        "id": 634,
+        "id": 587,
+        "kind": "PMU",
+        "name": "s2.fronting_pmu_load_group_32",
+        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_32",
+        "row": 23,
+        "section_id": 2,
+        "template_kind": "FrontingPmu",
+        "templates": [
+            "LogregTorchSamba",
+            "partition_2_0_",
+            "s2.fronting_pmu_load_group_32"
+        ]
+    },
+    {
+        "box_id": 4294967295,
+        "box_key_unit": "",
+        "box_perf_attr": "",
+        "box_style": "",
+        "chameleon_id": 0,
+        "col": 2,
+        "dynamic": false,
+        "fast_bypass_available": false,
+        "id": 588,
         "kind": "PMU",
         "name": "s2.fronting_pmu_load_group_29",
         "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_29",
@@ -1181,168 +1203,14 @@
         "box_perf_attr": "",
         "box_style": "",
         "chameleon_id": 0,
-        "col": 2,
-        "dynamic": false,
-        "fast_bypass_available": false,
-        "id": 635,
-        "kind": "PMU",
-        "name": "s2.fronting_pmu_load_group_26",
-        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_26",
-        "row": 23,
-        "section_id": 2,
-        "template_kind": "FrontingPmu",
-        "templates": [
-            "LogregTorchSamba",
-            "partition_2_0_",
-            "s2.fronting_pmu_load_group_26"
-        ]
-    },
-    {
-        "box_id": 4294967295,
-        "box_key_unit": "",
-        "box_perf_attr": "",
-        "box_style": "",
-        "chameleon_id": 0,
         "col": 11,
         "dynamic": false,
         "fast_bypass_available": false,
-        "id": 636,
-        "kind": "PMU",
-        "name": "s2.fronting_pmu_load_group_81",
-        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_81",
-        "row": 19,
-        "section_id": 2,
-        "template_kind": "FrontingPmu",
-        "templates": [
-            "LogregTorchSamba",
-            "partition_2_0_",
-            "s2.fronting_pmu_load_group_81"
-        ]
-    },
-    {
-        "box_id": 4294967295,
-        "box_key_unit": "",
-        "box_perf_attr": "",
-        "box_style": "",
-        "chameleon_id": 0,
-        "col": 0,
-        "dynamic": false,
-        "fast_bypass_available": false,
-        "id": 637,
-        "kind": "PMU",
-        "name": "s2.fronting_pmu_load_group_25",
-        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_25",
-        "row": 24,
-        "section_id": 2,
-        "template_kind": "FrontingPmu",
-        "templates": [
-            "LogregTorchSamba",
-            "partition_2_0_",
-            "s2.fronting_pmu_load_group_25"
-        ]
-    },
-    {
-        "box_id": 4294967295,
-        "box_key_unit": "",
-        "box_perf_attr": "",
-        "box_style": "",
-        "chameleon_id": 0,
-        "col": 12,
-        "dynamic": false,
-        "fast_bypass_available": false,
-        "id": 638,
-        "kind": "PMU",
-        "name": "s2.fronting_pmu_load_group_82",
-        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_82",
-        "row": 25,
-        "section_id": 2,
-        "template_kind": "FrontingPmu",
-        "templates": [
-            "LogregTorchSamba",
-            "partition_2_0_",
-            "s2.fronting_pmu_load_group_82"
-        ]
-    },
-    {
-        "box_id": 4294967295,
-        "box_key_unit": "",
-        "box_perf_attr": "",
-        "box_style": "",
-        "chameleon_id": 0,
-        "col": 4,
-        "dynamic": false,
-        "fast_bypass_available": false,
-        "id": 639,
-        "kind": "PMU",
-        "name": "s2.fronting_pmu_load_group_24",
-        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_24",
-        "row": 24,
-        "section_id": 2,
-        "template_kind": "FrontingPmu",
-        "templates": [
-            "LogregTorchSamba",
-            "partition_2_0_",
-            "s2.fronting_pmu_load_group_24"
-        ]
-    },
-    {
-        "box_id": 4294967295,
-        "box_key_unit": "",
-        "box_perf_attr": "",
-        "box_style": "",
-        "chameleon_id": 0,
-        "col": 9,
-        "dynamic": false,
-        "fast_bypass_available": false,
-        "id": 640,
-        "kind": "PMU",
-        "name": "s2.fronting_pmu_load_group_83",
-        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_83",
-        "row": 24,
-        "section_id": 2,
-        "template_kind": "FrontingPmu",
-        "templates": [
-            "LogregTorchSamba",
-            "partition_2_0_",
-            "s2.fronting_pmu_load_group_83"
-        ]
-    },
-    {
-        "box_id": 4294967295,
-        "box_key_unit": "",
-        "box_perf_attr": "",
-        "box_style": "",
-        "chameleon_id": 0,
-        "col": 2,
-        "dynamic": false,
-        "fast_bypass_available": false,
-        "id": 641,
-        "kind": "PMU",
-        "name": "s2.fronting_pmu_load_group_23",
-        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_23",
-        "row": 24,
-        "section_id": 2,
-        "template_kind": "FrontingPmu",
-        "templates": [
-            "LogregTorchSamba",
-            "partition_2_0_",
-            "s2.fronting_pmu_load_group_23"
-        ]
-    },
-    {
-        "box_id": 4294967295,
-        "box_key_unit": "",
-        "box_perf_attr": "",
-        "box_style": "",
-        "chameleon_id": 0,
-        "col": 2,
-        "dynamic": false,
-        "fast_bypass_available": false,
-        "id": 642,
+        "id": 589,
         "kind": "PMU",
         "name": "s2.fronting_pmu_load_group_84",
         "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_84",
-        "row": 65,
+        "row": 19,
         "section_id": 2,
         "template_kind": "FrontingPmu",
         "templates": [
@@ -1357,152 +1225,42 @@
         "box_perf_attr": "",
         "box_style": "",
         "chameleon_id": 0,
+        "col": 0,
+        "dynamic": false,
+        "fast_bypass_available": false,
+        "id": 590,
+        "kind": "PMU",
+        "name": "s2.fronting_pmu_load_group_28",
+        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_28",
+        "row": 24,
+        "section_id": 2,
+        "template_kind": "FrontingPmu",
+        "templates": [
+            "LogregTorchSamba",
+            "partition_2_0_",
+            "s2.fronting_pmu_load_group_28"
+        ]
+    },
+    {
+        "box_id": 4294967295,
+        "box_key_unit": "",
+        "box_perf_attr": "",
+        "box_style": "",
+        "chameleon_id": 0,
         "col": 12,
         "dynamic": false,
         "fast_bypass_available": false,
-        "id": 643,
+        "id": 591,
         "kind": "PMU",
-        "name": "s2.backing_pmu_group_4_ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor",
-        "node": "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_4_ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor",
-        "row": 5,
+        "name": "s2.fronting_pmu_load_group_85",
+        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_85",
+        "row": 25,
         "section_id": 2,
-        "template_kind": "BackingPmu",
+        "template_kind": "FrontingPmu",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "s2.backing_pmu_group_4_ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor"
-        ]
-    },
-    {
-        "box_id": 4294967295,
-        "box_key_unit": "",
-        "box_perf_attr": "",
-        "box_style": "",
-        "chameleon_id": 0,
-        "col": 8,
-        "dynamic": false,
-        "fast_bypass_available": false,
-        "id": 644,
-        "kind": "PMU",
-        "name": "s2.backing_pmu_group_28_ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor1",
-        "node": "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_28_ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor1",
-        "row": 4,
-        "section_id": 2,
-        "template_kind": "BackingPmu",
-        "templates": [
-            "LogregTorchSamba",
-            "partition_2_0_",
-            "s2.backing_pmu_group_28_ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor1"
-        ]
-    },
-    {
-        "box_id": 4294967295,
-        "box_key_unit": "",
-        "box_perf_attr": "",
-        "box_style": "",
-        "chameleon_id": 0,
-        "col": 8,
-        "dynamic": false,
-        "fast_bypass_available": false,
-        "id": 645,
-        "kind": "PMU",
-        "name": "s2.backing_pmu_group_27_ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor",
-        "node": "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_27_ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor",
-        "row": 7,
-        "section_id": 2,
-        "template_kind": "BackingPmu",
-        "templates": [
-            "LogregTorchSamba",
-            "partition_2_0_",
-            "s2.backing_pmu_group_27_ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor"
-        ]
-    },
-    {
-        "box_id": 4294967295,
-        "box_key_unit": "",
-        "box_perf_attr": "",
-        "box_style": "",
-        "chameleon_id": 0,
-        "col": 8,
-        "dynamic": false,
-        "fast_bypass_available": false,
-        "id": 646,
-        "kind": "PMU",
-        "name": "s2.backing_pmu_group_29_ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor1",
-        "node": "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_29_ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor1",
-        "row": 21,
-        "section_id": 2,
-        "template_kind": "BackingPmu",
-        "templates": [
-            "LogregTorchSamba",
-            "partition_2_0_",
-            "s2.backing_pmu_group_29_ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor1"
-        ]
-    },
-    {
-        "box_id": 4294967295,
-        "box_key_unit": "",
-        "box_perf_attr": "",
-        "box_style": "",
-        "chameleon_id": 0,
-        "col": 11,
-        "dynamic": false,
-        "fast_bypass_available": false,
-        "id": 647,
-        "kind": "PMU",
-        "name": "s2.backing_pmu_group_26_ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor",
-        "node": "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_26_ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor",
-        "row": 8,
-        "section_id": 2,
-        "template_kind": "BackingPmu",
-        "templates": [
-            "LogregTorchSamba",
-            "partition_2_0_",
-            "s2.backing_pmu_group_26_ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor"
-        ]
-    },
-    {
-        "box_id": 4294967295,
-        "box_key_unit": "",
-        "box_perf_attr": "",
-        "box_style": "",
-        "chameleon_id": 0,
-        "col": 11,
-        "dynamic": false,
-        "fast_bypass_available": false,
-        "id": 648,
-        "kind": "PMU",
-        "name": "s2.backing_pmu_group_25_ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor",
-        "node": "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_25_ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor",
-        "row": 24,
-        "section_id": 2,
-        "template_kind": "BackingPmu",
-        "templates": [
-            "LogregTorchSamba",
-            "partition_2_0_",
-            "s2.backing_pmu_group_25_ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor"
-        ]
-    },
-    {
-        "box_id": 4294967295,
-        "box_key_unit": "",
-        "box_perf_attr": "",
-        "box_style": "",
-        "chameleon_id": 0,
-        "col": 10,
-        "dynamic": false,
-        "fast_bypass_available": false,
-        "id": 649,
-        "kind": "PMU",
-        "name": "s2.backing_pmu_group_24_ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor",
-        "node": "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_24_ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor",
-        "row": 24,
-        "section_id": 2,
-        "template_kind": "BackingPmu",
-        "templates": [
-            "LogregTorchSamba",
-            "partition_2_0_",
-            "s2.backing_pmu_group_24_ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor"
+            "s2.fronting_pmu_load_group_85"
         ]
     },
     {
@@ -1514,17 +1272,259 @@
         "col": 4,
         "dynamic": false,
         "fast_bypass_available": false,
-        "id": 650,
+        "id": 592,
         "kind": "PMU",
-        "name": "s2.backing_pmu_group_23_ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor",
-        "node": "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_23_ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor",
+        "name": "s2.fronting_pmu_load_group_27",
+        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_27",
+        "row": 24,
+        "section_id": 2,
+        "template_kind": "FrontingPmu",
+        "templates": [
+            "LogregTorchSamba",
+            "partition_2_0_",
+            "s2.fronting_pmu_load_group_27"
+        ]
+    },
+    {
+        "box_id": 4294967295,
+        "box_key_unit": "",
+        "box_perf_attr": "",
+        "box_style": "",
+        "chameleon_id": 0,
+        "col": 9,
+        "dynamic": false,
+        "fast_bypass_available": false,
+        "id": 593,
+        "kind": "PMU",
+        "name": "s2.fronting_pmu_load_group_86",
+        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_86",
+        "row": 24,
+        "section_id": 2,
+        "template_kind": "FrontingPmu",
+        "templates": [
+            "LogregTorchSamba",
+            "partition_2_0_",
+            "s2.fronting_pmu_load_group_86"
+        ]
+    },
+    {
+        "box_id": 4294967295,
+        "box_key_unit": "",
+        "box_perf_attr": "",
+        "box_style": "",
+        "chameleon_id": 0,
+        "col": 2,
+        "dynamic": false,
+        "fast_bypass_available": false,
+        "id": 594,
+        "kind": "PMU",
+        "name": "s2.fronting_pmu_load_group_26",
+        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_26",
+        "row": 24,
+        "section_id": 2,
+        "template_kind": "FrontingPmu",
+        "templates": [
+            "LogregTorchSamba",
+            "partition_2_0_",
+            "s2.fronting_pmu_load_group_26"
+        ]
+    },
+    {
+        "box_id": 4294967295,
+        "box_key_unit": "",
+        "box_perf_attr": "",
+        "box_style": "",
+        "chameleon_id": 0,
+        "col": 2,
+        "dynamic": false,
+        "fast_bypass_available": false,
+        "id": 595,
+        "kind": "PMU",
+        "name": "s2.fronting_pmu_load_group_87",
+        "node": "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_87",
+        "row": 65,
+        "section_id": 2,
+        "template_kind": "FrontingPmu",
+        "templates": [
+            "LogregTorchSamba",
+            "partition_2_0_",
+            "s2.fronting_pmu_load_group_87"
+        ]
+    },
+    {
+        "box_id": 4294967295,
+        "box_key_unit": "",
+        "box_perf_attr": "",
+        "box_style": "",
+        "chameleon_id": 0,
+        "col": 12,
+        "dynamic": false,
+        "fast_bypass_available": false,
+        "id": 596,
+        "kind": "PMU",
+        "name": "s2.backing_pmu_group_5_ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor",
+        "node": "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_5_ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor",
+        "row": 5,
+        "section_id": 2,
+        "template_kind": "BackingPmu",
+        "templates": [
+            "LogregTorchSamba",
+            "partition_2_0_",
+            "s2.backing_pmu_group_5_ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor"
+        ]
+    },
+    {
+        "box_id": 4294967295,
+        "box_key_unit": "",
+        "box_perf_attr": "",
+        "box_style": "",
+        "chameleon_id": 0,
+        "col": 8,
+        "dynamic": false,
+        "fast_bypass_available": false,
+        "id": 597,
+        "kind": "PMU",
+        "name": "s2.backing_pmu_group_31_ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor1",
+        "node": "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_31_ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor1",
+        "row": 4,
+        "section_id": 2,
+        "template_kind": "BackingPmu",
+        "templates": [
+            "LogregTorchSamba",
+            "partition_2_0_",
+            "s2.backing_pmu_group_31_ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor1"
+        ]
+    },
+    {
+        "box_id": 4294967295,
+        "box_key_unit": "",
+        "box_perf_attr": "",
+        "box_style": "",
+        "chameleon_id": 0,
+        "col": 8,
+        "dynamic": false,
+        "fast_bypass_available": false,
+        "id": 598,
+        "kind": "PMU",
+        "name": "s2.backing_pmu_group_30_ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor",
+        "node": "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_30_ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor",
+        "row": 7,
+        "section_id": 2,
+        "template_kind": "BackingPmu",
+        "templates": [
+            "LogregTorchSamba",
+            "partition_2_0_",
+            "s2.backing_pmu_group_30_ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor"
+        ]
+    },
+    {
+        "box_id": 4294967295,
+        "box_key_unit": "",
+        "box_perf_attr": "",
+        "box_style": "",
+        "chameleon_id": 0,
+        "col": 8,
+        "dynamic": false,
+        "fast_bypass_available": false,
+        "id": 599,
+        "kind": "PMU",
+        "name": "s2.backing_pmu_group_32_ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor1",
+        "node": "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_32_ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor1",
+        "row": 21,
+        "section_id": 2,
+        "template_kind": "BackingPmu",
+        "templates": [
+            "LogregTorchSamba",
+            "partition_2_0_",
+            "s2.backing_pmu_group_32_ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor1"
+        ]
+    },
+    {
+        "box_id": 4294967295,
+        "box_key_unit": "",
+        "box_perf_attr": "",
+        "box_style": "",
+        "chameleon_id": 0,
+        "col": 11,
+        "dynamic": false,
+        "fast_bypass_available": false,
+        "id": 600,
+        "kind": "PMU",
+        "name": "s2.backing_pmu_group_29_ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor",
+        "node": "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_29_ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor",
+        "row": 8,
+        "section_id": 2,
+        "template_kind": "BackingPmu",
+        "templates": [
+            "LogregTorchSamba",
+            "partition_2_0_",
+            "s2.backing_pmu_group_29_ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor"
+        ]
+    },
+    {
+        "box_id": 4294967295,
+        "box_key_unit": "",
+        "box_perf_attr": "",
+        "box_style": "",
+        "chameleon_id": 0,
+        "col": 11,
+        "dynamic": false,
+        "fast_bypass_available": false,
+        "id": 601,
+        "kind": "PMU",
+        "name": "s2.backing_pmu_group_28_ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor",
+        "node": "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_28_ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor",
+        "row": 24,
+        "section_id": 2,
+        "template_kind": "BackingPmu",
+        "templates": [
+            "LogregTorchSamba",
+            "partition_2_0_",
+            "s2.backing_pmu_group_28_ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor"
+        ]
+    },
+    {
+        "box_id": 4294967295,
+        "box_key_unit": "",
+        "box_perf_attr": "",
+        "box_style": "",
+        "chameleon_id": 0,
+        "col": 10,
+        "dynamic": false,
+        "fast_bypass_available": false,
+        "id": 602,
+        "kind": "PMU",
+        "name": "s2.backing_pmu_group_27_ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor",
+        "node": "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_27_ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor",
+        "row": 24,
+        "section_id": 2,
+        "template_kind": "BackingPmu",
+        "templates": [
+            "LogregTorchSamba",
+            "partition_2_0_",
+            "s2.backing_pmu_group_27_ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor"
+        ]
+    },
+    {
+        "box_id": 4294967295,
+        "box_key_unit": "",
+        "box_perf_attr": "",
+        "box_style": "",
+        "chameleon_id": 0,
+        "col": 4,
+        "dynamic": false,
+        "fast_bypass_available": false,
+        "id": 603,
+        "kind": "PMU",
+        "name": "s2.backing_pmu_group_26_ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor",
+        "node": "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_26_ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor",
         "row": 23,
         "section_id": 2,
         "template_kind": "BackingPmu",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "s2.backing_pmu_group_23_ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor"
+            "s2.backing_pmu_group_26_ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor"
         ]
     },
     {
@@ -1536,17 +1536,17 @@
         "chameleon_id": 0,
         "col": 8,
         "dynamic": true,
-        "id": 685,
+        "id": 643,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM input_s2_c0_1",
-        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_1:group_4",
+        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_1:group_5",
         "row": 23,
         "section_id": 2,
         "template_kind": "DramInputNode",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "DramInputNode:s2_c0_1:group_4"
+            "DramInputNode:s2_c0_1:group_5"
         ]
     },
     {
@@ -1558,17 +1558,17 @@
         "chameleon_id": 0,
         "col": 13,
         "dynamic": true,
-        "id": 686,
+        "id": 644,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM input_s2_c0_2",
-        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_2:group_30",
+        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_2:$OPT_dp_accum_group_9d34dcacdfc5e3740f57fe6b0875d64261f47893",
         "row": 7,
         "section_id": 2,
         "template_kind": "DramInputNode",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "DramInputNode:s2_c0_2:group_30"
+            "DramInputNode:s2_c0_2:$OPT_dp_accum_group_9d34dcacdfc5e3740f57fe6b0875d64261f47893"
         ]
     },
     {
@@ -1580,17 +1580,17 @@
         "chameleon_id": 0,
         "col": 8,
         "dynamic": true,
-        "id": 687,
+        "id": 645,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM input_s2_c0_3",
-        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_3:group_28",
+        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_3:group_31",
         "row": 7,
         "section_id": 2,
         "template_kind": "DramInputNode",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "DramInputNode:s2_c0_3:group_28"
+            "DramInputNode:s2_c0_3:group_31"
         ]
     },
     {
@@ -1602,17 +1602,17 @@
         "chameleon_id": 0,
         "col": 0,
         "dynamic": true,
-        "id": 688,
+        "id": 646,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM input_s2_c0_4",
-        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_4:group_27",
+        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_4:group_30",
         "row": 23,
         "section_id": 2,
         "template_kind": "DramInputNode",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "DramInputNode:s2_c0_4:group_27"
+            "DramInputNode:s2_c0_4:group_30"
         ]
     },
     {
@@ -1624,17 +1624,17 @@
         "chameleon_id": 0,
         "col": 13,
         "dynamic": true,
-        "id": 689,
+        "id": 647,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM input_s2_c0_5",
-        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_5:group_31",
+        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_5:$OPT_dp_accum_group_a3cd3e13b6b2b2b9cfe22b9b84a0c92ae1ec7594",
         "row": 7,
         "section_id": 2,
         "template_kind": "DramInputNode",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "DramInputNode:s2_c0_5:group_31"
+            "DramInputNode:s2_c0_5:$OPT_dp_accum_group_a3cd3e13b6b2b2b9cfe22b9b84a0c92ae1ec7594"
         ]
     },
     {
@@ -1646,17 +1646,17 @@
         "chameleon_id": 0,
         "col": 13,
         "dynamic": true,
-        "id": 690,
+        "id": 648,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM input_s2_c0_6",
-        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_6:group_29",
+        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_6:group_32",
         "row": 23,
         "section_id": 2,
         "template_kind": "DramInputNode",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "DramInputNode:s2_c0_6:group_29"
+            "DramInputNode:s2_c0_6:group_32"
         ]
     },
     {
@@ -1668,17 +1668,17 @@
         "chameleon_id": 0,
         "col": 0,
         "dynamic": true,
-        "id": 691,
+        "id": 649,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM input_s2_c0_7",
-        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_7:group_26",
+        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_7:group_29",
         "row": 23,
         "section_id": 2,
         "template_kind": "DramInputNode",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "DramInputNode:s2_c0_7:group_26"
+            "DramInputNode:s2_c0_7:group_29"
         ]
     },
     {
@@ -1690,7 +1690,7 @@
         "chameleon_id": 0,
         "col": 13,
         "dynamic": true,
-        "id": 692,
+        "id": 650,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM input_s2_c0_8",
         "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_8:ptconvlstm__lstm_layer__weight_ih_l0__grad",
@@ -1712,17 +1712,17 @@
         "chameleon_id": 0,
         "col": 0,
         "dynamic": true,
-        "id": 693,
+        "id": 651,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM input_s2_c0_9",
-        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_9:group_25",
+        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_9:group_28",
         "row": 23,
         "section_id": 2,
         "template_kind": "DramInputNode",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "DramInputNode:s2_c0_9:group_25"
+            "DramInputNode:s2_c0_9:group_28"
         ]
     },
     {
@@ -1734,7 +1734,7 @@
         "chameleon_id": 0,
         "col": 13,
         "dynamic": true,
-        "id": 694,
+        "id": 652,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM input_s2_c0_10",
         "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_10:ptconvlstm__lstm_layer__weight_hh_l0__grad",
@@ -1756,17 +1756,17 @@
         "chameleon_id": 0,
         "col": 5,
         "dynamic": true,
-        "id": 695,
+        "id": 653,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM input_s2_c0_11",
-        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_11:group_24",
+        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_11:group_27",
         "row": 23,
         "section_id": 2,
         "template_kind": "DramInputNode",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "DramInputNode:s2_c0_11:group_24"
+            "DramInputNode:s2_c0_11:group_27"
         ]
     },
     {
@@ -1778,7 +1778,7 @@
         "chameleon_id": 0,
         "col": 8,
         "dynamic": true,
-        "id": 696,
+        "id": 654,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM input_s2_c0_12",
         "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_12:ptconvlstm__lstm_layer__bias_ih_l0__grad",
@@ -1800,17 +1800,17 @@
         "chameleon_id": 0,
         "col": 0,
         "dynamic": true,
-        "id": 697,
+        "id": 655,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM input_s2_c0_13",
-        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_13:group_23",
+        "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_13:group_26",
         "row": 23,
         "section_id": 2,
         "template_kind": "DramInputNode",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "DramInputNode:s2_c0_13:group_23"
+            "DramInputNode:s2_c0_13:group_26"
         ]
     },
     {
@@ -1822,7 +1822,7 @@
         "chameleon_id": 0,
         "col": 0,
         "dynamic": true,
-        "id": 698,
+        "id": 656,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM input_s2_c0_14",
         "node": "LogregTorchSamba.partition_2_0_.DramInputNode:s2_c0_14:ptconvlstm__lstm_layer__bias_hh_l0__grad",
@@ -1844,17 +1844,17 @@
         "chameleon_id": 0,
         "col": 13,
         "dynamic": true,
-        "id": 728,
+        "id": 688,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM output_s2_c0_1",
-        "node": "LogregTorchSamba.partition_2_0_.DramOutputNode:s2_c0_1:group_4",
+        "node": "LogregTorchSamba.partition_2_0_.DramOutputNode:s2_c0_1:group_5",
         "row": 7,
         "section_id": 2,
         "template_kind": "DramOutputNode",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "DramOutputNode:s2_c0_1:group_4"
+            "DramOutputNode:s2_c0_1:group_5"
         ]
     },
     {
@@ -1866,17 +1866,17 @@
         "chameleon_id": 0,
         "col": 8,
         "dynamic": true,
-        "id": 729,
+        "id": 689,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM output_s2_c0_2",
-        "node": "LogregTorchSamba.partition_2_0_.DramOutputNode:s2_c0_2:group_28",
+        "node": "LogregTorchSamba.partition_2_0_.DramOutputNode:s2_c0_2:group_31",
         "row": 7,
         "section_id": 2,
         "template_kind": "DramOutputNode",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "DramOutputNode:s2_c0_2:group_28"
+            "DramOutputNode:s2_c0_2:group_31"
         ]
     },
     {
@@ -1888,17 +1888,17 @@
         "chameleon_id": 0,
         "col": 8,
         "dynamic": true,
-        "id": 730,
+        "id": 690,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM output_s2_c0_3",
-        "node": "LogregTorchSamba.partition_2_0_.DramOutputNode:s2_c0_3:group_27",
+        "node": "LogregTorchSamba.partition_2_0_.DramOutputNode:s2_c0_3:group_30",
         "row": 7,
         "section_id": 2,
         "template_kind": "DramOutputNode",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "DramOutputNode:s2_c0_3:group_27"
+            "DramOutputNode:s2_c0_3:group_30"
         ]
     },
     {
@@ -1910,17 +1910,17 @@
         "chameleon_id": 0,
         "col": 8,
         "dynamic": true,
-        "id": 731,
+        "id": 691,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM output_s2_c0_4",
-        "node": "LogregTorchSamba.partition_2_0_.DramOutputNode:s2_c0_4:group_29",
+        "node": "LogregTorchSamba.partition_2_0_.DramOutputNode:s2_c0_4:group_32",
         "row": 23,
         "section_id": 2,
         "template_kind": "DramOutputNode",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "DramOutputNode:s2_c0_4:group_29"
+            "DramOutputNode:s2_c0_4:group_32"
         ]
     },
     {
@@ -1932,17 +1932,17 @@
         "chameleon_id": 0,
         "col": 13,
         "dynamic": true,
-        "id": 732,
+        "id": 692,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM output_s2_c0_5",
-        "node": "LogregTorchSamba.partition_2_0_.DramOutputNode:s2_c0_5:group_26",
+        "node": "LogregTorchSamba.partition_2_0_.DramOutputNode:s2_c0_5:group_29",
         "row": 7,
         "section_id": 2,
         "template_kind": "DramOutputNode",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "DramOutputNode:s2_c0_5:group_26"
+            "DramOutputNode:s2_c0_5:group_29"
         ]
     },
     {
@@ -1954,17 +1954,17 @@
         "chameleon_id": 0,
         "col": 13,
         "dynamic": true,
-        "id": 733,
+        "id": 693,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM output_s2_c0_6",
-        "node": "LogregTorchSamba.partition_2_0_.DramOutputNode:s2_c0_6:group_25",
+        "node": "LogregTorchSamba.partition_2_0_.DramOutputNode:s2_c0_6:group_28",
         "row": 23,
         "section_id": 2,
         "template_kind": "DramOutputNode",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "DramOutputNode:s2_c0_6:group_25"
+            "DramOutputNode:s2_c0_6:group_28"
         ]
     },
     {
@@ -1976,17 +1976,17 @@
         "chameleon_id": 0,
         "col": 8,
         "dynamic": true,
-        "id": 734,
+        "id": 694,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM output_s2_c0_7",
-        "node": "LogregTorchSamba.partition_2_0_.DramOutputNode:s2_c0_7:group_24",
+        "node": "LogregTorchSamba.partition_2_0_.DramOutputNode:s2_c0_7:group_27",
         "row": 23,
         "section_id": 2,
         "template_kind": "DramOutputNode",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "DramOutputNode:s2_c0_7:group_24"
+            "DramOutputNode:s2_c0_7:group_27"
         ]
     },
     {
@@ -1998,17 +1998,17 @@
         "chameleon_id": 0,
         "col": 5,
         "dynamic": true,
-        "id": 735,
+        "id": 695,
         "kind": "AGCU",
         "name": "LogicalAGCU for DRAM output_s2_c0_8",
-        "node": "LogregTorchSamba.partition_2_0_.DramOutputNode:s2_c0_8:group_23",
+        "node": "LogregTorchSamba.partition_2_0_.DramOutputNode:s2_c0_8:group_26",
         "row": 23,
         "section_id": 2,
         "template_kind": "DramOutputNode",
         "templates": [
             "LogregTorchSamba",
             "partition_2_0_",
-            "DramOutputNode:s2_c0_8:group_23"
+            "DramOutputNode:s2_c0_8:group_26"
         ]
     }
 ]

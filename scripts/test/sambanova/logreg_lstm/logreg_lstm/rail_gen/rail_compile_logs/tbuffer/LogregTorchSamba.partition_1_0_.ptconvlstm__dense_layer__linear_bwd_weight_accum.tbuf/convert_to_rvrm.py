@@ -27,55 +27,19 @@ def main():
     ##############
 
     def w_loop_0_0():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, 'drop', 32, 0, [4096, 64, ])
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, 'drop', 32, 0, [262144, 1, ])
         np.save('RVRM_w_loop_0_0.npy', matrix)
     if opts.ctx == 'w_loop_0_0':
         w_loop_0_0()
 
-    def w_loop_1_0():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, 'drop', 32, 0, [4096, 64, ])
-        np.save('RVRM_w_loop_1_0.npy', matrix)
-    if opts.ctx == 'w_loop_1_0':
-        w_loop_1_0()
-
-    def w_loop_2_0():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, 'drop', 32, 0, [4096, 64, ])
-        np.save('RVRM_w_loop_2_0.npy', matrix)
-    if opts.ctx == 'w_loop_2_0':
-        w_loop_2_0()
-
-    def w_loop_3_0():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, 'drop', 32, 0, [4096, 64, ])
-        np.save('RVRM_w_loop_3_0.npy', matrix)
-    if opts.ctx == 'w_loop_3_0':
-        w_loop_3_0()
-
-    def w_loop_4_0():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, 'drop', 32, 0, [4096, 64, ])
-        np.save('RVRM_w_loop_4_0.npy', matrix)
-    if opts.ctx == 'w_loop_4_0':
-        w_loop_4_0()
-
-    def w_loop_5_0():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, 'drop', 32, 0, [4096, 64, ])
-        np.save('RVRM_w_loop_5_0.npy', matrix)
-    if opts.ctx == 'w_loop_5_0':
-        w_loop_5_0()
-
-    def w_loop_6_0():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, 'drop', 32, 0, [4096, 64, ])
-        np.save('RVRM_w_loop_6_0.npy', matrix)
-    if opts.ctx == 'w_loop_6_0':
-        w_loop_6_0()
-
-    def w_loop_7_0():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, 'drop', 32, 0, [4096, 64, ])
-        np.save('RVRM_w_loop_7_0.npy', matrix)
-    if opts.ctx == 'w_loop_7_0':
-        w_loop_7_0()
+    def r_loop_0_0():
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 0, [262144, 1, ])
+        np.save('RVRM_r_loop_0_0.npy', matrix)
+    if opts.ctx == 'r_loop_0_0':
+        r_loop_0_0()
 
     def kBackReadCtx():
-        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 0, [4096, 64, ])
+        matrix = crvrm.convert_to_rvrm(addrs, opts.data_file, '', 32, 0, [262144, 1, ])
         np.save('RVRM_kBackReadCtx.npy', matrix)
     if opts.ctx == 'kBackReadCtx':
         kBackReadCtx()

@@ -25,18 +25,19 @@ def phase_w0():
     x2 = 32
     x3 = 12
     x4 = 1
-    x5 = 13
-    x6 = True
-    x7 = 0
+    x5 = 500
+    x6 = 13
+    x7 = True
+    x8 = 0
     ndaddrs = []
-    for x8 in range(x7,x4,x2):
-        x9 = True
-        ndaddr = [x3, x8, ]
+    for x9 in range(x8,x5,x2):
+        x10 = True
+        ndaddr = [x3, x9, ]
         en_drop = True
-        en_zero = x6
+        en_zero = x7
         ND = NDAddr(ndaddr, en_zero and en_drop)
         ndaddrs.append(ND)
-        x12 = True
+        x13 = True
     return ndaddrs
 
 ndaddr_funcs['phase_w0'] = phase_w0
@@ -47,19 +48,20 @@ def phase1_R_max():
     x2 = 32
     x3 = 12
     x4 = 1
-    x5 = 13
-    x6 = True
-    x7 = 0
+    x5 = 500
+    x6 = 13
+    x7 = True
+    x8 = 0
     ndaddrs = []
-    for x9 in range(x7,x4,x2):
-        for x8 in range(x7,x3,x4):
-            x10 = True
-            ndaddr = [x3, x9, ]
-            en_drop = x6
-            en_zero = x6
+    for x10 in range(x8,x5,x2):
+        for x9 in range(x8,x3,x4):
+            x11 = True
+            ndaddr = [x3, x10, ]
+            en_drop = x7
+            en_zero = x7
             ND = NDAddr(ndaddr, en_zero and en_drop)
             ndaddrs.append(ND)
-            x13 = True
+            x14 = True
     return ndaddrs
 
 ndaddr_funcs['phase1_R_max'] = phase1_R_max
@@ -70,16 +72,17 @@ def phase_rd_dummy():
     x2 = 32
     x3 = 12
     x4 = 1
-    x5 = 13
-    x6 = True
-    x7 = 0
+    x5 = 500
+    x6 = 13
+    x7 = True
+    x8 = 0
     ndaddrs = []
-    for x9 in range(x7,x4,x2):
-        for x8 in range(x7,x1,x4):
-            x10 = True
-            ndaddr = [x7, x7, ]
+    for x10 in range(x8,x5,x2):
+        for x9 in range(x8,x1,x4):
+            x11 = True
+            ndaddr = [x8, x8, ]
             en_drop = x0
-            en_zero = x6
+            en_zero = x7
             ND = NDAddr(ndaddr, en_zero and en_drop)
             ndaddrs.append(ND)
     return ndaddrs
@@ -92,16 +95,17 @@ def phase_w1():
     x2 = 32
     x3 = 12
     x4 = 1
-    x5 = 13
-    x6 = True
-    x7 = 0
+    x5 = 500
+    x6 = 13
+    x7 = True
+    x8 = 0
     ndaddrs = []
-    for x9 in range(x7,x4,x2):
-        for x8 in range(x7,x3,x4):
-            x10 = True
-            ndaddr = [x8, x9, ]
+    for x10 in range(x8,x5,x2):
+        for x9 in range(x8,x3,x4):
+            x11 = True
+            ndaddr = [x9, x10, ]
             en_drop = True
-            en_zero = x6
+            en_zero = x7
             ND = NDAddr(ndaddr, en_zero and en_drop)
             ndaddrs.append(ND)
     return ndaddrs
@@ -114,19 +118,20 @@ def phase2_R_exp():
     x2 = 32
     x3 = 12
     x4 = 1
-    x5 = 13
-    x6 = True
-    x7 = 0
+    x5 = 500
+    x6 = 13
+    x7 = True
+    x8 = 0
     ndaddrs = []
-    for x8 in range(x7,x4,x2):
-        for x11 in range(x7,x1,x4):
-            x9 = True
-            ndaddr = [x11, x8, ]
-            en_drop = x6
-            en_zero = x6
+    for x9 in range(x8,x5,x2):
+        for x12 in range(x8,x1,x4):
+            x10 = True
+            ndaddr = [x12, x9, ]
+            en_drop = x7
+            en_zero = x7
             ND = NDAddr(ndaddr, en_zero and en_drop)
             ndaddrs.append(ND)
-            x13 = True
+            x14 = True
     return ndaddrs
 
 ndaddr_funcs['phase2_R_exp'] = phase2_R_exp
@@ -137,15 +142,16 @@ def phase_w2():
     x2 = 32
     x3 = 12
     x4 = 1
-    x5 = 13
-    x6 = True
-    x7 = 0
+    x5 = 500
+    x6 = 13
+    x7 = True
+    x8 = 0
     ndaddrs = []
-    for x8 in range(x7,x4,x2):
-        x9 = True
-        ndaddr = [x5, x8, ]
+    for x9 in range(x8,x5,x2):
+        x10 = True
+        ndaddr = [x6, x9, ]
         en_drop = True
-        en_zero = x6
+        en_zero = x7
         ND = NDAddr(ndaddr, en_zero and en_drop)
         ndaddrs.append(ND)
     return ndaddrs
@@ -158,18 +164,19 @@ def phase3_R_max():
     x2 = 32
     x3 = 12
     x4 = 1
-    x5 = 13
-    x6 = True
-    x7 = 0
+    x5 = 500
+    x6 = 13
+    x7 = True
+    x8 = 0
     ndaddrs = []
-    for x8 in range(x7,x4,x4):
-        x9 = True
-        ndaddr = [x3, x8, ]
-        en_drop = x6
-        en_zero = x6
+    for x9 in range(x8,x5,x4):
+        x10 = True
+        ndaddr = [x3, x9, ]
+        en_drop = x7
+        en_zero = x7
         ND = NDAddr(ndaddr, en_zero and en_drop)
         ndaddrs.append(ND)
-        x12 = True
+        x13 = True
     return ndaddrs
 
 ndaddr_funcs['phase3_R_max'] = phase3_R_max
@@ -180,18 +187,19 @@ def phase3_R_logsum():
     x2 = 32
     x3 = 12
     x4 = 1
-    x5 = 13
-    x6 = True
-    x7 = 0
+    x5 = 500
+    x6 = 13
+    x7 = True
+    x8 = 0
     ndaddrs = []
-    for x8 in range(x7,x4,x4):
-        x9 = True
-        ndaddr = [x5, x8, ]
-        en_drop = x6
-        en_zero = x6
+    for x9 in range(x8,x5,x4):
+        x10 = True
+        ndaddr = [x6, x9, ]
+        en_drop = x7
+        en_zero = x7
         ND = NDAddr(ndaddr, en_zero and en_drop)
         ndaddrs.append(ND)
-        x12 = True
+        x13 = True
     return ndaddrs
 
 ndaddr_funcs['phase3_R_logsum'] = phase3_R_logsum

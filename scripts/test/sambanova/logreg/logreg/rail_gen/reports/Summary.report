@@ -4,7 +4,7 @@ tcompute partition_0_0__LogregTorchSamba_partition_0_0__logreg__criterion__cross
   "rail.context"() ( {
     %0 = "rail.const"() {kValue = 0 : i64} : () -> ui16
     %1 = "rail.const"() {kValue = 32 : i64} : () -> ui16
-    %2 = "rail.const"() {kValue = 1 : i64} : () -> ui16
+    %2 = "rail.const"() {kValue = 500 : i64} : () -> ui16
     %3 = "rail.iterator"(%0, %1, %2) {Par = 1 : i32} : (ui16, ui16, ui16) -> ui16
     %4 = "rail.ctrdone"(%3) : (ui16) -> i1
     %5 = "rail.ctxdone"(%4) : (i1) -> i1
@@ -12,8 +12,8 @@ tcompute partition_0_0__LogregTorchSamba_partition_0_0__logreg__criterion__cross
     %7 = "rail.const"() {kValue = 1 : i64} : () -> ui16
     %8 = "rail.const"() {kValue = 12 : i64} : () -> ui16
     %9 = "rail.iterator"(%6, %7, %8) {Par = 1 : i32} : (ui16, ui16, ui16) -> ui16
-    %10 = "rail.io.vector_in"() {kCtx = 66142528 : i64, kCtxName = "phase0", kLanes = [], kPortName = "4000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase0_vector_in_4000"} : () -> vector<32xbf16>
-    %11 = "rail.io.vector_out"() {kCtx = 66142528 : i64, kCtxName = "phase0", kLanes = [], kPortName = "3000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase0_vector_out_3000"} : () -> vector<32xbf16>
+    %10 = "rail.io.vector_in"() {kCtx = 68403152 : i64, kCtxName = "phase0", kLanes = [], kPortName = "4000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase0_vector_in_4000"} : () -> vector<32xbf16>
+    %11 = "rail.io.vector_out"() {kCtx = 68403152 : i64, kCtxName = "phase0", kLanes = [], kPortName = "3000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase0_vector_out_3000"} : () -> vector<32xbf16>
     "rail.for_loop"(%3) ( {
       %16:2 = "rail.accumulator"() {kInitValue = 0xFFF0000000000000 : f64, kNumStages = 1 : i64} : () -> (vector<32xbf16>, vector<1x32xbf16>)
       "rail.for_loop"(%9) ( {
@@ -29,21 +29,21 @@ tcompute partition_0_0__LogregTorchSamba_partition_0_0__logreg__criterion__cross
       "rail.terminator"() : () -> ()
     }) {type = none} : (ui16) -> ()
     %12 = "rail.ctrdone"(%3) : (ui16) -> i1
-    %13 = "rail.io.control_in"() {kCtx = 66142528 : i64, kCtxName = "phase0", kLanes = [], kPortName = "kBegin", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase0_control_in_kBegin"} : () -> i1
+    %13 = "rail.io.control_in"() {kCtx = 68403152 : i64, kCtxName = "phase0", kLanes = [], kPortName = "kBegin", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase0_control_in_kBegin"} : () -> i1
     "rail.inbuf"(%13, %12) {kInit = 1 : i32} : (i1, i1) -> ()
-    %14 = "rail.io.control_out"() {kCtx = 66142528 : i64, kCtxName = "phase0", kLanes = [], kPortName = "kDone", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase0_control_out_kDone"} : () -> i1
+    %14 = "rail.io.control_out"() {kCtx = 68403152 : i64, kCtxName = "phase0", kLanes = [], kPortName = "kDone", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase0_control_out_kDone"} : () -> i1
     %15 = "rail.ctrdone"(%3) : (ui16) -> i1
     "rail.send"(%15, %14) {kOpRWPattern1 = "kWriteOperand"} : (i1, i1) -> ()
     "rail.terminator"() : () -> ()
-  }) {kContextTableEntry = {kNetwork = 0 : i64}, kName = "phase0", kNode = 66142528 : i64, sym_name = "phase0"} : () -> ()
+  }) {kContextTableEntry = {kNetwork = 0 : i64}, kName = "phase0", kNode = 68403152 : i64, sym_name = "phase0"} : () -> ()
   "rail.context"() ( {
     %0 = "rail.const"() {kValue = 0 : i64} : () -> ui16
     %1 = "rail.const"() {kValue = 1 : i64} : () -> ui16
-    %2 = "rail.const"() {kValue = 12 : i64} : () -> ui16
+    %2 = "rail.const"() {kValue = 192 : i64} : () -> ui16
     %3 = "rail.iterator"(%0, %1, %2) {Par = 1 : i32} : (ui16, ui16, ui16) -> ui16
-    %4 = "rail.io.vector_in"() {kCtx = 66147248 : i64, kCtxName = "phase1", kLanes = [], kPortName = "8000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase1_vector_in_8000"} : () -> vector<32xbf16>
-    %5 = "rail.io.vector_in"() {kCtx = 66147248 : i64, kCtxName = "phase1", kLanes = [], kPortName = "9000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase1_vector_in_9000"} : () -> vector<32xbf16>
-    %6 = "rail.io.vector_out"() {kCtx = 66147248 : i64, kCtxName = "phase1", kLanes = [], kPortName = "13000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase1_vector_out_13000"} : () -> vector<32xbf16>
+    %4 = "rail.io.vector_in"() {kCtx = 68407872 : i64, kCtxName = "phase1", kLanes = [], kPortName = "8000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase1_vector_in_8000"} : () -> vector<32xbf16>
+    %5 = "rail.io.vector_in"() {kCtx = 68407872 : i64, kCtxName = "phase1", kLanes = [], kPortName = "9000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase1_vector_in_9000"} : () -> vector<32xbf16>
+    %6 = "rail.io.vector_out"() {kCtx = 68407872 : i64, kCtxName = "phase1", kLanes = [], kPortName = "13000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase1_vector_out_13000"} : () -> vector<32xbf16>
     "rail.for_loop"(%3) ( {
       %11 = "rail.pop"(%5) {kInstructionStageType = 1 : i64, kIsDataPathOp = true} : (vector<32xbf16>) -> vector<32xbf16>
       %12 = "rail.pop"(%4) {kInstructionStageType = 1 : i64, kIsDataPathOp = true} : (vector<32xbf16>) -> vector<32xbf16>
@@ -53,17 +53,17 @@ tcompute partition_0_0__LogregTorchSamba_partition_0_0__logreg__criterion__cross
       "rail.terminator"() : () -> ()
     }) {type = none} : (ui16) -> ()
     %7 = "rail.ctrdone"(%3) : (ui16) -> i1
-    %8 = "rail.io.control_in"() {kCtx = 66147248 : i64, kCtxName = "phase1", kLanes = [], kPortName = "kBegin", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase1_control_in_kBegin"} : () -> i1
+    %8 = "rail.io.control_in"() {kCtx = 68407872 : i64, kCtxName = "phase1", kLanes = [], kPortName = "kBegin", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase1_control_in_kBegin"} : () -> i1
     "rail.inbuf"(%8, %7) {kInit = 0 : i32} : (i1, i1) -> ()
-    %9 = "rail.io.control_out"() {kCtx = 66147248 : i64, kCtxName = "phase1", kLanes = [], kPortName = "kDone", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase1_control_out_kDone"} : () -> i1
+    %9 = "rail.io.control_out"() {kCtx = 68407872 : i64, kCtxName = "phase1", kLanes = [], kPortName = "kDone", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase1_control_out_kDone"} : () -> i1
     %10 = "rail.ctrdone"(%3) : (ui16) -> i1
     "rail.send"(%10, %9) {kOpRWPattern1 = "kWriteOperand"} : (i1, i1) -> ()
     "rail.terminator"() : () -> ()
-  }) {kContextTableEntry = {kNetwork = 0 : i64}, kName = "phase1", kNode = 66147248 : i64, sym_name = "phase1"} : () -> ()
+  }) {kContextTableEntry = {kNetwork = 0 : i64}, kName = "phase1", kNode = 68407872 : i64, sym_name = "phase1"} : () -> ()
   "rail.context"() ( {
     %0 = "rail.const"() {kValue = 0 : i64} : () -> ui16
     %1 = "rail.const"() {kValue = 32 : i64} : () -> ui16
-    %2 = "rail.const"() {kValue = 1 : i64} : () -> ui16
+    %2 = "rail.const"() {kValue = 500 : i64} : () -> ui16
     %3 = "rail.iterator"(%0, %1, %2) {Par = 1 : i32} : (ui16, ui16, ui16) -> ui16
     %4 = "rail.ctrdone"(%3) : (ui16) -> i1
     %5 = "rail.ctxdone"(%4) : (i1) -> i1
@@ -71,8 +71,8 @@ tcompute partition_0_0__LogregTorchSamba_partition_0_0__logreg__criterion__cross
     %7 = "rail.const"() {kValue = 1 : i64} : () -> ui16
     %8 = "rail.const"() {kValue = 10 : i64} : () -> ui16
     %9 = "rail.iterator"(%6, %7, %8) {Par = 1 : i32} : (ui16, ui16, ui16) -> ui16
-    %10 = "rail.io.vector_in"() {kCtx = 66152032 : i64, kCtxName = "phase2", kLanes = [], kPortName = "15000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase2_vector_in_15000"} : () -> vector<32xbf16>
-    %11 = "rail.io.vector_out"() {kCtx = 66152032 : i64, kCtxName = "phase2", kLanes = [], kPortName = "17000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase2_vector_out_17000"} : () -> vector<32xbf16>
+    %10 = "rail.io.vector_in"() {kCtx = 68412656 : i64, kCtxName = "phase2", kLanes = [], kPortName = "15000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase2_vector_in_15000"} : () -> vector<32xbf16>
+    %11 = "rail.io.vector_out"() {kCtx = 68412656 : i64, kCtxName = "phase2", kLanes = [], kPortName = "17000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase2_vector_out_17000"} : () -> vector<32xbf16>
     "rail.for_loop"(%3) ( {
       %16:2 = "rail.accumulator"() {kInitValue = 0.000000e+00 : f32, kNumStages = 1 : i64} : () -> (vector<32xbf16>, vector<1x32xbf16>)
       "rail.for_loop"(%9) ( {
@@ -90,22 +90,22 @@ tcompute partition_0_0__LogregTorchSamba_partition_0_0__logreg__criterion__cross
       "rail.terminator"() : () -> ()
     }) {type = none} : (ui16) -> ()
     %12 = "rail.ctrdone"(%3) : (ui16) -> i1
-    %13 = "rail.io.control_in"() {kCtx = 66152032 : i64, kCtxName = "phase2", kLanes = [], kPortName = "kBegin", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase2_control_in_kBegin"} : () -> i1
+    %13 = "rail.io.control_in"() {kCtx = 68412656 : i64, kCtxName = "phase2", kLanes = [], kPortName = "kBegin", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase2_control_in_kBegin"} : () -> i1
     "rail.inbuf"(%13, %12) {kInit = 0 : i32} : (i1, i1) -> ()
-    %14 = "rail.io.control_out"() {kCtx = 66152032 : i64, kCtxName = "phase2", kLanes = [], kPortName = "kDone", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase2_control_out_kDone"} : () -> i1
+    %14 = "rail.io.control_out"() {kCtx = 68412656 : i64, kCtxName = "phase2", kLanes = [], kPortName = "kDone", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase2_control_out_kDone"} : () -> i1
     %15 = "rail.ctrdone"(%3) : (ui16) -> i1
     "rail.send"(%15, %14) {kOpRWPattern1 = "kWriteOperand"} : (i1, i1) -> ()
     "rail.terminator"() : () -> ()
-  }) {kContextTableEntry = {kNetwork = 0 : i64}, kName = "phase2", kNode = 66152032 : i64, sym_name = "phase2"} : () -> ()
+  }) {kContextTableEntry = {kNetwork = 0 : i64}, kName = "phase2", kNode = 68412656 : i64, sym_name = "phase2"} : () -> ()
   "rail.context"() ( {
     %0 = "rail.const"() {kValue = 0 : i64} : () -> ui16
     %1 = "rail.const"() {kValue = 1 : i64} : () -> ui16
-    %2 = "rail.const"() {kValue = 1 : i64} : () -> ui16
+    %2 = "rail.const"() {kValue = 500 : i64} : () -> ui16
     %3 = "rail.iterator"(%0, %1, %2) {Par = 1 : i32} : (ui16, ui16, ui16) -> ui16
-    %4 = "rail.io.scalar_in"() {kCtx = 66156768 : i64, kCtxName = "phase3", kLanes = [], kPortName = "21000", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase3_scalar_in_21000"} : () -> bf16
-    %5 = "rail.io.scalar_in"() {kCtx = 66156768 : i64, kCtxName = "phase3", kLanes = [], kPortName = "25000", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase3_scalar_in_25000"} : () -> bf16
-    %6 = "rail.io.scalar_in"() {kCtx = 66156768 : i64, kCtxName = "phase3", kLanes = [], kPortName = "10000", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase3_scalar_in_10000"} : () -> bf16
-    %7 = "rail.io.scalar_out"() {kCtx = 66156768 : i64, kCtxName = "phase3", kLanes = [], kPortName = "31000", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase3_scalar_out_31000"} : () -> bf16
+    %4 = "rail.io.scalar_in"() {kCtx = 68417392 : i64, kCtxName = "phase3", kLanes = [], kPortName = "21000", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase3_scalar_in_21000"} : () -> bf16
+    %5 = "rail.io.scalar_in"() {kCtx = 68417392 : i64, kCtxName = "phase3", kLanes = [], kPortName = "25000", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase3_scalar_in_25000"} : () -> bf16
+    %6 = "rail.io.scalar_in"() {kCtx = 68417392 : i64, kCtxName = "phase3", kLanes = [], kPortName = "10000", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase3_scalar_in_10000"} : () -> bf16
+    %7 = "rail.io.scalar_out"() {kCtx = 68417392 : i64, kCtxName = "phase3", kLanes = [], kPortName = "31000", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase3_scalar_out_31000"} : () -> bf16
     "rail.for_loop"(%3) ( {
       %12 = "rail.pop"(%4) {kInstructionStageType = 1 : i64, kIsDataPathOp = true} : (bf16) -> bf16
       %13 = "rail.pop"(%5) {kInstructionStageType = 1 : i64, kIsDataPathOp = true} : (bf16) -> bf16
@@ -116,29 +116,29 @@ tcompute partition_0_0__LogregTorchSamba_partition_0_0__logreg__criterion__cross
       "rail.terminator"() : () -> ()
     }) {type = none} : (ui16) -> ()
     %8 = "rail.ctrdone"(%3) : (ui16) -> i1
-    %9 = "rail.io.control_in"() {kCtx = 66156768 : i64, kCtxName = "phase3", kLanes = [], kPortName = "kBegin", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase3_control_in_kBegin"} : () -> i1
+    %9 = "rail.io.control_in"() {kCtx = 68417392 : i64, kCtxName = "phase3", kLanes = [], kPortName = "kBegin", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase3_control_in_kBegin"} : () -> i1
     "rail.inbuf"(%9, %8) {kInit = 0 : i32} : (i1, i1) -> ()
-    %10 = "rail.io.control_out"() {kCtx = 66156768 : i64, kCtxName = "phase3", kLanes = [], kPortName = "kDone", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase3_control_out_kDone"} : () -> i1
+    %10 = "rail.io.control_out"() {kCtx = 68417392 : i64, kCtxName = "phase3", kLanes = [], kPortName = "kDone", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase3_control_out_kDone"} : () -> i1
     %11 = "rail.ctrdone"(%3) : (ui16) -> i1
     "rail.send"(%11, %10) {kOpRWPattern1 = "kWriteOperand"} : (i1, i1) -> ()
     "rail.terminator"() : () -> ()
-  }) {kContextTableEntry = {kNetwork = 1 : i64}, kName = "phase3", kNode = 66156768 : i64, sym_name = "phase3"} : () -> ()
+  }) {kContextTableEntry = {kNetwork = 1 : i64}, kName = "phase3", kNode = 68417392 : i64, sym_name = "phase3"} : () -> ()
   "rail.terminator"() : () -> ()
-}) {kDataFormat = "BF16", kDisableContextSplit = false, kName = "tcompute0", kNode = 66137936 : i64, sym_name = "tcompute0"} : () -> ()
+}) {kDataFormat = "BF16", kDisableContextSplit = false, kName = "tcompute0", kNode = 68398768 : i64, sym_name = "tcompute0"} : () -> ()
 
 ========= Summary IR ========
-tbuffer partition_0_0__tbuf1a_0_0_81
-    loc("LogregTorchSamba.cpp":161:0)
-    layout: <INT16[1]RM/64@0x0> vec_order: {0} vec_dim: 0 depth: 1 dims: {32}
+tbuffer partition_0_0__tbuf1a_0_0_95
+    loc("LogregTorchSamba.cpp":167:0)
+    layout: <INT16[500]RM/64@0x0> vec_order: {0} vec_dim: 0 depth: 1 dims: {512}
     ctx: kFrontDynamicWriteCtx
         loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
         type: write ctxid: 0 metapipe_iter (post divider): {1} 
         iter_chains:
-            addr_chain  (1 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
-            ctx done: kFrontDynamicWriteCtx_iter0.done (1 # steps)
+            addr_chain  (16 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
+            ctx done: kFrontDynamicWriteCtx_iter0.done (16 # steps)
         addresses:
-            addr[0] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[0] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -149,12 +149,12 @@ tbuffer partition_0_0__tbuf1a_0_0_81
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropy.cpp":1728:0)
         pacing_window: default type: read ctxid: 0 concurrency grp: 0 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: LogregTorchSamba_partition_0_0__logreg__criterion__crossentropyloss_kInputY_iter0.done (1 # steps)
-            addr_chain  (1 # steps): 
-              iter[0] : (0 until 1 by 1 par 1)
+            ctx done: LogregTorchSamba_partition_0_0__logreg__criterion__crossentropyloss_kInputY_iter0.done (500 # steps)
+            addr_chain  (500 # steps): 
+              iter[0] : (0 until 500 by 1 par 1)
               iter[1] : (0 until 1 by 1 par 1)
         addresses:
-            addr[0] : ((((0 until 1 by 1 par 1).i0 + (0 until 1 by 1 par 1).i1) < 1) ? ((0 until 1 by 1 par 1).i0 + (0 until 1 by 1 par 1).i1) : 0) vec: 0
+            addr[0] : ((((0 until 500 by 1 par 1).i0 + (0 until 1 by 1 par 1).i1) < 500) ? ((0 until 500 by 1 par 1).i0 + (0 until 1 by 1 par 1).i1) : 0) vec: 0
             en_zero : 1
             en_drop: 1
         triggers:
@@ -162,20 +162,20 @@ tbuffer partition_0_0__tbuf1a_0_0_81
             tb init: 0 pushif: cin[kFrontDynamicWriteCtx_wdone_in__] popif: rail.ctxdone
             cout[1000] - src: rail.ctxdone
 ========= Summary IR ========
-tbuffer partition_0_0__tbuf1a_0_0_82
-    loc("LogregTorchSamba.cpp":172:0)
-    layout: <BF16[10, 1]RVCM/64@0x0> vec_order: {1, 0} vec_dim: 1 depth: 1 dims: {10, 32}
+tbuffer partition_0_0__tbuf1a_0_0_96
+    loc("LogregTorchSamba.cpp":178:0)
+    layout: <BF16[10, 500]RVCM/64@0x0> vec_order: {1, 0} vec_dim: 1 depth: 1 dims: {10, 512}
     ctx: kDefaultWrite
         loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
         type: write ctxid: 0 metapipe_iter (post divider): {1} 
         iter_chains:
-            addr_chain  (10 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            addr_chain  (160 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
               iter[1] : (0 until 10 by 1 par 1)
-            ctx done: kDefaultWrite_iter0.done (10 # steps)
+            ctx done: kDefaultWrite_iter0.done (160 # steps)
         addresses:
             addr[0] : (0 until 10 by 1 par 1).i1 vec: 0
-            addr[1] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -187,14 +187,14 @@ tbuffer partition_0_0__tbuf1a_0_0_82
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropy.cpp":1504:0)
         pacing_window: 12 port: READ1 ctxid: 0 concurrency grp: 0 dispatches: {0}metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: LogregTorchSamba_partition_0_0__logreg__criterion__crossentropyloss_kInputXVec_0_iter0.done (24 # steps)
-            addr_chain  (24 # steps): 
+            ctx done: LogregTorchSamba_partition_0_0__logreg__criterion__crossentropyloss_kInputXVec_0_iter0.done (384 # steps)
+            addr_chain  (384 # steps): 
               iter[0] : (0 until 2 by 1 par 1)
-              iter[1] : (0 until 1 by 32 par 1)
+              iter[1] : (0 until 500 by 32 par 1)
               iter[2] : (0 until 12 by 1 par 1)
         addresses:
             addr[0] : (0 until 12 by 1 par 1).i2 vec: 0
-            addr[1] : (0 until 1 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 500 by 32 par 1).i1 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -206,15 +206,15 @@ tbuffer partition_0_0__tbuf1a_0_0_82
             cout[kSecondReplayDone] - src: LogregTorchSamba_partition_0_0__logreg__criterion__crossentropyloss_kInputXVec_0_iter0.done
     ctx: LogregTorchSamba.partition_0_0_.logreg__criterion__crossentropyloss@kInputXScalar
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropy.cpp":1571:0)
-        pacing_window: 1 port: READ0 ctxid: 1 concurrency grp: 1 metapipe_iter (post divider): {1} 
+        pacing_window: 500 port: READ0 ctxid: 1 concurrency grp: 1 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: LogregTorchSamba_partition_0_0__logreg__criterion__crossentropyloss_kInputXScalar_iter0.done (1 # steps)
-            addr_chain  (1 # steps): 
-              iter[0] : (0 until 1 by 1 par 1)
+            ctx done: LogregTorchSamba_partition_0_0__logreg__criterion__crossentropyloss_kInputXScalar_iter0.done (500 # steps)
+            addr_chain  (500 # steps): 
+              iter[0] : (0 until 500 by 1 par 1)
               iter[1] : (0 until 1 by 1 par 1)
         addresses:
             addr[0] : ((sin[label] < 10) ? sin[label] : 0) vec: 0
-            addr[1] : ((0 until 1 by 1 par 1).i0 + (0 until 1 by 1 par 1).i1) vec: 0
+            addr[1] : ((0 until 500 by 1 par 1).i0 + (0 until 1 by 1 par 1).i1) vec: 0
             en_zero : 1
             en_drop: 1
         triggers:
@@ -227,17 +227,17 @@ tbuffer partition_0_0__tbuf1a_0_0_82
 ========= Summary IR ========
 tbuffer partition_0_0__LogregTorchSamba_partition_0_0__logreg__criterion__crossentropyloss_logreg__criterion__crossentropyloss_tbuf_tmp
     loc("software/templates/src/templates/cross_entropy/rail/CrossEntropy.cpp":2112:0)
-    layout: <BF16[14, 1]CM/64@0x0> vec_order: {1, 0} vec_dim: 0 depth: 1 dims: {32, 1}
+    layout: <BF16[14, 500]CM/64@0x0> vec_order: {1, 0} vec_dim: 0 depth: 1 dims: {32, 500}
     ctx: phase_w0
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropy.cpp":964:0)
         disable_full_stall type: write ctxid: 0 concurrency grp: 0 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: phase_w0_iter0.done (1 # steps)
-            addr_chain  (1 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            ctx done: phase_w0_iter0.done (16 # steps)
+            addr_chain  (16 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
         addresses:
             addr[0] : 12 vec: 0
-            addr[1] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -251,13 +251,13 @@ tbuffer partition_0_0__LogregTorchSamba_partition_0_0__logreg__criterion__crosse
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropy.cpp":1028:0)
         pacing_window: default disable_empty_stall port: READ0 ctxid: 0 concurrency grp: 0 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: phase1_R_max_iter0.done (12 # steps)
-            addr_chain  (12 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            ctx done: phase1_R_max_iter0.done (192 # steps)
+            addr_chain  (192 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
               iter[1] : (0 until 12 by 1 par 1)
         addresses:
             addr[0] : 12 vec: 0
-            addr[1] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -269,10 +269,10 @@ tbuffer partition_0_0__LogregTorchSamba_partition_0_0__logreg__criterion__crosse
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropy.cpp":1066:0)
         pacing_window: default disable_empty_stall port: READ1 ctxid: 0 concurrency grp: 0 metapipe_iter (post divider): {1} 
         iter_chains:
-            addr_chain  (10 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            addr_chain  (160 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
               iter[1] : (0 until 10 by 1 par 1)
-            ctx done: phase_rd_dummy_iter0.done (10 # steps)
+            ctx done: phase_rd_dummy_iter0.done (160 # steps)
         addresses:
             addr[0] : 0 vec: 0
             addr[1] : 0 vec: 1
@@ -286,13 +286,13 @@ tbuffer partition_0_0__LogregTorchSamba_partition_0_0__logreg__criterion__crosse
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropy.cpp":1004:0)
         disable_full_stall type: write ctxid: 1 concurrency grp: 1 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: phase_w1_iter0.done (12 # steps)
-            addr_chain  (12 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            ctx done: phase_w1_iter0.done (192 # steps)
+            addr_chain  (192 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
               iter[1] : (0 until 12 by 1 par 1)
         addresses:
             addr[0] : (0 until 12 by 1 par 1).i1 vec: 0
-            addr[1] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -304,13 +304,13 @@ tbuffer partition_0_0__LogregTorchSamba_partition_0_0__logreg__criterion__crosse
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropy.cpp":1094:0)
         pacing_window: default disable_empty_stall port: READ0 ctxid: 1 concurrency grp: 1 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: phase2_R_exp_iter0.done (10 # steps)
-            addr_chain  (10 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            ctx done: phase2_R_exp_iter0.done (160 # steps)
+            addr_chain  (160 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
               iter[1] : (0 until 10 by 1 par 1)
         addresses:
             addr[0] : (0 until 10 by 1 par 1).i1 vec: 0
-            addr[1] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -324,12 +324,12 @@ tbuffer partition_0_0__LogregTorchSamba_partition_0_0__logreg__criterion__crosse
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropy.cpp":964:0)
         disable_full_stall type: write ctxid: 2 concurrency grp: 2 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: phase_w2_iter0.done (1 # steps)
-            addr_chain  (1 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            ctx done: phase_w2_iter0.done (16 # steps)
+            addr_chain  (16 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
         addresses:
             addr[0] : 13 vec: 0
-            addr[1] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -343,12 +343,12 @@ tbuffer partition_0_0__LogregTorchSamba_partition_0_0__logreg__criterion__crosse
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropy.cpp":1122:0)
         pacing_window: default disable_empty_stall port: READ1 ctxid: 2 concurrency grp: 2 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: phase3_R_max_iter0.done (1 # steps)
-            addr_chain  (1 # steps): 
-              iter[0] : (0 until 1 by 1 par 1)
+            ctx done: phase3_R_max_iter0.done (500 # steps)
+            addr_chain  (500 # steps): 
+              iter[0] : (0 until 500 by 1 par 1)
         addresses:
             addr[0] : 12 vec: 0
-            addr[1] : (0 until 1 by 1 par 1).i0 vec: 0
+            addr[1] : (0 until 500 by 1 par 1).i0 vec: 0
             en_zero : 1
             en_drop: 1
         triggers:
@@ -361,12 +361,12 @@ tbuffer partition_0_0__LogregTorchSamba_partition_0_0__logreg__criterion__crosse
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropy.cpp":1122:0)
         pacing_window: default disable_empty_stall port: READ0 ctxid: 2 concurrency grp: 2 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: phase3_R_logsum_iter0.done (1 # steps)
-            addr_chain  (1 # steps): 
-              iter[0] : (0 until 1 by 1 par 1)
+            ctx done: phase3_R_logsum_iter0.done (500 # steps)
+            addr_chain  (500 # steps): 
+              iter[0] : (0 until 500 by 1 par 1)
         addresses:
             addr[0] : 13 vec: 0
-            addr[1] : (0 until 1 by 1 par 1).i0 vec: 0
+            addr[1] : (0 until 500 by 1 par 1).i0 vec: 0
             en_zero : 1
             en_drop: 1
         triggers:
@@ -376,18 +376,18 @@ tbuffer partition_0_0__LogregTorchSamba_partition_0_0__logreg__criterion__crosse
             cout[kDone] - src: rail.ctxdone
             cout[1000] - src: rail.ctxdone
 ========= Summary IR ========
-tbuffer partition_0_0__tbuf1a_0_0_83
-    loc("LogregTorchSamba.cpp":203:0)
-    layout: <BF16[1]RM/64@0x0> vec_order: {0} vec_dim: 0 depth: 1 dims: {32}
+tbuffer partition_0_0__tbuf1a_0_0_97
+    loc("LogregTorchSamba.cpp":209:0)
+    layout: <BF16[500]RM/64@0x0> vec_order: {0} vec_dim: 0 depth: 1 dims: {512}
     ctx: LogregTorchSamba.partition_0_0_.logreg__criterion__crossentropyloss@kOutput
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropy.cpp":1768:0)
         type: write ctxid: 0 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: LogregTorchSamba_partition_0_0__logreg__criterion__crossentropyloss_kOutput_iter0.done (1 # steps)
-            addr_chain  (1 # steps): 
-              iter[0] : (0 until 1 by 1 par 1)
+            ctx done: LogregTorchSamba_partition_0_0__logreg__criterion__crossentropyloss_kOutput_iter0.done (500 # steps)
+            addr_chain  (500 # steps): 
+              iter[0] : (0 until 500 by 1 par 1)
         addresses:
-            addr[0] : (0 until 1 by 1 par 1).i0 vec: 0
+            addr[0] : (0 until 500 by 1 par 1).i0 vec: 0
             en_zero : 1
             en_drop: 1
         triggers:
@@ -397,17 +397,17 @@ tbuffer partition_0_0__tbuf1a_0_0_83
             cout[wdone__] - src: rail.ctxdone
     ctx: kBackReadCtx
         loc("software/prism/src/plasma/templates/mlnodes/BackingPmu.cpp":150:0)
-        pacing_window: 1 type: read ctxid: 0 metapipe_iter (post divider): {} 
+        pacing_window: 16 type: read ctxid: 0 metapipe_iter (post divider): {} 
         iter_chains:
-            ctx done: kBackReadCtx_iter0.done (1 # steps)
-            addr_chain  (1 # steps): 
-              iter[0] : (0 until 1 by 32 par 1) is_master 
+            ctx done: kBackReadCtx_iter0.done (16 # steps)
+            addr_chain  (16 # steps): 
+              iter[0] : (0 until 500 by 32 par 1) is_master 
         addresses:
-            addr[0] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[0] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
-            tb init: 4 pushif: cin[10] popif: pacing_done(1, reset_by=(0 until 1 by 32 par 1).i0)
+            tb init: 4 pushif: cin[10] popif: pacing_done(16, reset_by=(0 until 500 by 32 par 1).i0)
             tb init: 0 pushif: cin[LogregTorchSamba.partition_0_0_.logreg__criterion__crossentropyloss@kOutput_wdone_in__] popif: rail.ctxdone
             cout[1000] - src: rail.ctxdone
 ========= Summary IR ========
@@ -416,7 +416,7 @@ tcompute partition_1_0__LogregTorchSamba_partition_1_0__logreg__criterion__cross
   "rail.context"() ( {
     %0 = "rail.const"() {kValue = 0 : i64} : () -> ui16
     %1 = "rail.const"() {kValue = 32 : i64} : () -> ui16
-    %2 = "rail.const"() {kValue = 1 : i64} : () -> ui16
+    %2 = "rail.const"() {kValue = 500 : i64} : () -> ui16
     %3 = "rail.iterator"(%0, %1, %2) {Par = 1 : i32} : (ui16, ui16, ui16) -> ui16
     %4 = "rail.ctrdone"(%3) : (ui16) -> i1
     %5 = "rail.ctxdone"(%4) : (i1) -> i1
@@ -424,8 +424,8 @@ tcompute partition_1_0__LogregTorchSamba_partition_1_0__logreg__criterion__cross
     %7 = "rail.const"() {kValue = 1 : i64} : () -> ui16
     %8 = "rail.const"() {kValue = 12 : i64} : () -> ui16
     %9 = "rail.iterator"(%6, %7, %8) {Par = 1 : i32} : (ui16, ui16, ui16) -> ui16
-    %10 = "rail.io.vector_in"() {kCtx = 72441664 : i64, kCtxName = "phase0", kLanes = [], kPortName = "0", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase0_vector_in_0"} : () -> vector<32xbf16>
-    %11 = "rail.io.vector_out"() {kCtx = 72441664 : i64, kCtxName = "phase0", kLanes = [], kPortName = "2000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase0_vector_out_2000"} : () -> vector<32xbf16>
+    %10 = "rail.io.vector_in"() {kCtx = 73830224 : i64, kCtxName = "phase0", kLanes = [], kPortName = "0", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase0_vector_in_0"} : () -> vector<32xbf16>
+    %11 = "rail.io.vector_out"() {kCtx = 73830224 : i64, kCtxName = "phase0", kLanes = [], kPortName = "2000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase0_vector_out_2000"} : () -> vector<32xbf16>
     "rail.for_loop"(%3) ( {
       %16:2 = "rail.accumulator"() {kInitValue = 0xFFF0000000000000 : f64, kNumStages = 1 : i64} : () -> (vector<32xbf16>, vector<1x32xbf16>)
       "rail.for_loop"(%9) ( {
@@ -441,21 +441,21 @@ tcompute partition_1_0__LogregTorchSamba_partition_1_0__logreg__criterion__cross
       "rail.terminator"() : () -> ()
     }) {type = none} : (ui16) -> ()
     %12 = "rail.ctrdone"(%3) : (ui16) -> i1
-    %13 = "rail.io.control_in"() {kCtx = 72441664 : i64, kCtxName = "phase0", kLanes = [], kPortName = "kBegin", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase0_control_in_kBegin"} : () -> i1
+    %13 = "rail.io.control_in"() {kCtx = 73830224 : i64, kCtxName = "phase0", kLanes = [], kPortName = "kBegin", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase0_control_in_kBegin"} : () -> i1
     "rail.inbuf"(%13, %12) {kInit = 1 : i32} : (i1, i1) -> ()
-    %14 = "rail.io.control_out"() {kCtx = 72441664 : i64, kCtxName = "phase0", kLanes = [], kPortName = "kDone", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase0_control_out_kDone"} : () -> i1
+    %14 = "rail.io.control_out"() {kCtx = 73830224 : i64, kCtxName = "phase0", kLanes = [], kPortName = "kDone", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase0_control_out_kDone"} : () -> i1
     %15 = "rail.ctrdone"(%3) : (ui16) -> i1
     "rail.send"(%15, %14) {kOpRWPattern1 = "kWriteOperand"} : (i1, i1) -> ()
     "rail.terminator"() : () -> ()
-  }) {kContextTableEntry = {kNetwork = 0 : i64}, kName = "phase0", kNode = 72441664 : i64, sym_name = "phase0"} : () -> ()
+  }) {kContextTableEntry = {kNetwork = 0 : i64}, kName = "phase0", kNode = 73830224 : i64, sym_name = "phase0"} : () -> ()
   "rail.context"() ( {
     %0 = "rail.const"() {kValue = 0 : i64} : () -> ui16
     %1 = "rail.const"() {kValue = 1 : i64} : () -> ui16
-    %2 = "rail.const"() {kValue = 12 : i64} : () -> ui16
+    %2 = "rail.const"() {kValue = 192 : i64} : () -> ui16
     %3 = "rail.iterator"(%0, %1, %2) {Par = 1 : i32} : (ui16, ui16, ui16) -> ui16
-    %4 = "rail.io.vector_in"() {kCtx = 72445776 : i64, kCtxName = "phase1", kLanes = [], kPortName = "9000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase1_vector_in_9000"} : () -> vector<32xbf16>
-    %5 = "rail.io.vector_in"() {kCtx = 72445776 : i64, kCtxName = "phase1", kLanes = [], kPortName = "6000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase1_vector_in_6000"} : () -> vector<32xbf16>
-    %6 = "rail.io.vector_out"() {kCtx = 72445776 : i64, kCtxName = "phase1", kLanes = [], kPortName = "10000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase1_vector_out_10000"} : () -> vector<32xbf16>
+    %4 = "rail.io.vector_in"() {kCtx = 73834336 : i64, kCtxName = "phase1", kLanes = [], kPortName = "9000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase1_vector_in_9000"} : () -> vector<32xbf16>
+    %5 = "rail.io.vector_in"() {kCtx = 73834336 : i64, kCtxName = "phase1", kLanes = [], kPortName = "6000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase1_vector_in_6000"} : () -> vector<32xbf16>
+    %6 = "rail.io.vector_out"() {kCtx = 73834336 : i64, kCtxName = "phase1", kLanes = [], kPortName = "10000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase1_vector_out_10000"} : () -> vector<32xbf16>
     "rail.for_loop"(%3) ( {
       %11 = "rail.pop"(%5) {kInstructionStageType = 1 : i64, kIsDataPathOp = true} : (vector<32xbf16>) -> vector<32xbf16>
       %12 = "rail.pop"(%4) {kInstructionStageType = 1 : i64, kIsDataPathOp = true} : (vector<32xbf16>) -> vector<32xbf16>
@@ -465,17 +465,17 @@ tcompute partition_1_0__LogregTorchSamba_partition_1_0__logreg__criterion__cross
       "rail.terminator"() : () -> ()
     }) {type = none} : (ui16) -> ()
     %7 = "rail.ctrdone"(%3) : (ui16) -> i1
-    %8 = "rail.io.control_in"() {kCtx = 72445776 : i64, kCtxName = "phase1", kLanes = [], kPortName = "kBegin", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase1_control_in_kBegin"} : () -> i1
+    %8 = "rail.io.control_in"() {kCtx = 73834336 : i64, kCtxName = "phase1", kLanes = [], kPortName = "kBegin", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase1_control_in_kBegin"} : () -> i1
     "rail.inbuf"(%8, %7) {kInit = 0 : i32} : (i1, i1) -> ()
-    %9 = "rail.io.control_out"() {kCtx = 72445776 : i64, kCtxName = "phase1", kLanes = [], kPortName = "kDone", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase1_control_out_kDone"} : () -> i1
+    %9 = "rail.io.control_out"() {kCtx = 73834336 : i64, kCtxName = "phase1", kLanes = [], kPortName = "kDone", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase1_control_out_kDone"} : () -> i1
     %10 = "rail.ctrdone"(%3) : (ui16) -> i1
     "rail.send"(%10, %9) {kOpRWPattern1 = "kWriteOperand"} : (i1, i1) -> ()
     "rail.terminator"() : () -> ()
-  }) {kContextTableEntry = {kNetwork = 0 : i64}, kName = "phase1", kNode = 72445776 : i64, sym_name = "phase1"} : () -> ()
+  }) {kContextTableEntry = {kNetwork = 0 : i64}, kName = "phase1", kNode = 73834336 : i64, sym_name = "phase1"} : () -> ()
   "rail.context"() ( {
     %0 = "rail.const"() {kValue = 0 : i64} : () -> ui16
     %1 = "rail.const"() {kValue = 32 : i64} : () -> ui16
-    %2 = "rail.const"() {kValue = 1 : i64} : () -> ui16
+    %2 = "rail.const"() {kValue = 500 : i64} : () -> ui16
     %3 = "rail.iterator"(%0, %1, %2) {Par = 1 : i32} : (ui16, ui16, ui16) -> ui16
     %4 = "rail.ctrdone"(%3) : (ui16) -> i1
     %5 = "rail.ctxdone"(%4) : (i1) -> i1
@@ -483,8 +483,8 @@ tcompute partition_1_0__LogregTorchSamba_partition_1_0__logreg__criterion__cross
     %7 = "rail.const"() {kValue = 1 : i64} : () -> ui16
     %8 = "rail.const"() {kValue = 12 : i64} : () -> ui16
     %9 = "rail.iterator"(%6, %7, %8) {Par = 1 : i32} : (ui16, ui16, ui16) -> ui16
-    %10 = "rail.io.vector_in"() {kCtx = 72449888 : i64, kCtxName = "phase2", kLanes = [], kPortName = "12000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase2_vector_in_12000"} : () -> vector<32xbf16>
-    %11 = "rail.io.vector_out"() {kCtx = 72449888 : i64, kCtxName = "phase2", kLanes = [], kPortName = "7000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase2_vector_out_7000"} : () -> vector<32xbf16>
+    %10 = "rail.io.vector_in"() {kCtx = 73838448 : i64, kCtxName = "phase2", kLanes = [], kPortName = "12000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase2_vector_in_12000"} : () -> vector<32xbf16>
+    %11 = "rail.io.vector_out"() {kCtx = 73838448 : i64, kCtxName = "phase2", kLanes = [], kPortName = "7000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase2_vector_out_7000"} : () -> vector<32xbf16>
     "rail.for_loop"(%3) ( {
       %16:2 = "rail.accumulator"() {kInitValue = 0.000000e+00 : f32, kNumStages = 1 : i64} : () -> (vector<32xbf16>, vector<1x32xbf16>)
       "rail.for_loop"(%9) ( {
@@ -502,17 +502,17 @@ tcompute partition_1_0__LogregTorchSamba_partition_1_0__logreg__criterion__cross
       "rail.terminator"() : () -> ()
     }) {type = none} : (ui16) -> ()
     %12 = "rail.ctrdone"(%3) : (ui16) -> i1
-    %13 = "rail.io.control_in"() {kCtx = 72449888 : i64, kCtxName = "phase2", kLanes = [], kPortName = "kBegin", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase2_control_in_kBegin"} : () -> i1
+    %13 = "rail.io.control_in"() {kCtx = 73838448 : i64, kCtxName = "phase2", kLanes = [], kPortName = "kBegin", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase2_control_in_kBegin"} : () -> i1
     "rail.inbuf"(%13, %12) {kInit = 0 : i32} : (i1, i1) -> ()
-    %14 = "rail.io.control_out"() {kCtx = 72449888 : i64, kCtxName = "phase2", kLanes = [], kPortName = "kDone", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase2_control_out_kDone"} : () -> i1
+    %14 = "rail.io.control_out"() {kCtx = 73838448 : i64, kCtxName = "phase2", kLanes = [], kPortName = "kDone", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase2_control_out_kDone"} : () -> i1
     %15 = "rail.ctrdone"(%3) : (ui16) -> i1
     "rail.send"(%15, %14) {kOpRWPattern1 = "kWriteOperand"} : (i1, i1) -> ()
     "rail.terminator"() : () -> ()
-  }) {kContextTableEntry = {kNetwork = 0 : i64}, kName = "phase2", kNode = 72449888 : i64, sym_name = "phase2"} : () -> ()
+  }) {kContextTableEntry = {kNetwork = 0 : i64}, kName = "phase2", kNode = 73838448 : i64, sym_name = "phase2"} : () -> ()
   "rail.context"() ( {
     %0 = "rail.const"() {kValue = 0 : i64} : () -> ui16
     %1 = "rail.const"() {kValue = 32 : i64} : () -> ui16
-    %2 = "rail.const"() {kValue = 1 : i64} : () -> ui16
+    %2 = "rail.const"() {kValue = 500 : i64} : () -> ui16
     %3 = "rail.iterator"(%0, %1, %2) {Par = 1 : i32} : (ui16, ui16, ui16) -> ui16
     %4 = "rail.ctrdone"(%3) : (ui16) -> i1
     %5 = "rail.ctxdone"(%4) : (i1) -> i1
@@ -520,11 +520,11 @@ tcompute partition_1_0__LogregTorchSamba_partition_1_0__logreg__criterion__cross
     %7 = "rail.const"() {kValue = 1 : i64} : () -> ui16
     %8 = "rail.const"() {kValue = 12 : i64} : () -> ui16
     %9 = "rail.iterator"(%6, %7, %8) {Par = 1 : i32} : (ui16, ui16, ui16) -> ui16
-    %10 = "rail.io.vector_in"() {kCtx = 72458112 : i64, kCtxName = "phase3", kLanes = [], kPortName = "21000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase3_vector_in_21000"} : () -> vector<32xi16>
-    %11 = "rail.io.vector_in"() {kCtx = 72458112 : i64, kCtxName = "phase3", kLanes = [], kPortName = "16000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase3_vector_in_16000"} : () -> vector<32xbf16>
-    %12 = "rail.io.vector_in"() {kCtx = 72458112 : i64, kCtxName = "phase3", kLanes = [], kPortName = "17000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase3_vector_in_17000"} : () -> vector<32xbf16>
-    %13 = "rail.io.vector_in"() {kCtx = 72458112 : i64, kCtxName = "phase3", kLanes = [], kPortName = "20000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase3_vector_in_20000"} : () -> vector<32xbf16>
-    %14 = "rail.io.vector_out"() {kCtx = 72458112 : i64, kCtxName = "phase3", kLanes = [], kPortName = "15000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase3_vector_out_15000"} : () -> vector<32xbf16>
+    %10 = "rail.io.vector_in"() {kCtx = 73842560 : i64, kCtxName = "phase3", kLanes = [], kPortName = "21000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase3_vector_in_21000"} : () -> vector<32xi16>
+    %11 = "rail.io.vector_in"() {kCtx = 73842560 : i64, kCtxName = "phase3", kLanes = [], kPortName = "16000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase3_vector_in_16000"} : () -> vector<32xbf16>
+    %12 = "rail.io.vector_in"() {kCtx = 73842560 : i64, kCtxName = "phase3", kLanes = [], kPortName = "17000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase3_vector_in_17000"} : () -> vector<32xbf16>
+    %13 = "rail.io.vector_in"() {kCtx = 73842560 : i64, kCtxName = "phase3", kLanes = [], kPortName = "20000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase3_vector_in_20000"} : () -> vector<32xbf16>
+    %14 = "rail.io.vector_out"() {kCtx = 73842560 : i64, kCtxName = "phase3", kLanes = [], kPortName = "15000", kUnitName = "tcompute0", kVectorLengthInBytes = 64 : i64, sym_name = "tcompute0_tcompute_phase3_vector_out_15000"} : () -> vector<32xbf16>
     "rail.for_loop"(%3) ( {
       "rail.for_loop"(%9) ( {
         %19 = "rail.pop"(%10) {kInstructionStageType = 1 : i64, kIsDataPathOp = true} : (vector<32xi16>) -> vector<32xi16>
@@ -544,29 +544,29 @@ tcompute partition_1_0__LogregTorchSamba_partition_1_0__logreg__criterion__cross
       "rail.terminator"() : () -> ()
     }) {type = none} : (ui16) -> ()
     %15 = "rail.ctrdone"(%3) : (ui16) -> i1
-    %16 = "rail.io.control_in"() {kCtx = 72458112 : i64, kCtxName = "phase3", kLanes = [], kPortName = "kBegin", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase3_control_in_kBegin"} : () -> i1
+    %16 = "rail.io.control_in"() {kCtx = 73842560 : i64, kCtxName = "phase3", kLanes = [], kPortName = "kBegin", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase3_control_in_kBegin"} : () -> i1
     "rail.inbuf"(%16, %15) {kInit = 0 : i32} : (i1, i1) -> ()
-    %17 = "rail.io.control_out"() {kCtx = 72458112 : i64, kCtxName = "phase3", kLanes = [], kPortName = "kDone", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase3_control_out_kDone"} : () -> i1
+    %17 = "rail.io.control_out"() {kCtx = 73842560 : i64, kCtxName = "phase3", kLanes = [], kPortName = "kDone", kUnitName = "tcompute0", sym_name = "tcompute0_tcompute_phase3_control_out_kDone"} : () -> i1
     %18 = "rail.ctrdone"(%3) : (ui16) -> i1
     "rail.send"(%18, %17) {kOpRWPattern1 = "kWriteOperand"} : (i1, i1) -> ()
     "rail.terminator"() : () -> ()
-  }) {kContextTableEntry = {kNetwork = 1 : i64}, kName = "phase3", kNode = 72458112 : i64, sym_name = "phase3"} : () -> ()
+  }) {kContextTableEntry = {kNetwork = 1 : i64}, kName = "phase3", kNode = 73842560 : i64, sym_name = "phase3"} : () -> ()
   "rail.terminator"() : () -> ()
-}) {kDataFormat = "BF16", kDisableContextSplit = true, kName = "tcompute0", kNode = 72437552 : i64, sym_name = "tcompute0"} : () -> ()
+}) {kDataFormat = "BF16", kDisableContextSplit = true, kName = "tcompute0", kNode = 73826112 : i64, sym_name = "tcompute0"} : () -> ()
 
 ========= Summary IR ========
-tbuffer partition_1_0__tbuf1a_1_0_85
-    loc("LogregTorchSamba.cpp":253:0)
-    layout: <INT16[1]RM/64@0x0> vec_order: {0} vec_dim: 0 depth: 1 dims: {32}
+tbuffer partition_1_0__tbuf1a_1_0_99
+    loc("LogregTorchSamba.cpp":259:0)
+    layout: <INT16[500]RM/64@0x0> vec_order: {0} vec_dim: 0 depth: 1 dims: {512}
     ctx: kFrontDynamicWriteCtx
         loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
         type: write ctxid: 0 metapipe_iter (post divider): {1} 
         iter_chains:
-            addr_chain  (1 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
-            ctx done: kFrontDynamicWriteCtx_iter0.done (1 # steps)
+            addr_chain  (16 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
+            ctx done: kFrontDynamicWriteCtx_iter0.done (16 # steps)
         addresses:
-            addr[0] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[0] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -577,12 +577,12 @@ tbuffer partition_1_0__tbuf1a_1_0_85
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1469:0)
         pacing_window: default type: read ctxid: 0 concurrency grp: 0 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputY_iter0.done (12 # steps)
-            addr_chain  (12 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            ctx done: LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputY_iter0.done (192 # steps)
+            addr_chain  (192 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
               iter[1] : (0 until 12 by 1 par 1)
         addresses:
-            addr[0] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[0] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -590,18 +590,18 @@ tbuffer partition_1_0__tbuf1a_1_0_85
             tb init: 0 pushif: cin[kFrontDynamicWriteCtx_wdone_in__] popif: rail.ctxdone
             cout[1000] - src: rail.ctxdone
 ========= Summary IR ========
-tbuffer partition_1_0__tbuf1a_1_0_86
-    loc("LogregTorchSamba.cpp":264:0)
-    layout: <BF16[1]RM/64@0x0> vec_order: {0} vec_dim: 0 depth: 1 dims: {32}
+tbuffer partition_1_0__tbuf1a_1_0_100
+    loc("LogregTorchSamba.cpp":270:0)
+    layout: <BF16[500]RM/64@0x0> vec_order: {0} vec_dim: 0 depth: 1 dims: {512}
     ctx: kFrontDynamicWriteCtx
         loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
         type: write ctxid: 0 metapipe_iter (post divider): {1} 
         iter_chains:
-            addr_chain  (1 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
-            ctx done: kFrontDynamicWriteCtx_iter0.done (1 # steps)
+            addr_chain  (16 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
+            ctx done: kFrontDynamicWriteCtx_iter0.done (16 # steps)
         addresses:
-            addr[0] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[0] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -612,12 +612,12 @@ tbuffer partition_1_0__tbuf1a_1_0_86
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1502:0)
         pacing_window: default type: read ctxid: 0 concurrency grp: 0 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputLoss_iter0.done (12 # steps)
-            addr_chain  (12 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            ctx done: LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputLoss_iter0.done (192 # steps)
+            addr_chain  (192 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
               iter[1] : (0 until 12 by 1 par 1)
         addresses:
-            addr[0] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[0] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -625,20 +625,20 @@ tbuffer partition_1_0__tbuf1a_1_0_86
             tb init: 0 pushif: cin[kFrontDynamicWriteCtx_wdone_in__] popif: rail.ctxdone
             cout[1000] - src: rail.ctxdone
 ========= Summary IR ========
-tbuffer partition_1_0__tbuf1a_1_0_87
-    loc("LogregTorchSamba.cpp":275:0)
-    layout: <BF16[10, 1]RVCM/64@0x0> vec_order: {1, 0} vec_dim: 1 depth: 1 dims: {10, 32}
+tbuffer partition_1_0__tbuf1a_1_0_101
+    loc("LogregTorchSamba.cpp":281:0)
+    layout: <BF16[10, 500]RVCM/64@0x0> vec_order: {1, 0} vec_dim: 1 depth: 1 dims: {10, 512}
     ctx: kDefaultWrite
         loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
         type: write ctxid: 0 metapipe_iter (post divider): {1} 
         iter_chains:
-            addr_chain  (10 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            addr_chain  (160 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
               iter[1] : (0 until 10 by 1 par 1)
-            ctx done: kDefaultWrite_iter0.done (10 # steps)
+            ctx done: kDefaultWrite_iter0.done (160 # steps)
         addresses:
             addr[0] : (0 until 10 by 1 par 1).i1 vec: 0
-            addr[1] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -649,14 +649,14 @@ tbuffer partition_1_0__tbuf1a_1_0_87
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1362:0)
         pacing_window: 12 type: read ctxid: 0 concurrency grp: 0 dispatches: {0}metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputX0_iter0.done (24 # steps)
-            addr_chain  (24 # steps): 
+            ctx done: LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kInputX0_iter0.done (384 # steps)
+            addr_chain  (384 # steps): 
               iter[0] : (0 until 2 by 1 par 1)
-              iter[1] : (0 until 1 by 32 par 1)
+              iter[1] : (0 until 500 by 32 par 1)
               iter[2] : (0 until 12 by 1 par 1)
         addresses:
             addr[0] : (0 until 12 by 1 par 1).i2 vec: 0
-            addr[1] : (0 until 1 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 500 by 32 par 1).i1 vec: 1
             en_zero : ((0 until 12 by 1 par 1).i2 < 10)
             en_drop: 1
         triggers:
@@ -668,17 +668,17 @@ tbuffer partition_1_0__tbuf1a_1_0_87
 ========= Summary IR ========
 tbuffer partition_1_0__LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_tbuf_tmp0
     loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1761:0)
-    layout: <BF16[14, 1]RM/64@0x0> vec_order: {0, 1} vec_dim: 1 depth: 1 dims: {14, 32}
+    layout: <BF16[14, 500]RM/64@0x0> vec_order: {0, 1} vec_dim: 1 depth: 1 dims: {14, 512}
     ctx: phaseW0
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0)
         disable_full_stall type: write ctxid: 0 concurrency grp: 0 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: phaseW0_iter0.done (1 # steps)
-            addr_chain  (1 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            ctx done: phaseW0_iter0.done (16 # steps)
+            addr_chain  (16 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
         addresses:
             addr[0] : 13 vec: 0
-            addr[1] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -691,13 +691,13 @@ tbuffer partition_1_0__LogregTorchSamba_partition_1_0__logreg__criterion__crosse
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)
         pacing_window: default disable_empty_stall port: READ0 ctxid: 0 concurrency grp: 0 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: phaseRMax_iter0.done (12 # steps)
-            addr_chain  (12 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            ctx done: phaseRMax_iter0.done (192 # steps)
+            addr_chain  (192 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
               iter[1] : (0 until 12 by 1 par 1)
         addresses:
             addr[0] : 13 vec: 0
-            addr[1] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -709,10 +709,10 @@ tbuffer partition_1_0__LogregTorchSamba_partition_1_0__logreg__criterion__crosse
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1010:0)
         pacing_window: default disable_empty_stall port: READ1 ctxid: 0 concurrency grp: 0 metapipe_iter (post divider): {1} 
         iter_chains:
-            addr_chain  (12 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            addr_chain  (192 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
               iter[1] : (0 until 12 by 1 par 1)
-            ctx done: phase_rd_dummy_iter0.done (12 # steps)
+            ctx done: phase_rd_dummy_iter0.done (192 # steps)
         addresses:
             addr[0] : 0 vec: 0
             addr[1] : 0 vec: 1
@@ -726,13 +726,13 @@ tbuffer partition_1_0__LogregTorchSamba_partition_1_0__logreg__criterion__crosse
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":902:0)
         disable_full_stall type: write ctxid: 1 concurrency grp: 1 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: phaseW1_iter0.done (12 # steps)
-            addr_chain  (12 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            ctx done: phaseW1_iter0.done (192 # steps)
+            addr_chain  (192 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
               iter[1] : (0 until 12 by 1 par 1)
         addresses:
             addr[0] : (0 until 12 by 1 par 1).i1 vec: 0
-            addr[1] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -745,13 +745,13 @@ tbuffer partition_1_0__LogregTorchSamba_partition_1_0__logreg__criterion__crosse
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)
         pacing_window: default disable_empty_stall port: READ0 ctxid: 1 concurrency grp: 1 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: phaseRExp0_iter0.done (12 # steps)
-            addr_chain  (12 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            ctx done: phaseRExp0_iter0.done (192 # steps)
+            addr_chain  (192 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
               iter[1] : (0 until 12 by 1 par 1)
         addresses:
             addr[0] : (0 until 12 by 1 par 1).i1 vec: 0
-            addr[1] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -764,12 +764,12 @@ tbuffer partition_1_0__LogregTorchSamba_partition_1_0__logreg__criterion__crosse
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":871:0)
         disable_full_stall type: write ctxid: 2 concurrency grp: 2 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: phaseW2_iter0.done (1 # steps)
-            addr_chain  (1 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            ctx done: phaseW2_iter0.done (16 # steps)
+            addr_chain  (16 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
         addresses:
             addr[0] : 12 vec: 0
-            addr[1] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -782,13 +782,13 @@ tbuffer partition_1_0__LogregTorchSamba_partition_1_0__logreg__criterion__crosse
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":969:0)
         pacing_window: default disable_empty_stall port: READ0 ctxid: 2 concurrency grp: 2 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: phaseRExp1_iter0.done (12 # steps)
-            addr_chain  (12 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            ctx done: phaseRExp1_iter0.done (192 # steps)
+            addr_chain  (192 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
               iter[1] : (0 until 12 by 1 par 1)
         addresses:
             addr[0] : (0 until 12 by 1 par 1).i1 vec: 0
-            addr[1] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -800,13 +800,13 @@ tbuffer partition_1_0__LogregTorchSamba_partition_1_0__logreg__criterion__crosse
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1039:0)
         pacing_window: default disable_empty_stall port: READ1 ctxid: 2 concurrency grp: 2 metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: phaseRSumRecip_iter0.done (12 # steps)
-            addr_chain  (12 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            ctx done: phaseRSumRecip_iter0.done (192 # steps)
+            addr_chain  (192 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
               iter[1] : (0 until 12 by 1 par 1)
         addresses:
             addr[0] : 12 vec: 0
-            addr[1] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:
@@ -815,20 +815,20 @@ tbuffer partition_1_0__LogregTorchSamba_partition_1_0__logreg__criterion__crosse
             tb init: 0 pushif: cin[kBegin1] popif: rail.ctxdone
             cout[1000] - src: rail.ctxdone
 ========= Summary IR ========
-tbuffer partition_1_0__tbuf1a_1_0_99
-    loc("LogregTorchSamba.cpp":301:0)
-    layout: <BF16[10, 1]RVCM/64@0x0> vec_order: {1, 0} vec_dim: 1 depth: 1 dims: {10, 32}
+tbuffer partition_1_0__tbuf1a_1_0_114
+    loc("LogregTorchSamba.cpp":307:0)
+    layout: <BF16[10, 500]RVCM/64@0x0> vec_order: {1, 0} vec_dim: 1 depth: 1 dims: {10, 512}
     ctx: LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0
         loc("software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp":1418:0)
         type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} 
         iter_chains:
-            ctx done: LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kOutput0_iter0.done (12 # steps)
-            addr_chain  (12 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            ctx done: LogregTorchSamba_partition_1_0__logreg__criterion__crossentropyloss_bwd_loss_kOutput0_iter0.done (192 # steps)
+            addr_chain  (192 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
               iter[1] : (0 until 12 by 1 par 1)
         addresses:
             addr[0] : (0 until 12 by 1 par 1).i1 vec: 0
-            addr[1] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: ((0 until 12 by 1 par 1).i1 < 10)
         triggers:
@@ -840,13 +840,13 @@ tbuffer partition_1_0__tbuf1a_1_0_99
         loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
         pacing_window: default type: read ctxid: 0 metapipe_iter (post divider): {1} 
         iter_chains:
-            addr_chain  (10 # steps): 
-              iter[0] : (0 until 1 by 32 par 1)
+            addr_chain  (160 # steps): 
+              iter[0] : (0 until 500 by 32 par 1)
               iter[1] : (0 until 10 by 1 par 1)
-            ctx done: kDefaultRead1_iter0.done (10 # steps)
+            ctx done: kDefaultRead1_iter0.done (160 # steps)
         addresses:
             addr[0] : (0 until 10 by 1 par 1).i1 vec: 0
-            addr[1] : (0 until 1 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 500 by 32 par 1).i0 vec: 1
             en_zero : 1
             en_drop: 1
         triggers:

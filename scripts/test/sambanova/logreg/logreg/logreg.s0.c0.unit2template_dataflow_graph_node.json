@@ -96,58 +96,94 @@
         "unit_name": "AGCU_(87, 13, 0, 0)"
     },
     {
-        "dataflow_graph_node_name": "gbuf1a_0_0_79",
+        "dataflow_graph_node_name": "gbuf1a_0_0_93",
         "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer",
         "unit_kind": "PMU",
-        "unit_name": "gbuf1a_0_0_79_head1_neck0_data_pmu0"
+        "unit_name": "gbuf1a_0_0_93_head1_neck0_data_pmu0"
+    },
+    {
+        "dataflow_graph_node_name": "gbuf1a_0_0_93",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer",
+        "unit_kind": "PMU",
+        "unit_name": "gbuf1a_0_0_93_head1_neck0_data_pmu1"
+    },
+    {
+        "dataflow_graph_node_name": "gbuf1a_0_0_93",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer",
+        "unit_kind": "PMU",
+        "unit_name": "gbuf1a_0_0_93_head1_neck0_rob_pmu"
     },
     {
         "dataflow_graph_node_name": "logreg__lin_layer__linear",
-        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GemmSubnet",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).BigGemm",
         "unit_kind": "PCU",
-        "unit_name": "logreg__lin_layer__linear WBuf 0_PCU"
+        "unit_name": "logreg__lin_layer__linear_gemm_0_0_0_PCU"
     },
     {
         "dataflow_graph_node_name": "logreg__lin_layer__linear",
-        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GemmSubnet",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).BigGemm",
         "unit_kind": "PMU",
-        "unit_name": "logreg__lin_layer__linear WBuf 0_PMU"
+        "unit_name": "logreg__lin_layer__linear_gemm_0_0_0_PMU"
     },
     {
-        "dataflow_graph_node_name": "gbuf1a_0_0_78",
+        "dataflow_graph_node_name": "logreg__lin_layer__linear",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).BigGemm",
+        "unit_kind": "PCU",
+        "unit_name": "logreg__lin_layer__linear_gemm_0_0_1_PCU"
+    },
+    {
+        "dataflow_graph_node_name": "logreg__lin_layer__linear",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).BigGemm",
+        "unit_kind": "PCU",
+        "unit_name": "logreg__lin_layer__linear_gemm_0_0_2_PCU"
+    },
+    {
+        "dataflow_graph_node_name": "logreg__lin_layer__linear",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).BigGemm",
+        "unit_kind": "PCU",
+        "unit_name": "logreg__lin_layer__linear_gemm_0_0_3_PCU"
+    },
+    {
+        "dataflow_graph_node_name": "gbuf1a_0_0_92",
         "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer",
         "unit_kind": "PMU",
-        "unit_name": "gbuf1a_0_0_78_head1_neck0_data_pmu0"
+        "unit_name": "gbuf1a_0_0_92_head1_neck0_data_pmu0"
     },
     {
-        "dataflow_graph_node_name": "transpose_0_0_97",
-        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).Transpose",
-        "unit_kind": "PMU",
-        "unit_name": "transpose_0_0_97.buffer_head1_neck0_data_pmu0"
-    },
-    {
-        "dataflow_graph_node_name": "transpose_0_0_94",
-        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).Transpose",
-        "unit_kind": "PMU",
-        "unit_name": "transpose_0_0_94.buffer_head1_neck0_data_pmu0"
-    },
-    {
-        "dataflow_graph_node_name": "gbuf1a_0_0_80",
+        "dataflow_graph_node_name": "gbuf1a_0_0_92",
         "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer",
         "unit_kind": "PMU",
-        "unit_name": "gbuf1a_0_0_80_head1_neck0_data_pmu0"
+        "unit_name": "gbuf1a_0_0_92_head1_neck0_write_fronting_pmu0"
     },
     {
-        "dataflow_graph_node_name": "tbuf1a_0_0_81",
-        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).TBuffer",
+        "dataflow_graph_node_name": "transpose_0_0_112",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).Transpose",
         "unit_kind": "PMU",
-        "unit_name": "LogregTorchSamba.partition_0_0_.tbuf1a_0_0_81_D_0_0"
+        "unit_name": "transpose_0_0_112.buffer_head1_neck0_data_pmu0"
     },
     {
-        "dataflow_graph_node_name": "tbuf1a_0_0_82",
+        "dataflow_graph_node_name": "transpose_0_0_109",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).Transpose",
+        "unit_kind": "PMU",
+        "unit_name": "transpose_0_0_109.buffer_head1_neck0_data_pmu0"
+    },
+    {
+        "dataflow_graph_node_name": "gbuf1a_0_0_94",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).GBuffer",
+        "unit_kind": "PMU",
+        "unit_name": "gbuf1a_0_0_94_head1_neck0_data_pmu0"
+    },
+    {
+        "dataflow_graph_node_name": "tbuf1a_0_0_95",
         "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).TBuffer",
         "unit_kind": "PMU",
-        "unit_name": "LogregTorchSamba.partition_0_0_.tbuf1a_0_0_82_D_0_0"
+        "unit_name": "LogregTorchSamba.partition_0_0_.tbuf1a_0_0_95_D_0_0"
+    },
+    {
+        "dataflow_graph_node_name": "tbuf1a_0_0_96",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).TBuffer",
+        "unit_kind": "PMU",
+        "unit_name": "LogregTorchSamba.partition_0_0_.tbuf1a_0_0_96_D_0_0"
     },
     {
         "dataflow_graph_node_name": "logreg__criterion__crossentropyloss",
@@ -162,25 +198,31 @@
         "unit_name": "LogregTorchSamba.partition_0_0_.logreg__criterion__crossentropyloss.logreg__criterion__crossentropyloss_tbuf_tmp_D_0_0"
     },
     {
-        "dataflow_graph_node_name": "tbuf1a_0_0_83",
+        "dataflow_graph_node_name": "tbuf1a_0_0_97",
         "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).TBuffer",
         "unit_kind": "PMU",
-        "unit_name": "LogregTorchSamba.partition_0_0_.tbuf1a_0_0_83_D_0_0"
+        "unit_name": "LogregTorchSamba.partition_0_0_.tbuf1a_0_0_97_D_0_0"
     },
     {
-        "dataflow_graph_node_name": "s0.fronting_pmu_load_group_4",
+        "dataflow_graph_node_name": "s0.fronting_pmu_load_group_7",
         "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).FrontingPmu",
         "unit_kind": "PMU",
-        "unit_name": "s0.fronting_pmu_load_group_4"
+        "unit_name": "s0.fronting_pmu_load_group_7"
     },
     {
-        "dataflow_graph_node_name": "s0.backing_pmu_group_9_logreg__lin_layer__linear_t_output0_tensor",
+        "dataflow_graph_node_name": "s0.fronting_pmu_load_group_1",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).FrontingPmu",
+        "unit_kind": "PMU",
+        "unit_name": "s0.fronting_pmu_load_group_1"
+    },
+    {
+        "dataflow_graph_node_name": "s0.backing_pmu_group_12_logreg__lin_layer__linear_t_output0_tensor",
         "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).BackingPmu",
         "unit_kind": "PMU",
-        "unit_name": "s0.backing_pmu_group_9_logreg__lin_layer__linear_t_output0_tensor"
+        "unit_name": "s0.backing_pmu_group_12_logreg__lin_layer__linear_t_output0_tensor"
     },
     {
-        "dataflow_graph_node_name": "DramInputNode:s0_c0_1:group_4",
+        "dataflow_graph_node_name": "DramInputNode:s0_c0_1:group_7",
         "template_name": "Unknown(LogregTorchSamba).Unknown(partition_0_0_).DramInputNode",
         "unit_kind": "AGCU",
         "unit_name": "LogicalAGCU for DRAM input_s0_c0_1"

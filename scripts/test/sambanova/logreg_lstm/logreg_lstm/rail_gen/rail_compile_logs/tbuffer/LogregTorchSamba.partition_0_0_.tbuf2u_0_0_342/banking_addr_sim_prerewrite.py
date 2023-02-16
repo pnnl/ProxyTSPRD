@@ -20,38 +20,36 @@ ndaddr_funcs = {}
 
 ctxs.append('LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kOutWr')
 def LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kOutWr():
-    x0 = 7
-    x1 = 1
-    x2 = True
-    x3 = 64
-    x4 = 128
-    x5 = 0
+    x0 = 1
+    x1 = True
+    x2 = 64
+    x3 = 128
+    x4 = 0
     ndaddrs = []
-    for x6 in range(x5,x4,x3):
-        x7 = True
-        print("trim_pred: {} ".format(x2), end='')
-        print("pmuid: [" + str(x5) +"," + "] ", end='')
-        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x6),qaddr(x6//2),qaddr(x6//64),qaddr(x5),qaddr(x5),x2,x2,True,))
+    for x5 in range(x4,x3,x2):
+        x6 = True
+        print("trim_pred: {} ".format(x1), end='')
+        print("pmuid: [" + str(x4) +"," + "] ", end='')
+        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x5),qaddr(x5//2),qaddr(x5//64),qaddr(x4),qaddr(x4),x1,x1,True,))
     return ndaddrs
 
 ndaddr_funcs['LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kOutWr'] = LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kOutWr
-ctxs.append('LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_wo_bias_kB')
-def LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_wo_bias_kB():
-    x0 = 7
-    x1 = 1
-    x2 = True
-    x3 = 64
-    x4 = 128
-    x5 = 0
+ctxs.append('LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_kFwdPropB')
+def LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_kFwdPropB():
+    x0 = 1
+    x1 = True
+    x2 = 64
+    x3 = 128
+    x4 = 0
     ndaddrs = []
-    for x6 in range(x5,x0,x1):
-        for x7 in range(x5,x4,x3):
-            x8 = True
-            print("pmuid: [" + str(x5) +"," + "] ", end='')
-            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x7),qaddr(x7//2),qaddr(x7//64),qaddr(x5),qaddr(x5),x2,x2,True,))
+    for x5 in range(x4,x3,x0):
+        for x6 in range(x4,x3,x2):
+            x7 = True
+            print("pmuid: [" + str(x4) +"," + "] ", end='')
+            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x6),qaddr(x6//2),qaddr(x6//64),qaddr(x4),qaddr(x4),x1,x1,True,))
     return ndaddrs
 
-ndaddr_funcs['LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_wo_bias_kB'] = LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_wo_bias_kB
+ndaddr_funcs['LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_kFwdPropB'] = LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_kFwdPropB
 
 ############
 # End ctxs #

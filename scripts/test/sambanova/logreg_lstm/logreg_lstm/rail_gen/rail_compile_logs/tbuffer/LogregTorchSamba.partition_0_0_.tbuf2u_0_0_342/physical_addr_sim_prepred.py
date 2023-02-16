@@ -21,34 +21,32 @@ ndaddr_funcs = {}
 ctxs.append('D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kOutWr')
 def D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kOutWr():
     x0 = 1
-    x1 = 7
-    x2 = 64
-    x3 = 128
-    x4 = True
-    x5 = 0
+    x1 = 64
+    x2 = 128
+    x3 = True
+    x4 = 0
     ndaddrs = []
-    for x6 in range(x5,x3,x2):
-        x7 = True
-        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x6),qaddr(x6//2),qaddr(x6//64),qaddr(x5),qaddr(x5),x4,x4,True,))
+    for x5 in range(x4,x2,x1):
+        x6 = True
+        print("wt byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x5),qaddr(x5//2),qaddr(x5//64),qaddr(x4),qaddr(x4),x3,x3,True,))
     return ndaddrs
 
 ndaddr_funcs['D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kOutWr'] = D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kOutWr
-ctxs.append('D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_wo_bias_kB')
-def D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_wo_bias_kB():
+ctxs.append('D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_kFwdPropB')
+def D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_kFwdPropB():
     x0 = 1
-    x1 = 7
-    x2 = 64
-    x3 = 128
-    x4 = True
-    x5 = 0
+    x1 = 64
+    x2 = 128
+    x3 = True
+    x4 = 0
     ndaddrs = []
-    for x6 in range(x5,x1,x0):
-        for x7 in range(x5,x3,x2):
-            x8 = True
-            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x7),qaddr(x7//2),qaddr(x7//64),qaddr(x5),qaddr(x5),x4,x4,True,))
+    for x5 in range(x4,x2,x0):
+        for x6 in range(x4,x2,x1):
+            x7 = True
+            print("rd byte:{} word:{} vec:{} rotate:{} metadata:{} en_zero:{} en_pred:{} min_max:{}".format(qaddr(x6),qaddr(x6//2),qaddr(x6//64),qaddr(x4),qaddr(x4),x3,x3,True,))
     return ndaddrs
 
-ndaddr_funcs['D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_wo_bias_kB'] = D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_wo_bias_kB
+ndaddr_funcs['D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_kFwdPropB'] = D_0_0_LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_kFwdPropB
 
 ############
 # End ctxs #
