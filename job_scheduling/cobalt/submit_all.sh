@@ -1,12 +1,12 @@
 #!/bin/bash
 # gridcnntf, amp
 GPUS=( "theta" ) # which gpu
-MODELS=( "climatecnnpt" "climatelstmpt" "gridcnnpt" "gridlstmpt" "climatecnntf" "climatelstmtf" "gridcnntf" "gridlstmtf" ) # "climatecnnpt" "climatelstmpt" "gridcnnpt" "gridlstmpt" "climatecnntf" "climatelstmtf" "gridcnntf" "gridlstmtf", "climatecnnptatt", "gridcnnptatt"
+MODELS=( "gridcnnpt" ) # "climatecnnpt" "climatelstmpt" "gridcnnpt" "gridlstmpt" "climatecnntf" "climatelstmtf" "gridcnntf" "gridlstmtf", "climatecnnptatt", "gridcnnptatt"
 N_NODES=( 1 )
-DTYPE=( "fp32" "fp64" "amp" ) # "fp16" "fp32" "fp64" "amp" with or without mixed precision
-MGPU=( "HVD" "DDP" ) # "HVD" "DDP" with or without mixed precision
+DTYPE=( "fp64" ) # "fp16" "fp32" "fp64" "amp" with or without mixed precision
+MGPU=( "None" ) # "HVD" "DDP" with or without mixed precision
 PROF=( 0 ) # with and without profiler
-RTYPE=( "sinfer" )
+RTYPE=( "infer_onnx" )
 NODE="full-node"
 EPOCHS=50
 BATCH_SIZE=2048
@@ -32,7 +32,7 @@ for gpu in ${GPUS[@]}; do
                                 NODE="single-gpu"
                                 EPOCHS=1
                                 BATCH_SIZE=1
-                                TRAIN_SUFFIX="gpu_ng8_nc0_e50_b2048_dfp32_mpguHVD_prof0"
+                                TRAIN_SUFFIX="gpu_ng8_nc0_e50_b2048_d${dt}_mpguHVD_prof0"
                             elif [[ $rtype = sinf* ]]
                             then
                                 echo "Same Precision Inference Mode"

@@ -101,13 +101,10 @@ if __name__ == "__main__":
         _CONFIG = json.load(fp)
     
     run_type = args.run_type.split("_")
-    enable_ait = False
-    enable_onnx = False
-    if len(run_type) == 2:
-        if run_type[1] == "ait":
-            enable_ait = True
-        elif run_type[1] == "onnx":
-            enable_onnx = True
+    if len(run_type) > 1:
+        infer_through = run_type[1]
+    else:
+        infer_through = None
         
     if args.run_type in ["sinfer", "infer", "infer_ait", "infer_onnx"]:
         args.n_gpus = args.n_gpus# * 8
@@ -259,20 +256,42 @@ if __name__ == "__main__":
         "n_channels": n_channels
     }
     
-    # train model
-    model_exists = interface.init_training_engine(
-        model_name=_SUFFIX,
+    # check onnx model
+    model_exists = False
+    if args.run_type in ["infer_onnx"]:
+        model_name=_SUFFIX
         model_dir=os.path.join(
                     _CONFIG["model_info"]["model_dir"],
                     _CONFIG["info"]["app_name"]
-                ),
-        data_params=data_params,
-        opt_params=_CONFIG["model_info"]["opt_parameters"],
-        criterion_params=None,
-        ait=enable_ait,
-        batch_size=args.batch_size
-    )
-    if (args.run_type == "infer") & (not model_exists):
+                )
+        onnx_model = os.path.join(model_dir, "onnx_models/" + model_name + ".onnx")
+        if os.path.exists(onnx_model):
+            import onnxruntime
+            so = onnxruntime.SessionOptions()
+            so.graph_optimization_level = onnxruntime.GraphOptimizationLevel.ORT_ENABLE_ALL
+            print("[INFO ONNX] ONNX Model: %s" %(onnx_model))
+            so.intra_op_num_threads = 64
+            interface.sess = onnxruntime.InferenceSession(onnx_model, so, providers=['CUDAExecutionProvider'])
+            print(onnxruntime.get_device())
+            # print("Did I create the inference session?")
+            model_exists = True
+    
+    # if onnx model doesn't exist
+    if not model_exists:
+        model_exists = interface.init_training_engine(
+            model_name=_SUFFIX,
+            model_dir=os.path.join(
+                        _CONFIG["model_info"]["model_dir"],
+                        _CONFIG["info"]["app_name"]
+                    ),
+            data_params=data_params,
+            opt_params=_CONFIG["model_info"]["opt_parameters"],
+            criterion_params=None,
+            infer_through=infer_through,
+            batch_size=args.batch_size
+        )
+    
+    if (args.run_type in ["sinfer", "infer", "infer_ait", "infer_onnx"]) & (not model_exists):
         sys.exit("[ERROR] Cannot infer without trained model.")
     
     if args.run_type == "train":
@@ -284,7 +303,7 @@ if __name__ == "__main__":
     # inference
     interface.infer(
         data=test_data,
-        ait=enable_ait,
+        infer_through=infer_through,
         batch_size=args.batch_size
     )
     interface.close()
