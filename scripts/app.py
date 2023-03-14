@@ -1,14 +1,8 @@
-# python app.py --config_file config_baseline.json --framework TF --machine a100_shared --n_gpus 1 --n_epochs 2 --batch_size 64 --mixed_precision 0
-# python app.py --config_file config_tfdataopt.json --framework TF --machine a100_shared --n_gpus 1 --n_epochs 2 --batch_size 64 --mixed_precision 1
-# python app.py --config_file config_resnet.json --framework TF --machine a100_shared --n_gpus 1 --n_epochs 2 --batch_size 64 --mixed_precision 0
-# 
-#SBATCH --exclusive
-
-
 # ------------------------------- IMPORT MODULES & SETUP ------------------------------------------------
 # Standard Libraries
-import time
-import time
+import os
+# os.environ['OMP_NUM_THREADS'] = '48'
+import json
 import argparse
 
 # ------------------------------- CUSTOM FUNCTIONS ------------------------------------------------
@@ -16,94 +10,314 @@ import argparse
 import sys
 sys.path.append('../')
 
-from proxy_apps import ProxyTSPRD
-from proxy_apps.utils import file_reader
-
 # ------------------------------- PATH & LOGGER SETUP ------------------------------------------------
-_REF_DIR = './'
 
 # Parse Arguments
 parser = argparse.ArgumentParser(description='Run Time Series Prediction')
-parser.add_argument("--config_file", type=str, help="which implementation to run", required=True)
-parser.add_argument("--framework", choices=["TF", "PT"], help="frameworks to run on", default="TF")
-parser.add_argument("--machine_name", choices=["a100", "a100_shared", "tonga"], type=str, help="name of the machine", default="a100_shared")
-parser.add_argument("--n_gpus", type=int, help="number of GPUs", default=1)
-parser.add_argument("--n_cpus", type=int, help="number of CPUs", default=1)
-parser.add_argument("--n_epochs", type=int, help="number of epochs", default=10)
-parser.add_argument("--batch_size", type=int, help="batch size", default=1024)
-parser.add_argument("--mixed_precision", type=int, choices=[0, 1], help="whether to turn on mixed precision or not", default=0)
-parser.add_argument("--mgpu_strategy", choices=["None", "MirroredStrategy", "DDP", "HVD"], help="which multi-gpu strategy to use", default="None")
-parser.add_argument("--profiling", type=int, choices=[0, 1], help="whether to use nsys profiling", default=0)
-parser.add_argument("--run_type", choices=["train", "eval"], help="whether to train the model or do inference from the trained model", default="train")
-
-args = parser.parse_args()
-print("[INFO] Read parser arguments")
-
-## ProxyTSPRD
-# get configuration file
-_CONFIG_FILE = "./configs/config_" + args.config_file + ".json"
-config = file_reader.read_config(_REF_DIR + _CONFIG_FILE)
-_FRAMEWORK = args.framework
-
-# initialize the interface
-_MIXED_PRECISION = args.mixed_precision
-
-_MACHINE_NAME = args.machine_name
-_N_GPUS = args.n_gpus
-_N_CPUS = args.n_cpus
-
-# train the network
-_N_EPOCHS = args.n_epochs
-_BATCH_SIZE = args.batch_size
-
-_MGPU_STRATEGY = args.mgpu_strategy
-_PROFILING = args.profiling
-
-if _MGPU_STRATEGY == "None": _MGPU_STRATEGY = None
-
-start_time = time.perf_counter()
-
-interface = ProxyTSPRD(config["info"], 
-                       _FRAMEWORK, 
-                       _REF_DIR, 
-                       _MIXED_PRECISION, 
-                       _MACHINE_NAME, 
-                       _N_GPUS, 
-                       _N_CPUS,
-                       _N_EPOCHS, 
-                       _BATCH_SIZE, 
-                       _MGPU_STRATEGY,
-                       _PROFILING
-                      )
-end_time = time.perf_counter()
-print("====> Initialization Time: ", end_time-start_time)
-
-# load data
-start_time = time.perf_counter()
-
-training_data_dict = interface.load_data(
-    config['data_params']
+parser.add_argument(
+    "--config_file", 
+    type=str,
+    help="configuration file for model training", 
+    required=True
+)
+parser.add_argument(
+    "--platform", 
+    choices=["gpu", "cpu", "rdu"], 
+    type=str, 
+    help="name of the platform (cpu/gpu/rdu)", 
+    required=True
+)
+parser.add_argument(
+    "--machine_name", 
+    type=str, 
+    help="name of the machine", 
+    required=True
+)
+parser.add_argument(
+    "--n_units", 
+    type=int, help="number of GPUs/RDUs", 
+    default=1
+)
+parser.add_argument(
+    "--n_cpus", 
+    type=int, 
+    help="number of CPUs, invalid for RDUs", 
+    default=1
+)
+parser.add_argument(
+    "--dtype", 
+    choices=["int", "fp16", "amp", "fp32", "fp64"], 
+    type=str, 
+    help="Data type", 
+    default="fp64"
+)
+parser.add_argument(
+    "--mgpu_strategy", 
+    choices=["HVD", "DDP", "None"], 
+    type=str, 
+    help="MGPU strategy", 
+    default=None
+)
+parser.add_argument(
+    "--n_epochs", 
+    type=int, 
+    help="number of epochs", 
+    default=20
+)
+parser.add_argument(
+    "--batch_size", 
+    type=int, 
+    help="batch size", 
+    default=1024
+)
+parser.add_argument(
+    "--run_type", 
+    type=str, 
+    choices=["train", "infer", "infer_ait", "infer_onnx", "compile", "run"], 
+    help="Action to take. compile and run commands are specific to sambanova.", 
+    default="train"
+)
+parser.add_argument(
+    "--train_suffix", 
+    type=str, 
+    default=""
+)
+parser.add_argument(
+    "--profiling", 
+    type=int, 
+    help="whether profiling or not using nsys", 
+    default=0
+)
+parser.add_argument(
+    "--write_graph", 
+    action='store_true',
+    help="Invalid for sambanova"
 )
 
+if __name__ == "__main__":
+    # read the arguments
+    args = parser.parse_args()
 
-end_time = time.perf_counter()
-print("====> Data Loading Time: ", end_time-start_time)
+    # configuration file
+    _CONFIG_FILE = args.config_file
+    # check if configuration file exists
+    assert os.path.exists(_CONFIG_FILE), "Configuration file not found: %s" %(_CONFIG_FILE)
+    # read configuration file
+    with open(_CONFIG_FILE) as fp:
+        _CONFIG = json.load(fp)
+    
+    # inference type
+    run_type = args.run_type.split("_")
+    if len(run_type) > 1:
+        infer_through = run_type[1]
+    else:
+        infer_through = None
+        
+    _CONFIG["data_params"]["init"]["train_files"] = 2
+    # specific for inference
+    if args.run_type in ["infer", "infer_ait", "infer_onnx"]:
+        args.n_units = args.n_units# * 8
+        _CONFIG["data_params"]["init"]["shuffle"] = False
+        n_files = _CONFIG["data_params"]["init"]["train_files"] + _CONFIG["data_params"]["init"]["test_files"]
+        if _CONFIG["info"]["app_name"].startswith("Climate"):
+            _CONFIG["data_params"]["init"]["test_files"] = 240
+        elif _CONFIG["info"]["app_name"].startswith("Grid"):
+            _CONFIG["data_params"]["init"]["test_files"] = 140
+        _CONFIG["data_params"]["init"]["train_files"] = n_files - _CONFIG["data_params"]["init"]["test_files"]
+        print(_CONFIG["data_params"]["init"])
 
-if args.run_type == "train":
+    # enable mixed precision
+    _mixed_precision = False
+    if args.dtype == "amp":
+        _mixed_precision = True
+
+    # mgpu support
+    _mgpu_strategy = None
+    if args.mgpu_strategy != "None":
+        _mgpu_strategy = args.mgpu_strategy
+
+    # select app
+    n_channels = 1
+    if _CONFIG["info"]["app_name"] == "ClimateLSTMProxyAppPT":
+        from proxy_apps.apps.climate_prediction.climate_ptapp import ClimateLSTMProxyAppPT
+        app = ClimateLSTMProxyAppPT(args.platform)
+    elif _CONFIG["info"]["app_name"] == "ClimateLSTMProxyAppTF":
+        from proxy_apps.apps.climate_prediction.climate_tfapp import ClimateLSTMProxyAppTF
+        app = ClimateLSTMProxyAppTF(args.platform)
+    elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppPT":
+        from proxy_apps.apps.climate_prediction.climate_ptapp import ClimateCNNProxyAppPT
+        app = ClimateCNNProxyAppPT(args.platform)
+    elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppPTATT":
+        from proxy_apps.apps.climate_prediction.climate_ptapp import ClimateCNNProxyAppPTATT
+        app = ClimateCNNProxyAppPTATT(args.platform)
+        n_channels = 4
+    elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppTF":
+        from proxy_apps.apps.climate_prediction.climate_tfapp import ClimateCNNProxyAppTF
+        app = ClimateCNNProxyAppTF(args.platform)
+    elif _CONFIG["info"]["app_name"] == "GridLSTMProxyAppPT":
+        from proxy_apps.apps.grid_prediction.grid_ptapp import GridLSTMProxyAppPT
+        app = GridLSTMProxyAppPT(args.platform)
+    elif _CONFIG["info"]["app_name"] == "GridLSTMProxyAppTF":
+        from proxy_apps.apps.grid_prediction.grid_tfapp import GridLSTMProxyAppTF
+        app = GridLSTMProxyAppTF(args.platform)
+    elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppPT":
+        from proxy_apps.apps.grid_prediction.grid_ptapp import GridCNNProxyAppPT
+        app = GridCNNProxyAppPT(args.platform)
+    elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppPTATT":
+        from proxy_apps.apps.grid_prediction.grid_ptapp import GridCNNProxyAppPTATT
+        app = GridCNNProxyAppPTATT(args.platform)
+        n_channels = 4
+    elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppTF":
+        from proxy_apps.apps.grid_prediction.grid_tfapp import GridCNNProxyAppTF
+        app = GridCNNProxyAppTF(args.platform)
+    else:
+        sys.exit("[ERROR] Invalid App: %s" %(_CONFIG["info"]["app_name"]))
+
+    # train suffix can only be used for inference
+    if args.run_type in ["train", "compile", "run"]:
+        args.train_suffix = ""
+        print("[WARNING] Train suffix can only be used for inference")
+    
+    # train suffix
+    if args.train_suffix == "":
+        _SUFFIX = f"%s_nu%d_nc%d_e%d_b%d_d%s_mpgu%s_prof%d" %(
+            args.platform,
+            args.n_units,
+            args.n_cpus,
+            args.n_epochs,
+            args.batch_size,
+            args.dtype,
+            _mgpu_strategy,
+            args.profiling
+        )
+    else:
+        _SUFFIX = args.train_suffix
+    
+    print("[INFO] Suffix: %s" %(_SUFFIX))
+    # sys.exit(1)
+    
+    # initialize the framework
+    if args.platform == "gpu":
+        from proxy_apps.framework.gpu import GPU
+        framework = GPU(
+            machine_name=args.machine_name,
+            n_gpus=args.n_units,
+            n_cpus=args.n_cpus,
+            mgpu_strategy=_mgpu_strategy,
+            mixed_precision=_mixed_precision,
+            dtype=args.dtype
+        )
+    elif args.platform == "rdu":
+        from proxy_apps.framework.rdu import RDU
+        framework = RDU(
+            machine_name=args.machine_name,
+            dtype=args.dtype,
+            n_rdus=args.n_units
+        )
+    
+    # select the interface
+    if app._FRAMEWORK == "TF":
+        if args.platform == "rdu":
+            raise NotImplementedError("TensorFlow is not yet supported on Sambanova.")
+        else:
+            interface = framework.use_tensorflow()
+    elif app._FRAMEWORK == "PT":
+        interface = framework.use_pytorch()
+
+    # init app manager
+    interface.init_app_manager(
+        app=app,
+        app_name=_CONFIG["info"]["app_name"],
+        output_dir=_CONFIG["info"]["output_dir"],
+        mixed_precision_support=_CONFIG["info"]["mixed_precision_support"],
+        mgpu_support=_CONFIG['info']["mgpu_support"]
+    )
+    
+    # initialize data manager
+    data_manager = interface.init_data_manager(
+        data_dir=_CONFIG["data_params"]["init"]["training_data_dir"],
+        file_format=_CONFIG["data_params"]["init"]["file_format"],
+        data_manager_type=_CONFIG["info"]["data_manager"],
+        train_files=_CONFIG["data_params"]["init"]["train_files"],
+        test_files=_CONFIG["data_params"]["init"]["test_files"],
+        val_files=_CONFIG["data_params"]["init"]["val_files"],
+        shuffle=_CONFIG["data_params"]["init"]["shuffle"]
+    )
+    
+    if args.run_type == "train":
+        # load training data
+        training_data = interface.load_data(
+            data_files=data_manager._TRAIN_FILES,
+            data_params=_CONFIG["data_params"]["load_and_prep"],
+            batch_size=args.batch_size
+        )
+    
+    # load test data
+    test_data = interface.load_data(
+        data_files=data_manager._TEST_FILES,
+        data_params=_CONFIG["data_params"]["load_and_prep"],
+        sampler=None,
+        batch_size=args.batch_size
+    )
+    
+    # set parameters
+    data_params = {
+        "bw_size": _CONFIG["data_params"]["load_and_prep"]["iw_params"]["window_size"],
+        "fw_size": _CONFIG["data_params"]["load_and_prep"]["ow_params"]["window_size"],
+        "n_features": _CONFIG["data_params"]["load_and_prep"]["n_cols"] * _CONFIG["data_params"]["load_and_prep"]["repeat_cols"],
+        "batch_size": args.batch_size,
+        "n_channels": n_channels
+    }
+    
+    # check onnx model
+    model_exists = False
+    if args.run_type in ["infer_onnx"]:
+        model_name=_SUFFIX
+        model_dir=os.path.join(
+                    _CONFIG["model_info"]["model_dir"],
+                    _CONFIG["info"]["app_name"]
+                )
+        onnx_model = os.path.join(model_dir, "onnx_models/" + model_name + ".onnx")
+        if os.path.exists(onnx_model):
+            import onnxruntime
+            so = onnxruntime.SessionOptions()
+            so.graph_optimization_level = onnxruntime.GraphOptimizationLevel.ORT_ENABLE_ALL
+            print("[INFO ONNX] ONNX Model: %s" %(onnx_model))
+            so.intra_op_num_threads = 64
+            interface.sess = onnxruntime.InferenceSession(onnx_model, so, providers=['CUDAExecutionProvider'])
+            print(onnxruntime.get_device())
+            # print("Did I create the inference session?")
+            model_exists = True
+    
+    # if onnx model doesn't exist
+    if not model_exists:
+        model_exists = interface.init_training_engine(
+            model_name=_SUFFIX,
+            model_dir=os.path.join(
+                        _CONFIG["model_info"]["model_dir"],
+                        _CONFIG["info"]["app_name"]
+                    ),
+            data_params=data_params,
+            opt_params=_CONFIG["model_info"]["opt_parameters"],
+            criterion_params=None,
+            infer_through=infer_through,
+            batch_size=args.batch_size
+        )
+    # infer only if model exists
+    if (args.run_type in ["sinfer", "infer", "infer_ait", "infer_onnx"]) & (not model_exists):
+        sys.exit("[ERROR] Cannot infer without trained model.")
+    
     # model training
-    start_time = time.perf_counter()
-    interface.train_model(
-        config['model_info'], 
-        training_data_dict
-    )
-    end_time = time.perf_counter()
-    print("====> Model Training Time: ", end_time-start_time)
-else:
+    if args.run_type == "train":
+        interface.train(
+            training_data=training_data,
+            n_epochs=args.n_epochs
+        )
+    
     # inference
-    start_time = time.perf_counter()
-    interface.eval_model(
-        config['model_info'], 
-        training_data_dict
+    interface.infer(
+        data=test_data,
+        infer_through=infer_through,
+        batch_size=args.batch_size
     )
-    end_time = time.perf_counter()
-    print("====> Model Training Time: ", end_time-start_time)
+    interface.close()

@@ -9,7 +9,7 @@ import argparse
 sys.path.append("../../../")
 
 from proxy_apps.apps.cnn import TFCNN
-from proxy_apps.apps.lstm import LSTMSingleLayerTF
+from proxy_apps.apps.lstm_tf import LSTMSingleLayerTF
 
 def load_model(bw_size, fw_size, basedir, tf_modelname):
     if "Climate" in basedir:
