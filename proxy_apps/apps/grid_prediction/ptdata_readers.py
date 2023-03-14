@@ -70,3 +70,14 @@ class GridDataGenerator_PTATT(GridDataGenerator_PT):
         X_out = np.repeat(self.X[index, np.newaxis, :, :], 4, axis=0)
         return X_out, self.y[index, :]
 
+class GridDataGenerator_PTConv2D(GridDataGenerator_PT):
+    def __init__(self, dir_list, handler_params, dtype, norm=True, validation_files=None):
+        super().__init__(dir_list, handler_params, dtype, norm, validation_files)
+        self.n_channels = handler_params["n_channels"]
+
+    def __getitem__(self, index):
+        'Generates one sample of data'
+        X_out = np.repeat(self.X[index, np.newaxis, :, :], self.n_channels, axis=0)
+        y_out = np.repeat(self.y[index, np.newaxis, :, :], self.n_channels, axis=0)
+        return X_out, y_out
+

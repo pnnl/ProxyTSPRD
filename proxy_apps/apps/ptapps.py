@@ -572,3 +572,7 @@ class PTCNN2D(torch.nn.Module):
     out = d_out.view((d_out.shape[0], self.fw_size, self.n_features))
     # print("Out:", out.shape)
     return out
+  
+class GCNProxyAppPT(CNNProxyAppPT):
+    def __init__(self, platform) -> None:
+        super().__init__(platform)
