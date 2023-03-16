@@ -1,0 +1,145 @@
+[INFO] Suffix: rdu_nr8_e20_b64_dfp32_prof0
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Selected App: GridLSTMProxyAppPT
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS
+[INFO] App Supports Mixed Precision: True
+[Info][SAMBA]# Placing log files in /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0/rdu_nr8_e20_b64_dfp32_prof0.samba.log
+[Info][MAC]# Placing log files in /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0/rdu_nr8_e20_b64_dfp32_prof0.mac.log
+[INFO] Model Path: /people/jain432/pacer_saudade/models/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0.pt
+[INFO] Model Parameters:
+lstm_layer.weight_ih_l0 torch.Size([256, 136])
+lstm_layer.weight_hh_l0 torch.Size([256, 64])
+lstm_layer.bias_ih_l0 torch.Size([256])
+lstm_layer.bias_hh_l0 torch.Size([256])
+dense_layer.weight torch.Size([4080, 64])
+dense_layer.bias torch.Size([4080])
+[info] Building size named dims for graph GridLSTMProxyAppPT_samba
+[info] Building nameddims for graph GridLSTMProxyAppPT_samba
+[info] Analyze tiling for graph: GridLSTMProxyAppPT_samba
+[info] Mapping for graph GridLSTMProxyAppPT_samba
+[info] Set up stage ID and metapipe ID for section 2
+[info] Set up stage ID and metapipe ID for section 0
+[info] Set up stage ID and metapipe ID for section 1
+[info] MAC decided on the following section cuts for graph GridLSTMProxyAppPT_samba
+[info] Amortized resources overall: 1.200000e+01 PCUs, 8.600000e+01 PMUs, projected latency: 3.456867e-03 s, FLOPS: 8.630280e-02 T/s, DDR_BW: 5.053196e+00 GB/s
+[info] Lowering to TLIR succeeded.
+[info] Compilation succeeded.
+[info] Mac Compilation succeeded.
++ /opt/llvm11/bin/clang++ -DAT_PARALLEL_OPENMP=1 -D_THP_CORE -I/opt/llvm12/include -I/usr/local/lib/python3.7/site-packages/torch/lib -I./ -I/opt/sambaflow/include -isystem /usr/local/lib/python3.7/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/lib/python3.7/site-packages/torch/include -fvisibility=hidden -fno-exceptions -fno-rtti -Werror -Wall -Wno-reorder -Wno-conversion -Wno-sign-conversion -Wno-sign-compare -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-variable -Wno-strict-aliasing -Wno-unused-local-typedefs -Wunreachable-code-aggressive -Wsometimes-uninitialized -Wconditional-uninitialized -Woverflow -Waddress-of-temporary -Wpointer-arith -Wimplicit -Wbitfield-enum-conversion -Wno-unused-private-field -DSOURCE_PREFIX_LENGTH=84 -g -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -Wno-unused-parameter -Wno-missing-field-initializers -Wno-write-strings -Wno-unknown-pragmas -Wno-missing-braces -fopenmp=libomp -std=gnu++17 -o GridLSTMProxyAppPTSamba.cpp.o -c GridLSTMProxyAppPTSamba.cpp
++ /opt/llvm11/bin/clang++ -DAT_PARALLEL_OPENMP=1 -D_THP_CORE -I/opt/llvm12/include -I/usr/local/lib/python3.7/site-packages/torch/lib -I./ -I/opt/sambaflow/include -isystem /usr/local/lib/python3.7/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/lib/python3.7/site-packages/torch/include -fvisibility=hidden -fno-exceptions -fno-rtti -Werror -Wall -Wno-reorder -Wno-conversion -Wno-sign-conversion -Wno-sign-compare -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-variable -Wno-strict-aliasing -Wno-unused-local-typedefs -Wunreachable-code-aggressive -Wsometimes-uninitialized -Wconditional-uninitialized -Woverflow -Waddress-of-temporary -Wpointer-arith -Wimplicit -Wbitfield-enum-conversion -Wno-unused-private-field -DSOURCE_PREFIX_LENGTH=84 -g -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -Wno-unused-parameter -Wno-missing-field-initializers -Wno-write-strings -Wno-unknown-pragmas -Wno-missing-braces -fopenmp=libomp -std=gnu++17 -o TestGridLSTMProxyAppPTSamba.cpp.o -c TestGridLSTMProxyAppPTSamba.cpp
++ /opt/llvm11/bin/clang++ -I/opt/llvm12/include -I/usr/local/lib/python3.7/site-packages/torch/lib -I./ -I/opt/sambaflow/include -isystem /usr/local/lib/python3.7/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/lib/python3.7/site-packages/torch/include -fvisibility=hidden -fno-exceptions -fno-rtti -Werror -Wall -Wno-reorder -Wno-conversion -Wno-sign-conversion -Wno-sign-compare -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-variable -Wno-strict-aliasing -Wno-unused-local-typedefs -Wunreachable-code-aggressive -Wsometimes-uninitialized -Wconditional-uninitialized -Woverflow -Waddress-of-temporary -Wpointer-arith -Wimplicit -Wbitfield-enum-conversion -Wno-unused-private-field -DSOURCE_PREFIX_LENGTH=84 -g TestGridLSTMProxyAppPTSamba.cpp.o GridLSTMProxyAppPTSamba.cpp.o -o test_arc_rdu_nr8_e20_b64_dfp32_prof0 -L/opt/sambaflow/lib -L/opt/sambaflow/lib64/ -L/usr/local/lib -L/usr/local/lib64 -L/opt/llvm12/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/opt/sambaflow/lib:/opt/llvm12/lib:/usr/lib/x86_64-linux-gnu:/usr/local/lib:/usr/local/lib64:/usr/local/lib/python3.7/site-packages/torch/lib -lLLVMSupport -lMLIRDialect -lMLIROptLib -lMLIRPass -lMLIRQuant -lMLIRStandard -lMLIRIR -lMLIRRewrite -lMLIRPDL -lMLIRPDLInterp -lMLIRTensor -lMLIRParser -lMLIRAnalysis -lMLIRTransforms -lMLIRTransformUtils -lMLIRLoopAnalysis -lMLIRControlFlowInterfaces -lMLIRSideEffectInterfaces -lMLIRViewLikeInterface -lMLIRAffine -lMLIRLoopLikeInterface -lMLIRSCF -lMLIRCallInterfaces -lMLIRPresburger -lMLIRCopyOpInterface -lMLIREDSC -lMLIRLinalg -lPrismPlasmaTemplates -lTemplates -lPrismPlasma -lPrismShared -lRAIL -lRAILUtil -lBufferNode -lisl -lMLIRDynamicWrapper -lCompilerShared -lBoxTemplates -lMacCompiler -lArcCompiler -lCompilerAppsCarraraTemplates /usr/local/lib/python3.7/site-packages/torch/lib/libc10.so -lpef -lunwind -lyaml-cpp -ltcc /usr/local/lib/python3.7/site-packages/torch/lib/libtorch.so /usr/local/lib/python3.7/site-packages/torch/lib/libtorch_cpu.so /usr/local/lib/python3.7/site-packages/torch/lib/libc10.so -lz -lrt -ldl -ltinfo -lpthread -lm -lomp -lpthread
++ set +x
+[info] Logs are generated in /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0///rail_gen//rail_compile_logs for partition_0_0_.
+[info] Compilation succeeded for partition_0_0_
+[info] Logs are generated in /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0///rail_gen//rail_compile_logs for partition_1_0_.
+[info] Compilation succeeded for partition_1_0_
+[info] Logs are generated in /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0///rail_gen//rail_compile_logs for partition_2_0_.
+[info] Compilation succeeded for partition_2_0_
+[info] Logs are generated in /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0///rail_gen//rail_compile_logs for partition_3_0_.
+[info] Compilation succeeded for partition_3_0_
+[info] Starting Plasma compile at /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0/plasma_ir_modules/schedule_global
+[info] Plasma compile succeeded.
+[info] Starting Plasma compile at /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0/plasma_ir_modules/sections_0_3
+[info] Plasma compile succeeded.
+[info] Starting Plasma compile at /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0/plasma_ir_modules/schedule_0_3
+[info] Plasma compile succeeded.
+[info] Starting Plasma compile at /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0/plasma_ir_modules/schedule_final
+[info] Plasma compile succeeded.
+[INFO] PEF File: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0/rdu_nr8_e20_b64_dfp32_prof0.pef
+[INFO] Suffix: rdu_nr8_e20_b64_dfp32_prof0
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Selected App: GridLSTMProxyAppPT
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS
+[INFO] App Supports Mixed Precision: True
+[INFO] Suffix: rdu_nr8_e20_b64_dfp32_prof0
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Selected App: GridLSTMProxyAppPT
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS
+[INFO] App Supports Mixed Precision: True
+[INFO] Suffix: rdu_nr8_e20_b64_dfp32_prof0
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Selected App: GridLSTMProxyAppPT
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS
+[INFO] App Supports Mixed Precision: True
+[INFO] Suffix: rdu_nr8_e20_b64_dfp32_prof0
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Selected App: GridLSTMProxyAppPT
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS
+[INFO] App Supports Mixed Precision: True
+[INFO] Suffix: rdu_nr8_e20_b64_dfp32_prof0
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Selected App: GridLSTMProxyAppPT
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS
+[INFO] App Supports Mixed Precision: True
+[INFO] Suffix: rdu_nr8_e20_b64_dfp32_prof0
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Selected App: GridLSTMProxyAppPT
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS
+[INFO] App Supports Mixed Precision: True
+[INFO] Suffix: rdu_nr8_e20_b64_dfp32_prof0
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Selected App: GridLSTMProxyAppPT
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS
+[INFO] App Supports Mixed Precision: True
+[INFO] Suffix: rdu_nr8_e20_b64_dfp32_prof0
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Selected App: GridLSTMProxyAppPT
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS
+[INFO] App Supports Mixed Precision: True
+[INFO] Model Path: /people/jain432/pacer_saudade/models/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0.pt
+[INFO] Model Parameters:
+lstm_layer.weight_ih_l0 torch.Size([256, 136])
+lstm_layer.weight_hh_l0 torch.Size([256, 64])
+lstm_layer.bias_ih_l0 torch.Size([256])
+lstm_layer.bias_hh_l0 torch.Size([256])
+dense_layer.weight torch.Size([4080, 64])
+dense_layer.bias torch.Size([4080])
+[INFO] Training Data Directory: /people/jain432/pacer_saudade/data/power_system/NewTestScenarios/
+[INFO] Found 180 `*` files
+[INFO] Training on 128/180 `*` files
+[INFO] Validation on 0/180 `*` files
+[INFO] Testing on 20/180 `*` files
+2023-02-17T10:52:42 : [INFO][LIB][126063]: sn_create_session: PEF File: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0/rdu_nr8_e20_b64_dfp32_prof0.pef
+Log ID initialized to: [jain432][python][126063] at /var/log/sambaflow/runtime/sn.log
+2023-02-17T10:52:42 : [INFO][LIB][126067]: sn_create_session: PEF File: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0/rdu_nr8_e20_b64_dfp32_prof0.pef
+Log ID initialized to: [jain432][python][126067] at /var/log/sambaflow/runtime/sn.log
+2023-02-17T10:52:42 : [INFO][LIB][126068]: sn_create_session: PEF File: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0/rdu_nr8_e20_b64_dfp32_prof0.pef
+Log ID initialized to: [jain432][python][126068] at /var/log/sambaflow/runtime/sn.log
+2023-02-17T10:52:42 : [INFO][LIB][126064]: sn_create_session: PEF File: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0/rdu_nr8_e20_b64_dfp32_prof0.pef
+Log ID initialized to: [jain432][python][126064] at /var/log/sambaflow/runtime/sn.log
+2023-02-17T10:52:42 : [INFO][LIB][126066]: sn_create_session: PEF File: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0/rdu_nr8_e20_b64_dfp32_prof0.pef
+Log ID initialized to: [jain432][python][126066] at /var/log/sambaflow/runtime/sn.log
+2023-02-17T10:52:42 : [INFO][LIB][126069]: sn_create_session: PEF File: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0/rdu_nr8_e20_b64_dfp32_prof0.pef
+Log ID initialized to: [jain432][python][126069] at /var/log/sambaflow/runtime/sn.log
+2023-02-17T10:52:42 : [INFO][LIB][126062]: sn_create_session: PEF File: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0/rdu_nr8_e20_b64_dfp32_prof0.pef
+Log ID initialized to: [jain432][python][126062] at /var/log/sambaflow/runtime/sn.log
+2023-02-17T10:52:42 : [INFO][LIB][126065]: sn_create_session: PEF File: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr8_e20_b64_dfp32_prof0/rdu_nr8_e20_b64_dfp32_prof0.pef
+Log ID initialized to: [jain432][python][126065] at /var/log/sambaflow/runtime/sn.log
+Epoch [1/20], Step [327/327], Loss: 0.0721
+Epoch [2/20], Step [327/327], Loss: 0.0720
+Epoch [3/20], Step [327/327], Loss: 0.0719
+Epoch [4/20], Step [327/327], Loss: 0.0718
+Epoch [5/20], Step [327/327], Loss: 0.0717
+Epoch [6/20], Step [327/327], Loss: 0.0717
+Epoch [7/20], Step [327/327], Loss: 0.0716
+Epoch [8/20], Step [327/327], Loss: 0.0715
+Epoch [9/20], Step [327/327], Loss: 0.0715
+Epoch [10/20], Step [327/327], Loss: 0.0714
+Epoch [11/20], Step [327/327], Loss: 0.0713
+Epoch [12/20], Step [327/327], Loss: 0.0713
+Epoch [13/20], Step [327/327], Loss: 0.0712
+Epoch [14/20], Step [327/327], Loss: 0.0711
+Epoch [15/20], Step [327/327], Loss: 0.0711
+Epoch [16/20], Step [327/327], Loss: 0.0710
+Epoch [17/20], Step [327/327], Loss: 0.0710
+Epoch [18/20], Step [327/327], Loss: 0.0709
+Epoch [19/20], Step [327/327], Loss: 0.0708
+[INFO] Training Time: 34.392738; Loss: 0.071479
+[INFO] Training Time: 34.374198; Loss: 0.071367
+[INFO] Training Time: 34.392430; Loss: 0.071025
+[INFO] Training Time: 34.392678; Loss: 0.071361
+Epoch [20/20], Step [327/327], Loss: 0.0708
+[INFO] Training Time: 34.393030; Loss: 0.070774
+[INFO] Training Time: 34.392947; Loss: 0.070983
+[INFO] Training Time: 34.392912; Loss: 0.071355
+[INFO] Training Time: 34.392918; Loss: 0.072058

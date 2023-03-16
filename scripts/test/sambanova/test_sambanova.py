@@ -85,7 +85,7 @@ if __name__ == "__main__":
     _PLATFORM = "rdu"
     _MACHINE_NAME = "sambanova"
     # for debugging
-    _CONFIG["data_params"]["init"]["train_files"] = 10
+    # _CONFIG["data_params"]["init"]["train_files"] = 10
 
     if args.train_suffix == "":
         _SUFFIX = f"%s_nr%d_e%d_b%d_d%s_prof%d" %(
