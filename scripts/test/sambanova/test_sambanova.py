@@ -10,7 +10,7 @@ import argparse
 import sys
 sys.path.append('../../../')
 from proxy_apps.framework.rdu import RDU
-from proxy_apps.apps import GridLSTMProxyAppPT, GridCNNProxyAppPT, ClimateLSTMProxyAppPT, ClimateCNNProxyAppPT
+from proxy_apps.apps import *
 
 # ------------------------------- PATH & LOGGER SETUP ------------------------------------------------
 
@@ -87,6 +87,16 @@ if __name__ == "__main__":
     # for debugging
     # _CONFIG["data_params"]["init"]["train_files"] = 10
 
+    # init app
+    if _CONFIG["info"]["app_name"] == "ClimateLSTMProxyAppPT":
+        app = ClimateLSTMProxyAppPT(_PLATFORM)
+    elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppPT":
+        app = ClimateCNNProxyAppPT(_PLATFORM)
+    elif _CONFIG["info"]["app_name"] == "GridLSTMProxyAppPT":
+        app = GridLSTMProxyAppPT(_PLATFORM)
+    elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppPT":
+        app = GridCNNProxyAppPT(_PLATFORM)
+
     if args.train_suffix == "":
         _SUFFIX = f"%s_nr%d_e%d_b%d_d%s_prof%d" %(
             _PLATFORM,
@@ -110,15 +120,6 @@ if __name__ == "__main__":
 
     # select the interface
     interface = framework.use_pytorch()
-    # init app
-    if _CONFIG["info"]["app_name"] == "ClimateLSTMProxyAppPT":
-        app = ClimateLSTMProxyAppPT(_PLATFORM)
-    elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppPT":
-        app = ClimateCNNProxyAppPT(_PLATFORM)
-    elif _CONFIG["info"]["app_name"] == "GridLSTMProxyAppPT":
-        app = GridLSTMProxyAppPT(_PLATFORM)
-    elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppPT":
-        app = GridCNNProxyAppPT(_PLATFORM)
     
     # init app manager
     interface.init_app_manager(
