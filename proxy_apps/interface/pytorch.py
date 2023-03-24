@@ -547,18 +547,24 @@ class PyTorchInterfaceGPU(PyTorchInterface):
                 
         m_stop = time.time()
         model_training_time = torch.tensor([m_stop - m_start]).to(self._DEVICE)
+        all_loss = all_loss.detach()
         if self._GLOBAL_RANK == 0:
-            print("============> (Before) Model Fitting: ", model_training_time)
+            print("============> (Before Sync) Training Time: ", model_training_time)
+            print("============> (Before Sync) Training Loss: ", all_loss)
+        
         # sum of all the times
         if self._MGPU_STRATEGY == "HVD":
             model_training_time = self.hvd_torch.allreduce(model_training_time)
+            all_loss = [self.hvd_torch.allreduce(l, average=True).numpy() for l in all_loss]
             # print("[INFO (HVD)] Total Training Time", model_training_time)
         elif self._MGPU_STRATEGY == "DDP":
             dist.all_reduce(model_training_time, op=dist.ReduceOp.SUM)
             model_training_time = model_training_time / self._MGPU_SIZE
+            all_loss = [dist.all_reduce(model_training_time, op=dist.ReduceOp.SUM) / self._MGPU_SIZE for l in all_loss]
         
         if self._GLOBAL_RANK == 0:
-            print("============> (After) Model Fitting: ", model_training_time)
+            print("============> (After Sync) Training Time: ", model_training_time)
+            print("============> (After Sync) Training Loss: ", all_loss)
             
             # save model
             print("[INFO] Model Path: %s" %(self._MODEL_PATH))
@@ -622,8 +628,20 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         end_time = time.perf_counter()
         inf_time = end_time - start_time
         if self._GLOBAL_RANK == 0:
-            print("============> (After) Inference Time: ", inf_time)
-            print("============> (After) Test Loss: ", test_loss / num_samples)
+            print("============> (Before Sync) Inference Time: ", inf_time)
+            print("============> (Before Sync) Inference Loss: ", test_loss / num_samples)
+
+        # sum of all the times
+        if self._MGPU_STRATEGY == "HVD":
+            inf_time = self.hvd_torch.allreduce(inf_time)
+            # print("[INFO (HVD)] Total Training Time", model_training_time)
+        elif self._MGPU_STRATEGY == "DDP":
+            dist.all_reduce(inf_time, op=dist.ReduceOp.SUM)
+            inf_time = inf_time / self._MGPU_SIZE
+        
+        if self._GLOBAL_RANK == 0:
+            print("============> (After Sync) Inference Time: ", inf_time)
+            print("============> (After Sync) Inference Loss: ", test_loss / num_samples)
 
     def close(self):
         if self._MGPU_STRATEGY == "HVD":

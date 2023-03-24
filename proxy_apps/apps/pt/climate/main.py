@@ -1,6 +1,8 @@
-from .pt_datareaders import ClimateDataGenerator_PT, ClimateDataGenerator_PTATT
-
-from ..ptapps import LSTMProxyAppPT, CNNProxyAppPT, CNNProxyAppPTATT 
+from .datareaders import ClimateDataGenerator_PT
+from .datareaders import ClimateDataGenerator_PTATT
+from ..main import LSTMProxyAppPT
+from ..main import CNNProxyAppPT
+from ..main import CNN2DProxyAppPT 
 
 class ClimateLSTMProxyAppPT(LSTMProxyAppPT):
     def __init__(self, platform) -> None:
@@ -40,7 +42,7 @@ class ClimateCNNProxyAppPT(CNNProxyAppPT):
 
         return super().get_datagen(datagen)
 
-class ClimateCNNProxyAppPTATT(CNNProxyAppPTATT):
+class ClimateCNN2DProxyAppPT(CNN2DProxyAppPT):
     def __init__(self, platform) -> None:
         super().__init__(platform)
 

@@ -36,17 +36,17 @@ def load_model(model_path, model_parameters):
         
         if "LSTM" in basedir:
             print("[INFO] Selected Model: PT LSTM")
-            from proxy_apps.apps.ptapps import LSTMSingleLayerPT
+            from proxy_apps.apps.pt.main import LSTMSingleLayerPT
             model = LSTMSingleLayerPT
             model_name += "_lstm"
         elif "ATT" in basedir:
             print("[INFO] Selected Model: PT CNN2D")
-            from proxy_apps.apps.ptapps import PTCNN2D
+            from proxy_apps.apps.pt.main import PTCNN2D
             model = PTCNN2D
             model_name += "_lstm"
         else:
             print("[INFO] Selected Model: PT CNN")
-            from proxy_apps.apps.ptapps import PTCNN
+            from proxy_apps.apps.pt.main import PTCNN
             model = PTCNN
             model_name += "_cnn"
         
@@ -75,12 +75,12 @@ def load_model(model_path, model_parameters):
         
         if "LSTM" in basedir:
             print("[INFO] Selected Model: TF LSTM")
-            from proxy_apps.apps.tfapps import LSTMSingleLayerTF
+            from proxy_apps.apps.tf.main import LSTMSingleLayerTF
             model = LSTMSingleLayerTF
             model_name += "_lstm"
         else:
             print("[INFO] Selected Model: TF CNN")
-            from proxy_apps.apps.tfapps import TFCNN
+            from proxy_apps.apps.tf.main import TFCNN
             model = TFCNN
             model_name += "_cnn"
         

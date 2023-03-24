@@ -431,11 +431,12 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
         )
         m_stop = time.time()
         model_training_time = m_stop - m_start
-        if self._GLOBAL_RANK == 0:
-            print("============> (Before) Model Fitting: ", model_training_time)
-        
         all_loss = history.history['loss']
 
+        if self._GLOBAL_RANK == 0:
+            print("============> (Before Sync) Training Time: ", model_training_time)
+            print("============> (Before Sync) Training Loss: ", all_loss)
+        
         if self._MGPU_STRATEGY == "HVD":
             avg_model_training_time = self.hvd_keras.allreduce(model_training_time, average=True).numpy()
             avg_all_loss = [self.hvd_keras.allreduce(l, average=True).numpy() for l in all_loss]
@@ -444,8 +445,8 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
             avg_all_loss = all_loss
 
         if self._GLOBAL_RANK == 0:
-            print("============> (After) Model Fitting: ", avg_model_training_time)
-            print("============> (After) Model Loss: ", avg_all_loss)
+            print("============> (After Sync) Training Time: ", avg_model_training_time)
+            print("============> (After Sync) Training Loss: ", avg_all_loss)
             
             # save model
             print("Model Path: %s" %(self._MODEL_PATH))
@@ -496,8 +497,8 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
         
         loss = test_loss / num_samples
         if self._GLOBAL_RANK == 0:
-            print("============> (Before) Inference Time: ", inf_time)
-            print("============> (Before) Test Loss: ", loss)
+            print("============> (Before Sync) Inference Time: ", inf_time)
+            print("============> (Before Sync) Inference Loss: ", loss)
 
         if self._MGPU_STRATEGY == "HVD":
             avg_inference_time = self.hvd_keras.allreduce(inf_time, average=True).numpy()
@@ -507,8 +508,8 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
             avg_loss = loss
         
         if self._GLOBAL_RANK == 0:
-            print("============> (After) Inference Time: ", avg_inference_time)
-            print("============> (After) Inference Loss: ", avg_loss)
+            print("============> (After Sync) Inference Time: ", avg_inference_time)
+            print("============> (After Sync) Inference Loss: ", avg_loss)
 
     def close(self):
         if self._MGPU_STRATEGY == "HVD":

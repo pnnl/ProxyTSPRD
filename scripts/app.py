@@ -139,36 +139,36 @@ if __name__ == "__main__":
     # select app
     n_channels = 1
     if _CONFIG["info"]["app_name"] == "ClimateLSTMProxyAppPT":
-        from proxy_apps.apps.climate_prediction.climate_ptapp import ClimateLSTMProxyAppPT
+        from proxy_apps.apps.pt.climate import ClimateLSTMProxyAppPT
         app = ClimateLSTMProxyAppPT(args.platform)
     elif _CONFIG["info"]["app_name"] == "ClimateLSTMProxyAppTF":
-        from proxy_apps.apps.climate_prediction.climate_tfapp import ClimateLSTMProxyAppTF
+        from proxy_apps.apps.tf.climate import ClimateLSTMProxyAppTF
         app = ClimateLSTMProxyAppTF(args.platform)
     elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppPT":
-        from proxy_apps.apps.climate_prediction.climate_ptapp import ClimateCNNProxyAppPT
+        from proxy_apps.apps.pt.climate import ClimateCNNProxyAppPT
         app = ClimateCNNProxyAppPT(args.platform)
     elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppPTATT":
-        from proxy_apps.apps.climate_prediction.climate_ptapp import ClimateCNNProxyAppPTATT
+        from proxy_apps.apps.pt.climate import ClimateCNNProxyAppPTATT
         app = ClimateCNNProxyAppPTATT(args.platform)
         n_channels = 4
     elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppTF":
-        from proxy_apps.apps.climate_prediction.climate_tfapp import ClimateCNNProxyAppTF
+        from proxy_apps.apps.tf.climate import ClimateCNNProxyAppTF
         app = ClimateCNNProxyAppTF(args.platform)
     elif _CONFIG["info"]["app_name"] == "GridLSTMProxyAppPT":
-        from proxy_apps.apps.grid_prediction.grid_ptapp import GridLSTMProxyAppPT
+        from proxy_apps.apps.pt.grid import GridLSTMProxyAppPT
         app = GridLSTMProxyAppPT(args.platform)
     elif _CONFIG["info"]["app_name"] == "GridLSTMProxyAppTF":
-        from proxy_apps.apps.grid_prediction.grid_tfapp import GridLSTMProxyAppTF
+        from proxy_apps.apps.tf.grid import GridLSTMProxyAppTF
         app = GridLSTMProxyAppTF(args.platform)
     elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppPT":
-        from proxy_apps.apps.grid_prediction.grid_ptapp import GridCNNProxyAppPT
+        from proxy_apps.apps.pt.grid import GridCNNProxyAppPT
         app = GridCNNProxyAppPT(args.platform)
     elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppPTATT":
-        from proxy_apps.apps.grid_prediction.grid_ptapp import GridCNNProxyAppPTATT
+        from proxy_apps.apps.pt.grid import GridCNNProxyAppPTATT
         app = GridCNNProxyAppPTATT(args.platform)
         n_channels = 4
     elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppTF":
-        from proxy_apps.apps.grid_prediction.grid_tfapp import GridCNNProxyAppTF
+        from proxy_apps.apps.tf.grid import GridCNNProxyAppTF
         app = GridCNNProxyAppTF(args.platform)
     else:
         sys.exit("[ERROR] Invalid App: %s" %(_CONFIG["info"]["app_name"]))

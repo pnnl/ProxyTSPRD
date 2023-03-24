@@ -1,5 +1,6 @@
-from .tf_datareaders import ClimateDataGenerator_TF
-from ..tfapps import LSTMProxyAppTF, CNNProxyAppTF
+from .datareaders import ClimateDataGenerator_TF
+from ..main import LSTMProxyAppTF
+from ..main import CNNProxyAppTF
 
 class ClimateLSTMProxyAppTF(LSTMProxyAppTF):
     def __init__(self, platform) -> None:

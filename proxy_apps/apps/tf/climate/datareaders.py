@@ -3,7 +3,7 @@ import numpy as np
 import functools
 import pandas as pd
 
-import tensorflow as tf
+from .. import tf
 
 class ClimateDataGenerator_TF(tf.keras.utils.Sequence):
     'Characterizes a dataset for TensorFlow'

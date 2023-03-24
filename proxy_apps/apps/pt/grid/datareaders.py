@@ -1,7 +1,8 @@
 import functools
 import numpy as np
-import torch
-from .grid import TransientDataset
+
+from .. import torch
+from .. import TransientDataset
 
 class GridDataGenerator_PT(torch.utils.data.Dataset):
     'Characterizes a dataset for PyTorch'

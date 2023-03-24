@@ -1,8 +1,8 @@
 import functools
 import numpy as np
-import tensorflow as tf
+from .. import tf
 
-from .grid import TransientDataset
+from .. import TransientDataset
 
 def get_indexer(
         n_rows, 
@@ -74,3 +74,14 @@ class GridDataGenerator_TF(tf.keras.utils.Sequence):
     def __call__(self):
         for i in range(self.X.shape[0]):
             yield self.__getitem__(i)
+
+class GridDataGenerator_TFConv2D(GridDataGenerator_TF):
+    def __init__(self, dir_list, handler_params, dtype, norm=True, validation_files=None):
+        super().__init__(dir_list, handler_params, dtype, norm, validation_files)
+        self.n_channels = handler_params["n_channels"]
+
+    def __getitem__(self, index):
+        'Generates one sample of data'
+        X_out = np.repeat(self.X[index, np.newaxis, :, :], self.n_channels, axis=0)
+        y_out = np.repeat(self.y[index, np.newaxis, :, :], self.n_channels, axis=0)
+        return X_out, y_out
