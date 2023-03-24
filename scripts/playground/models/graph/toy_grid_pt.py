@@ -1,9 +1,11 @@
 import os, sys
 import glob
 import torch
+from scipy.sparse import random, coo_matrix
+import dgl
 
-sys.path.append("../../../")
-from proxy_apps.apps.grid_prediction.grid_ptapp import GridGCNProxyAppPT
+sys.path.append("../../../../")
+from proxy_apps.apps.pt.grid import GridGCNProxyAppPT
 
 # get app
 app = GridGCNProxyAppPT("gpu")
@@ -53,8 +55,6 @@ n_history = data_params["iw_params"]["window_size"]
 n_nodes = data_params["n_cols"]
 
 # random graph
-from scipy.sparse import random, coo_matrix
-import dgl
 adj_mx = random(n_nodes, n_nodes, density=0.25)
 sp_mx = coo_matrix(adj_mx)
 G = dgl.from_scipy(sp_mx)
