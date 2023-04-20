@@ -1,3 +1,4 @@
+import sys
 import functools
 import numpy as np
 
@@ -80,5 +81,40 @@ class GridDataGenerator_PTConv2D(GridDataGenerator_PT):
         'Generates one sample of data'
         X_out = np.repeat(self.X[index, np.newaxis, :, :], self.n_channels, axis=0)
         y_out = np.repeat(self.y[index, np.newaxis, :, :], self.n_channels, axis=0)
+        return X_out, y_out
+    
+class GridDataGenerator_PTGCN(GridDataGenerator_PT):
+    def __init__(self, dir_list, handler_params, dtype, norm=True, validation_files=None):
+        super().__init__(dir_list, handler_params, dtype, norm, validation_files)
+        self.n_channels = handler_params["n_channels"]
+
+    def read_data(self, dir_path): 
+        # raw data
+        dataset = TransientDataset(dir_path)
+        
+        # concat and repeat
+        concat_data = np.stack([dataset.F, dataset.Vm], axis=2)
+        # repeat nodes
+        repeated_data = np.repeat(concat_data, self.repeat_cols, axis=1)[:, :self.n_rows, :].astype(self.d_type)
+        
+        # raw_data = np.repeat(np.concatenate([dataset.F, dataset.Vm], axis=1), self.repeat_cols, axis=1)[:self.n_rows, :].astype(self.d_type)
+
+        # split_index = (self.n_cols * self.repeat_cols) // 2
+        flat_X_data = np.transpose(repeated_data[self.x_indexer], [0, 3, 1, 2])
+        flat_Y_data = np.transpose(repeated_data[self.y_indexer], [0, 3, 1, 2])
+        
+        if self.norm:
+            flat_X_data[:, 0, :, :] = self.scale_factor*(flat_X_data[:, 0, :, :] - 60)
+            flat_X_data[:, 1, :, :] = 10*(flat_X_data[:, 1, :, :] - 1)
+
+            flat_Y_data[:, 0, :, :] = self.scale_factor*(flat_Y_data[:, 0, :, :] - 60)
+            flat_Y_data[:, 1, :, :] = 10*(flat_Y_data[:, 1, :, :] - 1)
+
+        return flat_X_data, flat_Y_data
+
+    def __getitem__(self, index):
+        'Generates one sample of data'
+        X_out = self.X[index, :]
+        y_out = self.y[index, :]
         return X_out, y_out
 

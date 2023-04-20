@@ -91,10 +91,11 @@ if __name__ == "__main__":
     model = ToyModel().to(f'cuda:{local_rank}')
     ddp_model = DDP(model, device_ids=[global_rank])
     # ddp_model = DDP(ToyModel().cuda())
-    
     loss_fn = nn.MSELoss()
     optimizer = optim.SGD(ddp_model.parameters(), lr=0.001)
 
+    # set training mode
+    ddp_model.train()
     optimizer.zero_grad()
     outputs = ddp_model(torch.randn(20, 10).cuda())
     labels = torch.randn(20, 5).cuda()

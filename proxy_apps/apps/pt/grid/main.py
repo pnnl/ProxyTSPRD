@@ -1,6 +1,7 @@
 from .datareaders import GridDataGenerator_PT
 from .datareaders import GridDataGenerator_PTATT
 from .datareaders import GridDataGenerator_PTConv2D
+from .datareaders import GridDataGenerator_PTGCN
 from ..main import LSTMProxyAppPT
 from ..main import CNNProxyAppPT, CNN2DProxyAppPT
 from ..main import GCNProxyAppPT
@@ -73,7 +74,7 @@ class GridGCNProxyAppPT(GCNProxyAppPT):
         dtype, 
         validation_files=None
     ):
-        datagen = GridDataGenerator_PTConv2D(
+        datagen = GridDataGenerator_PTGCN(
             dir_list=files,
             handler_params=data_params,
             dtype=dtype

@@ -1,4 +1,4 @@
-import os
+import os, sys
 os.environ['DGLBACKEND']='pytorch'
 
 import torch
@@ -7,20 +7,11 @@ import torch.nn.functional as F
 
 import dgl
 import dgl.data
-
-# load data
-dataset = dgl.data.CoraGraphDataset()
-print("Number of categories: %d" %(dataset.num_classes))
-
-# load the graph
-g = dataset[0]
-print("Node features:")
-print(g.ndata['feat'].shape)
-print("Edge features:")
-print(g.edata)
-
 # load conv layer
 from dgl.nn import GraphConv
+
+sys.path.append("../")
+from helper_fncs import setup, _setup_ddp
 
 # PyTorch Model
 class GCN(nn.Module):
@@ -35,15 +26,8 @@ class GCN(nn.Module):
         h = self.conv2(g, h)
         return h
     
-# create the model with given dimensions
-model = GCN(
-            g.ndata["feat"].shape[1], 
-            16, 
-            dataset.num_classes
-        )
-
 # train the model
-def train(g, model):
+def train(model, g):
     optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
     best_val_acc = 0
     best_test_acc = 0
@@ -55,6 +39,8 @@ def train(g, model):
     val_mask = g.ndata["val_mask"]
 
     for e in range(2):
+        model.train()
+
         # forward 
         logits = model(g, features)
         
@@ -85,5 +71,43 @@ def train(g, model):
             )
         )
 
-train(g, model)
+_run_device = "cpu"
+
+if __name__ == "__main__":
+    if _run_device in ["theta", "pnnl"]:
+        # setup ddp
+        if _run_device == "theta":
+            local_rank, global_rank, size = _setup_ddp()
+        elif _run_device == "pnnl":
+            with_ddp, size, local_rank, global_rank = setup()
+        
+        # gpu params
+        use_ddp = True
+        device = torch.device("cuda:" + str(local_rank))
+    else:
+        local_rank = 0
+        size = 1
+        use_ddp = False
+        device = torch.device("cpu")
     
+    # load data
+    dataset = dgl.data.CoraGraphDataset()
+    print("Number of categories: %d" %(dataset.num_classes))
+
+    # load the graph
+    g = dataset[0]
+    print("Node features:")
+    print(g.ndata['feat'].shape)
+    print("Edge features:")
+    print(g.edata)
+    n_nodes = g.ndata['feat'].shape[0]
+
+    # create the model with given dimensions
+    model = GCN(
+                g.ndata["feat"].shape[1], 
+                16, 
+                dataset.num_classes
+            )
+
+    train(model, g)
+        
