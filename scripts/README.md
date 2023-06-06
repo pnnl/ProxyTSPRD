@@ -21,6 +21,8 @@ python app.py --config_file ${1}
 <b>Example:</b> 
 > python app.py --config_file lstm --framework TF --machine_name a100 --n_gpus 4 --n_cpus 1 --n_epochs 20 --batch_size 2048 --mixed_precision 1 --mgpu_strategy HVD --profiling 1
 
+> mpirun -np 8 --hostfile ${COBALT_NODEFILE} --npernode 8 -x PATH -x LD_LIBRARY_PATH -x PYTHONUSERBASE python -u app.py --config_file ./configs/theta/gridstgcngpt_theta.json --platform gpu --machine_name theta --n_units 8 --n_cpus 0 --n_epochs 1 --batch_size 2048 --dtype fp32 --mgpu_strategy None --profiling 0 --run_type train
+
 ```
 Following is the list of arguments:
 

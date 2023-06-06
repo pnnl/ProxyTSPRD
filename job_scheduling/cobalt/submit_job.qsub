@@ -38,7 +38,7 @@ echo "$LD_LIBRARY_PATH"
 
 ###### --hostfile ${COBALT_NODEFILE} 
 ###### NCCL_DEBUG=INFO mpirun -np $N_RANKS --map-by node python ../scripts/test/test_ddp_mpic.py
-###### mpirun -np $N_RANKS --hostfile ${COBALT_NODEFILE} --npernode 8 -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE python ../../scripts/test/test_ddp_mpic.py
+###### mpirun -np $N_RANKS --hostfile ${COBALT_NODEFILE} --npernode 8 -x PATH -x LD_LIBRARY_PATH -x PYTHONUSERBASE python ../../scripts/test/test_ddp_mpic.py
 
 echo "Job Configuration File: ${1}"
 echo "Partition: ${2}"
@@ -56,7 +56,7 @@ echo "Train Suffix: ${12}"
 mpirun -np $N_RANKS \
         --hostfile ${COBALT_NODEFILE} \
         --npernode 8 \
-        -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE \
+        -x PATH -x LD_LIBRARY_PATH -x PYTHONUSERBASE \
         orte-clean
 
 echo "Cleaning done --------------------" 1>&2
@@ -68,7 +68,7 @@ if [ ${9} == 1 ]; then
         mpirun -np $N_RANKS \
         --hostfile ${COBALT_NODEFILE} \
         --npernode 8 \
-        -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE \
+        -x PATH -x LD_LIBRARY_PATH -x PYTHONUSERBASE \
         nsys profile --kill=none --trace=cuda,cudnn,cublas \
         -o /home/milanjain91/results/tpdps23/profiles/nsys/qdrep_report_${1}_${2}_ng${N_RANKS}_nc${4}_e${5}_b${6}_mp${7}_mgpu${8}_prof${9}_${10}_%p \
         -w true \
@@ -91,7 +91,7 @@ if [ ${9} == 1 ]; then
         mpirun -np $N_RANKS \
         --hostfile ${COBALT_NODEFILE} \
         --npernode 8 \
-        -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE \
+        -x PATH -x LD_LIBRARY_PATH -x PYTHONUSERBASE \
         nsys profile --kill=none --trace=cuda,cudnn,cublas \
         -o /home/milanjain91/results/tpdps23/profiles/nsys/qdrep_report_${1}_${2}_ng${N_RANKS}_nc${4}_e${5}_b${6}_mp${7}_mgpu${8}_prof${9}_${10}_%p \
         -w true \
@@ -114,7 +114,7 @@ if [ ${9} == 1 ]; then
         mpirun -np $N_RANKS \
         --hostfile ${COBALT_NODEFILE} \
         --npernode 8 \
-        -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE \
+        -x PATH -x LD_LIBRARY_PATH -x PYTHONUSERBASE \
         nsys profile --kill=none --trace=cuda,cudnn,cublas \
         -o /home/milanjain91/results/tpdps23/profiles/nsys/qdrep_report_${1}_${2}_ng${N_RANKS}_nc${4}_e${5}_b${6}_mp${7}_mgpu${8}_prof${9}_${10}_%p \
         -w true \
@@ -160,7 +160,7 @@ else
         mpirun -np $N_RANKS \
         --hostfile ${COBALT_NODEFILE} \
         --npernode 8 \
-        -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE \
+        -x PATH -x LD_LIBRARY_PATH -x PYTHONUSERBASE \
         python -u ../../scripts/app.py \
         --config_file ../../scripts/configs/theta/${1}_theta.json \
         --platform "gpu" \
@@ -179,7 +179,7 @@ else
         mpirun -n $N_RANKS \
         --hostfile ${COBALT_NODEFILE} \
         --npernode 8 \
-        -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE \
+        -x PATH -x LD_LIBRARY_PATH -x PYTHONUSERBASE \
         python -u ../../scripts/app.py \
         --config_file ../../scripts/configs/theta/${1}_theta.json \
         --platform "gpu" \
@@ -198,7 +198,7 @@ else
         mpirun -n $N_RANKS \
         --hostfile ${COBALT_NODEFILE} \
         --npernode 8 \
-        -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE \
+        -x PATH -x LD_LIBRARY_PATH -x PYTHONUSERBASE \
         python -u ../../scripts/app.py \
         --config_file ../../scripts/configs/theta/${1}_theta.json \
         --platform "gpu" \

@@ -9,7 +9,8 @@ class GPU(Framework):
         n_cpus=0, # means all available CPUs
         mgpu_strategy=None,
         mixed_precision=False,
-        dtype="fp64"
+        dtype="fp64",
+        mpi_rank=0
     ) -> None:
         # machine name
         super().__init__(machine_name)#, config_file, n_epochs, batch_size)
@@ -22,6 +23,7 @@ class GPU(Framework):
         self._MIXED_PRECISION = mixed_precision
 
         self._DTYPE = dtype
+        self._MPI_RANK = mpi_rank
 
     def use_pytorch(self):
         super().use_pytorch()
@@ -32,7 +34,8 @@ class GPU(Framework):
             n_cpus=self._N_CPUS,
             mgpu_strategy=self._MGPU_STRATEGY,
             mixed_precision=self._MIXED_PRECISION,
-            dtype=self._DTYPE
+            dtype=self._DTYPE,
+            mpi_rank=self._MPI_RANK
         )
 
         return interface
@@ -46,7 +49,8 @@ class GPU(Framework):
             n_cpus=self._N_CPUS,
             mgpu_strategy=self._MGPU_STRATEGY,
             mixed_precision=self._MIXED_PRECISION,
-            dtype=self._DTYPE
+            dtype=self._DTYPE,
+            mpi_rank=self._MPI_RANK
         )
 
         return interface

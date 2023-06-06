@@ -10,8 +10,9 @@ from ..utils import path_handler
 class Interface:
     def __init__(
         self,
+        mpi_rank=0
     ) -> None:
-        self._GLOBAL_RANK = 0
+        self._GLOBAL_RANK = mpi_rank
 
     def init_app_manager(
         self, 

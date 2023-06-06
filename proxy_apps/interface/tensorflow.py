@@ -6,8 +6,9 @@ from .main import Interface
 class TensorFlowInterface(Interface):
     def __init__(
         self, 
+        mpi_rank=0
     ) -> None:
-        super().__init__()
+        super().__init__(mpi_rank=mpi_rank)
         self._ML_FRAMEWORK = "TensorFlow"
 
         ## Tensorflow Setup
@@ -153,9 +154,10 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
         n_cpus,
         mgpu_strategy,
         mixed_precision,
-        dtype
+        dtype,
+        mpi_rank=0
     ) -> None:
-        super().__init__()
+        super().__init__(mpi_rank=mpi_rank)
 
         # setup devices
         self._setup_devices(n_gpus, n_cpus, mgpu_strategy)

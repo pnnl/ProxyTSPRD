@@ -1,131 +1,42 @@
 # ------------------------------- IMPORT MODULES & SETUP ------------------------------------------------
 # Standard Libraries
 import os
-# os.environ['OMP_NUM_THREADS'] = '48'
-import json
-import argparse
 
 # ------------------------------- CUSTOM FUNCTIONS ------------------------------------------------
 # Custom Library
 import sys
 CURR_DIR = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.join(CURR_DIR, '../'))
-
-# ------------------------------- PATH & LOGGER SETUP ------------------------------------------------
-
-# Parse Arguments
-parser = argparse.ArgumentParser(description='Run Time Series Prediction')
-parser.add_argument(
-    "--config_file", 
-    type=str,
-    help="configuration file for model training", 
-    required=True
-)
-parser.add_argument(
-    "--platform", 
-    choices=["gpu", "cpu", "rdu"], 
-    type=str, 
-    help="name of the platform (cpu/gpu/rdu)", 
-    required=True
-)
-parser.add_argument(
-    "--machine_name", 
-    type=str, 
-    help="name of the machine", 
-    required=True
-)
-parser.add_argument(
-    "--n_units", 
-    type=int, help="number of GPUs/RDUs", 
-    default=1
-)
-parser.add_argument(
-    "--n_cpus", 
-    type=int, 
-    help="number of CPUs, invalid for RDUs", 
-    default=1
-)
-parser.add_argument(
-    "--dtype", 
-    choices=["int", "fp16", "amp", "fp32", "fp64"], 
-    type=str, 
-    help="Data type", 
-    default="fp64"
-)
-parser.add_argument(
-    "--mgpu_strategy", 
-    choices=["HVD", "DDP", "None"], 
-    type=str, 
-    help="MGPU strategy", 
-    default=None
-)
-parser.add_argument(
-    "--n_epochs", 
-    type=int, 
-    help="number of epochs", 
-    default=20
-)
-parser.add_argument(
-    "--batch_size", 
-    type=int, 
-    help="batch size", 
-    default=1024
-)
-parser.add_argument(
-    "--run_type", 
-    type=str, 
-    choices=["train", "infer", "infer_ait", "infer_onnx", "compile", "run"], 
-    help="Action to take. compile and run commands are specific to sambanova.", 
-    default="train"
-)
-parser.add_argument(
-    "--train_suffix", 
-    type=str, 
-    default="None"
-)
-parser.add_argument(
-    "--profiling", 
-    type=int, 
-    help="whether profiling or not using nsys", 
-    default=0
-)
-parser.add_argument(
-    "--write_graph", 
-    action='store_true',
-    help="Invalid for sambanova"
-)
+from app_utils import argument_parser, read_config, app_selector
 
 if __name__ == "__main__":
-    # read the arguments
-    args = parser.parse_args()
+    # parse arguments
+    args = argument_parser()
 
     # configuration file
-    _CONFIG_FILE = args.config_file
-    # check if configuration file exists
-    assert os.path.exists(_CONFIG_FILE), "Configuration file not found: %s" %(_CONFIG_FILE)
-    # read configuration file
-    with open(_CONFIG_FILE) as fp:
-        _CONFIG = json.load(fp)
+    _CONFIG, _MPI_RANK = read_config(args.config_file)
     
     # inference type
     run_type = args.run_type.split("_")
-    if len(run_type) > 1:
+    if len(run_type) > 1: # using source-to-source transformation: onnx or ait
         infer_through = run_type[1]
-    else:
+    else: # standard inference
         infer_through = None
         
-    # _CONFIG["data_params"]["init"]["train_files"] = 8
     # specific for inference
     if args.run_type in ["infer", "infer_ait", "infer_onnx"]:
-        args.n_units = args.n_units# * 8
         _CONFIG["data_params"]["init"]["shuffle"] = False
         n_files = _CONFIG["data_params"]["init"]["train_files"] + _CONFIG["data_params"]["init"]["test_files"]
+        # increase number of test files for inference - climate data
         if _CONFIG["info"]["app_name"].startswith("Climate"):
             _CONFIG["data_params"]["init"]["test_files"] = 240
+        # increase number of test files for inference - grid data
         elif _CONFIG["info"]["app_name"].startswith("Grid"):
             _CONFIG["data_params"]["init"]["test_files"] = 140
+        # reduce number of training files accordingly 
         _CONFIG["data_params"]["init"]["train_files"] = n_files - _CONFIG["data_params"]["init"]["test_files"]
-        print(_CONFIG["data_params"]["init"])
+        if _MPI_RANK == 0:
+            print("[INFO] Number of files updated:", _CONFIG["data_params"]["init"])
 
     # enable mixed precision
     _mixed_precision = False
@@ -138,52 +49,13 @@ if __name__ == "__main__":
         _mgpu_strategy = args.mgpu_strategy
 
     # select app
-    n_channels = 1
-    if _CONFIG["info"]["app_name"] == "ClimateLSTMProxyAppPT":
-        from proxy_apps.apps.pt.climate import ClimateLSTMProxyAppPT
-        app = ClimateLSTMProxyAppPT(args.platform)
-    elif _CONFIG["info"]["app_name"] == "ClimateLSTMProxyAppTF":
-        from proxy_apps.apps.tf.climate import ClimateLSTMProxyAppTF
-        app = ClimateLSTMProxyAppTF(args.platform)
-    elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppPT":
-        from proxy_apps.apps.pt.climate import ClimateCNNProxyAppPT
-        app = ClimateCNNProxyAppPT(args.platform)
-    elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppPTATT":
-        from proxy_apps.apps.pt.climate import ClimateCNNProxyAppPTATT
-        app = ClimateCNNProxyAppPTATT(args.platform)
-        n_channels = 4
-    elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppTF":
-        from proxy_apps.apps.tf.climate import ClimateCNNProxyAppTF
-        app = ClimateCNNProxyAppTF(args.platform)
-    elif _CONFIG["info"]["app_name"] == "ClimateSTGCNProxyAppPT":
-        from proxy_apps.apps.pt.climate import ClimateSTGCNProxyAppPT
-        app = ClimateSTGCNProxyAppPT(args.platform)
-    elif _CONFIG["info"]["app_name"] == "GridLSTMProxyAppPT":
-        from proxy_apps.apps.pt.grid import GridLSTMProxyAppPT
-        app = GridLSTMProxyAppPT(args.platform)
-    elif _CONFIG["info"]["app_name"] == "GridLSTMProxyAppTF":
-        from proxy_apps.apps.tf.grid import GridLSTMProxyAppTF
-        app = GridLSTMProxyAppTF(args.platform)
-    elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppPT":
-        from proxy_apps.apps.pt.grid import GridCNNProxyAppPT
-        app = GridCNNProxyAppPT(args.platform)
-    elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppPTATT":
-        from proxy_apps.apps.pt.grid import GridCNNProxyAppPTATT
-        app = GridCNNProxyAppPTATT(args.platform)
-        n_channels = 4
-    elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppTF":
-        from proxy_apps.apps.tf.grid import GridCNNProxyAppTF
-        app = GridCNNProxyAppTF(args.platform)
-    elif _CONFIG["info"]["app_name"] == "GridSTGCNProxyAppPT":
-        from proxy_apps.apps.pt.grid import GridSTGCNProxyAppPT
-        app = GridSTGCNProxyAppPT(args.platform)
-    else:
-        sys.exit("[ERROR] Invalid App: %s" %(_CONFIG["info"]["app_name"]))
+    app, n_channels = app_selector(_CONFIG["info"]["app_name"], args.platform)
 
-    # train suffix can only be used for inference
+    # [SAMBANOVA] train suffix can only be used for inference
     if args.run_type in ["train", "compile", "run"]:
         args.train_suffix = "None"
-        print("[WARNING] Train suffix can only be used for inference")
+        if _MPI_RANK == 0:
+            print("[WARNING] Train suffix can only be used for inference")
     
     # train suffix
     if args.train_suffix == "None":
@@ -197,13 +69,14 @@ if __name__ == "__main__":
             _mgpu_strategy,
             args.profiling
         )
+    # for inference
     else:
         _SUFFIX = args.train_suffix
-    
-    print("[INFO] Suffix: %s" %(_SUFFIX))
-    # sys.exit(1)
+    if _MPI_RANK == 0:
+        print("[INFO] Suffix: %s" %(_SUFFIX))
     
     # initialize the framework
+    # GPU
     if args.platform == "gpu":
         from proxy_apps.framework.gpu import GPU
         framework = GPU(
@@ -212,8 +85,10 @@ if __name__ == "__main__":
             n_cpus=args.n_cpus,
             mgpu_strategy=_mgpu_strategy,
             mixed_precision=_mixed_precision,
-            dtype=args.dtype
+            dtype=args.dtype,
+            mpi_rank=_MPI_RANK
         )
+    # RDU - Sambanova
     elif args.platform == "rdu":
         from proxy_apps.framework.rdu import RDU
         framework = RDU(
@@ -291,10 +166,12 @@ if __name__ == "__main__":
             import onnxruntime
             so = onnxruntime.SessionOptions()
             so.graph_optimization_level = onnxruntime.GraphOptimizationLevel.ORT_ENABLE_ALL
-            print("[INFO ONNX] ONNX Model: %s" %(onnx_model))
+            if _MPI_RANK == 0:
+                print("[INFO ONNX] ONNX Model: %s" %(onnx_model))
             so.intra_op_num_threads = 64
             interface.sess = onnxruntime.InferenceSession(onnx_model, so, providers=['CUDAExecutionProvider'])
-            print(onnxruntime.get_device())
+            if _MPI_RANK == 0:
+                print(onnxruntime.get_device())
             # print("Did I create the inference session?")
             model_exists = True
     
