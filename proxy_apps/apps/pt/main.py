@@ -46,7 +46,7 @@ class LSTMProxyAppPT(ProxyApp):
     def get_model(
         self,
         model_name,
-        data_params,
+        model_params,
         device=None
     ):
         super().get_model()
@@ -54,14 +54,14 @@ class LSTMProxyAppPT(ProxyApp):
         if self._PLATFORM in ["cpu", "gpu"]:
             model = LSTMSingleLayerPT(
                         model_name, 
-                        data_params, 
+                        model_params, 
                         device
                     )
         elif self._PLATFORM == "rdu":
             criterion = self.get_criterion()
             model = LSTMSingleLayerPTSamba(
                         model_name, 
-                        data_params, 
+                        model_params, 
                         criterion, 
                         device
                     )
@@ -95,7 +95,7 @@ class LSTMProxyAppPT(ProxyApp):
     
     def get_ait_model(
         self,
-        data_params,
+        model_params,
         device=None
     ):
         super().get_model()
@@ -141,7 +141,7 @@ class CNNProxyAppPT(ProxyApp):
     def get_model(
         self,
         model_name,
-        data_params,
+        model_params,
         device=None
     ):
         super().get_model()
@@ -149,13 +149,13 @@ class CNNProxyAppPT(ProxyApp):
         if self._PLATFORM in ["cpu", "gpu"]:
             model = PTCNN(
                         model_name, 
-                        data_params
+                        model_params
                     )
         elif self._PLATFORM == "rdu":
             criterion = self.get_criterion()
             model = PTCNN_SN(
                             model_name, 
-                            data_params, 
+                            model_params, 
                             criterion
                         )
         else:
@@ -226,13 +226,13 @@ class CNN2DProxyAppPT(ProxyApp):
     def get_model(
         self,
         model_name,
-        data_params,
+        model_params,
         device=None
     ):
         super().get_model()
         model = PTCNN2D(
                     model_name, 
-                    data_params
+                    model_params
                 )
         
         return model
@@ -249,7 +249,7 @@ class CNN2DProxyAppPT(ProxyApp):
 
     def get_ait_model(
         self,
-        data_params,
+        model_params,
         device=None
     ):
         super().get_model()
@@ -282,10 +282,27 @@ class CNN2DProxyAppPT(ProxyApp):
                 return out
         
         # get model
-        ait_model = AIT_PTCNN2D("PTCNN2D", data_params)
+        ait_model = AIT_PTCNN2D("PTCNN2D", model_params)
         
         return ait_model
 
-class GCNProxyAppPT(CNNProxyAppPT):
+class STGCNProxyAppPT(CNNProxyAppPT):
     def __init__(self, platform) -> None:
         super().__init__(platform)
+
+    def get_model(
+        self,
+        model_name,
+        model_params,
+        device=None
+    ):
+        # get model
+        model = STGCN_WAVE(
+                    c=model_params["other"]["channels"], 
+                    bw_size=model_params["bw_size"],
+                    fw_size=model_params["fw_size"],
+                    control_str=model_params["other"]["control_str"],
+                    device=device
+                )
+            
+        return model

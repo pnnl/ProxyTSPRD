@@ -8,7 +8,8 @@ import argparse
 # ------------------------------- CUSTOM FUNCTIONS ------------------------------------------------
 # Custom Library
 import sys
-sys.path.append('../')
+CURR_DIR = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.join(CURR_DIR, '../'))
 
 # ------------------------------- PATH & LOGGER SETUP ------------------------------------------------
 
@@ -80,7 +81,7 @@ parser.add_argument(
 parser.add_argument(
     "--train_suffix", 
     type=str, 
-    default=""
+    default="None"
 )
 parser.add_argument(
     "--profiling", 
@@ -113,7 +114,7 @@ if __name__ == "__main__":
     else:
         infer_through = None
         
-    _CONFIG["data_params"]["init"]["train_files"] = 2
+    # _CONFIG["data_params"]["init"]["train_files"] = 8
     # specific for inference
     if args.run_type in ["infer", "infer_ait", "infer_onnx"]:
         args.n_units = args.n_units# * 8
@@ -154,6 +155,9 @@ if __name__ == "__main__":
     elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppTF":
         from proxy_apps.apps.tf.climate import ClimateCNNProxyAppTF
         app = ClimateCNNProxyAppTF(args.platform)
+    elif _CONFIG["info"]["app_name"] == "ClimateSTGCNProxyAppPT":
+        from proxy_apps.apps.pt.climate import ClimateSTGCNProxyAppPT
+        app = ClimateSTGCNProxyAppPT(args.platform)
     elif _CONFIG["info"]["app_name"] == "GridLSTMProxyAppPT":
         from proxy_apps.apps.pt.grid import GridLSTMProxyAppPT
         app = GridLSTMProxyAppPT(args.platform)
@@ -170,16 +174,19 @@ if __name__ == "__main__":
     elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppTF":
         from proxy_apps.apps.tf.grid import GridCNNProxyAppTF
         app = GridCNNProxyAppTF(args.platform)
+    elif _CONFIG["info"]["app_name"] == "GridSTGCNProxyAppPT":
+        from proxy_apps.apps.pt.grid import GridSTGCNProxyAppPT
+        app = GridSTGCNProxyAppPT(args.platform)
     else:
         sys.exit("[ERROR] Invalid App: %s" %(_CONFIG["info"]["app_name"]))
 
     # train suffix can only be used for inference
     if args.run_type in ["train", "compile", "run"]:
-        args.train_suffix = ""
+        args.train_suffix = "None"
         print("[WARNING] Train suffix can only be used for inference")
     
     # train suffix
-    if args.train_suffix == "":
+    if args.train_suffix == "None":
         _SUFFIX = f"%s_nu%d_nc%d_e%d_b%d_d%s_mpgu%s_prof%d" %(
             args.platform,
             args.n_units,
@@ -246,14 +253,14 @@ if __name__ == "__main__":
     
     if args.run_type == "train":
         # load training data
-        training_data = interface.load_data(
+        training_data, g_train = interface.load_data(
             data_files=data_manager._TRAIN_FILES,
             data_params=_CONFIG["data_params"]["load_and_prep"],
             batch_size=args.batch_size
         )
     
     # load test data
-    test_data = interface.load_data(
+    test_data, g_test = interface.load_data(
         data_files=data_manager._TEST_FILES,
         data_params=_CONFIG["data_params"]["load_and_prep"],
         sampler=None,
@@ -261,13 +268,15 @@ if __name__ == "__main__":
     )
     
     # set parameters
-    data_params = {
+    model_params = {
         "bw_size": _CONFIG["data_params"]["load_and_prep"]["iw_params"]["window_size"],
         "fw_size": _CONFIG["data_params"]["load_and_prep"]["ow_params"]["window_size"],
         "n_features": _CONFIG["data_params"]["load_and_prep"]["n_cols"] * _CONFIG["data_params"]["load_and_prep"]["repeat_cols"],
         "batch_size": args.batch_size,
         "n_channels": n_channels
     }
+    if "other" in _CONFIG["model_info"]:
+        model_params["other"] = _CONFIG["model_info"]["other"]
     
     # check onnx model
     model_exists = False
@@ -297,7 +306,7 @@ if __name__ == "__main__":
                         _CONFIG["model_info"]["model_dir"],
                         _CONFIG["info"]["app_name"]
                     ),
-            data_params=data_params,
+            model_params=model_params,
             opt_params=_CONFIG["model_info"]["opt_parameters"],
             criterion_params=None,
             infer_through=infer_through,
@@ -311,13 +320,15 @@ if __name__ == "__main__":
     if args.run_type == "train":
         interface.train(
             training_data=training_data,
-            n_epochs=args.n_epochs
+            n_epochs=args.n_epochs,
+            graphloader=g_train
         )
     
     # inference
     interface.infer(
         data=test_data,
         infer_through=infer_through,
-        batch_size=args.batch_size
+        batch_size=args.batch_size,
+        graphloader=g_test
     )
     interface.close()

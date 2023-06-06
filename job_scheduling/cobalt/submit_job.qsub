@@ -12,7 +12,7 @@
 echo "Running Cobalt Job $COBALT_JOBID."
 
 module load conda
-conda activate
+conda activate dgl
 # module load openmpi/openmpi-4.0.5
 # module load cobalt/cobalt-knl
 
@@ -73,11 +73,11 @@ if [ ${9} == 1 ]; then
         -o /home/milanjain91/results/tpdps23/profiles/nsys/qdrep_report_${1}_${2}_ng${N_RANKS}_nc${4}_e${5}_b${6}_mp${7}_mgpu${8}_prof${9}_${10}_%p \
         -w true \
         --force-overwrite=true \
-        python -u ../../scripts/test/test_gpu.py \
+        python -u ../../scripts/app.py \
         --config_file ../../scripts/configs/theta/${1}_theta.json \
         --platform "gpu" \
         --machine_name ${2} \
-        --n_gpus ${N_RANKS} \
+        --n_units ${N_RANKS} \
         --n_cpus ${4} \
         --n_epochs ${5} \
         --batch_size ${6} \
@@ -96,16 +96,39 @@ if [ ${9} == 1 ]; then
         -o /home/milanjain91/results/tpdps23/profiles/nsys/qdrep_report_${1}_${2}_ng${N_RANKS}_nc${4}_e${5}_b${6}_mp${7}_mgpu${8}_prof${9}_${10}_%p \
         -w true \
         --force-overwrite=true \
-        python -u ../../scripts/test/test_gpu.py \
+        python -u ../../scripts/app.py \
         --config_file ../../scripts/configs/theta/${1}_theta.json \
         --platform "gpu" \
         --machine_name ${2} \
-        --n_gpus ${N_RANKS} \
+        --n_units ${N_RANKS} \
         --n_cpus ${4} \
         --n_epochs ${5} \
         --batch_size ${6} \
         --dtype ${7} \
         --mgpu_strategy ${8} \
+        --profiling ${9} \
+        --run_type ${10} \
+        --train_suffix ${12}
+    elif [ ${8} == "DG" ]; then
+        echo "--------- Running with DG (with Profiler) -------------------"
+        mpirun -np $N_RANKS \
+        --hostfile ${COBALT_NODEFILE} \
+        --npernode 8 \
+        -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE \
+        nsys profile --kill=none --trace=cuda,cudnn,cublas \
+        -o /home/milanjain91/results/tpdps23/profiles/nsys/qdrep_report_${1}_${2}_ng${N_RANKS}_nc${4}_e${5}_b${6}_mp${7}_mgpu${8}_prof${9}_${10}_%p \
+        -w true \
+        --force-overwrite=true \
+        python -u ../../scripts/app.py \
+        --config_file ../../scripts/configs/theta/${1}_theta.json \
+        --platform "gpu" \
+        --machine_name ${2} \
+        --n_units ${N_RANKS} \
+        --n_cpus ${4} \
+        --n_epochs ${5} \
+        --batch_size ${6} \
+        --dtype ${7} \
+        --mgpu_strategy "None" \
         --profiling ${9} \
         --run_type ${10} \
         --train_suffix ${12}
@@ -115,11 +138,11 @@ if [ ${9} == 1 ]; then
         -o /home/milanjain91/results/tpdps23/profiles/nsys/qdrep_report_${1}_${2}_ng${N_RANKS}_nc${4}_e${5}_b${6}_mp${7}_mgpu${8}_prof${9}_${10}_%p \
         -w true \
         --force-overwrite=true \
-        python -u ../../scripts/test/test_gpu.py \
+        python -u ../../scripts/app.py \
         --config_file ../../scripts/configs/theta/${1}_theta.json \
         --platform "gpu" \
         --machine_name ${2} \
-        --n_gpus ${N_RANKS} \
+        --n_units ${N_RANKS} \
         --n_cpus ${4} \
         --n_epochs ${5} \
         --batch_size ${6} \
@@ -138,11 +161,11 @@ else
         --hostfile ${COBALT_NODEFILE} \
         --npernode 8 \
         -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE \
-        python -u ../../scripts/test/test_gpu.py \
+        python -u ../../scripts/app.py \
         --config_file ../../scripts/configs/theta/${1}_theta.json \
         --platform "gpu" \
         --machine_name ${2} \
-        --n_gpus ${N_RANKS} \
+        --n_units ${N_RANKS} \
         --n_cpus ${4} \
         --n_epochs ${5} \
         --batch_size ${6} \
@@ -157,11 +180,11 @@ else
         --hostfile ${COBALT_NODEFILE} \
         --npernode 8 \
         -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE \
-        python -u ../../scripts/test/test_gpu.py \
+        python -u ../../scripts/app.py \
         --config_file ../../scripts/configs/theta/${1}_theta.json \
         --platform "gpu" \
         --machine_name ${2} \
-        --n_gpus ${N_RANKS} \
+        --n_units ${N_RANKS} \
         --n_cpus ${4} \
         --n_epochs ${5} \
         --batch_size ${6} \
@@ -170,13 +193,32 @@ else
         --profiling ${9} \
         --run_type ${10} \
         --train_suffix ${12} 
-    else
-        echo "--------- Running without Horovod/DDP (without Profiler) -------------------"
-        python -u ../../scripts/test/test_gpu.py \
+    elif [ ${8} == "DG" ]; then
+        echo "--------- Running with DG (without Profiler) -------------------"
+        mpirun -n $N_RANKS \
+        --hostfile ${COBALT_NODEFILE} \
+        --npernode 8 \
+        -x PATH -x LD_LIBRARY_PATH -x PYTHONSTARTUP -x PYTHONUSERBASE \
+        python -u ../../scripts/app.py \
         --config_file ../../scripts/configs/theta/${1}_theta.json \
         --platform "gpu" \
         --machine_name ${2} \
-        --n_gpus ${N_RANKS} \
+        --n_units ${N_RANKS} \
+        --n_cpus ${4} \
+        --n_epochs ${5} \
+        --batch_size ${6} \
+        --dtype ${7} \
+        --mgpu_strategy "None" \
+        --profiling ${9} \
+        --run_type ${10} \
+        --train_suffix ${12} 
+    else
+        echo "--------- Running without Horovod/DDP (without Profiler) -------------------"
+        python -u ../../scripts/app.py \
+        --config_file ../../scripts/configs/theta/${1}_theta.json \
+        --platform "gpu" \
+        --machine_name ${2} \
+        --n_units ${N_RANKS} \
         --n_cpus ${4} \
         --n_epochs ${5} \
         --batch_size ${6} \

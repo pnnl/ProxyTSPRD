@@ -1,16 +1,16 @@
 #!/bin/bash
 # gridcnntf, amp
 GPUS=( "theta" ) # which gpu
-MODELS=( "gridcnnpt" ) # "climatecnnpt" "climatelstmpt" "gridcnnpt" "gridlstmpt" "climatecnntf" "climatelstmtf" "gridcnntf" "gridlstmtf", "climatecnnptatt", "gridcnnptatt"
-N_NODES=( 1 )
-DTYPE=( "fp64" ) # "fp16" "fp32" "fp64" "amp" with or without mixed precision
-MGPU=( "None" ) # "HVD" "DDP" with or without mixed precision
+MODELS=( "climatestgcngpt" ) # "climatecnnpt" "climatelstmpt" "gridcnnpt" "gridlstmpt" "climatecnntf" "climatelstmtf" "gridcnntf" "gridlstmtf", "climatecnnptatt", "gridcnnptatt"
+N_NODES=( 1 2 4 8 )
+DTYPE=( "fp64" "amp" ) # "fp16" "fp32" "fp64" "amp" with or without mixed precision
+MGPU=( "DG" ) # "HVD" "DDP" with or without mixed precision
 PROF=( 0 ) # with and without profiler
-RTYPE=( "infer_onnx" )
+RTYPE=( "train" )
 NODE="full-node"
 EPOCHS=50
 BATCH_SIZE=2048
-TRAIN_SUFFIX=""
+TRAIN_SUFFIX="None"
 
 ## For single GPU
 for gpu in ${GPUS[@]}; do

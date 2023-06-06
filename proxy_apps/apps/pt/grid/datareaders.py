@@ -83,17 +83,26 @@ class GridDataGenerator_PTConv2D(GridDataGenerator_PT):
         y_out = np.repeat(self.y[index, np.newaxis, :, :], self.n_channels, axis=0)
         return X_out, y_out
     
-class GridDataGenerator_PTGCN(GridDataGenerator_PT):
+class GridDataGenerator_PTSTGCN(GridDataGenerator_PT):
     def __init__(self, dir_list, handler_params, dtype, norm=True, validation_files=None):
-        super().__init__(dir_list, handler_params, dtype, norm, validation_files)
-        self.n_channels = handler_params["n_channels"]
-
+        super().__init__(
+            dir_list, 
+            handler_params, 
+            dtype, 
+            norm, 
+            validation_files
+        )
+        self.n_features = 2
+        self.sel_neighbors = 4
+        
     def read_data(self, dir_path): 
         # raw data
         dataset = TransientDataset(dir_path)
         
         # concat and repeat
         concat_data = np.stack([dataset.F, dataset.Vm], axis=2)
+        self.n_nodes = dataset.F.shape[1]
+
         # repeat nodes
         repeated_data = np.repeat(concat_data, self.repeat_cols, axis=1)[:, :self.n_rows, :].astype(self.d_type)
         

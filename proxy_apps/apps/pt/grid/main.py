@@ -1,10 +1,10 @@
 from .datareaders import GridDataGenerator_PT
 from .datareaders import GridDataGenerator_PTATT
 from .datareaders import GridDataGenerator_PTConv2D
-from .datareaders import GridDataGenerator_PTGCN
+from .datareaders import GridDataGenerator_PTSTGCN
 from ..main import LSTMProxyAppPT
 from ..main import CNNProxyAppPT, CNN2DProxyAppPT
-from ..main import GCNProxyAppPT
+from ..main import STGCNProxyAppPT
 
 class GridLSTMProxyAppPT(LSTMProxyAppPT):
     def __init__(self, platform) -> None:
@@ -63,7 +63,7 @@ class GridCNN2DProxyAppPT(CNN2DProxyAppPT):
 
         return super().get_datagen(datagen)
     
-class GridGCNProxyAppPT(GCNProxyAppPT):
+class GridSTGCNProxyAppPT(STGCNProxyAppPT):
     def __init__(self, platform) -> None:
         super().__init__(platform)
 
@@ -74,7 +74,7 @@ class GridGCNProxyAppPT(GCNProxyAppPT):
         dtype, 
         validation_files=None
     ):
-        datagen = GridDataGenerator_PTGCN(
+        datagen = GridDataGenerator_PTSTGCN(
             dir_list=files,
             handler_params=data_params,
             dtype=dtype
