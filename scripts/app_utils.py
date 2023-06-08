@@ -125,6 +125,9 @@ def app_selector(app_name, platform):
     elif app_name == "ClimateSTGCNProxyAppPT":
         from proxy_apps.apps.pt.climate import ClimateSTGCNProxyAppPT
         app = ClimateSTGCNProxyAppPT(platform)
+    elif app_name == "ClimateSTGCNProxyAppTF":
+        from proxy_apps.apps.tf.climate import ClimateSTGCNProxyAppTF
+        app = ClimateSTGCNProxyAppTF(platform)
     elif app_name == "GridLSTMProxyAppPT":
         from proxy_apps.apps.pt.grid import GridLSTMProxyAppPT
         app = GridLSTMProxyAppPT(platform)
@@ -144,6 +147,9 @@ def app_selector(app_name, platform):
     elif app_name == "GridSTGCNProxyAppPT":
         from proxy_apps.apps.pt.grid import GridSTGCNProxyAppPT
         app = GridSTGCNProxyAppPT(platform)
+    elif app_name == "GridSTGCNProxyAppTF":
+        from proxy_apps.apps.tf.grid import GridSTGCNProxyAppTF
+        app = GridSTGCNProxyAppTF(platform)
     else:
         sys.exit("[ERROR] Invalid App: %s" %(app_name))
 

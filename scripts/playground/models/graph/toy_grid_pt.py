@@ -14,7 +14,7 @@ sys.path.append("../")
 from helper_fncs import setup, _setup_ddp
 # load model
 # from spatial_temporal_model import STGCN_WAVE
-from stgcn import STGCN_WAVE
+from stgcn_pt import STGCN_WAVE
 
 path = "/home/milanjain91/data/power_system/NewTestScenarios/"
 # path = "/people/jain432/pacer_remote/data/NewTestScenarios/"
@@ -150,13 +150,13 @@ if __name__ == "__main__":
 
     # train model
     min_val_loss = np.inf
-    for epoch in range(1, 51):
+    for epoch in range(1, 3):
         l_sum, n = 0.0, 0
         count_nodes = 0
         model.train()
         # iterate over minibatches of graph
         for input_nodes, output_nodes, mfgs in graphloader:
-            print(input_nodes.shape, output_nodes.shape)
+            # print(input_nodes.shape, output_nodes.shape)
             count_nodes = count_nodes + output_nodes.shape[0]
             # iterate over data
             for i, (inputs, targets) in enumerate(dataloader):
@@ -183,9 +183,9 @@ if __name__ == "__main__":
                 optimizer.step()
                 
                 # total error
-                l_sum += l.item()# * tgt.shape[0]
+                l_sum += l.item() * tgt.shape[0]
                 n += tgt.shape[0]
-                print(l_sum, n)
+                # print(l_sum, n)
 
         scheduler.step()
         print(

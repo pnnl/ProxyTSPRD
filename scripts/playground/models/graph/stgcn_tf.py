@@ -1,8 +1,6 @@
-import os
 import math
-from .. import tf
-os.environ["DGLBACKEND"] = "tensorflow"
-# print(os.environ["DGLBACKEND"])
+import tensorflow as tf
+
 from dgl.nn.tensorflow import GraphConv
 
 class TemporalConvLayer(tf.keras.layers.Layer):
@@ -126,12 +124,11 @@ class OutputLayer(tf.keras.layers.Layer):
         # print("X_LN:", x_ln.shape)
         x_t2 = self.tconv2(x_ln)
         # print("X_T2:", x_t2.shape)
-        # sys.exit(1)
         return tf.transpose(x_t2, (0, 3, 1, 2))
 
 class STGCN_WAVE(tf.keras.Model):
     def __init__(
-        self, c, bw_size, fw_size, device, control_str="TNTGT"
+        self, c, bw_size, fw_size, g, device, control_str="TNTGT"
     ):
         super(STGCN_WAVE, self).__init__()
         self.control_str = control_str  # model structure controller
@@ -139,6 +136,7 @@ class STGCN_WAVE(tf.keras.Model):
         self.custom_layers = []
         cnt = 0
         diapower = 0
+        self.inp_graph = g
         for i in range(self.num_layers):
             i_layer = control_str[i]
             if i_layer == "T":  # Temporal Layer
@@ -157,16 +155,16 @@ class STGCN_WAVE(tf.keras.Model):
         # for layer in self.custom_layers:
         #     layer = layer.to(device)
 
-    def call(self, x, inp_graph):
+    def call(self, x):
         for i in range(self.num_layers):
             i_layer = self.control_str[i]
             # print("(Before) Layer-%d (%s):" %(i, i_layer), x.shape)
             if i_layer == "N":
                 x = self.custom_layers[i](x)
             elif i_layer == "S":
-                x = self.custom_layers[i](x, inp_graph)
+                x = self.custom_layers[i](x, self.inp_graph)
             elif i_layer == "G":
-                x = self.custom_layers[i](x, inp_graph)
+                x = self.custom_layers[i](x, self.inp_graph)
             else:
                 x = self.custom_layers[i](x)
             # print("(After) Layer-%d (%s):" %(i, i_layer), x.shape)

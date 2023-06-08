@@ -1,10 +1,10 @@
 # ------------------------------- IMPORT MODULES & SETUP ------------------------------------------------
 # Standard Libraries
 import os
+import sys
 
 # ------------------------------- CUSTOM FUNCTIONS ------------------------------------------------
 # Custom Library
-import sys
 CURR_DIR = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.join(CURR_DIR, '../'))
 from app_utils import argument_parser, read_config, app_selector
@@ -12,7 +12,7 @@ from app_utils import argument_parser, read_config, app_selector
 if __name__ == "__main__":
     # parse arguments
     args = argument_parser()
-
+    
     # configuration file
     _CONFIG, _MPI_RANK = read_config(args.config_file)
     
@@ -48,9 +48,6 @@ if __name__ == "__main__":
     if args.mgpu_strategy != "None":
         _mgpu_strategy = args.mgpu_strategy
 
-    # select app
-    app, n_channels = app_selector(_CONFIG["info"]["app_name"], args.platform)
-
     # [SAMBANOVA] train suffix can only be used for inference
     if args.run_type in ["train", "compile", "run"]:
         args.train_suffix = "None"
@@ -59,7 +56,7 @@ if __name__ == "__main__":
     
     # train suffix
     if args.train_suffix == "None":
-        _SUFFIX = f"%s_nu%d_nc%d_e%d_b%d_d%s_mpgu%s_prof%d" %(
+        _SUFFIX = f"%s_ng%d_nc%d_e%d_b%d_d%s_mpgu%s_prof%d" %(
             args.platform,
             args.n_units,
             args.n_cpus,
@@ -98,13 +95,19 @@ if __name__ == "__main__":
         )
     
     # select the interface
-    if app._FRAMEWORK == "TF":
+    ml_framework = _CONFIG["info"]["app_name"].split("App")[1][:2]
+    # FIXME: The framework name should come from app or we should add it in the configuration file. This is buggy.
+    if ml_framework == "TF":
         if args.platform == "rdu":
             raise NotImplementedError("TensorFlow is not yet supported on Sambanova.")
         else:
             interface = framework.use_tensorflow()
-    elif app._FRAMEWORK == "PT":
+    elif ml_framework == "PT":
         interface = framework.use_pytorch()
+
+    # select app
+    # FIXME: App can only be loaded after initializing the framework, otherwise memory set won't happen. 
+    app, n_channels = app_selector(_CONFIG["info"]["app_name"], args.platform)
 
     # init app manager
     interface.init_app_manager(

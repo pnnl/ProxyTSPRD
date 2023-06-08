@@ -1,6 +1,8 @@
 import os, sys, time
+from scipy.sparse import random, coo_matrix, triu
+import pandas as pd
 import tensorflow as tf
-
+            
 from .main import Interface
 
 class TensorFlowInterface(Interface):
@@ -87,34 +89,50 @@ class TensorFlowInterface(Interface):
             data_options = tf.data.Options()
             dataloader = dataloader.with_options(data_options).batch(batch_size)
             dataloader = dataloader.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
-            
-
-        return dataloader
+        elif data_params["dataloader"] == "graphloader":
+            dataloader = tf.data.Dataset.from_generator(
+                data_generator,
+                output_signature = (
+                    tf.TensorSpec(
+                        shape=(data_generator.n_features, data_generator.x_indexer.shape[1], data_generator.n_cols * data_generator.repeat_cols // data_generator.n_features),
+                        dtype=data_generator.d_type
+                    ),
+                    tf.TensorSpec(
+                        shape=(data_generator.n_features, data_generator.y_indexer.shape[1], data_generator.n_cols * data_generator.repeat_cols // data_generator.n_features),
+                        dtype=data_generator.d_type
+                    )
+                )
+            )
+            data_options = tf.data.Options()
+            dataloader = dataloader.with_options(data_options).batch(batch_size)
+            dataloader = dataloader.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
+        
+        return data_generator, dataloader
 
     def init_training_engine(
         self,
         model_name,
         model_dir,
-        data_params,
+        model_params,
         criterion_params,
         device=None
     ):
         super().init_training_engine(
             model_name=model_name,
-            data_params=data_params,
+            model_params=model_params,
             criterion_params=criterion_params,
             device=device
         )
         model_exists = False
 
-        # print(data_params)
-        self.model.build(
-            input_shape=(
-                data_params["batch_size"], 
-                data_params["bw_size"], 
-                data_params["n_features"]
-            )
-        )
+        # print(model_params)
+        # self.model.build(
+        #     input_shape=(
+        #         model_params["batch_size"], 
+        #         model_params["bw_size"], 
+        #         model_params["n_features"]
+        #     )
+        # )
 
         # load if model exists
         self._MODEL_PATH = os.path.join(
@@ -135,9 +153,9 @@ class TensorFlowInterface(Interface):
             os.makedirs(model_dir)
 
         # print model parameters
-        if self._GLOBAL_RANK == 0:
-            print("[INFO] Model Parameters:")
-            print(self.model.summary())
+        # if self._GLOBAL_RANK == 0:
+        #     print("[INFO] Model Parameters:")
+        #     print(self.model.summary())
 
         return model_exists
 
@@ -161,7 +179,7 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
 
         # setup devices
         self._setup_devices(n_gpus, n_cpus, mgpu_strategy)
-
+        
         # setup default data type
         self._setup_default_dtype(dtype)
 
@@ -178,6 +196,7 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
         # os.environ['XLA_FLAGS']="--xla_gpu_cuda_data_dir=/share/apps/cuda/11.0/"
         os.environ["TF_GPU_THREAD_MODE"] = "gpu_private"  # to avoid gpu contention
         os.environ['TF_CUDNN_DETERMINISTIC']='1'
+        # os.environ["DGLBACKEND"] = "tensorflow"
         if self._GLOBAL_RANK == 0:
             print("[INFO] Global variables set")
         
@@ -189,6 +208,7 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
         # physical gpus
         gpus = tf.config.experimental.list_physical_devices('GPU')
         self.GPUS = gpus
+        # print(gpus)
         for gpu in gpus:
             print("[INFO] Name:", gpu.name, "  Type:", gpu.device_type)
             tf.config.experimental.set_memory_growth(gpu, True)
@@ -358,17 +378,38 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
         sampler=None,
         batch_size=1
     ):
-        return super().load_data(
+        data_generator, dataloader = super().load_data(
             data_files,
             data_params=data_params,
             batch_size=batch_size
         ) 
+        if data_params["dataloader"] in ["graphloader"]:
+            df_distance = pd.read_csv("/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/grid_graph.csv")
+            n_nodes = data_generator.n_nodes
+            print("=============DTYPE: ", self._DTYPE)
+
+            sp_mx = coo_matrix(
+                (df_distance["cost"].values, 
+                (
+                    df_distance["from"].values, 
+                    df_distance["to"].values
+                )), 
+                shape=(n_nodes, n_nodes),
+                dtype=self._DTYPE
+            )
+            import dgl
+            G = dgl.from_scipy(sp_mx)
+            G = dgl.add_self_loop(G)
+
+            return dataloader, G
+        else:
+            return dataloader, None
 
     def init_training_engine(
         self,
         model_name,
         model_dir,
-        data_params,
+        model_params,
         opt_params,
         criterion_params,
         infer_through=None,
@@ -377,7 +418,7 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
         model_exists = super().init_training_engine(
             model_name=model_name,
             model_dir=model_dir,
-            data_params=data_params,
+            model_params=model_params,
             criterion_params=criterion_params
         )
 
@@ -399,14 +440,6 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
             print("[INFO (HVD)] Enabling mixed precision in optimizer.")
             self.optimizer = tf.keras.mixed_precision.LossScaleOptimizer(self.optimizer)
 
-        # compile model
-        self.model.compile(
-            loss=self.criterion,
-            optimizer=self.optimizer,
-            metrics=[self.criterion],
-            experimental_run_tf_function=False
-        )
-
         self.callbacks = []
         if self._MGPU_STRATEGY == "HVD":
             self.callbacks.append(self.hvd_keras.callbacks.BroadcastGlobalVariablesCallback(0))
@@ -414,26 +447,94 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
 
         return model_exists
 
+    # @tf.function
+    # BUG: DGL doesn't support tf.function
+    def custom_fit(
+        self,
+        training_data,
+        graphloader,
+        n_epochs
+    ):
+        for epoch in range(1, n_epochs+1):
+            batch_losses = []
+            batch_loss = 0.0
+            epoch_loss = 0
+            n = 0
+            for inputs, targets in training_data:
+                # forward
+                with tf.GradientTape() as tape:
+                    out_values = self.model(inputs, graphloader)
+                    loss_value = self.criterion(targets, out_values)
+                    # Manually Weight Decay
+                    # We found Tensorflow has a different implementation on weight decay
+                    # of Adam(W) optimizer with PyTorch. And this results in worse results.
+                    # Manually adding weights to the loss to do weight decay solves this problem.
+                    for weight in self.model.trainable_weights:
+                        loss_value = loss_value + 5e-4 * tf.nn.l2_loss(
+                            weight
+                        )
+                        if self._MIXED_PRECISION: 
+                            loss_value = self.optimizer.get_scaled_loss(loss_value)
+
+                    grads = tape.gradient(loss_value, self.model.trainable_weights)
+                    if self._MIXED_PRECISION: 
+                        grads = self.optimizer.get_unscaled_gradients(grads)
+                    self.optimizer.apply_gradients(zip(grads, self.model.trainable_weights))
+                
+                # acc = evaluate(model, g, features, labels, val_mask)
+                # monitor loss
+                batch_loss = loss_value.numpy().item()
+                epoch_loss += batch_loss * inputs.shape[0]
+                n += inputs.shape[0]
+            
+            batch_losses.append(batch_loss)
+            print(
+                "Epoch {:02d} | Loss {:.4f} | ".format(
+                    epoch,
+                    epoch_loss / n
+                )
+            )
+        
+        return batch_losses
+    
     def train(
         self,
         training_data,
-        n_epochs
+        n_epochs,
+        graphloader=None
     ):
         super().train()
         
         m_start = time.time()
-        history = self.model.fit(
-            training_data,
-            # steps_per_epoch=steps_per_epoch,
-            epochs=n_epochs,
-            callbacks=self.callbacks,
-            # workers=16,
-            # use_multiprocessing=True,
-            verbose=1 if self._GLOBAL_RANK==0 else 0
-        )
+        print(graphloader)
+        if graphloader is None:
+            # compile model
+            self.model.compile(
+                loss=self.criterion,
+                optimizer=self.optimizer,
+                metrics=[self.criterion],
+                experimental_run_tf_function=False
+            )
+
+            history = self.model.fit(
+                training_data,
+                # steps_per_epoch=steps_per_epoch,
+                epochs=n_epochs,
+                callbacks=self.callbacks,
+                # workers=16,
+                # use_multiprocessing=True,
+                verbose=1 if self._GLOBAL_RANK==0 else 0
+            )
+            all_loss = history.history['loss']
+        else:
+            all_loss = self.custom_fit(
+                training_data, 
+                graphloader,
+                n_epochs=n_epochs
+            )
         m_stop = time.time()
         model_training_time = m_stop - m_start
-        all_loss = history.history['loss']
+        
 
         if self._GLOBAL_RANK == 0:
             print("============> (Before Sync) Training Time: ", model_training_time)
@@ -460,11 +561,54 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
         else:
             self.model.save_weights(self._MODEL_PATH)
 
+    # @tf.function
+    # BUG: DGL doesn't support tf.function
+    def infer_on_data(
+        self,
+        test_data, 
+        infer_through, 
+        batch_size=1,
+        graphloader=None
+    ):
+        # loss and accuracy
+        num_samples = 0
+        test_loss = 0.
+        
+        for inputs, target in test_data:
+            # print(inputs.shape, target.shape)
+            # print(inputs.numpy())
+            if inputs.shape[0] == batch_size:
+                if graphloader is None:
+                    if infer_through=="onnx":
+                        y_onnx = self.sess.run(["output_1"], dict({"input_1": inputs.numpy()}))
+                        yhat = y_onnx[0]
+                    else:        
+                        yhat = self.model.predict(
+                            inputs,
+                            verbose=0
+                        )
+                else:
+                    yhat = self.model(
+                        inputs,
+                        graphloader,
+                        training=False
+                    )
+
+                # calculate loss
+                self.criterion = self.app_manager.get_criterion(criterion_params={})
+                test_loss += self.criterion(yhat, target)
+
+                # calculate the number of samples
+                num_samples += 1
+
+        return test_loss, num_samples
+
     def infer(
         self,
         data,
         infer_through=None,
-        batch_size=1
+        batch_size=1,
+        graphloader=None
     ):
         super().infer()
 
@@ -474,25 +618,12 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
         
         # loss and accuracy
         start_time = time.perf_counter()
-        for inputs, target in data:
-            # print(inputs.shape, target.shape)
-            # print(inputs.numpy())
-            if inputs.shape[0] == batch_size:
-                if infer_through=="onnx":
-                    y_onnx = self.sess.run(["output_1"], dict({"input_1": inputs.numpy()}))
-                    yhat = y_onnx[0]
-                else:        
-                    yhat = self.model.predict(
-                        inputs,
-                        verbose=0
-                    )
-                
-                # calculate loss
-                self.criterion = self.app_manager.get_criterion(criterion_params={})
-                test_loss += self.criterion(yhat, target)
-
-                # calculate the number of samples
-                num_samples += 1
+        test_loss, num_samples = self.infer_on_data(
+            data, 
+            infer_through=infer_through,
+            batch_size=batch_size,
+            graphloader=graphloader
+        )
         
         end_time = time.perf_counter()
         inf_time = end_time - start_time

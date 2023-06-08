@@ -1,4 +1,4 @@
-import sys
+import os, sys
 from .main import Framework
 
 class GPU(Framework):
@@ -42,7 +42,7 @@ class GPU(Framework):
 
     def use_tensorflow(self):
         super().use_tensorflow()
-
+        
         from ..interface.tensorflow import TensorFlowInterfaceGPU
         interface = TensorFlowInterfaceGPU(
             n_gpus=self._N_GPUS,

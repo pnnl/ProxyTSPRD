@@ -1,3 +1,3 @@
 from .main import GridLSTMProxyAppTF
 from .main import GridCNNProxyAppTF
-from .main import GridGCNProxyAppTF
+from .main import GridSTGCNProxyAppTF

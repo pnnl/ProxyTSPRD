@@ -536,12 +536,12 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         # iterate over training data
         for i, (inputs, targets) in enumerate(training_data):
             # move input data to GPU
-            inputs  = inputs.to(self._DEVICE)
+            inputs, targets  = inputs.to(self._DEVICE), targets.to(self._DEVICE)
             
             # for graph data
             if (input_nodes is not None) and (output_nodes is not None):
                 inputs = inputs[:,:,:,input_nodes]
-                targets = targets[:,:,:,output_nodes.cpu()]
+                targets = targets[:,:,:,output_nodes]
                 
             # clear the gradients
             self.optimizer.zero_grad()#set_to_none=True)
@@ -549,9 +549,9 @@ class PyTorchInterfaceGPU(PyTorchInterface):
             with torch.cuda.amp.autocast(enabled=self._MIXED_PRECISION):
                 # compute the model output
                 if mfgs is not None:
-                    yhat = self.model(inputs, mfgs).cpu()
+                    yhat = self.model(inputs, mfgs)
                 else:
-                    yhat = self.model(inputs).cpu()
+                    yhat = self.model(inputs)
                 
                 # calculate loss
                 loss = self.criterion(yhat, targets)
@@ -583,6 +583,10 @@ class PyTorchInterfaceGPU(PyTorchInterface):
             # updating the loss
             loop_loss += loss
             loop_batches += 1
+
+            # free cuda memory
+            del inputs
+            del targets
         
         return loop_loss, loop_batches
 
@@ -618,7 +622,7 @@ class PyTorchInterfaceGPU(PyTorchInterface):
                 loop_loss, loop_batches = self.train_loop(training_data)
                 
                 # total loss and number of batches
-                total_loss += loop_loss
+                total_loss += loop_loss * loop_batches
                 num_batches += loop_batches
             else:
                 # for graph data
@@ -627,7 +631,7 @@ class PyTorchInterfaceGPU(PyTorchInterface):
                     loop_loss, loop_batches = self.train_loop(training_data, input_nodes, output_nodes, mfgs)
                 
                     # total loss and number of batches
-                    total_loss += loop_loss
+                    total_loss += loop_loss * loop_batches
                     num_batches += loop_batches
             
             epoch_stop_time = time.time()
