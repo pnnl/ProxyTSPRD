@@ -1,0 +1,127 @@
+
+PCU LogregTorchSamba.partition_0_0_.logreg__criterion__crossentropyloss.tcompute0_tcompute0 {
+  PCU_context ctx0.BF16 phase0 {
+    counter_chain cc_0(CounterContext::kZero, SubContext::kZero) {
+      count.BF16  V_C0 Imm(12) Imm(1) 
+      count.BF16  V_C1 Imm(500) Imm(32) 
+    }
+    PCU_code {
+      init.BF16  BF16(-inf) 
+      mov.UINT16 PR00 V_C0 
+      mov.BF16 PR04 <PCU_INPUT_PORTS.VECTOR_UNDEFINED: 10> 
+      lt.UINT16 PR10 PR00 UINT16(10) 
+      fwd.BF16 PR14 PR04 (delay 1)
+      tern.BF16 PR20 PR10 PR14 BF16(-99840) 
+      fwd.BF16 PR30 PR20 (delay 1)
+      fwd.BF16 PR40 PR30 (delay 1)
+      fwd.BF16 PR50 PR40 (delay 1)
+      reduce_acc(max).BF16 PR60 PR50 
+      fwd.BF16 PR70 PR60 (delay 1)
+      send_data.BF16 <PCU_OUTPUT_PORTS.VECTOR_UNDEFINED: 6> PR70 
+    }
+    PCU_control {
+      trigger  <PCU_INPUT_PORTS.VECTOR_UNDEFINED: 10>.valid 
+      drain   V_C0.done
+      trigger  TB0.valid 
+      token_init TB0 1 
+      token_insert TB0 CtrlPortIn(255) 
+      token_delete TB0 L1 
+      token_create L0 V_C1.done 
+      token_create L1 V_C1.done 
+      send [undefined port] L1 
+    }
+  }
+  [Context type: accumulate, output packet cadence: 12 cycle(s)]
+  PCU_context ctx1.BF16 phase1 {
+    counter_chain cc_0(CounterContext::kOne, SubContext::kZero) {
+      count.BF16  V_C2 Imm(192) Imm(1) 
+    }
+    PCU_code {
+      mov.BF16 PR00 <PCU_INPUT_PORTS.VECTOR_UNDEFINED: 10> 
+      mov.BF16 PR05 <PCU_INPUT_PORTS.VECTOR_UNDEFINED: 10> 
+      sub.BF16 PR10 PR00 PR05 
+      fwd.BF16 PR20 PR10 (delay 1)
+      fwd.BF16 PR30 PR20 (delay 1)
+      fwd.BF16 PR40 PR30 (delay 1)
+      fwd.BF16 PR50 PR40 (delay 1)
+      fwd.BF16 PR60 PR50 (delay 1)
+      exp PR70 PR60 
+      send_data.BF16 <PCU_OUTPUT_PORTS.VECTOR_UNDEFINED: 6> PR70 
+    }
+    PCU_control {
+      trigger  <PCU_INPUT_PORTS.VECTOR_UNDEFINED: 10>.valid <PCU_INPUT_PORTS.VECTOR_UNDEFINED: 10>.valid 
+      trigger  TB1.valid 
+      token_init TB1 0 
+      token_insert TB1 CtrlPortIn(255) 
+      token_delete TB1 L1 
+      token_create L0 V_C2.done 
+      token_create L1 V_C2.done 
+      send [undefined port] L1 
+    }
+  }
+  [Context type: streaming, output packet cadence: 2 cycle(s)]
+  PCU_context ctx2.BF16 phase2 {
+    counter_chain cc_0(CounterContext::kZero, SubContext::kOne) {
+      count.BF16  V_C3 Imm(10) Imm(1) 
+      count.BF16  V_C4 Imm(500) Imm(32) 
+    }
+    PCU_code {
+      init.BF16  BF16(0) 
+      mov.UINT16 PR00 V_C3 
+      mov.BF16 PR04 <PCU_INPUT_PORTS.VECTOR_UNDEFINED: 10> 
+      lt.UINT16 PR10 PR00 UINT16(10) 
+      fwd.BF16 PR14 PR04 (delay 1)
+      tern.BF16 PR20 PR10 PR14 BF16(0) 
+      macc.BF16 PR30 PR20 BF16(1) 
+      fwd.BF16 PR40 PR30 (delay 1)
+      fwd.BF16 PR50 PR40 (delay 1)
+      fwd.BF16 PR60 PR50 (delay 1)
+      ln PR70 PR60 
+      send_data.BF16 <PCU_OUTPUT_PORTS.VECTOR_UNDEFINED: 6> PR70 
+    }
+    PCU_control {
+      trigger  <PCU_INPUT_PORTS.VECTOR_UNDEFINED: 10>.valid 
+      drain   V_C3.done
+      trigger  TB2.valid 
+      token_init TB2 0 
+      token_insert TB2 CtrlPortIn(255) 
+      token_delete TB2 L1 
+      token_create L0 V_C4.done 
+      token_create L1 V_C4.done 
+      send [undefined port] L1 
+    }
+  }
+  [Context type: accumulate, output packet cadence: 10 cycle(s)]
+  PCU_context ctx3.BF16 phase3 {
+    counter_chain cc_0(CounterContext::kOne, SubContext::kOne) {
+      count.BF16  V_C5 Imm(500) Imm(1) 
+    }
+    PCU_code {
+      mov.BF16 PR00 <PCU_INPUT_PORTS.SCALAR_UNDEFINED: 9> 
+      mov.BF16 PR04 <PCU_INPUT_PORTS.SCALAR_UNDEFINED: 9> 
+      mov.BF16 PR05 <PCU_INPUT_PORTS.SCALAR_UNDEFINED: 9> 
+      sub.BF16 PR10 PR00 PR05 
+      fwd.BF16 PR12 PR04 (delay 1)
+      fwd.BF16 PR14 PR12 (delay 2)
+      sub.BF16 PR20 PR14 PR10 
+      fwd.BF16 PR30 PR20 (delay 1)
+      fwd.BF16 PR40 PR30 (delay 1)
+      fwd.BF16 PR50 PR40 (delay 1)
+      fwd.BF16 PR60 PR50 (delay 1)
+      fwd.BF16 PR70 PR60 (delay 1)
+      send_data.BF16 <PCU_OUTPUT_PORTS.SCALAR_UNDEFINED: 5> PR70 
+    }
+    PCU_control {
+      trigger  <PCU_INPUT_PORTS.SCALAR_UNDEFINED: 9>.valid <PCU_INPUT_PORTS.SCALAR_UNDEFINED: 9>.valid <PCU_INPUT_PORTS.SCALAR_UNDEFINED: 9>.valid 
+      trigger  TB3.valid 
+      token_init TB3 0 
+      token_insert TB3 CtrlPortIn(255) 
+      token_delete TB3 L1 
+      token_create L0 V_C5.done 
+      token_create L1 V_C5.done 
+      send [undefined port] L1 
+    }
+  }
+  [Context type: streaming, output packet cadence: 1 cycle(s)]
+}
+

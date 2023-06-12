@@ -5,7 +5,11 @@ import json
 import numpy as np
 import pandas as pd
 
-_DATA_DIR = '/home/milanjain91/results/tpdps23/logs/sbatch/'
+# _DATA_DIR = '/home/milanjain91/results/tpdps23/logs/sbatch/'
+_DATA_DIR = '/people/jain432/pacer_remote/output/logs/theta/sbatch/infer/b1/'
+
+# _OUTPUT_DIR = '/home/milanjain91/results/tpdps23/'
+_OUTPUT_DIR = '/people/jain432/pacer_remote/output/results/'
 
 keyword = "infer"
 if keyword == "train_tf":
@@ -19,13 +23,15 @@ if keyword == "train_pt":
     match_timestr = "============> \(After\) Model Fitting*"
     match_lossstr = ""
 elif keyword == "infer":
-    pattern = "o*e50*HVD*prof0*" + keyword + "*"
+    pattern = "o*e1_b1*prof0*" + keyword + "*"
     test_str = "\[INFO\] Testing on *"
     match_timestr = "============> \(After\) Inference Time*"
     match_lossstr = "============> \(After\) (Inference|Test) Loss*"
 
 data_files = glob.glob(_DATA_DIR + pattern)
 data_files.sort()
+
+# print(data_files)
 
 if keyword.split("_")[0] == "train":
     pattern = "^o_(climate|grid)(lstm|cnn)(tf|pt)_*"
@@ -37,7 +43,7 @@ print("[INFO] Number of data files:", len(data_files))
 # sys.exit(1)
 
 def find_runtime(filename):
-    # print(filename)
+    print(filename)
     run_time = -1
     line_buffer = [None, None, None, None, None]
     with open(filename, 'r') as fp:
@@ -74,7 +80,7 @@ def find_runtime(filename):
                 # print(row, run_time, line_buffer, loss)
                 # sys.exit(row)
             elif re.match(match_lossstr, row):
-                # print(row)
+                print(row)
                 if match_lossstr == "":
                     pass
                 else:
@@ -104,4 +110,4 @@ df_out = pd.DataFrame(result, columns=['model', 'mgpu_strategy', 'n_gpus', 'dtyp
 df_out = df_out.sort_values(['model', 'n_gpus', 'dtype', 'mgpu_strategy']).reset_index(drop=True)[['model', 'n_gpus', 'dtype', 'mgpu_strategy', 'n_cases', 'runtime', 'loss']]
 
 print(df_out)
-df_out.to_csv("../../../results/tpdps23/runtimes_" + keyword + "_v4.csv")
+df_out.to_csv(os.path.join(_OUTPUT_DIR, "runtimes_" + keyword + "_v5.csv"))

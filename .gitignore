@@ -132,3 +132,6 @@ dmypy.json
 # Project directories
 logs/
 **/logs/
+
+# log files
+*.cobaltlog

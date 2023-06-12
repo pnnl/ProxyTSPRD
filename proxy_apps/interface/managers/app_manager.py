@@ -39,12 +39,12 @@ class AppManager:
     def get_model(
         self, 
         model_name, 
-        data_params,
+        model_params,
         device=None
     ):
         return self._APP.get_model(
             model_name, 
-            data_params, 
+            model_params, 
             device=device
         )
         

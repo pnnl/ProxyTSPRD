@@ -1,0 +1,545 @@
+{
+ "nodes": {
+  "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp0": {
+   "initial_node": false,
+   "input_ports": {
+    "3000": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_every": 12
+    },
+    "3001": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_every": 12
+    },
+    "7000": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_every": 12
+    },
+    "7001": {
+     "buffer_depth": 8192,
+     "init": 1,
+     "pop_every": 12
+    }
+   },
+   "output_ports": {
+    "1001": {
+     "destinations": [
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase2",
+       "port": "12000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 1
+    },
+    "2000": {
+     "destinations": [
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp1",
+       "port": "3001",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 12
+    }
+   },
+   "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:816:0",
+   "terminal_node": false
+  },
+  "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp1": {
+   "initial_node": false,
+   "input_ports": {
+    "3000": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_every": 12
+    },
+    "3001": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_every": 12
+    },
+    "7000": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_every": 12
+    }
+   },
+   "output_ports": {
+    "1001": {
+     "destinations": [
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3",
+       "port": "16000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 1
+    },
+    "2000": {
+     "destinations": [
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRMax",
+       "port": "3001",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 12
+    }
+   },
+   "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:816:0",
+   "terminal_node": false
+  },
+  "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRMax": {
+   "initial_node": false,
+   "input_ports": {
+    "3000": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_every": 12
+    },
+    "3001": {
+     "buffer_depth": 8192,
+     "init": 1,
+     "pop_every": 12
+    },
+    "7000": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_every": 12
+    },
+    "7001": {
+     "buffer_depth": 8192,
+     "init": 1,
+     "pop_every": 12
+    }
+   },
+   "output_ports": {
+    "1001": {
+     "destinations": [
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase1",
+       "port": "6000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 1
+    },
+    "2000": {
+     "destinations": [
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp0",
+       "port": "3001",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 12
+    }
+   },
+   "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0",
+   "terminal_node": false
+  },
+  "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRSumRecip": {
+   "initial_node": false,
+   "input_ports": {
+    "3000": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_every": 12
+    },
+    "3001": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_every": 12
+    },
+    "7000": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_every": 12
+    }
+   },
+   "output_ports": {
+    "1001": {
+     "destinations": [
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3",
+       "port": "17000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 1
+    },
+    "2000": {
+     "destinations": [
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phase_rd_dummy",
+       "port": "3001",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 12
+    }
+   },
+   "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0",
+   "terminal_node": false
+  },
+  "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW0": {
+   "initial_node": false,
+   "input_ports": {
+    "3000": {
+     "buffer_depth": 8192,
+     "init": 1,
+     "pop_every": 1
+    },
+    "7000": {
+     "buffer_depth": 8192,
+     "init": 1,
+     "pop_every": 1
+    },
+    "8": {
+     "buffer_depth": 32,
+     "init": 0,
+     "pop_every": 1
+    }
+   },
+   "output_ports": {
+    "2000": {
+     "destinations": [
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW1",
+       "port": "3000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      },
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRMax",
+       "port": "3000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      },
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phase_rd_dummy",
+       "port": "3000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 1
+    }
+   },
+   "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:716:0",
+   "terminal_node": false
+  },
+  "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW1": {
+   "initial_node": false,
+   "input_ports": {
+    "3000": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_every": 12
+    },
+    "7000": {
+     "buffer_depth": 8192,
+     "init": 1,
+     "pop_every": 12
+    },
+    "8": {
+     "buffer_depth": 32,
+     "init": 0,
+     "pop_every": 1
+    }
+   },
+   "output_ports": {
+    "2000": {
+     "destinations": [
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW2",
+       "port": "3000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      },
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp0",
+       "port": "3000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 12
+    }
+   },
+   "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:749:0",
+   "terminal_node": false
+  },
+  "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW2": {
+   "initial_node": false,
+   "input_ports": {
+    "3000": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_every": 1
+    },
+    "7000": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_every": 1
+    },
+    "8": {
+     "buffer_depth": 32,
+     "init": 0,
+     "pop_every": 1
+    }
+   },
+   "output_ports": {
+    "2000": {
+     "destinations": [
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp1",
+       "port": "3000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      },
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRSumRecip",
+       "port": "3000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      },
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW0",
+       "port": "3000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 1
+    }
+   },
+   "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:716:0",
+   "terminal_node": false
+  },
+  "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phase_rd_dummy": {
+   "initial_node": false,
+   "input_ports": {
+    "3000": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_every": 1
+    },
+    "3001": {
+     "buffer_depth": 8192,
+     "init": 1,
+     "pop_every": 1
+    }
+   },
+   "output_ports": {
+    "2000": {
+     "destinations": [
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRSumRecip",
+       "port": "3001",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 1
+    }
+   },
+   "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:853:0",
+   "terminal_node": false
+  },
+  "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase0": {
+   "initial_node": false,
+   "input_ports": {
+    "3000": {
+     "buffer_depth": 1024,
+     "init": 1,
+     "pop_every": 12
+    }
+   },
+   "output_ports": {
+    "2000": {
+     "destinations": [
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase1",
+       "port": "3000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:1667:0"
+      },
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRMax",
+       "port": "7000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 12
+    }
+   },
+   "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:1667:0",
+   "terminal_node": false
+  },
+  "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase1": {
+   "initial_node": false,
+   "input_ports": {
+    "3000": {
+     "buffer_depth": 1024,
+     "init": 0,
+     "pop_every": 12
+    },
+    "6000": {
+     "buffer_depth": 8,
+     "init": 0,
+     "pop_every": 1
+    }
+   },
+   "output_ports": {
+    "10000": {
+     "destinations": [
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW1",
+       "port": "8",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 1
+    },
+    "2000": {
+     "destinations": [
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase2",
+       "port": "3000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:1667:0"
+      },
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp0",
+       "port": "7000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      },
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW2",
+       "port": "7000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 12
+    }
+   },
+   "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:1667:0",
+   "terminal_node": false
+  },
+  "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase2": {
+   "initial_node": false,
+   "input_ports": {
+    "12000": {
+     "buffer_depth": 8,
+     "init": 0,
+     "pop_every": 1
+    },
+    "3000": {
+     "buffer_depth": 1024,
+     "init": 0,
+     "pop_every": 12
+    }
+   },
+   "output_ports": {
+    "2000": {
+     "destinations": [
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3",
+       "port": "3000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:1667:0"
+      },
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRSumRecip",
+       "port": "7000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      },
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp1",
+       "port": "7000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 12
+    },
+    "7000": {
+     "destinations": [
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW2",
+       "port": "8",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 12
+    }
+   },
+   "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:1667:0",
+   "terminal_node": false
+  },
+  "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3": {
+   "initial_node": false,
+   "input_ports": {
+    "16000": {
+     "buffer_depth": 8,
+     "init": 0,
+     "pop_every": 1
+    },
+    "17000": {
+     "buffer_depth": 8,
+     "init": 0,
+     "pop_every": 1
+    },
+    "3000": {
+     "buffer_depth": 1024,
+     "init": 0,
+     "pop_every": 12
+    }
+   },
+   "output_ports": {
+    "2000": {
+     "destinations": [
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase0",
+       "port": "3000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:1667:0"
+      },
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRMax",
+       "port": "7001",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      },
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW1",
+       "port": "7000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      },
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp0",
+       "port": "7001",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      },
+      {
+       "node": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW0",
+       "port": "7000",
+       "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:877:0"
+      }
+     ],
+     "num_packets_per_push": 1,
+     "push_every": 12
+    }
+   },
+   "src_ctx": "software/compiler/apps/rail/cross_entropy_grad/template/src/RAILCrossEntropyGrad.cpp:1667:0",
+   "terminal_node": false
+  }
+ }
+}

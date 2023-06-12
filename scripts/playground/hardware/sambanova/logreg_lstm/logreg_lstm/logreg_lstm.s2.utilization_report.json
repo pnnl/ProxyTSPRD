@@ -1,0 +1,264 @@
+{
+    "available": {
+        "chips": 1,
+        "fcmus": 640,
+        "sections": 4,
+        "tiles": 4
+    },
+    "partitions": {
+        "{0, 2}": {
+            "pcus": {
+                "count": 12,
+                "utilization": 1.875
+            },
+            "pmus": {
+                "count": 44,
+                "utilization": 6.875
+            }
+        }
+    },
+    "templates": {
+        "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_939": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_940": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_941": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.gbuf1a_2_0_942": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 2,
+            "pmus": 3,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 2,
+            "pmus": 3,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 2,
+            "pmus": 3,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 2,
+            "pmus": 3,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 2,
+            "pmus": 3,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 2,
+            "pmus": 3,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_26_ptconvlstm__lstm_layer__bias_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_27_ptconvlstm__lstm_layer__bias_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_28_ptconvlstm__lstm_layer__weight_hh_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_29_ptconvlstm__lstm_layer__weight_ih_l0__ptconvlstm__lstm_layer__lstm_bwd_opt_tensor": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_30_ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_31_ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor1": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_32_ptconvlstm__dense_layer__bias__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor1": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_5_ptconvlstm__dense_layer__weight__ptconvlstm__dense_layer__linear_bwd_weight_opt_tensor": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_26": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_27": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_28": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_29": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_30": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_31": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_32": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_33": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_34": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_5": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_84": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_85": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_86": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_87": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        }
+    },
+    "used": {
+        "floating": {
+            "pcus": 0,
+            "pmus": 0,
+            "units": 0
+        },
+        "templates": {
+            "pcus": 12,
+            "pmus": 44,
+            "units": 56
+        },
+        "total": {
+            "agcus": 2,
+            "pcus": 12,
+            "pmus": 44,
+            "units": 56
+        }
+    }
+}

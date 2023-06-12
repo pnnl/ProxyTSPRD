@@ -1,0 +1,100 @@
+Tiler Layout Heuristics: true
+Slice Layout Heuristics: false
+=========================================================================================
+               py_air.cpp:1543:0: %19 = tlir.Region() {[User]; kName: "logreg__lin_layer__weight"; MacID: logreg__lin_layer__weight__logreg__lin_layer__linear_bwd_weight_opt_result0; kIsUserFacing: true; } : {10, 784} BF16 ??/??/??
+  Heuristics Disabled - No valid layouts when heuristics enabled
+  Heuristics: [X]
+=========================================================================================
+             UnknownFileName:0:0: %20 = tlir.Region() {[User]; kName: "image"; MacID: image_result0; kIsUserFacing: true; } : {784, 550} BF16 ??/??/??
+  Heuristics: [✓]
+  [✓] RV/RM/UA
+  [✓] RV/RM/VA
+  [X] RV/CM/VA: Subtensor shapes in full and slice do not match.
+  [X] DV/DM/VA: Heuristically disabled for user-facing regions
+             overrides.py:1355:0: %66 = tlir.Load(%20) {[User]; MacID: default_66; kLoadSlice: true; kLoadSlice: {0}; kSliceSize: 196; } : {196, 550} BF16 ??/??/??
+  Full shape: {784, 550}
+  Tile shape: {196, 550}
+  [✓] RV/RM/UA
+  [✓] RV/RM/VA
+  [X] RV/CM/VA: Subtensor shapes in full and slice do not match.
+  [X] DV/DM/VA: Heuristically disabled for user-facing regions
+
+=========================================================================================
+             UnknownFileName:0:0: %21 = tlir.Region() {[User]; kName: "label"; MacID: label_result0; kIsUserFacing: true; } : {550} INT16 ??/??/??
+  Heuristics Disabled - No valid layouts when heuristics enabled
+  Heuristics: [X]
+=========================================================================================
+             UnknownFileName:0:0: %22 = tlir.Region() {[User]; kName: "logreg__criterion__crossentropyloss__outputs__0__grad"; MacID: logreg__criterion__crossentropyloss__outputs__0__grad_result0; kIsUserFacing: true; } : {550} BF16 ??/??/??
+  Heuristics Disabled - No valid layouts when heuristics enabled
+  Heuristics: [X]
+=========================================================================================
+             UnknownFileName:0:0: %23 = tlir.Region() {[User]; kName: "logreg__lin_layer__linear__outputs__0__grad"; MacID: logreg__lin_layer__linear__outputs__0__grad_result0; kIsUserFacing: true; } : {550, 10} BF16 ??/??/??
+  Heuristics Disabled - No valid layouts when heuristics enabled
+  Heuristics: [X]
+=========================================================================================
+               py_air.cpp:1543:0: %24 = tlir.Region() {[User]; kName: "logreg__lin_layer__weight__sgd0__momentum"; MacID: logreg__lin_layer__weight__logreg__lin_layer__linear_bwd_weight_opt_result1; kIsUserFacing: true; } : {10, 784} BF16 ??/??/??
+  Heuristics Disabled - No valid layouts when heuristics enabled
+  Heuristics: [X]
+=========================================================================================
+               py_air.cpp:1716:0: %25 = tlir.Region() {[User]; kName: "logreg__lin_layer__linear__outputs__0"; MacID: logreg__lin_layer__linear_t_output0_result0; kIsUserFacing: true; } : {550, 10} BF16 ??/??/??
+  Heuristics Disabled - No valid layouts when heuristics enabled
+  Heuristics: [X]
+=========================================================================================
+               py_air.cpp:1716:0: %26 = tlir.Region() {[User]; kName: "logreg__criterion__crossentropyloss__outputs__0"; MacID: logreg__criterion__crossentropyloss_result0; kIsUserFacing: true; } : {550} BF16 ??/??/??
+  Heuristics Disabled - No valid layouts when heuristics enabled
+  Heuristics: [X]
+=========================================================================================
+               py_air.cpp:1716:0: %27 = tlir.Region() {[User]; kName: "logreg__lin_layer__weight__grad"; MacID: logreg__lin_layer__linear_bwd_weight_result0; kIsUserFacing: true; } : {10, 784} BF16 ??/??/??
+  Heuristics: [✓]
+  [✓] RV/RM/UA
+  [X] RV/RM/VA: Region shape[-1] must be divisible by vector size.
+  [X] CV/RM/VA: Borders[-2] must be divisible by vector size.
+  [X] CV/CM/VA: Borders[-2] must be divisible by vector size.
+  [X] DV/DM/VA: Heuristically disabled for user-facing regions
+  [X] ChV/ChM/VA: Requires region and tile rank >= 4.
+             overrides.py:1355:0: %67 = tlir.Store(%27, %117#1) {[User]; MacID: default_67; kStoreTile: true; kStartBorders: {}; kEndBorders: {}; kTileStrides: {}; kDimensionOrdering: {}; } 
+  Full shape: {10, 784}
+  Tile shape: {10, 196}
+  [✓] RV/RM/UA
+  [X] RV/RM/VA: Region shape[-1] must be divisible by vector size.
+  [X] CV/RM/VA: Borders[-2] must be divisible by vector size.
+  [X] CV/CM/VA: Borders[-2] must be divisible by vector size.
+  [X] DV/DM/VA: Heuristically disabled for user-facing regions
+  [X] ChV/ChM/VA: Requires region and tile rank >= 4.
+
+=========================================================================================
+              <unknown location>: %90 = tlir.Region() {[User:ARC003_CreateDataParallelReduceSections]; kName: "dummy_dp_accum_region_0"; MacID: default_90; kGroup: 0; } : {16384} BF16 ??/??/??
+  Heuristics Disabled - No valid layouts when heuristics enabled
+  Heuristics: [X]
+=========================================================================================
+              <unknown location>: %91 = tlir.Region(%90) {[User:ARC003_CreateDataParallelReduceSections]; kName: "accum_dummy_0"; MacID: default_91; } : {16384} BF16 RV<UL>/RM<UL>/VA<UL>
+  Heuristics: [✓]
+  [✓] RV/RM/VA
+  [✓] RV/RM/UA
+  [X] CV/RM/VA: Not supported by all operations.
+              <unknown location>: %96 = tlir.Load(%91) {[User:ARC003_CreateDataParallelReduceSections]; MacID: default_96; kLoadSlice: true; kLoadSlice: {0}; kSliceSize: 8192; kRegionViewedShape: {16384}; kRegionViewStartBorders: {}; } : {8192} BF16 ??/??/??
+  Full shape: {16384}
+  Tile shape: {8192}
+  [✓] RV/RM/VA
+  [✓] RV/RM/UA
+  [X] CV/RM/VA: Not supported by all operations.
+
+              <unknown location>: %100 = tlir.Store(%91, %118#1) {[User:ARC003_CreateDataParallelReduceSections]; MacID: default_100; kStoreSlice: true; kStoreSlice: {0}; kSliceSize: 8192; kRegionViewedShape: {16384}; kRegionViewStartBorders: {}; } 
+  Full shape: {16384}
+  Tile shape: {8192}
+  [✓] RV/RM/VA
+  [✓] RV/RM/UA
+
+=========================================================================================
+              <unknown location>: %94 = tlir.Region() {[User:ARC003_CreateDataParallelReduceSections]; kName: "accum_dummy_0_reduce_buf"; MacID: default_94; } : {16384} BF16 ??/??/??
+  Heuristics: [✓]
+  [✓] RV/RM/VA
+  [✓] RV/RM/UA
+  [X] CV/RM/VA: Not supported by all operations.
+              <unknown location>: %97 = tlir.Load(%94) {[User:ARC003_CreateDataParallelReduceSections]; MacID: default_97; kLoadSlice: true; kLoadSlice: {0}; kSliceSize: 8192; kRegionViewedShape: {16384}; kRegionViewStartBorders: {}; } : {8192} BF16 ??/??/??
+  Full shape: {16384}
+  Tile shape: {8192}
+  [✓] RV/RM/VA
+  [✓] RV/RM/UA
+  [X] CV/RM/VA: Not supported by all operations.
+

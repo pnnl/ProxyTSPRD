@@ -1,0 +1,1492 @@
+========= Summary IR ========
+tbuffer partition_0_0__tbuf2u_0_0_334
+    loc("LogregTorchSamba.cpp":923:0)
+    layout: <BF16[60, 64]RVCM/64@0x0> vec_order: {1, 0} vec_dim: 1 depth: 2 dims: {60, 64}
+    ctx: kDefaultWrite
+        loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+        type: write ctxid: 0 metapipe_iter (post divider): {100} 
+        iter_chains:
+            addr_chain  (120 # steps): 
+              iter[0] : (0 until 60 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+            ctx done: kDefaultWrite_iter0.done (120 # steps)
+        addresses:
+            addr[0] : (0 until 60 by 1 par 1).i0 vec: 0
+            addr[1] : (0 until 64 by 32 par 1).i1 vec: 1
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[1000] - src: rail.ctxdone
+            cout[wdone__] - src: rail.ctxdone
+    ctx: LogregTorchSamba.partition_0_0_.ptconvlstm__indexselect@kLutRd
+        loc("software/templates/src/templates/index/rail/Index.cpp":137:0)
+        pacing_window: default type: read ctxid: 0 metapipe_iter (post divider): {100} 
+        iter_chains:
+            addr_chain  (2 # steps): 
+              iter[0] : (0 until 1 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+            ctx done: LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kLutRd_iter0.done (2 # steps)
+        addresses:
+            addr[0] : sin[idx] vec: 0
+            addr[1] : (0 until 64 by 32 par 1).i1 vec: 1
+            en_zero : (sin[idx] < 60)
+            en_drop: 1
+        triggers:
+            sin[idx] - popif: ctx_en
+            tb init: 1 pushif: cin[0] popif: rail.ctxdone
+            tb init: 2 pushif: cin[1] popif: rail.ctxdone
+            tb init: 0 pushif: cin[kDefaultWrite_wdone_in__] popif: rail.ctxdone
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_0_0__rbuf1u_0_0_335
+    loc("LogregTorchSamba.cpp":934:0)
+    layout: <INT32[1]RM@0x0> vec_order: {0} vec_dim: 0 depth: 1 dims: {1}
+    ctx: kFrontDynamicWriteCtx
+        loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+        type: write ctxid: 0 metapipe_iter (post divider): {1} 
+        iter_chains:
+            addr_chain  (1 # steps): 
+              iter[0] : (0 until 1 by 16 par 1)
+            ctx done: kFrontDynamicWriteCtx_iter0.done (1 # steps)
+        addresses:
+            addr[0] : (0 until 1 by 16 par 1).i0 vec: 1
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[1000] - src: rail.ctxdone
+            cout[wdone__] - src: rail.ctxdone
+    ctx: LogregTorchSamba.partition_0_0_.ptconvlstm__indexselect@kIndexRd
+        loc("software/templates/src/templates/index/rail/Index.cpp":124:0)
+        pacing_window: 2 type: read ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kIndexRd_iter0.done (200 # steps)
+            addr_chain  (200 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 1 by 1 par 1) is_master 
+              iter[2] : (0 until 64 by 32 par 1)
+        addresses:
+            addr[0] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 1 pushif: cin[0] popif: pacing_done(2)
+            tb init: 2 pushif: cin[1] popif: pacing_done(2)
+            tb init: 0 pushif: cin[kFrontDynamicWriteCtx_wdone_in__] popif: rail.ctxdone
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_0_0__tbuf2u_0_0_342
+    loc("LogregTorchSamba.cpp":958:0)
+    layout: <BF16[64, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 2 dims: {64, 1}
+    ctx: LogregTorchSamba.partition_0_0_.ptconvlstm__indexselect@kOutWr
+        loc("software/templates/src/templates/index/rail/Index.cpp":161:0)
+        type: write ctxid: 0 metapipe_iter (post divider): {100} 
+        iter_chains:
+            addr_chain  (2 # steps): 
+              iter[0] : (0 until 1 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+            ctx done: LogregTorchSamba_partition_0_0__ptconvlstm__indexselect_kOutWr_iter0.done (2 # steps)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i0 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[1000] - src: rail.ctxdone
+            cout[wdone__] - src: rail.ctxdone
+    ctx: LogregTorchSamba.partition_0_0_.ptconvlstm__dense_layer__linear@kFwdPropB
+        loc("software/templates/src/templates/gemm/prism/GemmSubnet.cpp":2012:0)
+        pacing_window: default type: read ctxid: 0 metapipe_iter (post divider): {100} 
+        iter_chains:
+            ctx done: LogregTorchSamba_partition_0_0__ptconvlstm__dense_layer__linear_kFwdPropB_iter0.done (256 # steps)
+            addr_chain  (256 # steps): 
+              iter[0] : (0 until 128 by 1 par 1)
+              iter[1] : (0 until 64 by 64 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+              iter[3] : (0 until 1 by 1 par 1)
+              iter[4] : (0 until 64 by 32 par 1)
+              iter[5] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : ((0 until 64 by 64 par 1).i1 + (0 until 64 by 32 par 1).i4) vec: 1
+            addr[1] : (((0 until 1 by 1 par 1).i2 + (0 until 1 by 1 par 1).i3) + (0 - (0 until 1 by 1 par 1).i5)) vec: 0
+            en_zero : 1
+            en_drop: ((((0 until 1 by 1 par 1).i2 + (0 until 1 by 1 par 1).i3) + (0 - (0 until 1 by 1 par 1).i5)) < 1)
+        triggers:
+            tb init: 1 pushif: cin[0] popif: rail.ctxdone
+            tb init: 2 pushif: cin[1] popif: rail.ctxdone
+            tb init: 0 pushif: cin[LogregTorchSamba.partition_0_0_.ptconvlstm__indexselect@kOutWr_wdone_in__] popif: rail.ctxdone
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__tbuf2u_1_0_401
+    loc("LogregTorchSamba.cpp":2497:0)
+    layout: <BF16[60, 64]RVCM/64@0x0> vec_order: {1, 0} vec_dim: 1 depth: 2 dims: {60, 64}
+    ctx: kDefaultWrite
+        loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+        type: write ctxid: 0 metapipe_iter (post divider): {100} 
+        iter_chains:
+            addr_chain  (120 # steps): 
+              iter[0] : (0 until 64 by 32 par 1)
+              iter[1] : (0 until 60 by 1 par 1)
+            ctx done: kDefaultWrite_iter0.done (120 # steps)
+        addresses:
+            addr[0] : (0 until 60 by 1 par 1).i1 vec: 0
+            addr[1] : (0 until 64 by 32 par 1).i0 vec: 1
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[1000] - src: rail.ctxdone
+            cout[wdone__] - src: rail.ctxdone
+    ctx: LogregTorchSamba.partition_1_0_.ptconvlstm__indexselect_recompute_@kLutRd
+        loc("software/templates/src/templates/index/rail/Index.cpp":137:0)
+        pacing_window: default type: read ctxid: 0 metapipe_iter (post divider): {100} 
+        iter_chains:
+            addr_chain  (2 # steps): 
+              iter[0] : (0 until 1 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+            ctx done: LogregTorchSamba_partition_1_0__ptconvlstm__indexselect_recompute__kLutRd_iter0.done (2 # steps)
+        addresses:
+            addr[0] : sin[idx] vec: 0
+            addr[1] : (0 until 64 by 32 par 1).i1 vec: 1
+            en_zero : (sin[idx] < 60)
+            en_drop: 1
+        triggers:
+            sin[idx] - popif: ctx_en
+            tb init: 1 pushif: cin[0] popif: rail.ctxdone
+            tb init: 1 pushif: cin[1] popif: rail.ctxdone
+            tb init: 2 pushif: cin[2] popif: rail.ctxdone
+            tb init: 2 pushif: cin[3] popif: rail.ctxdone
+            tb init: 0 pushif: cin[kDefaultWrite_wdone_in__] popif: rail.ctxdone
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__rbuf1u_1_0_402
+    loc("LogregTorchSamba.cpp":2508:0)
+    layout: <INT32[1]RM@0x0> vec_order: {0} vec_dim: 0 depth: 1 dims: {1}
+    ctx: kFrontDynamicWriteCtx
+        loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+        type: write ctxid: 0 metapipe_iter (post divider): {1} 
+        iter_chains:
+            addr_chain  (1 # steps): 
+              iter[0] : (0 until 1 by 16 par 1)
+            ctx done: kFrontDynamicWriteCtx_iter0.done (1 # steps)
+        addresses:
+            addr[0] : (0 until 1 by 16 par 1).i0 vec: 1
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[1000] - src: rail.ctxdone
+            cout[wdone__] - src: rail.ctxdone
+    ctx: kDefaultRead1
+        loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+        pacing_window: 1 type: read ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kDefaultRead1_iter0.done (100 # steps)
+            addr_chain  (100 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 1 by 16 par 1) is_master 
+        addresses:
+            addr[0] : (0 until 1 by 16 par 1).i1 vec: 1
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 2 pushif: cin[0] popif: pacing_done(1)
+            tb init: 12 pushif: cin[1] popif: pacing_done(1)
+            tb init: 2 pushif: cin[2] popif: pacing_done(1)
+            tb init: 12 pushif: cin[3] popif: pacing_done(1)
+            tb init: 0 pushif: cin[kFrontDynamicWriteCtx_wdone_in__] popif: rail.ctxdone
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__tbuf2a_1_0_850
+    loc("LogregTorchSamba.cpp":2519:0)
+    layout: <INT32[1]RM@0x0> vec_order: {0} vec_dim: 0 depth: 2 dims: {1}
+    ctx: kDefaultWrite
+        loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+        type: write ctxid: 0 metapipe_iter (post divider): {100} 
+        iter_chains:
+            addr_chain  (1 # steps): 
+              iter[0] : (0 until 1 by 16 par 1)
+            ctx done: kDefaultWrite_iter0.done (1 # steps)
+        addresses:
+            addr[0] : (0 until 1 by 16 par 1).i0 vec: 1
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[1000] - src: rail.ctxdone
+            cout[wdone__] - src: rail.ctxdone
+    ctx: LogregTorchSamba.partition_1_0_.ptconvlstm__indexselect_recompute_@kIndexRd
+        loc("software/templates/src/templates/index/rail/Index.cpp":124:0)
+        pacing_window: default type: read ctxid: 0 metapipe_iter (post divider): {100} 
+        iter_chains:
+            addr_chain  (2 # steps): 
+              iter[0] : (0 until 1 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+            ctx done: LogregTorchSamba_partition_1_0__ptconvlstm__indexselect_recompute__kIndexRd_iter0.done (2 # steps)
+        addresses:
+            addr[0] : (0 until 1 by 1 par 1).i0 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 1 pushif: cin[0] popif: rail.ctxdone
+            tb init: 1 pushif: cin[1] popif: rail.ctxdone
+            tb init: 2 pushif: cin[2] popif: rail.ctxdone
+            tb init: 2 pushif: cin[3] popif: rail.ctxdone
+            tb init: 0 pushif: cin[kDefaultWrite_wdone_in__] popif: rail.ctxdone
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__tbuf2u_1_0_406
+    loc("LogregTorchSamba.cpp":2543:0)
+    layout: <BF16[1, 64]RVCM/64@0x0> vec_order: {1, 0} vec_dim: 1 depth: 2 dims: {1, 64}
+    ctx: LogregTorchSamba.partition_1_0_.ptconvlstm__indexselect_recompute_@kOutWr
+        loc("software/templates/src/templates/index/rail/Index.cpp":161:0)
+        type: write ctxid: 0 metapipe_iter (post divider): {100} 
+        iter_chains:
+            addr_chain  (2 # steps): 
+              iter[0] : (0 until 1 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+            ctx done: LogregTorchSamba_partition_1_0__ptconvlstm__indexselect_recompute__kOutWr_iter0.done (2 # steps)
+        addresses:
+            addr[0] : (0 until 1 by 1 par 1).i0 vec: 0
+            addr[1] : (0 until 64 by 32 par 1).i1 vec: 1
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[1000] - src: rail.ctxdone
+            cout[wdone__] - src: rail.ctxdone
+    ctx: kDefaultRead1
+        loc("software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp":469:0)
+        pacing_window: default type: read ctxid: 0 metapipe_iter (post divider): {100} 
+        iter_chains:
+            addr_chain  (2 # steps): 
+              iter[0] : (0 until 64 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+            ctx done: kDefaultRead1_iter0.done (2 # steps)
+        addresses:
+            addr[0] : (0 until 1 by 1 par 1).i1 vec: 0
+            addr[1] : (0 until 64 by 32 par 1).i0 vec: 1
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 1 pushif: cin[0] popif: rail.ctxdone
+            tb init: 7 pushif: cin[1] popif: rail.ctxdone
+            tb init: 0 pushif: cin[LogregTorchSamba.partition_1_0_.ptconvlstm__indexselect_recompute_@kOutWr_wdone_in__] popif: rail.ctxdone
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__tbuf2u_1_0_409
+    loc("LogregTorchSamba.cpp":2565:0)
+    layout: <BF16[64, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 2 dims: {64, 1}
+    ctx: LogregTorchSamba.partition_1_0_.ptconvlstm__indexselect_recompute_@kOutWr
+        loc("software/templates/src/templates/index/rail/Index.cpp":161:0)
+        type: write ctxid: 0 metapipe_iter (post divider): {100} 
+        iter_chains:
+            addr_chain  (2 # steps): 
+              iter[0] : (0 until 1 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+            ctx done: LogregTorchSamba_partition_1_0__ptconvlstm__indexselect_recompute__kOutWr_iter0.done (2 # steps)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i0 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[1000] - src: rail.ctxdone
+            cout[wdone__] - src: rail.ctxdone
+    ctx: LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_recompute_@kFwdPropB
+        loc("software/templates/src/templates/gemm/prism/GemmSubnet.cpp":2012:0)
+        pacing_window: default type: read ctxid: 0 metapipe_iter (post divider): {100} 
+        iter_chains:
+            ctx done: LogregTorchSamba_partition_1_0__ptconvlstm__dense_layer__linear_recompute__kFwdPropB_iter0.done (256 # steps)
+            addr_chain  (256 # steps): 
+              iter[0] : (0 until 128 by 1 par 1)
+              iter[1] : (0 until 64 by 64 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+              iter[3] : (0 until 1 by 1 par 1)
+              iter[4] : (0 until 64 by 32 par 1)
+              iter[5] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : ((0 until 64 by 64 par 1).i1 + (0 until 64 by 32 par 1).i4) vec: 1
+            addr[1] : (((0 until 1 by 1 par 1).i2 + (0 until 1 by 1 par 1).i3) + (0 - (0 until 1 by 1 par 1).i5)) vec: 0
+            en_zero : 1
+            en_drop: ((((0 until 1 by 1 par 1).i2 + (0 until 1 by 1 par 1).i3) + (0 - (0 until 1 by 1 par 1).i5)) < 1)
+        triggers:
+            tb init: 1 pushif: cin[0] popif: rail.ctxdone
+            tb init: 2 pushif: cin[1] popif: rail.ctxdone
+            tb init: 0 pushif: cin[LogregTorchSamba.partition_1_0_.ptconvlstm__indexselect_recompute_@kOutWr_wdone_in__] popif: rail.ctxdone
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__dense_layer__linear_bwd_weight_accum_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[262144, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {262144, 1}
+    ctx: w_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+        disable_full_stall type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: w_loop_0_0_iter1.done (8192 # steps)
+            addr_chain  (819200 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 262144 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 262144 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : 1
+            en_drop: (((0 until 262144 by 32 par 1).i1 >= 0) && ((0 until 262144 by 32 par 1).i1 < 262144))
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[w_loop_done] - src: w_loop_0_0_iter0.done
+            cout[w_loop_special_done] - src: w_loop_0_0_iter1.done
+            cout[1000] - src: rail.ctxdone
+    ctx: r_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":473:0)
+        pacing_window: default disable_empty_stall port: READ1 ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            addr_chain  (811008 # steps): 
+              iter[0] : (0 until 99 by 1 par 1)
+              iter[1] : (0 until 262144 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+            ctx done: r_loop_0_0_iter1.done (8192 # steps)
+        addresses:
+            addr[0] : (0 until 262144 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : (((0 until 262144 by 32 par 1).i1 >= 0) && ((0 until 262144 by 32 par 1).i1 < 262144))
+            en_drop: 1
+            annotation : 
+              chain : 
+                iter[0] : (0 until 99 by 1 par 1)
+                iter[1] : (0 until 262144 by 32 par 1)
+                iter[2] : (0 until 1 by 1 par 1)
+              addr[0] : (0 until 262144 by 32 par 1).i1
+              addr[1] : (0 until 1 by 1 par 1).i2
+        triggers:
+            tb init: 0 pushif: cin[w_loop_special_done_in] popif: (r_loop_0_0_iter1.done || cin[r_drain_done_in])
+            tb init: 1 pushif: cin[not_last] popif: r_loop_0_0_iter0.done
+            cout[1000] - src: rail.ctxdone
+    ctx: kBackReadCtx
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+        pacing_window: 8192 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kBackReadCtx_iter0.done (8192 # steps)
+            addr_chain  (8192 # steps): 
+              iter[0] : (0 until 262144 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 262144 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 0 pushif: cin[w_done_in_0_0] popif: kBackReadCtx_iter0.done
+            tb init: 1 pushif: cin[pacing_in] popif: pacing_done(8192, reset_by=(0 until 262144 by 32 par 1).i0)
+            cout[r_drain_done] - src: kBackReadCtx_iter0.done
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__dense_layer__linear_bwd_weight_accum_1_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[4096, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {4096, 1}
+    ctx: w_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+        disable_full_stall type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: w_loop_0_0_iter1.done (128 # steps)
+            addr_chain  (12800 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 4096 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 4096 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : 1
+            en_drop: (((0 until 4096 by 32 par 1).i1 >= 0) && ((0 until 4096 by 32 par 1).i1 < 4096))
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[w_loop_done] - src: w_loop_0_0_iter0.done
+            cout[w_loop_special_done] - src: w_loop_0_0_iter1.done
+            cout[1000] - src: rail.ctxdone
+    ctx: r_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":473:0)
+        pacing_window: default disable_empty_stall port: READ1 ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            addr_chain  (12672 # steps): 
+              iter[0] : (0 until 99 by 1 par 1)
+              iter[1] : (0 until 4096 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+            ctx done: r_loop_0_0_iter1.done (128 # steps)
+        addresses:
+            addr[0] : (0 until 4096 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : (((0 until 4096 by 32 par 1).i1 >= 0) && ((0 until 4096 by 32 par 1).i1 < 4096))
+            en_drop: 1
+            annotation : 
+              chain : 
+                iter[0] : (0 until 99 by 1 par 1)
+                iter[1] : (0 until 4096 by 32 par 1)
+                iter[2] : (0 until 1 by 1 par 1)
+              addr[0] : (0 until 4096 by 32 par 1).i1
+              addr[1] : (0 until 1 by 1 par 1).i2
+        triggers:
+            tb init: 0 pushif: cin[w_loop_special_done_in] popif: (r_loop_0_0_iter1.done || cin[r_drain_done_in])
+            tb init: 1 pushif: cin[not_last] popif: r_loop_0_0_iter0.done
+            cout[1000] - src: rail.ctxdone
+    ctx: kBackReadCtx
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+        pacing_window: 128 disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kBackReadCtx_iter0.done (128 # steps)
+            addr_chain  (128 # steps): 
+              iter[0] : (0 until 4096 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 4096 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 0 pushif: cin[w_done_in_0_0] popif: kBackReadCtx_iter0.done
+            tb init: 4 pushif: cin[pacing_in] popif: pacing_done(128, reset_by=(0 until 4096 by 32 par 1).i0)
+            cout[r_drain_done] - src: kBackReadCtx_iter0.done
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__lstm_layer__lstm_bwd_accum_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[4096, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {4096, 1}
+    ctx: w_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+        disable_full_stall type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: w_loop_0_0_iter1.done (128 # steps)
+            addr_chain  (12800 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 4096 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 4096 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : 1
+            en_drop: (((0 until 4096 by 32 par 1).i1 >= 0) && ((0 until 4096 by 32 par 1).i1 < 4096))
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[w_loop_done] - src: w_loop_0_0_iter0.done
+            cout[w_loop_special_done] - src: w_loop_0_0_iter1.done
+            cout[1000] - src: rail.ctxdone
+    ctx: r_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":473:0)
+        pacing_window: default disable_empty_stall port: READ1 ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            addr_chain  (12672 # steps): 
+              iter[0] : (0 until 99 by 1 par 1)
+              iter[1] : (0 until 4096 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+            ctx done: r_loop_0_0_iter1.done (128 # steps)
+        addresses:
+            addr[0] : (0 until 4096 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : (((0 until 4096 by 32 par 1).i1 >= 0) && ((0 until 4096 by 32 par 1).i1 < 4096))
+            en_drop: 1
+            annotation : 
+              chain : 
+                iter[0] : (0 until 99 by 1 par 1)
+                iter[1] : (0 until 4096 by 32 par 1)
+                iter[2] : (0 until 1 by 1 par 1)
+              addr[0] : (0 until 4096 by 32 par 1).i1
+              addr[1] : (0 until 1 by 1 par 1).i2
+        triggers:
+            tb init: 0 pushif: cin[w_loop_special_done_in] popif: (r_loop_0_0_iter1.done || cin[r_drain_done_in])
+            tb init: 1 pushif: cin[not_last] popif: r_loop_0_0_iter0.done
+            cout[1000] - src: rail.ctxdone
+    ctx: kBackReadCtx
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+        pacing_window: default disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kBackReadCtx_iter0.done (128 # steps)
+            addr_chain  (128 # steps): 
+              iter[0] : (0 until 4096 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 4096 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 0 pushif: cin[w_done_in_0_0] popif: kBackReadCtx_iter0.done
+            cout[r_drain_done] - src: kBackReadCtx_iter0.done
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__lstm_layer__lstm_bwd_accum_1_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[4096, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {4096, 1}
+    ctx: w_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+        disable_full_stall type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: w_loop_0_0_iter1.done (128 # steps)
+            addr_chain  (12800 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 4096 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 4096 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : 1
+            en_drop: (((0 until 4096 by 32 par 1).i1 >= 0) && ((0 until 4096 by 32 par 1).i1 < 4096))
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[w_loop_done] - src: w_loop_0_0_iter0.done
+            cout[w_loop_special_done] - src: w_loop_0_0_iter1.done
+            cout[1000] - src: rail.ctxdone
+    ctx: r_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":473:0)
+        pacing_window: default disable_empty_stall port: READ1 ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            addr_chain  (12672 # steps): 
+              iter[0] : (0 until 99 by 1 par 1)
+              iter[1] : (0 until 4096 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+            ctx done: r_loop_0_0_iter1.done (128 # steps)
+        addresses:
+            addr[0] : (0 until 4096 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : (((0 until 4096 by 32 par 1).i1 >= 0) && ((0 until 4096 by 32 par 1).i1 < 4096))
+            en_drop: 1
+            annotation : 
+              chain : 
+                iter[0] : (0 until 99 by 1 par 1)
+                iter[1] : (0 until 4096 by 32 par 1)
+                iter[2] : (0 until 1 by 1 par 1)
+              addr[0] : (0 until 4096 by 32 par 1).i1
+              addr[1] : (0 until 1 by 1 par 1).i2
+        triggers:
+            tb init: 0 pushif: cin[w_loop_special_done_in] popif: (r_loop_0_0_iter1.done || cin[r_drain_done_in])
+            tb init: 1 pushif: cin[not_last] popif: r_loop_0_0_iter0.done
+            cout[1000] - src: rail.ctxdone
+    ctx: kBackReadCtx
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+        pacing_window: default disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kBackReadCtx_iter0.done (128 # steps)
+            addr_chain  (128 # steps): 
+              iter[0] : (0 until 4096 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 4096 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 0 pushif: cin[w_done_in_0_0] popif: kBackReadCtx_iter0.done
+            cout[r_drain_done] - src: kBackReadCtx_iter0.done
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__lstm_layer__lstm_bwd_accum_2_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[4096, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {4096, 1}
+    ctx: w_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+        disable_full_stall type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: w_loop_0_0_iter1.done (128 # steps)
+            addr_chain  (12800 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 4096 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 4096 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : 1
+            en_drop: (((0 until 4096 by 32 par 1).i1 >= 0) && ((0 until 4096 by 32 par 1).i1 < 4096))
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[w_loop_done] - src: w_loop_0_0_iter0.done
+            cout[w_loop_special_done] - src: w_loop_0_0_iter1.done
+            cout[1000] - src: rail.ctxdone
+    ctx: r_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":473:0)
+        pacing_window: default disable_empty_stall port: READ1 ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            addr_chain  (12672 # steps): 
+              iter[0] : (0 until 99 by 1 par 1)
+              iter[1] : (0 until 4096 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+            ctx done: r_loop_0_0_iter1.done (128 # steps)
+        addresses:
+            addr[0] : (0 until 4096 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : (((0 until 4096 by 32 par 1).i1 >= 0) && ((0 until 4096 by 32 par 1).i1 < 4096))
+            en_drop: 1
+            annotation : 
+              chain : 
+                iter[0] : (0 until 99 by 1 par 1)
+                iter[1] : (0 until 4096 by 32 par 1)
+                iter[2] : (0 until 1 by 1 par 1)
+              addr[0] : (0 until 4096 by 32 par 1).i1
+              addr[1] : (0 until 1 by 1 par 1).i2
+        triggers:
+            tb init: 0 pushif: cin[w_loop_special_done_in] popif: (r_loop_0_0_iter1.done || cin[r_drain_done_in])
+            tb init: 1 pushif: cin[not_last] popif: r_loop_0_0_iter0.done
+            cout[1000] - src: rail.ctxdone
+    ctx: kBackReadCtx
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+        pacing_window: default disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kBackReadCtx_iter0.done (128 # steps)
+            addr_chain  (128 # steps): 
+              iter[0] : (0 until 4096 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 4096 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 0 pushif: cin[w_done_in_0_0] popif: kBackReadCtx_iter0.done
+            cout[r_drain_done] - src: kBackReadCtx_iter0.done
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__lstm_layer__lstm_bwd_accum_3_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[4096, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {4096, 1}
+    ctx: w_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+        disable_full_stall type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: w_loop_0_0_iter1.done (128 # steps)
+            addr_chain  (12800 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 4096 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 4096 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : 1
+            en_drop: (((0 until 4096 by 32 par 1).i1 >= 0) && ((0 until 4096 by 32 par 1).i1 < 4096))
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[w_loop_done] - src: w_loop_0_0_iter0.done
+            cout[w_loop_special_done] - src: w_loop_0_0_iter1.done
+            cout[1000] - src: rail.ctxdone
+    ctx: r_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":473:0)
+        pacing_window: default disable_empty_stall port: READ1 ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            addr_chain  (12672 # steps): 
+              iter[0] : (0 until 99 by 1 par 1)
+              iter[1] : (0 until 4096 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+            ctx done: r_loop_0_0_iter1.done (128 # steps)
+        addresses:
+            addr[0] : (0 until 4096 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : (((0 until 4096 by 32 par 1).i1 >= 0) && ((0 until 4096 by 32 par 1).i1 < 4096))
+            en_drop: 1
+            annotation : 
+              chain : 
+                iter[0] : (0 until 99 by 1 par 1)
+                iter[1] : (0 until 4096 by 32 par 1)
+                iter[2] : (0 until 1 by 1 par 1)
+              addr[0] : (0 until 4096 by 32 par 1).i1
+              addr[1] : (0 until 1 by 1 par 1).i2
+        triggers:
+            tb init: 0 pushif: cin[w_loop_special_done_in] popif: (r_loop_0_0_iter1.done || cin[r_drain_done_in])
+            tb init: 1 pushif: cin[not_last] popif: r_loop_0_0_iter0.done
+            cout[1000] - src: rail.ctxdone
+    ctx: kBackReadCtx
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+        pacing_window: default disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kBackReadCtx_iter0.done (128 # steps)
+            addr_chain  (128 # steps): 
+              iter[0] : (0 until 4096 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 4096 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 0 pushif: cin[w_done_in_0_0] popif: kBackReadCtx_iter0.done
+            cout[r_drain_done] - src: kBackReadCtx_iter0.done
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__lstm_layer__lstm_bwd_accum_4_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[8704, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {8704, 1}
+    ctx: w_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+        disable_full_stall type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: w_loop_0_0_iter1.done (272 # steps)
+            addr_chain  (27200 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 8704 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 8704 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : 1
+            en_drop: (((0 until 8704 by 32 par 1).i1 >= 0) && ((0 until 8704 by 32 par 1).i1 < 8704))
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[w_loop_done] - src: w_loop_0_0_iter0.done
+            cout[w_loop_special_done] - src: w_loop_0_0_iter1.done
+            cout[1000] - src: rail.ctxdone
+    ctx: r_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":473:0)
+        pacing_window: default disable_empty_stall port: READ1 ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            addr_chain  (26928 # steps): 
+              iter[0] : (0 until 99 by 1 par 1)
+              iter[1] : (0 until 8704 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+            ctx done: r_loop_0_0_iter1.done (272 # steps)
+        addresses:
+            addr[0] : (0 until 8704 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : (((0 until 8704 by 32 par 1).i1 >= 0) && ((0 until 8704 by 32 par 1).i1 < 8704))
+            en_drop: 1
+            annotation : 
+              chain : 
+                iter[0] : (0 until 99 by 1 par 1)
+                iter[1] : (0 until 8704 by 32 par 1)
+                iter[2] : (0 until 1 by 1 par 1)
+              addr[0] : (0 until 8704 by 32 par 1).i1
+              addr[1] : (0 until 1 by 1 par 1).i2
+        triggers:
+            tb init: 0 pushif: cin[w_loop_special_done_in] popif: (r_loop_0_0_iter1.done || cin[r_drain_done_in])
+            tb init: 1 pushif: cin[not_last] popif: r_loop_0_0_iter0.done
+            cout[1000] - src: rail.ctxdone
+    ctx: kBackReadCtx
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+        pacing_window: default disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kBackReadCtx_iter0.done (272 # steps)
+            addr_chain  (272 # steps): 
+              iter[0] : (0 until 8704 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 8704 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 0 pushif: cin[w_done_in_0_0] popif: kBackReadCtx_iter0.done
+            cout[r_drain_done] - src: kBackReadCtx_iter0.done
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__lstm_layer__lstm_bwd_accum_5_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[8704, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {8704, 1}
+    ctx: w_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+        disable_full_stall type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: w_loop_0_0_iter1.done (272 # steps)
+            addr_chain  (27200 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 8704 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 8704 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : 1
+            en_drop: (((0 until 8704 by 32 par 1).i1 >= 0) && ((0 until 8704 by 32 par 1).i1 < 8704))
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[w_loop_done] - src: w_loop_0_0_iter0.done
+            cout[w_loop_special_done] - src: w_loop_0_0_iter1.done
+            cout[1000] - src: rail.ctxdone
+    ctx: r_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":473:0)
+        pacing_window: default disable_empty_stall port: READ1 ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            addr_chain  (26928 # steps): 
+              iter[0] : (0 until 99 by 1 par 1)
+              iter[1] : (0 until 8704 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+            ctx done: r_loop_0_0_iter1.done (272 # steps)
+        addresses:
+            addr[0] : (0 until 8704 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : (((0 until 8704 by 32 par 1).i1 >= 0) && ((0 until 8704 by 32 par 1).i1 < 8704))
+            en_drop: 1
+            annotation : 
+              chain : 
+                iter[0] : (0 until 99 by 1 par 1)
+                iter[1] : (0 until 8704 by 32 par 1)
+                iter[2] : (0 until 1 by 1 par 1)
+              addr[0] : (0 until 8704 by 32 par 1).i1
+              addr[1] : (0 until 1 by 1 par 1).i2
+        triggers:
+            tb init: 0 pushif: cin[w_loop_special_done_in] popif: (r_loop_0_0_iter1.done || cin[r_drain_done_in])
+            tb init: 1 pushif: cin[not_last] popif: r_loop_0_0_iter0.done
+            cout[1000] - src: rail.ctxdone
+    ctx: kBackReadCtx
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+        pacing_window: default disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kBackReadCtx_iter0.done (272 # steps)
+            addr_chain  (272 # steps): 
+              iter[0] : (0 until 8704 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 8704 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 0 pushif: cin[w_done_in_0_0] popif: kBackReadCtx_iter0.done
+            cout[r_drain_done] - src: kBackReadCtx_iter0.done
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__lstm_layer__lstm_bwd_accum_6_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[8704, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {8704, 1}
+    ctx: w_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+        disable_full_stall type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: w_loop_0_0_iter1.done (272 # steps)
+            addr_chain  (27200 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 8704 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 8704 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : 1
+            en_drop: (((0 until 8704 by 32 par 1).i1 >= 0) && ((0 until 8704 by 32 par 1).i1 < 8704))
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[w_loop_done] - src: w_loop_0_0_iter0.done
+            cout[w_loop_special_done] - src: w_loop_0_0_iter1.done
+            cout[1000] - src: rail.ctxdone
+    ctx: r_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":473:0)
+        pacing_window: default disable_empty_stall port: READ1 ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            addr_chain  (26928 # steps): 
+              iter[0] : (0 until 99 by 1 par 1)
+              iter[1] : (0 until 8704 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+            ctx done: r_loop_0_0_iter1.done (272 # steps)
+        addresses:
+            addr[0] : (0 until 8704 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : (((0 until 8704 by 32 par 1).i1 >= 0) && ((0 until 8704 by 32 par 1).i1 < 8704))
+            en_drop: 1
+            annotation : 
+              chain : 
+                iter[0] : (0 until 99 by 1 par 1)
+                iter[1] : (0 until 8704 by 32 par 1)
+                iter[2] : (0 until 1 by 1 par 1)
+              addr[0] : (0 until 8704 by 32 par 1).i1
+              addr[1] : (0 until 1 by 1 par 1).i2
+        triggers:
+            tb init: 0 pushif: cin[w_loop_special_done_in] popif: (r_loop_0_0_iter1.done || cin[r_drain_done_in])
+            tb init: 1 pushif: cin[not_last] popif: r_loop_0_0_iter0.done
+            cout[1000] - src: rail.ctxdone
+    ctx: kBackReadCtx
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+        pacing_window: default disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kBackReadCtx_iter0.done (272 # steps)
+            addr_chain  (272 # steps): 
+              iter[0] : (0 until 8704 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 8704 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 0 pushif: cin[w_done_in_0_0] popif: kBackReadCtx_iter0.done
+            cout[r_drain_done] - src: kBackReadCtx_iter0.done
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__lstm_layer__lstm_bwd_accum_7_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[8704, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {8704, 1}
+    ctx: w_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+        disable_full_stall type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: w_loop_0_0_iter1.done (272 # steps)
+            addr_chain  (27200 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 8704 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 8704 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : 1
+            en_drop: (((0 until 8704 by 32 par 1).i1 >= 0) && ((0 until 8704 by 32 par 1).i1 < 8704))
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[w_loop_done] - src: w_loop_0_0_iter0.done
+            cout[w_loop_special_done] - src: w_loop_0_0_iter1.done
+            cout[1000] - src: rail.ctxdone
+    ctx: r_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":473:0)
+        pacing_window: default disable_empty_stall port: READ1 ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            addr_chain  (26928 # steps): 
+              iter[0] : (0 until 99 by 1 par 1)
+              iter[1] : (0 until 8704 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+            ctx done: r_loop_0_0_iter1.done (272 # steps)
+        addresses:
+            addr[0] : (0 until 8704 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : (((0 until 8704 by 32 par 1).i1 >= 0) && ((0 until 8704 by 32 par 1).i1 < 8704))
+            en_drop: 1
+            annotation : 
+              chain : 
+                iter[0] : (0 until 99 by 1 par 1)
+                iter[1] : (0 until 8704 by 32 par 1)
+                iter[2] : (0 until 1 by 1 par 1)
+              addr[0] : (0 until 8704 by 32 par 1).i1
+              addr[1] : (0 until 1 by 1 par 1).i2
+        triggers:
+            tb init: 0 pushif: cin[w_loop_special_done_in] popif: (r_loop_0_0_iter1.done || cin[r_drain_done_in])
+            tb init: 1 pushif: cin[not_last] popif: r_loop_0_0_iter0.done
+            cout[1000] - src: rail.ctxdone
+    ctx: kBackReadCtx
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+        pacing_window: default disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kBackReadCtx_iter0.done (272 # steps)
+            addr_chain  (272 # steps): 
+              iter[0] : (0 until 8704 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 8704 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 0 pushif: cin[w_done_in_0_0] popif: kBackReadCtx_iter0.done
+            cout[r_drain_done] - src: kBackReadCtx_iter0.done
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__lstm_layer__lstm_bwd_accum_8_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[64, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {64, 1}
+    ctx: w_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+        disable_full_stall type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: w_loop_0_0_iter1.done (2 # steps)
+            addr_chain  (200 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : 1
+            en_drop: (((0 until 64 by 32 par 1).i1 >= 0) && ((0 until 64 by 32 par 1).i1 < 64))
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[w_loop_done] - src: w_loop_0_0_iter0.done
+            cout[w_loop_special_done] - src: w_loop_0_0_iter1.done
+            cout[1000] - src: rail.ctxdone
+    ctx: r_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":473:0)
+        pacing_window: default disable_empty_stall port: READ1 ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            addr_chain  (198 # steps): 
+              iter[0] : (0 until 99 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+            ctx done: r_loop_0_0_iter1.done (2 # steps)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : (((0 until 64 by 32 par 1).i1 >= 0) && ((0 until 64 by 32 par 1).i1 < 64))
+            en_drop: 1
+            annotation : 
+              chain : 
+                iter[0] : (0 until 99 by 1 par 1)
+                iter[1] : (0 until 64 by 32 par 1)
+                iter[2] : (0 until 1 by 1 par 1)
+              addr[0] : (0 until 64 by 32 par 1).i1
+              addr[1] : (0 until 1 by 1 par 1).i2
+        triggers:
+            tb init: 0 pushif: cin[w_loop_special_done_in] popif: (r_loop_0_0_iter1.done || cin[r_drain_done_in])
+            tb init: 1 pushif: cin[not_last] popif: r_loop_0_0_iter0.done
+            cout[1000] - src: rail.ctxdone
+    ctx: kBackReadCtx
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+        pacing_window: default disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kBackReadCtx_iter0.done (2 # steps)
+            addr_chain  (2 # steps): 
+              iter[0] : (0 until 64 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 0 pushif: cin[w_done_in_0_0] popif: kBackReadCtx_iter0.done
+            cout[r_drain_done] - src: kBackReadCtx_iter0.done
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__lstm_layer__lstm_bwd_accum_9_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[64, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {64, 1}
+    ctx: w_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+        disable_full_stall type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: w_loop_0_0_iter1.done (2 # steps)
+            addr_chain  (200 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : 1
+            en_drop: (((0 until 64 by 32 par 1).i1 >= 0) && ((0 until 64 by 32 par 1).i1 < 64))
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[w_loop_done] - src: w_loop_0_0_iter0.done
+            cout[w_loop_special_done] - src: w_loop_0_0_iter1.done
+            cout[1000] - src: rail.ctxdone
+    ctx: r_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":473:0)
+        pacing_window: default disable_empty_stall port: READ1 ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            addr_chain  (198 # steps): 
+              iter[0] : (0 until 99 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+            ctx done: r_loop_0_0_iter1.done (2 # steps)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : (((0 until 64 by 32 par 1).i1 >= 0) && ((0 until 64 by 32 par 1).i1 < 64))
+            en_drop: 1
+            annotation : 
+              chain : 
+                iter[0] : (0 until 99 by 1 par 1)
+                iter[1] : (0 until 64 by 32 par 1)
+                iter[2] : (0 until 1 by 1 par 1)
+              addr[0] : (0 until 64 by 32 par 1).i1
+              addr[1] : (0 until 1 by 1 par 1).i2
+        triggers:
+            tb init: 0 pushif: cin[w_loop_special_done_in] popif: (r_loop_0_0_iter1.done || cin[r_drain_done_in])
+            tb init: 1 pushif: cin[not_last] popif: r_loop_0_0_iter0.done
+            cout[1000] - src: rail.ctxdone
+    ctx: kBackReadCtx
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+        pacing_window: default disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kBackReadCtx_iter0.done (2 # steps)
+            addr_chain  (2 # steps): 
+              iter[0] : (0 until 64 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 0 pushif: cin[w_done_in_0_0] popif: kBackReadCtx_iter0.done
+            cout[r_drain_done] - src: kBackReadCtx_iter0.done
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__lstm_layer__lstm_bwd_accum_10_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[64, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {64, 1}
+    ctx: w_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+        disable_full_stall type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: w_loop_0_0_iter1.done (2 # steps)
+            addr_chain  (200 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : 1
+            en_drop: (((0 until 64 by 32 par 1).i1 >= 0) && ((0 until 64 by 32 par 1).i1 < 64))
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[w_loop_done] - src: w_loop_0_0_iter0.done
+            cout[w_loop_special_done] - src: w_loop_0_0_iter1.done
+            cout[1000] - src: rail.ctxdone
+    ctx: r_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":473:0)
+        pacing_window: default disable_empty_stall port: READ1 ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            addr_chain  (198 # steps): 
+              iter[0] : (0 until 99 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+            ctx done: r_loop_0_0_iter1.done (2 # steps)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : (((0 until 64 by 32 par 1).i1 >= 0) && ((0 until 64 by 32 par 1).i1 < 64))
+            en_drop: 1
+            annotation : 
+              chain : 
+                iter[0] : (0 until 99 by 1 par 1)
+                iter[1] : (0 until 64 by 32 par 1)
+                iter[2] : (0 until 1 by 1 par 1)
+              addr[0] : (0 until 64 by 32 par 1).i1
+              addr[1] : (0 until 1 by 1 par 1).i2
+        triggers:
+            tb init: 0 pushif: cin[w_loop_special_done_in] popif: (r_loop_0_0_iter1.done || cin[r_drain_done_in])
+            tb init: 1 pushif: cin[not_last] popif: r_loop_0_0_iter0.done
+            cout[1000] - src: rail.ctxdone
+    ctx: kBackReadCtx
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+        pacing_window: default disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kBackReadCtx_iter0.done (2 # steps)
+            addr_chain  (2 # steps): 
+              iter[0] : (0 until 64 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 0 pushif: cin[w_done_in_0_0] popif: kBackReadCtx_iter0.done
+            cout[r_drain_done] - src: kBackReadCtx_iter0.done
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__lstm_layer__lstm_bwd_accum_11_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[64, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {64, 1}
+    ctx: w_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+        disable_full_stall type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: w_loop_0_0_iter1.done (2 # steps)
+            addr_chain  (200 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : 1
+            en_drop: (((0 until 64 by 32 par 1).i1 >= 0) && ((0 until 64 by 32 par 1).i1 < 64))
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[w_loop_done] - src: w_loop_0_0_iter0.done
+            cout[w_loop_special_done] - src: w_loop_0_0_iter1.done
+            cout[1000] - src: rail.ctxdone
+    ctx: r_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":473:0)
+        pacing_window: default disable_empty_stall port: READ1 ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            addr_chain  (198 # steps): 
+              iter[0] : (0 until 99 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+            ctx done: r_loop_0_0_iter1.done (2 # steps)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : (((0 until 64 by 32 par 1).i1 >= 0) && ((0 until 64 by 32 par 1).i1 < 64))
+            en_drop: 1
+            annotation : 
+              chain : 
+                iter[0] : (0 until 99 by 1 par 1)
+                iter[1] : (0 until 64 by 32 par 1)
+                iter[2] : (0 until 1 by 1 par 1)
+              addr[0] : (0 until 64 by 32 par 1).i1
+              addr[1] : (0 until 1 by 1 par 1).i2
+        triggers:
+            tb init: 0 pushif: cin[w_loop_special_done_in] popif: (r_loop_0_0_iter1.done || cin[r_drain_done_in])
+            tb init: 1 pushif: cin[not_last] popif: r_loop_0_0_iter0.done
+            cout[1000] - src: rail.ctxdone
+    ctx: kBackReadCtx
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+        pacing_window: default disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kBackReadCtx_iter0.done (2 # steps)
+            addr_chain  (2 # steps): 
+              iter[0] : (0 until 64 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 0 pushif: cin[w_done_in_0_0] popif: kBackReadCtx_iter0.done
+            cout[r_drain_done] - src: kBackReadCtx_iter0.done
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__lstm_layer__lstm_bwd_accum_12_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[64, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {64, 1}
+    ctx: w_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+        disable_full_stall type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: w_loop_0_0_iter1.done (2 # steps)
+            addr_chain  (200 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : 1
+            en_drop: (((0 until 64 by 32 par 1).i1 >= 0) && ((0 until 64 by 32 par 1).i1 < 64))
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[w_loop_done] - src: w_loop_0_0_iter0.done
+            cout[w_loop_special_done] - src: w_loop_0_0_iter1.done
+            cout[1000] - src: rail.ctxdone
+    ctx: r_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":473:0)
+        pacing_window: default disable_empty_stall port: READ1 ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            addr_chain  (198 # steps): 
+              iter[0] : (0 until 99 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+            ctx done: r_loop_0_0_iter1.done (2 # steps)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : (((0 until 64 by 32 par 1).i1 >= 0) && ((0 until 64 by 32 par 1).i1 < 64))
+            en_drop: 1
+            annotation : 
+              chain : 
+                iter[0] : (0 until 99 by 1 par 1)
+                iter[1] : (0 until 64 by 32 par 1)
+                iter[2] : (0 until 1 by 1 par 1)
+              addr[0] : (0 until 64 by 32 par 1).i1
+              addr[1] : (0 until 1 by 1 par 1).i2
+        triggers:
+            tb init: 0 pushif: cin[w_loop_special_done_in] popif: (r_loop_0_0_iter1.done || cin[r_drain_done_in])
+            tb init: 1 pushif: cin[not_last] popif: r_loop_0_0_iter0.done
+            cout[1000] - src: rail.ctxdone
+    ctx: kBackReadCtx
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+        pacing_window: default disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kBackReadCtx_iter0.done (2 # steps)
+            addr_chain  (2 # steps): 
+              iter[0] : (0 until 64 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 0 pushif: cin[w_done_in_0_0] popif: kBackReadCtx_iter0.done
+            cout[r_drain_done] - src: kBackReadCtx_iter0.done
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__lstm_layer__lstm_bwd_accum_13_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[64, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {64, 1}
+    ctx: w_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+        disable_full_stall type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: w_loop_0_0_iter1.done (2 # steps)
+            addr_chain  (200 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : 1
+            en_drop: (((0 until 64 by 32 par 1).i1 >= 0) && ((0 until 64 by 32 par 1).i1 < 64))
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[w_loop_done] - src: w_loop_0_0_iter0.done
+            cout[w_loop_special_done] - src: w_loop_0_0_iter1.done
+            cout[1000] - src: rail.ctxdone
+    ctx: r_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":473:0)
+        pacing_window: default disable_empty_stall port: READ1 ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            addr_chain  (198 # steps): 
+              iter[0] : (0 until 99 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+            ctx done: r_loop_0_0_iter1.done (2 # steps)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : (((0 until 64 by 32 par 1).i1 >= 0) && ((0 until 64 by 32 par 1).i1 < 64))
+            en_drop: 1
+            annotation : 
+              chain : 
+                iter[0] : (0 until 99 by 1 par 1)
+                iter[1] : (0 until 64 by 32 par 1)
+                iter[2] : (0 until 1 by 1 par 1)
+              addr[0] : (0 until 64 by 32 par 1).i1
+              addr[1] : (0 until 1 by 1 par 1).i2
+        triggers:
+            tb init: 0 pushif: cin[w_loop_special_done_in] popif: (r_loop_0_0_iter1.done || cin[r_drain_done_in])
+            tb init: 1 pushif: cin[not_last] popif: r_loop_0_0_iter0.done
+            cout[1000] - src: rail.ctxdone
+    ctx: kBackReadCtx
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+        pacing_window: default disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kBackReadCtx_iter0.done (2 # steps)
+            addr_chain  (2 # steps): 
+              iter[0] : (0 until 64 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 0 pushif: cin[w_done_in_0_0] popif: kBackReadCtx_iter0.done
+            cout[r_drain_done] - src: kBackReadCtx_iter0.done
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__lstm_layer__lstm_bwd_accum_14_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[64, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {64, 1}
+    ctx: w_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+        disable_full_stall type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: w_loop_0_0_iter1.done (2 # steps)
+            addr_chain  (200 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : 1
+            en_drop: (((0 until 64 by 32 par 1).i1 >= 0) && ((0 until 64 by 32 par 1).i1 < 64))
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[w_loop_done] - src: w_loop_0_0_iter0.done
+            cout[w_loop_special_done] - src: w_loop_0_0_iter1.done
+            cout[1000] - src: rail.ctxdone
+    ctx: r_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":473:0)
+        pacing_window: default disable_empty_stall port: READ1 ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            addr_chain  (198 # steps): 
+              iter[0] : (0 until 99 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+            ctx done: r_loop_0_0_iter1.done (2 # steps)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : (((0 until 64 by 32 par 1).i1 >= 0) && ((0 until 64 by 32 par 1).i1 < 64))
+            en_drop: 1
+            annotation : 
+              chain : 
+                iter[0] : (0 until 99 by 1 par 1)
+                iter[1] : (0 until 64 by 32 par 1)
+                iter[2] : (0 until 1 by 1 par 1)
+              addr[0] : (0 until 64 by 32 par 1).i1
+              addr[1] : (0 until 1 by 1 par 1).i2
+        triggers:
+            tb init: 0 pushif: cin[w_loop_special_done_in] popif: (r_loop_0_0_iter1.done || cin[r_drain_done_in])
+            tb init: 1 pushif: cin[not_last] popif: r_loop_0_0_iter0.done
+            cout[1000] - src: rail.ctxdone
+    ctx: kBackReadCtx
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+        pacing_window: default disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kBackReadCtx_iter0.done (2 # steps)
+            addr_chain  (2 # steps): 
+              iter[0] : (0 until 64 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 0 pushif: cin[w_done_in_0_0] popif: kBackReadCtx_iter0.done
+            cout[r_drain_done] - src: kBackReadCtx_iter0.done
+            cout[1000] - src: rail.ctxdone
+========= Summary IR ========
+tbuffer partition_1_0__LogregTorchSamba_partition_1_0__ptconvlstm__lstm_layer__lstm_bwd_accum_15_tbuf
+    loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":578:0)
+    layout: <BF16[64, 1]CVRM/64@0x0> vec_order: {0, 1} vec_dim: 0 depth: 1 dims: {64, 1}
+    ctx: w_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":424:0)
+        disable_full_stall type: write ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: w_loop_0_0_iter1.done (2 # steps)
+            addr_chain  (200 # steps): 
+              iter[0] : (0 until 100 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : 1
+            en_drop: (((0 until 64 by 32 par 1).i1 >= 0) && ((0 until 64 by 32 par 1).i1 < 64))
+        triggers:
+            vin[8] - popif: ctx_en
+            cout[w_loop_done] - src: w_loop_0_0_iter0.done
+            cout[w_loop_special_done] - src: w_loop_0_0_iter1.done
+            cout[1000] - src: rail.ctxdone
+    ctx: r_loop_0_0
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":473:0)
+        pacing_window: default disable_empty_stall port: READ1 ctxid: 0 dispatches: {0}metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            addr_chain  (198 # steps): 
+              iter[0] : (0 until 99 by 1 par 1)
+              iter[1] : (0 until 64 by 32 par 1)
+              iter[2] : (0 until 1 by 1 par 1)
+            ctx done: r_loop_0_0_iter1.done (2 # steps)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i1 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i2 vec: 0
+            en_zero : (((0 until 64 by 32 par 1).i1 >= 0) && ((0 until 64 by 32 par 1).i1 < 64))
+            en_drop: 1
+            annotation : 
+              chain : 
+                iter[0] : (0 until 99 by 1 par 1)
+                iter[1] : (0 until 64 by 32 par 1)
+                iter[2] : (0 until 1 by 1 par 1)
+              addr[0] : (0 until 64 by 32 par 1).i1
+              addr[1] : (0 until 1 by 1 par 1).i2
+        triggers:
+            tb init: 0 pushif: cin[w_loop_special_done_in] popif: (r_loop_0_0_iter1.done || cin[r_drain_done_in])
+            tb init: 1 pushif: cin[not_last] popif: r_loop_0_0_iter0.done
+            cout[1000] - src: rail.ctxdone
+    ctx: kBackReadCtx
+        loc("software/templates/src/templates/accumulator/rail/ParAccum.cpp":629:0)
+        pacing_window: default disable_empty_stall port: READ0 ctxid: 0 metapipe_iter (post divider): {1} metapipe_divider: {100} 
+        iter_chains:
+            ctx done: kBackReadCtx_iter0.done (2 # steps)
+            addr_chain  (2 # steps): 
+              iter[0] : (0 until 64 by 32 par 1)
+              iter[1] : (0 until 1 by 1 par 1)
+        addresses:
+            addr[0] : (0 until 64 by 32 par 1).i0 vec: 1
+            addr[1] : (0 until 1 by 1 par 1).i1 vec: 0
+            en_zero : 1
+            en_drop: 1
+        triggers:
+            tb init: 0 pushif: cin[w_done_in_0_0] popif: kBackReadCtx_iter0.done
+            cout[r_drain_done] - src: kBackReadCtx_iter0.done
+            cout[1000] - src: rail.ctxdone

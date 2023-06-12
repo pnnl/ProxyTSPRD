@@ -1,0 +1,1058 @@
+{
+ "nodes": {
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp0": {
+   "ctx_count": 192,
+   "initial_node": false,
+   "input_ports": {
+    "kBegin0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW1.kDone": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    },
+    "kBeginFromTCompute0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase1.kDone": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    },
+    "kBeginFromTCompute1_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3.kDone": {
+     "buffer_depth": 8192,
+     "init": 1,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "1001": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase2",
+       "port": "12000",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      }
+     ],
+     "push_schedule": [
+      1,
+      1
+     ]
+    },
+    "kDone": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp1",
+       "port": "kBegin1_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp0.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:969:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp1": {
+   "ctx_count": 192,
+   "initial_node": false,
+   "input_ports": {
+    "kBegin0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW2.kDone": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    },
+    "kBegin1_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp0.kDone": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    },
+    "kBeginFromTCompute0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase2.kDone": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "1001": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3",
+       "port": "16000",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      }
+     ],
+     "push_schedule": [
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:969:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRMax": {
+   "ctx_count": 192,
+   "initial_node": false,
+   "input_ports": {
+    "kBegin0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW0.kDone": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    },
+    "kBeginFromTCompute0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase0.kDone": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    },
+    "kBeginFromTCompute1_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3.kDone": {
+     "buffer_depth": 8192,
+     "init": 1,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "1001": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase1",
+       "port": "6000",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      }
+     ],
+     "push_schedule": [
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRSumRecip": {
+   "ctx_count": 192,
+   "initial_node": false,
+   "input_ports": {
+    "kBegin0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW2.kDone": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    },
+    "kBegin1_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phase_rd_dummy.kDone": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    },
+    "kBeginFromTCompute0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase2.kDone": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "1001": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3",
+       "port": "17000",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      }
+     ],
+     "push_schedule": [
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW0": {
+   "ctx_count": 16,
+   "initial_node": false,
+   "input_ports": {
+    "8": {
+     "buffer_depth": 32,
+     "init": 0,
+     "pop_schedule": [
+      1,
+      1
+     ]
+    },
+    "kBegin0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW2.kDone": {
+     "buffer_depth": 8192,
+     "init": 1,
+     "pop_schedule": [
+      0,
+      15,
+      1,
+      1
+     ]
+    },
+    "kBeginFromTCompute0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3.kDone": {
+     "buffer_depth": 8192,
+     "init": 1,
+     "pop_schedule": [
+      0,
+      15,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "kDone": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW1",
+       "port": "kBegin0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW0.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      },
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRMax",
+       "port": "kBegin0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW0.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      },
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phase_rd_dummy",
+       "port": "kBegin0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW0.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      15,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:871:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW1": {
+   "ctx_count": 192,
+   "initial_node": false,
+   "input_ports": {
+    "8": {
+     "buffer_depth": 32,
+     "init": 0,
+     "pop_schedule": [
+      1,
+      1
+     ]
+    },
+    "kBegin0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW0.kDone": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    },
+    "kBeginFromTCompute0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3.kDone": {
+     "buffer_depth": 8192,
+     "init": 1,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "kDone": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW2",
+       "port": "kBegin0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW1.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      },
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp0",
+       "port": "kBegin0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW1.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:902:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW2": {
+   "ctx_count": 16,
+   "initial_node": false,
+   "input_ports": {
+    "8": {
+     "buffer_depth": 32,
+     "init": 0,
+     "pop_schedule": [
+      1,
+      1
+     ]
+    },
+    "kBegin0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW1.kDone": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      15,
+      1,
+      1
+     ]
+    },
+    "kBeginFromTCompute0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase1.kDone": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      15,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "kDone": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp1",
+       "port": "kBegin0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW2.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      },
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRSumRecip",
+       "port": "kBegin0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW2.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      },
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW0",
+       "port": "kBegin0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW2.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      15,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:871:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phase_rd_dummy": {
+   "ctx_count": 192,
+   "initial_node": false,
+   "input_ports": {
+    "kBegin0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW0.kDone": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "kDone": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRSumRecip",
+       "port": "kBegin1_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phase_rd_dummy.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1010:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase0": {
+   "ctx_count": 192,
+   "initial_node": false,
+   "input_ports": {
+    "0": {
+     "buffer_depth": 8,
+     "init": 0,
+     "pop_schedule": [
+      1,
+      1
+     ]
+    },
+    "kBegin_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3.kDone": {
+     "buffer_depth": 1024,
+     "init": 1,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "2000": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW0",
+       "port": "8",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      11,
+      1,
+      1
+     ]
+    },
+    "kDone": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase1",
+       "port": "kBegin_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase0.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1865:0"
+      },
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRMax",
+       "port": "kBeginFromTCompute0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase0.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      },
+      {
+       "node": "partition_1_0_.tbuf1a_1_0_101.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0",
+       "port": "phase0_strip_done_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase0.kDone",
+       "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1865:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase1": {
+   "ctx_count": 192,
+   "initial_node": false,
+   "input_ports": {
+    "6000": {
+     "buffer_depth": 8,
+     "init": 0,
+     "pop_schedule": [
+      1,
+      1
+     ]
+    },
+    "9000": {
+     "buffer_depth": 8,
+     "init": 0,
+     "pop_schedule": [
+      1,
+      1
+     ]
+    },
+    "kBegin_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase0.kDone": {
+     "buffer_depth": 1024,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "10000": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW1",
+       "port": "8",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      }
+     ],
+     "push_schedule": [
+      1,
+      1
+     ]
+    },
+    "kDone": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase2",
+       "port": "kBegin_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase1.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1865:0"
+      },
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp0",
+       "port": "kBeginFromTCompute0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase1.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      },
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW2",
+       "port": "kBeginFromTCompute0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase1.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      },
+      {
+       "node": "partition_1_0_.tbuf1a_1_0_101.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0",
+       "port": "phase1_strip_done_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase1.kDone",
+       "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1865:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase2": {
+   "ctx_count": 192,
+   "initial_node": false,
+   "input_ports": {
+    "12000": {
+     "buffer_depth": 8,
+     "init": 0,
+     "pop_schedule": [
+      1,
+      1
+     ]
+    },
+    "kBegin_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase1.kDone": {
+     "buffer_depth": 1024,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "7000": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW2",
+       "port": "8",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      11,
+      1,
+      1
+     ]
+    },
+    "kDone": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3",
+       "port": "kBegin_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase2.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1865:0"
+      },
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRSumRecip",
+       "port": "kBeginFromTCompute0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase2.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      },
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp1",
+       "port": "kBeginFromTCompute0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase2.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      },
+      {
+       "node": "partition_1_0_.tbuf1a_1_0_99.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputY",
+       "port": "phase2_strip_done_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase2.kDone",
+       "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0"
+      },
+      {
+       "node": "partition_1_0_.tbuf1a_1_0_100.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputLoss",
+       "port": "phase2_strip_done_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase2.kDone",
+       "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1865:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3": {
+   "ctx_count": 192,
+   "initial_node": false,
+   "input_ports": {
+    "16000": {
+     "buffer_depth": 8,
+     "init": 0,
+     "pop_schedule": [
+      1,
+      1
+     ]
+    },
+    "17000": {
+     "buffer_depth": 8,
+     "init": 0,
+     "pop_schedule": [
+      1,
+      1
+     ]
+    },
+    "20000": {
+     "buffer_depth": 8,
+     "init": 0,
+     "pop_schedule": [
+      1,
+      1
+     ]
+    },
+    "21000": {
+     "buffer_depth": 8,
+     "init": 0,
+     "pop_schedule": [
+      1,
+      1
+     ]
+    },
+    "kBegin_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase2.kDone": {
+     "buffer_depth": 1024,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "15000": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.tbuf1a_1_0_114.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0",
+       "port": "8",
+       "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0"
+      }
+     ],
+     "push_schedule": [
+      1,
+      1
+     ]
+    },
+    "kDone": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase0",
+       "port": "kBegin_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1865:0"
+      },
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRMax",
+       "port": "kBeginFromTCompute1_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      },
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW1",
+       "port": "kBeginFromTCompute0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      },
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseRExp0",
+       "port": "kBeginFromTCompute1_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      },
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0.phaseW0",
+       "port": "kBeginFromTCompute0_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3.kDone",
+       "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1039:0"
+      },
+      {
+       "node": "partition_1_0_.tbuf1a_1_0_101.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0",
+       "port": "phase3_strip_done_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3.kDone",
+       "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1865:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.tbuf1a_1_0_100.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputLoss": {
+   "ctx_count": 192,
+   "initial_node": false,
+   "input_ports": {
+    "kFrontDynamicWriteCtx_wdone_in___FROM_partition_1_0_.tbuf1a_1_0_100.kFrontDynamicWriteCtx.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    },
+    "phase2_strip_done_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase2.kDone": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "1001": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3",
+       "port": "20000",
+       "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0"
+      }
+     ],
+     "push_schedule": [
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1502:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.tbuf1a_1_0_100.kFrontDynamicWriteCtx": {
+   "ctx_count": 16,
+   "init_ctx_count": 16,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.tbuf1a_1_0_100.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputLoss",
+       "port": "kFrontDynamicWriteCtx_wdone_in___FROM_partition_1_0_.tbuf1a_1_0_100.kFrontDynamicWriteCtx.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      15,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.tbuf1a_1_0_101.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0": {
+   "ctx_count": 384,
+   "initial_node": false,
+   "input_ports": {
+    "kDefaultWrite_wdone_in___FROM_partition_1_0_.tbuf1a_1_0_101.kDefaultWrite.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      383,
+      1,
+      1
+     ]
+    },
+    "phase0_strip_done_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase0.kDone": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_schedule": [
+      1,
+      1
+     ]
+    },
+    "phase1_strip_done_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase1.kDone": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_schedule": [
+      1,
+      1
+     ]
+    },
+    "phase3_strip_done_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3.kDone": {
+     "buffer_depth": 8192,
+     "init": 1,
+     "pop_schedule": [
+      0,
+      383,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "1001": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase0",
+       "port": "0",
+       "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0"
+      },
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase1",
+       "port": "9000",
+       "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0"
+      }
+     ],
+     "push_schedule": [
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1362:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.tbuf1a_1_0_101.kDefaultWrite": {
+   "ctx_count": 160,
+   "init_ctx_count": 160,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.tbuf1a_1_0_101.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputX0",
+       "port": "kDefaultWrite_wdone_in___FROM_partition_1_0_.tbuf1a_1_0_101.kDefaultWrite.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      159,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.tbuf1a_1_0_114.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0": {
+   "ctx_count": 192,
+   "initial_node": false,
+   "input_ports": {
+    "8": {
+     "buffer_depth": 32,
+     "init": 0,
+     "pop_schedule": [
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.tbuf1a_1_0_114.kDefaultRead1",
+       "port": "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0_wdone_in___FROM_partition_1_0_.tbuf1a_1_0_114.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1418:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.tbuf1a_1_0_114.kDefaultRead1": {
+   "ctx_count": 160,
+   "initial_node": false,
+   "input_ports": {
+    "LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0_wdone_in___FROM_partition_1_0_.tbuf1a_1_0_114.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kOutput0.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      159,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": null,
+   "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0",
+   "terminal_ctx_count": 160,
+   "terminal_node": true
+  },
+  "partition_1_0_.tbuf1a_1_0_99.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputY": {
+   "ctx_count": 192,
+   "initial_node": false,
+   "input_ports": {
+    "kFrontDynamicWriteCtx_wdone_in___FROM_partition_1_0_.tbuf1a_1_0_99.kFrontDynamicWriteCtx.wdone__": {
+     "buffer_depth": 1,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    },
+    "phase2_strip_done_FROM_partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase2.kDone": {
+     "buffer_depth": 8192,
+     "init": 0,
+     "pop_schedule": [
+      0,
+      191,
+      1,
+      1
+     ]
+    }
+   },
+   "output_ports": {
+    "1001": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0.phase3",
+       "port": "21000",
+       "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0"
+      }
+     ],
+     "push_schedule": [
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/templates/src/templates/cross_entropy/rail/CrossEntropyGrad.cpp:1469:0",
+   "terminal_node": false
+  },
+  "partition_1_0_.tbuf1a_1_0_99.kFrontDynamicWriteCtx": {
+   "ctx_count": 16,
+   "init_ctx_count": 16,
+   "initial_node": true,
+   "input_ports": null,
+   "output_ports": {
+    "wdone__": {
+     "destinations": [
+      {
+       "node": "partition_1_0_.tbuf1a_1_0_99.LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss@kInputY",
+       "port": "kFrontDynamicWriteCtx_wdone_in___FROM_partition_1_0_.tbuf1a_1_0_99.kFrontDynamicWriteCtx.wdone__",
+       "src_ctx": "software/compiler/rail/src/lib/pass/transform/RAILIOInsertion.cpp:193:0"
+      }
+     ],
+     "push_schedule": [
+      0,
+      15,
+      1,
+      1
+     ]
+    }
+   },
+   "src_ctx": "software/compiler/rail/src/lib/node/tbuffer/TBufferContext.cpp:469:0",
+   "terminal_node": false
+  }
+ }
+}
