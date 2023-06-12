@@ -53,6 +53,7 @@ class ClimateDataGenerator_TF(tf.keras.utils.Sequence):
                 axis=1
             ), self.repeat_cols, axis=1
         )[:self.n_rows, :].astype(self.d_type)
+        self.n_nodes = temperature.shape[1]
         
         split_index = (self.n_cols * self.repeat_cols) // 2
         # print(raw_data.shape, self.x_indexer, self.y_indexer)
@@ -82,3 +83,52 @@ class ClimateDataGenerator_TF(tf.keras.utils.Sequence):
     def __call__(self):
         for i in range(self.X.shape[0]):
             yield self.__getitem__(i)
+
+class ClimateDataGenerator_TFSTGCN(ClimateDataGenerator_TF):
+    def __init__(self, dir_list, handler_params, dtype, norm=True, validation_files=None):
+        super().__init__(
+            dir_list, 
+            handler_params, 
+            dtype, 
+            norm, 
+            validation_files
+        )
+        self.n_features = 2
+        self.sel_neighbors = 4
+        
+    def read_data(self, dir_path): 
+        # raw data
+        temperature = pd.read_csv(
+            os.path.join(dir_path, "wona_temp.csv"), 
+            index_col=[0]
+        )
+        pressure = pd.read_csv(
+            os.path.join(dir_path, "wona_pressure.csv"), 
+            index_col=[0]
+        )
+        
+        raw_data = np.repeat(
+            np.stack(
+                [temperature.values, pressure.values], 
+                axis=2
+            ), self.repeat_cols, axis=1
+        )[:self.n_rows, :].astype(self.d_type)
+        self.n_nodes = temperature.shape[1]
+        
+        flat_X_data = np.transpose(raw_data[self.x_indexer], [0, 3, 1, 2])
+        flat_Y_data = np.transpose(raw_data[self.y_indexer], [0, 3, 1, 2])
+        
+        if self.norm:
+            flat_X_data[:, 0, :, :] = (flat_X_data[:, 0, :, :] - 10) / 12
+            flat_X_data[:, 1, :, :] = (flat_X_data[:, 1, :, :] - 1015) / 8
+
+            flat_Y_data[:, 0, :, :] = (flat_Y_data[:, 0, :, :] - 10) / 12
+            flat_Y_data[:, 1, :, :] = (flat_Y_data[:, 1, :, :] - 1015) / 8
+
+        return flat_X_data, flat_Y_data
+
+    def __getitem__(self, index):
+        'Generates one sample of data'
+        X_out = self.X[index, :]
+        y_out = self.y[index, :]
+        return X_out, y_out

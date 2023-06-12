@@ -34,122 +34,122 @@ num_edge_feats -- number of features (states) associates with each edge in the n
 import scipy.io as sio
 import os
 import numpy as np
-import pandas as pd
+# import pandas as pd
 
-class CyberPhysicalDataset:
-    def __init__(self, root, gen_locations):
-        """ This class file considers the mat file data pointed by the user and parses it into respective tensors"""
-        # If the current code and data files are in the same directory
-        current_file_path = os.path.dirname(os.path.abspath(__file__))
-        # If the current code and data files are not in the same directory
-        # current_file_path         = 'Repositories/GridSTAGE/code'
+# class CyberPhysicalDataset:
+#     def __init__(self, root, gen_locations):
+#         """ This class file considers the mat file data pointed by the user and parses it into respective tensors"""
+#         # If the current code and data files are in the same directory
+#         current_file_path = os.path.dirname(os.path.abspath(__file__))
+#         # If the current code and data files are not in the same directory
+#         # current_file_path         = 'Repositories/GridSTAGE/code'
 
-        mat_file_path = current_file_path + root + 'PMUData.mat'
-        mat_file_contents = sio.loadmat(mat_file_path)
-        PMU_locations = mat_file_contents['fmeas_con'][:, 1].astype(int)
-        frequency_data = mat_file_contents['PMU']['f'][0][0][:, PMU_locations - 1].T
-        voltage_data = mat_file_contents['PMU']['Vm'][0][0][:, PMU_locations - 1].T
-        angle_data = mat_file_contents['PMU']['Va'][0][0][:, PMU_locations - 1].T
-        num_time_steps, num_bus = mat_file_contents['PMU']['f'][0][0].shape
+#         mat_file_path = current_file_path + root + 'PMUData.mat'
+#         mat_file_contents = sio.loadmat(mat_file_path)
+#         PMU_locations = mat_file_contents['fmeas_con'][:, 1].astype(int)
+#         frequency_data = mat_file_contents['PMU']['f'][0][0][:, PMU_locations - 1].T
+#         voltage_data = mat_file_contents['PMU']['Vm'][0][0][:, PMU_locations - 1].T
+#         angle_data = mat_file_contents['PMU']['Va'][0][0][:, PMU_locations - 1].T
+#         num_time_steps, num_bus = mat_file_contents['PMU']['f'][0][0].shape
 
-        scenario_description_file = current_file_path + root + 'ScenarioDescription.csv'
+#         scenario_description_file = current_file_path + root + 'ScenarioDescription.csv'
 
-        agc_signals_file = current_file_path + root + 'ACEData.mat'
-        agc_data = sio.loadmat(agc_signals_file)
+#         agc_signals_file = current_file_path + root + 'ACEData.mat'
+#         agc_data = sio.loadmat(agc_signals_file)
 
-        edge_attr_Im = None
-        edge_attr_Ia = None
-        edge_attr_Id = None
+#         edge_attr_Im = None
+#         edge_attr_Ia = None
+#         edge_attr_Id = None
 
-        for i in range(num_bus):
-            if type(edge_attr_Im) == np.ndarray:
-                edge_attr_Im = np.hstack((edge_attr_Im, mat_file_contents['PMU']['Im'][0][0][0][i]))
-                edge_attr_Ia = np.hstack((edge_attr_Ia, mat_file_contents['PMU']['Ia'][0][0][0][i]))
-                edge_attr_Id = np.hstack((edge_attr_Id, mat_file_contents['PMU']['Id'][0][0][0][i]))
-            else:
-                edge_attr_Im = mat_file_contents['PMU']['Im'][0][0][0][i]
-                edge_attr_Ia = mat_file_contents['PMU']['Ia'][0][0][0][i]
-                edge_attr_Id = mat_file_contents['PMU']['Id'][0][0][0][i]
+#         for i in range(num_bus):
+#             if type(edge_attr_Im) == np.ndarray:
+#                 edge_attr_Im = np.hstack((edge_attr_Im, mat_file_contents['PMU']['Im'][0][0][0][i]))
+#                 edge_attr_Ia = np.hstack((edge_attr_Ia, mat_file_contents['PMU']['Ia'][0][0][0][i]))
+#                 edge_attr_Id = np.hstack((edge_attr_Id, mat_file_contents['PMU']['Id'][0][0][0][i]))
+#             else:
+#                 edge_attr_Im = mat_file_contents['PMU']['Im'][0][0][0][i]
+#                 edge_attr_Ia = mat_file_contents['PMU']['Ia'][0][0][0][i]
+#                 edge_attr_Id = mat_file_contents['PMU']['Id'][0][0][0][i]
 
-        self.x = np.zeros([frequency_data.shape[1], frequency_data.shape[0], 3], dtype='float')
-        num_buses = frequency_data.shape[0]
-        num_time_steps = frequency_data.shape[1]
-        for i in range(num_time_steps):
-            for j in range(num_buses):
-                self.x[i, j, 0] = frequency_data[j, i]
-                self.x[i, j, 1] = voltage_data[j, i]
-                self.x[i, j, 2] = angle_data[j, i]
-        # print('X.shape')
-        # print(self.x.shape)
-        # self.x                    = np.transpose(np.array((frequency_data, voltage_data)), [1, 0, 2])
+#         self.x = np.zeros([frequency_data.shape[1], frequency_data.shape[0], 3], dtype='float')
+#         num_buses = frequency_data.shape[0]
+#         num_time_steps = frequency_data.shape[1]
+#         for i in range(num_time_steps):
+#             for j in range(num_buses):
+#                 self.x[i, j, 0] = frequency_data[j, i]
+#                 self.x[i, j, 1] = voltage_data[j, i]
+#                 self.x[i, j, 2] = angle_data[j, i]
+#         # print('X.shape')
+#         # print(self.x.shape)
+#         # self.x                    = np.transpose(np.array((frequency_data, voltage_data)), [1, 0, 2])
 
-        self.scen_desc = pd.read_csv(scenario_description_file)
+#         self.scen_desc = pd.read_csv(scenario_description_file)
 
-        self.edge_attr_Im = edge_attr_Im.T
-        self.edge_attr_Ia = edge_attr_Ia.T
-        self.edge_attr_Id = edge_attr_Id.T
+#         self.edge_attr_Im = edge_attr_Im.T
+#         self.edge_attr_Ia = edge_attr_Ia.T
+#         self.edge_attr_Id = edge_attr_Id.T
 
-        self.edge_attr = np.transpose(np.array((self.edge_attr_Im, self.edge_attr_Ia)), [1, 0, 2])
-        self.u = np.zeros((num_bus, num_time_steps))
-        self.u[gen_locations, :] = agc_data['tg_sig'][:, np.arange(0, 2 * num_time_steps, 2)]
+#         self.edge_attr = np.transpose(np.array((self.edge_attr_Im, self.edge_attr_Ia)), [1, 0, 2])
+#         self.u = np.zeros((num_bus, num_time_steps))
+#         self.u[gen_locations, :] = agc_data['tg_sig'][:, np.arange(0, 2 * num_time_steps, 2)]
 
 
-# ---------------------------------------------------------------
+# # ---------------------------------------------------------------
 
-class TransientDatasetwithControl:
-    def __init__(self, root, gen_locations):
-        """ This class file considers the mat file data pointed by the user and parses it into respective tensors"""
-        # If the current code and data files are in the same directory
-        current_file_path = os.path.dirname(os.path.abspath(__file__))
-        # If the current code and data files are not in the same directory
-        # current_file_path         = 'Repositories/GridSTAGE/code'
+# class TransientDatasetwithControl:
+#     def __init__(self, root, gen_locations):
+#         """ This class file considers the mat file data pointed by the user and parses it into respective tensors"""
+#         # If the current code and data files are in the same directory
+#         current_file_path = os.path.dirname(os.path.abspath(__file__))
+#         # If the current code and data files are not in the same directory
+#         # current_file_path         = 'Repositories/GridSTAGE/code'
 
-        mat_file_path = current_file_path + root + 'PMUData.mat'
-        mat_file_contents = sio.loadmat(mat_file_path)
-        pmu_locations = mat_file_contents['fmeas_con'][:, 1].astype(int)
+#         mat_file_path = current_file_path + root + 'PMUData.mat'
+#         mat_file_contents = sio.loadmat(mat_file_path)
+#         pmu_locations = mat_file_contents['fmeas_con'][:, 1].astype(int)
 
-        num_time_steps, num_bus = mat_file_contents['PMU']['f'][0][0].shape
-        scenario_description = pd.read_csv(current_file_path + root + 'ScenarioDescription.csv')
-        load_changes_start_times = scenario_description['Start time(s) for load changes'][0].split()
-        time1 = int(load_changes_start_times[0])
-        time2 = int(load_changes_start_times[1])
+#         num_time_steps, num_bus = mat_file_contents['PMU']['f'][0][0].shape
+#         scenario_description = pd.read_csv(current_file_path + root + 'ScenarioDescription.csv')
+#         load_changes_start_times = scenario_description['Start time(s) for load changes'][0].split()
+#         time1 = int(load_changes_start_times[0])
+#         time2 = int(load_changes_start_times[1])
 
-        frequency_data = [mat_file_contents['PMU']['f'][0][0][time1 * 50 + 25: time2 * 50 - 25, pmu_locations - 1],
-                          mat_file_contents['PMU']['f'][0][0][time2 * 50 + 25: num_time_steps, pmu_locations - 1]]
-        voltage_data = [mat_file_contents['PMU']['Vm'][0][0][time1 * 50 + 25: time2 * 50 - 25, pmu_locations - 1],
-                        mat_file_contents['PMU']['Vm'][0][0][time2 * 50 + 25: num_time_steps, pmu_locations - 1]]
-        angle_data = [mat_file_contents['PMU']['Va'][0][0][time1 * 50 + 25: time2 * 50 - 25, pmu_locations - 1],
-                      mat_file_contents['PMU']['Va'][0][0][time2 * 50 + 25: num_time_steps, pmu_locations - 1]]
+#         frequency_data = [mat_file_contents['PMU']['f'][0][0][time1 * 50 + 25: time2 * 50 - 25, pmu_locations - 1],
+#                           mat_file_contents['PMU']['f'][0][0][time2 * 50 + 25: num_time_steps, pmu_locations - 1]]
+#         voltage_data = [mat_file_contents['PMU']['Vm'][0][0][time1 * 50 + 25: time2 * 50 - 25, pmu_locations - 1],
+#                         mat_file_contents['PMU']['Vm'][0][0][time2 * 50 + 25: num_time_steps, pmu_locations - 1]]
+#         angle_data = [mat_file_contents['PMU']['Va'][0][0][time1 * 50 + 25: time2 * 50 - 25, pmu_locations - 1],
+#                       mat_file_contents['PMU']['Va'][0][0][time2 * 50 + 25: num_time_steps, pmu_locations - 1]]
 
-        self.F  = frequency_data
-        self.Vm = voltage_data
-        self.Va = angle_data
-        agc_signals_file = current_file_path + root + 'ACEData.mat'
-        agc_data = sio.loadmat(agc_signals_file)
+#         self.F  = frequency_data
+#         self.Vm = voltage_data
+#         self.Va = angle_data
+#         agc_signals_file = current_file_path + root + 'ACEData.mat'
+#         agc_data = sio.loadmat(agc_signals_file)
 
-        edge_attr_im = None
-        edge_attr_ia = None
-        edge_attr_id = None
+#         edge_attr_im = None
+#         edge_attr_ia = None
+#         edge_attr_id = None
 
-        for i in range(num_bus):
-            if type(edge_attr_im) == np.ndarray:
-                edge_attr_im = np.hstack((edge_attr_im, mat_file_contents['PMU']['Im'][0][0][0][i]))
-                edge_attr_ia = np.hstack((edge_attr_ia, mat_file_contents['PMU']['Ia'][0][0][0][i]))
-                edge_attr_id = np.hstack((edge_attr_id, mat_file_contents['PMU']['Id'][0][0][0][i]))
-            else:
-                edge_attr_im = mat_file_contents['PMU']['Im'][0][0][0][i]
-                edge_attr_ia = mat_file_contents['PMU']['Ia'][0][0][0][i]
-                edge_attr_id = mat_file_contents['PMU']['Id'][0][0][0][i]
+#         for i in range(num_bus):
+#             if type(edge_attr_im) == np.ndarray:
+#                 edge_attr_im = np.hstack((edge_attr_im, mat_file_contents['PMU']['Im'][0][0][0][i]))
+#                 edge_attr_ia = np.hstack((edge_attr_ia, mat_file_contents['PMU']['Ia'][0][0][0][i]))
+#                 edge_attr_id = np.hstack((edge_attr_id, mat_file_contents['PMU']['Id'][0][0][0][i]))
+#             else:
+#                 edge_attr_im = mat_file_contents['PMU']['Im'][0][0][0][i]
+#                 edge_attr_ia = mat_file_contents['PMU']['Ia'][0][0][0][i]
+#                 edge_attr_id = mat_file_contents['PMU']['Id'][0][0][0][i]
 
-        self.scen_desc = scenario_description
+#         self.scen_desc = scenario_description
 
-        self.edge_attr_Im = edge_attr_im.T
-        self.edge_attr_Ia = edge_attr_ia.T
-        self.edge_attr_Id = edge_attr_id.T
+#         self.edge_attr_Im = edge_attr_im.T
+#         self.edge_attr_Ia = edge_attr_ia.T
+#         self.edge_attr_Id = edge_attr_id.T
 
-        self.edge_attr = np.transpose(np.array((self.edge_attr_Im, self.edge_attr_Ia)), [1, 0, 2])
-        self.u = np.zeros((num_bus, num_time_steps))
-        self.u[gen_locations, :] = agc_data['tg_sig'][:, np.arange(0, 2 * num_time_steps, 2)]
+#         self.edge_attr = np.transpose(np.array((self.edge_attr_Im, self.edge_attr_Ia)), [1, 0, 2])
+#         self.u = np.zeros((num_bus, num_time_steps))
+#         self.u[gen_locations, :] = agc_data['tg_sig'][:, np.arange(0, 2 * num_time_steps, 2)]
 
 # ---------------------------------------------------------------
 

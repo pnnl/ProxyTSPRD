@@ -26,4 +26,3 @@ class Framework:
     def use_tensorflow(self):
         # select tensorflow interface
         self._ML_FRAMEWORK = "TensorFlow"
-        pass

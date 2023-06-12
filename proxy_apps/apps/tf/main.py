@@ -2,6 +2,7 @@ from . import tf
 from ..main import ProxyApp, get_indexer
 from .models.lstm import LSTMSingleLayerTF
 from .models.cnn1d import TFCNN
+from .models.stgcn import STGCN_WAVE
 
 class LSTMProxyAppTF(ProxyApp):
     def __init__(self, platform) -> None:
@@ -147,9 +148,26 @@ class CNNProxyAppTF(ProxyApp):
                 learning_rate=opt_params["learning_rate"]
             )
 
-class GCNProxyAppTF(CNNProxyAppTF):
+class STGCNProxyAppTF(CNNProxyAppTF):
     def __init__(self, platform) -> None:
         super().__init__(platform)
+
+    def get_model(
+        self,
+        model_name,
+        model_params,
+        device=None
+    ):
+        # get model
+        model = STGCN_WAVE(
+                    c=model_params["other"]["channels"], 
+                    bw_size=model_params["bw_size"],
+                    fw_size=model_params["fw_size"],
+                    control_str=model_params["other"]["control_str"],
+                    device=device
+                )
+            
+        return model
 
 
 

@@ -1,13 +1,23 @@
 import os, sys, time
+import socket
+import datetime
+import numpy as np
+
+from scipy.sparse import random, coo_matrix, triu
+import pandas as pd
+
+import dgl
 import torch
+import torch.distributed as dist
 
 from .main import Interface
 
 class PyTorchInterface(Interface):
     def __init__(
         self, 
+        mpi_rank=0
     ) -> None:
-        super().__init__()
+        super().__init__(mpi_rank=mpi_rank)
         self._ML_FRAMEWORK = "PyTorch"
 
         ## PyTorch Setup
@@ -71,7 +81,7 @@ class PyTorchInterface(Interface):
             data_files,
             data_params
         )
-        if data_params["dataloader"] == "torch.utils.data.Dataset":
+        if data_params["dataloader"] in ["torch.utils.data.Dataset", "graphloader"]:
             sampler = None
             if num_replicas > 1:
                 sampler = torch.utils.data.distributed.DistributedSampler(
@@ -86,20 +96,20 @@ class PyTorchInterface(Interface):
                 num_workers=num_workers,
                 sampler=sampler
             )
-
-        return dataloader
-
+            
+        return data_generator, dataloader
+             
     def init_training_engine(
         self,
         model_name,
         model_dir,
-        data_params,
+        model_params,
         criterion_params,
         device=None
     ):
         super().init_training_engine(
             model_name=model_name,
-            data_params=data_params,
+            model_params=model_params,
             criterion_params=criterion_params,
             device=device
         )
@@ -215,11 +225,12 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         n_cpus,
         mgpu_strategy,
         mixed_precision,
-        dtype
+        dtype,
+        mpi_rank=0
         # profiling
     ) -> None:
-        super().__init__()
-
+        super().__init__(mpi_rank=mpi_rank)
+        
         # setup devices
         self._setup_devices(n_gpus, n_cpus, mgpu_strategy)
 
@@ -310,10 +321,12 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         if self._GLOBAL_RANK == 0:
             print("[INFO] App Supports MGPUs: %s" %(self.app_manager._MGPU_SUPPORT))
 
+        self.__DDP_SETUP = False
         # if multiple GPUs are supported by the app
         if self.app_manager._MGPU_SUPPORT:
             # if no strategy selected
             if self._MGPU_STRATEGY is None:
+                self._MGPU_SIZE = 1
                 if self._GLOBAL_RANK == 0:
                     print("[INFO] Disabling Multi-GPU Support. To use multiple gpus, provide a valid Multi-GPU strategy (HVD/DDP) when initializing the framework.")
             # if horovod
@@ -335,12 +348,13 @@ class PyTorchInterfaceGPU(PyTorchInterface):
 
                 # Horovod: limit # of CPU threads to be used per worker.
                 torch.set_num_threads(1)
-
             elif self._MGPU_STRATEGY == "DDP":
                 # On each node, discover the rank/size/local_rank with MPI:
                 self._LOCAL_RANK, self._GLOBAL_RANK, self._MGPU_SIZE = self._setup_ddp()
                 print("[INFO (DDP)] Running basic DDP example on local rank {}, rank {} of {}.".format(self._LOCAL_RANK, self._GLOBAL_RANK, self._MGPU_SIZE))
                 print("[INFO (DDP)] Rank {} setup complete".format(self._GLOBAL_RANK))
+                torch.cuda.set_device("cuda:" + str(self._LOCAL_RANK))
+                self.__DDP_SETUP = True
             else:
                 if self._GLOBAL_RANK == 0:
                     print("[INFO] Invalid Multi-GPU Strategy: %s" %(self._MGPU_STRATEGY))
@@ -397,35 +411,89 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         sampler=None,
         batch_size=1
     ):
-        return super().load_data(
+        data_generator, dataloader = super().load_data(
             data_files,
             data_params=data_params,
             pin_memory=True,
             num_workers=self._N_CPUS,
             batch_size=batch_size
         )  
+        if data_params["dataloader"] in ["graphloader"]:
+            df_distance = pd.read_csv("/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/grid_graph.csv")
+            n_nodes = data_generator.n_nodes
+
+            sp_mx = coo_matrix(
+                (df_distance["cost"].values, 
+                (
+                    df_distance["from"].values, 
+                    df_distance["to"].values
+                )), shape=(n_nodes, n_nodes)
+            )
+            G = dgl.from_scipy(sp_mx)
+            G = dgl.add_self_loop(G)
+
+            use_ddp = False
+            batch_size=n_nodes
+            distribute_graph = False
+            if data_params["distribute_graph"]:
+                if self._MGPU_STRATEGY == "DDP":
+                    self._DDP_LR, self._DDP_GR, self._DDP_SIZE = self._LOCAL_RANK, self._GLOBAL_RANK, self._MGPU_SIZE
+                else:
+                    if not self.__DDP_SETUP:
+                        self._DDP_LR, self._DDP_GR, self._DDP_SIZE = self._setup_ddp()
+                        print("[INFO (DDP)] Running basic DDP example on local rank {}, rank {} of {}.".format(self._DDP_LR, self._DDP_GR, self._DDP_SIZE))
+                        torch.cuda.set_device("cuda:" + str(self._DDP_LR))
+                        self.__DDP_SETUP = True
+                
+                use_ddp = True
+                batch_size=batch_size//self._DDP_SIZE
+                distribute_graph = True
+            if self._GLOBAL_RANK == 0:
+                print("[INFO (DDP)] Distributing the graph:", distribute_graph)
+            
+            sampler = dgl.dataloading.NeighborSampler([data_generator.sel_neighbors, data_generator.sel_neighbors])
+            graphloader = dgl.dataloading.DataLoader(
+                # The following arguments are specific to DataLoader.
+                graph=G,  # The graph
+                indices=range(n_nodes),  # The node IDs to iterate over in minibatches
+                graph_sampler=sampler,  # The neighbor sampler
+                device=self._DEVICE,  # Put the sampled MFGs on CPU or GPU
+                use_ddp=use_ddp,  # Make it work with distributed data parallel
+                # The following arguments are inherited from PyTorch DataLoader.
+                batch_size=batch_size,  # Per-device batch size.
+                # The effective batch size is this number times the number of GPUs.
+                shuffle=False,  # Whether to shuffle the nodes for every epoch
+                drop_last=False,  # Whether to drop the last incomplete batch
+                num_workers=0,  # Number of sampler processes
+            )
+            return dataloader, graphloader
+        else:
+            return dataloader, None
 
     def init_training_engine(
         self,
         model_name,
         model_dir,
-        data_params,
+        model_params,
         opt_params,
         criterion_params,
         infer_through=None,
         batch_size=1
     ):
+        # if multi gpu strategy is DDP
         if self._MGPU_STRATEGY == "DDP":
             self._DEVICE = f'cuda:{self._LOCAL_RANK}'
         
+        # check if model exists
         model_exists = super().init_training_engine(
             model_name=model_name,
             model_dir=model_dir,
-            data_params=data_params,
+            model_params=model_params,
             criterion_params=criterion_params,
             device=self._DEVICE
         )
         
+        # load ddp if multi distribute strategy is DDP
         if self._MGPU_STRATEGY == "DDP":
             self.model.to(self._DEVICE)
             from torch.nn.parallel import DistributedDataParallel as DDP
@@ -435,21 +503,13 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         else:
             self.model.to(self._DEVICE)
         
+        # get optimizer
         self.optimizer = self.app_manager.get_opt(
             model_params=self.model.parameters(),
             opt_params=opt_params
         )
-        # if self.opt_name == "SGD":
-        #     self.optimizer = torch.optim.SGD(
-        #         self.model.parameters(), 
-        #         lr=opt_params["learning_rate"]
-        #     )
-        # else:
-        #     self.optimizer = torch.optim.Adagrad(
-        #         self.model.parameters(), 
-        #         lr=opt_params["learning_rate"]
-        #     )
-
+        
+        # distribute optimizer if multi-gpu strategy is horovod
         if self._MGPU_STRATEGY == "HVD":
             if self._GLOBAL_RANK == 0:
                 print("[INFO (HVD)] Distributing the optimizer and broadcasting parameters.")
@@ -461,81 +521,119 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         if infer_through=="ait":
             assert self._DTYPE == "float16", "[ERROR] AIT can only be enabled with FP16."
             self.module= self.load_ait_module(
-                data_params=data_params, 
+                data_params=model_params, 
                 batch_size=batch_size, 
                 device=self._DEVICE
             )
         
         return model_exists
 
+    def train_loop(self, training_data, input_nodes=None, output_nodes=None, mfgs=None):
+        # loop loss and number of batches
+        loop_loss = torch.tensor(0.0, device=self._DEVICE)
+        loop_batches = torch.tensor(0, device=self._DEVICE)
+
+        # iterate over training data
+        for i, (inputs, targets) in enumerate(training_data):
+            # move input data to GPU
+            inputs, targets  = inputs.to(self._DEVICE), targets.to(self._DEVICE)
+            
+            # for graph data
+            if (input_nodes is not None) and (output_nodes is not None):
+                inputs = inputs[:,:,:,input_nodes]
+                targets = targets[:,:,:,output_nodes]
+                
+            # clear the gradients
+            self.optimizer.zero_grad()#set_to_none=True)
+            
+            with torch.cuda.amp.autocast(enabled=self._MIXED_PRECISION):
+                # compute the model output
+                if mfgs is not None:
+                    yhat = self.model(inputs, mfgs)
+                else:
+                    yhat = self.model(inputs)
+                
+                # calculate loss
+                loss = self.criterion(yhat, targets)
+            
+            if self._MIXED_PRECISION:
+                # credit assignment
+                self.scaler.scale(loss).backward()
+            
+                if self._MGPU_STRATEGY == "HVD":
+                    # Make sure all async allreduces are done
+                    self.optimizer.synchronize()
+
+                    # In-place unscaling of all gradients before weights update
+                    self.scaler.unscale_(self.optimizer)
+                    with self.optimizer.skip_synchronize():
+                        self.scaler.step(self.optimizer)
+                else:
+                    self.scaler.step(self.optimizer)
+                    
+                # Update scaler in case of overflow/underflow
+                self.scaler.update()
+            else:
+                # credit assignment
+                loss.backward()
+            
+                # update model weights
+                self.optimizer.step()
+            
+            # updating the loss
+            loop_loss += loss
+            loop_batches += 1
+
+            # free cuda memory
+            del inputs
+            del targets
+        
+        return loop_loss, loop_batches
+
     def train(
         self,
         training_data,
-        n_epochs
+        n_epochs,
+        graphloader=None
     ):
         super().train()
+        self.model.train()
 
         self._N_EPOCHS = n_epochs
         m_start = time.time()
         
-        # iterate through all the epoch
-        all_loss = torch.zeros(self._N_EPOCHS, device=self._DEVICE) # []
-        epoch_time = torch.zeros(self._N_EPOCHS, device=self._DEVICE) # []
-        avg_batch_time = torch.zeros(self._N_EPOCHS, device=self._DEVICE) # []
+        # collect loss, epoch time, and batch time
+        all_loss = torch.zeros(self._N_EPOCHS).cpu()#, device=self._DEVICE) # []
+        epoch_time = torch.zeros(self._N_EPOCHS).cpu()#, device=self._DEVICE) # []
+        avg_batch_time = torch.zeros(self._N_EPOCHS).cpu()#, device=self._DEVICE) # []
         # total_loss = torch.empty(self._N_EPOCHS)
         
+        # iterate through all the epoch
         for epoch in range(self._N_EPOCHS):
-            total_loss = torch.tensor(0.0, device=self._DEVICE)
-            num_batches = torch.tensor(0, device=self._DEVICE)
+            total_loss = 0.0#, device=self._DEVICE)
+            num_batches = 0#, device=self._DEVICE)
             
             epoch_start_time = time.time()
+            
             # go through all the batches generated by dataloader
-            for i, (inputs, targets) in enumerate(training_data):
-                # if i > 100: break
-                # move data to GPU
-                # print(inputs.shape, targets.shape)
-                inputs, targets        = inputs.to(self._DEVICE), targets.to(self._DEVICE)
+            if graphloader is None:
+                # for non-euclidean data
+                # compute loss
+                loop_loss, loop_batches = self.train_loop(training_data)
                 
-                # clear the gradients
-                self.optimizer.zero_grad()#set_to_none=True)
+                # total loss and number of batches
+                total_loss += loop_loss * loop_batches
+                num_batches += loop_batches
+            else:
+                # for graph data
+                for input_nodes, output_nodes, mfgs in graphloader:
+                    # compute loss
+                    loop_loss, loop_batches = self.train_loop(training_data, input_nodes, output_nodes, mfgs)
                 
-                with torch.cuda.amp.autocast(enabled=self._MIXED_PRECISION):
-                    # compute the model output
-                    yhat = self.model(inputs)
-                    
-                    # calculate loss
-                    loss = self.criterion(yhat, targets)
-                
-                if self._MIXED_PRECISION:
-                    # credit assignment
-                    self.scaler.scale(loss).backward()
-                
-                    if self._MGPU_STRATEGY == "HVD":
-                        # if self._GLOBAL_RANK == 0:
-                        #     print("[INFO (HVD)] Synchronizing and scaling the model parameters.")
-                        # Make sure all async allreduces are done
-                        self.optimizer.synchronize()
-
-                        # In-place unscaling of all gradients before weights update
-                        self.scaler.unscale_(self.optimizer)
-                        with self.optimizer.skip_synchronize():
-                            self.scaler.step(self.optimizer)
-                    else:
-                        self.scaler.step(self.optimizer)
-                        
-                    # Update scaler in case of overflow/underflow
-                    self.scaler.update()
-                else:
-                    # credit assignment
-                    loss.backward()
-                
-                    # update model weights
-                    self.optimizer.step()
-                
-                # updating the loss
-                total_loss += loss
-                num_batches += 1
-                
+                    # total loss and number of batches
+                    total_loss += loop_loss * loop_batches
+                    num_batches += loop_batches
+            
             epoch_stop_time = time.time()
             all_loss[epoch] = total_loss / num_batches
             epoch_time[epoch] = epoch_stop_time-epoch_start_time
@@ -553,15 +651,22 @@ class PyTorchInterfaceGPU(PyTorchInterface):
             print("============> (Before Sync) Training Loss: ", all_loss)
         
         # sum of all the times
+        # horovod
         if self._MGPU_STRATEGY == "HVD":
+            # sync training time
             model_training_time = self.hvd_torch.allreduce(model_training_time)
-            all_loss = [self.hvd_torch.allreduce(l, average=True).numpy() for l in all_loss]
-            # print("[INFO (HVD)] Total Training Time", model_training_time)
+            # sync loss
+            all_loss = [self.hvd_torch.allreduce(l, average=True) for l in all_loss]
+        # ddp
         elif self._MGPU_STRATEGY == "DDP":
+            # sync training time
             dist.all_reduce(model_training_time, op=dist.ReduceOp.SUM)
             model_training_time = model_training_time / self._MGPU_SIZE
-            all_loss = [dist.all_reduce(model_training_time, op=dist.ReduceOp.SUM) / self._MGPU_SIZE for l in all_loss]
-        
+            # sync loss
+            for l in all_loss: 
+                dist.all_reduce(l, op=dist.ReduceOp.SUM)
+            all_loss = [l / self._MGPU_SIZE for l in all_loss]
+            
         if self._GLOBAL_RANK == 0:
             print("============> (After Sync) Training Time: ", model_training_time)
             print("============> (After Sync) Training Loss: ", all_loss)
@@ -579,32 +684,31 @@ class PyTorchInterfaceGPU(PyTorchInterface):
             dist.destroy_process_group() 
 
         
-    def infer(
-        self,
-        data,
-        infer_through=None,
-        batch_size=1
-    ):
-        super().infer()
-
+    def infer_on_data(
+            self, test_data, infer_through, batch_size=1,
+            input_nodes=None, output_nodes=None, mfgs=None
+        ):
         # loss and accuracy
         num_samples = 0
         test_loss = 0.
-        if infer_through=="onnx":
-            self.criterion = self.app_manager.get_criterion(criterion_params={})
         
-        # go through all the batches generated by dataloader
-        start_time = time.perf_counter()
-        for inputs, target in data:
+        for inputs, target in test_data:
             # process only complete batches
             if inputs.shape[0] == batch_size:
                 # compute output and loss
                 if infer_through=="ait":
+                    if (input_nodes is not None) or (output_nodes is not None) or (mfgs is not None):
+                        raise NotImplementedError("AIT is not supported for Graph data.")
+                    
                     inputs = {"X": inputs.permute(0, 2, 3, 1).to(self._DEVICE).contiguous()}
                     yhat = torch.empty(target.shape).to(self._DEVICE).contiguous()
                     outputs = {"Y": yhat}
                     self.module.run_with_tensors(inputs, outputs, graph_mode=True)
+
                 elif infer_through=="onnx":
+                    if (input_nodes is not None) or (output_nodes is not None) or (mfgs is not None):
+                        raise NotImplementedError("ONNX is not supported for Graph data.")
+                    
                     y_onnx = self.sess.run(["output"], dict({"input": inputs.numpy()}))
                     yhat = torch.tensor(y_onnx[0]).to(self._DEVICE)
                 else:
@@ -612,18 +716,67 @@ class PyTorchInterfaceGPU(PyTorchInterface):
                     inputs = inputs.to(self._DEVICE)
                     # print(self.batch_size, inputs.shape)
                     
+                    # for graph data
+                    if (input_nodes is not None) and (output_nodes is not None):
+                        inputs = inputs[:,:,:,input_nodes]
+                        target = target[:,:,:,output_nodes.cpu()]
+                        
                     with torch.cuda.amp.autocast(enabled=self._MIXED_PRECISION):
                         # compute the model output
-                        yhat = self.model(inputs)
-                    
+                        if mfgs is not None:
+                            yhat = self.model(inputs, mfgs).cpu()
+                        else:
+                            yhat = self.model(inputs).cpu()
+
                 # calculate loss
                 # print(yhat.device)
                 # print(target.device)
                 # print(test_loss.device)
-                test_loss += self.criterion(yhat, target.to(self._DEVICE)).item()
+                test_loss += self.criterion(yhat, target).item()
 
                 # calculate the number of samples
                 num_samples += 1
+
+        return test_loss, num_samples
+        
+            
+    def infer(
+        self,
+        data,
+        infer_through=None,
+        batch_size=1,
+        graphloader=None
+    ):
+        super().infer()
+
+        if infer_through=="onnx":
+            self.criterion = self.app_manager.get_criterion(criterion_params={})
+        
+        # go through all the batches generated by dataloader
+        start_time = time.perf_counter()
+        if graphloader is None:
+            test_loss, num_samples = self.infer_on_data(
+                data, 
+                infer_through=infer_through,
+                batch_size=batch_size
+            )
+        else:
+            # for graph data
+            test_loss = 0
+            num_samples = 0
+            for input_nodes, output_nodes, mfgs in graphloader:
+                graph_loss, graph_samples = self.infer_on_data(
+                    data, 
+                    infer_through=infer_through,
+                    batch_size=batch_size, 
+                    input_nodes=input_nodes, 
+                    output_nodes=output_nodes, 
+                    mfgs=mfgs
+                )
+
+                # total loss and number of batches
+                test_loss += graph_loss
+                num_samples += graph_samples
         
         end_time = time.perf_counter()
         inf_time = end_time - start_time
@@ -652,7 +805,6 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         This function written by Corey Adams, ALCF
         Feel free to modify or use the code below as you need.
         '''
-
         from mpi4py import MPI
         # Get the global communicator:
         COMM_WORLD = MPI.COMM_WORLD
@@ -710,7 +862,8 @@ class PyTorchInterfaceGPU(PyTorchInterface):
         for key in local_rank_key_options:
             if key in os.environ:
                 local_rank = os.environ[key]
-                print("[INFO (DDP)] Determined local rank through environment variable {}".format(key))
+                if self._GLOBAL_RANK == 0:
+                    print("[INFO (DDP)] Determined local rank through environment variable {}".format(key))
                 break
         if local_rank is None:
             # Try the last-ditch effort of home-brewed local rank deterimination

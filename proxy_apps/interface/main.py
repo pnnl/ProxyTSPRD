@@ -10,8 +10,9 @@ from ..utils import path_handler
 class Interface:
     def __init__(
         self,
+        mpi_rank=0
     ) -> None:
-        self._GLOBAL_RANK = 0
+        self._GLOBAL_RANK = mpi_rank
 
     def init_app_manager(
         self, 
@@ -78,15 +79,15 @@ class Interface:
     def init_training_engine(
         self,
         model_name,
-        data_params,
+        model_params,
         criterion_params,
         device=None
     ):
-        self.data_params = data_params
+        self.model_params = model_params
         self.criterion = self.app_manager.get_criterion(criterion_params=criterion_params)
         self.model = self.app_manager.get_model(
                         model_name, 
-                        data_params, 
+                        model_params, 
                         device=device
                     )
     

@@ -1,8 +1,9 @@
 from .datareaders import GridDataGenerator_TF 
 from .datareaders import GridDataGenerator_TFConv2D
+from .datareaders import GridDataGenerator_TFSTGCN
 from ..main import LSTMProxyAppTF
 from ..main import CNNProxyAppTF
-from ..main import GCNProxyAppTF
+from ..main import STGCNProxyAppTF
 
 class GridLSTMProxyAppTF(LSTMProxyAppTF):
     def __init__(self, platform) -> None:
@@ -42,7 +43,7 @@ class GridCNNProxyAppTF(CNNProxyAppTF):
 
         return super().get_datagen(datagen)
     
-class GridGCNProxyAppTF(GCNProxyAppTF):
+class GridSTGCNProxyAppTF(STGCNProxyAppTF):
     def __init__(self, platform) -> None:
         super().__init__(platform)
 
@@ -53,7 +54,7 @@ class GridGCNProxyAppTF(GCNProxyAppTF):
         dtype, 
         validation_files=None
     ):
-        datagen = GridDataGenerator_TFConv2D(
+        datagen = GridDataGenerator_TFSTGCN(
             dir_list=files,
             handler_params=data_params,
             dtype=dtype
