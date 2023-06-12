@@ -1,8 +1,0 @@
-/qfs/people/jain432/pacer_saudade/code/sample_scripts/models/cnn/arc_gen/..//cnn.s0.utilization_report.txt
-/qfs/people/jain432/pacer_saudade/code/sample_scripts/models/cnn/arc_gen/..//cnn.s1.utilization_report.txt
-/qfs/people/jain432/pacer_saudade/code/sample_scripts/models/cnn/arc_gen/..//cnn.s2.utilization_report.txt
-/qfs/people/jain432/pacer_saudade/code/sample_scripts/models/cnn/arc_gen/../stage_buffers/partition_latency_0_0.dot
-/qfs/people/jain432/pacer_saudade/code/sample_scripts/models/cnn/arc_gen/../stage_buffers/partition_latency_1_0.dot
-/qfs/people/jain432/pacer_saudade/code/sample_scripts/models/cnn/arc_gen/../stage_buffers/partition_latency_2_0.dot
-/qfs/people/jain432/pacer_saudade/code/sample_scripts/models/cnn/arc_gen/..//cnn_0_2_bandwidth_statistics.txt
-/qfs/people/jain432/pacer_saudade/code/sample_scripts/models/cnn/arc_gen/..//cnn_0_2_bandwidth_statistics.csv

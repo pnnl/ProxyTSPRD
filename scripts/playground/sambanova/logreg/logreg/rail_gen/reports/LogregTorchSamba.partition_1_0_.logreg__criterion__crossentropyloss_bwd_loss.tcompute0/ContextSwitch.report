@@ -1,6 +1,0 @@
-Context switch components: 
-Component #0:
-  0: phase0[NEXT: {1}] [ENTRY: true]
-  1: phase1[NEXT: {2}] [ENTRY: false]
-  2: phase2[NEXT: {3}] [ENTRY: false]
-  3: phase3[NEXT: {0}] [ENTRY: false]
