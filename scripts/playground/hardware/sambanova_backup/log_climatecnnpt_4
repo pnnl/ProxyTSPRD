@@ -1,0 +1,589 @@
+[INFO] Suffix: rdu_nr4_e20_b512_dfp32_prof0
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Selected App: ClimateCNNProxyAppPT
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ClimateApp
+[INFO] App Supports Mixed Precision: True
+[Info][SAMBA]# Placing log files in /people/jain432/pacer_saudade/output/ClimateApp/ClimateCNNProxyAppPT/rdu_nr4_e20_b512_dfp32_prof0/rdu_nr4_e20_b512_dfp32_prof0.samba.log
+[Info][MAC]# Placing log files in /people/jain432/pacer_saudade/output/ClimateApp/ClimateCNNProxyAppPT/rdu_nr4_e20_b512_dfp32_prof0/rdu_nr4_e20_b512_dfp32_prof0.mac.log
+[INFO] Model Path: /people/jain432/pacer_saudade/models/ClimateApp/ClimateCNNProxyAppPT/rdu_nr4_e20_b512_dfp32_prof0.pt
+[INFO] Model Parameters:
+conv_layer.weight torch.Size([256, 326, 3])
+conv_layer.bias torch.Size([256])
+dense_layer.weight torch.Size([9780, 256])
+dense_layer.bias torch.Size([9780])
+[info] Building size named dims for graph ClimateCNNProxyAppPT_samba
+[info] Building nameddims for graph ClimateCNNProxyAppPT_samba
+[info] Analyze tiling for graph: ClimateCNNProxyAppPT_samba
+[info] Mapping for graph ClimateCNNProxyAppPT_samba
+[info] Set up stage ID and metapipe ID for section 2
+[info] Set up stage ID and metapipe ID for section 0
+[info] Set up stage ID and metapipe ID for section 1
+[info] MAC decided on the following section cuts for graph ClimateCNNProxyAppPT_samba
+[info] Amortized resources overall: 1.520000e+02 PCUs, 3.000000e+02 PMUs, projected latency: 4.666516e-03 s, FLOPS: 1.873557e+00 T/s, DDR_BW: 2.911374e+01 GB/s
+[info] Lowering to TLIR succeeded.
+[info] Compilation succeeded.
+[info] Mac Compilation succeeded.
++ /opt/llvm11/bin/clang++ -DAT_PARALLEL_OPENMP=1 -D_THP_CORE -I/opt/llvm12/include -I/usr/local/lib/python3.7/site-packages/torch/lib -I./ -I/opt/sambaflow/include -isystem /usr/local/lib/python3.7/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/lib/python3.7/site-packages/torch/include -fvisibility=hidden -fno-exceptions -fno-rtti -Werror -Wall -Wno-reorder -Wno-conversion -Wno-sign-conversion -Wno-sign-compare -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-variable -Wno-strict-aliasing -Wno-unused-local-typedefs -Wunreachable-code-aggressive -Wsometimes-uninitialized -Wconditional-uninitialized -Woverflow -Waddress-of-temporary -Wpointer-arith -Wimplicit -Wbitfield-enum-conversion -Wno-unused-private-field -DSOURCE_PREFIX_LENGTH=84 -g -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -Wno-unused-parameter -Wno-missing-field-initializers -Wno-write-strings -Wno-unknown-pragmas -Wno-missing-braces -fopenmp=libomp -std=gnu++17 -o ClimateCNNProxyAppPTSamba.cpp.o -c ClimateCNNProxyAppPTSamba.cpp
++ /opt/llvm11/bin/clang++ -DAT_PARALLEL_OPENMP=1 -D_THP_CORE -I/opt/llvm12/include -I/usr/local/lib/python3.7/site-packages/torch/lib -I./ -I/opt/sambaflow/include -isystem /usr/local/lib/python3.7/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/lib/python3.7/site-packages/torch/include -fvisibility=hidden -fno-exceptions -fno-rtti -Werror -Wall -Wno-reorder -Wno-conversion -Wno-sign-conversion -Wno-sign-compare -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-variable -Wno-strict-aliasing -Wno-unused-local-typedefs -Wunreachable-code-aggressive -Wsometimes-uninitialized -Wconditional-uninitialized -Woverflow -Waddress-of-temporary -Wpointer-arith -Wimplicit -Wbitfield-enum-conversion -Wno-unused-private-field -DSOURCE_PREFIX_LENGTH=84 -g -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -Wno-unused-parameter -Wno-missing-field-initializers -Wno-write-strings -Wno-unknown-pragmas -Wno-missing-braces -fopenmp=libomp -std=gnu++17 -o TestClimateCNNProxyAppPTSamba.cpp.o -c TestClimateCNNProxyAppPTSamba.cpp
++ /opt/llvm11/bin/clang++ -I/opt/llvm12/include -I/usr/local/lib/python3.7/site-packages/torch/lib -I./ -I/opt/sambaflow/include -isystem /usr/local/lib/python3.7/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/lib/python3.7/site-packages/torch/include -fvisibility=hidden -fno-exceptions -fno-rtti -Werror -Wall -Wno-reorder -Wno-conversion -Wno-sign-conversion -Wno-sign-compare -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-variable -Wno-strict-aliasing -Wno-unused-local-typedefs -Wunreachable-code-aggressive -Wsometimes-uninitialized -Wconditional-uninitialized -Woverflow -Waddress-of-temporary -Wpointer-arith -Wimplicit -Wbitfield-enum-conversion -Wno-unused-private-field -DSOURCE_PREFIX_LENGTH=84 -g TestClimateCNNProxyAppPTSamba.cpp.o ClimateCNNProxyAppPTSamba.cpp.o -o test_arc_rdu_nr4_e20_b512_dfp32_prof0 -L/opt/sambaflow/lib -L/opt/sambaflow/lib64/ -L/usr/local/lib -L/usr/local/lib64 -L/opt/llvm12/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/opt/sambaflow/lib:/opt/llvm12/lib:/usr/lib/x86_64-linux-gnu:/usr/local/lib:/usr/local/lib64:/usr/local/lib/python3.7/site-packages/torch/lib -lLLVMSupport -lMLIRDialect -lMLIROptLib -lMLIRPass -lMLIRQuant -lMLIRStandard -lMLIRIR -lMLIRRewrite -lMLIRPDL -lMLIRPDLInterp -lMLIRTensor -lMLIRParser -lMLIRAnalysis -lMLIRTransforms -lMLIRTransformUtils -lMLIRLoopAnalysis -lMLIRControlFlowInterfaces -lMLIRSideEffectInterfaces -lMLIRViewLikeInterface -lMLIRAffine -lMLIRLoopLikeInterface -lMLIRSCF -lMLIRCallInterfaces -lMLIRPresburger -lMLIRCopyOpInterface -lMLIREDSC -lMLIRLinalg -lPrismPlasmaTemplates -lTemplates -lPrismPlasma -lPrismShared -lRAIL -lRAILUtil -lBufferNode -lisl -lMLIRDynamicWrapper -lCompilerShared -lBoxTemplates -lMacCompiler -lArcCompiler -lCompilerAppsCarraraTemplates /usr/local/lib/python3.7/site-packages/torch/lib/libc10.so -lpef -lunwind -lyaml-cpp -ltcc /usr/local/lib/python3.7/site-packages/torch/lib/libtorch.so /usr/local/lib/python3.7/site-packages/torch/lib/libtorch_cpu.so /usr/local/lib/python3.7/site-packages/torch/lib/libc10.so -lz -lrt -ldl -ltinfo -lpthread -lm -lomp -lpthread
++ set +x
+[info] Logs are generated in /people/jain432/pacer_saudade/output/ClimateApp/ClimateCNNProxyAppPT/rdu_nr4_e20_b512_dfp32_prof0///rail_gen//rail_compile_logs for partition_0_0_.
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_15689728_max_16023552 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_15689728_max_16023552 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_15689728_max_16023552 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_15355904_max_15689728 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_15355904_max_15689728 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_15355904_max_15689728 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_15022080_max_15355904 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_15022080_max_15355904 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_15022080_max_15355904 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_14688256_max_15022080 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_14688256_max_15022080 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_14688256_max_15022080 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_14354432_max_14688256 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_14354432_max_14688256 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_14354432_max_14688256 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_14020608_max_14354432 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_14020608_max_14354432 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_14020608_max_14354432 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_13686784_max_14020608 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_13686784_max_14020608 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_13686784_max_14020608 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_13352960_max_13686784 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_13352960_max_13686784 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_13352960_max_13686784 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_13019136_max_13352960 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_13019136_max_13352960 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_13019136_max_13352960 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_12685312_max_13019136 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_12685312_max_13019136 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_12685312_max_13019136 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_12351488_max_12685312 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_12351488_max_12685312 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_12351488_max_12685312 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_12017664_max_12351488 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_12017664_max_12351488 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_12017664_max_12351488 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_11683840_max_12017664 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_11683840_max_12017664 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_11683840_max_12017664 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_11350016_max_11683840 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_11350016_max_11683840 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_11350016_max_11683840 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_11016192_max_11350016 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_11016192_max_11350016 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_11016192_max_11350016 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_10682368_max_11016192 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_10682368_max_11016192 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_10682368_max_11016192 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_10348544_max_10682368 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_10348544_max_10682368 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_10348544_max_10682368 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_10014720_max_10348544 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_10014720_max_10348544 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_10014720_max_10348544 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_9680896_max_10014720 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_9680896_max_10014720 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_9680896_max_10014720 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_9347072_max_9680896 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_9347072_max_9680896 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_9347072_max_9680896 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_9013248_max_9347072 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_9013248_max_9347072 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_9013248_max_9347072 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_8679424_max_9013248 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_8679424_max_9013248 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_8679424_max_9013248 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_8345600_max_8679424 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_8345600_max_8679424 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_8345600_max_8679424 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_8011776_max_8345600 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_8011776_max_8345600 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_8011776_max_8345600 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_7677952_max_8011776 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_7677952_max_8011776 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_7677952_max_8011776 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_7344128_max_7677952 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_7344128_max_7677952 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_7344128_max_7677952 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_7010304_max_7344128 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_7010304_max_7344128 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_7010304_max_7344128 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_6676480_max_7010304 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_6676480_max_7010304 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_6676480_max_7010304 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_6342656_max_6676480 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_6342656_max_6676480 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_6342656_max_6676480 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_6008832_max_6342656 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_6008832_max_6342656 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_6008832_max_6342656 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_5675008_max_6008832 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_5675008_max_6008832 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_5675008_max_6008832 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_5341184_max_5675008 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_5341184_max_5675008 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_5341184_max_5675008 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_5007360_max_5341184 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_5007360_max_5341184 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_5007360_max_5341184 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_4673536_max_5007360 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_4673536_max_5007360 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_4673536_max_5007360 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_4339712_max_4673536 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_4339712_max_4673536 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_4339712_max_4673536 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_4005888_max_4339712 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_4005888_max_4339712 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_4005888_max_4339712 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_3672064_max_4005888 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_3672064_max_4005888 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_3672064_max_4005888 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_3338240_max_3672064 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_3338240_max_3672064 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_3338240_max_3672064 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_3004416_max_3338240 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_3004416_max_3338240 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_3004416_max_3338240 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_2670592_max_3004416 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_2670592_max_3004416 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_2670592_max_3004416 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_2336768_max_2670592 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_2336768_max_2670592 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_2336768_max_2670592 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_2002944_max_2336768 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_2002944_max_2336768 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_2002944_max_2336768 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_1669120_max_2002944 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_1669120_max_2002944 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_1669120_max_2002944 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_1335296_max_1669120 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_1335296_max_1669120 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_1335296_max_1669120 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_1001472_max_1335296 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_1001472_max_1335296 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_1001472_max_1335296 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_667648_max_1001472 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_667648_max_1001472 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_667648_max_1001472 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_333824_max_667648 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_333824_max_667648 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_333824_max_667648 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : Injecting transpose slotting counter to context R of partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf.D_0_0_0_0_0_min_0_max_333824 to read one vector per 4 cycles!  The hardware requires this transposed read has address monotonically increasing by the vector width within windows of 4 vectors. The bandwidth penalty won't be incurred if rewriting the read context to run for a multiple of 4 cycles and use read predication to mask off unwanted vectors!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_0_max_333824 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[warn] : You have created a transposed access but are not respecting slotting rules so there will be a performance drop!
+software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+ctx: R software/templates/src/templates/permute/rail/TBufferPermute.cpp:73:0
+pmu: D_0_0_0_0_0_min_0_max_333824 software/compiler/rail/src/lib/pass/transform/tbuffer/TemplateElaborationPass.cpp:67:0
+tbuffer: partition_0_0_.ClimateCNNProxyAppPTSamba.partition_0_0_.ptcnn_sn__conv_layer__conv2d_weight_permute.tbuf software/templates/src/templates/permute/rail/TBufferPermute.cpp:69:0
+[info] Compilation succeeded for partition_0_0_
+[info] Logs are generated in /people/jain432/pacer_saudade/output/ClimateApp/ClimateCNNProxyAppPT/rdu_nr4_e20_b512_dfp32_prof0///rail_gen//rail_compile_logs for partition_1_0_.
+[info] Compilation succeeded for partition_1_0_
+[info] Logs are generated in /people/jain432/pacer_saudade/output/ClimateApp/ClimateCNNProxyAppPT/rdu_nr4_e20_b512_dfp32_prof0///rail_gen//rail_compile_logs for partition_2_0_.
+[info] Compilation succeeded for partition_2_0_
+[info] Logs are generated in /people/jain432/pacer_saudade/output/ClimateApp/ClimateCNNProxyAppPT/rdu_nr4_e20_b512_dfp32_prof0///rail_gen//rail_compile_logs for partition_3_0_.
+[info] Compilation succeeded for partition_3_0_
+[info] Starting Plasma compile at /people/jain432/pacer_saudade/output/ClimateApp/ClimateCNNProxyAppPT/rdu_nr4_e20_b512_dfp32_prof0/plasma_ir_modules/schedule_global
+[info] Plasma compile succeeded.
+[info] Starting Plasma compile at /people/jain432/pacer_saudade/output/ClimateApp/ClimateCNNProxyAppPT/rdu_nr4_e20_b512_dfp32_prof0/plasma_ir_modules/sections_0_3
+[info] Plasma compile succeeded.
+[info] Starting Plasma compile at /people/jain432/pacer_saudade/output/ClimateApp/ClimateCNNProxyAppPT/rdu_nr4_e20_b512_dfp32_prof0/plasma_ir_modules/schedule_0_3
+[info] Plasma compile succeeded.
+[info] Starting Plasma compile at /people/jain432/pacer_saudade/output/ClimateApp/ClimateCNNProxyAppPT/rdu_nr4_e20_b512_dfp32_prof0/plasma_ir_modules/schedule_final
+[info] Plasma compile succeeded.
+[INFO] PEF File: /people/jain432/pacer_saudade/output/ClimateApp/ClimateCNNProxyAppPT/rdu_nr4_e20_b512_dfp32_prof0/rdu_nr4_e20_b512_dfp32_prof0.pef
+[INFO] Suffix: rdu_nr4_e20_b512_dfp32_prof0
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Selected App: ClimateCNNProxyAppPT
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ClimateApp
+[INFO] App Supports Mixed Precision: True
+[INFO] Suffix: rdu_nr4_e20_b512_dfp32_prof0
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Suffix: rdu_nr4_e20_b512_dfp32_prof0
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Selected App: ClimateCNNProxyAppPT
+[INFO] Suffix: rdu_nr4_e20_b512_dfp32_prof0
+[INFO] Selected App: ClimateCNNProxyAppPT
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ClimateApp
+[INFO] App Supports Mixed Precision: True
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ClimateApp
+[INFO] App Supports Mixed Precision: True
+[INFO] Selected App: ClimateCNNProxyAppPT
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ClimateApp
+[INFO] App Supports Mixed Precision: True
+[INFO] Model Path: /people/jain432/pacer_saudade/models/ClimateApp/ClimateCNNProxyAppPT/rdu_nr4_e20_b512_dfp32_prof0.pt
+[INFO] Model Parameters:
+conv_layer.weight torch.Size([256, 326, 3])
+conv_layer.bias torch.Size([256])
+dense_layer.weight torch.Size([9780, 256])
+dense_layer.bias torch.Size([9780])
+[INFO] Training Data Directory: /people/jain432/pacer_saudade/data/ISDMonthly/
+[INFO] Found 588 `*` files
+[INFO] Training on 576/588 `*` files
+[INFO] Validation on 0/588 `*` files
+[INFO] Testing on 12/588 `*` files
+2023-02-17T07:52:07 : [INFO][LIB][118040]: sn_create_session: PEF File: /people/jain432/pacer_saudade/output/ClimateApp/ClimateCNNProxyAppPT/rdu_nr4_e20_b512_dfp32_prof0/rdu_nr4_e20_b512_dfp32_prof0.pef
+Log ID initialized to: [jain432][python][118040] at /var/log/sambaflow/runtime/sn.log
+2023-02-17T07:52:07 : [INFO][LIB][118039]: sn_create_session: PEF File: /people/jain432/pacer_saudade/output/ClimateApp/ClimateCNNProxyAppPT/rdu_nr4_e20_b512_dfp32_prof0/rdu_nr4_e20_b512_dfp32_prof0.pef
+Log ID initialized to: [jain432][python][118039] at /var/log/sambaflow/runtime/sn.log
+2023-02-17T07:52:08 : [INFO][LIB][118038]: sn_create_session: PEF File: /people/jain432/pacer_saudade/output/ClimateApp/ClimateCNNProxyAppPT/rdu_nr4_e20_b512_dfp32_prof0/rdu_nr4_e20_b512_dfp32_prof0.pef
+Log ID initialized to: [jain432][python][118038] at /var/log/sambaflow/runtime/sn.log
+2023-02-17T07:52:08 : [INFO][LIB][118037]: sn_create_session: PEF File: /people/jain432/pacer_saudade/output/ClimateApp/ClimateCNNProxyAppPT/rdu_nr4_e20_b512_dfp32_prof0/rdu_nr4_e20_b512_dfp32_prof0.pef
+Log ID initialized to: [jain432][python][118037] at /var/log/sambaflow/runtime/sn.log
+Epoch [1/20], Step [164/164], Loss: 1.0231
+Epoch [2/20], Step [164/164], Loss: 1.0231
+Epoch [3/20], Step [164/164], Loss: 1.0230
+Epoch [4/20], Step [164/164], Loss: 1.0230
+Epoch [5/20], Step [164/164], Loss: 1.0230
+Epoch [6/20], Step [164/164], Loss: 1.0229
+Epoch [7/20], Step [164/164], Loss: 1.0229
+Epoch [8/20], Step [164/164], Loss: 1.0229
+Epoch [9/20], Step [164/164], Loss: 1.0228
+Epoch [10/20], Step [164/164], Loss: 1.0228
+Epoch [11/20], Step [164/164], Loss: 1.0228
+Epoch [12/20], Step [164/164], Loss: 1.0228
+Epoch [13/20], Step [164/164], Loss: 1.0228
+Epoch [14/20], Step [164/164], Loss: 1.0228
+Epoch [15/20], Step [164/164], Loss: 1.0228
+Epoch [16/20], Step [164/164], Loss: 1.0228
+Epoch [17/20], Step [164/164], Loss: 1.0227
+Epoch [18/20], Step [164/164], Loss: 1.0227
+Epoch [19/20], Step [164/164], Loss: 1.0227
+[INFO] Training Time: 194.042644; Loss: 1.036252
+Epoch [20/20], Step [164/164], Loss: 1.0227
+[INFO] Training Time: 194.048510; Loss: 1.022675
+[INFO] Training Time: 194.047754; Loss: 1.035037
+[INFO] Training Time: 194.050173; Loss: 1.043136

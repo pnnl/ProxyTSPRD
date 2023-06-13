@@ -1,0 +1,21 @@
+[INFO] Suffix: rdu_nr1_e20_b64_dfp32_prof0
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Selected App: ClimateLSTMProxyAppPT
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ClimateApp
+[INFO] App Supports Mixed Precision: True
+[INFO] Model Path: /people/jain432/pacer_saudade/models/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr1_e20_b64_dfp32_prof0.pt
+[INFO] Model Parameters:
+lstm_layer.weight_ih_l0 torch.Size([256, 326])
+lstm_layer.weight_hh_l0 torch.Size([256, 64])
+lstm_layer.bias_ih_l0 torch.Size([256])
+lstm_layer.bias_hh_l0 torch.Size([256])
+dense_layer.weight torch.Size([9780, 64])
+dense_layer.bias torch.Size([9780])
+[INFO] Training Data Directory: /people/jain432/pacer_saudade/data/ISDMonthly/
+[INFO] Found 588 `*` files
+[INFO] Training on 348/588 `*` files
+[INFO] Validation on 0/588 `*` files
+[INFO] Testing on 240/588 `*` files
+2023-06-12T15:28:27 : [INFO][LIB][974223]: sn_create_session: PEF File: /people/jain432/pacer_saudade/output/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr1_e20_b64_dfp32_prof0/rdu_nr1_e20_b64_dfp32_prof0.pef
+Log ID initialized to: [jain432][python][974223] at /var/log/sambaflow/runtime/sn.log
+[INFO] Inference Time: 13.186324; Loss: 0.950394

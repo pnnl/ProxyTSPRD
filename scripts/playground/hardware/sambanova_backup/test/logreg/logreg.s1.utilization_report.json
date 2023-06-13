@@ -1,0 +1,642 @@
+{
+    "available": {
+        "chips": 1,
+        "fcmus": 640,
+        "sections": 3,
+        "tiles": 4
+    },
+    "partitions": {
+        "{0, 1}": {
+            "pcus": {
+                "count": 89,
+                "utilization": 13.90625
+            },
+            "pmus": {
+                "count": 162,
+                "utilization": 25.3125
+            }
+        }
+    },
+    "templates": {
+        "LogregTorchSamba.partition_1_0_.bias_transpose_grad_1_0_370": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.biggemm_1_0_363": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.biggemm_1_0_364": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.biggemm_1_0_365": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.biggemm_1_0_366": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 2,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.gbuf1a_1_0_394": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 5,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.gbuf1a_1_0_401": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 6,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.gbuf2a_1_0_398": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.gbuf2a_1_0_433": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.gbuf2u_1_0_149": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.gbuf2u_1_0_218": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.gbuf2u_1_0_221": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.gbuf2u_1_0_224": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.gbuf2u_1_0_229": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.gbuf2u_1_0_236": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.gbuf2u_1_0_239": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 2,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.gbuf2u_1_0_240": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.gbuf2u_1_0_242": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.gbuf2u_1_0_358": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.gbuf2u_1_0_368": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 4,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.lbuf1a_1_0_397": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.lbuf1a_1_0_399": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.permute_1_0_416.tbuf": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__conv_layer__conv2d_bwd_accum.AccumPCU_0_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__conv_layer__conv2d_bwd_accum.tbuf": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__conv_layer__conv2d_bwd_accum_1.AccumPCU_0_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__conv_layer__conv2d_bwd_accum_1.tbuf": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__conv_layer__conv2d_weight_permute_bwd.tbuf": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__criterion__mseloss_bwd_sub": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_loss_grad_b": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 8,
+            "pmus": 8,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_0_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_10_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_11_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_12_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_13_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_14_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_15_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_16_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_17_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_18_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_19_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_1_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_20_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_21_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_22_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_23_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_24_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_25_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_26_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_27_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_28_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_29_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_2_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_30_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_31_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_3_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_4_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_5_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_6_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_7_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_8_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.AccumPCU_9_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum.tbuf": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 33,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum_1.AccumPCU_0_0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_accum_1.tbuf": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_grad_a": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 32,
+            "pmus": 64,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_grad_a.ptconvlstm__dense_layer__linear_bwd_weight_grad_aBiasAccumNode": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_bwd_weight_grad_a.ptconvlstm__dense_layer__linear_bwd_weight_grad_aBiasAccumNode.ptconvlstm__dense_layer__linear_bwd_weight_grad_aBiasAccumNode_BiasGradPCU": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.ptconvlstm__dense_layer__linear_t_output0_bwd_addn0.ptconvlstm__dense_layer__linear_t_output0_bwd_addn0ADD0": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.realign_1_0_418.realign_1_0_418.gbuffer": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.realign_1_0_419.realign_1_0_419.gbuffer": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.s1.backing_pmu_group_34_ptconvlstm__dense_layer__linear_bwd_weight_tensor": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.s1.fronting_pmu_load_group_18": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.s1.fronting_pmu_load_group_31": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.s1.fronting_pmu_load_group_32": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.sbuf1a_1_0_400": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.sbuf2u_1_0_361": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.scale_1_0_331": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 0,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.scale_1_0_332": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 1,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.split_kernel_gbuf_1_0_362": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 2,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.streaming_transpose_1_0_357": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.tbuf1u_1_0_246": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.tbuf2u_1_0_245": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.tbuf2u_1_0_250": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.transpose_1_0_420.transpose_1_0_420.buffer": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        },
+        "LogregTorchSamba.partition_1_0_.vector_transpose_1_0_417.vector_transpose_1_0_417.buffer": {
+            "chip_id": 0,
+            "partition": "{0, 1}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 1
+        }
+    },
+    "used": {
+        "floating": {
+            "pcus": 0,
+            "pmus": 0,
+            "units": 0
+        },
+        "templates": {
+            "pcus": 89,
+            "pmus": 162,
+            "units": 251
+        },
+        "total": {
+            "agcus": 1,
+            "pcus": 89,
+            "pmus": 162,
+            "units": 251
+        }
+    }
+}

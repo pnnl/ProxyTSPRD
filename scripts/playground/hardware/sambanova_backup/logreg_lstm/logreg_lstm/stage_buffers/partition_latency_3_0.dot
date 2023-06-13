@@ -1,0 +1,29 @@
+digraph {
+	node [shape=box]
+	subgraph cluster_stage_39 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_39&#xA;Start Buffers:&#xA;gbuf2a_3_0_992&#xA;gbuf2a_3_0_993&#xA;End Buffers:&#xA;gbuf2a_3_0_888&#xA;Latency: 568";
+		tooltip = "stage_39&#xA;Start Buffers:&#xA;gbuf2a_3_0_992&#xA;gbuf2a_3_0_993&#xA;End Buffers:&#xA;gbuf2a_3_0_888&#xA;Latency: 568";
+		3;
+		1;
+	}
+	"0" [label= "gbuf2a_3_0_992&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 256*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 2&#xA;Metapipe Iterations: {2}",style=filled,color=lightblue, tooltip= "gbuf2a_3_0_992&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 256*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 2&#xA;Metapipe Iterations: {2}"];
+	 "6"->"0" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"1" [label= "add_3_0_813&#xA;Streaming&#xA;Transit Latency: 14&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Multiplier: 2&#xA;Metapipe Iterations: {2}", tooltip= "add_3_0_813&#xA;Streaming&#xA;Transit Latency: 14&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Multiplier: 2&#xA;Metapipe Iterations: {2}"];
+	 "0"->"1" [color=black, penwidth=3 , tooltip="ExecGroup/vector Iters: {"dp_reduce_region_size_0"}"];
+	 "2"->"1" [color=black, penwidth=3 , tooltip="ExecGroup/vector Iters: {"dp_reduce_region_size_0"}"];
+	"2" [label= "gbuf2a_3_0_993&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 256*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 2&#xA;Metapipe Iterations: {2}",style=filled,color=lightblue, tooltip= "gbuf2a_3_0_993&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 256*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 2&#xA;Metapipe Iterations: {2}"];
+	 "7"->"2" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"3" [label= "scale_3_0_814&#xA;Streaming&#xA;Transit Latency: 14&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Multiplier: 2&#xA;Metapipe Iterations: {2}", tooltip= "scale_3_0_814&#xA;Streaming&#xA;Transit Latency: 14&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Multiplier: 2&#xA;Metapipe Iterations: {2}"];
+	 "1"->"3" [color=black, penwidth=3 , tooltip="ExecGroup/vector Iters: {"dp_reduce_region_size_0"}"];
+	"4" [label= "gbuf2a_3_0_888&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 256*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 2&#xA;Metapipe Iterations: {2}",style=filled,color=lightblue, tooltip= "gbuf2a_3_0_888&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 256*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 2&#xA;Metapipe Iterations: {2}"];
+	 "3"->"4" [color=black, penwidth=3 , tooltip="ExecGroup/vector Iters: {"dp_reduce_region_size_0"}"];
+	 "0"->"4" [style=dotted, dir=back];
+	 "2"->"4" [style=dotted, dir=back];
+	"5" [label= "DramOutputNode:s3_c0_1:dummy_dp_accum_region_0&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramOutputNode:s3_c0_1:dummy_dp_accum_region_0&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "4"->"5" [color=black, penwidth=3 , tooltip="ExecGroup/vector Iters: {"dp_reduce_region_size_0"}"];
+	"6" [label= "DramInputNode:s3_c0_1:dummy_dp_accum_region_0&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramInputNode:s3_c0_1:dummy_dp_accum_region_0&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	"7" [label= "DramInputNode:s3_c0_2:accum_dummy_0_reduce_buf&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramInputNode:s3_c0_2:accum_dummy_0_reduce_buf&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+}

@@ -1,0 +1,628 @@
+digraph {
+	node [shape=box]
+	subgraph cluster_stage_0 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_0\nStart Buffers:\nnbuf2u_0_0_173\nEnd Buffers:\ngbuf2u_0_0_176\nLatency: 328";
+		3;
+	}
+	subgraph cluster_stage_1 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_1\nStart Buffers:\ngbuf2u_0_0_176\nEnd Buffers:\ngbuf2u_0_0_178\nLatency: 15";
+		56 [shape=point];
+	}
+	 "5"->"56" [arrowhead=none];
+	subgraph cluster_stage_2 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_2\nStart Buffers:\ngbuf2u_0_0_178\nEnd Buffers:\ngbuf2u_0_0_180\nLatency: 15";
+		57 [shape=point];
+	}
+	 "6"->"57" [arrowhead=none];
+	subgraph cluster_stage_3 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_3\nStart Buffers:\ngbuf2u_0_0_180\nEnd Buffers:\nsbuf2u_0_0_289\nLatency: 480";
+		58 [shape=point];
+	}
+	 "7"->"58" [arrowhead=none];
+	subgraph cluster_stage_4 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_4\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_291\nLatency: 480";
+		59 [shape=point];
+	}
+	 "8"->"59" [arrowhead=none];
+	subgraph cluster_stage_5 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_5\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_292\nLatency: 480";
+		60 [shape=point];
+	}
+	 "8"->"60" [arrowhead=none];
+	subgraph cluster_stage_6 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_6\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_293\nLatency: 480";
+		61 [shape=point];
+	}
+	 "8"->"61" [arrowhead=none];
+	subgraph cluster_stage_7 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_7\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_294\nLatency: 480";
+		62 [shape=point];
+	}
+	 "8"->"62" [arrowhead=none];
+	subgraph cluster_stage_8 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_8\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_295\nLatency: 480";
+		63 [shape=point];
+	}
+	 "8"->"63" [arrowhead=none];
+	subgraph cluster_stage_9 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_9\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_296\nLatency: 480";
+		64 [shape=point];
+	}
+	 "8"->"64" [arrowhead=none];
+	subgraph cluster_stage_10 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_10\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_297\nLatency: 480";
+		65 [shape=point];
+	}
+	 "8"->"65" [arrowhead=none];
+	subgraph cluster_stage_11 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_11\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_298\nLatency: 480";
+		66 [shape=point];
+	}
+	 "8"->"66" [arrowhead=none];
+	subgraph cluster_stage_12 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_12\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_299\nLatency: 480";
+		67 [shape=point];
+	}
+	 "8"->"67" [arrowhead=none];
+	subgraph cluster_stage_13 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_13\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_300\nLatency: 480";
+		68 [shape=point];
+	}
+	 "8"->"68" [arrowhead=none];
+	subgraph cluster_stage_14 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_14\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_301\nLatency: 480";
+		69 [shape=point];
+	}
+	 "8"->"69" [arrowhead=none];
+	subgraph cluster_stage_15 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_15\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_302\nLatency: 480";
+		70 [shape=point];
+	}
+	 "8"->"70" [arrowhead=none];
+	subgraph cluster_stage_16 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_16\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_303\nLatency: 480";
+		71 [shape=point];
+	}
+	 "8"->"71" [arrowhead=none];
+	subgraph cluster_stage_17 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_17\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_304\nLatency: 480";
+		72 [shape=point];
+	}
+	 "8"->"72" [arrowhead=none];
+	subgraph cluster_stage_18 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_18\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_305\nLatency: 480";
+		73 [shape=point];
+	}
+	 "8"->"73" [arrowhead=none];
+	subgraph cluster_stage_19 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_19\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_306\nLatency: 480";
+		74 [shape=point];
+	}
+	 "8"->"74" [arrowhead=none];
+	subgraph cluster_stage_20 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_20\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_307\nLatency: 480";
+		75 [shape=point];
+	}
+	 "8"->"75" [arrowhead=none];
+	subgraph cluster_stage_21 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_21\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_308\nLatency: 480";
+		76 [shape=point];
+	}
+	 "8"->"76" [arrowhead=none];
+	subgraph cluster_stage_22 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_22\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_309\nLatency: 480";
+		77 [shape=point];
+	}
+	 "8"->"77" [arrowhead=none];
+	subgraph cluster_stage_23 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_23\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_310\nLatency: 480";
+		78 [shape=point];
+	}
+	 "8"->"78" [arrowhead=none];
+	subgraph cluster_stage_24 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_24\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_311\nLatency: 480";
+		79 [shape=point];
+	}
+	 "8"->"79" [arrowhead=none];
+	subgraph cluster_stage_25 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_25\nStart Buffers:\nsbuf2u_0_0_289\nEnd Buffers:\nbiggemm_0_0_312\nLatency: 480";
+		80 [shape=point];
+	}
+	 "8"->"80" [arrowhead=none];
+	subgraph cluster_stage_26 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_26\nStart Buffers:\nbiggemm_0_0_291\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		9;
+	}
+	subgraph cluster_stage_27 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_27\nStart Buffers:\nbiggemm_0_0_292\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		10;
+	}
+	subgraph cluster_stage_28 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_28\nStart Buffers:\nbiggemm_0_0_293\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		11;
+	}
+	subgraph cluster_stage_29 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_29\nStart Buffers:\nbiggemm_0_0_294\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		12;
+	}
+	subgraph cluster_stage_30 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_30\nStart Buffers:\nbiggemm_0_0_295\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		13;
+	}
+	subgraph cluster_stage_31 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_31\nStart Buffers:\nbiggemm_0_0_296\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		14;
+	}
+	subgraph cluster_stage_32 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_32\nStart Buffers:\nbiggemm_0_0_297\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		15;
+	}
+	subgraph cluster_stage_33 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_33\nStart Buffers:\nbiggemm_0_0_298\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		16;
+	}
+	subgraph cluster_stage_34 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_34\nStart Buffers:\nbiggemm_0_0_299\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		17;
+	}
+	subgraph cluster_stage_35 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_35\nStart Buffers:\nbiggemm_0_0_300\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		18;
+	}
+	subgraph cluster_stage_36 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_36\nStart Buffers:\nbiggemm_0_0_301\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		19;
+	}
+	subgraph cluster_stage_37 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_37\nStart Buffers:\nbiggemm_0_0_302\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		20;
+	}
+	subgraph cluster_stage_38 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_38\nStart Buffers:\nbiggemm_0_0_303\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		21;
+	}
+	subgraph cluster_stage_39 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_39\nStart Buffers:\nbiggemm_0_0_304\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		22;
+	}
+	subgraph cluster_stage_40 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_40\nStart Buffers:\nbiggemm_0_0_305\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		23;
+	}
+	subgraph cluster_stage_41 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_41\nStart Buffers:\nbiggemm_0_0_306\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		24;
+	}
+	subgraph cluster_stage_42 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_42\nStart Buffers:\nbiggemm_0_0_307\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		25;
+	}
+	subgraph cluster_stage_43 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_43\nStart Buffers:\nbiggemm_0_0_308\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		26;
+	}
+	subgraph cluster_stage_44 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_44\nStart Buffers:\nbiggemm_0_0_309\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		27;
+	}
+	subgraph cluster_stage_45 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_45\nStart Buffers:\nbiggemm_0_0_310\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		28;
+	}
+	subgraph cluster_stage_46 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_46\nStart Buffers:\nbiggemm_0_0_311\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		29;
+	}
+	subgraph cluster_stage_47 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_47\nStart Buffers:\nbiggemm_0_0_312\nEnd Buffers:\ngbuf2u_0_0_315\nLatency: 492";
+		30;
+	}
+	subgraph cluster_stage_48 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_48\nStart Buffers:\ngbuf2u_0_0_315\nEnd Buffers:\ngbuf2u_0_0_182\nLatency: 558";
+		33;
+		32;
+	}
+	subgraph cluster_stage_49 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_49\nStart Buffers:\ngbuf2u_0_0_182\nEnd Buffers:\ngbuf2a_0_0_415\nLatency: 8";
+		81 [shape=point];
+	}
+	 "34"->"81" [arrowhead=none];
+	subgraph cluster_stage_50 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_50\nStart Buffers:\ngbuf2a_0_0_415\nEnd Buffers:\ngbuf2u_0_0_186\nLatency: 663";
+		38;
+		37;
+		36;
+	}
+	subgraph cluster_stage_51 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_51\nStart Buffers:\ngbuf2u_0_0_186\nEnd Buffers:\ngbuf2a_0_0_416\nLatency: 4096";
+		82 [shape=point];
+	}
+	 "39"->"82" [arrowhead=none];
+	subgraph cluster_stage_52 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_52\nStart Buffers:\ngbuf2a_0_0_416\nEnd Buffers:\nnbuf2a_0_0_385\nLatency: 8176";
+		41;
+	}
+	subgraph cluster_stage_53 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_53\nStart Buffers:\ngbuf2a_0_0_416\nEnd Buffers:\ngbuf2u_0_0_194\nLatency: 4080";
+		83 [shape=point];
+	}
+	 "40"->"83" [arrowhead=none];
+	subgraph cluster_stage_54 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_54\nStart Buffers:\ngbuf2a_0_0_416\nEnd Buffers:\nnbuf2a_0_0_387\nLatency: 4096";
+		84 [shape=point];
+	}
+	 "40"->"84" [arrowhead=none];
+	subgraph cluster_stage_55 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_55\nStart Buffers:\ngbuf2u_0_0_194\ngbuf2u_0_0_196\nEnd Buffers:\nnbuf2a_0_0_386\nLatency: 8225";
+		50;
+		49;
+		48;
+		47;
+	}
+	subgraph cluster_stage_56 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_56\nStart Buffers:\nnbuf2u_0_0_191\nEnd Buffers:\ngbuf2u_0_0_196\nLatency: 128";
+		85 [shape=point];
+	}
+	 "45"->"85" [arrowhead=none];
+	"0" [label= "nbuf1a_0_0_382\nBuffer\nRead Duration: 3328*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nMultiplier: 1"];
+	"1" [label= "split_kernel_gbuf_0_0_290\nBuffer\nRead Duration: 156*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0*\nMultiplier: 1"];
+	 "0"->"1";
+	"2" [label= "nbuf2u_0_0_173\nStage Buffer\nBuffer\nRead Duration: 300*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nMultiplier: 1",style=filled,color=lightblue];
+	"3" [label= "ptconvlstm__lambda_layer__indexselect\nGemm-Like\nLatency: 328\nMultiplier: 1"];
+	 "2"->"3";
+	 "4"->"3";
+	"4" [label= "nbuf1u_0_0_174\nBuffer\nRead Duration: 1*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nMultiplier: 1"];
+	"5" [label= "gbuf2u_0_0_176\nStage Buffer\nBuffer\nRead Duration: 15*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0*\nMultiplier: 1",style=filled,color=lightblue];
+	 "3"->"5";
+	 "2"->"5" [style=dotted, dir=back];
+	"6" [label= "gbuf2u_0_0_178\nStage Buffer\nBuffer\nRead Duration: 15*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0*\nMultiplier: 1",style=filled,color=lightblue];
+	 "56"->"6";
+	 "5"->"6" [style=dotted, dir=back];
+	"7" [label= "gbuf2u_0_0_180\nStage Buffer\nBuffer\nRead Duration: 480*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0*\nMultiplier: 1",style=filled,color=lightblue];
+	 "57"->"7";
+	 "53"->"7";
+	 "6"->"7" [style=dotted, dir=back];
+	"8" [label= "sbuf2u_0_0_289\nStage Buffer\nBuffer\nRead Duration: 480*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0*\nMultiplier: 1",style=filled,color=lightblue];
+	 "58"->"8";
+	 "7"->"8" [style=dotted, dir=back];
+	"9" [label= "biggemm_0_0_291\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "59"->"9";
+	 "1"->"9";
+	 "8"->"9" [style=dotted, dir=back];
+	"10" [label= "biggemm_0_0_292\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "60"->"10";
+	 "1"->"10";
+	 "8"->"10" [style=dotted, dir=back];
+	"11" [label= "biggemm_0_0_293\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "61"->"11";
+	 "1"->"11";
+	 "8"->"11" [style=dotted, dir=back];
+	"12" [label= "biggemm_0_0_294\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "62"->"12";
+	 "1"->"12";
+	 "8"->"12" [style=dotted, dir=back];
+	"13" [label= "biggemm_0_0_295\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "63"->"13";
+	 "1"->"13";
+	 "8"->"13" [style=dotted, dir=back];
+	"14" [label= "biggemm_0_0_296\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "64"->"14";
+	 "1"->"14";
+	 "8"->"14" [style=dotted, dir=back];
+	"15" [label= "biggemm_0_0_297\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "65"->"15";
+	 "1"->"15";
+	 "8"->"15" [style=dotted, dir=back];
+	"16" [label= "biggemm_0_0_298\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "66"->"16";
+	 "1"->"16";
+	 "8"->"16" [style=dotted, dir=back];
+	"17" [label= "biggemm_0_0_299\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "67"->"17";
+	 "1"->"17";
+	 "8"->"17" [style=dotted, dir=back];
+	"18" [label= "biggemm_0_0_300\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "68"->"18";
+	 "1"->"18";
+	 "8"->"18" [style=dotted, dir=back];
+	"19" [label= "biggemm_0_0_301\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "69"->"19";
+	 "1"->"19";
+	 "8"->"19" [style=dotted, dir=back];
+	"20" [label= "biggemm_0_0_302\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "70"->"20";
+	 "1"->"20";
+	 "8"->"20" [style=dotted, dir=back];
+	"21" [label= "biggemm_0_0_303\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "71"->"21";
+	 "1"->"21";
+	 "8"->"21" [style=dotted, dir=back];
+	"22" [label= "biggemm_0_0_304\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "72"->"22";
+	 "1"->"22";
+	 "8"->"22" [style=dotted, dir=back];
+	"23" [label= "biggemm_0_0_305\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "73"->"23";
+	 "1"->"23";
+	 "8"->"23" [style=dotted, dir=back];
+	"24" [label= "biggemm_0_0_306\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "74"->"24";
+	 "1"->"24";
+	 "8"->"24" [style=dotted, dir=back];
+	"25" [label= "biggemm_0_0_307\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "75"->"25";
+	 "1"->"25";
+	 "8"->"25" [style=dotted, dir=back];
+	"26" [label= "biggemm_0_0_308\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "76"->"26";
+	 "1"->"26";
+	 "8"->"26" [style=dotted, dir=back];
+	"27" [label= "biggemm_0_0_309\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "77"->"27";
+	 "1"->"27";
+	 "8"->"27" [style=dotted, dir=back];
+	"28" [label= "biggemm_0_0_310\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "78"->"28";
+	 "1"->"28";
+	 "8"->"28" [style=dotted, dir=back];
+	"29" [label= "biggemm_0_0_311\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "79"->"29";
+	 "1"->"29";
+	 "8"->"29" [style=dotted, dir=back];
+	"30" [label= "biggemm_0_0_312\nStage Buffer + Stage Content\nBuffer\nRead Duration: 156\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nGemm-Like\nLatency: 492\nMultiplier: 1",style=filled,color=lightyellow];
+	 "80"->"30";
+	 "1"->"30";
+	 "8"->"30" [style=dotted, dir=back];
+	"31" [label= "gbuf2u_0_0_315\nStage Buffer\nBuffer\nRead Duration: 288*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 144*\nMultiplier: 1",style=filled,color=lightblue];
+	 "9"->"31";
+	 "10"->"31";
+	 "11"->"31";
+	 "12"->"31";
+	 "13"->"31";
+	 "14"->"31";
+	 "15"->"31";
+	 "16"->"31";
+	 "17"->"31";
+	 "18"->"31";
+	 "19"->"31";
+	 "20"->"31";
+	 "21"->"31";
+	 "22"->"31";
+	 "23"->"31";
+	 "24"->"31";
+	 "25"->"31";
+	 "26"->"31";
+	 "27"->"31";
+	 "28"->"31";
+	 "29"->"31";
+	 "30"->"31";
+	 "7"->"31" [style=dotted, dir=back];
+	"32" [label= "bias_transpose_add_0_0_316\nStreaming\nTransit Latency: 14\nInput Rate: 1\nOutput Rate: 1\nMultiplier: 1"];
+	 "31"->"32";
+	"33" [label= "streaming_transpose_0_0_317\nStreaming\nTransit Latency: 256\nInput Rate: 1\nOutput Rate: 1\nMultiplier: 1"];
+	 "32"->"33";
+	"34" [label= "gbuf2u_0_0_182\nStage Buffer\nBuffer\nRead Duration: 8*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0*\nMultiplier: 1",style=filled,color=lightblue];
+	 "33"->"34";
+	 "31"->"34" [style=dotted, dir=back];
+	"35" [label= "gbuf2a_0_0_415\nStage Buffer\nBuffer\nRead Duration: 8*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 8*\nMultiplier: 1",style=filled,color=lightblue];
+	 "81"->"35";
+	 "34"->"35" [style=dotted, dir=back];
+	"36" [label= "ptconvlstm__dense_layer__linear\nGemm-Like\nLatency: 393\nMultiplier: 1"];
+	 "35"->"36";
+	 "54"->"36";
+	"37" [label= "gbuf1a_0_0_381\nBuffer\nRead Duration: 128*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 128*\nMultiplier: 1"];
+	 "36"->"37";
+	"38" [label= "bias_add_0_0_378\nStreaming\nTransit Latency: 14\nInput Rate: 1\nOutput Rate: 1\nMultiplier: 1"];
+	 "37"->"38";
+	 "55"->"38";
+	"39" [label= "gbuf2u_0_0_186\nStage Buffer\nBuffer\nRead Duration: 4096*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0*\nMultiplier: 1",style=filled,color=lightblue];
+	 "38"->"39";
+	 "35"->"39" [style=dotted, dir=back];
+	"40" [label= "gbuf2a_0_0_416\nStage Buffer\nBuffer\nRead Duration: 4096*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0*\nMultiplier: 1",style=filled,color=lightblue];
+	 "82"->"40";
+	 "39"->"40" [style=dotted, dir=back];
+	"41" [label= "transpose_0_0_398\nBuffer\nRead Duration: 4096*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0*\nMultiplier: 1"];
+	 "40"->"41";
+	"42" [label= "gbuf2u_0_0_194\nStage Buffer\nBuffer\nRead Duration: 4080*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0*\nMultiplier: 1",style=filled,color=lightblue];
+	 "83"->"42";
+	 "40"->"42" [style=dotted, dir=back];
+	"43" [label= "nbuf2a_0_0_387\nStage Buffer\nBuffer\nRead Duration: 128*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nMultiplier: 1",style=filled,color=lightblue];
+	 "84"->"43";
+	 "40"->"43" [style=dotted, dir=back];
+	"44" [label= "nbuf2a_0_0_385\nStage Buffer\nBuffer\nRead Duration: 128*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nMultiplier: 1",style=filled,color=lightblue];
+	 "41"->"44";
+	 "40"->"44" [style=dotted, dir=back];
+	"45" [label= "nbuf2u_0_0_191\nStage Buffer\nBuffer\nRead Duration: 128*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nMultiplier: 1",style=filled,color=lightblue];
+	"46" [label= "gbuf2u_0_0_196\nStage Buffer\nBuffer\nRead Duration: 4096*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0*\nMultiplier: 1",style=filled,color=lightblue];
+	 "85"->"46";
+	 "45"->"46" [style=dotted, dir=back];
+	"47" [label= "sub_0_0_323\nStreaming\nTransit Latency: 14\nInput Rate: 1\nOutput Rate: 1\nMultiplier: 1"];
+	 "42"->"47";
+	 "46"->"47";
+	"48" [label= "gbuf1a_0_0_417\nBuffer\nRead Duration: 4080*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0*\nMultiplier: 1"];
+	 "47"->"48";
+	"49" [label= "mul_0_0_324\nStreaming\nTransit Latency: 14\nInput Rate: 1\nOutput Rate: 1\nMultiplier: 1"];
+	 "48"->"49";
+	"50" [label= "mean_p_0_0_325\nStreaming\nTransit Latency: 14\nInput Rate: 1.00172\nOutput Rate: 4087\nMultiplier: 1"];
+	 "49"->"50";
+	"51" [label= "nbuf2a_0_0_386\nStage Buffer\nBuffer\nRead Duration: 1*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nMultiplier: 1",style=filled,color=lightblue];
+	 "50"->"51";
+	 "42"->"51" [style=dotted, dir=back];
+	 "46"->"51" [style=dotted, dir=back];
+	"52" [label= "output_buf_0_0_408\nInvalid Model\nMultiplier: 1"];
+	 "35"->"52";
+	"53" [label= "lbuf1a_0_0_383\nBuffer\nRead Duration: 480*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0*\nMultiplier: 1"];
+	"54" [label= "s0.fronting_pmu_load_group_2\nInvalid Model\nMultiplier: 1"];
+	"55" [label= "s0.fronting_pmu_load_group_5\nInvalid Model\nMultiplier: 1"];
+}

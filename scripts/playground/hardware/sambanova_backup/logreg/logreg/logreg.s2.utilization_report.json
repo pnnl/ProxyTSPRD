@@ -1,0 +1,82 @@
+{
+    "available": {
+        "chips": 1,
+        "fcmus": 640,
+        "sections": 4,
+        "tiles": 4
+    },
+    "partitions": {
+        "{0, 2}": {
+            "pcus": {
+                "count": 2,
+                "utilization": 0.3125
+            },
+            "pmus": {
+                "count": 8,
+                "utilization": 1.25
+            }
+        }
+    },
+    "templates": {
+        "LogregTorchSamba.partition_2_0_.logreg__lin_layer__weight__logreg__lin_layer__linear_bwd_weight_opt": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 2,
+            "pmus": 3,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_10_logreg__lin_layer__weight__logreg__lin_layer__linear_bwd_weight_opt_tensor1": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.backing_pmu_group_7_logreg__lin_layer__weight__logreg__lin_layer__linear_bwd_weight_opt_tensor": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_10": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_11": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        },
+        "LogregTorchSamba.partition_2_0_.s2.fronting_pmu_load_group_7": {
+            "chip_id": 0,
+            "partition": "{0, 2}",
+            "pcus": 0,
+            "pmus": 1,
+            "section_id": 2
+        }
+    },
+    "used": {
+        "floating": {
+            "pcus": 0,
+            "pmus": 0,
+            "units": 0
+        },
+        "templates": {
+            "pcus": 2,
+            "pmus": 8,
+            "units": 10
+        },
+        "total": {
+            "agcus": 1,
+            "pcus": 2,
+            "pmus": 8,
+            "units": 10
+        }
+    }
+}

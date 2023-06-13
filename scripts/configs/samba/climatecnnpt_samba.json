@@ -43,7 +43,7 @@
 		"tb_log_dir": "/people/jain432/pacer_saudade/logs/",
 		"fill_data": false,
 		"opt_parameters": {
-			"learning_rate" : 0.0015,
+			"lr" : 0.0015,
 			"momentum"      : 0.0,
 			"weight_decay"  : 3e-4
 		},

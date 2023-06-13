@@ -85,7 +85,7 @@ class LSTMProxyAppPT(ProxyApp):
             from sambaflow import samba
             return samba.optim.SGD(
                     model_params, 
-                    lr=opt_params["learning_rate"],
+                    lr=opt_params["lr"],
                     momentum=opt_params["momentum"],
                     weight_decay=opt_params["weight_decay"]
                 )
@@ -178,7 +178,7 @@ class CNNProxyAppPT(ProxyApp):
             from sambaflow import samba
             return samba.optim.SGD(
                     model_params, 
-                    lr=opt_params["learning_rate"],
+                    lr=opt_params["lr"],
                     momentum=opt_params["momentum"],
                     weight_decay=opt_params["weight_decay"]
                 )

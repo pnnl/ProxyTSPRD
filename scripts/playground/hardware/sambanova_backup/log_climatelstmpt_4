@@ -1,0 +1,113 @@
+[INFO] Suffix: rdu_nr4_e20_b64_dfp32_prof0
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Selected App: ClimateLSTMProxyAppPT
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ClimateApp
+[INFO] App Supports Mixed Precision: True
+[Info][SAMBA]# Placing log files in /people/jain432/pacer_saudade/output/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr4_e20_b64_dfp32_prof0/rdu_nr4_e20_b64_dfp32_prof0.samba.log
+[Info][MAC]# Placing log files in /people/jain432/pacer_saudade/output/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr4_e20_b64_dfp32_prof0/rdu_nr4_e20_b64_dfp32_prof0.mac.log
+[INFO] Model Path: /people/jain432/pacer_saudade/models/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr4_e20_b64_dfp32_prof0.pt
+[INFO] Model Parameters:
+lstm_layer.weight_ih_l0 torch.Size([256, 326])
+lstm_layer.weight_hh_l0 torch.Size([256, 64])
+lstm_layer.bias_ih_l0 torch.Size([256])
+lstm_layer.bias_hh_l0 torch.Size([256])
+dense_layer.weight torch.Size([9780, 64])
+dense_layer.bias torch.Size([9780])
+[info] Building size named dims for graph ClimateLSTMProxyAppPT_samba
+[info] Building nameddims for graph ClimateLSTMProxyAppPT_samba
+[info] Analyze tiling for graph: ClimateLSTMProxyAppPT_samba
+[info] Mapping for graph ClimateLSTMProxyAppPT_samba
+[info] Set up stage ID and metapipe ID for section 2
+[info] Set up stage ID and metapipe ID for section 0
+[info] Set up stage ID and metapipe ID for section 1
+[info] MAC decided on the following section cuts for graph ClimateLSTMProxyAppPT_samba
+[info] Amortized resources overall: 2.300000e+01 PCUs, 1.150000e+02 PMUs, projected latency: 3.513462e-03 s, FLOPS: 1.396872e-01 T/s, DDR_BW: 8.683408e+00 GB/s
+[info] Lowering to TLIR succeeded.
+[info] Compilation succeeded.
+[info] Mac Compilation succeeded.
++ /opt/llvm11/bin/clang++ -DAT_PARALLEL_OPENMP=1 -D_THP_CORE -I/opt/llvm12/include -I/usr/local/lib/python3.7/site-packages/torch/lib -I./ -I/opt/sambaflow/include -isystem /usr/local/lib/python3.7/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/lib/python3.7/site-packages/torch/include -fvisibility=hidden -fno-exceptions -fno-rtti -Werror -Wall -Wno-reorder -Wno-conversion -Wno-sign-conversion -Wno-sign-compare -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-variable -Wno-strict-aliasing -Wno-unused-local-typedefs -Wunreachable-code-aggressive -Wsometimes-uninitialized -Wconditional-uninitialized -Woverflow -Waddress-of-temporary -Wpointer-arith -Wimplicit -Wbitfield-enum-conversion -Wno-unused-private-field -DSOURCE_PREFIX_LENGTH=84 -g -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -Wno-unused-parameter -Wno-missing-field-initializers -Wno-write-strings -Wno-unknown-pragmas -Wno-missing-braces -fopenmp=libomp -std=gnu++17 -o ClimateLSTMProxyAppPTSamba.cpp.o -c ClimateLSTMProxyAppPTSamba.cpp
++ /opt/llvm11/bin/clang++ -DAT_PARALLEL_OPENMP=1 -D_THP_CORE -I/opt/llvm12/include -I/usr/local/lib/python3.7/site-packages/torch/lib -I./ -I/opt/sambaflow/include -isystem /usr/local/lib/python3.7/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/lib/python3.7/site-packages/torch/include -fvisibility=hidden -fno-exceptions -fno-rtti -Werror -Wall -Wno-reorder -Wno-conversion -Wno-sign-conversion -Wno-sign-compare -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-variable -Wno-strict-aliasing -Wno-unused-local-typedefs -Wunreachable-code-aggressive -Wsometimes-uninitialized -Wconditional-uninitialized -Woverflow -Waddress-of-temporary -Wpointer-arith -Wimplicit -Wbitfield-enum-conversion -Wno-unused-private-field -DSOURCE_PREFIX_LENGTH=84 -g -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -Wno-unused-parameter -Wno-missing-field-initializers -Wno-write-strings -Wno-unknown-pragmas -Wno-missing-braces -fopenmp=libomp -std=gnu++17 -o TestClimateLSTMProxyAppPTSamba.cpp.o -c TestClimateLSTMProxyAppPTSamba.cpp
++ /opt/llvm11/bin/clang++ -I/opt/llvm12/include -I/usr/local/lib/python3.7/site-packages/torch/lib -I./ -I/opt/sambaflow/include -isystem /usr/local/lib/python3.7/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/lib/python3.7/site-packages/torch/include -fvisibility=hidden -fno-exceptions -fno-rtti -Werror -Wall -Wno-reorder -Wno-conversion -Wno-sign-conversion -Wno-sign-compare -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-unused-variable -Wno-strict-aliasing -Wno-unused-local-typedefs -Wunreachable-code-aggressive -Wsometimes-uninitialized -Wconditional-uninitialized -Woverflow -Waddress-of-temporary -Wpointer-arith -Wimplicit -Wbitfield-enum-conversion -Wno-unused-private-field -DSOURCE_PREFIX_LENGTH=84 -g TestClimateLSTMProxyAppPTSamba.cpp.o ClimateLSTMProxyAppPTSamba.cpp.o -o test_arc_rdu_nr4_e20_b64_dfp32_prof0 -L/opt/sambaflow/lib -L/opt/sambaflow/lib64/ -L/usr/local/lib -L/usr/local/lib64 -L/opt/llvm12/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/opt/sambaflow/lib:/opt/llvm12/lib:/usr/lib/x86_64-linux-gnu:/usr/local/lib:/usr/local/lib64:/usr/local/lib/python3.7/site-packages/torch/lib -lLLVMSupport -lMLIRDialect -lMLIROptLib -lMLIRPass -lMLIRQuant -lMLIRStandard -lMLIRIR -lMLIRRewrite -lMLIRPDL -lMLIRPDLInterp -lMLIRTensor -lMLIRParser -lMLIRAnalysis -lMLIRTransforms -lMLIRTransformUtils -lMLIRLoopAnalysis -lMLIRControlFlowInterfaces -lMLIRSideEffectInterfaces -lMLIRViewLikeInterface -lMLIRAffine -lMLIRLoopLikeInterface -lMLIRSCF -lMLIRCallInterfaces -lMLIRPresburger -lMLIRCopyOpInterface -lMLIREDSC -lMLIRLinalg -lPrismPlasmaTemplates -lTemplates -lPrismPlasma -lPrismShared -lRAIL -lRAILUtil -lBufferNode -lisl -lMLIRDynamicWrapper -lCompilerShared -lBoxTemplates -lMacCompiler -lArcCompiler -lCompilerAppsCarraraTemplates /usr/local/lib/python3.7/site-packages/torch/lib/libc10.so -lpef -lunwind -lyaml-cpp -ltcc /usr/local/lib/python3.7/site-packages/torch/lib/libtorch.so /usr/local/lib/python3.7/site-packages/torch/lib/libtorch_cpu.so /usr/local/lib/python3.7/site-packages/torch/lib/libc10.so -lz -lrt -ldl -ltinfo -lpthread -lm -lomp -lpthread
++ set +x
+[info] Logs are generated in /people/jain432/pacer_saudade/output/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr4_e20_b64_dfp32_prof0///rail_gen//rail_compile_logs for partition_0_0_.
+[info] Compilation succeeded for partition_0_0_
+[info] Logs are generated in /people/jain432/pacer_saudade/output/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr4_e20_b64_dfp32_prof0///rail_gen//rail_compile_logs for partition_1_0_.
+[info] Compilation succeeded for partition_1_0_
+[info] Logs are generated in /people/jain432/pacer_saudade/output/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr4_e20_b64_dfp32_prof0///rail_gen//rail_compile_logs for partition_2_0_.
+[info] Compilation succeeded for partition_2_0_
+[info] Logs are generated in /people/jain432/pacer_saudade/output/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr4_e20_b64_dfp32_prof0///rail_gen//rail_compile_logs for partition_3_0_.
+[info] Compilation succeeded for partition_3_0_
+[info] Starting Plasma compile at /people/jain432/pacer_saudade/output/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr4_e20_b64_dfp32_prof0/plasma_ir_modules/schedule_global
+[info] Plasma compile succeeded.
+[info] Starting Plasma compile at /people/jain432/pacer_saudade/output/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr4_e20_b64_dfp32_prof0/plasma_ir_modules/sections_0_3
+[info] Plasma compile succeeded.
+[info] Starting Plasma compile at /people/jain432/pacer_saudade/output/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr4_e20_b64_dfp32_prof0/plasma_ir_modules/schedule_0_3
+[info] Plasma compile succeeded.
+[info] Starting Plasma compile at /people/jain432/pacer_saudade/output/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr4_e20_b64_dfp32_prof0/plasma_ir_modules/schedule_final
+[info] Plasma compile succeeded.
+[INFO] PEF File: /people/jain432/pacer_saudade/output/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr4_e20_b64_dfp32_prof0/rdu_nr4_e20_b64_dfp32_prof0.pef
+[INFO] Suffix: rdu_nr4_e20_b64_dfp32_prof0
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Selected App: ClimateLSTMProxyAppPT
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ClimateApp
+[INFO] App Supports Mixed Precision: True
+[INFO] Suffix: rdu_nr4_e20_b64_dfp32_prof0
+[INFO] PyTorch version: [INFO] Suffix: rdu_nr4_e20_b64_dfp32_prof0
+[INFO] PyTorch version:  [INFO] Suffix: rdu_nr4_e20_b64_dfp32_prof0
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Selected App: ClimateLSTMProxyAppPT
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ClimateApp
+[INFO] App Supports Mixed Precision: True
+ 1.10.2+cpu
+[INFO] Selected App: ClimateLSTMProxyAppPT
+1.10.2+cpu
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ClimateApp
+[INFO] Selected App: ClimateLSTMProxyAppPT
+[INFO] App Supports Mixed Precision: True
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ClimateApp
+[INFO] App Supports Mixed Precision: True
+[INFO] Model Path: /people/jain432/pacer_saudade/models/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr4_e20_b64_dfp32_prof0.pt
+[INFO] Model Parameters:
+lstm_layer.weight_ih_l0 torch.Size([256, 326])
+lstm_layer.weight_hh_l0 torch.Size([256, 64])
+lstm_layer.bias_ih_l0 torch.Size([256])
+lstm_layer.bias_hh_l0 torch.Size([256])
+dense_layer.weight torch.Size([9780, 64])
+dense_layer.bias torch.Size([9780])
+[INFO] Training Data Directory: /people/jain432/pacer_saudade/data/ISDMonthly/
+[INFO] Found 588 `*` files
+[INFO] Training on 576/588 `*` files
+[INFO] Validation on 0/588 `*` files
+[INFO] Testing on 12/588 `*` files
+2023-02-17T10:28:22 : [INFO][LIB][124395]: sn_create_session: PEF File: /people/jain432/pacer_saudade/output/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr4_e20_b64_dfp32_prof0/rdu_nr4_e20_b64_dfp32_prof0.pef
+Log ID initialized to: [jain432][python][124395] at /var/log/sambaflow/runtime/sn.log
+2023-02-17T10:28:22 : [INFO][LIB][124394]: sn_create_session: PEF File: /people/jain432/pacer_saudade/output/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr4_e20_b64_dfp32_prof0/rdu_nr4_e20_b64_dfp32_prof0.pef
+Log ID initialized to: [jain432][python][124394] at /var/log/sambaflow/runtime/sn.log
+2023-02-17T10:28:22 : [INFO][LIB][124397]: sn_create_session: PEF File: /people/jain432/pacer_saudade/output/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr4_e20_b64_dfp32_prof0/rdu_nr4_e20_b64_dfp32_prof0.pef
+Log ID initialized to: [jain432][python][124397] at /var/log/sambaflow/runtime/sn.log
+2023-02-17T10:28:22 : [INFO][LIB][124396]: sn_create_session: PEF File: /people/jain432/pacer_saudade/output/ClimateApp/ClimateLSTMProxyAppPT/rdu_nr4_e20_b64_dfp32_prof0/rdu_nr4_e20_b64_dfp32_prof0.pef
+Log ID initialized to: [jain432][python][124396] at /var/log/sambaflow/runtime/sn.log
+Epoch [1/20], Step [1305/1305], Loss: 0.9466
+Epoch [2/20], Step [1305/1305], Loss: 0.9462
+Epoch [3/20], Step [1305/1305], Loss: 0.9459
+Epoch [4/20], Step [1305/1305], Loss: 0.9457
+Epoch [5/20], Step [1305/1305], Loss: 0.9455
+Epoch [6/20], Step [1305/1305], Loss: 0.9452
+Epoch [7/20], Step [1305/1305], Loss: 0.9450
+Epoch [8/20], Step [1305/1305], Loss: 0.9447
+Epoch [9/20], Step [1305/1305], Loss: 0.9444
+Epoch [10/20], Step [1305/1305], Loss: 0.9442
+Epoch [11/20], Step [1305/1305], Loss: 0.9440
+Epoch [12/20], Step [1305/1305], Loss: 0.9438
+Epoch [13/20], Step [1305/1305], Loss: 0.9436
+Epoch [14/20], Step [1305/1305], Loss: 0.9435
+Epoch [15/20], Step [1305/1305], Loss: 0.9433
+Epoch [16/20], Step [1305/1305], Loss: 0.9432
+Epoch [17/20], Step [1305/1305], Loss: 0.9430
+Epoch [18/20], Step [1305/1305], Loss: 0.9429
+Epoch [19/20], Step [1305/1305], Loss: 0.9428
+Epoch [20/20], Step [1305/1305], Loss: 0.9426
+[INFO] Training Time: 222.250107; Loss: 0.942631
+[INFO] Training Time: 222.250407; Loss: 0.943029
+[INFO] Training Time: 222.252617; Loss: 0.945064
+[INFO] Training Time: 222.250814; Loss: 0.941176

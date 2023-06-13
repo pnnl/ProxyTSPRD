@@ -1,0 +1,312 @@
+congestion bw distribution table
+lower bound, number of edges 
+1,0
+0.9,0
+0.8,0
+0.7,0
+0.6,0
+0.5,0
+0.4,0
+0.3,0
+0.2,0
+0.1,0
+0,0
+non-congestion bw distribution table
+lower bound, number of edges 
+0,0
+0.1,0
+0.2,0
+0.3,0
+0.4,0
+0.5,0
+0.6,0
+0.7,0
+0.8,0
+0.9,0
+1,0
+congestion bw distribution table
+lower bound, number of edges 
+1,0
+0.9,0
+0.8,0
+0.7,0
+0.6,0
+0.5,0
+0.4,0
+0.3,0
+0.2,0
+0.1,0
+0,0
+non-congestion bw distribution table
+lower bound, number of edges 
+0,10
+0.1,0
+0.2,0
+0.3,0
+0.4,0
+0.5,0
+0.6,0
+0.7,0
+0.8,0
+0.9,0
+1,0
+congestion bw distribution table
+lower bound, number of edges 
+1,0
+0.9,0
+0.8,0
+0.7,0
+0.6,0
+0.5,0
+0.4,0
+0.3,0
+0.2,0
+0.1,0
+0,0
+non-congestion bw distribution table
+lower bound, number of edges 
+0,1533
+0.1,49
+0.2,0
+0.3,0
+0.4,35
+0.5,10
+0.6,0
+0.7,3
+0.8,0
+0.9,21
+1,3
+congestion bw distribution table
+lower bound, number of edges 
+1,0
+0.9,0
+0.8,0
+0.7,0
+0.6,0
+0.5,0
+0.4,0
+0.3,0
+0.2,0
+0.1,0
+0,0
+non-congestion bw distribution table
+lower bound, number of edges 
+0,0
+0.1,0
+0.2,0
+0.3,0
+0.4,0
+0.5,0
+0.6,0
+0.7,0
+0.8,0
+0.9,0
+1,0
+congestion bw distribution table
+lower bound, number of edges 
+1,0
+0.9,0
+0.8,0
+0.7,0
+0.6,0
+0.5,0
+0.4,0
+0.3,0
+0.2,0
+0.1,0
+0,0
+non-congestion bw distribution table
+lower bound, number of edges 
+0,2
+0.1,4
+0.2,4
+0.3,12
+0.4,20
+0.5,15
+0.6,12
+0.7,14
+0.8,0
+0.9,0
+1,0
+congestion bw distribution table
+lower bound, number of edges 
+1,0
+0.9,0
+0.8,0
+0.7,0
+0.6,0
+0.5,0
+0.4,0
+0.3,0
+0.2,0
+0.1,0
+0,0
+non-congestion bw distribution table
+lower bound, number of edges 
+0,0
+0.1,0
+0.2,0
+0.3,0
+0.4,0
+0.5,0
+0.6,0
+0.7,0
+0.8,0
+0.9,0
+1,0
+congestion bw distribution table
+lower bound, number of edges 
+1,0
+0.9,0
+0.8,0
+0.7,0
+0.6,0
+0.5,0
+0.4,0
+0.3,0
+0.2,0
+0.1,0
+0,0
+non-congestion bw distribution table
+lower bound, number of edges 
+0,169
+0.1,0
+0.2,0
+0.3,0
+0.4,0
+0.5,0
+0.6,0
+0.7,1
+0.8,0
+0.9,0
+1,0
+congestion bw distribution table
+lower bound, number of edges 
+1,0
+0.9,0
+0.8,0
+0.7,0
+0.6,0
+0.5,0
+0.4,0
+0.3,0
+0.2,0
+0.1,0
+0,0
+non-congestion bw distribution table
+lower bound, number of edges 
+0,0
+0.1,0
+0.2,0
+0.3,0
+0.4,0
+0.5,0
+0.6,0
+0.7,0
+0.8,0
+0.9,0
+1,0
+congestion bw distribution table
+lower bound, number of edges 
+1,0
+0.9,0
+0.8,0
+0.7,0
+0.6,0
+0.5,0
+0.4,0
+0.3,0
+0.2,0
+0.1,0
+0,0
+non-congestion bw distribution table
+lower bound, number of edges 
+0,296
+0.1,37
+0.2,1
+0.3,0
+0.4,0
+0.5,0
+0.6,0
+0.7,0
+0.8,0
+0.9,0
+1,0
+congestion bw distribution table
+lower bound, number of edges 
+1,0
+0.9,0
+0.8,0
+0.7,0
+0.6,0
+0.5,0
+0.4,0
+0.3,0
+0.2,0
+0.1,0
+0,0
+non-congestion bw distribution table
+lower bound, number of edges 
+0,23
+0.1,0
+0.2,0
+0.3,0
+0.4,0
+0.5,0
+0.6,0
+0.7,0
+0.8,0
+0.9,0
+1,0
+congestion bw distribution table
+lower bound, number of edges 
+1,0
+1.2,0
+1.4,0
+1.6,0
+1.8,20
+2,4
+2.2,0
+2.4,0
+2.6,0
+2.8,0
+3,12
+non-congestion bw distribution table
+lower bound, number of edges 
+0,0
+0.1,0
+0.2,0
+0.3,0
+0.4,0
+0.5,0
+0.6,0
+0.7,17
+0.8,0
+0.9,82
+1,133
+congestion bw distribution table
+lower bound, number of edges 
+1,0
+0.9,0
+0.8,0
+0.7,0
+0.6,0
+0.5,0
+0.4,0
+0.3,0
+0.2,0
+0.1,0
+0,0
+non-congestion bw distribution table
+lower bound, number of edges 
+0,0
+0.1,0
+0.2,0
+0.3,0
+0.4,0
+0.5,0
+0.6,0
+0.7,0
+0.8,0
+0.9,0
+1,0

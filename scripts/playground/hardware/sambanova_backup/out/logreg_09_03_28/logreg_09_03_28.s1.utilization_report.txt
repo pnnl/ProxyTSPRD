@@ -1,0 +1,22 @@
+ ----------------- Utilization [by node] ----------------- 
+Partition{0, 1}: LogregTorchSamba.partition_1_0_.input_buf_1_0_92 1 PMU(s) + 0 PCU(s)
+Partition{0, 1}: LogregTorchSamba.partition_1_0_.gbuf1a_1_0_76 1 PMU(s) + 0 PCU(s)
+Partition{0, 1}: LogregTorchSamba.partition_1_0_.tbuf1a_1_0_77 1 PMU(s) + 0 PCU(s)
+Partition{0, 1}: LogregTorchSamba.partition_1_0_.tbuf1a_1_0_78 1 PMU(s) + 0 PCU(s)
+Partition{0, 1}: LogregTorchSamba.partition_1_0_.tbuf1a_1_0_79 1 PMU(s) + 0 PCU(s)
+Partition{0, 1}: LogregTorchSamba.partition_1_0_.tbuf1a_1_0_90 1 PMU(s) + 0 PCU(s)
+Partition{0, 1}: LogregTorchSamba.partition_1_0_.gbuf1a_1_0_80 1 PMU(s) + 0 PCU(s)
+Partition{0, 1}: LogregTorchSamba.partition_1_0_.gbuf1a_1_0_81 1 PMU(s) + 0 PCU(s)
+Partition{0, 1}: LogregTorchSamba.partition_1_0_.gbuf1a_1_0_82 1 PMU(s) + 0 PCU(s)
+Partition{0, 1}: LogregTorchSamba.partition_1_0_.logreg__lin_layer__linear_bwd_weight_grad_a 1 PMU(s) + 4 PCU(s)
+Partition{0, 1}: LogregTorchSamba.partition_1_0_.gbuf1a_1_0_83 2 PMU(s) + 0 PCU(s)
+Partition{0, 1}: LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tcompute0 0 PMU(s) + 1 PCU(s)
+Partition{0, 1}: LogregTorchSamba.partition_1_0_.logreg__criterion__crossentropyloss_bwd_loss.tbuf_tmp0 1 PMU(s) + 0 PCU(s)
+Partition{0, 1}: LogregTorchSamba.partition_1_0_.s1.fronting_pmu_load_group_8 1 PMU(s) + 0 PCU(s)
+ ----------------- Utilization [by partition] ----------------- 
+Section: 1 Chip: 0 Partition: Partition{0, 1} Usage: 14 PMU(s) + 5 PCU(s) PMU Utilization: 2.1875 PCU Utilization: 0.78125
+ --------------------------------------------------------- 
+Available: 640 FCMU(s) across 4 tile(s) of 1 chip(s)
+Used (templates): 14 PMU(s) + 5 PCU(s) = 19 unit(s) 
+Used (floating): 0 PMU(s) + 0 PCU(s) = 0 unit(s) 
+Used (total): 14 PMU(s) + 5 PCU(s) = 19 unit(s) and 1 AGCU(s)

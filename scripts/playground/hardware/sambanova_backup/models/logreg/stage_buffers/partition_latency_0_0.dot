@@ -1,0 +1,25 @@
+digraph {
+	node [shape=box]
+	"0" [label= "nbuf1a_0_0_71\nBuffer\nRead Duration: 25*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nMultiplier: 1"];
+	"1" [label= "logreg__lin_layer__linear\nGemm-Like\nLatency: 858\nMultiplier: 1"];
+	 "0"->"1";
+	 "10"->"1";
+	"2" [label= "gbuf1a_0_0_70\nBuffer\nRead Duration: 1*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0*\nMultiplier: 1"];
+	 "1"->"2";
+	"3" [label= "transpose_0_0_88\nBuffer\nRead Duration: 32*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0*\nMultiplier: 1"];
+	 "2"->"3";
+	"4" [label= "gbuf1a_0_0_72\nBuffer\nRead Duration: 32*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0*\nMultiplier: 1"];
+	 "3"->"4";
+	"5" [label= "tbuf1a_0_0_74\nBuffer\nRead Duration: 24*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nMultiplier: 1"];
+	 "3"->"5";
+	 "7"->"5";
+	"6" [label= "output_buf_0_0_91\nInvalid Model\nMultiplier: 1"];
+	 "4"->"6";
+	"7" [label= "tbuf1a_0_0_73\nBuffer\nRead Duration: 1*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nMultiplier: 1"];
+	"8" [label= "logreg__criterion__crossentropyloss\nGemm-Like\nLatency: 482\nMultiplier: 1"];
+	 "7"->"8";
+	 "5"->"8";
+	"9" [label= "tbuf1a_0_0_75\nBuffer\nRead Duration: 1*\nInput Rate: 1\nOutput Rate: 1\nInternal Latency: 0\nMultiplier: 1"];
+	 "8"->"9";
+	"10" [label= "s0.fronting_pmu_load_group_2\nInvalid Model\nMultiplier: 1"];
+}

@@ -8,7 +8,8 @@ import argparse
 # ------------------------------- CUSTOM FUNCTIONS ------------------------------------------------
 # Custom Library
 import sys
-sys.path.append('../../../')
+CURR_DIR = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.join(CURR_DIR, '../../../../'))
 from proxy_apps.framework.rdu import RDU
 from proxy_apps.apps import *
 
@@ -45,16 +46,17 @@ parser.add_argument(
     help="number of epochs", 
     default=1
 )
+# for lstm reduce the batch size to 64 - 2048 is too high! 
 parser.add_argument(
     "--batch_size", 
     type=int, 
     help="batch size", 
-    default=1024
+    default=2048
 )
 parser.add_argument(
     "--run_type", 
     type=str, 
-    choices=["compile", "run"], 
+    choices=["compile", "run", "test"], 
     help="action to take", 
     default="compile"
 )
@@ -81,6 +83,19 @@ if __name__ == "__main__":
     # read configuration file
     with open(_CONFIG_FILE) as fp:
         _CONFIG = json.load(fp)
+    
+    # specific for inference
+    if args.run_type in ["infer", "infer_ait", "infer_onnx", "test"]:
+        _CONFIG["data_params"]["init"]["shuffle"] = False
+        n_files = _CONFIG["data_params"]["init"]["train_files"] + _CONFIG["data_params"]["init"]["test_files"]
+        # increase number of test files for inference - climate data
+        if _CONFIG["info"]["app_name"].startswith("Climate"):
+            _CONFIG["data_params"]["init"]["test_files"] = 240
+        # increase number of test files for inference - grid data
+        elif _CONFIG["info"]["app_name"].startswith("Grid"):
+            _CONFIG["data_params"]["init"]["test_files"] = 140
+        # reduce number of training files accordingly 
+        _CONFIG["data_params"]["init"]["train_files"] = n_files - _CONFIG["data_params"]["init"]["test_files"]
 
     _PLATFORM = "rdu"
     _MACHINE_NAME = "sambanova"
@@ -89,12 +104,16 @@ if __name__ == "__main__":
 
     # init app
     if _CONFIG["info"]["app_name"] == "ClimateLSTMProxyAppPT":
+        from proxy_apps.apps.pt.climate import ClimateLSTMProxyAppPT
         app = ClimateLSTMProxyAppPT(_PLATFORM)
     elif _CONFIG["info"]["app_name"] == "ClimateCNNProxyAppPT":
+        from proxy_apps.apps.pt.climate import ClimateCNNProxyAppPT
         app = ClimateCNNProxyAppPT(_PLATFORM)
     elif _CONFIG["info"]["app_name"] == "GridLSTMProxyAppPT":
+        from proxy_apps.apps.pt.grid import GridLSTMProxyAppPT
         app = GridLSTMProxyAppPT(_PLATFORM)
     elif _CONFIG["info"]["app_name"] == "GridCNNProxyAppPT":
+        from proxy_apps.apps.pt.grid import GridCNNProxyAppPT
         app = GridCNNProxyAppPT(_PLATFORM)
 
     if args.train_suffix == "":
@@ -133,7 +152,7 @@ if __name__ == "__main__":
     )
     
     # set parameters
-    data_params = {
+    model_params = {
         "bw_size": _CONFIG["data_params"]["load_and_prep"]["iw_params"]["window_size"],
         "fw_size": _CONFIG["data_params"]["load_and_prep"]["ow_params"]["window_size"],
         "n_features": _CONFIG["data_params"]["load_and_prep"]["n_cols"] * _CONFIG["data_params"]["load_and_prep"]["repeat_cols"],
@@ -148,7 +167,7 @@ if __name__ == "__main__":
                     _CONFIG["model_info"]["model_dir"],
                     _CONFIG["info"]["app_name"]
                 ),
-        data_params=data_params,
+        model_params=model_params,
         opt_params=_CONFIG["model_info"]["opt_parameters"],
         criterion_params=None
     )
@@ -156,11 +175,11 @@ if __name__ == "__main__":
     if args.run_type == "compile":
         # compile the model
         interface.compile(
-            data_params=data_params,
+            model_params=model_params,
             batch_size=args.batch_size
         )
 
-    elif args.run_type == "run":
+    elif args.run_type in ["test", "run"]:
         # initialize data manager
         data_manager = interface.init_data_manager(
             data_dir=_CONFIG["data_params"]["init"]["training_data_dir"],
@@ -171,9 +190,14 @@ if __name__ == "__main__":
             val_files=_CONFIG["data_params"]["init"]["val_files"],
             shuffle=_CONFIG["data_params"]["init"]["shuffle"]
         )
+        # choose files
+        if args.run_type == "test":
+            data_files = data_manager._TEST_FILES
+        elif args.run_type == "run":
+            data_files = data_manager._TRAIN_FILES
         # load training and validation data
-        training_data = interface.load_data(
-            data_files=data_manager._TRAIN_FILES,
+        data, g = interface.load_data(
+            data_files=data_files,
             data_params=_CONFIG["data_params"]["load_and_prep"],
             batch_size=args.batch_size
         )
@@ -181,11 +205,19 @@ if __name__ == "__main__":
 
         # with profile(activities=[ProfilerActivity.CPU], profile_memory=True, record_shapes=True) as prof:
         #     with record_function("model_inference"):            
-        interface.train(
-            train_loader=training_data,
-            data_params=data_params,
-            n_epochs=args.n_epochs,
-            batch_size=args.batch_size
-        )
+        if args.run_type == "run":
+            interface.train(
+                train_loader=data,
+                model_params=model_params,
+                n_epochs=args.n_epochs,
+                batch_size=args.batch_size
+            )
+        if args.run_type == "test":
+            interface.infer(
+                test_loader=data,
+                model_params=model_params,
+                n_epochs=args.n_epochs,
+                batch_size=args.batch_size
+            )
 
         # print(prof.key_averages().table(sort_by="cpu_time_total"))

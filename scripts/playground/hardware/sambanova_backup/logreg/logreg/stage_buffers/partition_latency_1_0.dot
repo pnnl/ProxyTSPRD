@@ -1,0 +1,46 @@
+digraph {
+	node [shape=box]
+	"0" [label= "gbuf1a_1_0_98&#xA;Buffer&#xA;Read Duration: 512*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "gbuf1a_1_0_98&#xA;Buffer&#xA;Read Duration: 512*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "14"->"0" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"1" [label= "tbuf1a_1_0_101&#xA;Buffer&#xA;Read Duration: 384*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "tbuf1a_1_0_101&#xA;Buffer&#xA;Read Duration: 384*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "0"->"1" [color=black, penwidth=3 , tooltip="ExecGroup/vector Iters: {1}"];
+	"2" [label= "gbuf1a_1_0_102&#xA;Buffer&#xA;Read Duration: 512*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "gbuf1a_1_0_102&#xA;Buffer&#xA;Read Duration: 512*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "13"->"2" [color=black, penwidth=3 , tooltip="ExecGroup/vector Iters: {1}"];
+	"3" [label= "logreg__lin_layer__linear_t_output0_bwd_addn0&#xA;Streaming&#xA;Transit Latency: 14&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "logreg__lin_layer__linear_t_output0_bwd_addn0&#xA;Streaming&#xA;Transit Latency: 14&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "2"->"3" [color=black, penwidth=3 , tooltip="ExecGroup/vector Iters: {1}"];
+	 "4"->"3" [color=black, penwidth=3 , tooltip="ExecGroup/vector Iters: {1}"];
+	"4" [label= "gbuf1a_1_0_103&#xA;Buffer&#xA;Read Duration: 500*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "gbuf1a_1_0_103&#xA;Buffer&#xA;Read Duration: 500*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "15"->"4" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"5" [label= "logreg__lin_layer__linear_bwd_weight_grad_a&#xA;Gemm-Like&#xA;Latency: 19346&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "logreg__lin_layer__linear_bwd_weight_grad_a&#xA;Gemm-Like&#xA;Latency: 19346&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "3"->"5" [color=black, penwidth=3 , tooltip="ExecGroup/vector Iters: {1}"];
+	 "7"->"5" [color=black, penwidth=3 , tooltip="ExecGroup/vector Iters: {1}"];
+	"6" [label= "gbuf1a_1_0_104&#xA;Buffer&#xA;Read Duration: 12800*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 3200*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "gbuf1a_1_0_104&#xA;Buffer&#xA;Read Duration: 12800*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 3200*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "16"->"6" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"7" [label= "gbuf1a_1_0_105&#xA;Buffer&#xA;Read Duration: 12672*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 198*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "gbuf1a_1_0_105&#xA;Buffer&#xA;Read Duration: 12672*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 198*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "6"->"7" [color=black, penwidth=3 , tooltip="ExecGroup/vector Iters: {1}"];
+	"8" [label= "gbuf1a_1_0_106&#xA;Buffer&#xA;Read Duration: 784*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "gbuf1a_1_0_106&#xA;Buffer&#xA;Read Duration: 784*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "5"->"8" [color=black, penwidth=3 , tooltip="ExecGroup/vector Iters: {1}"];
+	"9" [label= "DramOutputNode:s1_c0_1:logreg__lin_layer__weight__grad&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramOutputNode:s1_c0_1:logreg__lin_layer__weight__grad&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "8"->"9" [color=black, penwidth=3 , tooltip="ExecGroup/vector Iters: {1}"];
+	"10" [label= "tbuf1a_1_0_99&#xA;Buffer&#xA;Read Duration: 192*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "tbuf1a_1_0_99&#xA;Buffer&#xA;Read Duration: 192*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "18"->"10" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"11" [label= "logreg__criterion__crossentropyloss_bwd_loss&#xA;Gemm-Like&#xA;Latency: 1050&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "logreg__criterion__crossentropyloss_bwd_loss&#xA;Gemm-Like&#xA;Latency: 1050&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "10"->"11" [color=black, penwidth=3 , tooltip="ExecGroup/vector Iters: {1}"];
+	 "12"->"11" [color=black, penwidth=3 , tooltip="ExecGroup/vector Iters: {1}"];
+	 "1"->"11" [color=black, penwidth=3 , tooltip="ExecGroup/vector Iters: {1}"];
+	"12" [label= "tbuf1a_1_0_100&#xA;Buffer&#xA;Read Duration: 192*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "tbuf1a_1_0_100&#xA;Buffer&#xA;Read Duration: 192*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "19"->"12" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"13" [label= "tbuf1a_1_0_114&#xA;Buffer&#xA;Read Duration: 160*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "tbuf1a_1_0_114&#xA;Buffer&#xA;Read Duration: 160*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "11"->"13" [color=black, penwidth=3 , tooltip="ExecGroup/vector Iters: {1}"];
+	"14" [label= "s1.fronting_pmu_load_group_14&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "s1.fronting_pmu_load_group_14&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "17"->"14" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"15" [label= "s1.fronting_pmu_load_group_15&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "s1.fronting_pmu_load_group_15&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "20"->"15" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"16" [label= "s1.fronting_pmu_load_group_16&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "s1.fronting_pmu_load_group_16&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "21"->"16" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"17" [label= "DramInputNode:s1_c0_1:logreg__lin_layer__linear__outputs__0&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramInputNode:s1_c0_1:logreg__lin_layer__linear__outputs__0&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	"18" [label= "DramInputNode:s1_c0_2:label&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramInputNode:s1_c0_2:label&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	"19" [label= "DramInputNode:s1_c0_3:logreg__criterion__crossentropyloss__outputs__0__grad&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramInputNode:s1_c0_3:logreg__criterion__crossentropyloss__outputs__0__grad&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	"20" [label= "DramInputNode:s1_c0_4:logreg__lin_layer__linear__outputs__0__grad&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramInputNode:s1_c0_4:logreg__lin_layer__linear__outputs__0__grad&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	"21" [label= "DramInputNode:s1_c0_5:image&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramInputNode:s1_c0_5:image&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+}

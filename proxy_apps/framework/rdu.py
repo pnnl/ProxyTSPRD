@@ -18,14 +18,14 @@ import torch
 import torch.distributed as dist
 
 from .main import Framework
-from .import PyTorchInterface
+from ..interface.pytorch import PyTorchInterface
 
 class RDU(Framework):
     def __init__(
         self, 
         machine_name,
-        dtype="fp64",
-        n_rdus=1
+        n_rdus=1,
+        dtype="fp64"
     ) -> None:
         super().__init__(machine_name)
         self._N_RDUS = n_rdus
@@ -79,7 +79,8 @@ class PyTorchInterfaceSN(PyTorchInterface):
         output_dir,
         stage,
         batch_size=1,
-        mixed_precision_support=False
+        mixed_precision_support=False,
+        mgpu_support=False
     ):
         super().init_app_manager(    
             app=app,
@@ -130,7 +131,7 @@ class PyTorchInterfaceSN(PyTorchInterface):
         data_params,
         batch_size=1
     ):
-        dataloader = super().load_data(
+        data_generator, dataloader = super().load_data(
             data_files,
             data_params=data_params,
             pin_memory=False,
@@ -138,7 +139,7 @@ class PyTorchInterfaceSN(PyTorchInterface):
             num_replicas=self._N_RDUS
         )
 
-        return dataloader 
+        return dataloader, None
 
     def _create_rand_arr(
         self,
@@ -182,7 +183,7 @@ class PyTorchInterfaceSN(PyTorchInterface):
             if self._N_RDUS > 1:
                 mrdu_params = ["--data-parallel", "-ws=" + str(self._N_RDUS)]
                 argv_params = argv_params + mrdu_params
-        elif command=="run":
+        elif command in ["run", "test"]:
             argv_params = [command, '--pef='+self.app_manager._PEF_FILE, '-b=' + str(batch_size), "--log-level=error"]
             if self._N_RDUS > 1:
                 mrdu_params = ["--data-parallel", "--reduce-on-rdu"]
@@ -221,14 +222,14 @@ class PyTorchInterfaceSN(PyTorchInterface):
         self,
         model_name,
         model_dir,
-        data_params,
+        model_params,
         opt_params,
         criterion_params
     ):
         super().init_training_engine(
             model_name=model_name,
             model_dir=model_dir,
-            data_params=data_params,
+            model_params=model_params,
             criterion_params=criterion_params
         )
         
@@ -244,12 +245,12 @@ class PyTorchInterfaceSN(PyTorchInterface):
         
     def compile(
         self,
-        data_params,
+        model_params,
         batch_size
     ):
         # Create random input and output data for testing
         inputs = self._create_rand_arr(
-            data_params=data_params,
+            data_params=model_params,
             batch_size=batch_size
         )
         
@@ -268,14 +269,14 @@ class PyTorchInterfaceSN(PyTorchInterface):
     def train(
         self,
         train_loader,
-        data_params,
+        model_params,
         n_epochs,
         batch_size,
         num_spatial_batches=1
     ):
         # create random array
         inputs = self._create_rand_arr(
-            data_params=data_params,
+            data_params=model_params,
             batch_size=batch_size
         )
         
@@ -304,6 +305,10 @@ class PyTorchInterfaceSN(PyTorchInterface):
     
         # Total training steps (iterations) per epoch
         total_step = len(train_loader)
+        # print("========== OPT Params: ", self.opt_params)
+        # self.opt_params["lr"] = self.opt_params["learning_rate"]
+        # del self.opt_params["learning_rate"]
+        # print("========== ARGS: ", self._ARGS.pef)
 
         # start training
         start_time = time.perf_counter()
@@ -368,3 +373,70 @@ class PyTorchInterfaceSN(PyTorchInterface):
         #     report.save(args.json)
         # if self._GLOBAL_RANK == 0:
         print("[INFO] Training Time: %f; Loss: %f" %(time.perf_counter()-start_time, avg_loss / (i + 1)))
+
+    def infer(
+        self,
+        test_loader,
+        model_params,
+        n_epochs,
+        batch_size,
+        num_spatial_batches=1
+    ):
+        # create random array
+        inputs = self._create_rand_arr(
+            data_params=model_params,
+            batch_size=batch_size
+        )
+        
+        # Build inputs of the correct shape for spatial
+        if self._ARGS.mapping == "spatial":
+            # print(inputs[0].shape, inputs[1].shape)
+            inputs = (samba.SambaTensor(samba.to_torch(inputs[0]).repeat(num_spatial_batches, 1),
+                                        name='inp_window',
+                                        batch_dim=0),
+                      samba.SambaTensor(samba.to_torch(inputs[1]).repeat(num_spatial_batches),
+                                        name='out_window',
+                                        batch_dim=0))
+
+        # Trace the compiled graph to initialize the model weights and input/output tensors
+        # for execution on the RDU.
+        # The PEF required for tracing is the binary generated during compilation
+        # Mapping refers to how the model layers are arranged in a pipeline for execution.
+        # Valid options: 'spatial' or 'section'
+        traced_outputs = utils.trace_graph(self.model,
+                                           inputs,
+                                           self.optimizer,
+                                           pef=self._ARGS.pef,
+                                           mapping=self._ARGS.mapping,
+                                           distlearn_config=self._ARGS.distlearn_config)
+
+    
+        # Total training steps (iterations) per epoch
+        total_step = len(test_loader)
+        # print("========== OPT Params: ", self.opt_params)
+        # self.opt_params["lr"] = self.opt_params["learning_rate"]
+        # del self.opt_params["learning_rate"]
+        # print("========== ARGS: ", self._ARGS.pef)
+
+        # start training
+        start_time = time.perf_counter()
+
+        avg_loss = 0
+        # Train the model for all samples in the train data loader
+        for i, (inp_win, out_win) in enumerate(test_loader):
+            if inp_win.shape[0] != batch_size:
+                continue
+            
+            sn_inp = samba.from_torch_tensor(inp_win, name='inp_window', batch_dim=0)
+            sn_out = samba.from_torch_tensor(out_win, name='out_window', batch_dim=0)
+
+            loss, outputs = samba.session.run(input_tensors=[sn_inp, sn_out],
+                                            output_tensors=traced_outputs,
+                                            data_parallel=self._ARGS.data_parallel,
+                                            reduce_on_rdu=self._ARGS.reduce_on_rdu)
+
+            # Sync the loss and outputs with host memory
+            loss, outputs = samba.to_torch(loss), samba.to_torch(outputs)
+            avg_loss += loss.mean()
+
+        print("[INFO] Inference Time: %f; Loss: %f" %(time.perf_counter()-start_time, avg_loss / (i + 1)))

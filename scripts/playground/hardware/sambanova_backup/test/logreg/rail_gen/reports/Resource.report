@@ -1,0 +1,70 @@
+*******************************************************************
+tbuf:
+    kData PMU: 16
+    kROB PMU: 1
+    total PMU: 17, Tensor size / (PMU size * depth): 13
+    total PCU: 0
+tbuf2u_0_0_189:
+    kData PMU: 1
+    total PMU: 1, Tensor size / (PMU size * depth): 1
+    total PCU: 0
+tbuf1u_0_0_190:
+    kData PMU: 1
+    total PMU: 1, Tensor size / (PMU size * depth): 1
+    total PCU: 0
+tbuf2u_0_0_194:
+    kData PMU: 1
+    total PMU: 1, Tensor size / (PMU size * depth): 1
+    total PCU: 0
+total RAIL resource for partition_0_0_
+    kData PMU: 19
+    kROB PMU: 1
+    total PMU: 20, Tensor size / (PMU size * depth): 16
+    total PCU: 0
+*******************************************************************
+tbuf2u_1_0_245:
+    kData PMU: 1
+    total PMU: 1, Tensor size / (PMU size * depth): 1
+    total PCU: 0
+tbuf1u_1_0_246:
+    kData PMU: 1
+    total PMU: 1, Tensor size / (PMU size * depth): 1
+    total PCU: 0
+tbuf2u_1_0_250:
+    kData PMU: 1
+    total PMU: 1, Tensor size / (PMU size * depth): 1
+    total PCU: 0
+tbuf:
+    kData PMU: 32
+    kROB PMU: 1
+    total PMU: 33, Tensor size / (PMU size * depth): 4
+    total PCU: 0
+tbuf:
+    kData PMU: 1
+    total PMU: 1, Tensor size / (PMU size * depth): 1
+    total PCU: 0
+tbuf:
+    kData PMU: 1
+    total PMU: 1, Tensor size / (PMU size * depth): 1
+    total PCU: 0
+tbuf:
+    kData PMU: 1
+    total PMU: 1, Tensor size / (PMU size * depth): 1
+    total PCU: 0
+tbuf:
+    kData PMU: 1
+    total PMU: 1, Tensor size / (PMU size * depth): 1
+    total PCU: 0
+tbuf:
+    kData PMU: 1
+    total PMU: 1, Tensor size / (PMU size * depth): 1
+    total PCU: 0
+total RAIL resource for partition_1_0_
+    kData PMU: 40
+    kROB PMU: 1
+    total PMU: 41, Tensor size / (PMU size * depth): 12
+    total PCU: 0
+*******************************************************************
+total RAIL resource for partition_2_0_
+    total PMU: 0, Tensor size / (PMU size * depth): 0
+    total PCU: 0

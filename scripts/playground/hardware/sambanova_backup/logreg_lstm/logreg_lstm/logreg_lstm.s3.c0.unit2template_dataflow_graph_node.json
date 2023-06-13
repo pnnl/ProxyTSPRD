@@ -1,0 +1,146 @@
+[
+    {
+        "dataflow_graph_node_name": "",
+        "template_name": "",
+        "unit_kind": "AGCU",
+        "unit_name": "AGCU_(7, 0, 0, 3)"
+    },
+    {
+        "dataflow_graph_node_name": "",
+        "template_name": "",
+        "unit_kind": "AGCU",
+        "unit_name": "AGCU_(7, 5, 0, 3)"
+    },
+    {
+        "dataflow_graph_node_name": "",
+        "template_name": "",
+        "unit_kind": "AGCU",
+        "unit_name": "AGCU_(7, 8, 0, 3)"
+    },
+    {
+        "dataflow_graph_node_name": "",
+        "template_name": "",
+        "unit_kind": "AGCU",
+        "unit_name": "AGCU_(7, 13, 0, 3)"
+    },
+    {
+        "dataflow_graph_node_name": "",
+        "template_name": "",
+        "unit_kind": "AGCU",
+        "unit_name": "AGCU_(23, 0, 0, 3)"
+    },
+    {
+        "dataflow_graph_node_name": "",
+        "template_name": "",
+        "unit_kind": "AGCU",
+        "unit_name": "AGCU_(23, 5, 0, 3)"
+    },
+    {
+        "dataflow_graph_node_name": "",
+        "template_name": "",
+        "unit_kind": "AGCU",
+        "unit_name": "AGCU_(23, 8, 0, 3)"
+    },
+    {
+        "dataflow_graph_node_name": "",
+        "template_name": "",
+        "unit_kind": "AGCU",
+        "unit_name": "AGCU_(23, 13, 0, 3)"
+    },
+    {
+        "dataflow_graph_node_name": "",
+        "template_name": "",
+        "unit_kind": "AGCU",
+        "unit_name": "AGCU_(71, 0, 0, 3)"
+    },
+    {
+        "dataflow_graph_node_name": "",
+        "template_name": "",
+        "unit_kind": "AGCU",
+        "unit_name": "AGCU_(71, 5, 0, 3)"
+    },
+    {
+        "dataflow_graph_node_name": "",
+        "template_name": "",
+        "unit_kind": "AGCU",
+        "unit_name": "AGCU_(71, 8, 0, 3)"
+    },
+    {
+        "dataflow_graph_node_name": "",
+        "template_name": "",
+        "unit_kind": "AGCU",
+        "unit_name": "AGCU_(71, 13, 0, 3)"
+    },
+    {
+        "dataflow_graph_node_name": "",
+        "template_name": "",
+        "unit_kind": "AGCU",
+        "unit_name": "AGCU_(87, 0, 0, 3)"
+    },
+    {
+        "dataflow_graph_node_name": "",
+        "template_name": "",
+        "unit_kind": "AGCU",
+        "unit_name": "AGCU_(87, 5, 0, 3)"
+    },
+    {
+        "dataflow_graph_node_name": "",
+        "template_name": "",
+        "unit_kind": "AGCU",
+        "unit_name": "AGCU_(87, 8, 0, 3)"
+    },
+    {
+        "dataflow_graph_node_name": "",
+        "template_name": "",
+        "unit_kind": "AGCU",
+        "unit_name": "AGCU_(87, 13, 0, 3)"
+    },
+    {
+        "dataflow_graph_node_name": "gbuf2a_3_0_992",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_3_0_).GBuffer",
+        "unit_kind": "PMU",
+        "unit_name": "gbuf2a_3_0_992_head1_neck0_data_pmu0"
+    },
+    {
+        "dataflow_graph_node_name": "gbuf2a_3_0_993",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_3_0_).GBuffer",
+        "unit_kind": "PMU",
+        "unit_name": "gbuf2a_3_0_993_head1_neck0_data_pmu0"
+    },
+    {
+        "dataflow_graph_node_name": "add_3_0_813",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_3_0_).BinaryOps::ADD",
+        "unit_kind": "PCU",
+        "unit_name": "add_3_0_813_output"
+    },
+    {
+        "dataflow_graph_node_name": "scale_3_0_814",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_3_0_).Scale",
+        "unit_kind": "PCU",
+        "unit_name": "scale_3_0_814_scaling_pcu"
+    },
+    {
+        "dataflow_graph_node_name": "gbuf2a_3_0_888",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_3_0_).GBuffer",
+        "unit_kind": "PMU",
+        "unit_name": "gbuf2a_3_0_888_head1_neck0_data_pmu0"
+    },
+    {
+        "dataflow_graph_node_name": "DramInputNode:s3_c0_1:dummy_dp_accum_region_0",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_3_0_).DramInputNode",
+        "unit_kind": "AGCU",
+        "unit_name": "LogicalAGCU for DRAM input_s3_c0_1"
+    },
+    {
+        "dataflow_graph_node_name": "DramInputNode:s3_c0_2:accum_dummy_0_reduce_buf",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_3_0_).DramInputNode",
+        "unit_kind": "AGCU",
+        "unit_name": "LogicalAGCU for DRAM input_s3_c0_2"
+    },
+    {
+        "dataflow_graph_node_name": "DramOutputNode:s3_c0_1:dummy_dp_accum_region_0",
+        "template_name": "Unknown(LogregTorchSamba).Unknown(partition_3_0_).DramOutputNode",
+        "unit_kind": "AGCU",
+        "unit_name": "LogicalAGCU for DRAM output_s3_c0_1"
+    }
+]

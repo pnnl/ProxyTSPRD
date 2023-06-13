@@ -1,6 +1,5 @@
 import os, sys, json
 import argparse
-from mpi4py import MPI
 
 def argument_parser():
     # Parse Arguments
@@ -91,9 +90,15 @@ def argument_parser():
     return args
 
 def read_config(config_file):
+    
     # get print rank
-    comm = MPI.COMM_WORLD
-    print_rank = comm.Get_rank()
+    try:
+        from mpi4py import MPI
+        comm = MPI.COMM_WORLD
+        print_rank = comm.Get_rank()
+    except Exception as e:
+        print("[WARNING] Couldn't initialize MPI, giving a default rank of 0 to all processes.")
+        print_rank = 0
     
     # check if configuration file exists
     assert os.path.exists(config_file), "Configuration file not found: %s" %(config_file)

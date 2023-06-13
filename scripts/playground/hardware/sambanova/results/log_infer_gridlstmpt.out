@@ -1,0 +1,21 @@
+[INFO] Suffix: rdu_nr1_e20_b64_dfp32_prof0
+[INFO] PyTorch version:  1.10.2+cpu
+[INFO] Selected App: GridLSTMProxyAppPT
+[INFO] Output Data Directory: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS
+[INFO] App Supports Mixed Precision: True
+[INFO] Model Path: /people/jain432/pacer_saudade/models/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr1_e20_b64_dfp32_prof0.pt
+[INFO] Model Parameters:
+lstm_layer.weight_ih_l0 torch.Size([256, 136])
+lstm_layer.weight_hh_l0 torch.Size([256, 64])
+lstm_layer.bias_ih_l0 torch.Size([256])
+lstm_layer.bias_hh_l0 torch.Size([256])
+dense_layer.weight torch.Size([4080, 64])
+dense_layer.bias torch.Size([4080])
+[INFO] Training Data Directory: /people/jain432/pacer_saudade/data/power_system/NewTestScenarios/
+[INFO] Found 180 `*` files
+[INFO] Training on 8/180 `*` files
+[INFO] Validation on 0/180 `*` files
+[INFO] Testing on 140/180 `*` files
+2023-06-12T15:27:15 : [INFO][LIB][974089]: sn_create_session: PEF File: /people/jain432/pacer_saudade/output/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/rdu_nr1_e20_b64_dfp32_prof0/rdu_nr1_e20_b64_dfp32_prof0.pef
+Log ID initialized to: [jain432][python][974089] at /var/log/sambaflow/runtime/sn.log
+[INFO] Inference Time: 11.215700; Loss: 0.072412

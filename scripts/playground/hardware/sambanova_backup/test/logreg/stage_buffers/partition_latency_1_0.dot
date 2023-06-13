@@ -1,0 +1,384 @@
+digraph {
+	node [shape=box]
+	subgraph cluster_stage_56 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_56&#xA;Start Buffers:&#xA;gbuf2u_1_0_218&#xA;gbuf2u_1_0_229&#xA;End Buffers:&#xA;gbuf2u_1_0_236&#xA;gbuf2u_1_0_240&#xA;Latency: 142";
+		tooltip = "stage_56&#xA;Start Buffers:&#xA;gbuf2u_1_0_218&#xA;gbuf2u_1_0_229&#xA;End Buffers:&#xA;gbuf2u_1_0_236&#xA;gbuf2u_1_0_240&#xA;Latency: 142";
+		1;
+	}
+	subgraph cluster_stage_57 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_57&#xA;Start Buffers:&#xA;gbuf2u_1_0_221&#xA;gbuf2u_1_0_224&#xA;End Buffers:&#xA;gbuf2u_1_0_229&#xA;Latency: 170";
+		tooltip = "stage_57&#xA;Start Buffers:&#xA;gbuf2u_1_0_221&#xA;gbuf2u_1_0_224&#xA;End Buffers:&#xA;gbuf2u_1_0_229&#xA;Latency: 170";
+		6;
+		5;
+		3;
+	}
+	subgraph cluster_stage_58 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_58&#xA;Start Buffers:&#xA;gbuf2u_1_0_236&#xA;End Buffers:&#xA;gbuf2u_1_0_242&#xA;Latency: 37025";
+		tooltip = "stage_58&#xA;Start Buffers:&#xA;gbuf2u_1_0_236&#xA;End Buffers:&#xA;gbuf2u_1_0_242&#xA;Latency: 37025";
+		10;
+	}
+	subgraph cluster_stage_59 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_59&#xA;Start Buffers:&#xA;gbuf2u_1_0_240&#xA;gbuf2u_1_0_239&#xA;End Buffers:&#xA;ptconvlstm__dense_layer__linear_bwd_weight_accum&#xA;ptconvlstm__dense_layer__linear_bwd_weight_accum_1&#xA;Latency: 5630";
+		tooltip = "stage_59&#xA;Start Buffers:&#xA;gbuf2u_1_0_240&#xA;gbuf2u_1_0_239&#xA;End Buffers:&#xA;ptconvlstm__dense_layer__linear_bwd_weight_accum&#xA;ptconvlstm__dense_layer__linear_bwd_weight_accum_1&#xA;Latency: 5630";
+		15;
+		14;
+		16;
+	}
+	subgraph cluster_stage_60 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_60&#xA;Start Buffers:&#xA;gbuf2u_1_0_242&#xA;End Buffers:&#xA;gbuf2a_1_0_433&#xA;Latency: 8";
+		tooltip = "stage_60&#xA;Start Buffers:&#xA;gbuf2u_1_0_242&#xA;End Buffers:&#xA;gbuf2a_1_0_433&#xA;Latency: 8";
+		62 [shape=point];
+	}
+	 "12"->"62" [arrowhead=none];
+	subgraph cluster_stage_61 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_61&#xA;Start Buffers:&#xA;gbuf2a_1_0_433&#xA;End Buffers:&#xA;split_kernel_gbuf_1_0_362&#xA;Latency: 512";
+		tooltip = "stage_61&#xA;Start Buffers:&#xA;gbuf2a_1_0_433&#xA;End Buffers:&#xA;split_kernel_gbuf_1_0_362&#xA;Latency: 512";
+		18;
+	}
+	subgraph cluster_stage_62 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_62&#xA;Start Buffers:&#xA;gbuf2a_1_0_433&#xA;End Buffers:&#xA;gbuf2a_1_0_398&#xA;Latency: 57";
+		tooltip = "stage_62&#xA;Start Buffers:&#xA;gbuf2a_1_0_433&#xA;End Buffers:&#xA;gbuf2a_1_0_398&#xA;Latency: 57";
+		19;
+	}
+	subgraph cluster_stage_63 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_63&#xA;Start Buffers:&#xA;split_kernel_gbuf_1_0_362&#xA;End Buffers:&#xA;biggemm_1_0_363&#xA;Latency: 1080";
+		tooltip = "stage_63&#xA;Start Buffers:&#xA;split_kernel_gbuf_1_0_362&#xA;End Buffers:&#xA;biggemm_1_0_363&#xA;Latency: 1080";
+		63 [shape=point];
+	}
+	 "20"->"63" [arrowhead=none];
+	subgraph cluster_stage_64 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_64&#xA;Start Buffers:&#xA;split_kernel_gbuf_1_0_362&#xA;End Buffers:&#xA;biggemm_1_0_364&#xA;Latency: 1080";
+		tooltip = "stage_64&#xA;Start Buffers:&#xA;split_kernel_gbuf_1_0_362&#xA;End Buffers:&#xA;biggemm_1_0_364&#xA;Latency: 1080";
+		64 [shape=point];
+	}
+	 "20"->"64" [arrowhead=none];
+	subgraph cluster_stage_65 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_65&#xA;Start Buffers:&#xA;split_kernel_gbuf_1_0_362&#xA;End Buffers:&#xA;biggemm_1_0_365&#xA;Latency: 1080";
+		tooltip = "stage_65&#xA;Start Buffers:&#xA;split_kernel_gbuf_1_0_362&#xA;End Buffers:&#xA;biggemm_1_0_365&#xA;Latency: 1080";
+		65 [shape=point];
+	}
+	 "20"->"65" [arrowhead=none];
+	subgraph cluster_stage_66 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_66&#xA;Start Buffers:&#xA;split_kernel_gbuf_1_0_362&#xA;End Buffers:&#xA;biggemm_1_0_366&#xA;Latency: 1080";
+		tooltip = "stage_66&#xA;Start Buffers:&#xA;split_kernel_gbuf_1_0_362&#xA;End Buffers:&#xA;biggemm_1_0_366&#xA;Latency: 1080";
+		66 [shape=point];
+	}
+	 "20"->"66" [arrowhead=none];
+	subgraph cluster_stage_67 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_67&#xA;Start Buffers:&#xA;sbuf2u_1_0_361&#xA;End Buffers:&#xA;biggemm_1_0_363&#xA;Latency: 15";
+		tooltip = "stage_67&#xA;Start Buffers:&#xA;sbuf2u_1_0_361&#xA;End Buffers:&#xA;biggemm_1_0_363&#xA;Latency: 15";
+		67 [shape=point];
+	}
+	 "21"->"67" [arrowhead=none];
+	subgraph cluster_stage_68 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_68&#xA;Start Buffers:&#xA;sbuf2u_1_0_361&#xA;End Buffers:&#xA;biggemm_1_0_364&#xA;Latency: 15";
+		tooltip = "stage_68&#xA;Start Buffers:&#xA;sbuf2u_1_0_361&#xA;End Buffers:&#xA;biggemm_1_0_364&#xA;Latency: 15";
+		68 [shape=point];
+	}
+	 "21"->"68" [arrowhead=none];
+	subgraph cluster_stage_69 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_69&#xA;Start Buffers:&#xA;sbuf2u_1_0_361&#xA;End Buffers:&#xA;biggemm_1_0_365&#xA;Latency: 15";
+		tooltip = "stage_69&#xA;Start Buffers:&#xA;sbuf2u_1_0_361&#xA;End Buffers:&#xA;biggemm_1_0_365&#xA;Latency: 15";
+		69 [shape=point];
+	}
+	 "21"->"69" [arrowhead=none];
+	subgraph cluster_stage_70 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_70&#xA;Start Buffers:&#xA;sbuf2u_1_0_361&#xA;End Buffers:&#xA;biggemm_1_0_366&#xA;Latency: 15";
+		tooltip = "stage_70&#xA;Start Buffers:&#xA;sbuf2u_1_0_361&#xA;End Buffers:&#xA;biggemm_1_0_366&#xA;Latency: 15";
+		70 [shape=point];
+	}
+	 "21"->"70" [arrowhead=none];
+	subgraph cluster_stage_71 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_71&#xA;Start Buffers:&#xA;biggemm_1_0_363&#xA;End Buffers:&#xA;gbuf2u_1_0_368&#xA;Latency: 4140";
+		tooltip = "stage_71&#xA;Start Buffers:&#xA;biggemm_1_0_363&#xA;End Buffers:&#xA;gbuf2u_1_0_368&#xA;Latency: 4140";
+		22;
+	}
+	subgraph cluster_stage_72 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_72&#xA;Start Buffers:&#xA;biggemm_1_0_364&#xA;End Buffers:&#xA;gbuf2u_1_0_368&#xA;Latency: 4140";
+		tooltip = "stage_72&#xA;Start Buffers:&#xA;biggemm_1_0_364&#xA;End Buffers:&#xA;gbuf2u_1_0_368&#xA;Latency: 4140";
+		23;
+	}
+	subgraph cluster_stage_73 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_73&#xA;Start Buffers:&#xA;biggemm_1_0_365&#xA;End Buffers:&#xA;gbuf2u_1_0_368&#xA;Latency: 4140";
+		tooltip = "stage_73&#xA;Start Buffers:&#xA;biggemm_1_0_365&#xA;End Buffers:&#xA;gbuf2u_1_0_368&#xA;Latency: 4140";
+		24;
+	}
+	subgraph cluster_stage_74 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_74&#xA;Start Buffers:&#xA;biggemm_1_0_366&#xA;End Buffers:&#xA;gbuf2u_1_0_368&#xA;Latency: 4140";
+		tooltip = "stage_74&#xA;Start Buffers:&#xA;biggemm_1_0_366&#xA;End Buffers:&#xA;gbuf2u_1_0_368&#xA;Latency: 4140";
+		25;
+	}
+	subgraph cluster_stage_75 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_75&#xA;Start Buffers:&#xA;gbuf2u_1_0_368&#xA;End Buffers:&#xA;ptconvlstm__conv_layer__conv2d_bwd_accum&#xA;Latency: 4320";
+		tooltip = "stage_75&#xA;Start Buffers:&#xA;gbuf2u_1_0_368&#xA;End Buffers:&#xA;ptconvlstm__conv_layer__conv2d_bwd_accum&#xA;Latency: 4320";
+		27;
+	}
+	subgraph cluster_stage_76 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_76&#xA;Start Buffers:&#xA;ptconvlstm__conv_layer__conv2d_bwd_accum&#xA;End Buffers:&#xA;gbuf2u_1_0_149&#xA;Latency: 3840";
+		tooltip = "stage_76&#xA;Start Buffers:&#xA;ptconvlstm__conv_layer__conv2d_bwd_accum&#xA;End Buffers:&#xA;gbuf2u_1_0_149&#xA;Latency: 3840";
+		71 [shape=point];
+	}
+	 "27"->"71" [arrowhead=none];
+	subgraph cluster_stage_77 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_77&#xA;Start Buffers:&#xA;gbuf2a_1_0_398&#xA;End Buffers:&#xA;ptconvlstm__conv_layer__conv2d_bwd_accum_1&#xA;Latency: 8";
+		tooltip = "stage_77&#xA;Start Buffers:&#xA;gbuf2a_1_0_398&#xA;End Buffers:&#xA;ptconvlstm__conv_layer__conv2d_bwd_accum_1&#xA;Latency: 8";
+		29;
+	}
+	subgraph cluster_stage_78 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_78&#xA;Start Buffers:&#xA;gbuf2u_1_0_358&#xA;End Buffers:&#xA;sbuf2u_1_0_361&#xA;Latency: 15";
+		tooltip = "stage_78&#xA;Start Buffers:&#xA;gbuf2u_1_0_358&#xA;End Buffers:&#xA;sbuf2u_1_0_361&#xA;Latency: 15";
+		72 [shape=point];
+	}
+	 "39"->"72" [arrowhead=none];
+	subgraph cluster_stage_79 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_79&#xA;Start Buffers:&#xA;gbuf2u_1_0_149&#xA;End Buffers:&#xA;sbuf1a_1_0_400&#xA;Latency: 9984";
+		tooltip = "stage_79&#xA;Start Buffers:&#xA;gbuf2u_1_0_149&#xA;End Buffers:&#xA;sbuf1a_1_0_400&#xA;Latency: 9984";
+		73 [shape=point];
+	}
+	 "40"->"73" [arrowhead=none];
+	subgraph cluster_stage_80 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_80&#xA;Start Buffers:&#xA;tbuf2u_1_0_245&#xA;End Buffers:&#xA;tbuf2u_1_0_250&#xA;Latency: 15";
+		tooltip = "stage_80&#xA;Start Buffers:&#xA;tbuf2u_1_0_245&#xA;End Buffers:&#xA;tbuf2u_1_0_250&#xA;Latency: 15";
+		74 [shape=point];
+	}
+	 "43"->"74" [arrowhead=none];
+	subgraph cluster_stage_81 {
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		label = "stage_81&#xA;Start Buffers:&#xA;tbuf2u_1_0_250&#xA;End Buffers:&#xA;gbuf2u_1_0_358&#xA;Latency: 15";
+		tooltip = "stage_81&#xA;Start Buffers:&#xA;tbuf2u_1_0_250&#xA;End Buffers:&#xA;gbuf2u_1_0_358&#xA;Latency: 15";
+		75 [shape=point];
+	}
+	 "44"->"75" [arrowhead=none];
+	"0" [label= "gbuf2u_1_0_218&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 128*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightblue, tooltip= "gbuf2u_1_0_218&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 128*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "55"->"0" [color=green, penwidth=3 , tooltip="InitGroup/vector"];
+	"1" [label= "ptconvlstm__dense_layer__linear_t_output0_bwd_addn0&#xA;Streaming&#xA;Transit Latency: 14&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "ptconvlstm__dense_layer__linear_t_output0_bwd_addn0&#xA;Streaming&#xA;Transit Latency: 14&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "0"->"1" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "7"->"1" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"2" [label= "gbuf2u_1_0_221&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 128*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightblue, tooltip= "gbuf2u_1_0_221&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 128*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "56"->"2" [color=green, penwidth=3 , tooltip="InitGroup/vector"];
+	"3" [label= "ptconvlstm__criterion__mseloss_bwd_sub&#xA;Streaming&#xA;Transit Latency: 14&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "ptconvlstm__criterion__mseloss_bwd_sub&#xA;Streaming&#xA;Transit Latency: 14&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "2"->"3" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "4"->"3" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"4" [label= "gbuf2u_1_0_224&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 128*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightblue, tooltip= "gbuf2u_1_0_224&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 128*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "57"->"4" [color=green, penwidth=3 , tooltip="InitGroup/vector"];
+	"5" [label= "scale_1_0_331&#xA;Streaming&#xA;Transit Latency: 14&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "scale_1_0_331&#xA;Streaming&#xA;Transit Latency: 14&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "3"->"5" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"6" [label= "scale_1_0_332&#xA;Streaming&#xA;Transit Latency: 14&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "scale_1_0_332&#xA;Streaming&#xA;Transit Latency: 14&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "5"->"6" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "53"->"6" [color=green, penwidth=3 , tooltip="InitGroup/vector"];
+	"7" [label= "gbuf2u_1_0_229&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 128*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightblue, tooltip= "gbuf2u_1_0_229&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 128*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "6"->"7" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "2"->"7" [style=dotted, dir=back];
+	 "4"->"7" [style=dotted, dir=back];
+	"8" [label= "gbuf2u_1_0_236&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 128*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightblue, tooltip= "gbuf2u_1_0_236&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 128*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "1"->"8" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "0"->"8" [style=dotted, dir=back];
+	 "7"->"8" [style=dotted, dir=back];
+	"9" [label= "gbuf2u_1_0_240&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 128*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightblue, tooltip= "gbuf2u_1_0_240&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 128*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "1"->"9" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "0"->"9" [style=dotted, dir=back];
+	 "7"->"9" [style=dotted, dir=back];
+	"10" [label= "ptconvlstm__dense_layer__linear_bwd_loss_grad_b&#xA;Gemm-Like&#xA;Latency: 37025&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "ptconvlstm__dense_layer__linear_bwd_loss_grad_b&#xA;Gemm-Like&#xA;Latency: 37025&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "8"->"10" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "11"->"10" [color=green, penwidth=3 , tooltip="InitGroup/vector"];
+	"11" [label= "gbuf1a_1_0_394&#xA;Buffer&#xA;Read Duration: 32768*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 4096*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "gbuf1a_1_0_394&#xA;Buffer&#xA;Read Duration: 32768*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 4096*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "49"->"11" [color=green, penwidth=3 , tooltip="InitGroup/vector"];
+	"12" [label= "gbuf2u_1_0_242&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 8*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightblue, tooltip= "gbuf2u_1_0_242&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 8*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "10"->"12" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "8"->"12" [style=dotted, dir=back];
+	"13" [label= "gbuf2u_1_0_239&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 1032*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Buffer&#xA;Read Duration: 256&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightblue, tooltip= "gbuf2u_1_0_239&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 1032*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Buffer&#xA;Read Duration: 256&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "50"->"13" [color=green, penwidth=3 , tooltip="InitGroup/vector"];
+	 "13"->"13" [style=dotted, dir=back];
+	"14" [label= "ptconvlstm__dense_layer__linear_bwd_weight_grad_a&#xA;Gemm-Like&#xA;Latency: 5630&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "ptconvlstm__dense_layer__linear_bwd_weight_grad_a&#xA;Gemm-Like&#xA;Latency: 5630&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "13"->"14" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "9"->"14" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"15" [label= "ptconvlstm__dense_layer__linear_bwd_weight_accum&#xA;Stage Content + Stage Buffer&#xA;Buffer&#xA;Read Duration: 40960*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Buffer&#xA;Read Duration: 40960*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightyellow, tooltip= "ptconvlstm__dense_layer__linear_bwd_weight_accum&#xA;Stage Content + Stage Buffer&#xA;Buffer&#xA;Read Duration: 40960*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Buffer&#xA;Read Duration: 40960*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "14"->"15" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "13"->"15" [style=dotted, dir=back];
+	"16" [label= "ptconvlstm__dense_layer__linear_bwd_weight_accum_1&#xA;Stage Content + Stage Buffer&#xA;Buffer&#xA;Read Duration: 128*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Buffer&#xA;Read Duration: 128*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightyellow, tooltip= "ptconvlstm__dense_layer__linear_bwd_weight_accum_1&#xA;Stage Content + Stage Buffer&#xA;Buffer&#xA;Read Duration: 128*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Buffer&#xA;Read Duration: 128*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "14"->"16" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "13"->"16" [style=dotted, dir=back];
+	"17" [label= "gbuf2a_1_0_433&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 256*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightblue, tooltip= "gbuf2a_1_0_433&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 256*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "62"->"17" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "12"->"17" [style=dotted, dir=back];
+	"18" [label= "streaming_transpose_1_0_357&#xA;Streaming&#xA;Transit Latency: 256&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "streaming_transpose_1_0_357&#xA;Streaming&#xA;Transit Latency: 256&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "17"->"18" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"19" [label= "bias_transpose_grad_1_0_370&#xA;Gemm-Like&#xA;Latency: 57&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "bias_transpose_grad_1_0_370&#xA;Gemm-Like&#xA;Latency: 57&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "17"->"19" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"20" [label= "split_kernel_gbuf_1_0_362&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 1080*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightblue, tooltip= "split_kernel_gbuf_1_0_362&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 1080*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "18"->"20" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "17"->"20" [style=dotted, dir=back];
+	"21" [label= "sbuf2u_1_0_361&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 15*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightblue, tooltip= "sbuf2u_1_0_361&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 15*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "72"->"21" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "39"->"21" [style=dotted, dir=back];
+	"22" [label= "biggemm_1_0_363&#xA;Stage Buffer + Stage Content&#xA;Buffer&#xA;Read Duration: 72&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Gemm-Like&#xA;Latency: 276&#xA;Multiplier: 15&#xA;Metapipe Iterations: {1}",style=filled,color=lightyellow, tooltip= "biggemm_1_0_363&#xA;Stage Buffer + Stage Content&#xA;Buffer&#xA;Read Duration: 72&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Gemm-Like&#xA;Latency: 276&#xA;Multiplier: 15&#xA;Metapipe Iterations: {1}"];
+	 "67"->"22" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "63"->"22" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "21"->"22" [style=dotted, dir=back];
+	"23" [label= "biggemm_1_0_364&#xA;Stage Buffer + Stage Content&#xA;Buffer&#xA;Read Duration: 72&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Gemm-Like&#xA;Latency: 276&#xA;Multiplier: 15&#xA;Metapipe Iterations: {1}",style=filled,color=lightyellow, tooltip= "biggemm_1_0_364&#xA;Stage Buffer + Stage Content&#xA;Buffer&#xA;Read Duration: 72&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Gemm-Like&#xA;Latency: 276&#xA;Multiplier: 15&#xA;Metapipe Iterations: {1}"];
+	 "68"->"23" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "64"->"23" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "21"->"23" [style=dotted, dir=back];
+	"24" [label= "biggemm_1_0_365&#xA;Stage Buffer + Stage Content&#xA;Buffer&#xA;Read Duration: 72&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Gemm-Like&#xA;Latency: 276&#xA;Multiplier: 15&#xA;Metapipe Iterations: {1}",style=filled,color=lightyellow, tooltip= "biggemm_1_0_365&#xA;Stage Buffer + Stage Content&#xA;Buffer&#xA;Read Duration: 72&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Gemm-Like&#xA;Latency: 276&#xA;Multiplier: 15&#xA;Metapipe Iterations: {1}"];
+	 "69"->"24" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "65"->"24" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "21"->"24" [style=dotted, dir=back];
+	"25" [label= "biggemm_1_0_366&#xA;Stage Buffer + Stage Content&#xA;Buffer&#xA;Read Duration: 72&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Gemm-Like&#xA;Latency: 276&#xA;Multiplier: 15&#xA;Metapipe Iterations: {1}",style=filled,color=lightyellow, tooltip= "biggemm_1_0_366&#xA;Stage Buffer + Stage Content&#xA;Buffer&#xA;Read Duration: 72&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Gemm-Like&#xA;Latency: 276&#xA;Multiplier: 15&#xA;Metapipe Iterations: {1}"];
+	 "70"->"25" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "66"->"25" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "21"->"25" [style=dotted, dir=back];
+	"26" [label= "gbuf2u_1_0_368&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 4320*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 480*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightblue, tooltip= "gbuf2u_1_0_368&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 4320*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 480*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "22"->"26" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "23"->"26" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "24"->"26" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "25"->"26" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "39"->"26" [style=dotted, dir=back];
+	"27" [label= "ptconvlstm__conv_layer__conv2d_bwd_accum&#xA;Stage Content + Stage Buffer&#xA;Buffer&#xA;Read Duration: 3840*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Buffer&#xA;Read Duration: 3840*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightyellow, tooltip= "ptconvlstm__conv_layer__conv2d_bwd_accum&#xA;Stage Content + Stage Buffer&#xA;Buffer&#xA;Read Duration: 3840*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Buffer&#xA;Read Duration: 3840*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "26"->"27" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "26"->"27" [style=dotted, dir=back];
+	"28" [label= "gbuf2a_1_0_398&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 8*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightblue, tooltip= "gbuf2a_1_0_398&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 8*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "19"->"28" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "17"->"28" [style=dotted, dir=back];
+	"29" [label= "ptconvlstm__conv_layer__conv2d_bwd_accum_1&#xA;Stage Content + Stage Buffer&#xA;Buffer&#xA;Read Duration: 8*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Buffer&#xA;Read Duration: 8*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightyellow, tooltip= "ptconvlstm__conv_layer__conv2d_bwd_accum_1&#xA;Stage Content + Stage Buffer&#xA;Buffer&#xA;Read Duration: 8*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Buffer&#xA;Read Duration: 8*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "28"->"29" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "28"->"29" [style=dotted, dir=back];
+	"30" [label= "sbuf1a_1_0_400&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 13*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}",style=filled,color=lightblue, tooltip= "sbuf1a_1_0_400&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 13*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "73"->"30" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "42"->"30" [color=black, tooltip="ExecGroup/scalar"];
+	 "40"->"30" [style=dotted, dir=back];
+	"31" [label= "vector_transpose_1_0_417&#xA;Buffer&#xA;Read Duration: 3328*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "vector_transpose_1_0_417&#xA;Buffer&#xA;Read Duration: 3328*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "30"->"31" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"32" [label= "realign_1_0_418&#xA;Buffer&#xA;Read Duration: 3264*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "realign_1_0_418&#xA;Buffer&#xA;Read Duration: 3264*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "31"->"32" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"33" [label= "realign_1_0_419&#xA;Buffer&#xA;Read Duration: 3840*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "realign_1_0_419&#xA;Buffer&#xA;Read Duration: 3840*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "32"->"33" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"34" [label= "permute_1_0_416&#xA;Gemm-Like&#xA;Latency: 7104&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "permute_1_0_416&#xA;Gemm-Like&#xA;Latency: 7104&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "33"->"34" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"35" [label= "transpose_1_0_420&#xA;Buffer&#xA;Read Duration: 3840*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "transpose_1_0_420&#xA;Buffer&#xA;Read Duration: 3840*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "34"->"35" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"36" [label= "ptconvlstm__conv_layer__conv2d_weight_permute_bwd&#xA;Gemm-Like&#xA;Latency: 38656&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "ptconvlstm__conv_layer__conv2d_weight_permute_bwd&#xA;Gemm-Like&#xA;Latency: 38656&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "35"->"36" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"37" [label= "gbuf1a_1_0_401&#xA;Buffer&#xA;Read Duration: 34816*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 2176*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "gbuf1a_1_0_401&#xA;Buffer&#xA;Read Duration: 34816*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 2176*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "36"->"37" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"38" [label= "DramOutputNode:s1_c0_4:ptconvlstm__conv_layer__weight__grad&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramOutputNode:s1_c0_4:ptconvlstm__conv_layer__weight__grad&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "37"->"38" [color=yellow, penwidth=3 , tooltip="FinalGroup/vector"];
+	"39" [label= "gbuf2u_1_0_358&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 15*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightblue, tooltip= "gbuf2u_1_0_358&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 15*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "41"->"39" [color=black, tooltip="ExecGroup/scalar"];
+	 "75"->"39" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "44"->"39" [style=dotted, dir=back];
+	"40" [label= "gbuf2u_1_0_149&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 9984*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}",style=filled,color=lightblue, tooltip= "gbuf2u_1_0_149&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 9984*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "42"->"40" [color=black, tooltip="ExecGroup/scalar"];
+	 "71"->"40" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"41" [label= "lbuf1a_1_0_397&#xA;Buffer&#xA;Read Duration: 15*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "lbuf1a_1_0_397&#xA;Buffer&#xA;Read Duration: 15*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "51"->"41" [color=green, penwidth=3 , tooltip="InitGroup/vector"];
+	"42" [label= "lbuf1a_1_0_399&#xA;Buffer&#xA;Read Duration: 9984*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "lbuf1a_1_0_399&#xA;Buffer&#xA;Read Duration: 9984*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0*&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "51"->"42" [color=green, penwidth=3 , tooltip="InitGroup/vector"];
+	"43" [label= "tbuf2u_1_0_245&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 15*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightblue, tooltip= "tbuf2u_1_0_245&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 15*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "45"->"43" [color=black, tooltip="ExecGroup/scalar"];
+	 "60"->"43" [color=green, penwidth=3 , tooltip="InitGroup/vector"];
+	"44" [label= "tbuf2u_1_0_250&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 15*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}",style=filled,color=lightblue, tooltip= "tbuf2u_1_0_250&#xA;Stage Buffer&#xA;Buffer&#xA;Read Duration: 15*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "74"->"44" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	 "43"->"44" [style=dotted, dir=back];
+	"45" [label= "tbuf1u_1_0_246&#xA;Buffer&#xA;Read Duration: 15*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}", tooltip= "tbuf1u_1_0_246&#xA;Buffer&#xA;Read Duration: 15*&#xA;Input Rate: 1&#xA;Output Rate: 1&#xA;Internal Latency: 0&#xA;Multiplier: 1&#xA;Metapipe Iterations: {1}"];
+	 "54"->"45" [color=green, penwidth=3 , tooltip="InitGroup/vector"];
+	"46" [label= "s1.backing_pmu_group_34_ptconvlstm__dense_layer__linear_bwd_weight_tensor&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "s1.backing_pmu_group_34_ptconvlstm__dense_layer__linear_bwd_weight_tensor&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "15"->"46" [color=black, penwidth=3 , tooltip="ExecGroup/vector"];
+	"47" [label= "DramOutputNode:s1_c0_2:ptconvlstm__dense_layer__bias__grad&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramOutputNode:s1_c0_2:ptconvlstm__dense_layer__bias__grad&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "16"->"47" [color=yellow, penwidth=3 , tooltip="FinalGroup/vector"];
+	"48" [label= "DramOutputNode:s1_c0_3:ptconvlstm__conv_layer__bias__grad&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramOutputNode:s1_c0_3:ptconvlstm__conv_layer__bias__grad&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "29"->"48" [color=yellow, penwidth=3 , tooltip="FinalGroup/vector"];
+	"49" [label= "s1.fronting_pmu_load_group_31&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "s1.fronting_pmu_load_group_31&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "58"->"49" [color=green, penwidth=3 , tooltip="InitGroup/vector"];
+	"50" [label= "s1.fronting_pmu_load_group_32&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "s1.fronting_pmu_load_group_32&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "59"->"50" [color=green, penwidth=3 , tooltip="InitGroup/vector"];
+	"51" [label= "s1.fronting_pmu_load_group_18&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "s1.fronting_pmu_load_group_18&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "61"->"51" [color=green, penwidth=3 , tooltip="InitGroup/vector"];
+	"52" [label= "DramOutputNode:s1_c0_1:ptconvlstm__dense_layer__weight__grad&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramOutputNode:s1_c0_1:ptconvlstm__dense_layer__weight__grad&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	 "46"->"52" [color=yellow, penwidth=3 , tooltip="FinalGroup/vector"];
+	"53" [label= "DramInputNode:s1_c0_1:ptconvlstm__criterion__mseloss__outputs__0__grad&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramInputNode:s1_c0_1:ptconvlstm__criterion__mseloss__outputs__0__grad&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	"54" [label= "DramInputNode:s1_c0_2:inp_window_slice_1&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramInputNode:s1_c0_2:inp_window_slice_1&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	"55" [label= "DramInputNode:s1_c0_3:ptconvlstm__view__outputs__0__grad&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramInputNode:s1_c0_3:ptconvlstm__view__outputs__0__grad&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	"56" [label= "DramInputNode:s1_c0_4:out_window&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramInputNode:s1_c0_4:out_window&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	"57" [label= "DramInputNode:s1_c0_5:ptconvlstm__reshape0_used_by_ptconvlstm__criterion__mseloss_bwd_sub&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramInputNode:s1_c0_5:ptconvlstm__reshape0_used_by_ptconvlstm__criterion__mseloss_bwd_sub&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	"58" [label= "DramInputNode:s1_c0_6:ptconvlstm__dense_layer__weight&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramInputNode:s1_c0_6:ptconvlstm__dense_layer__weight&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	"59" [label= "DramInputNode:s1_c0_7:ptconvlstm__conv_layer__reshape_20_used_by_ptconvlstm__dense_layer__linear_bwd_weight&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramInputNode:s1_c0_7:ptconvlstm__conv_layer__reshape_20_used_by_ptconvlstm__dense_layer__linear_bwd_weight&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	"60" [label= "DramInputNode:s1_c0_8:inp_window&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramInputNode:s1_c0_8:inp_window&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+	"61" [label= "DramInputNode:s1_c0_9:group_18&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}", tooltip= "DramInputNode:s1_c0_9:group_18&#xA;Invalid Model&#xA;Multiplier: 1&#xA;Metapipe Iterations: {}"];
+}
