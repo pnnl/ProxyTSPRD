@@ -11,8 +11,8 @@
 		"init": {
 			"training_data_dir": "/people/jain432/pacer_saudade/data/power_system/NewTestScenarios/",
 			"file_format": "*",
-			"train_files": 10,
-			"test_files": 10,
+			"train_files": 128,
+			"test_files": 20,
 			"val_files": 0,
 			"shuffle": true
 		},

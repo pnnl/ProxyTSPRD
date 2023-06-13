@@ -366,5 +366,5 @@ class PyTorchInterfaceSN(PyTorchInterface):
         #                             batch_size=args.batch_size,
         #                             num_iterations=args.num_epochs * total_step)
         #     report.save(args.json)
-        if self._GLOBAL_RANK == 0:
-            print("[INFO] Training Time: %f" %(time.perf_counter()-start_time))
+        # if self._GLOBAL_RANK == 0:
+        print("[INFO] Training Time: %f; Loss: %f" %(time.perf_counter()-start_time, avg_loss / (i + 1)))

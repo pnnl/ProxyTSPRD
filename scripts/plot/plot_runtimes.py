@@ -4,10 +4,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # _OUTPUT_DIR = '/home/milanjain91/results/tpdps23/'
-_OUTPUT_DIR = '/people/jain432/pacer_remote/output/results/'
+_OUTPUT_DIR = '/people/jain432/pacer_remote/output/iiswc23/'
+_PLOT_DIR = "/qfs/projects/pacer/proxytsprd/plots/paper/iiswc23/"
 
-keyword = "train"
-version = "v5"
+keyword = "infer"
+version = "onnx"
 
 if keyword == "train":
     df_pt = pd.read_csv(os.path.join(_OUTPUT_DIR, "runtimes_train_pt_" + version + ".csv"), index_col=[0])
@@ -16,7 +17,7 @@ if keyword == "train":
     df = pd.concat([df_pt, df_tf]).reset_index(drop=True)
 
 elif keyword == "infer":
-    df = pd.read_csv(os.path.join(_OUTPUT_DIR, "runtimes_infer_" + version + ".csv"))
+    df = pd.read_csv(os.path.join(_OUTPUT_DIR, "runtimes_" + version + ".csv"))
     # sys.exit(df)
 
 splits = [[],[],[]]
@@ -30,6 +31,9 @@ for m in df.model:
         splits[1].append("LSTM")
     elif "cnn" in m:
         splits[1].append("CNN")
+    elif "stgcng" in m:
+        if version == "benchmark": # no stgcn results for ONNX
+            splits[1].append("STGCN")
 
     splits[2].append(m[-2:].upper())
 
@@ -37,25 +41,33 @@ df["dtype"] = df["dtype"].replace("a", "AMP").replace("fp16", "FP16").replace("f
 df["app"] = splits[0]
 df["model_name"] = splits[1]
 df["framework"] = splits[2]
-
+df = df.loc[df["dtype"].isin(["AMP", "FP32", "FP64"])]
 # print(df.model.unique())
 
-colors = ["#c4c9ffff", "#b4bcffff", "#668bffff", "#002ba1ff", "#ea8e1aff", "#c06c00ff", "#974b00ff", "#712b00ff"]
+colors = ["#c4c9ffff", "#668bffff", "#002ba1ff", "#ea8e1aff", "#974b00ff", "#712b00ff"]
 if keyword=="train":
     colors = ["#c4c9ffff", "#b4bcffff", "#668bffff", "#002ba1ff", "#ea8e1aff", "#c06c00ff", "#974b00ff", "#712b00ff"]
     hue_order = ["IEEE 64 Bus (Grid), 8", "IEEE 64 Bus (Grid), 16", "IEEE 64 Bus (Grid), 32", "IEEE 64 Bus (Grid), 64", "ISD (Climate), 8", "ISD (Climate), 16", "ISD (Climate), 32", "ISD (Climate), 64"]
+    row_order = ["CNN", "LSTM", "STGCN"]
 
     df["hue"] = df["app"] + ", " + df["n_gpus"].astype("str")
     df["x_axis"] = "(" + df["framework"] + ", " + df["mgpu_strategy"] + ")"
 elif keyword=="infer":
     # colors = ["#c4c9ffff", "#ea8e1aff"]
-    hue_order = ["IEEE 64 Bus (Grid), FP16", "IEEE 64 Bus (Grid), AMP", "IEEE 64 Bus (Grid), FP32", "IEEE 64 Bus (Grid), FP64", "ISD (Climate), FP16", "ISD (Climate), AMP", "ISD (Climate), FP32", "ISD (Climate), FP64"]
+    if version == "benchmark":
+        colors = ["#c4c9ffff", "#668bffff", "#002ba1ff", "#ea8e1aff", "#974b00ff", "#712b00ff"]
+        hue_order = ["IEEE 64 Bus (Grid), AMP", "IEEE 64 Bus (Grid), FP32", "IEEE 64 Bus (Grid), FP64", "ISD (Climate), AMP", "ISD (Climate), FP32", "ISD (Climate), FP64"]
+        row_order = ["CNN", "LSTM", "STGCN"]
+    else:
+        colors = ["#c4c9ffff", "#668bffff", "#002ba1ff"]
+        hue_order = ["IEEE 64 Bus (Grid), AMP", "IEEE 64 Bus (Grid), FP32", "IEEE 64 Bus (Grid), FP64"]
+        row_order = ["CNN", "LSTM"]
 
     df["hue"] = df["app"] + ", " + df["dtype"]
     df["x_axis"] = df["framework"]
 
-df_subset = df.loc[df.model.isin(["climatecnnpt", "gridcnnpt", "climatelstmpt", "gridlstmpt", "climatecnntf", "gridcnntf", "climatelstmtf", "gridlstmtf"])]
-print(df_subset[["app", "dtype", "runtime"]])
+df_subset = df.loc[df.model.isin(["climatecnnpt", "gridcnnpt", "climatelstmpt", "gridlstmpt", "climatecnntf", "gridcnntf", "climatelstmtf", "gridlstmtf", "climatestgcngpt", "gridstgcngpt", "climatestgcngtf", "gridstgcngtf"])]
+print(df_subset[["app", "dtype", "runtime", "model", "model_name"]])
 
 
 
@@ -69,7 +81,7 @@ if keyword == "train":
     g = sns.catplot(
         data=df_subset, x="x_axis", y="runtime",
         col="dtype", col_order=["AMP", "FP32", "FP64"],
-        row="model_name", row_order=["CNN", "LSTM"],
+        row="model_name", row_order=row_order,
         hue="hue", hue_order=hue_order,
         kind="bar", height=2.5, aspect=1.6, palette=colors, log=True
     )
@@ -80,9 +92,9 @@ elif keyword == "infer":
     g = sns.catplot(
         data=df_subset, x="x_axis", y="runtime",
         # col="dtype", col_order=["AMP", "FP32", "FP64"],
-        col="model_name", col_order=["CNN", "LSTM"],
+        col="model_name", col_order=row_order,
         hue="hue", hue_order=hue_order,
-        kind="bar", height=2.5, aspect=1.6, palette=colors, log=True
+        kind="bar", height=3, aspect=1.2, palette=colors, log=True
     )
     g.set_titles("{col_name}")
     ticks = [1, 4, 10, 40, 100, 250]
@@ -99,7 +111,7 @@ g.set(ylabel="runtime [in secs]", xlabel="")
 g.set(yticks = ticks, yticklabels = ticks)
 
 g.tight_layout()
-g.savefig(keyword + "_" + version + ".png", dpi=300)
+g.savefig(os.path.join(_PLOT_DIR, keyword + "_" + version + ".png"), dpi=300)
 
 # sys.exit(1)
 # for m in ["lstm", "cnn"]:
