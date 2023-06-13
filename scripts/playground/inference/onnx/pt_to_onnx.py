@@ -2,12 +2,14 @@ import os, glob, itertools
 import torch, sys
 from pt_convert_run import load_model
 
-datasets = ["Climate", "Grid"]
+datasets = ["Climate"] # "Climate", "Grid"
 models = ["LSTM", "CNN"]
 bw_size = 60
 fw_size = 30
-batch_size = 1024
+batch_size = 2048
 MODEL_DIR = "/home/milanjain91/models/"
+
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 for d, m in itertools.product(datasets, models):
     if d == "Climate":
@@ -21,28 +23,30 @@ for d, m in itertools.product(datasets, models):
     for f in files:
         # initialize
         basedir = os.path.basename(os.path.dirname(f))
-        print(os.path.basename(f))
+        filename = os.path.basename(f)
         
-        if f.split("_")[5] == "dfp64":
+        if filename.split("_")[5] == "dfp64":
             torch.set_default_dtype(torch.double)
             
         n_features, pt_model, model_name = load_model(
-            bw_size, fw_size, basedir, f
+            bw_size, fw_size, basedir, f, device=device
         )
-        if f.split("_")[5] == "dfp64":
+        pt_model = pt_model.to(device)
+        if filename.split("_")[5] == "dfp64":
+            print("It is floating point-64")
             pt_inp = torch.rand(
                 size=(batch_size, bw_size, n_features),
                 dtype=torch.double
-            )
+            ).to(device)
         else:
             pt_inp = torch.rand(
                 size=(batch_size, bw_size, n_features),
                 dtype=torch.float32
-            )
+            ).to(device)
 
         # load model
         pt_model.load_state_dict(
-            torch.load(f, map_location=torch.device('cpu'))
+            torch.load(f, map_location=device)
         )
 
         # output model path

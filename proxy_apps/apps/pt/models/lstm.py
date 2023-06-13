@@ -7,6 +7,7 @@ class LSTMSingleLayerPT(torch.nn.Module):
         self.fw_size = model_parameters["fw_size"] # size of the backward window
         self.n_features = model_parameters["n_features"] # size of the backward window
         self.device = device
+        print(self.device)
         
         self.hidden_units = 64
         self.lstm_layer   = torch.nn.LSTM(

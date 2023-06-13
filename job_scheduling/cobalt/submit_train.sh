@@ -3,7 +3,7 @@
 GPUS=( "theta" ) # which gpu
 MODELS=( "climatestgcngpt" ) # "gridstgcngpt" "climatecnnpt" "climatelstmpt" "gridcnnpt" "gridlstmpt" "climatecnntf" "climatelstmtf" "gridcnntf" "gridlstmtf", "climatecnnptatt", "gridcnnptatt"
 N_NODES=( 1 ) # 1 2 4 8
-DTYPE=( "fp32" "fp64" "amp" ) # "fp16" "fp32" "fp64" "amp" with or without mixed precision
+DTYPE=( "fp64" ) # "fp16" "fp32" "fp64" "amp" with or without mixed precision
 MGPU=( "DG" ) # "HVD" "DDP" "DG" "None" with or without mixed precision
 PROF=( 0 ) # with and without profiler
 RTYPE=( "train" ) # train

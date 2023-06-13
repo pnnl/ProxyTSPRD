@@ -710,23 +710,25 @@ class PyTorchInterfaceGPU(PyTorchInterface):
                         raise NotImplementedError("ONNX is not supported for Graph data.")
                     
                     y_onnx = self.sess.run(["output"], dict({"input": inputs.numpy()}))
-                    yhat = torch.tensor(y_onnx[0]).to(self._DEVICE)
+                    yhat = torch.tensor(y_onnx[0])#.to(self._DEVICE)
+                    # print("[INFO (ONNX)] Inferred through ONNX")
                 else:
                     # move data to GPU
                     inputs = inputs.to(self._DEVICE)
+                    target = target.to(self._DEVICE)
                     # print(self.batch_size, inputs.shape)
                     
                     # for graph data
                     if (input_nodes is not None) and (output_nodes is not None):
                         inputs = inputs[:,:,:,input_nodes]
-                        target = target[:,:,:,output_nodes.cpu()]
+                        target = target[:,:,:,output_nodes]
                         
                     with torch.cuda.amp.autocast(enabled=self._MIXED_PRECISION):
                         # compute the model output
                         if mfgs is not None:
-                            yhat = self.model(inputs, mfgs).cpu()
+                            yhat = self.model(inputs, mfgs)
                         else:
-                            yhat = self.model(inputs).cpu()
+                            yhat = self.model(inputs)
 
                 # calculate loss
                 # print(yhat.device)
@@ -736,6 +738,10 @@ class PyTorchInterfaceGPU(PyTorchInterface):
 
                 # calculate the number of samples
                 num_samples += 1
+            
+            # free cuda memory
+            del inputs
+            del target
 
         return test_loss, num_samples
         

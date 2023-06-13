@@ -8,7 +8,7 @@ class Lambda(torch.nn.Module):
         return x[:, -3:, :]
 
 class PTCNN(torch.nn.Module):
-    def __init__(self, model_name, model_parameters):
+    def __init__(self, model_name, model_parameters, device=None):
         super(PTCNN, self).__init__()
         self.bw_size = model_parameters["bw_size"] # size of the backward window
         self.fw_size = model_parameters["fw_size"] # size of the backward window

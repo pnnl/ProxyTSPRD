@@ -29,7 +29,7 @@ if __name__ == "__main__":
         n_files = _CONFIG["data_params"]["init"]["train_files"] + _CONFIG["data_params"]["init"]["test_files"]
         # increase number of test files for inference - climate data
         if _CONFIG["info"]["app_name"].startswith("Climate"):
-            _CONFIG["data_params"]["init"]["test_files"] = 240
+            _CONFIG["data_params"]["init"]["test_files"] = 240 # 240 (for lstm and cnn) - CUDA OOM for STGCN at 240 which was used for lstm and cnn
         # increase number of test files for inference - grid data
         elif _CONFIG["info"]["app_name"].startswith("Grid"):
             _CONFIG["data_params"]["init"]["test_files"] = 140

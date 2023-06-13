@@ -2,16 +2,18 @@ import os
 import torch
 import numpy as np
 
-# _PT_MODEL = "/home/milanjain91/models/ClimateApp/ClimateLSTMProxyAppPT/gpu_ng32_nc0_e50_b2048_dfp32_mpguHVD_prof0.pt"
+# _PT_MODEL = "/home/milanjain91/models/ClimateApp/ClimateCNNProxyAppPT/gpu_ng32_nc0_e50_b2048_dfp32_mpguHVD_prof0.pt"
 
 import sys
 import argparse
-sys.path.append("../../../")
+CURR_DIR = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.join(CURR_DIR, "../../../../"))
 
-from proxy_apps.apps.cnn import PTCNN
-from proxy_apps.apps.lstm_tf import LSTMSingleLayerPT
+from proxy_apps.apps.pt.models.cnn1d import PTCNN
+from proxy_apps.apps.pt.models.lstm import LSTMSingleLayerPT
 
-def load_model(bw_size, fw_size, basedir, tf_modelname):
+def load_model(bw_size, fw_size, basedir, tf_modelname, device=None):
+    print(basedir)
     if "Climate" in basedir:
         n_features = 326
     else:
@@ -37,7 +39,8 @@ def load_model(bw_size, fw_size, basedir, tf_modelname):
             "bw_size": bw_size,
             "fw_size": fw_size,
             "n_features": n_features
-        }
+        },
+        device=device
     )
     
     return n_features, pt_model, model_name
@@ -82,5 +85,5 @@ if __name__ == "__main__":
     )
 
     import onnxruntime
-    sess = onnxruntime.InferenceSession("pt_model.onnx")
+    sess = onnxruntime.InferenceSession("pt_model.onnx", providers=['CPUExecutionProvider'])
     y_onnx = sess.run(["output"], dict({"input": pt_inp.numpy()}))
