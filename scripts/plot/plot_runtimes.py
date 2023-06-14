@@ -45,27 +45,37 @@ df = df.loc[df["dtype"].isin(["AMP", "FP32", "FP64"])]
 # print(df.model.unique())
 
 colors = ["#c4c9ffff", "#668bffff", "#002ba1ff", "#ea8e1aff", "#974b00ff", "#712b00ff"]
+row="model_name"
 if keyword=="train":
     colors = ["#c4c9ffff", "#b4bcffff", "#668bffff", "#002ba1ff", "#ea8e1aff", "#c06c00ff", "#974b00ff", "#712b00ff"]
     hue_order = ["IEEE 64 Bus (Grid), 8", "IEEE 64 Bus (Grid), 16", "IEEE 64 Bus (Grid), 32", "IEEE 64 Bus (Grid), 64", "ISD (Climate), 8", "ISD (Climate), 16", "ISD (Climate), 32", "ISD (Climate), 64"]
     row_order = ["CNN", "LSTM", "STGCN"]
+    ticks = [1, 4, 10, 40, 100, 200, 400]
 
     df["hue"] = df["app"] + ", " + df["n_gpus"].astype("str")
     df["x_axis"] = "(" + df["framework"] + ", " + df["mgpu_strategy"] + ")"
 elif keyword=="infer":
     # colors = ["#c4c9ffff", "#ea8e1aff"]
+    df["hue"] = df["app"] + ", " + df["dtype"]
+    df["x_axis"] = df["framework"]
+    ticks = [1, 4, 10, 40, 100]
+
     if version == "benchmark":
         colors = ["#c4c9ffff", "#668bffff", "#002ba1ff", "#ea8e1aff", "#974b00ff", "#712b00ff"]
         hue_order = ["IEEE 64 Bus (Grid), AMP", "IEEE 64 Bus (Grid), FP32", "IEEE 64 Bus (Grid), FP64", "ISD (Climate), AMP", "ISD (Climate), FP32", "ISD (Climate), FP64"]
         row_order = ["CNN", "LSTM", "STGCN"]
+    elif version == "sambanova":
+        colors = ["#668bffff", "#974b00ff", "#712b00ff"]
+        hue_order = ["IEEE 64 Bus (Grid), FP32", "ISD (Climate), FP32"]
+        row_order = None
+        row=None
+        df["x_axis"] = df["model_name"]
     else:
         colors = ["#c4c9ffff", "#668bffff", "#002ba1ff"]
         hue_order = ["IEEE 64 Bus (Grid), AMP", "IEEE 64 Bus (Grid), FP32", "IEEE 64 Bus (Grid), FP64"]
         row_order = ["CNN", "LSTM"]
 
-    df["hue"] = df["app"] + ", " + df["dtype"]
-    df["x_axis"] = df["framework"]
-
+    
 df_subset = df.loc[df.model.isin(["climatecnnpt", "gridcnnpt", "climatelstmpt", "gridlstmpt", "climatecnntf", "gridcnntf", "climatelstmtf", "gridlstmtf", "climatestgcngpt", "gridstgcngpt", "climatestgcngtf", "gridstgcngtf"])]
 print(df_subset[["app", "dtype", "runtime", "model", "model_name"]])
 
@@ -81,23 +91,23 @@ if keyword == "train":
     g = sns.catplot(
         data=df_subset, x="x_axis", y="runtime",
         col="dtype", col_order=["AMP", "FP32", "FP64"],
-        row="model_name", row_order=row_order,
+        row=row, row_order=row_order,
         hue="hue", hue_order=hue_order,
         kind="bar", height=2.5, aspect=1.6, palette=colors, log=True
     )
     g.set_titles("{row_name}, {col_name}")
-    ticks = [1, 4, 10, 40, 100, 200, 400]
+    ticks = ticks
     g._legend.set_title("Dataset, #GPUs")
 elif keyword == "infer":
     g = sns.catplot(
         data=df_subset, x="x_axis", y="runtime",
         # col="dtype", col_order=["AMP", "FP32", "FP64"],
-        col="model_name", col_order=row_order,
+        col=row, col_order=row_order,
         hue="hue", hue_order=hue_order,
         kind="bar", height=3, aspect=1.2, palette=colors, log=True
     )
     g.set_titles("{col_name}")
-    ticks = [1, 4, 10, 40, 100, 250]
+    ticks = ticks
     g._legend.set_title("Dataset, Precision")
 
 g.set(ylabel="runtime [in secs]", xlabel="")

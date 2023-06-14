@@ -26,6 +26,8 @@ if keyword == "train_pt":
 elif keyword == "infer":
     if data_dir_name == "onnx":
         patterns = ["o_*ng1_*prof0*onnx"]
+    elif data_dir_name == "sambanova":
+        patterns = ["*"] 
     else:
         patterns = ["o_*stgcn*ng1_*e1_*mgpuNone*prof0*" + keyword + "*", "o_*ng1_*e50_*mgpuHVD*prof0*" + keyword + "*"]
     test_str = "\[INFO\] Testing on *"
@@ -33,6 +35,12 @@ elif keyword == "infer":
     # match_lossstr = "============> \(After\) (Inference|Test) Loss*"
     match_timestr = ".*After.*Inference Time.*"
     match_lossstr = ".*After.*(Inference|Test).Loss.*"
+
+    if data_dir_name == "sambanova":
+        # match_timestr = "============> \(After\) Inference Time*"
+        # match_lossstr = "============> \(After\) (Inference|Test) Loss*"
+        match_timestr = ".*Inference Time.*"
+        match_lossstr = ""
 
 data_files = []
 for p in patterns:
@@ -59,34 +67,40 @@ def find_runtime(filename):
         for row in lines:
             # get time
             row = row.strip()
+            # to find number of test cases
             if re.match(test_str, row):
                 # print("Row (1):", row)
                 result = re.findall(r'\d+\/\d+', row)[0].split("/")[0]
                 n_testcases = int(result)
                 # print(row, n_testcases)
+            # to find time
             elif re.match(match_timestr, row):
                 # print("Row (2):", row)
                 result = re.findall(r'\d+\.\d+', row)
                 run_time = float(result[0])
 
                 if match_lossstr == "":
-                    buffer_indx = -2
-                    if keyword == "train_tf":
-                        look_for = r'mean_squared_error: \d+\.\d+'
-                        split_at = ":"
-                    elif keyword == "train_pt":
-                        look_for = r'MSE:  tensor\(\d+\.\d+'
-                        split_at = "("
-                    try:
-                        loss = float(re.findall(look_for, line_buffer[buffer_indx])[0].split(split_at)[1])
-                    except Exception as e:
-                        print(row, line_buffer[buffer_indx])
-                        print(e)
-                        sys.exit(1)
+                    if data_dir_name == "sambanova":
+                        loss = float(result[1])
+                    else:
+                        buffer_indx = -2        
+                        if keyword == "train_tf":
+                            look_for = r'mean_squared_error: \d+\.\d+'
+                            split_at = ":"
+                        elif keyword == "train_pt":
+                            look_for = r'MSE:  tensor\(\d+\.\d+'
+                            split_at = "("
+                        try:
+                            loss = float(re.findall(look_for, line_buffer[buffer_indx])[0].split(split_at)[1])
+                        except Exception as e:
+                            print(row, line_buffer[buffer_indx])
+                            print(e)
+                            sys.exit(1)
                 else:
                     pass
                 # print(row, run_time, line_buffer, loss)
                 # sys.exit(row)
+            # to find loss
             elif re.match(match_lossstr, row):
                 # print("Row (3):", row)
                 if match_lossstr == "":
@@ -103,20 +117,28 @@ def find_runtime(filename):
     return n_testcases, run_time, loss
 
 result = []
+columns = ['model', 'mgpu_strategy', 'n_gpus', 'dtype', 'n_cases', 'runtime', 'loss']
+sort_by = ['model', 'n_gpus', 'dtype', 'mgpu_strategy']
+sel_columns = ['model', 'n_gpus', 'dtype', 'mgpu_strategy', 'n_cases', 'runtime', 'loss']
+
 for f in data_files:
-    print(f)
     n, t, l = find_runtime(f)
     if t == -1:
         print("[WARNING] No time found in", f)
         continue
     else:
         file_basename = os.path.basename(f)
-        basename_comps = file_basename.split('_')
+        if data_dir_name == "sambanova":
+            if keyword == "infer":
+                temp_data = [file_basename.split('.')[0].split('_')[2], "None", 1, 'fp32', n, t, l]
+        else:        
+            basename_comps = file_basename.split('_')
+            temp_data = [basename_comps[1], basename_comps[8].split('mgpu')[1], int(basename_comps[3].split('ng')[1]), basename_comps[7].split('mp')[1], n, t, l]
         # print(basename_comps)
-        result.append([basename_comps[1], basename_comps[8].split('mgpu')[1], int(basename_comps[3].split('ng')[1]), basename_comps[7].split('mp')[1], n, t, l])
+        result.append(temp_data)
 
-df_out = pd.DataFrame(result, columns=['model', 'mgpu_strategy', 'n_gpus', 'dtype', 'n_cases', 'runtime', 'loss'])
-df_out = df_out.sort_values(['model', 'n_gpus', 'dtype', 'mgpu_strategy']).reset_index(drop=True)[['model', 'n_gpus', 'dtype', 'mgpu_strategy', 'n_cases', 'runtime', 'loss']]
+df_out = pd.DataFrame(result, columns=columns)
+df_out = df_out.sort_values(sort_by).reset_index(drop=True)[sel_columns]
 
 print(df_out)
 df_out.to_csv(os.path.join(_OUTPUT_DIR, "runtimes_" + data_dir_name + ".csv"))
