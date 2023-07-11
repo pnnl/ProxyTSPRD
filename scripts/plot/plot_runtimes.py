@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # _OUTPUT_DIR = '/home/milanjain91/results/tpdps23/'
-_OUTPUT_DIR = '/people/jain432/pacer_remote/output/iiswc23/'
-_PLOT_DIR = "/qfs/projects/pacer/proxytsprd/plots/paper/iiswc23/"
+_OUTPUT_DIR = '/people/jain432/pacer_remote/output/hipc23/'
+_PLOT_DIR = "/qfs/projects/pacer/proxytsprd/plots/paper/hipc23/"
 
 keyword = "infer"
-version = "onnx"
+version = "benchmark" # onnx benchmark
 
 if keyword == "train":
     df_pt = pd.read_csv(os.path.join(_OUTPUT_DIR, "runtimes_train_pt_" + version + ".csv"), index_col=[0])
@@ -42,7 +42,8 @@ df["app"] = splits[0]
 df["model_name"] = splits[1]
 df["framework"] = splits[2]
 df = df.loc[df["dtype"].isin(["AMP", "FP32", "FP64"])]
-# print(df.model.unique())
+print(df)
+print(df.columns)
 
 colors = ["#c4c9ffff", "#668bffff", "#002ba1ff", "#ea8e1aff", "#974b00ff", "#712b00ff"]
 row="model_name"
@@ -64,6 +65,7 @@ elif keyword=="infer":
         colors = ["#c4c9ffff", "#668bffff", "#002ba1ff", "#ea8e1aff", "#974b00ff", "#712b00ff"]
         hue_order = ["IEEE 64 Bus (Grid), AMP", "IEEE 64 Bus (Grid), FP32", "IEEE 64 Bus (Grid), FP64", "ISD (Climate), AMP", "ISD (Climate), FP32", "ISD (Climate), FP64"]
         row_order = ["CNN", "LSTM", "STGCN"]
+        df = df.loc[df["batch_size"] == 2048]
     elif version == "sambanova":
         colors = ["#668bffff", "#974b00ff", "#712b00ff"]
         hue_order = ["IEEE 64 Bus (Grid), FP32", "ISD (Climate), FP32"]

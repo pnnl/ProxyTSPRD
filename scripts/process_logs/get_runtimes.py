@@ -5,12 +5,12 @@ import json
 import numpy as np
 import pandas as pd
 
-data_dir_name = "onnx"
+data_dir_name = "benchmark"
 # _DATA_DIR = '/home/milanjain91/results/tpdps23/logs/sbatch/'
-_DATA_DIR = '/people/jain432/pacer_remote/output/iiswc23/logs/' + data_dir_name + '/'
+_DATA_DIR = '/people/jain432/pacer_remote/output/hipc23/logs/' + data_dir_name + '/'
 
 # _OUTPUT_DIR = '/home/milanjain91/results/tpdps23/'
-_OUTPUT_DIR = '/people/jain432/pacer_remote/output/iiswc23/'
+_OUTPUT_DIR = '/people/jain432/pacer_remote/output/hipc23/'
 
 keyword = "infer"
 if keyword == "train_tf":
@@ -117,9 +117,9 @@ def find_runtime(filename):
     return n_testcases, run_time, loss
 
 result = []
-columns = ['model', 'mgpu_strategy', 'n_gpus', 'dtype', 'n_cases', 'runtime', 'loss']
+columns = ['model', 'mgpu_strategy', 'n_gpus', 'dtype', 'batch_size', 'n_cases', 'runtime', 'loss']
 sort_by = ['model', 'n_gpus', 'dtype', 'mgpu_strategy']
-sel_columns = ['model', 'n_gpus', 'dtype', 'mgpu_strategy', 'n_cases', 'runtime', 'loss']
+sel_columns = ['model', 'n_gpus', 'dtype', 'mgpu_strategy', 'batch_size', 'n_cases', 'runtime', 'loss']
 
 for f in data_files:
     n, t, l = find_runtime(f)
@@ -133,7 +133,8 @@ for f in data_files:
                 temp_data = [file_basename.split('.')[0].split('_')[2], "None", 1, 'fp32', n, t, l]
         else:        
             basename_comps = file_basename.split('_')
-            temp_data = [basename_comps[1], basename_comps[8].split('mgpu')[1], int(basename_comps[3].split('ng')[1]), basename_comps[7].split('mp')[1], n, t, l]
+            print(basename_comps)
+            temp_data = [basename_comps[1], basename_comps[8].split('mgpu')[1], int(basename_comps[3].split('ng')[1]), basename_comps[7].split('mp')[1], int(basename_comps[6].split('b')[1]), n, t, l]
         # print(basename_comps)
         result.append(temp_data)
 
