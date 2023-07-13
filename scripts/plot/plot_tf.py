@@ -122,6 +122,8 @@ def tfplot(df_pfs, p, plot_dir, folder_name, app_list, fig_size):
 
 def tf_df_manip(df, ngpus):
     cdf = df[['Time(%)', 'Total Time (ns)', 'Name']]
+    cdf.loc[cdf['Name'].str.contains(r'ReLu|Relu|crelu', case=False), 'Name'] = "activation"
+    cdf.loc[cdf['Name'].str.contains(r'cudnn::bn_|layer_norm|RowwiseMomentsCUDAKernel|LayerNorm', case=False), 'Name'] = "norm"
     cdf.loc[cdf['Name'].str.contains(r'fp16|f16|h[0-9]*cudnn|fp16_s[0-9]*|volta_fp16_s[0-9]*gemm|ampere_fp16_s[0-9]*gemm', case=False), 'Name'] = "hgemm"
     cdf.loc[cdf['Name'].str.contains(r'sgemm|s[0-9]*gemm|tensorop_s[0-9]*|CsrMMPolicy<long, float, float, float>', case=False), 'Name'] = "sgemm"
     cdf.loc[cdf['Name'].str.contains(r'dgemm|d[0-9]*gemm|tensorop_d[0-9]*|volta_dgemm|sm80_xmma_gemm_f64|CsrMMPolicy<long, double, double, double>', case=False), 'Name'] = "dgemm"
@@ -129,6 +131,9 @@ def tf_df_manip(df, ngpus):
     cdf.loc[cdf['Name'].str.contains(r'zgemm|z[0-9]*gemm|tensorop_z[0-9]*', case=False), 'Name'] = "zgemm"
     cdf.loc[cdf['Name'].str.contains(r'implicit_gemm|xmma_new::cudnn::gemm|xmma_cudnn::gemm|ImplicitGemm', case=False), 'Name'] = "igemm"
     cdf.loc[cdf['Name'].str.contains(r'gemvx', case=False), 'Name'] = "gemv"
+    cdf.loc[cdf['Name'].str.contains(r'epilogue|nchwToNhwcKernel|nhwcToNchwKernel|Cast_GPU|Transpose|SliceKernel|SwapDimension|TensorSlicingOp|concat|split|tensorflow::S2B|ShuffleInTensor3Simple', case=False), 'Name'] = "transform"
+    cdf.loc[cdf['Name'].str.contains(r'scalar_constant_op|scalar_product_op|scalar_cmp_op|scal_kernel|elem|elementwise|ElementWise', case=False), 'Name'] = "elem"
+    cdf.loc[cdf['Name'].str.contains(r'broadcast|scatter|reduce|ncclKernel_AllReduce', case=False), 'Name'] = "reduce"
     cdf.loc[cdf['Name'].str.contains(r'RNN|LSTM_elementWise', case=False), 'Name'] = "rnn"
     cdf.loc[cdf['Name'].str.contains(r'conv2d|conv1d|conv3d|convolution|convolve', case=False), 'Name'] = "conv"
     cdf.loc[cdf['Name'].str.contains(r'sqrt|add|Abs|mse|Mul|Div|Sub|AddV2|SquaredDifference|Mean|sum|Eigen', case=False), 'Name'] = "arithmetic"
@@ -136,15 +141,10 @@ def tf_df_manip(df, ngpus):
     cdf.loc[cdf['Name'].str.contains(r'fft|fft1d_r2c|fft1d_c2r|ifft|rfft|fft2d', case=False), 'Name'] = "fft"
     cdf.loc[cdf['Name'].str.contains(r'dgrad|wgrad|fprop', case=False), 'Name'] = "gradient"
     cdf.loc[cdf['Name'].str.contains(r'fusion|fused', case=False), 'Name'] = "fusion"
-    cdf.loc[cdf['Name'].str.contains(r'broadcast|scatter|reduce|ncclKernel_AllReduce', case=False), 'Name'] = "reduce"
     cdf.loc[cdf['Name'].str.contains(r'BiasNCHWKernel|Bias', case=False), 'Name'] = "bias"
-    cdf.loc[cdf['Name'].str.contains(r'ReLu|Relu|crelu', case=False), 'Name'] = "activation"
-    cdf.loc[cdf['Name'].str.contains(r'cudnn::bn_|layer_norm|RowwiseMomentsCUDAKernel|LayerNorm', case=False), 'Name'] = "norm"
-    cdf.loc[cdf['Name'].str.contains(r'epilogue|nchwToNhwcKernel|nhwcToNchwKernel|Cast_GPU|Transpose|SliceKernel|SwapDimension|TensorSlicingOp|concat|split|tensorflow::S2B|ShuffleInTensor3Simple', case=False), 'Name'] = "transform"
     cdf.loc[cdf['Name'].str.contains(r'Eigen', case=False), 'Name'] = "eigen"
-    print(cdf.loc[cdf['Name'].str.contains(r'scalar_constant_op|scalar_product_op|scalar_cmp_op|scal_kernel|elem|elementwise|ElementWise', case=False)])
-    print(cdf.loc[cdf['Name'].str.contains(r'scalar_constant_op|scalar_product_op|scalar_cmp_op|scal_kernel|elem|elementwise|ElementWise', case=False)].Name.tolist())
-    cdf.loc[cdf['Name'].str.contains(r'scalar_constant_op|scalar_product_op|scalar_cmp_op|scal_kernel|elem|elementwise|ElementWise', case=False), 'Name'] = "elem"
+    # print(cdf.loc[cdf['Name'].str.contains(r'scalar_constant_op|scalar_product_op|scalar_cmp_op|scal_kernel|elem|elementwise|ElementWise', case=False)])
+    # print(cdf.loc[cdf['Name'].str.contains(r'scalar_constant_op|scalar_product_op|scalar_cmp_op|scal_kernel|elem|elementwise|ElementWise', case=False)].Name.tolist())
     cdf.loc[cdf['Name'].str.contains(r'apply_kernel|dropout|convert|cat|chunk|split|kernel|rng|comparison|Launch|KernelLaunch|slice', case=False), 'Name'] = "other"
     # sys.exit(1)
     cdf2 = cdf.groupby(['Name'],as_index=False).agg({'Time(%)': 'sum', 'Total Time (ns)': 'sum'})

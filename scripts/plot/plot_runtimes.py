@@ -8,7 +8,7 @@ _OUTPUT_DIR = '/people/jain432/pacer_remote/output/hipc23/'
 _PLOT_DIR = "/qfs/projects/pacer/proxytsprd/plots/paper/hipc23/"
 
 keyword = "infer"
-version = "benchmark" # onnx benchmark
+version = "onnx" # onnx benchmark
 
 if keyword == "train":
     df_pt = pd.read_csv(os.path.join(_OUTPUT_DIR, "runtimes_train_pt_" + version + ".csv"), index_col=[0])
@@ -59,12 +59,12 @@ elif keyword=="infer":
     # colors = ["#c4c9ffff", "#ea8e1aff"]
     df["hue"] = df["app"] + ", " + df["dtype"]
     df["x_axis"] = df["framework"]
-    ticks = [1, 4, 10, 40, 100]
+    ticks = [1, 4, 10, 40]
 
     if version == "benchmark":
         colors = ["#c4c9ffff", "#668bffff", "#002ba1ff", "#ea8e1aff", "#974b00ff", "#712b00ff"]
         hue_order = ["IEEE 64 Bus (Grid), AMP", "IEEE 64 Bus (Grid), FP32", "IEEE 64 Bus (Grid), FP64", "ISD (Climate), AMP", "ISD (Climate), FP32", "ISD (Climate), FP64"]
-        row_order = ["CNN", "LSTM", "STGCN"]
+        row_order = ["LSTM", "CNN", "STGCN"]
         df = df.loc[df["batch_size"] == 2048]
     elif version == "sambanova":
         colors = ["#668bffff", "#974b00ff", "#712b00ff"]
@@ -75,7 +75,7 @@ elif keyword=="infer":
     else:
         colors = ["#c4c9ffff", "#668bffff", "#002ba1ff"]
         hue_order = ["IEEE 64 Bus (Grid), AMP", "IEEE 64 Bus (Grid), FP32", "IEEE 64 Bus (Grid), FP64"]
-        row_order = ["CNN", "LSTM"]
+        row_order = ["LSTM", "CNN"]
 
     
 df_subset = df.loc[df.model.isin(["climatecnnpt", "gridcnnpt", "climatelstmpt", "gridlstmpt", "climatecnntf", "gridcnntf", "climatelstmtf", "gridlstmtf", "climatestgcngpt", "gridstgcngpt", "climatestgcngtf", "gridstgcngtf"])]
@@ -108,6 +108,12 @@ elif keyword == "infer":
         hue="hue", hue_order=hue_order,
         kind="bar", height=3, aspect=1.2, palette=colors, log=True
     )
+    axes = g.fig.axes
+    if version == "onnx":
+        axes[0].axhline(y = 11.33, color = "k", linestyle = ':', linewidth=2)
+        axes[0].axhline(y = 23.56, color = "k", linestyle = '--', linewidth=2)
+        axes[1].axhline(y = 11.64, color = "k", linestyle = ':', linewidth=2)
+        axes[1].axhline(y = 21.03, color = "k", linestyle = '--', linewidth=2)
     g.set_titles("{col_name}")
     ticks = ticks
     g._legend.set_title("Dataset, Precision")
