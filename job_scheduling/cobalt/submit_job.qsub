@@ -11,7 +11,7 @@
 
 echo "Running Cobalt Job $COBALT_JOBID."
 
-module load conda
+module load conda/2023-01-11
 conda activate dgl
 # module load openmpi/openmpi-4.0.5
 # module load cobalt/cobalt-knl

@@ -160,3 +160,49 @@ class STGCN_WAVE(torch.nn.Module):
         out = self.output(x)
         # print("(Output):", out.shape)
         return out
+    
+class STGCN_WAVE(torch.nn.Module):
+    def __init__(
+        self, c, bw_size, fw_size, device, control_str="TNTGT"
+    ):
+        super(STGCN_WAVE, self).__init__()
+        self.control_str = control_str  # model structure controller
+        self.num_layers = len(control_str)
+        self.layers = torch.nn.ModuleList([])
+        cnt = 0
+        diapower = 0
+        for i in range(self.num_layers):
+            i_layer = control_str[i]
+            if i_layer == "T":  # Temporal Layer
+                self.layers.append(
+                    TemporalConvLayer(c[cnt], c[cnt + 1], dia=2**diapower)
+                )
+                diapower += 1
+                cnt += 1
+            if i_layer == "S":  # Spatio Layer
+                self.layers.append(SpatioConvLayer(c[cnt]))
+            if i_layer == "G":  # GCN Layer
+                self.layers.append(GCN(c[cnt]))
+            if i_layer == "N":  # Norm Layer
+                self.layers.append(torch.nn.LayerNorm([c[cnt]]))
+        self.output = OutputLayer(c[cnt], bw_size - fw_size + 2 - 2 ** (diapower))
+        for layer in self.layers:
+            layer = layer.to(device)
+
+    def forward(self, x, g):
+        for i in range(self.num_layers):
+            i_layer = self.control_str[i]
+            # print("(Before) Layer-%d (%s):" %(i, i_layer), x.shape)
+            if i_layer == "N":
+                x = self.layers[i](x.permute(0, 2, 3, 1)).permute(0, 3, 1, 2)
+            elif i_layer == "S":
+                x = self.layers[i](x, g)
+            elif i_layer == "G":
+                x = self.layers[i](x, g)
+            else:
+                x = self.layers[i](x)
+            # print("(After) Layer-%d (%s):" %(i, i_layer), x.shape)
+        
+        out = self.output(x)
+        # print("(Output):", out.shape)
+        return out

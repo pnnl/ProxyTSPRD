@@ -1,4 +1,4 @@
-import os
+import os, sys
 import math
 from .. import tf
 os.environ["DGLBACKEND"] = "tensorflow"
@@ -32,6 +32,8 @@ class TemporalConvLayer(tf.keras.layers.Layer):
     def call(self, x):
         # print("Temporal (inp):", x.shape)
         conv_out = self.conv(tf.transpose(x, (0, 2, 3, 1)))
+        # sys.exit(1)
+
         # print("Temporal (conv):", conv_out.shape)
         relu_out = tf.nn.relu(tf.transpose(conv_out, (0, 3, 1, 2))) 
         # print("Temporal (relu):", relu_out.shape)

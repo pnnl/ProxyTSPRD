@@ -1,13 +1,14 @@
 #!/bin/bash
 # gridcnntf, amp
 GPUS=( "theta" ) # which gpu
-MODELS=( "gridcnnpt" "gridlstmpt" ) # "climatecnnpt" "climatelstmpt" "gridcnnpt" "gridlstmpt" "climatecnntf" "climatelstmtf" "gridcnntf" "gridlstmtf", "climatecnnptatt", "gridcnnptatt" "gridstgcngpt" "gridstgcngtf"
+MODELS=( "gridcnnpt" "gridlstmpt" "gridcnntf" "gridlstmtf" ) # "climatecnnpt" "climatelstmpt" "gridcnnpt" "gridlstmpt" "climatecnntf" "climatelstmtf" "gridcnntf" "gridlstmtf", "climatecnnptatt", "gridcnnptatt" "gridstgcngpt" "gridstgcngtf"
 # "gridcnnpt" "gridlstmpt" "gridcnntf" "gridlstmtf" "gridstgcngpt" "gridstgcngtf"
+# "gridlstmpt" "gridcnnpt" "gridlstmtf" "gridcnntf"
 N_NODES=1
-DTYPE=( "fp64" ) # "fp16" "fp32" "fp64" "amp" with or without mixed precision
+DTYPE=( "fp64" "amp" ) # "fp16" "fp32" "fp64" "amp" with or without mixed precision
 MGPU=( "None" ) # "HVD" "DDP" with or without mixed precision
-PROF=( 1 ) # with and without profiler
-RTYPE=( "infer_onnx" )
+PROF=( 0 1 ) # with and without profiler
+RTYPE=( "infer_onnx" ) # "infer" "infer_onnx" "infer_onnxtrti8" "infer_onnxtrtfp16" "infer_tftrti8" "infer_tftrtfp16"
 NODE="single-gpu"
 EPOCHS=1
 BATCH_SIZE=2048
@@ -27,12 +28,16 @@ for gpu in ${GPUS[@]}; do
                         echo "Inference Mode"
                         TRAIN_SUFFIX="gpu_ng8_nc0_e50_b2048_d${dt}_mpguHVD_prof0"
                         
-                        if [[ $model = gridstgcng* ]]
+                        if [[ $model = gridstgcngtf* ]]
                         then
                             echo "STGCN TF"
                             TRAIN_SUFFIX="gpu_ng1_nc0_e50_b2048_d${dt}_mpguNone_prof0"
                         fi
-                        
+                        if [[ $model = gridstgcngpt* ]]
+                        then
+                            echo "STGCN PT"
+                            TRAIN_SUFFIX="gpu_ng8_nc0_e50_b2048_d${dt}_mpguNone_prof0"
+                        fi
                         if [[ $model = *cnnptatt ]]
                         then
                             echo "AIT Inference"

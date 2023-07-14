@@ -2,7 +2,7 @@ import os, glob, itertools
 import torch, sys
 from pt_convert_run import load_model
 
-datasets = ["Climate"] # "Climate", "Grid"
+datasets = ["Grid"] # "Climate", "Grid"
 models = ["LSTM", "CNN"]
 bw_size = 60
 fw_size = 30
@@ -18,8 +18,8 @@ for d, m in itertools.product(datasets, models):
         directory = "ProxyTSPRD_IPDPS"
 
     model_path = os.path.join(MODEL_DIR, directory)
-    files = glob.glob(os.path.join(model_path, d + m + "*/gpu_ng8*fp64*HVD_prof0*.pt"))
-
+    files = glob.glob(os.path.join(model_path, d + m + "*/gpu_ng8*HVD_prof0*.pt"))
+    
     for f in files:
         # initialize
         basedir = os.path.basename(os.path.dirname(f))
@@ -27,22 +27,33 @@ for d, m in itertools.product(datasets, models):
         
         if filename.split("_")[5] == "dfp64":
             torch.set_default_dtype(torch.double)
+        else:
+            torch.set_default_dtype(torch.float)
             
         n_features, pt_model, model_name = load_model(
             bw_size, fw_size, basedir, f, device=device
         )
         pt_model = pt_model.to(device)
+        autocast = False
         if filename.split("_")[5] == "dfp64":
             print("It is floating point-64")
             pt_inp = torch.rand(
                 size=(batch_size, bw_size, n_features),
                 dtype=torch.double
             ).to(device)
-        else:
+        elif filename.split("_")[5] == "dfp32":
+            print("It is floating point-32")
             pt_inp = torch.rand(
                 size=(batch_size, bw_size, n_features),
                 dtype=torch.float32
             ).to(device)
+        elif filename.split("_")[5] == "damp":
+            print("It is AMP")
+            pt_inp = torch.rand(
+                size=(batch_size, bw_size, n_features),
+                dtype=torch.float32
+            ).to(device)
+            autocast = True
 
         # load model
         pt_model.load_state_dict(
@@ -55,16 +66,17 @@ for d, m in itertools.product(datasets, models):
             os.makedirs(output_path)
         onnx_path = os.path.join(output_path, os.path.basename(f).split(".")[0] + ".onnx")
 
-        torch.onnx.export(
-            pt_model,                  
-            pt_inp,   
-            onnx_path,
-            export_params=True,
-            opset_version=13,
-            do_constant_folding=True,
-            input_names = ['input'],
-            output_names = ['output'],
-            dynamic_axes={'input' : {0 : 'batch_size'},
-                            'output' : {0 : 'batch_size'}}
-        )
+        with torch.inference_mode(), torch.cuda.amp.autocast(enabled=autocast):
+            torch.onnx.export(
+                pt_model,                  
+                pt_inp,   
+                onnx_path,
+                export_params=True,
+                opset_version=13,
+                do_constant_folding=True,
+                input_names = ['input'],
+                output_names = ['output'],
+                dynamic_axes={'input' : {0 : 'batch_size'},
+                                'output' : {0 : 'batch_size'}}
+            )
 

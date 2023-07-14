@@ -128,4 +128,5 @@ class GridDataGenerator_TFSTGCN(GridDataGenerator_TF):
         'Generates one sample of data'
         X_out = self.X[index, :]
         y_out = self.y[index, :]
+        
         return X_out, y_out

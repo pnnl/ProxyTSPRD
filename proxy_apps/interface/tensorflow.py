@@ -1,4 +1,4 @@
-import os, sys, time
+import os, re, sys, time
 from scipy.sparse import random, coo_matrix, triu
 import pandas as pd
 import tensorflow as tf
@@ -151,11 +151,6 @@ class TensorFlowInterface(Interface):
             model_exists = True
         elif not os.path.exists(model_dir):
             os.makedirs(model_dir)
-
-        # print model parameters
-        # if self._GLOBAL_RANK == 0:
-        #     print("[INFO] Model Parameters:")
-        #     print(self.model.summary())
 
         return model_exists
 
@@ -412,7 +407,7 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
         model_params,
         opt_params,
         criterion_params,
-        infer_through=None,
+        infer_through="",
         batch_size=1
     ):
         model_exists = super().init_training_engine(
@@ -506,7 +501,6 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
         super().train()
         
         m_start = time.time()
-        print(graphloader)
         if graphloader is None:
             # compile model
             self.model.compile(
@@ -573,20 +567,28 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
         # loss and accuracy
         num_samples = 0
         test_loss = 0.
-        
+        extra_time = 0.
+        self.criterion = self.app_manager.get_criterion(criterion_params={})
+                
         for inputs, target in test_data:
             # print(inputs.shape, target.shape)
             # print(inputs.numpy())
             if inputs.shape[0] == batch_size:
                 if graphloader is None:
-                    if infer_through=="onnx":
+                    if re.match("onnx.*", infer_through):
+                        # print("[INFO] Inferring through ONNX: %s" %(infer_through))
                         y_onnx = self.sess.run(["output_1"], dict({"input_1": inputs.numpy()}))
                         yhat = y_onnx[0]
-                    else:        
-                        yhat = self.model.predict(
+                    elif re.match("tf.*", infer_through):
+                        # print("[INFO] Inferring through Tensorflow-TensorRT: %s" %(infer_through))
+                        y_tf = self.trt_func(inputs)
+                        yhat = y_tf["output_1"] 
+                    else:
+                        # print("[INFO] Inferring through Tensorflow")
+                        yhat = self.model(
                             inputs,
-                            verbose=0
-                        )
+                            training=False
+                        )       
                 else:
                     yhat = self.model(
                         inputs,
@@ -595,22 +597,99 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
                     )
 
                 # calculate loss
-                self.criterion = self.app_manager.get_criterion(criterion_params={})
+                loss_time = time.perf_counter() 
                 test_loss += self.criterion(yhat, target)
 
                 # calculate the number of samples
                 num_samples += 1
+                extra_time += time.perf_counter() - loss_time
 
-        return test_loss, num_samples
+        return test_loss, num_samples, extra_time
 
     def infer(
         self,
         data,
-        infer_through=None,
+        data_params,
+        infer_through="",
         batch_size=1,
         graphloader=None
     ):
         super().infer()
+
+        if infer_through in ["tftrti8", "tftrtfp16"]:
+            if graphloader is None:
+                forward_pass = self.model(
+                    tf.random.uniform(shape=(batch_size, data_params["bw_size"], data_params["n_features"]), dtype=self._DTYPE), training=False)
+
+                # print model parameters
+                if self._GLOBAL_RANK == 0:
+                    print("[INFO] Model Parameters:")
+                    print(self.model.summary())
+
+        if infer_through == "tftrtfp16":
+            tf_modelpath = self._MODEL_PATH.split(".tf")[0]
+            self.model.save(tf_modelpath)
+
+            # Instantiate the TF-TRT converter
+            from tensorflow.python.compiler.tensorrt import trt_convert as trt
+            converter = trt.TrtGraphConverterV2(
+                input_saved_model_dir=tf_modelpath,
+                precision_mode=trt.TrtPrecisionMode.FP16
+            )
+            # Convert the model into TRT compatible segments
+            self.trt_func = converter.convert()
+            converter.summary()
+
+            # warm up run
+            sample_arr_for_warmup = None
+            for d in data:
+                sample_arr_for_warmup = d[0]
+                break
+            
+            # build
+            def input_fn():
+                yield [sample_arr_for_warmup]
+            
+            converter.build(input_fn=input_fn)
+            self.trt_func(sample_arr_for_warmup)
+
+        elif infer_through == "tftrti8":
+            tf_modelpath = self._MODEL_PATH.split(".tf")[0]
+            self.model.save(tf_modelpath)
+
+            # Instantiate the TF-TRT converter
+            from tensorflow.python.compiler.tensorrt import trt_convert as trt
+            converter = trt.TrtGraphConverterV2(
+                input_saved_model_dir=tf_modelpath,
+                precision_mode=trt.TrtPrecisionMode.INT8,
+                use_calibration=True
+            )
+
+            # warm up run
+            sample_arr_for_warmup = None
+            for d in data:
+                sample_arr_for_warmup = d[0]
+                break
+            
+            BATCH_SIZE=32
+            NUM_CALIB_BATCHES=10
+            def calibration_input_fn():
+                for i in range(NUM_CALIB_BATCHES):
+                    start_idx = i * BATCH_SIZE
+                    end_idx = (i + 1) * BATCH_SIZE
+                    x = sample_arr_for_warmup[start_idx:end_idx, :, :]
+                    yield [x]
+
+            # Convert the model with valid calibration data
+            self.trt_func = converter.convert(calibration_input_fn=calibration_input_fn)
+
+            # build
+            def input_fn():
+                yield [sample_arr_for_warmup]
+            
+            converter.build(input_fn=input_fn)
+            converter.summary()
+            self.trt_func(sample_arr_for_warmup)
 
         # loss and accuracy
         num_samples = 0
@@ -618,7 +697,7 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
         
         # loss and accuracy
         start_time = time.perf_counter()
-        test_loss, num_samples = self.infer_on_data(
+        test_loss, num_samples, extra_time = self.infer_on_data(
             data, 
             infer_through=infer_through,
             batch_size=batch_size,
@@ -630,19 +709,23 @@ class TensorFlowInterfaceGPU(TensorFlowInterface):
         
         loss = test_loss / num_samples
         if self._GLOBAL_RANK == 0:
-            print("============> (Before Sync) Inference Time: ", inf_time)
-            print("============> (Before Sync) Inference Loss: ", loss)
+            print("============> (Before Sync) Inference Time (Total): ", inf_time)
+            print("============> (Before Sync) Inference Time:", inf_time-extra_time)
+            print("============> (Before Sync) Inference Loss:", loss)
 
         if self._MGPU_STRATEGY == "HVD":
             avg_inference_time = self.hvd_keras.allreduce(inf_time, average=True).numpy()
+            avg_extra_time = self.hvd_keras.allreduce(extra_time, average=True).numpy()
             avg_loss = self.hvd_keras.allreduce(loss, average=True).numpy()
         else:
             avg_inference_time = inf_time
+            avg_extra_time = extra_time
             avg_loss = loss
         
         if self._GLOBAL_RANK == 0:
-            print("============> (After Sync) Inference Time: ", avg_inference_time)
-            print("============> (After Sync) Inference Loss: ", avg_loss)
+            print("============> (After Sync) Inference Time (Total): ", avg_inference_time)
+            print("============> (After Sync) Inference Time:", avg_inference_time-avg_extra_time)
+            print("============> (After Sync) Inference Loss:", avg_loss)
 
     def close(self):
         if self._MGPU_STRATEGY == "HVD":

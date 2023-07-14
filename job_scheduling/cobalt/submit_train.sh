@@ -1,14 +1,14 @@
 #!/bin/bash
 # gridcnntf, amp
 GPUS=( "theta" ) # which gpu
-MODELS=( "climatestgcngpt" ) # "gridstgcngpt" "climatecnnpt" "climatelstmpt" "gridcnnpt" "gridlstmpt" "climatecnntf" "climatelstmtf" "gridcnntf" "gridlstmtf", "climatecnnptatt", "gridcnnptatt"
+MODELS=( "gridstgcnpt" ) # "gridstgcngpt" "climatecnnpt" "climatelstmpt" "gridcnnpt" "gridlstmpt" "climatecnntf" "climatelstmtf" "gridcnntf" "gridlstmtf", "climatecnnptatt", "gridcnnptatt"
 N_NODES=( 1 ) # 1 2 4 8
-DTYPE=( "fp64" ) # "fp16" "fp32" "fp64" "amp" with or without mixed precision
+DTYPE=( "fp32" "fp64" "amp" ) # "fp16" "fp32" "fp64" "amp" with or without mixed precision
 MGPU=( "DG" ) # "HVD" "DDP" "DG" "None" with or without mixed precision
 PROF=( 0 ) # with and without profiler
 RTYPE=( "train" ) # train
-NODE="full-node"
-# NODE="single-gpu"
+# NODE="full-node"
+NODE="single-gpu"
 EPOCHS=50
 BATCH_SIZE=2048
 TRAIN_SUFFIX="None"
@@ -33,8 +33,13 @@ for gpu in ${GPUS[@]}; do
                             STATUS=$(qstat $JOBID | wc -l)
                             echo "Status: $STATUS"
 
+                            if [[ $model = climatestgcntf* ]]
+                            then
+                                BATCH_SIZE=1024 
+                            fi
                             if [[ $NODE = single* ]]
                             then
+                                RUN_TIME="01:00:00"
                                 if [ ! -z $JOBID ] 
                                 then 
                                     if [ $JOBID -ne 0 ]

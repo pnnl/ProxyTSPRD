@@ -63,7 +63,7 @@ def argument_parser():
     parser.add_argument(
         "--run_type", 
         type=str, 
-        choices=["train", "infer", "infer_ait", "infer_onnx", "compile", "run"], 
+        choices=["train", "infer", "infer_ait", "infer_onnx", "infer_onnxfp16", "infer_onnxi8", "infer_onnxtrtfp16", "infer_onnxtrti8", "infer_tftrtfp16", "infer_tftrti8", "compile", "run"], 
         help="Action to take. compile and run commands are specific to sambanova.", 
         default="train"
     )
