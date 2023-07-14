@@ -12,7 +12,7 @@ from plot_cuda import *
 from plot_tf import *
 
 _RUN_TYPE = "infer"
-_FOLDER_NAME = "onnx" # train, inf_b1, inf_b2048, inf_ait, onnx
+_FOLDER_NAME = "inf_b2048" # train, inf_b1, inf_b2048, inf_ait, onnx
 
 _DATA_DIR = "/qfs/projects/pacer/proxytsprd/output/hipc23/profiles/"
 _PLOT_DIR = "/qfs/projects/pacer/proxytsprd/plots/paper/hipc23/"
@@ -49,11 +49,11 @@ elif _FOLDER_NAME == "onnx":
 
 if _FOLDER_NAME == "inf_b2048":
     cuda_indx = ["xfer", "mem", "event", "stream", "mod", "exec"]
-    tf_indx = ["data", "gemm", "math", "rnn"]
-    gemm_cols = ["sgemm", "dgemm", "hgemm", "igemm"]
-    data_cols = ["mem", "transform", "elem"]
-    math_cols = ["arithmetic", "bias", "activation", "norm"]
-    width_ratio = [1, 1, 0.67]
+    tf_indx = ["mmm", "elemWise", "activation", "norm", "transform"]
+    gemm_cols = ["sgemm", "dgemm", "hgemm", "igemm", "rnn"]
+    data_cols = ["mem", "transform"]
+    elemWise_cols = ["elem", "reduce", "arithmetic"]
+    width_ratio = [1, 1, 0.5]
     height_ratio = [1, 0.67]
     bottom = 0.425
     aspect=1.5
@@ -100,8 +100,8 @@ def main():
     plot_combined(df_cuda, df_tf, p)
 
 def plot_combined(df_cuda, df_tf, p):
-    df_tf.loc["gemm"] = df_tf.loc[gemm_cols].sum(axis=0)
-    df_tf.loc["math"] = df_tf.loc[math_cols].sum(axis=0)
+    df_tf.loc["mmm"] = df_tf.loc[gemm_cols].sum(axis=0)
+    df_tf.loc["elemWise"] = df_tf.loc[elemWise_cols].sum(axis=0)
     df_tf.loc["data"] = df_tf.loc[data_cols].sum(axis=0)
     df_tf[df_tf < 1] = np.nan
 
@@ -142,7 +142,7 @@ def draw_heatmap(*args, **kwargs):
     indx_values = d.index.values
     if "dev" in indx_values:
         index = cuda_indx
-    elif "gemm" in indx_values:
+    elif "mmm" in indx_values:
         index = tf_indx
     d = d.loc[index]
     

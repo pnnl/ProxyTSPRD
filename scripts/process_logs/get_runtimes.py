@@ -29,7 +29,7 @@ elif keyword == "infer":
     elif data_dir_name == "sambanova":
         patterns = ["*"] 
     else:
-        patterns = ["o_*stgcn*ng1_*e1_*mgpuNone*prof0*" + keyword + "*", "o_*ng1_*e50_*mgpuHVD*prof0*" + keyword + "*"]
+        patterns = ["o_*ng1_*e1_*mgpuNone*prof0*" + keyword + "*", "o_*ng1_*e50_*mgpuHVD*prof0*" + keyword + "*"]
     test_str = "\[INFO\] Testing on *"
     # match_timestr = "============> \(After\) Inference Time*"
     # match_lossstr = "============> \(After\) (Inference|Test) Loss*"
@@ -47,7 +47,7 @@ for p in patterns:
     sel_files = glob.glob(_DATA_DIR + p)
     sel_files.sort()
     data_files += sel_files
-# print(data_files)
+print(data_files)
 
 if keyword.split("_")[0] == "train":
     pattern = "^o_(climate|grid)(lstm|cnn|stgcng)(tf|pt)_*"
@@ -75,9 +75,10 @@ def find_runtime(filename):
                 # print(row, n_testcases)
             # to find time
             elif re.match(match_timestr, row):
-                # print("Row (2):", row)
+                print("Row (2):", row)
                 result = re.findall(r'\d+\.\d+', row)
                 run_time = float(result[0])
+                print(run_time)
 
                 if match_lossstr == "":
                     if data_dir_name == "sambanova":
