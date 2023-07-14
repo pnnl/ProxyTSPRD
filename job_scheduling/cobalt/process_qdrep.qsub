@@ -7,11 +7,11 @@
 #COBALT -o ./logs/processqdrep_out
 #COBALT -e ./logs/processqdrep_err
 
-module load conda
-conda activate
+module load conda/2023-01-11
+conda activate dgl
 
 i=0
-for file in /home/milanjain91/results/tpdps23/profiles/nsys/*e1_b2048*infer*.qdrep
+for file in /home/milanjain91/results/tpdps23/profiles/nsys/*.nsys-rep
 do
     i=$(( i + 1 ))
     name=${file##*/}

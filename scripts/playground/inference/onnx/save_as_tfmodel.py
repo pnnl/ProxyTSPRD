@@ -1,11 +1,11 @@
-import os, glob
+import os, sys, glob
 import itertools
 
 import tensorflow as tf
 from tf_convert import load_model
 
-datasets = ["Climate", "Grid"]
-models = ["LSTM", "CNN"]
+datasets = ["Grid"]
+models = ["LSTM", "CNN", "STGCN"]
 bw_size = 60
 fw_size = 30
 batch_size = 1024
@@ -19,6 +19,8 @@ for d, m in itertools.product(datasets, models):
 
     model_path = os.path.join(MODEL_DIR, directory)
     files = glob.glob(os.path.join(model_path, d + m + "*/gpu_ng8*HVD_prof0*.tf.index"))
+    if m == "STGCN":
+        files = glob.glob(os.path.join(model_path, d + m + "*/*e50*.tf.index"))
     
     for f in files:
         _tf_model = f.split(".index")[0]

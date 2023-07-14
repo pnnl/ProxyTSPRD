@@ -6,10 +6,11 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
 
 import sys
 import argparse
-sys.path.append("../../../")
+CURR_DIR = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.join(CURR_DIR, "../../../../"))
 
-from proxy_apps.apps.cnn import TFCNN
-from proxy_apps.apps.lstm_tf import LSTMSingleLayerTF
+from proxy_apps.apps.tf.models.cnn1d import TFCNN
+from proxy_apps.apps.tf.models.lstm import LSTMSingleLayerTF
 
 def load_model(bw_size, fw_size, basedir, tf_modelname):
     if "Climate" in basedir:

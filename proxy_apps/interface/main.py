@@ -67,9 +67,9 @@ class Interface:
         self,
         data_files,
         data_params
-
     ):
         assert len(data_files) > 0, "[ERROR] Empty files list. Cannot create data loader with zero data files."
+        
         return self.app_manager.get_datagenerator(
             files=data_files,
             data_params=data_params,
