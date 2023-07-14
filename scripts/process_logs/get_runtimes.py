@@ -5,7 +5,7 @@ import json
 import numpy as np
 import pandas as pd
 
-data_dir_name = "benchmark"
+data_dir_name = "benchmark" # benchmark onnx postquant
 # _DATA_DIR = '/home/milanjain91/results/tpdps23/logs/sbatch/'
 _DATA_DIR = '/people/jain432/pacer_remote/output/hipc23/logs/' + data_dir_name + '/'
 
@@ -24,17 +24,17 @@ if keyword == "train_pt":
     match_timestr = "============> \(After\) Model Fitting*"
     match_lossstr = ""
 elif keyword == "infer":
-    if data_dir_name == "onnx":
-        patterns = ["o_*ng1_*prof0*onnx"]
-    elif data_dir_name == "sambanova":
+    if data_dir_name == "sambanova":
+        # patterns = ["o_*ng1_*prof0*onnx"]
+        # elif data_dir_name == "sambanova":
         patterns = ["*"] 
     else:
-        patterns = ["o_*ng1_*e1_*mgpuNone*prof0*" + keyword + "*", "o_*ng1_*e50_*mgpuHVD*prof0*" + keyword + "*"]
+        patterns = ["o_*ng1_*e1_*mgpuNone*prof0*" + keyword + "*"]#, "o_*ng1_*e50_*mgpuHVD*prof0*" + keyword + "*"]
     test_str = "\[INFO\] Testing on *"
     # match_timestr = "============> \(After\) Inference Time*"
     # match_lossstr = "============> \(After\) (Inference|Test) Loss*"
-    match_timestr = ".*After.*Inference Time.*"
-    match_lossstr = ".*After.*(Inference|Test).Loss.*"
+    match_timestr = ".*After.*Inference Time:.*"
+    match_lossstr = ".*After.*(Inference|Test).Loss:.*"
 
     if data_dir_name == "sambanova":
         # match_timestr = "============> \(After\) Inference Time*"
@@ -118,9 +118,9 @@ def find_runtime(filename):
     return n_testcases, run_time, loss
 
 result = []
-columns = ['model', 'mgpu_strategy', 'n_gpus', 'dtype', 'batch_size', 'n_cases', 'runtime', 'loss']
-sort_by = ['model', 'n_gpus', 'dtype', 'mgpu_strategy']
-sel_columns = ['model', 'n_gpus', 'dtype', 'mgpu_strategy', 'batch_size', 'n_cases', 'runtime', 'loss']
+columns = ['model', 'mgpu_strategy', 'n_gpus', 'dtype', 'batch_size', 'n_cases', 'runtime', 'loss', "infer_through"]
+sort_by = ['model', "infer_through", 'n_gpus', 'dtype', 'mgpu_strategy']
+sel_columns = ['model', "infer_through", 'n_gpus', 'dtype', 'mgpu_strategy', 'batch_size', 'n_cases', 'runtime', 'loss']
 
 for f in data_files:
     n, t, l = find_runtime(f)
@@ -131,11 +131,11 @@ for f in data_files:
         file_basename = os.path.basename(f)
         if data_dir_name == "sambanova":
             if keyword == "infer":
-                temp_data = [file_basename.split('.')[0].split('_')[2], "None", 1, 'fp32', n, t, l]
+                temp_data = [file_basename.split('.')[0].split('_')[2], "None", 1, 'fp32', n, t, l, "infer"]
         else:        
             basename_comps = file_basename.split('_')
             print(basename_comps)
-            temp_data = [basename_comps[1], basename_comps[8].split('mgpu')[1], int(basename_comps[3].split('ng')[1]), basename_comps[7].split('mp')[1], int(basename_comps[6].split('b')[1]), n, t, l]
+            temp_data = [basename_comps[1], basename_comps[8].split('mgpu')[1], int(basename_comps[3].split('ng')[1]), basename_comps[7].split('mp')[1], int(basename_comps[6].split('b')[1]), n, t, l, basename_comps[-1]]
         # print(basename_comps)
         result.append(temp_data)
 

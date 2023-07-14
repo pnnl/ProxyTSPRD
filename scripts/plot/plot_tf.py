@@ -19,8 +19,10 @@ def main_tf(path_list, folder_name):
     if folder_name == "inf_ait":
         index = ["hgemm", "reduce", "mem", "elem", "other"]
         index = ["hgemm", "igemm", "elem", "reduce", "mem", "transform", "elem", "other", "arithmetic", "activation", "bias", "norm"]
-    if folder_name == "onnx":
-        index = ["sgemm", "dgemm", "cgemm", "gemv", "fft", "elem", "transform", "arithmetic", "activation", "rnn"]
+    elif folder_name == "onnx":
+        index = ["sgemm", "dgemm", "cgemm", "gemv", "fft", "elem", "transform", "arithmetic", "activation"]
+    elif folder_name == "postquant":
+        index = ["hgemm", "sgemm", "igemm", "arithmetic", "activation", "bias", "reduce", "transform", "elem", "other"]
     # inference
     #index = ["hgemm", "dgemm", "eigen", "reduce", "elem", "bias", "mem", "other"]
     
@@ -56,6 +58,16 @@ def main_tf(path_list, folder_name):
                 label += "_" + path_split[12].upper()
             else:
                 label += "_AMP"
+        elif folder_name == "postquant":
+            print(path_split, label)
+            text_label = path_split[12]
+            if "onnx" in text_label:
+                temp_label = text_label[:4].upper() + "-" + text_label[4:7].upper() + "-" + text_label[7:].upper().replace('I8', "INT8")
+            else:
+                temp_label = text_label[2:5].upper() + "-" + text_label[5:].upper().replace('I8', "INT8")
+            
+            label = label.split("_")[0] + "_" + label.split("_")[1] + "_" + temp_label
+        
         # xticks.append(label)
         for f in pf:
             # f = path_list[j]
@@ -73,7 +85,7 @@ def main_tf(path_list, folder_name):
             # ngpus = int(f[f.find('_ng')+3:f.find('_nc')])
             cdf = tf_df_manip(df, 1) 
             cdf = cdf.set_index("Name")
-            list_of_frames.append(cdf["Time(%)"])
+            list_of_frames.append(cdf["Time (%)"])
         
         if len(list_of_frames) == 0:
             continue
@@ -83,7 +95,7 @@ def main_tf(path_list, folder_name):
         # print(cdf)
         # for i in range(nrows):
         #     if (index[i] in cdf.index.values):
-        #         data[index.index(index[i])][j] = cdf.loc[cdf.index==index[i], 'Time(%)'].iloc[0]
+        #         data[index.index(index[i])][j] = cdf.loc[cdf.index==index[i], 'Time (%)'].iloc[0]
 
         # j += 1
     df_pfs = pd.concat(pfs, axis=1).loc[index]
@@ -121,7 +133,7 @@ def tfplot(df_pfs, p, plot_dir, folder_name, app_list, fig_size):
 
 
 def tf_df_manip(df, ngpus):
-    cdf = df[['Time(%)', 'Total Time (ns)', 'Name']]
+    cdf = df[['Time (%)', 'Total Time (ns)', 'Name']]
     cdf.loc[cdf['Name'].str.contains(r'ReLu|Relu|crelu', case=False), 'Name'] = "activation"
     cdf.loc[cdf['Name'].str.contains(r'cudnn::bn_|layer_norm|RowwiseMomentsCUDAKernel|LayerNorm', case=False), 'Name'] = "norm"
     cdf.loc[cdf['Name'].str.contains(r'fp16|f16|h[0-9]*cudnn|fp16_s[0-9]*|volta_fp16_s[0-9]*gemm|ampere_fp16_s[0-9]*gemm', case=False), 'Name'] = "hgemm"
@@ -147,11 +159,11 @@ def tf_df_manip(df, ngpus):
     # print(cdf.loc[cdf['Name'].str.contains(r'scalar_constant_op|scalar_product_op|scalar_cmp_op|scal_kernel|elem|elementwise|ElementWise', case=False)].Name.tolist())
     cdf.loc[cdf['Name'].str.contains(r'apply_kernel|dropout|convert|cat|chunk|split|kernel|rng|comparison|Launch|KernelLaunch|slice', case=False), 'Name'] = "other"
     # sys.exit(1)
-    cdf2 = cdf.groupby(['Name'],as_index=False).agg({'Time(%)': 'sum', 'Total Time (ns)': 'sum'})
-    cdf2['Time(%)'] = cdf2['Time(%)'].div(ngpus).round(2)
-    #cdf2['Time(%)'] = cdf2['Time(%)'].replace({0.0:np.nan, 0:np.nan})
-    cdf2['Time(%)'].replace({0.0:np.nan, 0:np.nan}, inplace=True)
-    cdf2.loc[cdf2['Time(%)']<1, ['Time(%)']] = np.nan
+    cdf2 = cdf.groupby(['Name'],as_index=False).agg({'Time (%)': 'sum', 'Total Time (ns)': 'sum'})
+    cdf2['Time (%)'] = cdf2['Time (%)'].div(ngpus).round(2)
+    #cdf2['Time (%)'] = cdf2['Time (%)'].replace({0.0:np.nan, 0:np.nan})
+    cdf2['Time (%)'].replace({0.0:np.nan, 0:np.nan}, inplace=True)
+    cdf2.loc[cdf2['Time (%)']<1, ['Time (%)']] = np.nan
     cdf2['Total Time (ns)'] = cdf2['Total Time (ns)'].div(ngpus).round(2)
     #cdf2['Total Time (ns)'] = cdf2['Total Time (ns)'].replace({0.0:np.nan, 0:np.nan})
     cdf2['Total Time (ns)'].replace({0.0:np.nan, 0:np.nan}, inplace=True)

@@ -12,7 +12,7 @@ from plot_cuda import *
 from plot_tf import *
 
 _RUN_TYPE = "infer"
-_FOLDER_NAME = "inf_b2048" # train, inf_b1, inf_b2048, inf_ait, onnx
+_FOLDER_NAME = "onnx" # train, inf_b1, inf_b2048, inf_ait, onnx, postquant
 
 _DATA_DIR = "/qfs/projects/pacer/proxytsprd/output/hipc23/profiles/"
 _PLOT_DIR = "/qfs/projects/pacer/proxytsprd/plots/paper/hipc23/"
@@ -46,24 +46,42 @@ elif _FOLDER_NAME == "onnx":
     app_list = ["grid"]
     infer_suffix = ["infer_onnx"]
     fig_size = (16, 6)
+elif _FOLDER_NAME == "postquant":
+    ng_suffix = "ng1"
+    model_list = ["lstm", "cnn"]
+    mgpu_list = ["None"]
+    app_list = ["grid"]
+    infer_suffix = ["infer_onnxtrtfp16", "infer_onnxtrti8", "infer_tftrtfp16", "infer_tftrti8"]
+    fig_size = (16, 6)
 
 if _FOLDER_NAME == "inf_b2048":
     cuda_indx = ["xfer", "mem", "event", "stream", "mod", "exec"]
-    tf_indx = ["mmm", "elemWise", "activation", "norm", "transform"]
+    tf_indx = ["mmm", "elem_wise", "data_manip"]
     gemm_cols = ["sgemm", "dgemm", "hgemm", "igemm", "rnn"]
-    data_cols = ["mem", "transform"]
+    data_cols = ["activation", "norm", "transform"]
     elemWise_cols = ["elem", "reduce", "arithmetic"]
     width_ratio = [1, 1, 0.5]
     height_ratio = [1, 0.67]
     bottom = 0.425
     aspect=1.5
     height=2.1
+elif _FOLDER_NAME == "postquant":
+    cuda_indx = ["xfer", "mem", "event", "stream", "mod", "exec"]
+    tf_indx = ["mmm", "elem_wise", "data_manip"]
+    gemm_cols = ["sgemm", "hgemm", "igemm"]
+    data_cols = ["transform"]
+    elemWise_cols = ["elem", "reduce", "arithmetic"]
+    width_ratio = [1, 1]
+    height_ratio = [1, 0.67]
+    bottom = 0.425
+    aspect=2.3
+    height=2
 else:
     cuda_indx = ["xfer", "mem", "event", "stream", "mod", "exec", "dev"]
-    tf_indx = ["data", "gemm", "math", "rnn"]
+    tf_indx = ["mmm", "elem_wise", "data_manip"]
     gemm_cols = ["sgemm", "dgemm", "cgemm", "gemv"]
-    data_cols = ["transform", "elem"]
-    math_cols = ["arithmetic", "activation", "fft"]
+    data_cols = ["activation", "transform"]
+    elemWise_cols = ["elem", "arithmetic"]
     width_ratio = [1, 1]
     height_ratio = [1, 0.57]
     bottom = 0.395
@@ -101,9 +119,10 @@ def main():
 
 def plot_combined(df_cuda, df_tf, p):
     df_tf.loc["mmm"] = df_tf.loc[gemm_cols].sum(axis=0)
-    df_tf.loc["elemWise"] = df_tf.loc[elemWise_cols].sum(axis=0)
-    df_tf.loc["data"] = df_tf.loc[data_cols].sum(axis=0)
+    df_tf.loc["elem_wise"] = df_tf.loc[elemWise_cols].sum(axis=0)
+    df_tf.loc["data_manip"] = df_tf.loc[data_cols].sum(axis=0)
     df_tf[df_tf < 1] = np.nan
+    print(df_tf)
 
     melted_tf = pd.melt(df_tf.reset_index(), id_vars=["Name"])
     melted_tf["model"] = melted_tf["variable"].str.split("_", expand=True)[0]
@@ -114,6 +133,7 @@ def plot_combined(df_cuda, df_tf, p):
     melted_cuda["run_type"] = "cuda"
 
     melted_df = pd.concat([melted_cuda, melted_tf]).reset_index(drop=True)
+    print(melted_df)
 
     col_order = [""]
     
@@ -130,6 +150,13 @@ def plot_combined(df_cuda, df_tf, p):
     fg.set(facecolor="white", ylabel="", xlabel="")
     fg.set_titles("")
     fg.fig.add_artist(mpl.lines.Line2D([0.1, 0.9], [bottom, bottom], linestyle='--'), )
+    
+    axes = fg.axes
+    # set title
+    titles = ["LSTM", "CNN", "STGCN"]
+    for i, ax in enumerate(axes[0]):
+        ax.set_title(titles[i])
+    
     # fig.tight_layout(pad=0.0, h_pad=0.0, w_pad=0.01)
     if not p:
         fg.savefig(os.path.join(_PLOT_DIR, 'ptsprd-' + "-".join(app_list) + '-' + _FOLDER_NAME + '_v2.png'), bbox_inches='tight', dpi=300)
@@ -138,6 +165,7 @@ def plot_combined(df_cuda, df_tf, p):
 
 def draw_heatmap(*args, **kwargs):
     data = kwargs.pop('data')
+    print(data)
     d = data.pivot(index=args[1], columns=args[0], values=args[2])
     indx_values = d.index.values
     if "dev" in indx_values:
@@ -147,7 +175,7 @@ def draw_heatmap(*args, **kwargs):
     d = d.loc[index]
     
     ax = sns.heatmap(d, **kwargs)
-    xticks = [','.join(c.split('_')[:3]) for c in d.columns]
+    xticks = [','.join(c.split('_')[1:3]) for c in d.columns]
     ax.set_xticklabels(xticks, rotation=40, ha='right')
     # ax.set_yticklabels(, rotation=0)
     ax.tick_params(left=False)  

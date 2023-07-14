@@ -1,4 +1,5 @@
 import os, sys, random
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -8,7 +9,7 @@ _OUTPUT_DIR = '/people/jain432/pacer_remote/output/hipc23/'
 _PLOT_DIR = "/qfs/projects/pacer/proxytsprd/plots/paper/hipc23/"
 
 keyword = "infer"
-version = "onnx" # onnx benchmark
+version = "benchmark" # onnx benchmark postquant
 
 if keyword == "train":
     df_pt = pd.read_csv(os.path.join(_OUTPUT_DIR, "runtimes_train_pt_" + version + ".csv"), index_col=[0])
@@ -35,7 +36,10 @@ for m in df.model:
         if version == "benchmark": # no stgcn results for ONNX
             splits[1].append("STGCN")
 
-    splits[2].append(m[-2:].upper())
+    if m[-2:].upper() == "PT":
+        splits[2].append("PyTorch")
+    elif m[-2:].upper() == "TF":
+        splits[2].append("TensorFlow")
 
 df["dtype"] = df["dtype"].replace("a", "AMP").replace("fp16", "FP16").replace("fp32", "FP32").replace("fp64", "FP64")
 df["app"] = splits[0]
@@ -59,7 +63,8 @@ elif keyword=="infer":
     # colors = ["#c4c9ffff", "#ea8e1aff"]
     df["hue"] = df["app"] + ", " + df["dtype"]
     df["x_axis"] = df["framework"]
-    ticks = [1, 4, 10, 40]
+    ticks = [1, 2, 5, 10, 20, 40]
+    log = False
 
     if version == "benchmark":
         colors = ["#c4c9ffff", "#668bffff", "#002ba1ff", "#ea8e1aff", "#974b00ff", "#712b00ff"]
@@ -72,6 +77,28 @@ elif keyword=="infer":
         row_order = None
         row=None
         df["x_axis"] = df["model_name"]
+    elif version == "onnx":
+        df["x_axis"] = df["dtype"]
+        df["hue"] = df["framework"]
+        colors = ["#668bffff", "#974b00ff"]
+        hue_order = ["PyTorch", "TensorFlow"]
+        row_order = ["LSTM", "CNN"]
+    elif version == "postquant":
+        updated_labels = []
+        for v in df["infer_through"].values:
+            if "onnx" in v:
+                temp_label = v[:4].upper() + "-" + v[4:7].upper() + "-" + v[7:].upper().replace('I8', "INT8")
+            else:
+                temp_label = v[:2].upper() + "-" + v[2:5].upper() + "-" + v[5:].upper().replace('I8', "INT8")
+            updated_labels.append(temp_label)
+        
+        df["infer_through"] = updated_labels    
+        df["x_axis"] = df["framework"]
+        df["hue"] = df["infer_through"]
+        colors = ["#c4c9ffff", "#002ba1ff", "#ea8e1aff", "#974b00ff"]
+        hue_order = list(np.unique(updated_labels))
+        row_order = ["LSTM", "CNN"]
+        log = False
     else:
         colors = ["#c4c9ffff", "#668bffff", "#002ba1ff"]
         hue_order = ["IEEE 64 Bus (Grid), AMP", "IEEE 64 Bus (Grid), FP32", "IEEE 64 Bus (Grid), FP64"]
@@ -80,8 +107,6 @@ elif keyword=="infer":
     
 df_subset = df.loc[df.model.isin(["climatecnnpt", "gridcnnpt", "climatelstmpt", "gridlstmpt", "climatecnntf", "gridcnntf", "climatelstmtf", "gridlstmtf", "climatestgcngpt", "gridstgcngpt", "climatestgcngtf", "gridstgcngtf"])]
 print(df_subset[["app", "dtype", "runtime", "model", "model_name"]])
-
-
 
 fig, ax = plt.subplots()
 sns.set(font_scale=1.3)
@@ -108,15 +133,21 @@ elif keyword == "infer":
         hue="hue", hue_order=hue_order,
         kind="bar", height=3, aspect=1.2, palette=colors, log=True
     )
+    # g.set_xticklabels(rotation=rot, ha='right')
     axes = g.fig.axes
-    if version == "onnx":
-        axes[0].axhline(y = 11.33, color = "k", linestyle = ':', linewidth=2)
-        axes[0].axhline(y = 23.56, color = "k", linestyle = '--', linewidth=2)
-        axes[1].axhline(y = 11.64, color = "k", linestyle = ':', linewidth=2)
-        axes[1].axhline(y = 21.03, color = "k", linestyle = '--', linewidth=2)
+    if version in ["onnx", "postquant"]:
+        axes[0].axhline(y = 11.79, color = "#668bffff", linestyle = ':', linewidth=2)
+        axes[0].axhline(y = 14.23, color = "#974b00ff", linestyle = '--', linewidth=2)
+        axes[1].axhline(y = 14.37, color = "#668bffff", linestyle = ':', linewidth=2)
+        axes[1].axhline(y = 13.46, color = "#974b00ff", linestyle = '--', linewidth=2)
     g.set_titles("{col_name}")
     ticks = ticks
-    g._legend.set_title("Dataset, Precision")
+    if version == "onnx":
+        g._legend.set_title("Framework")
+    elif version == "postquant":
+        g._legend.set_title("Quantization")
+    else:
+        g._legend.set_title("Dataset, Precision")
 
 g.set(ylabel="runtime [in secs]", xlabel="")
 # g.despine(left=True)

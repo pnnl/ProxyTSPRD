@@ -32,6 +32,7 @@ def main_cuda(path_list, folder_name):
         list_of_frames = []
         # sys.exit(pf)
         path_split = os.path.basename(pf[0]).split("_")
+        
         # print(path_split[2].split("climate")[1].split("grid"))
         if ((path_split[2] == "lstm") or (path_split[2] == "cnn") or (path_split[2] == "stgcng")):
             label = path_split[2].upper() + "_PT_" + path_split[8][2:].upper() + "_" + path_split[9][4:]
@@ -46,6 +47,16 @@ def main_cuda(path_list, folder_name):
             # print(label)
             # sys.exit(1)
             # sys.exit(path_split)
+        elif folder_name == "postquant":
+            print(path_split, label)
+            text_label = path_split[12]
+            if "onnx" in text_label:
+                temp_label = text_label[:4].upper() + "-" + text_label[4:7].upper() + "-" + text_label[7:].upper().replace('I8', "INT8")
+            else:
+                temp_label = text_label[:2].upper() + "-" + text_label[2:5].upper() + "-" + text_label[5:].upper().replace('I8', "INT8")
+            
+            label = label.split("_")[0] + "_" + label.split("_")[1] + "_" + temp_label
+
         # print(label)
         xticks.append(label)
         for f in pf:
@@ -63,7 +74,7 @@ def main_cuda(path_list, folder_name):
             # ngpus = int(f[f.find('_ng')+3:f.find('_nc')])
             cdf = cuda_df_manip(df, 1) 
             cdf = cdf.set_index("Name")
-            list_of_frames.append(cdf["Time(%)"])
+            list_of_frames.append(cdf["Time (%)"])
         
         if len(list_of_frames) == 0:
             continue
@@ -73,7 +84,7 @@ def main_cuda(path_list, folder_name):
         # print(cdf)
         # for i in range(nrows):
         #     if (index[i] in cdf.index.values):
-        #         data[index.index(index[i])][j] = cdf.loc[cdf.index==index[i], 'Time(%)'].iloc[0]
+        #         data[index.index(index[i])][j] = cdf.loc[cdf.index==index[i], 'Time (%)'].iloc[0]
 
         # j += 1
     df_pfs = pd.concat(pfs, axis=1).loc[index]
@@ -111,7 +122,7 @@ def cudaplot(df_pfs, p, plot_dir, folder_name, app_list, fig_size):
     #plt.show()
 
 def cuda_df_manip(df, ngpus):
-    cdf = df[['Time(%)', 'Total Time (ns)', 'Name']]
+    cdf = df[['Time (%)', 'Total Time (ns)', 'Name']]
     cdf.loc[cdf['Name'].str.contains(r'Memcpy', case=False), 'Name'] = "xfer"
     cdf.loc[cdf['Name'].str.contains(r'Alloc|Memset|Free|Mem', case=False), 'Name'] = "mem"
     cdf.loc[cdf['Name'].str.contains(r'Event|Query', case=False), 'Name'] = "event"
@@ -119,11 +130,11 @@ def cuda_df_manip(df, ngpus):
     cdf.loc[cdf['Name'].str.contains(r'Module|Link', case=False), 'Name'] = "mod"
     cdf.loc[cdf['Name'].str.contains(r'Launch|SetDouble|SetDouble|FuncSet|FuncGet|GetParameter', case=False), 'Name'] = "exec"
     cdf.loc[cdf['Name'].str.contains(r'Init|Ctx|Device', case=False), 'Name'] = "dev"
-    cdf2 = cdf.groupby(['Name'],as_index=False).agg({'Time(%)': 'sum', 'Total Time (ns)': 'sum'})
-    cdf2['Time(%)'] = cdf2['Time(%)'].div(ngpus).round(2)
-    #cdf2['Time(%)'] = cdf2['Time(%)'].replace({0.0:np.nan, 0:np.nan})
-    cdf2['Time(%)'].replace({0.0:np.nan, 0:np.nan}, inplace=True)
-    cdf2.loc[cdf2['Time(%)']<1, ['Time(%)']] = np.nan
+    cdf2 = cdf.groupby(['Name'],as_index=False).agg({'Time (%)': 'sum', 'Total Time (ns)': 'sum'})
+    cdf2['Time (%)'] = cdf2['Time (%)'].div(ngpus).round(2)
+    #cdf2['Time (%)'] = cdf2['Time (%)'].replace({0.0:np.nan, 0:np.nan})
+    cdf2['Time (%)'].replace({0.0:np.nan, 0:np.nan}, inplace=True)
+    cdf2.loc[cdf2['Time (%)']<1, ['Time (%)']] = np.nan
     cdf2['Total Time (ns)'] = cdf2['Total Time (ns)'].div(ngpus).round(2)
     #cdf2['Total Time (ns)'] = cdf2['Total Time (ns)'].replace({0.0:np.nan, 0:np.nan})
     cdf2['Total Time (ns)'].replace({0.0:np.nan, 0:np.nan}, inplace=True)
