@@ -1,0 +1,32 @@
+Now you should run one of the following depending on your shell
+source /share/apps/python/miniconda3.9/etc/profile.d/conda.sh
+source /share/apps/python/miniconda3.9/etc/profile.d/conda.csh
+[15:24:11] /opt/dgl/src/graph/transform/metis_partition_hetero.cc:89: Partition a graph with 68 nodes and 172 edges into 2 parts and get 4 edge cuts
+[W socket.cpp:426] [c10d] The server socket cannot be initialized on [::]:2345 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [a100-06.local]:2345 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [a100-06.local]:2345 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [a100-06.local]:2345 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [a100-06.local]:2345 (errno: 97 - Address family not supported by protocol).
+Traceback (most recent call last):
+  File "/qfs/projects/pacer/proxytsprd/code/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl.py", line 125, in <module>
+    g = dgl.distributed.DistGraph('m_graph', part_config='./curr_dir/m_graph.json')
+  File "/people/jain432/.conda/envs/suf_py39/lib/python3.9/site-packages/dgl/distributed/dist_graph.py", line 469, in __init__
+    assert self._gpb.num_partitions() == 1, \
+AssertionError: The standalone mode can only work with the graph data with one partition
+Traceback (most recent call last):
+  File "/qfs/projects/pacer/proxytsprd/code/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl.py", line 125, in <module>
+    g = dgl.distributed.DistGraph('m_graph', part_config='./curr_dir/m_graph.json')
+  File "/people/jain432/.conda/envs/suf_py39/lib/python3.9/site-packages/dgl/distributed/dist_graph.py", line 469, in __init__
+    assert self._gpb.num_partitions() == 1, \
+AssertionError: The standalone mode can only work with the graph data with one partition
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[49316,1],1]
+  Exit code:    1
+--------------------------------------------------------------------------

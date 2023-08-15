@@ -1,0 +1,1 @@
+srun -A pacer -p a100_shared --gres=gpu:2 -N 1 -n 8 mpirun -n 2 -x PATH -x LD_LIBRARY_PATH  python toy_dist_dgl.py --run_device pnnl

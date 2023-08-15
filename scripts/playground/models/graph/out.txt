@@ -1,0 +1,27 @@
+/share/apps/cuda/11.0/lib:/share/apps/cuda/11.0/lib64:/share/apps/gcc/9.1.0/lib:/share/apps/gcc/9.1.0/lib64:/usr/lib64/:/share/apps/python/miniconda3.9/lib:/share/apps/cuda/11.0/lib64/stubs:/share/apps/cuda/11.0/extras/CUPTI/lib64/
+[INFO] Selected Device: pnnl
+[INFO] Selected Device: pnnl
+Converting to homogeneous graph takes 0.001s, peak mem: 4.200 GB
+Convert a graph into a bidirected graph: 0.000 seconds, peak memory: 4.200 GB
+Construct multi-constraint weights: 0.000 seconds, peak memory: 4.200 GB
+Metis partitioning: 0.000 seconds, peak memory: 4.200 GB
+Assigning nodes to METIS partitions takes 0.001s, peak mem: 4.200 GB
+Reshuffle nodes and edges: 0.000 seconds
+Split the graph: 0.000 seconds
+Construct subgraphs: 0.012 seconds
+Splitting the graph into partitions takes 0.013s, peak mem: 4.200 GB
+part 0 has 37 nodes and 33 are inside the partition
+part 0 has 46 edges and 45 are inside the partition
+a100-06
+part 1 has 38 nodes and 35 are inside the partition
+part 1 has 44 edges and 41 are inside the partition
+Save partitions: 0.025 seconds, peak memory: 4.200 GB
+There are 86 edges in the graph and 0 edge cuts for 2 partitions.
+172.16.120.57
+
+a100-06
+172.16.120.57
+
+Torch Thread setup: 
+ Number of threads:  1
+[INFO] Size:2, Local Rank: 0, Global Rank: 0

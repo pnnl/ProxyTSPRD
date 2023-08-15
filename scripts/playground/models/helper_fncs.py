@@ -76,7 +76,7 @@ def parse_arguments():
     
     return parser.parse_args()
 
-def setup(device="gpu", seed=2, num_threads=1):
+def setup(global_rank, size, device="gpu", seed=2, num_threads=1):
     import os, socket
     import torch
     import torch.distributed as dist
@@ -87,17 +87,15 @@ def setup(device="gpu", seed=2, num_threads=1):
 
         with_ddp=True
         local_rank = os.environ['OMPI_COMM_WORLD_LOCAL_RANK']
-        size = MPI.COMM_WORLD.Get_size()
-        rank = MPI.COMM_WORLD.Get_rank()
         # print(size, rank)
 
         # Pytorch will look for these:
-        os.environ["RANK"] = str(rank)
+        os.environ["RANK"] = str(global_rank)
         os.environ["WORLD_SIZE"] = str(size)
         # os.environ['CUDA_VISIBLE_DEVICES'] = str(local_rank)
 
         # It will want the master address too, which we'll broadcast:
-        if rank == 0:
+        if global_rank == 0:
             master_addr = socket.gethostname()
         else:
             master_addr = None
@@ -126,19 +124,17 @@ def setup(device="gpu", seed=2, num_threads=1):
         if (num_threads!=0):
             torch.set_num_threads(num_threads)
 
-        if rank==0:
+        if global_rank==0:
             print("Torch Thread setup: ")
             print(" Number of threads: ", torch.get_num_threads())
 
     except Exception as e:
         with_ddp=False
         local_rank = 0
-        size = 1
-        rank = 0
         print("MPI initialization failed!")
         print(e)
 
-    return with_ddp, size, local_rank, rank
+    return with_ddp, size, local_rank
 
 def _discover_local_rank(verbose=False):
     '''
@@ -185,12 +181,9 @@ def _discover_local_rank(verbose=False):
     return new_comm.Get_rank()
 
 
-def _setup_ddp():
+def _setup_ddp(global_rank, size):
     from mpi4py import MPI
     import torch.distributed as dist
-            
-    size = MPI.COMM_WORLD.Get_size()
-    rank = MPI.COMM_WORLD.Get_rank()
 
     local_rank_key_options = [
             'OMPI_COMM_WORLD_LOCAL_RANK',
@@ -216,11 +209,11 @@ def _setup_ddp():
             raise Exception("[INFO (DDP)] DDP failed to initialize due to local rank issue")
 
 
-    os.environ["RANK"] = str(rank)
+    os.environ["RANK"] = str(global_rank)
     os.environ["WORLD_SIZE"] = str(size)
 
     # It will want the master address too, which we'll broadcast:
-    if rank == 0:
+    if global_rank == 0:
         master_addr = socket.gethostname()
         sock = socket.socket()
         sock.bind(('',0))
@@ -242,8 +235,8 @@ def _setup_ddp():
         backend     = backend,
         init_method = init_method,
         world_size  = size,
-        rank        = rank,
+        rank        = global_rank,
         timeout     = datetime.timedelta(seconds=120)
     )
 
-    return local_rank, rank, size
+    return local_rank, size

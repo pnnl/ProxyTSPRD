@@ -1,0 +1,48 @@
+{
+    "edge_map": {
+        "_N:_E:_N": [
+            [
+                0,
+                45
+            ],
+            [
+                45,
+                86
+            ]
+        ]
+    },
+    "etypes": {
+        "_N:_E:_N": 0
+    },
+    "graph_name": "m_graph",
+    "halo_hops": 1,
+    "node_map": {
+        "_N": [
+            [
+                0,
+                33
+            ],
+            [
+                33,
+                68
+            ]
+        ]
+    },
+    "ntypes": {
+        "_N": 0
+    },
+    "num_edges": 86,
+    "num_nodes": 68,
+    "num_parts": 2,
+    "part-0": {
+        "edge_feats": "part0/edge_feat.dgl",
+        "node_feats": "part0/node_feat.dgl",
+        "part_graph": "part0/graph.dgl"
+    },
+    "part-1": {
+        "edge_feats": "part1/edge_feat.dgl",
+        "node_feats": "part1/node_feat.dgl",
+        "part_graph": "part1/graph.dgl"
+    },
+    "part_method": "metis"
+}
