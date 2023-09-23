@@ -1,0 +1,1429 @@
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/./launch_torchrun.py:122: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  thread.setDaemon(True)
+The number of OMP threads per trainer is set to 16
+============== New Command /lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/bin/torchrun --nproc_per_node=8 --nnodes=2 --node_rank=0 --master_addr=10.230.2.210 --master_port=1234 /home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py --ip_config=/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+============== New Command /lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/bin/torchrun --nproc_per_node=8 --nnodes=2 --node_rank=1 --master_addr=10.230.2.210 --master_port=1234 /home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py --ip_config=/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+[16:39:59] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[16:39:59] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+[16:40:00] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[16:40:00] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+thetagpu22: Initializing DistDGL.thetagpu22: Initializing DistDGL.
+
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+
+thetagpu22: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+thetagpu22: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enxe2f8b2c94ee5 
+IP address not available for interface.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enxe2f8b2c94ee5 
+IP address not available for interface.
+Warning! Interface: enxe2f8b2c94ee5 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: enxe2f8b2c94ee5 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+[Warning! Interface: mlx_ib6 
+IP address not available for interface.
+[[16:40:02] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket16:40:02 is created.] 
+/opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[Warning! Interface: mlx_ib7 
+IP address not available for interface.
+16:40:02] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.[
+16:40:0216:40:02] ] /opt/dgl/src/rpc/rpc.cc/opt/dgl/src/rpc/rpc.cc::161: Receiver with NetType~141: socketSender with NetType~ is created.
+socket is created.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.Warning! Interface: mlx_ib8 
+IP address not available for interface.
+
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+thetagpu22: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+thetagpu22: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+thetagpu22: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enxe2f8b2c94ee5 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: enxe2f8b2c94ee5 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enxe2f8b2c94ee5 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+thetagpu22: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enxe2f8b2c94ee5 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+thetagpu20: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+thetagpu20: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx762e49f313ec 
+IP address not available for interface.
+Warning! Interface: enx762e49f313ec 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[16:40:02] [/opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+16:40:02] /opt/dgl/src/rpc/rpc.cc:[16:40:02141] : /opt/dgl/src/rpc/rpc.ccSender with NetType~:161: Receiver with NetType~socket is created.
+socket is created.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+thetagpu20: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+thetagpu20: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx762e49f313ec 
+IP address not available for interface.
+Warning! Interface: enx762e49f313ec 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[[16:40:02] /opt/dgl/src/rpc/rpc.cc:16:40:02141] : /opt/dgl/src/rpc/rpc.ccSender with NetType~:socket is created.141
+: Sender with NetType~socket is created.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket[ is created.
+16:40:02] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+thetagpu20: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx762e49f313ec 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+thetagpu20: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+thetagpu20: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+thetagpu20: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx762e49f313ec 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx762e49f313ec 
+IP address not available for interface.
+Warning! Interface: enx762e49f313ec 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[[16:40:0216:40:02] ] /opt/dgl/src/rpc/rpc.cc/opt/dgl/src/rpc/rpc.cc::141141: : Sender with NetType~Sender with NetType~socket is created.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+socket is created.
+[16:40:02] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+thetagpu22: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 120, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 129, in _main
+    prepare(preparation_data)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 240, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 291, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py", line 23, in <module>
+    dgl.distributed.initialize(ip_config=args.ip_config)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 291, in initialize
+    SAMPLER_POOL = CustomPool(
+                   ^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 147, in __init__
+    proc.start()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/process.py", line 121, in start
+    self._popen = self._Popen(self)
+                  ^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/context.py", line 288, in _Popen
+    return Popen(process_obj)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 32, in __init__
+    super().__init__(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_fork.py", line 19, in __init__
+    self._launch(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 42, in _launch
+    prep_data = spawn.get_preparation_data(process_obj._name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 158, in get_preparation_data
+    _check_not_importing_main()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 138, in _check_not_importing_main
+    raise RuntimeError('''
+RuntimeError: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+thetagpu22: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 120, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 129, in _main
+    prepare(preparation_data)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 240, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 291, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py", line 23, in <module>
+    dgl.distributed.initialize(ip_config=args.ip_config)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 291, in initialize
+    SAMPLER_POOL = CustomPool(
+                   ^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 147, in __init__
+    proc.start()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/process.py", line 121, in start
+    self._popen = self._Popen(self)
+                  ^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/context.py", line 288, in _Popen
+    return Popen(process_obj)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 32, in __init__
+    super().__init__(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_fork.py", line 19, in __init__
+    self._launch(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 42, in _launch
+    prep_data = spawn.get_preparation_data(process_obj._name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 158, in get_preparation_data
+    _check_not_importing_main()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 138, in _check_not_importing_main
+    raise RuntimeError('''
+RuntimeError: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+thetagpu22: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 120, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 129, in _main
+    prepare(preparation_data)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 240, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 291, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py", line 23, in <module>
+    dgl.distributed.initialize(ip_config=args.ip_config)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 291, in initialize
+    SAMPLER_POOL = CustomPool(
+                   ^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 147, in __init__
+    proc.start()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/process.py", line 121, in start
+    self._popen = self._Popen(self)
+                  ^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/context.py", line 288, in _Popen
+    return Popen(process_obj)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 32, in __init__
+    super().__init__(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_fork.py", line 19, in __init__
+    self._launch(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 42, in _launch
+    prep_data = spawn.get_preparation_data(process_obj._name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 158, in get_preparation_data
+    _check_not_importing_main()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 138, in _check_not_importing_main
+    raise RuntimeError('''
+RuntimeError: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+thetagpu22: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 120, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 129, in _main
+    prepare(preparation_data)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 240, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 291, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py", line 23, in <module>
+    dgl.distributed.initialize(ip_config=args.ip_config)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 291, in initialize
+    SAMPLER_POOL = CustomPool(
+                   ^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 147, in __init__
+    proc.start()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/process.py", line 121, in start
+    self._popen = self._Popen(self)
+                  ^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/context.py", line 288, in _Popen
+    return Popen(process_obj)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 32, in __init__
+    super().__init__(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_fork.py", line 19, in __init__
+    self._launch(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 42, in _launch
+    prep_data = spawn.get_preparation_data(process_obj._name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 158, in get_preparation_data
+    _check_not_importing_main()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 138, in _check_not_importing_main
+    raise RuntimeError('''
+RuntimeError: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+thetagpu22: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 120, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 129, in _main
+    prepare(preparation_data)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 240, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 291, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py", line 23, in <module>
+    dgl.distributed.initialize(ip_config=args.ip_config)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 291, in initialize
+    SAMPLER_POOL = CustomPool(
+                   ^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 147, in __init__
+    proc.start()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/process.py", line 121, in start
+    self._popen = self._Popen(self)
+                  ^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/context.py", line 288, in _Popen
+thetagpu22: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 120, in spawn_main
+    return Popen(process_obj)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 32, in __init__
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 129, in _main
+    super().__init__(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_fork.py", line 19, in __init__
+    prepare(preparation_data)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 240, in prepare
+    self._launch(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 42, in _launch
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 291, in _fixup_main_from_path
+    prep_data = spawn.get_preparation_data(process_obj._name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 158, in get_preparation_data
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py", line 23, in <module>
+    _check_not_importing_main()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 138, in _check_not_importing_main
+    dgl.distributed.initialize(ip_config=args.ip_config)
+    raise RuntimeError('''
+RuntimeError: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 291, in initialize
+    SAMPLER_POOL = CustomPool(
+                   ^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 147, in __init__
+    proc.start()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/process.py", line 121, in start
+    self._popen = self._Popen(self)
+                  ^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/context.py", line 288, in _Popen
+    return Popen(process_obj)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 32, in __init__
+    super().__init__(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_fork.py", line 19, in __init__
+    self._launch(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 42, in _launch
+    prep_data = spawn.get_preparation_data(process_obj._name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 158, in get_preparation_data
+    _check_not_importing_main()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 138, in _check_not_importing_main
+thetagpu22: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 120, in spawn_main
+    raise RuntimeError('''
+RuntimeError: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 129, in _main
+    prepare(preparation_data)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 240, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 291, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py", line 23, in <module>
+    dgl.distributed.initialize(ip_config=args.ip_config)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 291, in initialize
+    SAMPLER_POOL = CustomPool(
+                   ^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 147, in __init__
+    proc.start()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/process.py", line 121, in start
+    self._popen = self._Popen(self)
+                  ^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/context.py", line 288, in _Popen
+    return Popen(process_obj)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 32, in __init__
+    super().__init__(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_fork.py", line 19, in __init__
+    self._launch(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 42, in _launch
+    prep_data = spawn.get_preparation_data(process_obj._name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 158, in get_preparation_data
+    _check_not_importing_main()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 138, in _check_not_importing_main
+    raise RuntimeError('''
+RuntimeError: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+thetagpu20: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 120, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 129, in _main
+    prepare(preparation_data)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 240, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 291, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py", line 23, in <module>
+    dgl.distributed.initialize(ip_config=args.ip_config)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 291, in initialize
+    SAMPLER_POOL = CustomPool(
+                   ^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 147, in __init__
+    proc.start()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/process.py", line 121, in start
+    self._popen = self._Popen(self)
+                  ^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/context.py", line 288, in _Popen
+    return Popen(process_obj)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 32, in __init__
+    super().__init__(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_fork.py", line 19, in __init__
+    self._launch(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 42, in _launch
+    prep_data = spawn.get_preparation_data(process_obj._name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 158, in get_preparation_data
+    _check_not_importing_main()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 138, in _check_not_importing_main
+    raise RuntimeError('''
+RuntimeError: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+thetagpu20: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+thetagpu20: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 120, in spawn_main
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 120, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 129, in _main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 129, in _main
+    prepare(preparation_data)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 240, in prepare
+    prepare(preparation_data)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 240, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 291, in _fixup_main_from_path
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 291, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py", line 23, in <module>
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py", line 23, in <module>
+    dgl.distributed.initialize(ip_config=args.ip_config)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 291, in initialize
+    dgl.distributed.initialize(ip_config=args.ip_config)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 291, in initialize
+    SAMPLER_POOL = CustomPool(
+                   ^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 147, in __init__
+    proc.start()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/process.py", line 121, in start
+    SAMPLER_POOL = CustomPool(
+                   ^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 147, in __init__
+    self._popen = self._Popen(self)
+                  ^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/context.py", line 288, in _Popen
+    proc.start()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/process.py", line 121, in start
+    return Popen(process_obj)
+    self._popen = self._Popen(self)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 32, in __init__
+                  ^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/context.py", line 288, in _Popen
+    super().__init__(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_fork.py", line 19, in __init__
+    return Popen(process_obj)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 32, in __init__
+    self._launch(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 42, in _launch
+    super().__init__(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_fork.py", line 19, in __init__
+    prep_data = spawn.get_preparation_data(process_obj._name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 158, in get_preparation_data
+    self._launch(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 42, in _launch
+    _check_not_importing_main()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 138, in _check_not_importing_main
+    prep_data = spawn.get_preparation_data(process_obj._name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 158, in get_preparation_data
+    raise RuntimeError('''
+RuntimeError: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+    _check_not_importing_main()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 138, in _check_not_importing_main
+    raise RuntimeError('''
+RuntimeError: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+thetagpu20: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 120, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 129, in _main
+    prepare(preparation_data)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 240, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 291, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py", line 23, in <module>
+    dgl.distributed.initialize(ip_config=args.ip_config)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 291, in initialize
+    SAMPLER_POOL = CustomPool(
+                   ^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 147, in __init__
+thetagpu20: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+    proc.start()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/process.py", line 121, in start
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 120, in spawn_main
+    self._popen = self._Popen(self)
+                  ^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/context.py", line 288, in _Popen
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 129, in _main
+thetagpu20: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+    return Popen(process_obj)
+    prepare(preparation_data)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 32, in __init__
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 240, in prepare
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 120, in spawn_main
+    super().__init__(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_fork.py", line 19, in __init__
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 291, in _fixup_main_from_path
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 129, in _main
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py", line 23, in <module>
+    self._launch(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 42, in _launch
+    prepare(preparation_data)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 240, in prepare
+    prep_data = spawn.get_preparation_data(process_obj._name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    dgl.distributed.initialize(ip_config=args.ip_config)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 158, in get_preparation_data
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 291, in initialize
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 291, in _fixup_main_from_path
+    _check_not_importing_main()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 138, in _check_not_importing_main
+    SAMPLER_POOL = CustomPool(
+                   ^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 147, in __init__
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py", line 23, in <module>
+    proc.start()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/process.py", line 121, in start
+    raise RuntimeError('''
+RuntimeError: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+    self._popen = self._Popen(self)
+                  ^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/context.py", line 288, in _Popen
+    dgl.distributed.initialize(ip_config=args.ip_config)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 291, in initialize
+    return Popen(process_obj)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 32, in __init__
+    SAMPLER_POOL = CustomPool(
+                   ^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 147, in __init__
+    super().__init__(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_fork.py", line 19, in __init__
+    proc.start()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/process.py", line 121, in start
+    self._launch(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 42, in _launch
+    self._popen = self._Popen(self)
+                  ^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/context.py", line 288, in _Popen
+    prep_data = spawn.get_preparation_data(process_obj._name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 158, in get_preparation_data
+    return Popen(process_obj)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 32, in __init__
+    _check_not_importing_main()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 138, in _check_not_importing_main
+    super().__init__(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_fork.py", line 19, in __init__
+    raise RuntimeError('''
+RuntimeError: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+    self._launch(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 42, in _launch
+    prep_data = spawn.get_preparation_data(process_obj._name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 158, in get_preparation_data
+    _check_not_importing_main()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 138, in _check_not_importing_main
+    raise RuntimeError('''
+RuntimeError: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+thetagpu20: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 120, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 129, in _main
+    prepare(preparation_data)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 240, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 291, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py", line 23, in <module>
+    dgl.distributed.initialize(ip_config=args.ip_config)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 291, in initialize
+    SAMPLER_POOL = CustomPool(
+                   ^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 147, in __init__
+    proc.start()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/process.py", line 121, in start
+    self._popen = self._Popen(self)
+                  ^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/context.py", line 288, in _Popen
+    return Popen(process_obj)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 32, in __init__
+    super().__init__(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_fork.py", line 19, in __init__
+    self._launch(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 42, in _launch
+    prep_data = spawn.get_preparation_data(process_obj._name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 158, in get_preparation_data
+    _check_not_importing_main()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 138, in _check_not_importing_main
+    raise RuntimeError('''
+RuntimeError: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+thetagpu20: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 120, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 129, in _main
+    prepare(preparation_data)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 240, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 291, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py", line 23, in <module>
+    dgl.distributed.initialize(ip_config=args.ip_config)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 291, in initialize
+    SAMPLER_POOL = CustomPool(
+                   ^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 147, in __init__
+    proc.start()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/process.py", line 121, in start
+    self._popen = self._Popen(self)
+                  ^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/context.py", line 288, in _Popen
+    return Popen(process_obj)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 32, in __init__
+    super().__init__(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_fork.py", line 19, in __init__
+    self._launch(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 42, in _launch
+    prep_data = spawn.get_preparation_data(process_obj._name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 158, in get_preparation_data
+    _check_not_importing_main()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 138, in _check_not_importing_main
+    raise RuntimeError('''
+RuntimeError: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+thetagpu22: Initializing DistDGL.
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 120, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 129, in _main
+    prepare(preparation_data)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 240, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 291, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py", line 23, in <module>
+    dgl.distributed.initialize(ip_config=args.ip_config)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 291, in initialize
+    SAMPLER_POOL = CustomPool(
+                   ^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/site-packages/dgl/distributed/dist_context.py", line 147, in __init__
+    proc.start()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/process.py", line 121, in start
+    self._popen = self._Popen(self)
+                  ^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/context.py", line 288, in _Popen
+    return Popen(process_obj)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 32, in __init__
+    super().__init__(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_fork.py", line 19, in __init__
+    self._launch(process_obj)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_spawn_posix.py", line 42, in _launch
+    prep_data = spawn.get_preparation_data(process_obj._name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 158, in get_preparation_data
+    _check_not_importing_main()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/spawn.py", line 138, in _check_not_importing_main
+    raise RuntimeError('''
+RuntimeError: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+2023-08-25 16:43:14,671 INFO Stop launcher
+Called process error Command 'ssh -o StrictHostKeyChecking=no -p 22 10.230.2.210 'cd /home/milanjain91/ProxyTSPRD/scripts/playground/models/graph; (export DGL_ROLE=server DGL_NUM_SAMPLER=1 OMP_NUM_THREADS=1 DGL_NUM_CLIENT=32 DGL_CONF_PATH=/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/partition/m_graph.json DGL_IP_CONFIG=/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt DGL_NUM_SERVER=1 DGL_GRAPH_FORMAT=csc DGL_KEEP_ALIVE=0  DGL_SERVER_ID=0; /lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/bin/python /home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py --ip_config=/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt)'' died with <Signals.SIGINT: 2>.
+Called process error Command 'ssh -o StrictHostKeyChecking=no -p 22 10.230.2.208 'cd /home/milanjain91/ProxyTSPRD/scripts/playground/models/graph; (export DGL_DIST_MODE=distributed DGL_ROLE=client DGL_NUM_SAMPLER=1 DGL_NUM_CLIENT=32 DGL_CONF_PATH=/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/partition/m_graph.json DGL_IP_CONFIG=/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt DGL_NUM_SERVER=1 DGL_GRAPH_FORMAT=csc OMP_NUM_THREADS=16 DGL_GROUP_ID=0 ; /lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/bin/torchrun --nproc_per_node=8 --nnodes=2 --node_rank=1 --master_addr=10.230.2.210 --master_port=1234 /home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py --ip_config=/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt)'' died with <Signals.SIGINT: 2>.
+Called process error Command 'ssh -o StrictHostKeyChecking=no -p 22 10.230.2.208 'cd /home/milanjain91/ProxyTSPRD/scripts/playground/models/graph; (export DGL_ROLE=server DGL_NUM_SAMPLER=1 OMP_NUM_THREADS=1 DGL_NUM_CLIENT=32 DGL_CONF_PATH=/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/partition/m_graph.json DGL_IP_CONFIG=/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt DGL_NUM_SERVER=1 DGL_GRAPH_FORMAT=csc DGL_KEEP_ALIVE=0  DGL_SERVER_ID=1; /lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/bin/python /home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py --ip_config=/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt)'' died with <Signals.SIGINT: 2>.
+Called process error Command 'ssh -o StrictHostKeyChecking=no -p 22 10.230.2.210 'cd /home/milanjain91/ProxyTSPRD/scripts/playground/models/graph; (export DGL_DIST_MODE=distributed DGL_ROLE=client DGL_NUM_SAMPLER=1 DGL_NUM_CLIENT=32 DGL_CONF_PATH=/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/partition/m_graph.json DGL_IP_CONFIG=/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt DGL_NUM_SERVER=1 DGL_GRAPH_FORMAT=csc OMP_NUM_THREADS=16 DGL_GROUP_ID=0 ; /lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/bin/torchrun --nproc_per_node=8 --nnodes=2 --node_rank=0 --master_addr=10.230.2.210 --master_port=1234 /home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl_mwe.py --ip_config=/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/ip_config_test.txt)'' died with <Signals.SIGINT: 2>.
+2023-08-25 16:43:15,455 INFO Stop launcher
+Exception ignored in atexit callback: <function _exit_function at 0x7fe8db0325c0>
+Traceback (most recent call last):
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/util.py", line 357, in _exit_function
+    p.join()
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/process.py", line 149, in join
+    res = self._popen.wait(timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_fork.py", line 43, in wait
+    return self.poll(os.WNOHANG if timeout == 0.0 else 0)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/dgl-nightly/lib/python3.11/multiprocessing/popen_fork.py", line 27, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/./launch_torchrun.py", line 627, in signal_handler
+    sys.exit(0)
+SystemExit: 0
+cleanupu process runs
+kill process 3463027 on 10.230.2.210:22
+kill process 3463028 on 10.230.2.210:22
+kill process 3463029 on 10.230.2.210:22
+kill process 3463074 on 10.230.2.210:22
+kill process 3463091 on 10.230.2.210:22

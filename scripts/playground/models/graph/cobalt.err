@@ -1,0 +1,1422 @@
+
+The following have been reloaded with a version change:
+  1) openmpi/openmpi-4.0.5 => openmpi/openmpi-4.1.4_ucx-1.14.0_gcc-9.4.0_cuda-11.8
+
+/opt/lmod/stable/lmod/lmod/init/bash: line 82: export: __add_sys_prefix_to_path: not a function
+[01:24:03] /opt/dgl/src/graph/transform/metis_partition_hetero.cc:89: Partition a graph with 68 nodes and 172 edges into 2 parts and get 4 edge cuts
+/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/launch_torchrun.py:122: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  thread.setDaemon(True)
+[01:24:09] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:09] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+[01:24:09] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:09] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx86723d82f2e6 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:11] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:11] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx86723d82f2e6 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: enx86723d82f2e6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+[01:24:11] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+[01:24:11] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:11] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:11] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx86723d82f2e6 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: enx86723d82f2e6 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx86723d82f2e6 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: enx86723d82f2e6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+[Warning! Interface: mlx_ib3 
+IP address not available for interface.
+01:24:12] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx3e1b70ea17f3 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx3e1b70ea17f3 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx3e1b70ea17f3 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx3e1b70ea17f3 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx86723d82f2e6 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx3e1b70ea17f3 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx3e1b70ea17f3 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx3e1b70ea17f3 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx3e1b70ea17f3 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:12] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx86723d82f2e6 
+IP address not available for interface.
+Warning! Interface: enx86723d82f2e6 
+IP address not available for interface.
+Warning! Interface: enx86723d82f2e6 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[[[01:24:1501:24:15] ] /opt/dgl/src/rpc/rpc.cc01:24:15/opt/dgl/src/rpc/rpc.cc:] :/opt/dgl/src/rpc/rpc.cc:141: 141Sender with NetType~: 141Sender with NetType~socket:  is created.Sender with NetType~socket
+ is created.socket
+ is created.
+[[01:24:15[01:24:15] ] 01:24:15/opt/dgl/src/rpc/rpc.cc/opt/dgl/src/rpc/rpc.cc] ::/opt/dgl/src/rpc/rpc.cc161161:: : 161Receiver with NetType~Receiver with NetType~: socketsocketReceiver with NetType~ is created. is created.
+
+socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx86723d82f2e6 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx86723d82f2e6 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx86723d82f2e6 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx86723d82f2e6 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx3e1b70ea17f3 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx3e1b70ea17f3 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx86723d82f2e6 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx3e1b70ea17f3 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx3e1b70ea17f3 
+IP address not available for interface.
+Warning! Interface: enx3e1b70ea17f3 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[[01:24:1501:24:15] ] /opt/dgl/src/rpc/rpc.cc/opt/dgl/src/rpc/rpc.cc::141141: : Sender with NetType~Sender with NetType~socket is created.socket
+ is created.
+[01:24:15[] /opt/dgl/src/rpc/rpc.cc01:24:15:] 161/opt/dgl/src/rpc/rpc.cc: :Receiver with NetType~161: Receiver with NetType~socket is created.
+socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx3e1b70ea17f3 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx3e1b70ea17f3 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Warning! Interface: enp97s0f1 
+IP address not available for interface.
+Warning! Interface: enp225s0f1 
+IP address not available for interface.
+Warning! Interface: bond0 
+IP address not available for interface.
+Warning! Interface: enx3e1b70ea17f3 
+IP address not available for interface.
+Warning! Interface: mlx_ib0 
+IP address not available for interface.
+Warning! Interface: mlx_ib1 
+IP address not available for interface.
+Warning! Interface: mlx_ib2 
+IP address not available for interface.
+Warning! Interface: mlx_ib3 
+IP address not available for interface.
+Warning! Interface: mlx_ib4 
+IP address not available for interface.
+Warning! Interface: mlx_ib5 
+IP address not available for interface.
+Warning! Interface: mlx_ib6 
+IP address not available for interface.
+Warning! Interface: mlx_ib7 
+IP address not available for interface.
+Warning! Interface: mlx_ib8 
+IP address not available for interface.
+Warning! Interface: mlx_ib9 
+IP address not available for interface.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:141: Sender with NetType~socket is created.
+[01:24:15] /opt/dgl/src/rpc/rpc.cc:161: Receiver with NetType~socket is created.
+Traceback (most recent call last):
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl.py", line 88, in <module>
+Traceback (most recent call last):
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl.py", line 88, in <module>
+Traceback (most recent call last):
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl.py", line 88, in <module>
+Traceback (most recent call last):
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl.py", line 88, in <module>
+Traceback (most recent call last):
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl.py", line 88, in <module>
+Traceback (most recent call last):
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl.py", line 88, in <module>
+Traceback (most recent call last):
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl.py", line 88, in <module>
+Traceback (most recent call last):
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl.py", line 88, in <module>
+Traceback (most recent call last):
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl.py", line 88, in <module>
+Traceback (most recent call last):
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl.py", line 88, in <module>
+Traceback (most recent call last):
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl.py", line 88, in <module>
+Traceback (most recent call last):
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl.py", line 88, in <module>
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl.py", line 88, in <module>
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl.py", line 88, in <module>
+Traceback (most recent call last):
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl.py", line 88, in <module>
+Traceback (most recent call last):
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/toy_dist_dgl.py", line 88, in <module>
+    datagen = app.get_datagen(
+              ^^^^^^^^^^^^^^^^
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/main.py", line 83, in get_datagen
+    datagen = app.get_datagen(
+                      ^datagen = app.get_datagen(datagen = app.get_datagen(^
+
+^^^^^^^^^^^^^ ^  
+             File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/main.py", line 83, in get_datagen
+        ^ ^^ ^^ ^^ ^ ^^ ^^^^^^^^^
+^^^^^  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/main.py", line 83, in get_datagen
+^^^^^^^    ^datagen = app.get_datagen(        
+
+datagen = app.get_datagen(datagen = app.get_datagen(
+
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/main.py", line 83, in get_datagen
+                            ^  ^  ^  ^ ^^ ^^^ ^^ ^^^ ^^^ ^^^ ^^^ ^^^
+^^^^^^^  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/main.py", line 83, in get_datagen
+^^^^^^^
+^^^^^^  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/main.py", line 83, in get_datagen
+^^
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/main.py", line 83, in get_datagen
+    datagen = app.get_datagen(
+              ^^^^^^^^^^^^^^^^
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/main.py", line 83, in get_datagen
+    datagen = app.get_datagen(
+              ^    ^    datagen = app.get_datagen(
+              ^^^^^^^^^^^^^^^^
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/main.py", line 83, in get_datagen
+datagen = app.get_datagen(^
+^^^^^^^^^^^^^
+           datagen = app.get_datagen(datagen = app.get_datagen(  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/main.py", line 83, in get_datagen
+
+ 
+             ^  ^  ^  ^  ^  ^  ^  ^    ^  ^  ^  ^^ ^^^^^^^^^^^^
+^^^^^^^    ^^  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/main.py", line 83, in get_datagen
+^^datagen = app.get_datagen(^^^
+^^^^^^
+^^^
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/main.py", line 83, in get_datagen
+      datagen = app.get_datagen(   File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/main.py", line 83, in get_datagen
+
+           ^^^^^ ^ ^^ ^^ ^ ^ ^ ^ ^ ^ 
+    ^  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/main.py", line 83, in get_datagen
+^^^^^^^^^^^^^^^
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/main.py", line 83, in get_datagen
+    datagen = app.get_datagen(
+              ^^^^^^^^^^^^^^^^
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/main.py", line 83, in get_datagen
+    return super().get_datagen(datagen)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/main.py", line 130, in get_datagen
+        return super().get_datagen(datagen)return super().get_datagen(datagen)
+
+         return super().get_datagen(datagen)return super().get_datagen(datagen) 
+
+                ^ ^ ^ ^ ^^^^^^^    ^ ^      ^ ^ return super().get_datagen(datagen) ^^   
+^^  ^        return super().get_datagen(datagen)return super().get_datagen(datagen)
+
+    return super().get_datagen(datagen)^  ^^^  ^     ^return super().get_datagen(datagen) ^
+ ^^^^^^^^^^^^^^ ^^^^ ^^^^^ ^ ^^^^^ ^^^^ ^
+        return super().get_datagen(datagen)return super().get_datagen(datagen)
+
+    return super().get_datagen(datagen)
+                           return super().get_datagen(datagen)    
+   ^^   ^^   ^^   ^^   ^^ ^^ ^ ^^ ^   ^^^ ^  ^ ^^  ^   ^^  ^ ^^^^^  ^^^^^ ^^ ^^^^ ^^ ^^ ^^ ^^ ^ ^^^ ^ ^^ ^^ ^^
+^^ ^^^^
+^   File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/main.py", line 130, in get_datagen
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/main.py", line 130, in get_datagen
+^^^^ ^^^^ ^ ^^^ ^^    ^^^^return super().get_datagen(datagen)^^^^^
+^^^^^^^^^^^^^
+^^^^^  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/main.py", line 130, in get_datagen
+^^ ^^ ^^^^ ^ ^^^^ ^ ^^^^ ^^ ^^^ ^^^^^^^ ^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^
+^^^^^^^^^^^^^  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/main.py", line 130, in get_datagen
+^^  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/main.py", line 130, in get_datagen
+^^    ^^^^^return super().get_datagen(datagen)^^^^
+
+^^^^^^^^^^^  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/main.py", line 130, in get_datagen
+^^^^^
+^^^
+^^^  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/main.py", line 130, in get_datagen
+^^  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/main.py", line 130, in get_datagen
+^^^^^^^^
+^  ^  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/main.py", line 130, in get_datagen
+ ^ ^ ^ 
+     ^  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/main.py", line 130, in get_datagen
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/main.py", line 130, in get_datagen
+^^ ^^^^ ^^
+  ^^^   File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/main.py", line 130, in get_datagen
+ ^^ ^^ ^^ ^^ ^^ ^^^^^^^^^^^^^^^^^^
+^^^^  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/main.py", line 130, in get_datagen
+^^^
+^^^^^  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/main.py", line 130, in get_datagen
+^^^^^^^^^^^^^^^
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/main.py", line 130, in get_datagen
+        datagen.get_data(x_indexer, y_indexer)datagen.get_data(x_indexer, y_indexer)
+
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/datareaders.py", line 36, in get_data
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/datareaders.py", line 36, in get_data
+    datagen.get_data(x_indexer, y_indexer)
+    datagen.get_data(x_indexer, y_indexer)
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/datareaders.py", line 36, in get_data
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/datareaders.py", line 36, in get_data
+    datagen.get_data(x_indexer, y_indexer)
+    datagen.get_data(x_indexer, y_indexer)
+    datagen.get_data(x_indexer, y_indexer)
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/datareaders.py", line 36, in get_data
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/datareaders.py", line 36, in get_data
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/datareaders.py", line 36, in get_data
+    datagen.get_data(x_indexer, y_indexer)
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/datareaders.py", line 36, in get_data
+        self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :]self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :]
+
+    self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :]
+    self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :]
+                    self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :]
+           self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :] 
+         ^     ^      ^    datagen.get_data(x_indexer, y_indexer)
+            datagen.get_data(x_indexer, y_indexer)datagen.get_data(x_indexer, y_indexer)datagen.get_data(x_indexer, y_indexer)
+
+
+        ^      ^     ^ ^  ^ ^ ^ ^ ^ ^  ^^^^^^ ^ ^^ ^^^ ^^^ ^^^^^^^^^^^^^^^^^^  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/datareaders.py", line 36, in get_data
+            datagen.get_data(x_indexer, y_indexer)datagen.get_data(x_indexer, y_indexer)datagen.get_data(x_indexer, y_indexer)  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/datareaders.py", line 36, in get_data
+
+
+
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/datareaders.py", line 36, in get_data
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/datareaders.py", line 36, in get_data
+^^^^^^    ^^^  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/datareaders.py", line 36, in get_data
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/datareaders.py", line 36, in get_data
+  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/datareaders.py", line 36, in get_data
+    datagen.get_data(x_indexer, y_indexer)
+^^^^^self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :]^
+^^^^^^^^^^^^^^^^^^^^^ ^^ ^^^^^^^ ^^^^^^^^ ^ ^^^^^^^ ^^^^^^^ ^^ ^^^^^^  File "/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/../../../../proxy_apps/apps/pt/grid/datareaders.py", line 36, in get_data
+^^^ ^ ^^^^^^^^ ^ ^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^  File "<__array_function__ internals>", line 200, in vstack
+^^^^^^^^  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/numpy/core/shape_base.py", line 296, in vstack
+^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^  File "<__array_function__ internals>", line 200, in vstack
+^^  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/numpy/core/shape_base.py", line 296, in vstack
+^^
+^^^^  File "<__array_function__ internals>", line 200, in vstack
+^
+
+
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/numpy/core/shape_base.py", line 296, in vstack
+^  File "<__array_function__ internals>", line 200, in vstack
+  File "<__array_function__ internals>", line 200, in vstack
+^  File "<__array_function__ internals>", line 200, in vstack
+^  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/numpy/core/shape_base.py", line 296, in vstack
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/numpy/core/shape_base.py", line 296, in vstack
+^  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/numpy/core/shape_base.py", line 296, in vstack
+^^^^^^^^^^^^^^^^^
+  File "<__array_function__ internals>", line 200, in vstack
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/numpy/core/shape_base.py", line 296, in vstack
+    self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<__array_function__ internals>", line 200, in vstack
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/numpy/core/shape_base.py", line 296, in vstack
+        self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :]
+self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :]
+        self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :]self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :]
+
+    self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :]
+    self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :]
+        self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :] 
+                    ^     ^  ^    ^    ^      ^ ^   ^^    ^^    ^ ^      ^^^    ^^^ ^  ^^^  ^^ ^^  ^^^^ ^^^ ^^^ ^^ ^^^^ ^^^ ^^ ^^^^ ^^ ^^^^ ^  ^^ ^^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    ^^^self.X = np.vstack([arr[0] for arr in complete_data]) # stacked_array[0, :, :]^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ^^^^^^^^ ^^ ^^^^^^^^^
+^^^^^ ^^^^^^ ^^  File "<__array_function__ internals>", line 200, in vstack
+^^^^^ ^  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/numpy/core/shape_base.py", line 296, in vstack
+^^^^^ ^^^^^
+^^ ^^^^^ ^^   File "<__array_function__ internals>", line 200, in vstack
+^ ^^^^^   File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/numpy/core/shape_base.py", line 296, in vstack
+^^^^ ^^^^^^^^
+
+^^^^^^^^^^  File "<__array_function__ internals>", line 200, in vstack
+
+^^^  File "<__array_function__ internals>", line 200, in vstack
+^^^  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/numpy/core/shape_base.py", line 296, in vstack
+^^^  File "<__array_function__ internals>", line 200, in vstack
+^^^  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/numpy/core/shape_base.py", line 296, in vstack
+^^^  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/numpy/core/shape_base.py", line 296, in vstack
+^^^^^^^^^
+^
+^^^^^^^  File "<__array_function__ internals>", line 200, in vstack
+  File "<__array_function__ internals>", line 200, in vstack
+^^^^  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/numpy/core/shape_base.py", line 296, in vstack
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/numpy/core/shape_base.py", line 296, in vstack
+^^^^^^^^^^^^^^^^^^^
+  File "<__array_function__ internals>", line 200, in vstack
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/numpy/core/shape_base.py", line 296, in vstack
+        return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)
+
+                    return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)
+return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)
+return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)
+
+
+                   ^ ^ ^ ^^^^^^^^^^^^^^^^^^^^^^^^^ ^^ ^^ ^ ^   ^ ^  ^^^       ^^^^^      ^^   ^      ^   ^return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)^ ^^   ^^
+ ^   ^ ^ ^  ^   ^^ ^  ^ ^^  ^^ ^^^^ ^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ^^^^^^^ ^^^^^^^^ ^^^^^^^^ ^^^^^ ^^^^^^^^ ^^^^^^ ^^ ^^^^^^^^ ^^^^^^^ ^^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^  File "<__array_function__ internals>", line 200, in concatenate
+^^^^^^^^^^^
+^^^^^^^^^^^^^^ValueError^^^  File "<__array_function__ internals>", line 200, in concatenate
+^^^: ^^^^^^need at least one array to concatenate^^^^^^^
+ValueError^^^^^^^^^^^: ^^^^^^^^^^^^need at least one array to concatenate^^^^^^^^^^^
+^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  File "<__array_function__ internals>", line 200, in concatenate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^
+^^^^^
+^
+
+  File "<__array_function__ internals>", line 200, in concatenate
+  File "<__array_function__ internals>", line 200, in concatenate
+  File "<__array_function__ internals>", line 200, in concatenate
+  File "<__array_function__ internals>", line 200, in concatenate
+  File "<__array_function__ internals>", line 200, in concatenate
+ValueErrorValueError: need at least one array to concatenate: 
+need at least one array to concatenateValueErrorValueError
+: : ValueErrorneed at least one array to concatenateneed at least one array to concatenate: need at least one array to concatenate
+
+
+ValueError: need at least one array to concatenate
+                    return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)
+
+
+
+
+    return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)
+                                                             return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)  ^ ^   
+^      return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)^^^ ^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ^^^^^^^ ^ ^^ ^^ ^^^^^^^ ^  ^^^^^^^ ^ ^^^^^^^  ^^ ^^^^ ^^^ ^ ^^^  ^^^^^^^^  ^^ ^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^
+^^^^^  File "<__array_function__ internals>", line 200, in concatenate
+^^^^^^^^  File "<__array_function__ internals>", line 200, in concatenate
+ValueError^^^^^^^^: ValueError^need at least one array to concatenate^^^^^^: ^need at least one array to concatenate
+^^^^^^
+^^^^^
+^^^
+^^^  File "<__array_function__ internals>", line 200, in concatenate
+^
+^  File "<__array_function__ internals>", line 200, in concatenate
+^^ValueError^ValueError^:   File "<__array_function__ internals>", line 200, in concatenate
+^^^^ValueErrorneed at least one array to concatenate: 
+^need at least one array to concatenate
+^: ^
+^need at least one array to concatenate^  File "<__array_function__ internals>", line 200, in concatenate
+^^^
+^^ValueError^^^: ^^need at least one array to concatenate^^
+^^^^^
+^^^  File "<__array_function__ internals>", line 200, in concatenate
+
+ValueError: need at least one array to concatenate
+  File "<__array_function__ internals>", line 200, in concatenate
+ValueError: need at least one array to concatenate
+[2023-08-31 01:24:23,732] torch.distributed.elastic.multiprocessing.api: [ERROR] failed (exitcode: 1) local_rank: 0 (pid: 2560925) of binary: /lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/bin/python
+[2023-08-31 01:24:23,733] torch.distributed.elastic.multiprocessing.api: [ERROR] failed (exitcode: 1) local_rank: 0 (pid: 1782930) of binary: /lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/bin/python
+Traceback (most recent call last):
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+Traceback (most recent call last):
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/torch/distributed/run.py", line 806, in main
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/torch/distributed/run.py", line 806, in main
+    run(args)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/torch/distributed/run.py", line 797, in run
+    elastic_launch(
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    run(args)
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/torch/distributed/run.py", line 797, in run
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+toy_dist_dgl.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2023-08-31_01:24:23
+  host      : thetagpu12.mcp.alcf.anl.gov
+  rank      : 9 (local_rank: 1)
+  exitcode  : 1 (pid: 1782931)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2]:
+  time      : 2023-08-31_01:24:23
+  host      : thetagpu12.mcp.alcf.anl.gov
+  rank      : 10 (local_rank: 2)
+  exitcode  : 1 (pid: 1782932)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[3]:
+  time      : 2023-08-31_01:24:23
+  host      : thetagpu12.mcp.alcf.anl.gov
+  rank      : 11 (local_rank: 3)
+  exitcode  : 1 (pid: 1782933)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[4]:
+  time      : 2023-08-31_01:24:23
+  host      : thetagpu12.mcp.alcf.anl.gov
+  rank      : 12 (local_rank: 4)
+  exitcode  : 1 (pid: 1782934)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[5]:
+  time      : 2023-08-31_01:24:23
+  host      : thetagpu12.mcp.alcf.anl.gov
+  rank      : 13 (local_rank: 5)
+  exitcode  : 1 (pid: 1782935)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[6]:
+  time      : 2023-08-31_01:24:23
+  host      : thetagpu12.mcp.alcf.anl.gov
+  rank      : 14 (local_rank: 6)
+  exitcode  : 1 (pid: 1782936)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[7]:
+  time      : 2023-08-31_01:24:23
+  host      : thetagpu12.mcp.alcf.anl.gov
+  rank      : 15 (local_rank: 7)
+  exitcode  : 1 (pid: 1782937)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2023-08-31_01:24:23
+  host      : thetagpu12.mcp.alcf.anl.gov
+  rank      : 8 (local_rank: 0)
+  exitcode  : 1 (pid: 1782930)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+    elastic_launch(
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+toy_dist_dgl.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2023-08-31_01:24:23
+  host      : thetagpu04.mcp.alcf.anl.gov
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 2560926)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2]:
+  time      : 2023-08-31_01:24:23
+  host      : thetagpu04.mcp.alcf.anl.gov
+  rank      : 2 (local_rank: 2)
+  exitcode  : 1 (pid: 2560927)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[3]:
+  time      : 2023-08-31_01:24:23
+  host      : thetagpu04.mcp.alcf.anl.gov
+  rank      : 3 (local_rank: 3)
+  exitcode  : 1 (pid: 2560928)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[4]:
+  time      : 2023-08-31_01:24:23
+  host      : thetagpu04.mcp.alcf.anl.gov
+  rank      : 4 (local_rank: 4)
+  exitcode  : 1 (pid: 2560929)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[5]:
+  time      : 2023-08-31_01:24:23
+  host      : thetagpu04.mcp.alcf.anl.gov
+  rank      : 5 (local_rank: 5)
+  exitcode  : 1 (pid: 2560930)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[6]:
+  time      : 2023-08-31_01:24:23
+  host      : thetagpu04.mcp.alcf.anl.gov
+  rank      : 6 (local_rank: 6)
+  exitcode  : 1 (pid: 2560931)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[7]:
+  time      : 2023-08-31_01:24:23
+  host      : thetagpu04.mcp.alcf.anl.gov
+  rank      : 7 (local_rank: 7)
+  exitcode  : 1 (pid: 2560932)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2023-08-31_01:24:23
+  host      : thetagpu04.mcp.alcf.anl.gov
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 2560925)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

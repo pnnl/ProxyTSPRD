@@ -1,0 +1,36 @@
+[WARNING] Couldn't initialize MPI, giving a default rank of 0 to all processes.
+[INFO] Number of files updated: {'training_data_dir': '/home/milanjain91/data/power_system/NewTestScenarios/', 'file_format': '*', 'train_files': 8, 'test_files': 140, 'val_files': 0, 'shuffle': False}
+[INFO] PyTorch version:  2.0.1+cu117
+[INFO] Device Type: cpu
+[WARNING] No GPUs found, falling back to CPUs
+[INFO] Python Data Type: float32
+[INFO] Framework Data Type: torch.float32
+[INFO] Suffix: gpu_ng8_nc0_e50_b2048_dfp32_mpguHVD_prof0
+[INFO] Selected App: GridLSTMProxyAppPT
+[INFO] Output Data Directory: /home/milanjain91/output/ProxyTSPRD_IPDPS
+[INFO] App Supports Mixed Precision: True
+[INFO] App Supports MGPUs: True
+[INFO] Disabling Multi-GPU Support. To use multiple gpus, provide a valid Multi-GPU strategy (HVD/DDP) when initializing the framework.
+[INFO] Training Data Directory: /home/milanjain91/data/power_system/NewTestScenarios/
+[INFO] Found 180 `*` files
+[INFO] Training on 8/180 `*` files
+[INFO] Validation on 0/180 `*` files
+[INFO] Testing on 140/180 `*` files
+[INFO] Number of training files (per GPU): 8
+[INFO] Number of validation files (per GPU): 0
+cpu
+[INFO] Model Path: /home/milanjain91/models/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/gpu_ng8_nc0_e50_b2048_dfp32_mpguHVD_prof0.pt
+[INFO] Loaded Model: /home/milanjain91/models/ProxyTSPRD_IPDPS/GridLSTMProxyAppPT/gpu_ng8_nc0_e50_b2048_dfp32_mpguHVD_prof0.pt
+[INFO] Model Parameters:
+lstm_layer.weight_ih_l0 torch.Size([256, 136])
+lstm_layer.weight_hh_l0 torch.Size([256, 64])
+lstm_layer.bias_ih_l0 torch.Size([256])
+lstm_layer.bias_hh_l0 torch.Size([256])
+dense_layer.weight torch.Size([4080, 64])
+dense_layer.bias torch.Size([4080])
+============> (Before Sync) Inference Time (Total):  7.801775585860014
+============> (Before Sync) Inference Time: 6.792802194133401
+============> (Before Sync) Inference Loss: 0.0003418439644908145
+============> (After Sync) Inference Time (Total):  7.801775585860014
+============> (After Sync) Inference Time:  6.792802194133401
+============> (After Sync) Inference Loss:  0.0003418439644908145

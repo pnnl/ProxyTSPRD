@@ -73,8 +73,6 @@ if __name__ == "__main__":
     # for inference
     else:
         _SUFFIX = args.train_suffix
-    if _MPI_RANK == 0:
-        print("[INFO] Suffix: %s" %(_SUFFIX))
     
     # initialize the framework
     # GPU
@@ -109,8 +107,11 @@ if __name__ == "__main__":
     elif ml_framework == "PT":
         interface = framework.use_pytorch()
 
-    if interface._DEVICE_STR == "cpu":
-        _SUFFIX.replace("gpu", "cpu")
+    # print(interface._DEVICE_STR)
+    # if interface._DEVICE_STR == "cpu":
+    #     _SUFFIX = _SUFFIX.replace("gpu", "cpu")
+    if _MPI_RANK == 0:
+        print("[INFO] Suffix: %s" %(_SUFFIX))
     
     # select app
     # FIXME: App can only be loaded after initializing the framework, otherwise memory set won't happen. 

@@ -1,0 +1,216 @@
+Network Offline, setting proxy envs
+Generating ip_config.txt...
+Converting to homogeneous graph takes 0.001s, peak mem: 40.924 GB
+Convert a graph into a bidirected graph: 0.000 seconds, peak memory: 40.924 GB
+Construct multi-constraint weights: 0.000 seconds, peak memory: 40.924 GB
+Metis partitioning: 0.000 seconds, peak memory: 40.924 GB
+Assigning nodes to METIS partitions takes 0.001s, peak mem: 40.924 GB
+Reshuffle nodes and edges: 0.024 seconds
+Split the graph: 0.000 seconds
+Construct subgraphs: 0.208 seconds
+Splitting the graph into partitions takes 0.232s, peak mem: 61.925 GB
+part 0 has 37 nodes and 33 are inside the partition
+part 0 has 46 edges and 45 are inside the partition
+part 1 has 38 nodes and 35 are inside the partition
+part 1 has 44 edges and 41 are inside the partition
+Save partitions: 0.010 seconds, peak memory: 66.674 GB
+There are 86 edges in the graph and 0 edge cuts for 2 partitions.
+The number of OMP threads per trainer is set to 16
+[INFO] Selected Device: theta
+[INFO] thetagpu04: Initializing DistDGL.
+[INFO] Selected Device: theta
+[INFO] thetagpu04: Initializing DistDGL.
+[INFO] Selected Device: theta
+[INFO] thetagpu04: Initializing DistDGL.
+[INFO] Selected Device: theta
+[INFO] thetagpu04: Initializing DistDGL.
+[INFO] Selected Device: theta
+[INFO] thetagpu04: Initializing DistDGL.
+[INFO] Selected Device: theta
+[INFO] thetagpu04: Initializing DistDGL.
+[INFO] Selected Device: theta
+[INFO] thetagpu04: Initializing DistDGL.
+[INFO] Selected Device: theta
+[INFO] thetagpu12: Initializing DistDGL.
+[INFO] Selected Device: theta
+[INFO] thetagpu12: Initializing DistDGL.
+[INFO] Selected Device: theta
+[INFO] thetagpu12: Initializing DistDGL.
+[INFO] Selected Device: theta
+[INFO] thetagpu12: Initializing DistDGL.
+[INFO] Selected Device: theta
+[INFO] thetagpu04: Initializing DistDGL.
+[INFO] Selected Device: theta
+[INFO] thetagpu12: Initializing DistDGL.
+[INFO] Selected Device: theta
+[INFO] thetagpu12: Initializing DistDGL.
+[INFO] Selected Device: theta
+[INFO] thetagpu12: Initializing DistDGL.
+[INFO] Selected Device: theta
+[INFO] thetagpu12: Initializing DistDGL.
+Client [1782930] waits on 10.230.2.200:57071
+Client [1782934] waits on 10.230.2.200:54455
+Machine (1) group (0) client (30) connect to server successfuly!
+Machine (1) group (0) client (29) connect to server successfuly!
+Client [2560931] waits on 10.230.2.192:53889
+Client [2560929] waits on 10.230.2.192:52981
+Machine (0) group (0) client (10) connect to server successfuly!
+Client [2560926] waits on 10.230.2.192:48243
+Machine (0) group (0) client (9) connect to server successfuly!
+Client [2560925] waits on 10.230.2.192:46113
+Machine (0) group (0) client (6) connect to server successfuly!
+Machine (0) group (0) client (5) connect to server successfuly!
+Client [2560932] waits on 10.230.2.192:43109
+Machine (0) group (0) client (3) connect to server successfuly!
+Client [2560927] waits on 10.230.2.192:35037
+Client [2560930] waits on 10.230.2.192:57087
+Machine (0) group (0) client (0) connect to server successfuly!
+Client [1782932] waits on 10.230.2.200:33865Client [1782935] waits on 10.230.2.200:33943
+
+Client [1782933] waits on 10.230.2.200:35697
+Machine (0) group (0) client (13) connect to server successfuly!
+Client [1782936] waits on 10.230.2.200:41581Client [1782937] waits on 10.230.2.200:41991
+
+Machine (1) group (0) client (17) connect to server successfuly!
+Machine (1) group (0) client (18) connect to server successfuly!
+Machine (1) group (0) client (19) connect to server successfuly!
+Machine (1) group (0) client (24) connect to server successfuly!Client [2560928] waits on 10.230.2.192:59201
+
+Client [1782931] waits on 10.230.2.200:38599
+Machine (1) group (0) client (23) connect to server successfuly!
+Machine (0) group (0) client (14) connect to server successfuly!
+Machine (1) group (0) client (25) connect to server successfuly!
+[INFO] thetagpu04: Initializing PyTorch process group.
+[INFO] thetagpu04: Initializing PyTorch process group.
+[INFO] thetagpu12: Initializing PyTorch process group.
+[INFO] thetagpu04: Initializing PyTorch process group.
+[INFO] thetagpu04: Initializing PyTorch process group.[INFO] thetagpu04: Initializing PyTorch process group.
+
+[INFO] thetagpu04: Initializing PyTorch process group.
+[INFO] thetagpu12: Initializing PyTorch process group.
+[INFO] thetagpu04: Initializing PyTorch process group.
+[INFO] thetagpu04: Initializing PyTorch process group.
+[INFO] thetagpu12: Initializing PyTorch process group.
+[INFO] thetagpu12: Initializing PyTorch process group.
+[INFO] thetagpu12: Initializing PyTorch process group.
+[INFO] thetagpu12: Initializing PyTorch process group.
+[INFO] thetagpu12: Initializing PyTorch process group.
+[INFO] thetagpu12: Initializing PyTorch process group.
+thetagpu12: Initializing DistGraph.
+thetagpu12: Initializing DistGraph.
+thetagpu12: Initializing DistGraph.
+thetagpu04: Initializing DistGraph.
+thetagpu12: Initializing DistGraph.
+thetagpu04: Initializing DistGraph.
+thetagpu12: Initializing DistGraph.
+thetagpu12: Initializing DistGraph.
+thetagpu12: Initializing DistGraph.
+thetagpu04: Initializing DistGraph.
+thetagpu12: Initializing DistGraph.
+thetagpu04: Initializing DistGraph.
+thetagpu04: Initializing DistGraph.
+thetagpu04: Initializing DistGraph.
+thetagpu04: Initializing DistGraph.
+thetagpu04: Initializing DistGraph.
+[INFO] Rank of thetagpu04: 4
+[INFO] Rank of thetagpu04: 0
+[INFO] Rank of thetagpu04: 1
+[INFO] Rank of thetagpu04: 6
+[INFO] Rank of thetagpu12: 8[INFO] Rank of thetagpu12: 12
+
+[INFO] Rank of thetagpu04: 7
+[INFO] Rank of thetagpu04: 2
+[INFO] Rank of thetagpu04: 5
+[INFO] Rank of thetagpu12: 10
+[INFO] Rank of thetagpu12: 9
+[INFO] Rank of thetagpu12: 15
+[INFO] Rank of thetagpu12: 14
+[INFO] Rank of thetagpu12: 11
+[INFO] Rank of thetagpu04: 3
+[INFO] Rank of thetagpu12: 13
+Client[10] in group[0] is exiting...
+Client[0] in group[0] is exiting...Client[6] in group[0] is exiting...Client[3] in group[0] is exiting...Client[13] in group[0] is exiting...Client[5] in group[0] is exiting...Client[9] in group[0] is exiting...Client[14] in group[0] is exiting...
+
+
+
+
+
+
+Client[24] in group[0] is exiting...
+Client[29] in group[0] is exiting...
+Client[18] in group[0] is exiting...
+Client[30] in group[0] is exiting...
+Client[17] in group[0] is exiting...
+Client[19] in group[0] is exiting...
+Client[23] in group[0] is exiting...
+Client[25] in group[0] is exiting...
+[INFO] Selected Device: theta
+[INFO] thetagpu12: Initializing DistDGL.
+load m_graph
+Start to create specified graph formats which may take non-trivial time.
+Finished creating specified graph formats.
+start graph service on server 1 for part 1
+Server is waiting for connections on [10.230.2.200:30050]...
+Server (1) shutdown.
+Server is exiting...
+[INFO] Selected Device: theta
+[INFO] thetagpu04: Initializing DistDGL.
+load m_graph
+Start to create specified graph formats which may take non-trivial time.
+Finished creating specified graph formats.
+start graph service on server 0 for part 0
+Server is waiting for connections on [10.230.2.192:30050]...
+Server (0) shutdown.
+Server is exiting...
+Client [2561227] waits on 10.230.2.192:45561
+Machine (0) group (0) client (4) connect to server successfuly!
+Client[4] in group[0] is exiting...
+Client [2561333] waits on 10.230.2.192:41095
+Machine (0) group (0) client (2) connect to server successfuly!
+Client[2] in group[0] is exiting...
+Client [2561266] waits on 10.230.2.192:50861
+Machine (0) group (0) client (7) connect to server successfuly!
+Client[7] in group[0] is exiting...
+Client [2561203] waits on 10.230.2.192:55477
+Machine (0) group (0) client (11) connect to server successfuly!
+Client[11] in group[0] is exiting...
+Client [2561198] waits on 10.230.2.192:56707
+Machine (0) group (0) client (12) connect to server successfuly!
+Client[12] in group[0] is exiting...
+Client [2561204] waits on 10.230.2.192:39463
+Machine (0) group (0) client (1) connect to server successfuly!
+Client[1] in group[0] is exiting...
+Client [2561259] waits on 10.230.2.192:52025
+Machine (0) group (0) client (8) connect to server successfuly!
+Client[8] in group[0] is exiting...
+Client [1783241] waits on 10.230.2.200:37485
+Machine (1) group (0) client (21) connect to server successfuly!
+Client[21] in group[0] is exiting...
+Client [1783293] waits on 10.230.2.200:33499
+Machine (1) group (0) client (16) connect to server successfuly!
+Client[16] in group[0] is exiting...
+Client [1783214] waits on 10.230.2.200:50749
+Machine (1) group (0) client (28) connect to server successfuly!
+Client[28] in group[0] is exiting...
+Client [1783219] waits on 10.230.2.200:48853
+Machine (1) group (0) client (26) connect to server successfuly!
+Client[26] in group[0] is exiting...
+Client [1783345] waits on 10.230.2.200:37713
+Machine (1) group (0) client (22) connect to server successfuly!
+Client[22] in group[0] is exiting...
+Client [2561228] waits on 10.230.2.192:60823
+Machine (0) group (0) client (15) connect to server successfuly!
+Client[15] in group[0] is exiting...
+Client [1783209] waits on 10.230.2.200:50633
+Machine (1) group (0) client (27) connect to server successfuly!
+Client[27] in group[0] is exiting...
+Client [1783292] waits on 10.230.2.200:37331
+Machine (1) group (0) client (20) connect to server successfuly!
+Client[20] in group[0] is exiting...
+Client [1783220] waits on 10.230.2.200:58143
+Machine (1) group (0) client (31) connect to server successfuly!
+Client[31] in group[0] is exiting...
+cleanupu process runs
+Called process error Command 'ssh -o StrictHostKeyChecking=no -p 22 10.230.2.192 'cd /home/milanjain91/ProxyTSPRD/scripts/playground/models/graph; (export DGL_DIST_MODE=distributed DGL_ROLE=client DGL_NUM_SAMPLER=1 DGL_NUM_CLIENT=32 DGL_CONF_PATH=/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/partition/m_graph.json DGL_IP_CONFIG=ip_config.txt DGL_NUM_SERVER=1 DGL_GRAPH_FORMAT=csc OMP_NUM_THREADS=16 DGL_GROUP_ID=0 ; /lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/bin/torchrun --nproc_per_node=8 --nnodes=2 --node_rank=0 --master_addr=10.230.2.192 --master_port=1234 toy_dist_dgl.py --run_device=theta --ip_config=ip_config.txt --graph_name=m_graph --part_config /home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/partition/m_graph.json)'' returned non-zero exit status 1.
+Called process error Command 'ssh -o StrictHostKeyChecking=no -p 22 10.230.2.200 'cd /home/milanjain91/ProxyTSPRD/scripts/playground/models/graph; (export DGL_DIST_MODE=distributed DGL_ROLE=client DGL_NUM_SAMPLER=1 DGL_NUM_CLIENT=32 DGL_CONF_PATH=/home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/partition/m_graph.json DGL_IP_CONFIG=ip_config.txt DGL_NUM_SERVER=1 DGL_GRAPH_FORMAT=csc OMP_NUM_THREADS=16 DGL_GROUP_ID=0 ; /lus/eagle/projects/GRACE/pacergnn/.conda/envs/ptnightly/bin/torchrun --nproc_per_node=8 --nnodes=2 --node_rank=1 --master_addr=10.230.2.192 --master_port=1234 toy_dist_dgl.py --run_device=theta --ip_config=ip_config.txt --graph_name=m_graph --part_config /home/milanjain91/ProxyTSPRD/scripts/playground/models/graph/partition/m_graph.json)'' returned non-zero exit status 1.
+Task failed

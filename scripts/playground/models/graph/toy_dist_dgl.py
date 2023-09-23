@@ -1,5 +1,5 @@
 import os, sys, subprocess
-import glob
+import glob, socket
 import argparse
 import numpy as np
 import pandas as pd
@@ -57,85 +57,40 @@ def parse_arguments():
     # argument parser
     parser = argparse.ArgumentParser()
     parser.add_argument("--run_device")
+    parser.add_argument("--ip_config")
+    parser.add_argument("--graph_name")
+    parser.add_argument("--part_config")
+    parser.add_argument("--local-rank")
 
     args = parser.parse_args()
     return args
 
-def load_and_partition_graph(n_nodes, n_partitions):
-    df_distance = pd.read_csv("grid_graph.csv")
-    sp_mx = coo_matrix(
-        (df_distance["cost"].values, 
-        (
-            df_distance["from"].values, 
-            df_distance["to"].values
-        )), shape=(n_nodes, n_nodes)
-    )
-    
-    G = dgl.from_scipy(sp_mx)
-    # partition the graphs
-    dgl.distributed.partition_graph(G, graph_name='m_graph', num_parts=n_partitions, out_path='curr_dir')
-    
-# read the arguments
-args = parse_arguments()
-_run_device = args.run_device
-print("[INFO] Selected Device: %s" %(_run_device))
-
 if __name__ == "__main__":
-    n_nodes = data_params["n_cols"] // 2
-    if _run_device in ["theta", "pnnl"]:
-        from mpi4py import MPI
-        size = MPI.COMM_WORLD.Get_size()
-        global_rank = MPI.COMM_WORLD.Get_rank()
+    # read the arguments
+    args = parse_arguments()
+    _run_device = args.run_device
+    print("[INFO] Selected Device: %s" %(_run_device))
 
-        # partition the graph
-        if global_rank == 0:
-            load_and_partition_graph(n_nodes, size)
+    host_name = socket.gethostname()
+    print(f"[INFO] {host_name}: Initializing DistDGL.")
+    dgl.distributed.initialize(ip_config=args.ip_config)
+    print(f"[INFO] {host_name}: Initializing PyTorch process group.")
+    torch.distributed.init_process_group(backend='nccl')
+    print(f"{host_name}: Initializing DistGraph.")
+    g = dgl.distributed.DistGraph(args.graph_name, part_config=args.part_config)
+    print(f"[INFO] Rank of {host_name}: {g.rank()}")
 
-        # setup ddp
-        if _run_device == "theta":
-            local_rank, size = _setup_ddp(global_rank, size)
-            # print("[INFO]", local_rank, global_rank, size)
-        elif _run_device == "pnnl":
-            hostname = subprocess.check_output("hostname").decode('utf-8').strip().split(".")[0]
-            print(hostname)
-            ip_address = subprocess.check_output("getent hosts " + hostname + " | awk '{ print $1 }'", shell=True).decode('utf-8')
-            print(ip_address)
-            with open('ipconfig.txt', 'w') as fp:
-                fp.write(ip_address)
-            dgl.distributed.initialize(ip_config='ipconfig.txt')
-            with_ddp, size, local_rank = setup(global_rank, size)
-        
-        local_rank, global_rank, size = int(local_rank), int(global_rank), int(size)
-        
-        # gpu params
-        use_ddp = True
-        device = torch.device("cuda:" + str(local_rank))
-        torch.cuda.set_device(device)
-    else:
-        local_rank = 0
-        global_rank = 0
-        size = 1
-        use_ddp = False
-        device = torch.device("cpu")
-    
-    if global_rank == 0:
-        print("[INFO] Size:%d, Local Rank: %d, Global Rank: %d" %(size, local_rank, global_rank))
-    
-    # load partitioned graph
-    g = dgl.distributed.DistGraph('m_graph', part_config='./curr_dir/m_graph.json')
-    
     # get app
     app = GridSTGCNProxyAppPT("gpu")
     
     # load data
     all_files = glob.glob(os.path.join(path, "*"))
+    print("[INFO] Number of files: %d" %(len(all_files)))
     datagen = app.get_datagen(
                 files=all_files[:2],
                 data_params=data_params,
                 dtype="float32"
             )
-    # print(datagen.X.shape, datagen.y.shape)
-    # sys.exit(1)
     dataloader = torch.utils.data.DataLoader(
                     datagen, 
                     batch_size=1024,
@@ -145,37 +100,34 @@ if __name__ == "__main__":
     # data parameters
     n_history = data_params["iw_params"]["window_size"]
     
-    # random graph
-    # adj_mx = triu(random(n_nodes, n_nodes, density=0.95), k=0)
-    
-    # G = dgl.add_self_loop(G)
-    sampler = dgl.dataloading.NeighborSampler([4, 4])
-    print("[INFO] Device:", device)
-    graphloader = dgl.dataloading.DataLoader(
-        # The following arguments are specific to DataLoader.
-        graph=G,  # The graph
-        indices=range(n_nodes),  # The node IDs to iterate over in minibatches
-        graph_sampler=sampler,  # The neighbor sampler
-        device=device,  # Put the sampled MFGs on CPU or GPU
-        use_ddp=use_ddp,  # Make it work with distributed data parallel
-        # The following arguments are inherited from PyTorch DataLoader.
-        batch_size=10,  # Per-device batch size.
-        # The effective batch size is this number times the number of GPUs.
-        shuffle=False,  # Whether to shuffle the nodes for every epoch
-        drop_last=False,  # Whether to drop the last incomplete batch
-        num_workers=0,  # Number of sampler processes
-    )
-    n_batches = 0
-    for inp, tgt, blocks in graphloader:
-        print("Neighbors:", inp[10:])
-        print("Targets:", tgt)
-        print("Block-1 Neighbors:", blocks[0].srcdata)
-        print("Block-1 Targets:", blocks[0].dstdata)
-        print("Block-2 Neighbors:", blocks[1].srcdata)
-        print("Block-2 Targets:", blocks[1].dstdata)
-        # print(inp.get_device(), tgt.get_device(), tgt)
-        n_batches += 1
-    print("[INFO] Number of batches: %d" %(n_batches))
+    # # graphloader
+    # sampler = dgl.dataloading.NeighborSampler([4, 4])
+    # print("[INFO] Device:", device)
+    # graphloader = dgl.dataloading.DataLoader(
+    #     # The following arguments are specific to DataLoader.
+    #     graph=G,  # The graph
+    #     indices=range(n_nodes),  # The node IDs to iterate over in minibatches
+    #     graph_sampler=sampler,  # The neighbor sampler
+    #     device=device,  # Put the sampled MFGs on CPU or GPU
+    #     use_ddp=use_ddp,  # Make it work with distributed data parallel
+    #     # The following arguments are inherited from PyTorch DataLoader.
+    #     batch_size=10,  # Per-device batch size.
+    #     # The effective batch size is this number times the number of GPUs.
+    #     shuffle=False,  # Whether to shuffle the nodes for every epoch
+    #     drop_last=False,  # Whether to drop the last incomplete batch
+    #     num_workers=0,  # Number of sampler processes
+    # )
+    # n_batches = 0
+    # for inp, tgt, blocks in graphloader:
+    #     print("Neighbors:", inp[10:])
+    #     print("Targets:", tgt)
+    #     print("Block-1 Neighbors:", blocks[0].srcdata)
+    #     print("Block-1 Targets:", blocks[0].dstdata)
+    #     print("Block-2 Neighbors:", blocks[1].srcdata)
+    #     print("Block-2 Targets:", blocks[1].dstdata)
+    #     # print(inp.get_device(), tgt.get_device(), tgt)
+    #     n_batches += 1
+    # print("[INFO] Number of batches: %d" %(n_batches))
     sys.exit(1)
 
     # init model

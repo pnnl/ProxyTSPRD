@@ -1,14 +1,14 @@
 #!/bin/bash
 # gridcnntf, amp
 GPUS=( "theta" ) # which gpu
-MODELS=( "gridcnnpt" "gridlstmpt" "gridcnntf" "gridlstmtf" ) # "climatecnnpt" "climatelstmpt" "gridcnnpt" "gridlstmpt" "climatecnntf" "climatelstmtf" "gridcnntf" "gridlstmtf", "climatecnnptatt", "gridcnnptatt" "gridstgcngpt" "gridstgcngtf"
+MODELS=( "gridcnnptatt" ) # "climatecnnpt" "climatelstmpt" "gridcnnpt" "gridlstmpt" "climatecnntf" "climatelstmtf" "gridcnntf" "gridlstmtf", "climatecnnptatt", "gridcnnptatt" "gridstgcngpt" "gridstgcngtf"
 # "gridcnnpt" "gridlstmpt" "gridcnntf" "gridlstmtf" "gridstgcngpt" "gridstgcngtf"
 # "gridlstmpt" "gridcnnpt" "gridlstmtf" "gridcnntf"
 N_NODES=1
-DTYPE=( "fp64" "amp" ) # "fp16" "fp32" "fp64" "amp" with or without mixed precision
+DTYPE=( "fp32" ) # "fp16" "fp32" "fp64" "amp" with or without mixed precision
 MGPU=( "None" ) # "HVD" "DDP" with or without mixed precision
 PROF=( 0 1 ) # with and without profiler
-RTYPE=( "infer_onnx" ) # "infer" "infer_onnx" "infer_onnxtrti8" "infer_onnxtrtfp16" "infer_tftrti8" "infer_tftrtfp16"
+RTYPE=( "infer" ) # "infer" "infer_onnx" "infer_onnxtrti8" "infer_onnxtrtfp16" "infer_tftrti8" "infer_tftrtfp16"
 NODE="single-gpu"
 EPOCHS=1
 BATCH_SIZE=2048
